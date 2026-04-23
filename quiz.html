@@ -16,7 +16,7 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(107,203,119,0.08);top:-100px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(123,110,246,0.06);bottom:0;left:-100px}
@@ -26,15 +26,15 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
 .logo-name span{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:2px}
-.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:15px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
 .nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
 .nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
 
 .content{padding:40px 48px;max-width:800px;margin:0 auto;position:relative;z-index:1}
-.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
-.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+.page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:48px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:18px;color:var(--text2);line-height:1.7;margin-bottom:36px}
 .s-divider{height:0.5px;background:var(--border);margin:40px 0}
 
 /* QUIZ SELECTOR */
@@ -43,8 +43,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .qs-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.15)}
 .qs-card.active{border-color:var(--accent);background:rgba(167,139,250,0.08)}
 .qs-emoji{font-size:28px;margin-bottom:8px}
-.qs-title{font-size:14px;font-weight:500;margin-bottom:4px}
-.qs-count{font-size:12px;color:var(--text3)}
+.qs-title{font-size:16px;font-weight:500;margin-bottom:4px}
+.qs-count{font-size:14px;color:var(--text3)}
 
 /* QUIZ ENGINE */
 .quiz-engine{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px}
@@ -54,7 +54,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .qe-count{font-size:13px;color:var(--text3);white-space:nowrap}
 .qe-score{font-size:13px;color:var(--accent);white-space:nowrap}
 .qe-q{font-size:17px;color:var(--text);margin-bottom:8px;line-height:1.5}
-.qe-hint{font-size:12px;color:var(--text3);margin-bottom:20px;font-style:italic}
+.qe-hint{font-size:14px;color:var(--text3);margin-bottom:20px;font-style:italic}
 .qe-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
 .qe-opt{padding:13px 18px;border-radius:10px;border:0.5px solid var(--border);background:var(--bg3);font-size:14px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
 .qe-opt:hover:not(:disabled){border-color:rgba(232,197,71,0.4);color:var(--text);background:rgba(232,197,71,0.04)}
@@ -63,7 +63,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .qe-feedback{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:14px;display:none;line-height:1.6}
 .qe-feedback.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
 .qe-feedback.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
-.qe-next{padding:11px 24px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qe-next{padding:11px 24px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
 .qe-next.show{display:inline-block}
 
 /* RESULT */
@@ -73,7 +73,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .result-score{font-family:'Fraunces',serif;font-size:48px;color:var(--accent);margin-bottom:8px}
 .result-label{font-size:16px;color:var(--text2);margin-bottom:24px}
 .result-msg{font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.7}
-.restart-btn{padding:13px 28px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin-right:10px}
+.restart-btn{padding:13px 28px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin-right:10px}
 .other-btn{padding:13px 28px;background:transparent;color:var(--text);border:0.5px solid var(--border);border-radius:10px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif}
 
 /* FILL IN BLANK */
@@ -86,13 +86,13 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .fill-input:focus{border-color:rgba(232,197,71,0.4)}
 .fill-input.correct{border-color:var(--green);color:var(--green)}
 .fill-input.wrong{border-color:var(--coral);color:var(--coral)}
-.fill-note{font-size:12px;color:var(--text3);margin-top:4px}
+.fill-note{font-size:14px;color:var(--text3);margin-top:4px}
 .fill-check{padding:8px 20px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px}
 
 /* WORD ORDER */
 .wo-section{margin-bottom:40px}
 .wo-words{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:44px;padding:10px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px}
-.wo-word{padding:6px 14px;background:var(--bg3);border:0.5px solid var(--border);border-radius:20px;font-size:13px;color:var(--text);cursor:grab;user-select:none;transition:all .2s}
+.wo-word{padding:6px 14px;background:var(--bg3);border:0.5px solid var(--border);border-radius:20px;font-size:15px;color:var(--text);cursor:grab;user-select:none;transition:all .2s}
 .wo-word:hover{border-color:rgba(232,197,71,0.4);color:var(--accent)}
 .wo-word.placed{opacity:.3;cursor:default}
 .wo-answer{display:flex;flex-wrap:wrap;gap:8px;min-height:44px;padding:10px;background:rgba(232,197,71,0.04);border:0.5px dashed rgba(100,216,165,0.3);border-radius:10px;margin-bottom:10px}
@@ -133,6 +133,30 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
 .nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+
+/* HAMBURGER MENU */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;z-index:201}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:4px;overflow-y:auto;z-index:199}
+  .nav-links.open{display:flex}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+  .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
+  nav{padding:12px 16px}
+  .content{padding:20px 16px}
+  .page-title,.page-title{font-size:28px!important}
+  .page-desc{font-size:15px!important}
+  .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
+  .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
+  .nav-drop>.nav-a::after{display:none}
+}
+@media(max-width:500px){
+  .page-title{font-size:24px!important}
+}
 </style>
 </head>
 <body>
@@ -143,6 +167,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="logo-mark">E</div>
     <span class="logo-name">Easy<span>English</span></span>
   </a>
+  <button class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="index.html" class="nav-a">Trang chủ</a>
     <div class="nav-drop">
@@ -528,12 +553,12 @@ function renderWO() {
   const shuffled = shuffle(d.words);
   woPlaced = [];
   document.getElementById('woContainer').innerHTML = `
-    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Câu ${woIndex+1}/${WO_DATA.length}: Dịch nghĩa — "<em>${d.vi}</em>"</div>
-    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Chọn từ theo đúng thứ tự:</div>
+    <div style="font-size:14px;color:var(--text3);margin-bottom:8px">Câu ${woIndex+1}/${WO_DATA.length}: Dịch nghĩa — "<em>${d.vi}</em>"</div>
+    <div style="font-size:14px;color:var(--text3);margin-bottom:8px">Chọn từ theo đúng thứ tự:</div>
     <div class="wo-words" id="woWords">
       ${shuffled.map((w,i)=>`<span class="wo-word" id="ww-${i}" onclick="placeWord(${i},'${w}')">${w}</span>`).join('')}
     </div>
-    <div style="font-size:12px;color:var(--text3);margin-bottom:6px">Câu của bạn:</div>
+    <div style="font-size:14px;color:var(--text3);margin-bottom:6px">Câu của bạn:</div>
     <div class="wo-answer" id="woAnswer"></div>
     <div id="woFeedback" style="font-size:13px;margin:8px 0"></div>
     <button class="wo-check" onclick="checkWO()">Kiểm tra ✓</button>
