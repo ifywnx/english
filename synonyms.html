@@ -43,17 +43,63 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .search-box{width:100%;padding:12px 18px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:16px}
 .search-box:focus{border-color:rgba(100,216,165,0.4)}
 @media(max-width:600px){.content{padding:20px 16px}.word-row{flex-direction:column}}
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0b1a1e;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
 </style></head><body>
 <div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
 <nav>
-<a href="index.html" class="logo"><div class="logo-mark">E</div><span class="logo-name">Easy<span>English</span></span></a>
-<div class="nav-links">
-<a href="index.html" class="nav-a">Trang chủ</a>
-<a href="vocabulary.html" class="nav-a">Từ vựng</a>
-<a href="grammar.html" class="nav-a">Ngữ pháp</a>
-<a href="synonyms.html" class="nav-a" style="color:var(--accent3)">Đồng/Trái nghĩa</a>
-<a href="quiz.html" class="nav-a">Quiz</a>
-</div></nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
+</nav>
 <div class="content">
 <div class="page-label">Từ vựng nâng cao</div>
 <h1 class="page-title">Đồng nghĩa & Trái nghĩa 🔄</h1>
