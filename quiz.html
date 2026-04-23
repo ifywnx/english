@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài tập & Quiz — EasyEnglish</title>
+<meta name="description" content="Kiểm tra kiến thức tiếng Anh với quiz tương tác, điền từ, sắp xếp câu. Có giải thích đáp án chi tiết bằng tiếng Việt.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#f4845f;--green:#6bcb77;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(107,203,119,0.08);top:-100px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(123,110,246,0.06);bottom:0;left:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.content{padding:40px 48px;max-width:800px;margin:0 auto;position:relative;z-index:1}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+.s-divider{height:0.5px;background:var(--border);margin:40px 0}
+
+/* QUIZ SELECTOR */
+.quiz-selector{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:36px}
+.qs-card{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:18px;cursor:pointer;transition:all .2s;text-align:center}
+.qs-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.15)}
+.qs-card.active{border-color:var(--accent);background:rgba(167,139,250,0.08)}
+.qs-emoji{font-size:28px;margin-bottom:8px}
+.qs-title{font-size:14px;font-weight:500;margin-bottom:4px}
+.qs-count{font-size:12px;color:var(--text3)}
+
+/* QUIZ ENGINE */
+.quiz-engine{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px}
+.qe-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.qe-progress{flex:1;height:6px;background:var(--bg3);border-radius:3px;margin:0 16px;overflow:hidden}
+.qe-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .4s}
+.qe-count{font-size:13px;color:var(--text3);white-space:nowrap}
+.qe-score{font-size:13px;color:var(--accent);white-space:nowrap}
+.qe-q{font-size:17px;color:var(--text);margin-bottom:8px;line-height:1.5}
+.qe-hint{font-size:12px;color:var(--text3);margin-bottom:20px;font-style:italic}
+.qe-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.qe-opt{padding:13px 18px;border-radius:10px;border:0.5px solid var(--border);background:var(--bg3);font-size:14px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
+.qe-opt:hover:not(:disabled){border-color:rgba(232,197,71,0.4);color:var(--text);background:rgba(232,197,71,0.04)}
+.qe-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.12);color:var(--green)}
+.qe-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.qe-feedback{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:14px;display:none;line-height:1.6}
+.qe-feedback.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
+.qe-feedback.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
+.qe-next{padding:11px 24px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qe-next.show{display:inline-block}
+
+/* RESULT */
+.result-box{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:36px;text-align:center;display:none}
+.result-box.show{display:block}
+.result-emoji{font-size:56px;margin-bottom:16px}
+.result-score{font-family:'Fraunces',serif;font-size:48px;color:var(--accent);margin-bottom:8px}
+.result-label{font-size:16px;color:var(--text2);margin-bottom:24px}
+.result-msg{font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.7}
+.restart-btn{padding:13px 28px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin-right:10px}
+.other-btn{padding:13px 28px;background:transparent;color:var(--text);border:0.5px solid var(--border);border-radius:10px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* FILL IN BLANK */
+.fill-section{margin-bottom:40px}
+.fill-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin-bottom:6px}
+.fill-desc{font-size:13px;color:var(--text2);margin-bottom:16px}
+.fill-item{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+.fill-sentence{font-size:14px;color:var(--text);line-height:2;margin-bottom:8px}
+.fill-input{background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:4px 10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;width:130px;outline:none;text-align:center}
+.fill-input:focus{border-color:rgba(232,197,71,0.4)}
+.fill-input.correct{border-color:var(--green);color:var(--green)}
+.fill-input.wrong{border-color:var(--coral);color:var(--coral)}
+.fill-note{font-size:12px;color:var(--text3);margin-top:4px}
+.fill-check{padding:8px 20px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px}
+
+/* WORD ORDER */
+.wo-section{margin-bottom:40px}
+.wo-words{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:44px;padding:10px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px}
+.wo-word{padding:6px 14px;background:var(--bg3);border:0.5px solid var(--border);border-radius:20px;font-size:13px;color:var(--text);cursor:grab;user-select:none;transition:all .2s}
+.wo-word:hover{border-color:rgba(232,197,71,0.4);color:var(--accent)}
+.wo-word.placed{opacity:.3;cursor:default}
+.wo-answer{display:flex;flex-wrap:wrap;gap:8px;min-height:44px;padding:10px;background:rgba(232,197,71,0.04);border:0.5px dashed rgba(100,216,165,0.3);border-radius:10px;margin-bottom:10px}
+.wo-placed{padding:6px 14px;background:rgba(100,216,165,0.12);border:0.5px solid rgba(100,216,165,0.3);border-radius:20px;font-size:13px;color:var(--accent);cursor:pointer}
+.wo-check{padding:8px 20px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;margin-right:8px}
+.wo-reset{padding:8px 16px;background:transparent;color:var(--text2);border:0.5px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
+.stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:24px;color:var(--accent3)}
+.stat-label{font-size:11px;color:var(--text3);margin-top:2px}
+
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:8px}
+
+@media(max-width:900px){
+  .content{padding:24px 20px}
+  .quiz-selector{grid-template-columns:repeat(3,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  nav{padding:12px 16px}
+  .nav-links{display:none}
+  .page-title{font-size:28px}
+}
+@media(max-width:500px){
+  .quiz-selector{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .qe-q{font-size:15px}
+}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a active">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="grammar.html" class="nav-cta">Bắt đầu học →</a>
+</nav>
+
+<div class="content">
+  <div class="page-label">Module 5</div>
+  <h1 class="page-title">Bài tập & Quiz</h1>
+  <p class="page-desc">Kiểm tra kiến thức đã học với 3 dạng bài tập tương tác. Mỗi câu có giải thích đáp án chi tiết.</p>
+
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-num" id="totalDone">0</div><div class="stat-label">Câu đã làm</div></div>
+    <div class="stat-box"><div class="stat-num" id="totalCorrect">0</div><div class="stat-label">Câu đúng</div></div>
+    <div class="stat-box"><div class="stat-num" id="accuracy">0%</div><div class="stat-label">Độ chính xác</div></div>
+    <div class="stat-box"><div class="stat-num" id="streakShow">0</div><div class="stat-label">Ngày streak</div></div>
+  </div>
+
+  <!-- QUIZ SELECTOR -->
+  <div class="section-label">Chọn chủ đề</div>
+  <div class="quiz-selector">
+    <div class="qs-card active" onclick="selectQuiz(0,this)">
+      <div class="qs-emoji">📚</div>
+      <div class="qs-title">Ngữ pháp</div>
+      <div class="qs-count">20 câu hỏi</div>
+    </div>
+    <div class="qs-card" onclick="selectQuiz(1,this)">
+      <div class="qs-emoji">💬</div>
+      <div class="qs-title">Từ vựng</div>
+      <div class="qs-count">20 câu hỏi</div>
+    </div>
+    <div class="qs-card" onclick="selectQuiz(2,this)">
+      <div class="qs-emoji">🔊</div>
+      <div class="qs-title">Phát âm & IPA</div>
+      <div class="qs-count">15 câu hỏi</div>
+    </div>
+    <div class="qs-card" onclick="selectQuiz(3,this)">
+      <div class="qs-emoji">⏰</div>
+      <div class="qs-title">12 Thì</div>
+      <div class="qs-count">20 câu hỏi</div>
+    </div>
+    <div class="qs-card" onclick="selectQuiz(4,this)">
+      <div class="qs-emoji">🎯</div>
+      <div class="qs-title">IELTS Vocab</div>
+      <div class="qs-count">15 câu hỏi</div>
+    </div>
+  </div>
+
+  <!-- QUIZ ENGINE -->
+  <div class="quiz-engine" id="quizEngine">
+    <div class="qe-header">
+      <span class="qe-score" id="scoreDisplay">Điểm: 0</span>
+      <div class="qe-progress"><div class="qe-fill" id="progressFill" style="width:0%"></div></div>
+      <span class="qe-count" id="qCount">Câu 1/20</span>
+    </div>
+    <div class="qe-q" id="qQuestion"></div>
+    <div class="qe-hint" id="qHint"></div>
+    <div class="qe-opts" id="qOpts"></div>
+    <div class="qe-feedback" id="qFeedback"></div>
+    <button class="qe-next" id="qNext" onclick="nextQuestion()">Câu tiếp theo →</button>
+  </div>
+
+  <div class="result-box" id="resultBox">
+    <div class="result-emoji" id="resultEmoji"></div>
+    <div class="result-score" id="resultScore"></div>
+    <div class="result-label" id="resultLabel"></div>
+    <div class="result-msg" id="resultMsg"></div>
+    <button class="restart-btn" onclick="restartQuiz()">Làm lại</button>
+    <button class="other-btn" onclick="selectQuiz((currentSet+1)%5, document.querySelectorAll('.qs-card')[(currentSet+1)%5])">Chủ đề khác</button>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- FILL IN THE BLANK -->
+  <div class="fill-section">
+    <div class="section-label">Dạng 2</div>
+    <div class="section-title">Điền vào chỗ trống</div>
+    <div class="fill-desc">Điền đúng dạng của từ vào chỗ trống. Bấm "Kiểm tra" để xem kết quả.</div>
+    <div id="fillItems"></div>
+    <button class="fill-check" onclick="checkFill()">Kiểm tra tất cả →</button>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- WORD ORDER -->
+  <div class="wo-section">
+    <div class="section-label">Dạng 3</div>
+    <div class="section-title">Sắp xếp câu — Bấm vào từ theo thứ tự đúng</div>
+    <div style="margin-bottom:16px;font-size:13px;color:var(--text2)">Bấm vào từng từ theo đúng thứ tự để tạo thành câu hoàn chỉnh.</div>
+    <div id="woContainer"></div>
+  </div>
+</div>
+
+<script>
+// ===== QUIZ DATA =====
+const QUIZ_SETS = [
+  // Grammar
+  [
+    {q:'Chọn dạng đúng: "She ___ to school every day."',hint:'Chủ từ "She" = ngôi 3 số ít → động từ phải chia',opts:['go','goes','is going','went'],ans:1,exp:'"She" là ngôi 3 số ít → thêm -s vào động từ: go → goes. Thì hiện tại đơn diễn tả thói quen.'},
+    {q:'Câu nào đúng?',hint:'Kiểm tra cấu trúc câu hiện tại tiếp diễn',opts:['I am study now.','I studying now.','I am studying now.','I study now.'],ans:2,exp:'Hiện tại tiếp diễn: S + am/is/are + V-ing. "I am studying" là đúng.'},
+    {q:'"Yesterday, I ___ a great movie."',hint:'"Yesterday" → thì quá khứ đơn',opts:['watch','watches','watched','am watching'],ans:2,exp:'"Yesterday" là từ nhận biết quá khứ đơn. "watch" → quá khứ đơn: watched.'},
+    {q:'Điền mạo từ: "___ sun rises in the east."',hint:'Mặt trời là thứ duy nhất, cụ thể',opts:['A','An','The','(không dùng)'],ans:2,exp:'"The" dùng cho danh từ cụ thể, duy nhất. Chỉ có một mặt trời → dùng "the sun".'},
+    {q:'"I have lived in Hanoi ___ 5 years."',hint:'Khoảng thời gian → "for" hay "since"?',opts:['for','since','during','from'],ans:0,exp:'"for" + khoảng thời gian (5 years, 3 months...). "since" + mốc thời gian (2020, Monday...).'},
+    {q:'Câu nào là câu bị động đúng?',hint:'Bị động: S + be + V3',opts:['The cake ate by him.','The cake was ate by him.','The cake was eaten by him.','The cake been eaten by him.'],ans:2,exp:'Câu bị động: S + was/were + V3 (quá khứ phân từ). "eat" → V3 = "eaten".'},
+    {q:'"If I ___ rich, I would travel the world." (Câu điều kiện loại 2)',hint:'Điều kiện loại 2: If + quá khứ đơn...',opts:['am','was','were','will be'],ans:2,exp:'Câu điều kiện loại 2 (giả định hiện tại): If + were/past simple, would + V. Dùng "were" cho mọi ngôi.'},
+    {q:'Chọn đáp án đúng: "She ___ here since 2020."',hint:'Từ năm 2020 đến bây giờ → thì nào?',opts:['is','was','has been','had been'],ans:2,exp:'"since 2020" với thì hiện tại hoàn thành. "She has been here since 2020" = Cô ấy đã ở đây từ 2020 đến nay.'},
+    {q:'"Do not ___" = "___"',hint:'Rút gọn "do not"',opts:["don't","doesn't","didn't","won't"],ans:0,exp:'"do not" rút gọn thành "don\'t". "does not" → "doesn\'t". "did not" → "didn\'t".'},
+    {q:'Từ nào là TRẠNG TỪ (Adverb)?',hint:'Trạng từ bổ nghĩa cho động từ, thường có đuôi -ly',opts:['beautiful','quickly','happy','friend'],ans:1,exp:'"quickly" là trạng từ (bổ nghĩa cho động từ). "beautiful" và "happy" là tính từ. "friend" là danh từ.'},
+    {q:'"She ___ coffee every morning." — Thì gì?',hint:'Thói quen hằng ngày',opts:['drinks — Hiện tại đơn','is drinking — HT tiếp diễn','has drunk — HT hoàn thành','drank — QK đơn'],ans:0,exp:'Thói quen "every morning" → Hiện tại đơn. She (ngôi 3) → drink + s = drinks.'},
+    {q:'Câu nào dùng "a" đúng?',hint:'"a" dùng trước âm phụ âm',opts:['a apple','a egg','a university','a hour'],ans:2,exp:'"university" đọc /juːnɪˈvɜːrsɪti/ bắt đầu bằng âm /j/ (phụ âm) → dùng "a". "apple, egg, hour" bắt đầu bằng nguyên âm → dùng "an".'},
+    {q:'"I ___ English for 2 hours." — Vừa kết thúc xong',hint:'Vừa hoàn thành → thì nào?',opts:['study','am studying','have been studying','had studied'],ans:2,exp:'Hành động kéo dài và vừa kết thúc → Hiện tại hoàn thành tiếp diễn: have been studying.'},
+    {q:'Chọn câu đúng:',hint:'So sánh hơn của tính từ',opts:['She is more tall than him.','She is taller than him.','She is tallest than him.','She is more taller than him.'],ans:1,exp:'Tính từ ngắn (1 âm tiết): thêm -er để so sánh hơn. tall → taller. Không dùng "more" với từ ngắn.'},
+    {q:'"___ you like some coffee?" — Đề nghị lịch sự',hint:'Đề nghị lịch sự nhất là từ nào?',opts:['Do','Will','Would','Should'],ans:2,exp:'"Would you like...?" là cách đề nghị lịch sự nhất trong tiếng Anh. Lịch sự hơn "Do you want...?"'},
+    {q:'Từ nào điền đúng: "He speaks English very ___."',hint:'Bổ nghĩa cho động từ "speaks" → loại từ nào?',opts:['good','well','best','better'],ans:1,exp:'"well" là trạng từ, bổ nghĩa cho động từ "speaks". "good" là tính từ, không bổ nghĩa cho động từ.'},
+    {q:'"I ___ born in 1995."',hint:'Thụ động, quá khứ, "born" luôn đi với gì?',opts:['am','was','were','be'],ans:1,exp:'"be born" luôn dùng bị động. "I" → was (quá khứ đơn, ngôi 1 số ít).'},
+    {q:'Câu hỏi "Yes/No" nào đúng?',hint:'Cấu trúc câu hỏi với thì hiện tại đơn',opts:['She likes coffee?','Does she likes coffee?','Does she like coffee?','Do she like coffee?'],ans:2,exp:'Câu hỏi hiện tại đơn với she: Does + she + V (nguyên thể, không thêm s). "Does she like...?"'},
+    {q:'"Neither John nor Mary ___ here."',hint:'"neither...nor" → động từ chia theo chủ từ gần nhất',opts:['are','am','is','be'],ans:2,exp:'"neither...nor" → động từ chia theo chủ từ đứng sau "nor". "Mary" (ngôi 3 số ít) → "is".'},
+    {q:'Chọn từ đúng: "He is ___ than his brother."',hint:'So sánh của "intelligent" (3 âm tiết)',opts:['more intelligent','intelligenter','most intelligent','intelligently'],ans:0,exp:'Tính từ dài (2+ âm tiết): dùng "more/less" để so sánh hơn. "more intelligent" là đúng.'},
+  ],
+  // Vocabulary
+  [
+    {q:'Nghĩa của "grateful" là gì?',hint:'Cảm xúc khi ai đó làm điều tốt cho bạn',opts:['tức giận','biết ơn','buồn bã','ghen tỵ'],ans:1,exp:'"grateful" /ˈɡreɪtfəl/ = biết ơn. "I am grateful for your help." = Tôi biết ơn vì sự giúp đỡ của bạn.'},
+    {q:'Từ trái nghĩa của "ancient" là gì?',hint:'"ancient" = cổ đại',opts:['new / modern','small','dark','slow'],ans:0,exp:'"ancient" = cổ đại, xưa cũ. Trái nghĩa: "modern" = hiện đại, hoặc "new" = mới.'},
+    {q:'"She is very ___." — Điền từ phù hợp khi trời nóng',hint:'Cảm giác khi thời tiết nóng bức',opts:['cold','thirsty','boring','angry'],ans:1,exp:'"thirsty" = khát nước. Khi trời nóng, ta thường khát nước. "cold" = lạnh, "boring" = chán.'},
+    {q:'Từ nào có nghĩa là "cải thiện"?',hint:'Làm cho cái gì đó tốt hơn',opts:['decrease','improve','ignore','refuse'],ans:1,exp:'"improve" /ɪmˈpruːv/ = cải thiện, nâng cao. "decrease" = giảm, "ignore" = bỏ qua, "refuse" = từ chối.'},
+    {q:'"The meeting was ___." — Cuộc họp kéo dài và mọi người buồn ngủ',hint:'Tính từ mô tả điều gì đó không thú vị',opts:['exciting','fascinating','boring','amazing'],ans:2,exp:'"boring" /ˈbɔːrɪŋ/ = nhàm chán. "exciting" và "fascinating" = thú vị. "amazing" = tuyệt vời.'},
+    {q:'Từ nào là ĐỒNG NGHĨA với "happy"?',hint:'Cảm xúc tích cực',opts:['sad','angry','joyful','tired'],ans:2,exp:'"joyful" /ˈdʒɔɪfəl/ = vui vẻ, hạnh phúc — đồng nghĩa với "happy". "sad" = buồn, "angry" = tức giận.'},
+    {q:'"She is a ___." — Người chữa bệnh cho bệnh nhân',hint:'Nghề nghiệp liên quan đến y tế',opts:['teacher','engineer','doctor','farmer'],ans:2,exp:'"doctor" = bác sĩ. "engineer" = kỹ sư, "teacher" = giáo viên, "farmer" = nông dân.'},
+    {q:'Nghĩa của "exhausted" là gì?',hint:'Mức độ cực kỳ cao của "tired"',opts:['vui vẻ','khỏe mạnh','kiệt sức hoàn toàn','bình thường'],ans:2,exp:'"exhausted" /ɪɡˈzɔːstɪd/ = kiệt sức hoàn toàn. Mạnh hơn "tired" (mệt). "I\'m exhausted after running 10km."'},
+    {q:'"Please ___ your hands before eating."',hint:'Làm sạch tay',opts:['dry','wash','cut','shake'],ans:1,exp:'"wash your hands" = rửa tay. "dry" = lau khô, "cut" = cắt, "shake" = bắt tay/lắc.'},
+    {q:'Từ nào có nghĩa là "cố gắng"?',hint:'Dùng sức lực để làm điều gì đó',opts:['give up','try','rest','sleep'],ans:1,exp:'"try" /traɪ/ = cố gắng, thử. "give up" = bỏ cuộc, "rest" = nghỉ ngơi.'},
+    {q:'"The food is ___." — Thức ăn rất ngon',hint:'Tính từ mô tả đồ ăn ngon',opts:['delicious','terrible','boring','expensive'],ans:0,exp:'"delicious" /dɪˈlɪʃəs/ = ngon tuyệt vời. "terrible" = tệ hại, "boring" = nhàm chán.'},
+    {q:'Nghĩa của "siblings" là gì?',hint:'Các thành viên cùng cha mẹ',opts:['bạn bè','đồng nghiệp','anh chị em ruột','hàng xóm'],ans:2,exp:'"siblings" /ˈsɪblɪŋz/ = anh chị em ruột (cả anh, chị, em trai, em gái). "I have 2 siblings." = Tôi có 2 anh/chị/em.'},
+    {q:'"She ___ every day to stay healthy."',hint:'Hoạt động thể chất để có sức khỏe tốt',opts:['eats','sleeps','exercises','reads'],ans:2,exp:'"exercise" /ˈɛksərsaɪz/ = tập thể dục. "She exercises every day." = Cô ấy tập thể dục mỗi ngày.'},
+    {q:'Từ nào có nghĩa là "ngay lập tức"?',hint:'Không có độ trễ thời gian',opts:['slowly','eventually','immediately','rarely'],ans:2,exp:'"immediately" /ɪˈmiːdiətli/ = ngay lập tức. "slowly" = chậm chạp, "eventually" = cuối cùng, "rarely" = hiếm khi.'},
+    {q:'"He is very ___." — Anh ấy hay giúp đỡ người khác',hint:'Tính cách tốt của người thích giúp đỡ',opts:['selfish','generous','lazy','rude'],ans:1,exp:'"generous" /ˈdʒɛnərəs/ = hào phóng, rộng lượng. "selfish" = ích kỷ, "lazy" = lười, "rude" = thô lỗ.'},
+    {q:'Nghĩa của "purchase" là gì?',hint:'Từ trang trọng hơn của "buy"',opts:['bán','mượn','mua','cho tặng'],ans:2,exp:'"purchase" /ˈpɜːrtʃɪs/ = mua (formal). Đồng nghĩa với "buy" nhưng trang trọng hơn, thường dùng trong kinh doanh.'},
+    {q:'"The weather is ___." — Trời quang đãng, không có mây',hint:'Thời tiết đẹp',opts:['cloudy','rainy','clear/sunny','stormy'],ans:2,exp:'"clear" hoặc "sunny" = trời quang đãng. "cloudy" = nhiều mây, "rainy" = mưa, "stormy" = bão.'},
+    {q:'Từ nào KHÔNG liên quan đến "gia đình"?',hint:'Tìm từ không phải thành viên gia đình',opts:['nephew','colleague','aunt','grandmother'],ans:1,exp:'"colleague" /ˈkɒliːɡ/ = đồng nghiệp — không phải thành viên gia đình. Còn lại: nephew=cháu trai, aunt=cô/dì, grandmother=bà.'},
+    {q:'"She felt ___ when she failed the exam."',hint:'Cảm giác khi kết quả không tốt',opts:['proud','disappointed','excited','relieved'],ans:1,exp:'"disappointed" /ˌdɪsəˈpɔɪntɪd/ = thất vọng. "proud" = tự hào, "excited" = phấn khích, "relieved" = nhẹ nhõm.'},
+    {q:'Nghĩa của "ancient" là gì?',hint:'Đặc điểm của các công trình từ hàng nghìn năm trước',opts:['hiện đại','cổ đại / xưa cũ','nhỏ bé','xa xôi'],ans:1,exp:'"ancient" /ˈeɪnʃənt/ = cổ đại, xưa cũ. "The ancient ruins" = Những tàn tích cổ đại.'},
+  ],
+  // Pronunciation
+  [
+    {q:'Từ "knife" phát âm như thế nào?',hint:'Có chữ câm không?',opts:['/knaɪf/','/naɪf/','/kɪnaɪf/','/nɪf/'],ans:1,exp:'"knife" — chữ "k" câm khi đứng trước "n". Đọc là /naɪf/. Tương tự: know /noʊ/, knock /nɒk/.'},
+    {q:'Đuôi -ed trong "watched" đọc là gì?',hint:'"watch" kết thúc bằng âm /tʃ/ (vô thanh)',opts:['/ɪd/','/d/','/t/','(câm)'],ans:2,exp:'"watch" → /tʃ/ (phụ âm vô thanh) → đuôi -ed đọc /t/. "watched" = /wɒtʃt/.'},
+    {q:'Đuôi -ed trong "wanted" đọc là gì?',hint:'"want" kết thúc bằng âm /t/',opts:['/ɪd/','/d/','/t/','(câm)'],ans:0,exp:'"want" → /t/ → đuôi -ed đọc /ɪd/. "wanted" = /ˈwɒntɪd/. Quy tắc: sau /t/ hoặc /d/ → đọc /ɪd/.'},
+    {q:'Ký hiệu IPA /θ/ xuất hiện trong từ nào?',hint:'Âm "th" vô thanh',opts:['the','this','think','they'],ans:2,exp:'/θ/ là âm "th" vô thanh (lưỡi giữa răng, thổi hơi). "think, three, bath" dùng /θ/. "the, this, they" dùng /ð/ (hữu thanh).'},
+    {q:'Từ "hour" — chữ nào câm?',hint:'Tại sao phải nói "an hour" không phải "a hour"?',opts:['Chữ o','Chữ h','Chữ r','Không có chữ câm'],ans:1,exp:'"hour" đọc /aʊər/ — chữ h câm. Vì bắt đầu bằng nguyên âm /aʊ/ → dùng "an hour". Tương tự: honest /ˈɒnɪst/.'},
+    {q:'Ký hiệu ˈ trong phiên âm IPA có nghĩa là gì?',hint:'Ký hiệu này đứng trước âm tiết nào đó',opts:['Âm dài','Âm câm','Trọng âm chính','Nguyên âm đôi'],ans:2,exp:'ˈ đứng trước âm tiết mang TRỌNG ÂM CHÍNH. Ví dụ: /ˈtiːtʃər/ → âm tiết đầu "tee" mang trọng âm.'},
+    {q:'Từ "student" đặt trọng âm ở đâu?',hint:'Ký hiệu IPA: /ˈstjuːdənt/',opts:['Âm tiết 1: STU-dent','Âm tiết 2: stu-DENT'],ans:0,exp:'ˈ đứng trước "stju" → âm tiết 1 (STU) mang trọng âm. "STU-dent" đúng. Đây là danh từ 2 âm tiết → thường nhấn âm 1.'},
+    {q:'Đuôi -s trong "cats" đọc là gì?',hint:'"cat" kết thúc bằng /t/ (vô thanh)',opts:['/s/','/z/','/ɪz/'],ans:0,exp:'"cat" → /t/ (vô thanh) → đuôi -s đọc /s/. "cats" = /kæts/. Tương tự: books /bʊks/, cups /kʌps/.'},
+    {q:'Nguyên âm đôi /eɪ/ xuất hiện trong từ nào?',hint:'Âm "a-i" kết hợp',opts:['cat','car','make','met'],ans:2,exp:'/eɪ/ là nguyên âm đôi trong "make" /meɪk/. Cũng xuất hiện trong: day, say, train, eight.'},
+    {q:'Câu hỏi "Are you ready?" dùng ngữ điệu nào?',hint:'Câu hỏi Yes/No',opts:['Giọng xuống ↘','Giọng lên ↗','Giọng phẳng'],ans:1,exp:'Câu hỏi Yes/No → ngữ điệu LÊN ↗ ở cuối câu. Câu hỏi Wh- (what, where...) → ngữ điệu XUỐNG ↘.'},
+    {q:'Âm /ə/ (schwa) đặc điểm là gì?',hint:'Âm phổ biến nhất trong tiếng Anh',opts:['Âm dài, mạnh','Âm trung tính, ngắn, yếu','Âm tròn môi','Âm vô thanh'],ans:1,exp:'/ə/ (schwa) là âm TRUNG TÍNH, ngắn và yếu nhất. Xuất hiện ở âm tiết KHÔNG nhấn. Phổ biến nhất tiếng Anh: "teacher" /ˈtiːtʃər/, "about" /əˈbaʊt/.'},
+    {q:'Trong "water", người Mỹ thường đọc /t/ thành âm gì?',hint:'Hiện tượng "flapping" trong tiếng Anh Mỹ',opts:['/t/ cứng','/d/ mềm','/θ/','Câm hoàn toàn'],ans:1,exp:'Hiện tượng "T-flapping" trong tiếng Anh Mỹ: /t/ giữa 2 nguyên âm → đọc như /d/ nhẹ. "water" → /ˈwɔːdər/, "better" → /ˈbɛdər/.'},
+    {q:'Từ "going to" khi nói nhanh thường đọc thành gì?',hint:'Rút gọn trong hội thoại bình thường',opts:['gonna','gotta','wanna','lemme'],ans:0,exp:'"going to" → "gonna" /ˈɡɒnə/ trong hội thoại bình thường. "I\'m gonna do it." = "I\'m going to do it."'},
+    {q:'Âm /æ/ trong "cat" — đặc điểm?',hint:'Nguyên âm trước, thấp',opts:['Miệng mở ít, lưỡi cao','Miệng mở rộng, lưỡi thấp và phía trước','Môi tròn, miệng mở vừa','Lưỡi trung tính'],ans:1,exp:'/æ/ — miệng mở RỘNG nhất trong nhóm nguyên âm trước. Lưỡi thấp, phía trước. Không có âm giống trong tiếng Việt.'},
+    {q:'"She sells seashells by the seashore." — Câu này luyện âm gì?',hint:'Tongue twister nổi tiếng',opts:['/s/ và /ʃ/','/θ/ và /ð/','/r/ và /l/','/p/ và /b/'],ans:0,exp:'Câu này luyện phân biệt /s/ (she, sells, seashore) và /ʃ/ (she, shells, seashore). Đây là tongue twister nổi tiếng nhất tiếng Anh.'},
+  ],
+  // 12 TENSES
+  [
+    {q:'"She ___ dinner right now." — Hành động đang xảy ra',hint:'Ngay lúc nói → thì gì?',opts:['cooks','is cooking','has cooked','cooked'],ans:1,exp:'"right now" → hành động đang xảy ra → Hiện tại tiếp diễn: is cooking.'},
+    {q:'"I ___ here since 2020."',hint:'Từ 2020 đến nay → kéo dài đến hiện tại',opts:['live','lived','have lived','am living'],ans:2,exp:'"since 2020" → Hiện tại hoàn thành: have lived. Hành động bắt đầu trong QK, kéo dài đến nay.'},
+    {q:'"While I ___, the phone rang."',hint:'Hành động đang diễn ra bị cắt ngang',opts:['studied','was studying','have studied','study'],ans:1,exp:'Hành động đang diễn ra (dài) bị cắt ngang bởi hành động ngắn → Quá khứ tiếp diễn: was studying.'},
+    {q:'"She ___ the report before the meeting started."',hint:'Hoàn thành TRƯỚC một việc trong quá khứ',opts:['finished','has finished','had finished','was finishing'],ans:2,exp:'Hoàn thành TRƯỚC meeting (quá khứ) → Quá khứ hoàn thành: had finished.'},
+    {q:'"By next month, I ___ this course."',hint:'Hoàn thành trước mốc tương lai',opts:['finish','will finish','will have finished','am finishing'],ans:2,exp:'"By next month" → hoàn tất trước mốc TL → Tương lai hoàn thành: will have finished.'},
+    {q:'"This time tomorrow, she ___ on the beach."',hint:'Đang diễn ra tại thời điểm cụ thể trong tương lai',opts:['will lie','will be lying','lies','is lying'],ans:1,exp:'"This time tomorrow" → đang diễn ra trong TL → Tương lai tiếp diễn: will be lying.'},
+    {q:'"He always ___ coffee in the morning."',hint:'Thói quen hằng ngày → thì nào?',opts:['drinks','is drinking','has drunk','drank'],ans:0,exp:'"always" + thói quen → Hiện tại đơn. He (ngôi 3) → drinks.'},
+    {q:'"They ___ to Paris last summer."',hint:'"last summer" → quá khứ',opts:['go','went','have gone','are going'],ans:1,exp:'"last summer" → Quá khứ đơn: went. Hành động đã hoàn tất trong QK.'},
+    {q:'"I ___ never ___ sushi before."',hint:'Trải nghiệm chưa từng có',opts:['have...eaten','had...eaten','did...eat','was...eating'],ans:0,exp:'"never...before" nói về trải nghiệm → Hiện tại hoàn thành: have never eaten.'},
+    {q:'"Look! The baby ___."',hint:'"Look!" → đang diễn ra ngay lúc nói',opts:['walks','is walking','has walked','walked'],ans:1,exp:'"Look!" → hành động đang xảy ra → Hiện tại tiếp diễn: is walking.'},
+    {q:'"She ___ English for 3 years before she moved."',hint:'Kéo dài trước mốc QK',opts:['studied','had studied','has studied','was studying'],ans:1,exp:'Kéo dài TRƯỚC mốc "moved" (QK) → Quá khứ hoàn thành: had studied.'},
+    {q:'"I ___ you tomorrow."',hint:'Hứa, quyết định tức thì',opts:['call','am calling','will call','called'],ans:2,exp:'Quyết định/hứa tức thì → Tương lai đơn: will call.'},
+    {q:'"At 8 PM last night, they ___ dinner."',hint:'Thời điểm cụ thể trong QK',opts:['had','were having','have had','has'],ans:1,exp:'"At 8 PM last night" = thời điểm cụ thể trong QK → QK tiếp diễn: were having.'},
+    {q:'"She ___ to school by bus every day."',hint:'Every day = thói quen',opts:['goes','is going','has gone','went'],ans:0,exp:'"every day" → thói quen → Hiện tại đơn: goes (she = ngôi 3).'},
+    {q:'"By the time you arrive, I ___ for 2 hours."',hint:'Kéo dài đến mốc TL',opts:['will wait','will be waiting','will have been waiting','wait'],ans:2,exp:'Kéo dài đến mốc TL → TL hoàn thành tiếp diễn: will have been waiting.'},
+    {q:'"He ___ just ___ his lunch when I called."',hint:'Vừa mới xảy ra trước cuộc gọi (QK)',opts:['has...finished','had...finished','was...finishing','did...finish'],ans:1,exp:'"just" + trước mốc QK "called" → QK hoàn thành: had just finished.'},
+    {q:'"Water ___ at 100°C."',hint:'Sự thật khoa học',opts:['boils','is boiling','has boiled','boiled'],ans:0,exp:'Sự thật khoa học/tự nhiên → Hiện tại đơn: boils.'},
+    {q:'"I ___ my keys. Can you help me?"',hint:'Mất chìa, kết quả ảnh hưởng đến hiện tại',opts:['lost','have lost','had lost','lose'],ans:1,exp:'Kết quả còn ảnh hưởng → HT hoàn thành: have lost.'},
+    {q:'"While she ___, he ___ TV."',hint:'Hai hành động song song trong QK',opts:['cooked / watched','was cooking / was watching','has cooked / has watched','cooks / watches'],ans:1,exp:'Hai hành động song song trong QK → cả hai dùng QK tiếp diễn: was cooking / was watching.'},
+    {q:'"Don\'t call at 9. I ___ then."',hint:'Dự đoán hành động sẽ đang diễn ra',opts:['sleep','will sleep','will be sleeping','am sleeping'],ans:2,exp:'Dự đoán hành động đang diễn ra trong TL → TL tiếp diễn: will be sleeping.'},
+  ],
+  // IELTS VOCAB
+  [
+    {q:'"Significant" nghĩa là gì?',hint:'Mức độ quan trọng',opts:['nhỏ bé','quan trọng, đáng kể','nhanh chóng','giống nhau'],ans:1,exp:'"significant" = quan trọng, đáng kể. "A significant improvement" = sự cải thiện đáng kể.'},
+    {q:'Từ nào đồng nghĩa "moreover"?',hint:'Thêm ý trong bài viết',opts:['however','furthermore','therefore','although'],ans:1,exp:'"moreover" = "furthermore" = hơn nữa, thêm vào đó. Dùng để bổ sung ý trong bài viết IELTS.'},
+    {q:'"Detrimental" nghĩa là gì?',hint:'Gây hại',opts:['có lợi','trung lập','có hại','tuyệt vời'],ans:2,exp:'"detrimental" = có hại. "Smoking is detrimental to health." Trái nghĩa: beneficial.'},
+    {q:'Chọn từ điền: "The government should ___ stricter laws."',hint:'Thực hiện, áp dụng',opts:['undermine','implement','fluctuate','deteriorate'],ans:1,exp:'"implement" = triển khai, thực hiện. "implement laws/policies" là collocation phổ biến trong IELTS.'},
+    {q:'"Unprecedented" nghĩa là gì?',hint:'Chưa từng xảy ra',opts:['bình thường','chưa từng có','lặp lại','có thể dự đoán'],ans:1,exp:'"unprecedented" = chưa từng có tiền lệ. "An unprecedented crisis" = khủng hoảng chưa từng có.'},
+    {q:'Từ nào trái nghĩa "exacerbate"?',hint:'"exacerbate" = làm trầm trọng hơn',opts:['worsen','mitigate','aggravate','intensify'],ans:1,exp:'"mitigate" = giảm nhẹ, làm dịu đi. Trái nghĩa với "exacerbate" = làm trầm trọng hơn.'},
+    {q:'"Sustainable" dùng trong lĩnh vực nào?',hint:'Phát triển lâu dài',opts:['Thời trang','Môi trường/Kinh tế','Âm nhạc','Thể thao'],ans:1,exp:'"sustainable" = bền vững. Thường dùng: sustainable development, sustainable energy. Rất phổ biến trong IELTS.'},
+    {q:'Điền từ: "There is a growing ___ about pollution."',hint:'Lo ngại',opts:['concern','controversy','consensus','paradox'],ans:0,exp:'"a growing concern" = mối lo ngại ngày càng tăng. Cụm từ rất hay dùng trong mở bài IELTS.'},
+    {q:'"Prevalent" nghĩa là gì?',hint:'Phổ biến, thịnh hành',opts:['hiếm gặp','phổ biến','nghiêm trọng','cổ đại'],ans:1,exp:'"prevalent" = phổ biến, thịnh hành. "Obesity is prevalent in developed countries."'},
+    {q:'"In conclusion" có thể thay bằng?',hint:'Kết luận bài viết',opts:['However','For instance','To sum up','In contrast'],ans:2,exp:'"To sum up" = tóm lại. Đồng nghĩa: In conclusion, All in all, Overall. Dùng mở đoạn kết bài IELTS.'},
+    {q:'"Advocate" nghĩa là gì?',hint:'Ủng hộ, bênh vực',opts:['phản đối','ủng hộ','bỏ qua','phá hủy'],ans:1,exp:'"advocate" = ủng hộ, bênh vực. "She advocates for equal rights." Danh từ: advocate = người ủng hộ.'},
+    {q:'Collocation nào đúng?',hint:'Từ nào đi với "responsibility"?',opts:['make responsibility','do responsibility','take responsibility','give responsibility'],ans:2,exp:'"take responsibility" = chịu trách nhiệm. Đây là collocation cố định, rất hay gặp trong IELTS Writing.'},
+    {q:'"Comprehensive" nghĩa là gì?',hint:'Toàn bộ, đầy đủ',opts:['ngắn gọn','toàn diện','phức tạp','đơn giản'],ans:1,exp:'"comprehensive" = toàn diện, bao quát. "A comprehensive study" = nghiên cứu toàn diện.'},
+    {q:'Từ nào nối ý tương phản?',hint:'Tuy nhiên, ngược lại',opts:['Furthermore','Moreover','Nevertheless','Additionally'],ans:2,exp:'"Nevertheless" = tuy nhiên. Từ nối ý tương phản. Tương tự: However, On the other hand, In contrast.'},
+    {q:'"Facilitate" nghĩa là gì?',hint:'Tạo điều kiện',opts:['cản trở','tạo điều kiện','bắt buộc','trì hoãn'],ans:1,exp:'"facilitate" = tạo điều kiện thuận lợi. "Technology facilitates learning." Band 7+ vocabulary.'},
+  ],
+];
+
+let currentSet = 0, currentQ = 0, score = 0;
+let totalDone = parseInt(localStorage.getItem('ee_total_done')||'0');
+let totalCorrect = parseInt(localStorage.getItem('ee_total_correct')||'0');
+let shuffledQ = [];
+
+function shuffle(arr) { return [...arr].sort(()=>Math.random()-.5); }
+
+function selectQuiz(idx, card) {
+  currentSet = idx;
+  document.querySelectorAll('.qs-card').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  startQuiz();
+}
+
+function startQuiz() {
+  shuffledQ = shuffle(QUIZ_SETS[currentSet]).slice(0,10);
+  currentQ = 0; score = 0;
+  document.getElementById('quizEngine').style.display='block';
+  document.getElementById('resultBox').classList.remove('show');
+  document.getElementById('scoreDisplay').textContent='Điểm: 0';
+  renderQ();
+}
+
+function renderQ() {
+  const q = shuffledQ[currentQ];
+  const pct = (currentQ/shuffledQ.length*100).toFixed(0);
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('qCount').textContent = `Câu ${currentQ+1}/${shuffledQ.length}`;
+  document.getElementById('qQuestion').textContent = q.q;
+  document.getElementById('qHint').textContent = '💡 Gợi ý: ' + q.hint;
+  document.getElementById('qFeedback').className = 'qe-feedback';
+  document.getElementById('qNext').classList.remove('show');
+  const optsEl = document.getElementById('qOpts');
+  optsEl.innerHTML = q.opts.map((o,i)=>`
+    <button class="qe-opt" onclick="answer(${i})">${o}</button>`).join('');
+}
+
+function answer(idx) {
+  const q = shuffledQ[currentQ];
+  const opts = document.querySelectorAll('.qe-opt');
+  opts.forEach(o=>o.disabled=true);
+  opts[idx].classList.add(idx===q.ans?'correct':'wrong');
+  if(idx!==q.ans) opts[q.ans].classList.add('correct');
+  const fb = document.getElementById('qFeedback');
+  if(idx===q.ans) {
+    score++;
+    document.getElementById('scoreDisplay').textContent='Điểm: '+score;
+    fb.className='qe-feedback ok';
+    fb.textContent='✓ Đúng! ' + q.exp;
+    totalCorrect++;
+  } else {
+    fb.className='qe-feedback no';
+    fb.textContent='✗ Sai. ' + q.exp;
+  }
+  totalDone++;
+  localStorage.setItem('ee_total_done', totalDone);
+  localStorage.setItem('ee_total_correct', totalCorrect);
+  updateStats();
+  document.getElementById('qNext').classList.add('show');
+}
+
+function nextQuestion() {
+  currentQ++;
+  if(currentQ >= shuffledQ.length) { showResult(); return; }
+  renderQ();
+}
+
+function showResult() {
+  document.getElementById('quizEngine').style.display='none';
+  const rb = document.getElementById('resultBox');
+  rb.classList.add('show');
+  const pct = Math.round(score/shuffledQ.length*100);
+  const emoji = pct>=80?'🏆':pct>=60?'👍':pct>=40?'📚':'💪';
+  const msg = pct>=80?'Xuất sắc! Bạn nắm rất chắc phần này.':pct>=60?'Tốt! Ôn lại các câu sai để hoàn thiện hơn.':pct>=40?'Cần ôn thêm. Xem lại bài học và thử lại nhé!':'Hãy ôn lại từ đầu rồi làm lại bài tập này!';
+  document.getElementById('resultEmoji').textContent=emoji;
+  document.getElementById('resultScore').textContent=`${score}/${shuffledQ.length}`;
+  document.getElementById('resultLabel').textContent=`${pct}% đúng`;
+  document.getElementById('resultMsg').textContent=msg;
+}
+
+function restartQuiz() {
+  document.getElementById('resultBox').classList.remove('show');
+  startQuiz();
+}
+
+function updateStats() {
+  document.getElementById('totalDone').textContent=totalDone;
+  document.getElementById('totalCorrect').textContent=totalCorrect;
+  document.getElementById('accuracy').textContent=totalDone>0?Math.round(totalCorrect/totalDone*100)+'%':'0%';
+  const sd=JSON.parse(localStorage.getItem('ee_streak')||'{"count":0}');
+  document.getElementById('streakShow').textContent=sd.count||0;
+}
+
+// FILL IN BLANK
+const FILL_DATA = [
+  {sentence:'She ___ (go) to school every day.',answer:'goes',hint:'Ngôi 3 số ít, hiện tại đơn → thêm -es'},
+  {sentence:'They ___ (play) football right now.',answer:'are playing',hint:'Đang xảy ra → hiện tại tiếp diễn: are + V-ing'},
+  {sentence:'I ___ (not see) that movie yet.',answer:"haven't seen",hint:'Chưa xem → HT hoàn thành phủ định: haven\'t + V3'},
+  {sentence:'He ___ (buy) a new car last week.',answer:'bought',hint:'"last week" → quá khứ đơn. buy → bought (bất quy tắc)'},
+  {sentence:'If I ___ (have) more time, I would travel.',answer:'had',hint:'Câu điều kiện loại 2 → If + quá khứ đơn'},
+  {sentence:'The letter ___ (write) by her yesterday.',answer:'was written',hint:'Bị động, quá khứ đơn: was/were + V3'},
+  {sentence:'By tomorrow, I ___ (finish) this project.',answer:'will have finished',hint:'Hoàn thành trước thời điểm tương lai → tương lai hoàn thành'},
+];
+
+function renderFill() {
+  document.getElementById('fillItems').innerHTML = FILL_DATA.map((f,i)=>`
+    <div class="fill-item">
+      <div class="fill-sentence">${f.sentence.replace('___',`<input class="fill-input" id="fill-${i}" placeholder="..." autocomplete="off">`)}</div>
+      <div class="fill-note" id="fill-note-${i}">💡 Gợi ý: ${f.hint}</div>
+    </div>`).join('');
+}
+
+function checkFill() {
+  FILL_DATA.forEach((f,i)=>{
+    const inp = document.getElementById('fill-'+i);
+    const note = document.getElementById('fill-note-'+i);
+    const val = inp.value.trim().toLowerCase();
+    const correct = f.answer.toLowerCase();
+    inp.disabled = true;
+    if(val===correct) {
+      inp.classList.add('correct'); inp.classList.remove('wrong');
+      note.textContent='✓ Đúng! Đáp án: ' + f.answer;
+      note.style.color='var(--green)';
+    } else {
+      inp.classList.add('wrong'); inp.classList.remove('correct');
+      note.textContent=`✗ Sai. Đáp án đúng: "${f.answer}". Gợi ý: ${f.hint}`;
+      note.style.color='var(--coral)';
+    }
+  });
+}
+
+// WORD ORDER
+const WO_DATA = [
+  {words:['every','I','English','day','study'],answer:'I study English every day',vi:'Tôi học tiếng Anh mỗi ngày.'},
+  {words:['is','She','right now','studying'],answer:'She is studying right now',vi:'Cô ấy đang học ngay lúc này.'},
+  {words:['did','last night','watch','you','TV','?'],answer:'Did you watch TV last night ?',vi:'Tối qua bạn có xem TV không?'},
+  {words:['been','I','five years','have','here','for'],answer:'I have been here for five years',vi:'Tôi đã ở đây được 5 năm.'},
+  {words:['you','coffee','like','Would','some','?'],answer:'Would you like some coffee ?',vi:'Bạn có muốn uống cà phê không?'},
+];
+
+let woIndex = 0;
+let woPlaced = [];
+
+function renderWO() {
+  const d = WO_DATA[woIndex];
+  const shuffled = shuffle(d.words);
+  woPlaced = [];
+  document.getElementById('woContainer').innerHTML = `
+    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Câu ${woIndex+1}/${WO_DATA.length}: Dịch nghĩa — "<em>${d.vi}</em>"</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Chọn từ theo đúng thứ tự:</div>
+    <div class="wo-words" id="woWords">
+      ${shuffled.map((w,i)=>`<span class="wo-word" id="ww-${i}" onclick="placeWord(${i},'${w}')">${w}</span>`).join('')}
+    </div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:6px">Câu của bạn:</div>
+    <div class="wo-answer" id="woAnswer"></div>
+    <div id="woFeedback" style="font-size:13px;margin:8px 0"></div>
+    <button class="wo-check" onclick="checkWO()">Kiểm tra ✓</button>
+    <button class="wo-reset" onclick="renderWO()">Làm lại ↺</button>
+    ${woIndex < WO_DATA.length-1 ? '<button class="wo-check" style="background:var(--accent2);margin-left:8px" onclick="woIndex++;renderWO()">Câu tiếp →</button>' : ''}
+  `;
+}
+
+function placeWord(idx, word) {
+  const el = document.getElementById('ww-'+idx);
+  if(el.classList.contains('placed')) return;
+  el.classList.add('placed');
+  woPlaced.push({idx, word});
+  const ans = document.getElementById('woAnswer');
+  const chip = document.createElement('span');
+  chip.className = 'wo-placed';
+  chip.textContent = word;
+  chip.onclick = () => {
+    const i = woPlaced.findIndex(w=>w.idx===idx&&w.word===word);
+    if(i>-1) { woPlaced.splice(i,1); el.classList.remove('placed'); chip.remove(); }
+  };
+  ans.appendChild(chip);
+}
+
+function checkWO() {
+  const d = WO_DATA[woIndex];
+  const userAns = woPlaced.map(w=>w.word).join(' ');
+  const fb = document.getElementById('woFeedback');
+  if(userAns.toLowerCase()===d.answer.toLowerCase()) {
+    fb.textContent='✓ Đúng! Câu hoàn chỉnh: "' + d.answer + '"';
+    fb.style.color='var(--green)';
+  } else {
+    fb.textContent='✗ Chưa đúng. Đáp án: "' + d.answer + '"';
+    fb.style.color='var(--coral)';
+  }
+}
+
+// Init
+renderFill();
+renderWO();
+startQuiz();
+updateStats();
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

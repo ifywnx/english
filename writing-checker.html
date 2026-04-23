@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Checker — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0b1a1e}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent3);background:rgba(100,216,165,0.08)}
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#0b1a1e;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;margin-left:6px}
+.nav-cta:hover{background:#7de8b5;transform:translateY(-1px)}
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:34px;font-weight:300;margin-bottom:10px}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:24px}
+.editor{width:100%;min-height:300px;padding:20px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;line-height:1.8;resize:vertical;outline:none}
+.editor:focus{border-color:rgba(100,216,165,0.3)}
+.editor::placeholder{color:var(--text3)}
+.btn-row{display:flex;gap:10px;margin:16px 0 24px;flex-wrap:wrap}
+.btn{padding:10px 22px;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
+.btn-primary{background:var(--accent);color:#0b1a1e}
+.btn-primary:hover{background:#7de8b5;transform:translateY(-1px)}
+.btn-secondary{background:var(--card2);color:var(--text2);border:0.5px solid var(--border)}
+.btn-secondary:hover{color:var(--text)}
+.results{display:none}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.s-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.s-num{font-family:'Fraunces',serif;font-size:28px;color:var(--accent)}
+.s-num.warn{color:var(--coral)}
+.s-num.good{color:var(--green)}
+.s-label{font-size:11px;color:var(--text3);margin-top:4px}
+.section-title{font-family:'Fraunces',serif;font-size:20px;margin:24px 0 12px}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tag{padding:4px 12px;border-radius:20px;font-size:12px;background:rgba(100,216,165,0.1);color:var(--accent);border:0.5px solid rgba(100,216,165,0.2)}
+.tag.miss{background:rgba(255,138,128,0.1);color:var(--coral);border-color:rgba(255,138,128,0.2)}
+.band-box{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px;text-align:center;margin:20px 0}
+.band-score{font-family:'Fraunces',serif;font-size:60px;font-weight:600}
+.band-label{font-size:13px;color:var(--text3);margin-top:4px}
+.feedback{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px 18px;margin:8px 0;font-size:13px;line-height:1.7;color:var(--text2)}
+.feedback strong{color:var(--text)}
+.linkers-ref{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.lr-card{background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px}
+.lr-title{font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.lr-words{font-size:12px;color:var(--text2);line-height:1.8}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-mark">E</div><span class="logo-name">Easy<span>English</span></span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Luyện tập</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="quiz.html" class="nav-a">📝 Quiz</a>
+        <a href="writing-checker.html" class="nav-a active">✍️ Writing Checker</a>
+        <a href="listening.html" class="nav-a">🎧 Listening</a>
+        <a href="spaced-repetition.html" class="nav-a">🧠 Spaced Repetition</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển ĐT 1</a>
+        <a href="dictionary-everyday-2.html" class="nav-a">💬 Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 IELTS 1</a>
+        <a href="dictionary-ielts-2.html" class="nav-a">🎯 IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="page-label">Công cụ luyện viết</div>
+  <h1 class="page-title">Writing Checker ✍️</h1>
+  <p class="page-desc">Dán bài viết IELTS Writing Task 2 vào đây. Hệ thống sẽ phân tích số từ, từ nối, từ vựng band cao, cấu trúc bài và ước lượng Band score.</p>
+
+  <textarea class="editor" id="essay" placeholder="Dán bài viết IELTS Writing Task 2 vào đây... (tối thiểu 250 từ)"></textarea>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="analyze()">🔍 Phân tích bài viết</button>
+    <button class="btn btn-secondary" onclick="loadSample()">📄 Bài mẫu</button>
+    <button class="btn btn-secondary" onclick="clearAll()">🗑️ Xóa</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="stats-grid">
+      <div class="s-card"><div class="s-num" id="rWords">0</div><div class="s-label">Số từ</div></div>
+      <div class="s-card"><div class="s-num" id="rSentences">0</div><div class="s-label">Số câu</div></div>
+      <div class="s-card"><div class="s-num" id="rParagraphs">0</div><div class="s-label">Đoạn văn</div></div>
+      <div class="s-card"><div class="s-num" id="rLinkers">0</div><div class="s-label">Từ nối</div></div>
+    </div>
+
+    <div class="band-box">
+      <div class="band-score" id="rBand" style="color:var(--accent)">0.0</div>
+      <div class="band-label">Band ước lượng (tham khảo)</div>
+    </div>
+
+    <div class="section-title">✅ Từ nối tìm thấy</div>
+    <div class="tag-list" id="foundLinkers"></div>
+
+    <div class="section-title">📚 Từ vựng Band cao tìm thấy</div>
+    <div class="tag-list" id="foundIELTS"></div>
+
+    <div class="section-title">💡 Nhận xét & Gợi ý</div>
+    <div id="feedbackList"></div>
+
+    <div class="section-title">📖 Bảng từ nối tham khảo</div>
+    <div class="linkers-ref">
+      <div class="lr-card"><div class="lr-title">Mở bài</div><div class="lr-words">It is widely believed that...<br>In recent years...<br>There is a growing concern about...<br>This essay will discuss...</div></div>
+      <div class="lr-card"><div class="lr-title">Thêm ý</div><div class="lr-words">Furthermore, Moreover, In addition,<br>Additionally, Besides, Also,<br>What is more, Not only...but also</div></div>
+      <div class="lr-card"><div class="lr-title">Tương phản</div><div class="lr-words">However, Nevertheless, On the other hand,<br>In contrast, Although, Despite,<br>Whereas, While, Yet</div></div>
+      <div class="lr-card"><div class="lr-title">Kết luận</div><div class="lr-words">In conclusion, To sum up,<br>All in all, Overall,<br>Taking everything into consideration</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LINKERS = [
+  'however','moreover','furthermore','in addition','additionally','nevertheless',
+  'on the other hand','in contrast','although','despite','whereas','while',
+  'therefore','consequently','as a result','thus','hence','accordingly',
+  'for example','for instance','such as','in particular','specifically',
+  'in conclusion','to sum up','all in all','overall','in summary',
+  'firstly','secondly','thirdly','finally','to begin with',
+  'not only','but also','what is more','besides','similarly',
+  'it is widely believed','there is a growing concern','in recent years',
+  'taking everything into consideration','from my perspective','in my opinion'
+];
+
+const IELTS_WORDS = [
+  'unprecedented','catastrophic','resilience','sustainability','autonomous',
+  'infrastructure','disparity','innovation','accountability','governance',
+  'paradigm','holistic','nuanced','substantiate','interdisciplinary',
+  'misinformation','polarisation','cohesion','demographic','empowerment',
+  'exacerbate','mitigate','alleviate','proliferate','undermine',
+  'advocate','scrutinize','facilitate','implement','encompass',
+  'phenomenon','implication','perspective','controversy','consensus',
+  'detrimental','beneficial','prevalent','profound','significant',
+  'substantial','fundamental','comprehensive','elaborate','sophisticated'
+];
+
+function analyze(){
+  const text = document.getElementById('essay').value.trim();
+  if(!text){alert('Vui lòng nhập bài viết!');return;}
+
+  const words = text.split(/\s+/).filter(w=>w.length>0);
+  const wordCount = words.length;
+  const sentences = text.split(/[.!?]+/).filter(s=>s.trim().length>0);
+  const paragraphs = text.split(/\n\s*\n/).filter(p=>p.trim().length>0);
+  const lower = text.toLowerCase();
+
+  // Find linkers
+  const found = LINKERS.filter(l=>lower.includes(l));
+  // Find IELTS words
+  const ieltsFound = IELTS_WORDS.filter(w=>lower.includes(w));
+
+  // Display stats
+  const wEl = document.getElementById('rWords');
+  wEl.textContent = wordCount;
+  wEl.className = 's-num ' + (wordCount>=250?'good':'warn');
+  document.getElementById('rSentences').textContent = sentences.length;
+  document.getElementById('rParagraphs').textContent = paragraphs.length;
+  document.getElementById('rLinkers').textContent = found.length;
+
+  // Band estimation
+  let band = 5.0;
+  if(wordCount>=250) band+=0.5;
+  if(wordCount>=280) band+=0.3;
+  if(found.length>=3) band+=0.3;
+  if(found.length>=6) band+=0.3;
+  if(found.length>=10) band+=0.2;
+  if(ieltsFound.length>=2) band+=0.3;
+  if(ieltsFound.length>=5) band+=0.3;
+  if(paragraphs.length>=4) band+=0.3;
+  if(sentences.length>=10) band+=0.2;
+  const avgLen = wordCount/Math.max(sentences.length,1);
+  if(avgLen>=15&&avgLen<=25) band+=0.3;
+  band = Math.min(band,8.5);
+  band = Math.round(band*2)/2;
+  document.getElementById('rBand').textContent = band.toFixed(1);
+
+  // Linkers tags
+  document.getElementById('foundLinkers').innerHTML = found.length?
+    found.map(l=>`<span class="tag">${l}</span>`).join(''):
+    '<span style="color:var(--text3);font-size:13px">Không tìm thấy từ nối nào 😢</span>';
+
+  // IELTS words
+  document.getElementById('foundIELTS').innerHTML = ieltsFound.length?
+    ieltsFound.map(w=>`<span class="tag">${w}</span>`).join(''):
+    '<span style="color:var(--text3);font-size:13px">Chưa có từ Band cao</span>';
+
+  // Feedback
+  let fb = [];
+  if(wordCount<250) fb.push({t:'⚠️',m:`Bài viết chỉ có <strong>${wordCount}</strong> từ. IELTS Task 2 yêu cầu tối thiểu <strong>250 từ</strong>. Cần viết thêm ${250-wordCount} từ nữa.`});
+  else fb.push({t:'✅',m:`Số từ đạt yêu cầu: <strong>${wordCount}</strong> từ (≥250).`});
+  if(paragraphs.length<4) fb.push({t:'⚠️',m:`Bài chỉ có <strong>${paragraphs.length}</strong> đoạn. Nên chia thành 4-5 đoạn: Mở bài → Body 1 → Body 2 → Kết luận.`});
+  else fb.push({t:'✅',m:`Cấu trúc đoạn tốt: <strong>${paragraphs.length}</strong> đoạn.`});
+  if(found.length<3) fb.push({t:'⚠️',m:'Thiếu từ nối! Hãy thêm: <strong>However, Moreover, In conclusion, Furthermore...</strong>'});
+  else fb.push({t:'✅',m:`Sử dụng <strong>${found.length}</strong> từ nối — ${found.length>=6?'tuyệt vời!':'khá tốt, có thể thêm nữa.'}`});
+  if(ieltsFound.length<2) fb.push({t:'💡',m:'Thêm từ vựng Band cao: <strong>significant, furthermore, consequently, comprehensive, substantial...</strong>'});
+  else fb.push({t:'✅',m:`Từ vựng Band cao: <strong>${ieltsFound.length}</strong> từ — ${ieltsFound.length>=5?'xuất sắc!':'tốt!'}`});
+  if(avgLen<10) fb.push({t:'💡',m:'Câu quá ngắn. Thử viết câu phức hợp hơn với liên từ: although, while, which...'});
+  if(avgLen>30) fb.push({t:'💡',m:'Một số câu quá dài. Nên chia thành câu ngắn hơn để rõ ý hơn.'});
+
+  document.getElementById('feedbackList').innerHTML = fb.map(f=>`<div class="feedback">${f.t} ${f.m}</div>`).join('');
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+
+function loadSample(){
+  document.getElementById('essay').value = `In recent years, the issue of climate change has become increasingly prominent in global discussions. Many people believe that governments should take the lead in addressing this crisis, while others argue that individuals also have a significant role to play.
+
+On the one hand, governments possess the authority and resources to implement large-scale policies that can substantially reduce carbon emissions. For example, they can invest in renewable energy infrastructure, impose stricter regulations on industrial pollution, and provide incentives for sustainable practices. Furthermore, international cooperation between governments is essential for tackling this global phenomenon effectively.
+
+On the other hand, individual actions should not be underestimated. Simple lifestyle changes, such as reducing waste, using public transportation, and consuming organic products, can collectively make a profound impact. Moreover, when citizens demonstrate environmental awareness, they put pressure on corporations and politicians to adopt more responsible policies.
+
+In conclusion, addressing climate change requires a comprehensive approach that encompasses both governmental action and individual responsibility. While governments must take the lead in implementing systemic changes, the role of individuals in driving cultural transformation is equally significant. Only through this collaborative effort can we hope to mitigate the devastating effects of climate change.`;
+}
+
+function clearAll(){document.getElementById('essay').value='';document.getElementById('results').style.display='none';}
+
+function toggleDrop(el){
+  const d=el.closest('.nav-drop');const o=d.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));
+  if(!o)d.classList.add('open');
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

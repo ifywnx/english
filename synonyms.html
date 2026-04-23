@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="vi"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Đồng nghĩa & Trái nghĩa — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;--accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;--coral:#ff8a80;--green:#6bcb77;--text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;--border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0b1a1e}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:34px;font-weight:300;margin-bottom:10px}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.filter-row{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.f-btn{padding:7px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.f-btn:hover{color:var(--text)}.f-btn.active{background:rgba(100,216,165,0.12);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+.group{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px}
+.g-title{font-family:'Fraunces',serif;font-size:20px;margin-bottom:4px}
+.g-vi{font-size:13px;color:var(--accent);margin-bottom:14px}
+.g-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;margin-top:16px}
+.g-label:first-of-type{margin-top:0}
+.word-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.w-chip{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:10px 14px;flex:1;min-width:140px}
+.w-chip.ant{border-color:rgba(255,138,128,0.2)}
+.w-en{font-size:14px;font-weight:500;margin-bottom:1px}
+.w-ipa{font-size:10px;color:var(--accent);font-style:italic}
+.w-vi{font-size:12px;color:var(--text3)}
+.w-ctx{font-size:11px;color:var(--accent3);margin-top:3px;font-style:italic}
+.ex-box{background:var(--card2);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:13px;color:var(--text2);border-left:2px solid var(--accent)}
+.ex-box .vi{color:var(--text3);font-size:12px}
+.tip-box{background:rgba(167,139,250,0.08);border:0.5px solid rgba(167,139,250,0.2);border-radius:10px;padding:12px 16px;margin-top:10px;font-size:12px;color:var(--text2)}
+.tip-box strong{color:var(--accent2)}
+.s-divider{height:0.5px;background:var(--border);margin:24px 0}
+.search-box{width:100%;padding:12px 18px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:16px}
+.search-box:focus{border-color:rgba(100,216,165,0.4)}
+@media(max-width:600px){.content{padding:20px 16px}.word-row{flex-direction:column}}
+</style></head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav>
+<a href="index.html" class="logo"><div class="logo-mark">E</div><span class="logo-name">Easy<span>English</span></span></a>
+<div class="nav-links">
+<a href="index.html" class="nav-a">Trang chủ</a>
+<a href="vocabulary.html" class="nav-a">Từ vựng</a>
+<a href="grammar.html" class="nav-a">Ngữ pháp</a>
+<a href="synonyms.html" class="nav-a" style="color:var(--accent3)">Đồng/Trái nghĩa</a>
+<a href="quiz.html" class="nav-a">Quiz</a>
+</div></nav>
+<div class="content">
+<div class="page-label">Từ vựng nâng cao</div>
+<h1 class="page-title">Đồng nghĩa & Trái nghĩa 🔄</h1>
+<p class="page-desc">Học cách dùng từ đồng nghĩa / trái nghĩa đúng ngữ cảnh — rất quan trọng cho IELTS Writing (paraphrase) và Speaking (tránh lặp từ). Mỗi từ đều có ghi rõ khi nào nên dùng.</p>
+<input class="search-box" id="searchBox" placeholder="🔍 Tìm từ..." oninput="filterGroups()">
+<div class="filter-row">
+<button class="f-btn active" onclick="setFilter('all',this)">Tất cả</button>
+<button class="f-btn" onclick="setFilter('adj',this)">Tính từ</button>
+<button class="f-btn" onclick="setFilter('verb',this)">Động từ</button>
+<button class="f-btn" onclick="setFilter('noun',this)">Danh từ</button>
+<button class="f-btn" onclick="setFilter('adv',this)">Trạng từ</button>
+</div>
+<div id="groupsContainer"></div>
+</div>
+<script>
+const DATA=[
+{cat:'adj',title:'Big / Large / Huge / Enormous',vi:'To, lớn',
+syn:[
+{en:'big',ipa:'/bɪɡ/',vi:'to, lớn',ctx:'Dùng hằng ngày, informal. "a big house"'},
+{en:'large',ipa:'/lɑːrdʒ/',vi:'lớn, rộng',ctx:'Formal hơn big, dùng trong văn viết. "a large number of people"'},
+{en:'huge',ipa:'/hjuːdʒ/',vi:'khổng lồ',ctx:'Nhấn mạnh RẤT lớn. "a huge difference"'},
+{en:'enormous',ipa:'/ɪˈnɔːrməs/',vi:'cực kỳ lớn',ctx:'Formal + nhấn mạnh. IELTS Writing. "an enormous impact"'},
+{en:'vast',ipa:'/væst/',vi:'bao la, rộng lớn',ctx:'Diện tích/phạm vi. "vast areas of forest"'},
+{en:'massive',ipa:'/ˈmæsɪv/',vi:'đồ sộ',ctx:'Kích thước + tầm quan trọng. "massive changes"'},
+],ant:[
+{en:'small',ipa:'/smɔːl/',vi:'nhỏ',ctx:'Dùng hằng ngày. "a small room"'},
+{en:'tiny',ipa:'/ˈtaɪni/',vi:'rất nhỏ, tí hon',ctx:'Nhấn mạnh cực nhỏ. "a tiny mistake"'},
+{en:'minor',ipa:'/ˈmaɪnər/',vi:'nhỏ, không quan trọng',ctx:'Formal. "minor issues"'},
+],ex:'"The company experienced <b>enormous</b> growth." — Dùng enormous (formal) thay vì big trong bài viết IELTS.',
+tip:'IELTS Writing: Thay "very big" bằng "enormous/substantial/considerable" để tăng band.'},
+
+{cat:'adj',title:'Good / Great / Excellent / Outstanding',vi:'Tốt, giỏi',
+syn:[
+{en:'good',ipa:'/ɡʊd/',vi:'tốt',ctx:'Chung, hằng ngày. "good job"'},
+{en:'great',ipa:'/ɡreɪt/',vi:'tuyệt vời',ctx:'Mạnh hơn good, informal. "a great idea"'},
+{en:'excellent',ipa:'/ˈeksələnt/',vi:'xuất sắc',ctx:'Formal, đánh giá cao. "excellent performance"'},
+{en:'outstanding',ipa:'/aʊtˈstændɪŋ/',vi:'nổi bật',ctx:'Formal nhất. "outstanding achievement"'},
+{en:'remarkable',ipa:'/rɪˈmɑːrkəbl/',vi:'đáng chú ý',ctx:'IELTS Writing. "remarkable progress"'},
+{en:'superb',ipa:'/suːˈpɜːrb/',vi:'tuyệt hảo',ctx:'Rất formal, khen ngợi cao. "superb quality"'},
+],ant:[
+{en:'bad',ipa:'/bæd/',vi:'xấu, tệ',ctx:'Chung, hằng ngày. "bad weather"'},
+{en:'poor',ipa:'/pʊr/',vi:'kém, nghèo',ctx:'Formal hơn bad. "poor quality"'},
+{en:'terrible',ipa:'/ˈterəbl/',vi:'kinh khủng',ctx:'Rất tệ. "terrible mistake"'},
+{en:'dreadful',ipa:'/ˈdredfl/',vi:'ghê sợ, tệ hại',ctx:'Very formal. "dreadful conditions"'},
+],ex:'"The results were <b>remarkable</b>." — Dùng remarkable thay good trong Writing Task 2.',
+tip:'Mức độ: good < great < excellent < outstanding < extraordinary'},
+
+{cat:'adj',title:'Happy / Glad / Delighted / Ecstatic',vi:'Vui vẻ, hạnh phúc',
+syn:[
+{en:'happy',ipa:'/ˈhæpi/',vi:'vui, hạnh phúc',ctx:'Chung nhất. "I\'m happy"'},
+{en:'glad',ipa:'/ɡlæd/',vi:'vui mừng',ctx:'Nhẹ hơn happy, thường dùng trong câu. "I\'m glad to hear that"'},
+{en:'pleased',ipa:'/pliːzd/',vi:'hài lòng',ctx:'Formal, thường dùng với kết quả. "pleased with the results"'},
+{en:'delighted',ipa:'/dɪˈlaɪtɪd/',vi:'rất vui',ctx:'Formal, mức độ cao. "delighted to meet you"'},
+{en:'thrilled',ipa:'/θrɪld/',vi:'phấn khích',ctx:'Rất vui + hào hứng. "thrilled about the news"'},
+{en:'ecstatic',ipa:'/ɪkˈstætɪk/',vi:'vui sướng tột độ',ctx:'Mức cao nhất. "ecstatic fans"'},
+],ant:[
+{en:'sad',ipa:'/sæd/',vi:'buồn',ctx:'Chung. "I feel sad"'},
+{en:'unhappy',ipa:'/ʌnˈhæpi/',vi:'không vui',ctx:'Nhẹ hơn sad. "unhappy with the decision"'},
+{en:'miserable',ipa:'/ˈmɪzrəbl/',vi:'khổ sở',ctx:'Rất buồn + khổ. "miserable weather"'},
+{en:'devastated',ipa:'/ˈdevəsteɪtɪd/',vi:'suy sụp',ctx:'Buồn nặng. "devastated by the loss"'},
+],ex:'"We are <b>delighted</b> to announce..." — Formal, dùng trong email/thư.',
+tip:'Mức độ: glad < happy < pleased < delighted < thrilled < ecstatic'},
+
+{cat:'verb',title:'Say / Tell / Speak / Talk',vi:'Nói',
+syn:[
+{en:'say',ipa:'/seɪ/',vi:'nói (nội dung)',ctx:'Tường thuật lời nói. "She said hello." Không cần người nghe.'},
+{en:'tell',ipa:'/tel/',vi:'kể, nói cho ai',ctx:'CẦN người nghe. "Tell me the truth." tell + somebody'},
+{en:'speak',ipa:'/spiːk/',vi:'nói (ngôn ngữ/formal)',ctx:'Formal. "Speak English." "May I speak to...?"'},
+{en:'talk',ipa:'/tɔːk/',vi:'trò chuyện',ctx:'Informal, hai chiều. "Let\'s talk about it."'},
+{en:'state',ipa:'/steɪt/',vi:'tuyên bố',ctx:'Rất formal. "The report states that..." IELTS'},
+{en:'mention',ipa:'/ˈmenʃn/',vi:'đề cập',ctx:'"He mentioned the problem." Nói qua, không chi tiết.'},
+],ant:[
+{en:'listen',ipa:'/ˈlɪsn/',vi:'lắng nghe',ctx:'"Listen to me carefully."'},
+{en:'be silent',ipa:'—',vi:'im lặng',ctx:'"Please be silent during the exam."'},
+],ex:'"She <b>told</b> me that..." (CẦN người nghe) vs "She <b>said</b> that..." (KHÔNG cần).',
+tip:'SAY + nội dung. TELL + người nghe + nội dung. SPEAK + ngôn ngữ. TALK + about + chủ đề.'},
+
+{cat:'verb',title:'Think / Consider / Believe / Assume',vi:'Nghĩ, cho rằng',
+syn:[
+{en:'think',ipa:'/θɪŋk/',vi:'nghĩ',ctx:'Chung nhất. "I think so."'},
+{en:'believe',ipa:'/bɪˈliːv/',vi:'tin rằng',ctx:'Chắc chắn hơn think. "I believe this is correct."'},
+{en:'consider',ipa:'/kənˈsɪdər/',vi:'cân nhắc',ctx:'Formal. "Consider the options." IELTS'},
+{en:'assume',ipa:'/əˈsuːm/',vi:'giả định',ctx:'Không có bằng chứng. "I assume he\'s busy."'},
+{en:'reckon',ipa:'/ˈrekən/',vi:'cho rằng',ctx:'Informal British. "I reckon it\'ll rain."'},
+{en:'contemplate',ipa:'/ˈkɒntəmpleɪt/',vi:'suy ngẫm',ctx:'Rất formal. "contemplate the future"'},
+],ant:[
+{en:'doubt',ipa:'/daʊt/',vi:'nghi ngờ',ctx:'"I doubt that\'s true."'},
+{en:'disbelieve',ipa:'/ˌdɪsbɪˈliːv/',vi:'không tin',ctx:'Formal. "reason to disbelieve"'},
+],ex:'"It is widely <b>believed</b> that..." — Cấu trúc bị động hay dùng trong IELTS Writing.',
+tip:'IELTS: Thay "I think" bằng "It could be argued that..." hoặc "From my perspective..."'},
+
+{cat:'verb',title:'Increase / Rise / Grow / Surge',vi:'Tăng',
+syn:[
+{en:'increase',ipa:'/ɪnˈkriːs/',vi:'tăng',ctx:'Chung nhất, dùng mọi ngữ cảnh. "increase by 10%"'},
+{en:'rise',ipa:'/raɪz/',vi:'tăng lên',ctx:'Tự tăng (không có tác nhân). "Prices rose."'},
+{en:'grow',ipa:'/ɡroʊ/',vi:'tăng trưởng',ctx:'Tăng dần dần. "The economy grew by 3%."'},
+{en:'surge',ipa:'/sɜːrdʒ/',vi:'tăng vọt',ctx:'Tăng đột ngột, mạnh. "demand surged"'},
+{en:'soar',ipa:'/sɔːr/',vi:'tăng vút',ctx:'Tăng rất nhanh, rất cao. "temperatures soared"'},
+{en:'double',ipa:'/ˈdʌbl/',vi:'tăng gấp đôi',ctx:'"Sales doubled in 2024."'},
+],ant:[
+{en:'decrease',ipa:'/dɪˈkriːs/',vi:'giảm',ctx:'Chung. "decrease by 5%"'},
+{en:'decline',ipa:'/dɪˈklaɪn/',vi:'suy giảm',ctx:'Formal. "Population declined."'},
+{en:'drop',ipa:'/drɒp/',vi:'giảm mạnh',ctx:'Đột ngột. "Sales dropped sharply."'},
+{en:'plummet',ipa:'/ˈplʌmɪt/',vi:'giảm thê thảm',ctx:'Rất mạnh. "Stocks plummeted."'},
+],ex:'IELTS Task 1: "The number of students <b>soared</b> from 100 to 500."',
+tip:'Task 1: increase/rise (nhẹ), surge/soar (mạnh), rocket/skyrocket (cực mạnh)'},
+
+{cat:'adj',title:'Important / Significant / Crucial / Vital',vi:'Quan trọng',
+syn:[
+{en:'important',ipa:'/ɪmˈpɔːrtənt/',vi:'quan trọng',ctx:'Chung. "an important meeting"'},
+{en:'significant',ipa:'/sɪɡˈnɪfɪkənt/',vi:'đáng kể',ctx:'Formal/Academic. "significant impact" IELTS'},
+{en:'crucial',ipa:'/ˈkruːʃl/',vi:'then chốt',ctx:'Cực kỳ quan trọng. "crucial decision"'},
+{en:'vital',ipa:'/ˈvaɪtl/',vi:'sống còn',ctx:'Không thể thiếu. "vital information"'},
+{en:'essential',ipa:'/ɪˈsenʃl/',vi:'thiết yếu',ctx:'"essential skills" Cần thiết tuyệt đối.'},
+{en:'fundamental',ipa:'/ˌfʌndəˈmentl/',vi:'nền tảng',ctx:'Cơ bản nhất. "fundamental rights"'},
+],ant:[
+{en:'unimportant',ipa:'/ˌʌnɪmˈpɔːrtənt/',vi:'không quan trọng',ctx:'Chung. "unimportant details"'},
+{en:'trivial',ipa:'/ˈtrɪviəl/',vi:'tầm thường',ctx:'Formal. "trivial matters"'},
+{en:'insignificant',ipa:'/ˌɪnsɪɡˈnɪfɪkənt/',vi:'không đáng kể',ctx:'IELTS. "insignificant change"'},
+],ex:'"Education plays a <b>crucial</b> role in..." — Hay dùng trong IELTS Writing Task 2.',
+tip:'Mức độ: important < significant < crucial < vital < indispensable'},
+
+{cat:'noun',title:'Problem / Issue / Challenge / Obstacle',vi:'Vấn đề',
+syn:[
+{en:'problem',ipa:'/ˈprɒbləm/',vi:'vấn đề',ctx:'Chung, tiêu cực. "solve a problem"'},
+{en:'issue',ipa:'/ˈɪʃuː/',vi:'vấn đề (trung lập)',ctx:'Formal hơn, ít tiêu cực. "address the issue" IELTS'},
+{en:'challenge',ipa:'/ˈtʃælɪndʒ/',vi:'thách thức',ctx:'Tích cực hơn problem. "face challenges"'},
+{en:'obstacle',ipa:'/ˈɒbstəkl/',vi:'trở ngại',ctx:'Ngăn cản tiến bộ. "overcome obstacles"'},
+{en:'dilemma',ipa:'/dɪˈlemə/',vi:'tình thế khó xử',ctx:'Phải chọn 1 trong 2. "moral dilemma"'},
+],ant:[
+{en:'solution',ipa:'/səˈluːʃn/',vi:'giải pháp',ctx:'"find a solution to the problem"'},
+{en:'opportunity',ipa:'/ˌɒpərˈtjuːnəti/',vi:'cơ hội',ctx:'"seize the opportunity"'},
+],ex:'"One of the main <b>challenges</b> facing society is..." — Tích cực hơn "problems".',
+tip:'IELTS: Dùng "challenge/issue" thay "problem" để thể hiện tư duy tích cực.'},
+
+{cat:'adv',title:'Very / Extremely / Quite / Fairly',vi:'Rất, khá',
+syn:[
+{en:'very',ipa:'/ˈveri/',vi:'rất',ctx:'Chung nhất nhưng yếu trong IELTS. "very good"'},
+{en:'extremely',ipa:'/ɪkˈstriːmli/',vi:'cực kỳ',ctx:'Mạnh hơn very. "extremely important"'},
+{en:'incredibly',ipa:'/ɪnˈkredəbli/',vi:'không thể tin',ctx:'"incredibly fast" Mạnh, hơi informal.'},
+{en:'remarkably',ipa:'/rɪˈmɑːrkəbli/',vi:'đáng chú ý',ctx:'IELTS. "remarkably similar"'},
+{en:'substantially',ipa:'/səbˈstænʃəli/',vi:'đáng kể',ctx:'IELTS. "substantially higher"'},
+],ant:[
+{en:'slightly',ipa:'/ˈslaɪtli/',vi:'hơi, nhẹ',ctx:'"slightly different"'},
+{en:'barely',ipa:'/ˈberli/',vi:'hầu như không',ctx:'"barely visible"'},
+{en:'hardly',ipa:'/ˈhɑːrdli/',vi:'gần như không',ctx:'"hardly any improvement"'},
+],ex:'"The rate <b>substantially</b> increased." — Thay "very much increased" trong IELTS.',
+tip:'IELTS: TRÁNH dùng "very". Thay bằng: extremely, considerably, substantially, remarkably.'},
+];
+
+let curFilter='all';
+function setFilter(f,btn){
+  curFilter=f;
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  filterGroups();
+}
+function filterGroups(){
+  const q=document.getElementById('searchBox').value.toLowerCase();
+  const c=document.getElementById('groupsContainer');
+  let list=DATA;
+  if(curFilter!=='all') list=list.filter(g=>g.cat===curFilter);
+  if(q) list=list.filter(g=>g.title.toLowerCase().includes(q)||g.vi.includes(q)||g.syn.some(w=>w.en.includes(q))||g.ant.some(w=>w.en.includes(q)));
+  c.innerHTML=list.map(g=>`
+    <div class="group">
+      <div class="g-title">${g.title}</div>
+      <div class="g-vi">${g.vi}</div>
+      <div class="g-label">✅ Đồng nghĩa (Synonyms)</div>
+      <div class="word-row">${g.syn.map(w=>`
+        <div class="w-chip">
+          <div class="w-en">${w.en} <span style="cursor:pointer;font-size:12px" onclick="speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('${w.en}');u.lang='en-US';u.rate=0.85;speechSynthesis.speak(u)">🔊</span></div>
+          <div class="w-ipa">${w.ipa}</div>
+          <div class="w-vi">${w.vi}</div>
+          <div class="w-ctx">📌 ${w.ctx}</div>
+        </div>`).join('')}</div>
+      <div class="g-label">❌ Trái nghĩa (Antonyms)</div>
+      <div class="word-row">${g.ant.map(w=>`
+        <div class="w-chip ant">
+          <div class="w-en">${w.en} <span style="cursor:pointer;font-size:12px" onclick="speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('${w.en}');u.lang='en-US';u.rate=0.85;speechSynthesis.speak(u)">🔊</span></div>
+          <div class="w-ipa">${w.ipa}</div>
+          <div class="w-vi">${w.vi}</div>
+          <div class="w-ctx">📌 ${w.ctx}</div>
+        </div>`).join('')}</div>
+      <div class="ex-box">💡 ${g.ex}<br><div class="vi" style="margin-top:4px">→ ${g.tip}</div></div>
+    </div>`).join('')||'<div style="text-align:center;color:var(--text3);padding:40px">Không tìm thấy</div>';
+}
+filterGroups();
+</script>
+<script src="theme.js"></script>
+</body></html>

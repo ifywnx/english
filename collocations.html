@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collocations & Phrasal Verbs — EasyEnglish</title>
+<meta name="description" content="Học collocations và phrasal verbs tiếng Anh: make vs do, have, take, get + noun. Flashcard và quiz tương tác.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(107,203,119,0.08);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:12px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:8px 18px;border-radius:8px;background:var(--green);color:#0f0e17;font-size:12px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:12px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--green);background:rgba(107,203,119,0.08)}
+
+.content{padding:36px 48px;max-width:900px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:38px;font-weight:300;margin-bottom:12px;line-height:1.2}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.s-divider{height:0.5px;background:var(--border);margin:36px 0}
+.anchor{scroll-margin-top:80px}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:8px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.7}
+
+/* SEARCH */
+.search-bar{display:flex;gap:10px;margin-bottom:24px}
+.search-input{flex:1;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input:focus{border-color:rgba(107,203,119,0.4)}
+.search-input::placeholder{color:var(--text3)}
+
+/* STATS */
+.stats-row{display:flex;gap:10px;margin-bottom:24px}
+.stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;flex:1;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:22px;color:var(--green)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* COLLOCATION CARDS */
+.coll-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:20px}
+.coll-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s}
+.coll-card:hover{border-color:rgba(107,203,119,0.3);transform:translateY(-2px)}
+.coll-card.expanded{border-color:rgba(107,203,119,0.4);background:rgba(107,203,119,0.04)}
+.cc-phrase{font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px}
+.cc-phrase .verb{color:var(--accent2)}
+.cc-phrase .noun{color:var(--green)}
+.cc-vi{font-size:12px;color:var(--text2);margin-bottom:5px}
+.cc-ex{font-size:11px;color:var(--text3);font-style:italic}
+.cc-detail{margin-top:10px;border-top:0.5px solid var(--border);padding-top:10px;display:none}
+.coll-card.expanded .cc-detail{display:block}
+.cc-more-ex{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.cc-mex{font-size:11px;color:var(--text2);padding:5px 8px;background:var(--card2);border-radius:6px;font-style:italic}
+.cc-mex-vi{font-size:10px;color:var(--text3);margin-top:2px}
+.cc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.cc-tag{padding:2px 8px;border-radius:8px;font-size:10px}
+.tag-daily{background:rgba(107,203,119,0.1);color:var(--green)}
+.tag-formal{background:rgba(100,216,165,0.1);color:var(--accent2)}
+.tag-ielts{background:rgba(100,216,165,0.1);color:var(--accent)}
+.tag-business{background:rgba(244,132,95,0.1);color:var(--coral)}
+
+/* WRONG/RIGHT */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cmp-wrong{background:rgba(244,132,95,0.06);border:0.5px solid rgba(244,132,95,0.2);border-radius:10px;padding:12px 14px}
+.cmp-right{background:rgba(107,203,119,0.06);border:0.5px solid rgba(107,203,119,0.2);border-radius:10px;padding:12px 14px}
+.cmp-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.cmp-wrong .cmp-label{color:var(--coral)}
+.cmp-right .cmp-label{color:var(--green)}
+.cmp-text{font-size:12px;color:var(--text2);font-style:italic;line-height:1.6}
+
+/* PHRASAL VERB TABLE */
+.pv-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px}
+.pv-table th{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.pv-table td{padding:9px 14px;border:0.5px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.pv-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-pv{color:var(--text);font-weight:500;font-size:14px}
+.td-vi{color:var(--accent3)}
+.td-ex{font-style:italic;color:var(--text3);font-size:11px}
+
+/* SECTION HEADER */
+.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sh-emoji{font-size:24px}
+
+/* TIP */
+.tip-box{background:rgba(123,110,246,0.07);border:0.5px solid rgba(123,110,246,0.2);border-radius:12px;padding:14px 18px;display:flex;gap:12px;margin-bottom:16px}
+.tip-icon{font-size:18px;flex-shrink:0}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:12px;color:var(--text2);line-height:1.65}
+.warn-box{background:rgba(244,132,95,0.07);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.warn-box strong{color:var(--coral)}
+
+/* QUIZ */
+.quiz-box{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:14px;padding:20px;margin-top:20px}
+.qb-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+.qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
+.qb-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:0}
+.qb-opt{padding:10px 14px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif}
+.qb-opt:hover:not(:disabled){border-color:rgba(107,203,119,0.4);color:var(--text)}
+.qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
+.qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.qb-fb{margin-top:10px;padding:10px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
+.qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
+.qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
+.qb-next{margin-top:8px;padding:7px 16px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next.show{display:inline-block}
+.no-results{text-align:center;color:var(--text3);padding:32px;font-size:14px}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="ielts.html" class="nav-cta">IELTS Guide →</a>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Collocations theo chủ đề</div>
+  <button class="sb-item active" onclick="filterTopic('all',this)">🌟 Tất cả</button>
+  <button class="sb-item" onclick="filterTopic('make-do',this)">⚡ make vs do</button>
+  <button class="sb-item" onclick="filterTopic('have',this)">✋ have + noun</button>
+  <button class="sb-item" onclick="filterTopic('take',this)">🤝 take + noun</button>
+  <button class="sb-item" onclick="filterTopic('get',this)">🎯 get + adj/noun</button>
+  <button class="sb-item" onclick="filterTopic('time',this)">⏰ Thời gian</button>
+  <button class="sb-item" onclick="filterTopic('money',this)">💰 Tiền bạc</button>
+  <button class="sb-item" onclick="filterTopic('work',this)">💼 Công việc</button>
+  <button class="sb-item" onclick="filterTopic('health',this)">🏥 Sức khỏe</button>
+  <button class="sb-item" onclick="filterTopic('environment',this)">🌿 Môi trường</button>
+  <button class="sb-item" onclick="filterTopic('education',this)">📚 Giáo dục</button>
+  <button class="sb-item" onclick="filterTopic('feelings',this)">😊 Cảm xúc</button>
+
+  <div class="sidebar-title">Phrasal Verbs</div>
+  <button class="sb-item" onclick="scrollTo('#pv-up')">⬆️ UP verbs</button>
+  <button class="sb-item" onclick="scrollTo('#pv-out')">➡️ OUT verbs</button>
+  <button class="sb-item" onclick="scrollTo('#pv-on')">🔛 ON verbs</button>
+  <button class="sb-item" onclick="scrollTo('#pv-off')">🔕 OFF verbs</button>
+  <button class="sb-item" onclick="scrollTo('#pv-down')">⬇️ DOWN verbs</button>
+  <button class="sb-item" onclick="scrollTo('#pv-in')">🔵 IN verbs</button>
+  <button class="sb-item" onclick="scrollTo('#pv-over')">🔄 OVER verbs</button>
+
+  <div class="sidebar-title">Idioms</div>
+  <button class="sb-item" onclick="scrollTo('#idioms-body')">🧑 Bộ phận cơ thể</button>
+  <button class="sb-item" onclick="scrollTo('#idioms-animal')">🐾 Động vật</button>
+  <button class="sb-item" onclick="scrollTo('#idioms-colour')">🎨 Màu sắc</button>
+</aside>
+
+<main class="content">
+  <div class="page-label">Module 9 — Collocations & Phrasal Verbs</div>
+  <h1 class="page-title">Collocations<br><em style="color:var(--green)">& Phrasal Verbs</em></h1>
+  <p class="page-desc">Collocations là những cụm từ đi cùng nhau tự nhiên trong tiếng Anh. Học collocations giúp bạn nói/viết <em>tự nhiên như người bản ngữ</em> — đây là điểm khác biệt lớn giữa Band 6 và Band 7.5+.</p>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="statShowing">200+</div><div class="stat-label">Collocations</div></div>
+    <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label">Phrasal Verbs</div></div>
+    <div class="stat-box"><div class="stat-num">50+</div><div class="stat-label">Idioms</div></div>
+    <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Chủ đề</div></div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div>
+      <h5>Tại sao Collocations quan trọng?</h5>
+      <p>Người Việt hay nói "do a mistake" — nhưng người Anh nói "make a mistake". Nói "do a mistake" không sai về ngữ pháp nhưng nghe rất lạ. Collocations chính là những cặp từ "ăn ý" với nhau theo quy ước của người bản ngữ — không có quy tắc, chỉ có thể học thuộc.</p>
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <input class="search-input" id="searchInput" placeholder="Tìm collocation..." oninput="renderCollocations()">
+  </div>
+
+  <!-- MAKE vs DO -->
+  <div class="anchor" id="make-do">
+    <div class="section-label">Collocation cực kỳ thông dụng</div>
+    <div class="section-title">MAKE vs DO — Cặp từ hay nhầm nhất</div>
+    <div class="warn-box"><strong>Quy tắc chung:</strong> <strong style="color:var(--green)">MAKE</strong> = tạo ra, sản xuất ra cái gì đó (kết quả hữu hình hoặc trừu tượng) · <strong style="color:var(--coral)">DO</strong> = thực hiện một hành động, hoạt động, nhiệm vụ. Nhưng thực tế phải học thuộc từng cụm!</div>
+    <div class="compare-grid">
+      <div class="cmp-right">
+        <div class="cmp-label">✓ MAKE + ...</div>
+        <div class="cmp-text">make a <strong>mistake</strong> (mắc lỗi)<br>make a <strong>decision</strong> (đưa ra quyết định)<br>make a <strong>difference</strong> (tạo ra sự khác biệt)<br>make a <strong>suggestion</strong> (đề xuất)<br>make a <strong>complaint</strong> (khiếu nại)<br>make an <strong>effort</strong> (cố gắng)<br>make a <strong>profit</strong> (kiếm lợi nhuận)<br>make <strong>progress</strong> (tiến bộ)<br>make a <strong>phone call</strong> (gọi điện)<br>make a <strong>reservation</strong> (đặt chỗ)<br>make <strong>friends</strong> (kết bạn)<br>make <strong>money</strong> (kiếm tiền)</div>
+      </div>
+      <div class="cmp-right" style="border-color:rgba(244,132,95,0.3);background:rgba(244,132,95,0.04)">
+        <div class="cmp-label" style="color:var(--coral)">✓ DO + ...</div>
+        <div class="cmp-text">do your <strong>homework</strong> (làm bài tập)<br>do the <strong>washing / dishes</strong> (rửa bát)<br>do <strong>research</strong> (nghiên cứu)<br>do <strong>exercise</strong> (tập thể dục)<br>do <strong>business</strong> (kinh doanh)<br>do <strong>damage</strong> (gây thiệt hại)<br>do your <strong>best</strong> (cố hết sức)<br>do a <strong>course</strong> (học một khóa)<br>do <strong>harm</strong> (gây hại)<br>do a <strong>favor</strong> (làm ơn)<br>do the <strong>shopping</strong> (đi mua sắm)<br>do <strong>volunteer work</strong> (làm tình nguyện)</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="collocationContainer"></div>
+
+  <div class="s-divider"></div>
+
+  <!-- PHRASAL VERBS -->
+  <div class="anchor" id="pv-up">
+    <div class="section-label">Phrasal Verbs</div>
+    <div class="section-title">Động từ cụm — Phrasal Verbs</div>
+    <div class="section-desc">Phrasal verbs gồm động từ + tiểu từ (up, out, on, off...). Nghĩa thường KHÁC HOÀN TOÀN với từng từ riêng lẻ. Đây là phần khó nhưng cực kỳ thông dụng trong tiếng Anh tự nhiên.</div>
+
+    <div class="sec-hdr"><span class="sh-emoji">⬆️</span><div class="section-title" style="font-size:20px;margin:0">Động từ + UP</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">give up</td><td class="td-vi">từ bỏ</td><td class="td-ex">"Never give up on your dreams."</td></tr>
+      <tr><td class="td-pv">come up with</td><td class="td-vi">nghĩ ra, đề xuất</td><td class="td-ex">"She came up with a brilliant idea."</td></tr>
+      <tr><td class="td-pv">end up</td><td class="td-vi">cuối cùng trở thành/ở đâu</td><td class="td-ex">"We ended up staying until midnight."</td></tr>
+      <tr><td class="td-pv">bring up</td><td class="td-vi">nuôi dạy / nhắc đến</td><td class="td-ex">"He was brought up in the countryside." / "Don't bring up that topic."</td></tr>
+      <tr><td class="td-pv">make up</td><td class="td-vi">bịa đặt / chiếm tỷ lệ / làm lành</td><td class="td-ex">"He made up an excuse." / "Women make up 60% of staff."</td></tr>
+      <tr><td class="td-pv">set up</td><td class="td-vi">thành lập, thiết lập</td><td class="td-ex">"She set up her own company at 25."</td></tr>
+      <tr><td class="td-pv">show up</td><td class="td-vi">xuất hiện, đến nơi</td><td class="td-ex">"He showed up an hour late."</td></tr>
+      <tr><td class="td-pv">pick up</td><td class="td-vi">đón / học được / nhặt lên</td><td class="td-ex">"I'll pick you up at 7." / "She picked up Spanish quickly."</td></tr>
+      <tr><td class="td-pv">catch up</td><td class="td-vi">theo kịp / gặp gỡ ôn chuyện</td><td class="td-ex">"Let's catch up over coffee!"</td></tr>
+      <tr><td class="td-pv">keep up</td><td class="td-vi">theo kịp, duy trì</td><td class="td-ex">"Keep up the good work!"</td></tr>
+      <tr><td class="td-pv">take up</td><td class="td-vi">bắt đầu sở thích mới / chiếm (thời gian/không gian)</td><td class="td-ex">"He took up photography last year." / "This table takes up too much space."</td></tr>
+      <tr><td class="td-pv">sum up</td><td class="td-vi">tóm tắt</td><td class="td-ex">"To sum up, the project was a success."</td></tr>
+    </table>
+
+    <div class="anchor" id="pv-out">
+    <div class="sec-hdr" style="margin-top:24px"><span class="sh-emoji">➡️</span><div class="section-title" style="font-size:20px;margin:0">Động từ + OUT</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">figure out</td><td class="td-vi">tìm ra, hiểu ra</td><td class="td-ex">"I can't figure out how to use this."</td></tr>
+      <tr><td class="td-pv">find out</td><td class="td-vi">phát hiện ra, biết được</td><td class="td-ex">"I found out the truth."</td></tr>
+      <tr><td class="td-pv">run out of</td><td class="td-vi">hết, cạn kiệt</td><td class="td-ex">"We ran out of time."</td></tr>
+      <tr><td class="td-pv">work out</td><td class="td-vi">tập thể dục / giải quyết / tính ra</td><td class="td-ex">"It all worked out fine." / "She works out every day."</td></tr>
+      <tr><td class="td-pv">carry out</td><td class="td-vi">thực hiện (kế hoạch, nghiên cứu)</td><td class="td-ex">"They carried out the research."</td></tr>
+      <tr><td class="td-pv">point out</td><td class="td-vi">chỉ ra, chú ý đến</td><td class="td-ex">"She pointed out several errors."</td></tr>
+      <tr><td class="td-pv">stand out</td><td class="td-vi">nổi bật</td><td class="td-ex">"Her performance really stood out."</td></tr>
+      <tr><td class="td-pv">turn out</td><td class="td-vi">hóa ra là / kết quả là</td><td class="td-ex">"It turned out to be a great idea."</td></tr>
+      <tr><td class="td-pv">burn out</td><td class="td-vi">kiệt sức vì làm việc quá nhiều</td><td class="td-ex">"Many employees are burning out."</td></tr>
+      <tr><td class="td-pv">phase out</td><td class="td-vi">loại bỏ dần dần</td><td class="td-ex">"Fossil fuels must be phased out."</td></tr>
+    </table>
+    </div>
+
+    <div class="anchor" id="pv-on">
+    <div class="sec-hdr" style="margin-top:24px"><span class="sh-emoji">🔛</span><div class="section-title" style="font-size:20px;margin:0">Động từ + ON</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">carry on</td><td class="td-vi">tiếp tục</td><td class="td-ex">"Carry on with your work."</td></tr>
+      <tr><td class="td-pv">move on</td><td class="td-vi">tiến về phía trước, bỏ qua</td><td class="td-ex">"It's time to move on from the past."</td></tr>
+      <tr><td class="td-pv">depend on</td><td class="td-vi">phụ thuộc vào</td><td class="td-ex">"Success depends on hard work."</td></tr>
+      <tr><td class="td-pv">focus on</td><td class="td-vi">tập trung vào</td><td class="td-ex">"Focus on what matters most."</td></tr>
+      <tr><td class="td-pv">take on</td><td class="td-vi">đảm nhận (công việc) / thuê thêm</td><td class="td-ex">"She took on more responsibilities."</td></tr>
+      <tr><td class="td-pv">hold on</td><td class="td-vi">chờ / bám chặt</td><td class="td-ex">"Hold on a minute!" / "Just hold on a little longer."</td></tr>
+      <tr><td class="td-pv">get on</td><td class="td-vi">hòa thuận / tiến triển</td><td class="td-ex">"How are you getting on?" / "We get on really well."</td></tr>
+      <tr><td class="td-pv">go on</td><td class="td-vi">tiếp tục / xảy ra</td><td class="td-ex">"What's going on?" / "Please go on."</td></tr>
+    </table>
+    </div>
+
+    <div class="anchor" id="pv-off">
+    <div class="sec-hdr" style="margin-top:24px"><span class="sh-emoji">🔕</span><div class="section-title" style="font-size:20px;margin:0">Động từ + OFF</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">put off</td><td class="td-vi">trì hoãn / làm nản lòng</td><td class="td-ex">"Stop putting off your homework." / "The smell put me off."</td></tr>
+      <tr><td class="td-pv">pay off</td><td class="td-vi">được đền đáp xứng đáng</td><td class="td-ex">"All your hard work will pay off."</td></tr>
+      <tr><td class="td-pv">take off</td><td class="td-vi">cất cánh / thành công vụt / cởi ra</td><td class="td-ex">"The plane took off at 9." / "Her career really took off."</td></tr>
+      <tr><td class="td-pv">call off</td><td class="td-vi">hủy bỏ</td><td class="td-ex">"The meeting was called off."</td></tr>
+      <tr><td class="td-pv">cut off</td><td class="td-vi">cắt đứt / cô lập</td><td class="td-ex">"The village was cut off by floods."</td></tr>
+      <tr><td class="td-pv">set off</td><td class="td-vi">khởi hành / kích hoạt</td><td class="td-ex">"We set off at 6 AM." / "The alarm went off."</td></tr>
+      <tr><td class="td-pv">show off</td><td class="td-vi">khoe khoang</td><td class="td-ex">"He's always showing off his new car."</td></tr>
+      <tr><td class="td-pv">lay off</td><td class="td-vi">sa thải</td><td class="td-ex">"The company laid off 200 workers."</td></tr>
+    </table>
+    </div>
+
+    <div class="anchor" id="pv-down">
+    <div class="sec-hdr" style="margin-top:24px"><span class="sh-emoji">⬇️</span><div class="section-title" style="font-size:20px;margin:0">Động từ + DOWN</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">break down</td><td class="td-vi">hỏng hóc / sụp đổ (hệ thống, đàm phán)</td><td class="td-ex">"My car broke down." / "Negotiations broke down."</td></tr>
+      <tr><td class="td-pv">calm down</td><td class="td-vi">bình tĩnh lại</td><td class="td-ex">"Calm down! It's not a big deal."</td></tr>
+      <tr><td class="td-pv">cut down on</td><td class="td-vi">cắt giảm (thói quen xấu)</td><td class="td-ex">"You should cut down on sugar."</td></tr>
+      <tr><td class="td-pv">let down</td><td class="td-vi">làm thất vọng</td><td class="td-ex">"Don't let me down!"</td></tr>
+      <tr><td class="td-pv">turn down</td><td class="td-vi">từ chối / vặn nhỏ</td><td class="td-ex">"She turned down the job offer." / "Turn down the volume."</td></tr>
+      <tr><td class="td-pv">slow down</td><td class="td-vi">chậm lại</td><td class="td-ex">"The economy is slowing down."</td></tr>
+      <tr><td class="td-pv">narrow down</td><td class="td-vi">thu hẹp (lựa chọn)</td><td class="td-ex">"We narrowed down the options to three."</td></tr>
+    </table>
+    </div>
+
+    <div class="anchor" id="pv-in">
+    <div class="sec-hdr" style="margin-top:24px"><span class="sh-emoji">🔵</span><div class="section-title" style="font-size:20px;margin:0">Động từ + IN / INTO</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">believe in</td><td class="td-vi">tin vào, tin tưởng</td><td class="td-ex">"I believe in your potential."</td></tr>
+      <tr><td class="td-pv">result in</td><td class="td-vi">dẫn đến, gây ra</td><td class="td-ex">"Pollution results in health problems."</td></tr>
+      <tr><td class="td-pv">invest in</td><td class="td-vi">đầu tư vào</td><td class="td-ex">"Invest in your education."</td></tr>
+      <tr><td class="td-pv">break into</td><td class="td-vi">đột nhập / bắt đầu sự nghiệp</td><td class="td-ex">"It's hard to break into the film industry."</td></tr>
+      <tr><td class="td-pv">look into</td><td class="td-vi">điều tra, xem xét</td><td class="td-ex">"Police are looking into the matter."</td></tr>
+      <tr><td class="td-pv">fit in</td><td class="td-vi">hòa nhập, phù hợp</td><td class="td-ex">"She found it hard to fit in at the new school."</td></tr>
+      <tr><td class="td-pv">give in</td><td class="td-vi">đầu hàng, khuất phục</td><td class="td-ex">"Don't give in to peer pressure."</td></tr>
+    </table>
+    </div>
+
+    <div class="anchor" id="pv-over">
+    <div class="sec-hdr" style="margin-top:24px"><span class="sh-emoji">🔄</span><div class="section-title" style="font-size:20px;margin:0">Động từ + OVER</div></div>
+    <table class="pv-table">
+      <tr><th>Phrasal verb</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">get over</td><td class="td-vi">vượt qua (khó khăn, bệnh tật)</td><td class="td-ex">"It took months to get over the breakup."</td></tr>
+      <tr><td class="td-pv">take over</td><td class="td-vi">tiếp quản, chiếm lĩnh</td><td class="td-ex">"AI may take over many jobs."</td></tr>
+      <tr><td class="td-pv">think over</td><td class="td-vi">suy nghĩ kỹ</td><td class="td-ex">"Let me think it over."</td></tr>
+      <tr><td class="td-pv">look over</td><td class="td-vi">xem qua, kiểm tra lại</td><td class="td-ex">"Please look over my essay."</td></tr>
+      <tr><td class="td-pv">come over</td><td class="td-vi">ghé qua nhà / cảm thấy bỗng nhiên</td><td class="td-ex">"Come over for dinner!" / "A wave of sadness came over me."</td></tr>
+      <tr><td class="td-pv">hand over</td><td class="td-vi">bàn giao, trao cho</td><td class="td-ex">"He handed over the project to his colleague."</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- IDIOMS -->
+  <div class="anchor" id="idioms-body">
+    <div class="section-label">Idioms — Thành ngữ</div>
+    <div class="section-title">Thành ngữ về bộ phận cơ thể</div>
+    <table class="pv-table">
+      <tr><th>Idiom</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">bite the bullet</td><td class="td-vi">cắn răng chịu đựng việc khó khăn</td><td class="td-ex">"Just bite the bullet and do it."</td></tr>
+      <tr><td class="td-pv">cost an arm and a leg</td><td class="td-vi">đắt kinh khủng</td><td class="td-ex">"That car cost an arm and a leg."</td></tr>
+      <tr><td class="td-pv">keep an eye on</td><td class="td-vi">trông chừng, để mắt đến</td><td class="td-ex">"Can you keep an eye on my bag?"</td></tr>
+      <tr><td class="td-pv">pull someone's leg</td><td class="td-vi">đùa giỡn, trêu ai đó</td><td class="td-ex">"Are you serious? / I'm just pulling your leg!"</td></tr>
+      <tr><td class="td-pv">get cold feet</td><td class="td-vi">trở nên do dự, hồi hộp lo sợ</td><td class="td-ex">"She got cold feet before the wedding."</td></tr>
+      <tr><td class="td-pv">give someone a hand</td><td class="td-vi">giúp đỡ ai đó</td><td class="td-ex">"Can you give me a hand with this?"</td></tr>
+      <tr><td class="td-pv">face the music</td><td class="td-vi">đối mặt với hậu quả</td><td class="td-ex">"It's time to face the music."</td></tr>
+      <tr><td class="td-pv">have a heart of gold</td><td class="td-vi">có tấm lòng vàng, rất tốt bụng</td><td class="td-ex">"She has a heart of gold."</td></tr>
+      <tr><td class="td-pv">turn a blind eye</td><td class="td-vi">giả vờ không thấy, bỏ qua</td><td class="td-ex">"The government turned a blind eye to corruption."</td></tr>
+      <tr><td class="td-pv">on the tip of your tongue</td><td class="td-vi">chực nhớ ra mà không nhớ được</td><td class="td-ex">"His name is on the tip of my tongue!"</td></tr>
+    </table>
+  </div>
+
+  <div class="anchor" id="idioms-animal">
+    <div class="section-title" style="margin-top:24px">Thành ngữ về động vật</div>
+    <table class="pv-table">
+      <tr><th>Idiom</th><th>Nghĩa</th><th>Ví dụ</th></tr>
+      <tr><td class="td-pv">let the cat out of the bag</td><td class="td-vi">lỡ tiết lộ bí mật</td><td class="td-ex">"Who let the cat out of the bag?"</td></tr>
+      <tr><td class="td-pv">kill two birds with one stone</td><td class="td-vi">một công đôi việc</td><td class="td-ex">"I'll kill two birds with one stone."</td></tr>
+      <tr><td class="td-pv">hold your horses</td><td class="td-vi">khoan đã, chờ một chút</td><td class="td-ex">"Hold your horses! Let me finish."</td></tr>
+      <tr><td class="td-pv">the elephant in the room</td><td class="td-vi">vấn đề lớn nhưng mọi người tránh đề cập</td><td class="td-ex">"Let's address the elephant in the room."</td></tr>
+      <tr><td class="td-pv">barking up the wrong tree</td><td class="td-vi">hiểu sai vấn đề, tìm sai chỗ</td><td class="td-ex">"You're barking up the wrong tree."</td></tr>
+      <tr><td class="td-pv">a wolf in sheep's clothing</td><td class="td-vi">kẻ giả vờ hiền lành</td><td class="td-ex">"Don't trust him — he's a wolf in sheep's clothing."</td></tr>
+      <tr><td class="td-pv">once in a blue moon</td><td class="td-vi">hiếm khi lắm, lâu lâu mới có</td><td class="td-ex">"We only meet once in a blue moon."</td></tr>
+    </table>
+  </div>
+
+  <div class="anchor" id="idioms-colour">
+    <div class="section-title" style="margin-top:24px">Thành ngữ về màu sắc</div>
+    <table class="pv-table">
+      <tr><th>Idiom</th><th>Màu</th><th>Nghĩa & Ví dụ</th></tr>
+      <tr><td class="td-pv">out of the blue</td><td>🔵 blue</td><td class="td-ex">Bất ngờ, không báo trước — "The call came out of the blue."</td></tr>
+      <tr><td class="td-pv">see red</td><td>🔴 red</td><td class="td-ex">Nổi giận dữ — "He saw red when he heard the news."</td></tr>
+      <tr><td class="td-pv">green with envy</td><td>🟢 green</td><td class="td-ex">Ghen tị tột độ — "She was green with envy."</td></tr>
+      <tr><td class="td-pv">caught red-handed</td><td>🔴 red</td><td class="td-ex">Bắt quả tang — "He was caught red-handed stealing."</td></tr>
+      <tr><td class="td-pv">in the black / in the red</td><td>⚫🔴</td><td class="td-ex">Có lãi / bị thua lỗ — "The company is finally in the black."</td></tr>
+      <tr><td class="td-pv">give the green light</td><td>🟢 green</td><td class="td-ex">Cho phép, bật đèn xanh — "The boss gave the green light."</td></tr>
+      <tr><td class="td-pv">grey area</td><td>⚫ grey</td><td class="td-ex">Vùng mờ, không rõ ràng — "This is a legal grey area."</td></tr>
+    </table>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box" id="q-c1">
+    <div class="qb-label">Kiểm tra Collocations — Câu 1</div>
+    <div class="qb-q">Chọn collocation đúng: "She ___ a lot of progress in her English."</div>
+    <div class="qb-opts">
+      <button class="qb-opt" onclick="checkQ('q-c1',this,'wrong','Sai! "did progress" không phải collocation tự nhiên trong tiếng Anh.')">did</button>
+      <button class="qb-opt" onclick="checkQ('q-c1',this,'correct','Đúng! "make progress" là collocation cố định. Tương tự: make a mistake, make a decision, make an effort.')">made</button>
+      <button class="qb-opt" onclick="checkQ('q-c1',this,'wrong','Sai! "had progress" không phải collocation đúng.')">had</button>
+      <button class="qb-opt" onclick="checkQ('q-c1',this,'wrong','Sai! "took progress" không dùng được trong trường hợp này.')">took</button>
+    </div>
+    <div class="qb-fb" id="q-c1-fb"></div>
+    <button class="qb-next" id="q-c1-next" onclick="resetQ('q-c1')">Thử lại →</button>
+  </div>
+
+  <div class="quiz-box" id="q-c2" style="margin-top:12px">
+    <div class="qb-label">Kiểm tra Phrasal Verbs — Câu 2</div>
+    <div class="qb-q">"I can't ___ why she left without saying goodbye." — Phrasal verb nào phù hợp?</div>
+    <div class="qb-opts">
+      <button class="qb-opt" onclick="checkQ('q-c2',this,'wrong','Sai! "find out" = phát hiện thông tin bên ngoài. Câu này cần hiểu ra lý do.')">find out</button>
+      <button class="qb-opt" onclick="checkQ('q-c2',this,'correct','Đúng! "figure out" = tìm ra, hiểu ra (qua suy nghĩ). "I can\'t figure out why..." = tôi không thể hiểu tại sao...')">figure out</button>
+      <button class="qb-opt" onclick="checkQ('q-c2',this,'wrong','Sai! "work out" ở đây không phù hợp về nghĩa.')">work out</button>
+      <button class="qb-opt" onclick="checkQ('q-c2',this,'wrong','Sai! "point out" = chỉ ra cho người khác thấy, không phù hợp ở đây.')">point out</button>
+    </div>
+    <div class="qb-fb" id="q-c2-fb"></div>
+    <button class="qb-next" id="q-c2-next" onclick="resetQ('q-c2')">Thử lại →</button>
+  </div>
+
+  <div style="height:60px"></div>
+</main>
+</div>
+
+<script>
+const COLLOCATIONS = [
+  // HAVE
+  {phrase:'have a conversation',verb:'have',noun:'conversation',topic:'have',vi:'có cuộc trò chuyện',ex:'We had a long conversation about life.',exvi:'Chúng tôi có một cuộc trò chuyện dài về cuộc sống.',more:[{en:'Can we have a conversation about this?',vi:'Chúng ta có thể nói chuyện về điều này không?'}],tags:['daily','ielts']},
+  {phrase:'have a break',verb:'have',noun:'break',topic:'have',vi:'nghỉ giải lao',ex:"Let's have a break for 10 minutes.",exvi:'Hãy nghỉ 10 phút.',more:[{en:'I need to have a break from studying.',vi:'Tôi cần nghỉ ngơi khỏi việc học.'}],tags:['daily']},
+  {phrase:'have an impact',verb:'have',noun:'impact',topic:'have',vi:'có tác động',ex:'Social media has a huge impact on society.',exvi:'Mạng xã hội có tác động lớn đến xã hội.',more:[],tags:['ielts','formal']},
+  {phrase:'have an argument',verb:'have',noun:'argument',topic:'have',vi:'cãi nhau',ex:'They had an argument about money.',exvi:'Họ cãi nhau về tiền bạc.',more:[],tags:['daily']},
+  {phrase:'have a word with',verb:'have',noun:'word',topic:'have',vi:'nói chuyện riêng với ai',ex:'Can I have a word with you?',exvi:'Tôi có thể nói chuyện riêng với bạn được không?',more:[],tags:['daily']},
+  // TAKE
+  {phrase:'take responsibility',verb:'take',noun:'responsibility',topic:'take',vi:'chịu trách nhiệm',ex:'You must take responsibility for your actions.',exvi:'Bạn phải chịu trách nhiệm về hành động của mình.',more:[],tags:['formal','ielts']},
+  {phrase:'take advantage of',verb:'take',noun:'advantage',topic:'take',vi:'tận dụng',ex:'Take advantage of every opportunity.',exvi:'Hãy tận dụng mọi cơ hội.',more:[],tags:['daily','ielts']},
+  {phrase:'take action',verb:'take',noun:'action',topic:'take',vi:'hành động',ex:'Governments must take action on climate change.',exvi:'Chính phủ phải hành động về biến đổi khí hậu.',more:[],tags:['ielts','formal']},
+  {phrase:'take a risk',verb:'take',noun:'risk',topic:'take',vi:'chấp nhận rủi ro',ex:'Sometimes you have to take a risk.',exvi:'Đôi khi bạn phải chấp nhận rủi ro.',more:[],tags:['daily']},
+  {phrase:'take care of',verb:'take',noun:'care',topic:'take',vi:'chăm sóc',ex:'She takes care of her elderly parents.',exvi:'Cô ấy chăm sóc bố mẹ già.',more:[],tags:['daily']},
+  // GET
+  {phrase:'get rid of',verb:'get',noun:'rid',topic:'get',vi:'loại bỏ',ex:'We need to get rid of bad habits.',exvi:'Chúng ta cần loại bỏ thói quen xấu.',more:[],tags:['daily']},
+  {phrase:'get in touch',verb:'get',noun:'touch',topic:'get',vi:'liên lạc',ex:"Let's get in touch next week.",exvi:'Chúng ta liên lạc vào tuần sau nhé.',more:[],tags:['daily','business']},
+  {phrase:'get the impression',verb:'get',noun:'impression',topic:'get',vi:'có ấn tượng rằng',ex:'I get the impression she is unhappy.',exvi:'Tôi có ấn tượng rằng cô ấy không vui.',more:[],tags:['daily']},
+  {phrase:'get the most out of',verb:'get',noun:'most',topic:'get',vi:'tận dụng tối đa',ex:'Get the most out of your time at university.',exvi:'Tận dụng tối đa thời gian đại học của bạn.',more:[],tags:['daily','ielts']},
+  // TIME
+  {phrase:'save time',verb:'save',noun:'time',topic:'time',vi:'tiết kiệm thời gian',ex:'Technology helps us save time.',exvi:'Công nghệ giúp chúng ta tiết kiệm thời gian.',more:[],tags:['daily','ielts']},
+  {phrase:'waste time',verb:'waste',noun:'time',topic:'time',vi:'lãng phí thời gian',ex:"Don't waste time on unimportant things.",exvi:'Đừng lãng phí thời gian vào những thứ không quan trọng.',more:[],tags:['daily']},
+  {phrase:'spend time',verb:'spend',noun:'time',topic:'time',vi:'dành thời gian',ex:'I love spending time with my family.',exvi:'Tôi thích dành thời gian với gia đình.',more:[],tags:['daily']},
+  {phrase:'run out of time',verb:'run out of',noun:'time',topic:'time',vi:'hết giờ',ex:'We ran out of time before the deadline.',exvi:'Chúng tôi hết thời gian trước hạn chót.',more:[],tags:['daily']},
+  {phrase:'kill time',verb:'kill',noun:'time',topic:'time',vi:'giết thời gian, chờ đợi',ex:'I was killing time at the airport.',exvi:'Tôi đang giết thời gian ở sân bay.',more:[],tags:['daily']},
+  // MONEY
+  {phrase:'make a profit',verb:'make',noun:'profit',topic:'money',vi:'kiếm lợi nhuận',ex:'The company made a large profit last year.',exvi:'Công ty kiếm được lợi nhuận lớn năm ngoái.',more:[],tags:['business']},
+  {phrase:'save money',verb:'save',noun:'money',topic:'money',vi:'tiết kiệm tiền',ex:'You should save money for emergencies.',exvi:'Bạn nên tiết kiệm tiền cho những lúc khẩn cấp.',more:[],tags:['daily']},
+  {phrase:'spend money on',verb:'spend',noun:'money',topic:'money',vi:'chi tiền vào',ex:'She spends too much money on clothes.',exvi:'Cô ấy chi quá nhiều tiền vào quần áo.',more:[],tags:['daily']},
+  {phrase:'earn a living',verb:'earn',noun:'living',topic:'money',vi:'kiếm sống',ex:'It is hard to earn a living as an artist.',exvi:'Thật khó để kiếm sống bằng nghề nghệ thuật.',more:[],tags:['daily','ielts']},
+  // WORK
+  {phrase:'meet a deadline',verb:'meet',noun:'deadline',topic:'work',vi:'kịp hạn chót',ex:'We need to meet the deadline.',exvi:'Chúng ta cần kịp hạn chót.',more:[],tags:['business','daily']},
+  {phrase:'apply for a job',verb:'apply',noun:'job',topic:'work',vi:'nộp đơn xin việc',ex:'She applied for three jobs last week.',exvi:'Cô ấy nộp đơn xin 3 việc tuần trước.',more:[],tags:['daily']},
+  {phrase:'work overtime',verb:'work',noun:'overtime',topic:'work',vi:'làm thêm giờ',ex:'He always works overtime.',exvi:'Anh ấy luôn làm thêm giờ.',more:[],tags:['business','daily']},
+  {phrase:'reach a compromise',verb:'reach',noun:'compromise',topic:'work',vi:'đi đến thỏa hiệp',ex:'Both sides reached a compromise.',exvi:'Cả hai bên đã đi đến thỏa hiệp.',more:[],tags:['formal','business']},
+  // HEALTH
+  {phrase:'stay fit',verb:'stay',noun:'fit',topic:'health',vi:'giữ dáng, khỏe mạnh',ex:'Exercise helps you stay fit.',exvi:'Tập thể dục giúp bạn giữ dáng.',more:[],tags:['daily']},
+  {phrase:'have a balanced diet',verb:'have',noun:'diet',topic:'health',vi:'ăn uống cân bằng',ex:'It is important to have a balanced diet.',exvi:'Điều quan trọng là ăn uống cân bằng.',more:[],tags:['ielts','daily']},
+  {phrase:'suffer from',verb:'suffer',noun:'illness',topic:'health',vi:'mắc phải (bệnh)',ex:'Millions suffer from mental health issues.',exvi:'Hàng triệu người mắc các vấn đề tâm lý.',more:[],tags:['ielts','formal']},
+  {phrase:'boost immunity',verb:'boost',noun:'immunity',topic:'health',vi:'tăng cường miễn dịch',ex:'Vitamin C can boost immunity.',exvi:'Vitamin C có thể tăng cường miễn dịch.',more:[],tags:['daily']},
+  // ENVIRONMENT
+  {phrase:'raise awareness',verb:'raise',noun:'awareness',topic:'environment',vi:'nâng cao nhận thức',ex:'We must raise awareness about climate change.',exvi:'Chúng ta phải nâng cao nhận thức về biến đổi khí hậu.',more:[],tags:['ielts','formal']},
+  {phrase:'reduce carbon emissions',verb:'reduce',noun:'emissions',topic:'environment',vi:'giảm khí thải carbon',ex:'Nations are trying to reduce carbon emissions.',exvi:'Các quốc gia đang cố giảm khí thải carbon.',more:[],tags:['ielts']},
+  {phrase:'protect the environment',verb:'protect',noun:'environment',topic:'environment',vi:'bảo vệ môi trường',ex:'Everyone must protect the environment.',exvi:'Mọi người phải bảo vệ môi trường.',more:[],tags:['ielts','daily']},
+  {phrase:'tackle climate change',verb:'tackle',noun:'climate change',topic:'environment',vi:'giải quyết biến đổi khí hậu',ex:'World leaders met to tackle climate change.',exvi:'Các nhà lãnh đạo thế giới họp để giải quyết biến đổi khí hậu.',more:[],tags:['ielts']},
+  // EDUCATION
+  {phrase:'acquire knowledge',verb:'acquire',noun:'knowledge',topic:'education',vi:'tiếp thu kiến thức',ex:'Students acquire knowledge through experience.',exvi:'Học sinh tiếp thu kiến thức qua trải nghiệm.',more:[],tags:['ielts','formal']},
+  {phrase:'broaden horizons',verb:'broaden',noun:'horizons',topic:'education',vi:'mở rộng tầm nhìn',ex:'Travelling abroad broadens your horizons.',exvi:'Du lịch nước ngoài mở rộng tầm nhìn của bạn.',more:[],tags:['ielts']},
+  {phrase:'gain experience',verb:'gain',noun:'experience',topic:'education',vi:'tích lũy kinh nghiệm',ex:'Internships help you gain valuable experience.',exvi:'Thực tập giúp bạn tích lũy kinh nghiệm quý báu.',more:[],tags:['daily','ielts']},
+  {phrase:'pass an exam',verb:'pass',noun:'exam',topic:'education',vi:'vượt qua kỳ thi',ex:'She worked hard to pass the IELTS exam.',exvi:'Cô ấy học chăm chỉ để vượt qua kỳ thi IELTS.',more:[],tags:['daily']},
+  // FEELINGS
+  {phrase:'feel overwhelmed',verb:'feel',noun:'overwhelmed',topic:'feelings',vi:'cảm thấy quá tải',ex:'I feel overwhelmed with work.',exvi:'Tôi cảm thấy quá tải với công việc.',more:[],tags:['daily']},
+  {phrase:'burst into tears',verb:'burst',noun:'tears',topic:'feelings',vi:'oà khóc',ex:'She burst into tears when she heard the news.',exvi:'Cô ấy oà khóc khi nghe tin.',more:[],tags:['daily']},
+  {phrase:'take pride in',verb:'take',noun:'pride',topic:'feelings',vi:'tự hào về',ex:'She takes great pride in her work.',exvi:'Cô ấy rất tự hào về công việc của mình.',more:[],tags:['daily','ielts']},
+  {phrase:'lose patience',verb:'lose',noun:'patience',topic:'feelings',vi:'mất kiên nhẫn',ex:'He lost patience with the long wait.',exvi:'Anh ấy mất kiên nhẫn vì chờ đợi quá lâu.',more:[],tags:['daily']},
+];
+
+let currentTopic='all';
+let expandedIdx=null;
+
+function getFiltered(){
+  const q=document.getElementById('searchInput')?.value.toLowerCase().trim();
+  let data=[...COLLOCATIONS];
+  if(currentTopic!=='all') data=data.filter(c=>c.topic===currentTopic);
+  if(q) data=data.filter(c=>c.phrase.includes(q)||c.vi.includes(q));
+  return data;
+}
+
+const TAG_LABELS={daily:'🟢 Đời thường',formal:'🔵 Trang trọng',ielts:'⭐ IELTS',business:'🟠 Kinh doanh'};
+
+function renderCollocations(){
+  const data=getFiltered();
+  document.getElementById('statShowing').textContent=data.length;
+  const container=document.getElementById('collocationContainer');
+  if(!data.length){container.innerHTML='<div class="no-results">Không tìm thấy collocation nào.</div>';return;}
+  container.innerHTML=`<div class="coll-grid">${data.map((c,i)=>`
+    <div class="coll-card" id="cc-${i}" onclick="toggleCC(${i})">
+      <div class="cc-phrase"><span class="verb">${c.verb}</span> + <span class="noun">${c.noun}</span></div>
+      <div class="cc-vi">${c.vi}</div>
+      <div class="cc-ex">"${c.ex}"</div>
+      <div class="cc-detail">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-style:normal">${c.exvi}</div>
+        ${c.more.length?`<div class="cc-more-ex">${c.more.map(m=>`<div class="cc-mex">"${m.en}"<div class="cc-mex-vi">${m.vi}</div></div>`).join('')}</div>`:''}
+        <div class="cc-tags">${c.tags.map(t=>`<span class="cc-tag ${t==='daily'?'tag-daily':t==='formal'?'tag-formal':t==='ielts'?'tag-ielts':'tag-business'}">${TAG_LABELS[t]||t}</span>`).join('')}</div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function toggleCC(i){
+  const card=document.getElementById('cc-'+i);
+  const isExp=card.classList.contains('expanded');
+  if(expandedIdx!==null){document.getElementById('cc-'+expandedIdx)?.classList.remove('expanded');}
+  card.classList.toggle('expanded',!isExp);
+  expandedIdx=isExp?null:i;
+}
+
+function filterTopic(topic,el){
+  currentTopic=topic;
+  document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  renderCollocations();
+}
+
+function scrollTo(id){
+  document.querySelector(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+function checkQ(id,btn,type,msg){
+  btn.closest('.quiz-box').querySelectorAll('.qb-opt').forEach(o=>o.disabled=true);
+  btn.classList.add(type);
+  const fb=document.getElementById(id+'-fb');
+  fb.textContent=(type==='correct'?'✓ ':'✗ ')+msg;
+  fb.className='qb-fb '+(type==='correct'?'ok':'no');
+  document.getElementById(id+'-next').classList.add('show');
+}
+function resetQ(id){
+  document.getElementById(id).querySelectorAll('.qb-opt').forEach(o=>{o.disabled=false;o.classList.remove('correct','wrong')});
+  document.getElementById(id+'-fb').className='qb-fb';
+  document.getElementById(id+'-next').classList.remove('show');
+}
+
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('.anchor').forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  if(cur){document.querySelectorAll('.sb-item').forEach(i=>i.classList.toggle('active',i.getAttribute('href')==='#'+cur))}
+});
+
+renderCollocations();
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

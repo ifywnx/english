@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasyEnglish — Tự học tiếng Anh từ A-Z</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:600px;height:600px;background:rgba(100,216,165,0.12);top:-200px;right:-100px}
+.orb2{width:500px;height:500px;background:rgba(167,139,250,0.08);bottom:-100px;left:-150px}
+.orb3{width:300px;height:300px;background:rgba(240,194,122,0.08);top:50%;left:40%}
+nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.nav-top{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;max-width:1300px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-progress{display:flex;align-items:center;gap:8px;padding:7px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:8px;font-size:12px;color:var(--text2);text-decoration:none}
+.nav-progress:hover{border-color:rgba(255,255,255,0.15);color:var(--text)}
+.streak-pill{padding:6px 14px;background:rgba(232,197,71,0.12);border:0.5px solid rgba(232,197,71,0.3);border-radius:20px;font-size:12px;color:var(--accent)}
+.nav-bottom{display:flex;gap:0;padding:0 40px;border-top:0.5px solid var(--border);overflow:visible;position:relative;justify-content:center}
+.nav-group{position:relative}
+.nav-group-btn{display:flex;align-items:center;gap:5px;padding:10px 14px;font-size:12px;color:var(--text2);background:transparent;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:all .2s;border-bottom:2px solid transparent}
+.nav-group-btn:hover{color:var(--text);border-bottom-color:rgba(255,255,255,0.2)}
+.nav-group-btn.act{color:var(--accent);border-bottom-color:var(--accent)}
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:10px;min-width:210px;z-index:300;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-group.open .nav-dropdown,.nav-group:hover .nav-dropdown{display:flex;flex-direction:column;gap:2px}
+.nd-item{padding:9px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .15s;display:flex;align-items:center;gap:8px}
+.nd-item:hover{background:var(--card2);color:var(--text)}
+.nd-icon{font-size:14px;width:20px;text-align:center}
+.nd-badge{margin-left:auto;padding:1px 7px;border-radius:8px;font-size:10px;background:rgba(232,197,71,0.15);color:var(--accent)}
+.nd-badge.new{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.hero{position:relative;z-index:1;padding:72px 40px 60px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 8px;background:rgba(232,197,71,0.1);border:0.5px solid rgba(232,197,71,0.3);border-radius:20px;margin-bottom:22px;font-size:12px;color:var(--accent)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:'Fraunces',serif;font-size:50px;line-height:1.1;font-weight:300;margin-bottom:18px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero h1 .l2{display:block;color:var(--text2);font-size:38px}
+.hero-desc{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:28px;max-width:460px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.btn-gold{padding:12px 26px;background:var(--accent);color:#0f0e17;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s}
+.btn-gold:hover{background:#f0d060;transform:translateY(-2px)}
+.btn-out{padding:12px 26px;background:transparent;color:var(--text);border:0.5px solid var(--border);border-radius:10px;font-size:14px;text-decoration:none;transition:all .2s}
+.btn-out:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04)}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.stat{border-left:2px solid var(--accent2);padding-left:12px}
+.stat-num{font-family:'Fraunces',serif;font-size:24px;color:var(--text)}
+.stat-label{font-size:11px;color:var(--text3);margin-top:2px}
+.roadmap-card{background:var(--card);border:0.5px solid var(--border);border-radius:20px;padding:24px;position:relative;overflow:hidden}
+.roadmap-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent),var(--accent3))}
+.rc-label{font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.rm-list{display:flex;flex-direction:column;gap:7px}
+.rm-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--bg3);border:0.5px solid var(--border);text-decoration:none;transition:all .2s}
+.rm-item:hover{border-color:rgba(255,255,255,0.15);transform:translateX(4px)}
+.rm-item.done{border-color:rgba(100,216,165,0.3);background:rgba(78,205,196,0.05)}
+.rm-item.active{border-color:rgba(232,197,71,0.4);background:rgba(232,197,71,0.05)}
+.rm-num{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;background:var(--bg2);color:var(--text3)}
+.rm-item.done .rm-num{background:rgba(78,205,196,0.2);color:var(--accent3)}
+.rm-item.active .rm-num{background:rgba(232,197,71,0.2);color:var(--accent)}
+.rm-text{flex:1}
+.rm-title{font-size:12px;color:var(--text);margin-bottom:1px}
+.rm-sub{font-size:11px;color:var(--text3)}
+.divider{height:0.5px;background:var(--border);max-width:1100px;margin:0 auto}
+.section{position:relative;z-index:1;padding:48px 40px;max-width:1100px;margin:0 auto}
+.sec-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sec-title{font-family:'Fraunces',serif;font-size:30px;font-weight:300;margin-bottom:8px}
+.sec-desc{font-size:13px;color:var(--text2);margin-bottom:22px;line-height:1.7}
+.quick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.qi{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);cursor:pointer;transition:all .2s;text-decoration:none}
+.qi:hover{border-color:rgba(255,255,255,0.15);background:var(--card2);transform:translateY(-2px)}
+.qi-icon{font-size:22px}
+.qi-label{font-size:11px;color:var(--text2);text-align:center;line-height:1.3}
+.ielts-banner{background:linear-gradient(135deg,rgba(123,110,246,0.15),rgba(232,197,71,0.08));border:0.5px solid rgba(123,110,246,0.3);border-radius:20px;padding:28px 36px;display:flex;align-items:center;gap:28px}
+.ib-text h2{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:6px}
+.ib-text p{font-size:13px;color:var(--text2);line-height:1.7}
+.ib-btns{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.ib-btn{padding:11px 22px;background:var(--accent2);color:#fff;border-radius:10px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s}
+.ib-btn:hover{opacity:.9;transform:translateY(-1px)}
+.ib-btn2{padding:11px 22px;background:transparent;color:var(--text);border:0.5px solid var(--border);border-radius:10px;font-size:13px;text-decoration:none;transition:all .2s}
+.ib-btn2:hover{border-color:rgba(255,255,255,0.2)}
+.modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mod-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:18px;cursor:pointer;transition:all .25s;text-decoration:none;display:block;position:relative;overflow:hidden}
+.mod-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-3px);background:var(--card2)}
+.mod-card.ft{border-color:rgba(232,197,71,0.3);background:rgba(232,197,71,0.04)}
+.mod-emoji{font-size:26px;margin-bottom:12px;display:block}
+.mod-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px}
+.mod-desc{font-size:11px;color:var(--text3);line-height:1.5}
+.mod-tag{display:inline-block;margin-top:10px;padding:2px 9px;border-radius:20px;font-size:10px}
+.tag-hot{background:rgba(232,197,71,0.15);color:var(--accent)}
+.tag-new{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.tag-ielts{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.nb{position:absolute;top:10px;right:10px;padding:2px 8px;background:rgba(78,205,196,0.2);color:var(--accent3);border-radius:8px;font-size:9px;font-weight:500}
+.levels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lv-card{border-radius:16px;padding:22px;border:0.5px solid var(--border);text-decoration:none;display:block;transition:all .2s}
+.lv-card:hover{transform:translateY(-3px)}
+.lv-b{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(78,205,196,0.02));border-color:rgba(78,205,196,0.2)}
+.lv-i{background:linear-gradient(135deg,rgba(232,197,71,0.08),rgba(232,197,71,0.02));border-color:rgba(232,197,71,0.2)}
+.lv-a{background:linear-gradient(135deg,rgba(123,110,246,0.08),rgba(123,110,246,0.02));border-color:rgba(123,110,246,0.2)}
+.lv-pill{display:inline-block;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:500;margin-bottom:10px}
+.lv-b .lv-pill{background:rgba(78,205,196,0.2);color:var(--accent3)}
+.lv-i .lv-pill{background:rgba(232,197,71,0.2);color:var(--accent)}
+.lv-a .lv-pill{background:rgba(123,110,246,0.2);color:var(--accent2)}
+.lv-card h3{font-size:15px;font-weight:500;color:var(--text);margin-bottom:12px}
+.lv-list{list-style:none}
+.lv-list li{font-size:12px;color:var(--text2);padding:4px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:7px}
+.lv-list li:last-child{border-bottom:none}
+.li-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.lv-b .li-dot{background:var(--accent3)}
+.lv-i .li-dot{background:var(--accent)}
+.lv-a .li-dot{background:var(--accent2)}
+.lv-btn{display:block;width:100%;margin-top:14px;padding:9px;text-align:center;border-radius:8px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .2s}
+.lv-b .lv-btn{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.lv-b .lv-btn:hover{background:rgba(78,205,196,0.25)}
+.lv-i .lv-btn{background:rgba(232,197,71,0.15);color:var(--accent)}
+.lv-i .lv-btn:hover{background:rgba(232,197,71,0.25)}
+.lv-a .lv-btn{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.lv-a .lv-btn:hover{background:rgba(123,110,246,0.25)}
+.bot-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.streak-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:20px;display:flex;align-items:center;gap:16px}
+.sc-circle{width:60px;height:60px;border-radius:50%;border:2px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.sc-num{font-family:'Fraunces',serif;font-size:22px;color:var(--accent);line-height:1}
+.sc-txt{font-size:9px;color:var(--text3);text-transform:uppercase}
+.streak-info h4{font-size:14px;margin-bottom:4px}
+.streak-info p{font-size:12px;color:var(--text3)}
+.streak-days{display:flex;gap:5px;margin-left:auto}
+.day-dot{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text3);background:var(--bg3);border:0.5px solid var(--border)}
+.day-dot.done{background:rgba(232,197,71,0.2);color:var(--accent);border-color:rgba(232,197,71,0.3)}
+.day-dot.today{background:var(--accent);color:#0f0e17;font-weight:500}
+.tip-card{background:rgba(123,110,246,0.08);border:0.5px solid rgba(123,110,246,0.25);border-radius:16px;padding:18px;display:flex;gap:12px;align-items:flex-start}
+.tip-icon-box{width:34px;height:34px;border-radius:8px;background:rgba(123,110,246,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.tip-card h4{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-card p{font-size:12px;color:var(--text2);line-height:1.65}
+footer{position:relative;z-index:1;border-top:0.5px solid var(--border);padding:22px 40px;max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer p{font-size:12px;color:var(--text3)}
+.footer-links{display:flex;gap:14px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:var(--text3);text-decoration:none}
+.footer-links a:hover{color:var(--text2)}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+<nav>
+  <div class="nav-top">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">E</div>
+      <span class="logo-name">Easy<span>English</span></span>
+    </a>
+    <div class="nav-actions">
+      <a href="progress.html" class="nav-progress">📊 Tiến độ</a>
+      <div class="streak-pill" id="navStreak">🔥 0 ngày</div>
+      <a href="grammar.html" style="padding:8px 18px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none">Học ngay →</a>
+    </div>
+  </div>
+  <div class="nav-bottom">
+    <div class="nav-group">
+      <button class="nav-group-btn">📚 Ngữ pháp ▾</button>
+      <div class="nav-dropdown">
+        <a href="grammar.html" class="nd-item"><span class="nd-icon">📖</span>Ngữ pháp cơ bản<span class="nd-badge">12 thì</span></a>
+        <a href="grammar-advanced.html" class="nd-item"><span class="nd-icon">🚀</span>Ngữ pháp nâng cao<span class="nd-badge new">Band 8</span></a>
+        <a href="collocations.html" class="nd-item"><span class="nd-icon">🔗</span>Collocations & Phrasal Verbs</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn">💬 Từ vựng ▾</button>
+      <div class="nav-dropdown">
+        <a href="vocabulary.html" class="nd-item"><span class="nd-icon">🗂️</span>Từ vựng theo chủ đề</a>
+        <a href="synonyms.html" class="nd-item"><span class="nd-icon">🔄</span>Đồng/Trái nghĩa</a>
+        <a href="dictionary-everyday.html" class="nd-item"><span class="nd-icon">📒</span>Từ điển đời thường 1<span class="nd-badge">A1–B2</span></a>
+        <a href="dictionary-everyday-2.html" class="nd-item"><span class="nd-icon">📒</span>Từ điển đời thường 2<span class="nd-badge new">150 từ</span></a>
+        <a href="dictionary-ielts.html" class="nd-item"><span class="nd-icon">📗</span>Từ điển IELTS<span class="nd-badge new">Band 6–8</span></a>
+        <a href="dictionary-ielts-2.html" class="nd-item"><span class="nd-icon">📗</span>Từ điển IELTS 2<span class="nd-badge new">150 từ</span></a>
+        <a href="academic-words.html" class="nd-item"><span class="nd-icon">⭐</span>AWL 570 từ học thuật</a>
+        <a href="dictionary.html" class="nd-item"><span class="nd-icon">🔍</span>Tra cứu nhanh</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn">🔊 Phát âm ▾</button>
+      <div class="nav-dropdown">
+        <a href="pronunciation.html" class="nd-item"><span class="nd-icon">🎵</span>Bảng IPA đầy đủ</a>
+        <a href="pronunciation.html#vowels" class="nd-item"><span class="nd-icon">🔵</span>12 Nguyên âm</a>
+        <a href="pronunciation.html#consonants" class="nd-item"><span class="nd-icon">🔴</span>24 Phụ âm</a>
+        <a href="pronunciation.html#stress-word" class="nd-item"><span class="nd-icon">💪</span>Trọng âm & Ngữ điệu</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn">✍️ 4 Kỹ năng ▾</button>
+      <div class="nav-dropdown">
+        <a href="skills.html#reading" class="nd-item"><span class="nd-icon">📰</span>Đọc hiểu</a>
+        <a href="skills.html#listening" class="nd-item"><span class="nd-icon">🎧</span>Nghe hiểu</a>
+        <a href="skills.html#speaking" class="nd-item"><span class="nd-icon">🗣️</span>Giao tiếp & Nói</a>
+        <a href="skills.html#writing" class="nd-item"><span class="nd-icon">✍️</span>Kỹ năng viết</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn act">🎯 IELTS ▾</button>
+      <div class="nav-dropdown">
+        <a href="ielts.html" class="nd-item"><span class="nd-icon">🏆</span>IELTS Guide toàn diện<span class="nd-badge new">NEW</span></a>
+        <a href="ielts.html#task1" class="nd-item"><span class="nd-icon">📊</span>Writing Task 1</a>
+        <a href="ielts.html#task2" class="nd-item"><span class="nd-icon">📝</span>Writing Task 2 + bài mẫu</a>
+        <a href="ielts.html#reading" class="nd-item"><span class="nd-icon">📖</span>Reading 13 dạng câu</a>
+        <a href="ielts.html#listening" class="nd-item"><span class="nd-icon">🎧</span>Listening 4 sections</a>
+        <a href="ielts.html#speaking" class="nd-item"><span class="nd-icon">🗣️</span>Speaking Part 1–3</a>
+        <a href="ielts.html#calculator" class="nd-item"><span class="nd-icon">🧮</span>Tính điểm Band</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn">🎮 Luyện tập ▾</button>
+      <div class="nav-dropdown">
+        <a href="quiz.html" class="nd-item"><span class="nd-icon">🎯</span>Quiz tất cả kỹ năng</a>
+        <a href="quiz.html" class="nd-item"><span class="nd-icon">📝</span>Điền vào chỗ trống</a>
+        <a href="quiz.html" class="nd-item"><span class="nd-icon">🔀</span>Sắp xếp câu</a>
+        <a href="vocabulary.html" class="nd-item"><span class="nd-icon">🃏</span>Flashcard từ vựng</a>
+        <a href="academic-words.html" class="nd-item"><span class="nd-icon">⭐</span>AWL Flashcard & Quiz</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn">📊 Tiến độ ▾</button>
+      <div class="nav-dropdown">
+        <a href="progress.html" class="nd-item"><span class="nd-icon">📊</span>Dashboard học tập<span class="nd-badge new">NEW</span></a>
+        <a href="progress.html" class="nd-item"><span class="nd-icon">🏆</span>16 Thành tích</a>
+        <a href="progress.html" class="nd-item"><span class="nd-icon">🎯</span>Mục tiêu IELTS</a>
+        <a href="progress.html" class="nd-item"><span class="nd-icon">📝</span>Ghi chú học tập</a>
+        <a href="progress.html" class="nd-item"><span class="nd-icon">⚡</span>Hệ thống XP & Level</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-badge"><span class="badge-dot"></span>14 modules · Miễn phí · Offline · Mục tiêu IELTS 8.0</div>
+    <h1>Học tiếng Anh<em>từ con số 0</em><span class="l2">lên IELTS 8.0</span></h1>
+    <p class="hero-desc">Lộ trình học bài bản từ A–Z dành cho người Việt. Ngữ pháp, từ vựng, phát âm, IELTS — tất cả giải thích chi tiết bằng tiếng Việt, có ví dụ thực tế và bài tập tương tác.</p>
+    <div class="hero-btns">
+      <a href="grammar.html" class="btn-gold">Bắt đầu học ngay</a>
+      <a href="ielts.html" class="btn-out">IELTS Guide →</a>
+      <a href="progress.html" class="btn-out">📊 Tiến độ</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">14</div><div class="stat-label">Modules</div></div>
+      <div class="stat"><div class="stat-num">570</div><div class="stat-label">AWL words</div></div>
+      <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Phrasal Verbs</div></div>
+      <div class="stat"><div class="stat-num">8.0</div><div class="stat-label">Band mục tiêu</div></div>
+    </div>
+  </div>
+  <div class="roadmap-card">
+    <div class="rc-label">🗺️ Lộ trình học của bạn</div>
+    <div class="rm-list">
+      <a href="pronunciation.html" class="rm-item done"><div class="rm-num">1</div><div class="rm-text"><div class="rm-title">Phát âm & Bảng chữ cái</div><div class="rm-sub">IPA · 44 âm · Trọng âm</div></div><span>✓</span></a>
+      <a href="vocabulary.html" class="rm-item active"><div class="rm-num">2</div><div class="rm-text"><div class="rm-title">Từ vựng nền tảng</div><div class="rm-sub">1000+ từ · Flashcard · Chủ đề</div></div><span>→</span></a>
+      <a href="grammar.html" class="rm-item"><div class="rm-num">3</div><div class="rm-text"><div class="rm-title">Ngữ pháp A1 → B2</div><div class="rm-sub">16 thì · Từ loại · Câu điều kiện</div></div><span>→</span></a>
+      <a href="grammar-advanced.html" class="rm-item"><div class="rm-num">4</div><div class="rm-text"><div class="rm-title">Ngữ pháp nâng cao</div><div class="rm-sub">Inversion · Cleft · Modal Perfect</div></div><span>→</span></a>
+      <a href="collocations.html" class="rm-item"><div class="rm-num">5</div><div class="rm-text"><div class="rm-title">Collocations & Phrasal Verbs</div><div class="rm-sub">200+ cụm từ · 70+ phrasal verbs</div></div><span>→</span></a>
+      <a href="academic-words.html" class="rm-item"><div class="rm-num">6</div><div class="rm-text"><div class="rm-title">AWL 570 từ học thuật</div><div class="rm-sub">Sublist 1–10 · Quiz · Flashcard</div></div><span>→</span></a>
+      <a href="ielts.html" class="rm-item"><div class="rm-num">7</div><div class="rm-text"><div class="rm-title">IELTS Band 7 → 8.0</div><div class="rm-sub">Writing · Reading · Listening · Speaking</div></div><span>→</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- QUICK ACCESS -->
+<div class="section">
+  <div class="sec-label">Học ngay</div>
+  <div class="sec-title">Truy cập nhanh</div>
+  <div class="sec-desc" style="margin-bottom:18px">Chủ đề phổ biến nhất — bấm vào học luôn</div>
+  <div class="quick-grid">
+    <a href="vocabulary.html#alphabet" class="qi"><span class="qi-icon">🔤</span><span class="qi-label">Bảng chữ cái</span></a>
+    <a href="vocabulary.html#numbers" class="qi"><span class="qi-icon">🔢</span><span class="qi-label">Số đếm</span></a>
+    <a href="vocabulary.html#colors" class="qi"><span class="qi-icon">🎨</span><span class="qi-label">Màu sắc</span></a>
+    <a href="vocabulary.html#family" class="qi"><span class="qi-icon">👨‍👩‍👧</span><span class="qi-label">Gia đình</span></a>
+    <a href="vocabulary.html#food" class="qi"><span class="qi-icon">🍜</span><span class="qi-label">Thức ăn</span></a>
+    <a href="vocabulary.html#greetings" class="qi"><span class="qi-icon">👋</span><span class="qi-label">Chào hỏi</span></a>
+    <a href="grammar.html#present-simple" class="qi"><span class="qi-icon">📅</span><span class="qi-label">Hiện tại đơn</span></a>
+    <a href="grammar.html#past-simple" class="qi"><span class="qi-icon">⏪</span><span class="qi-label">Quá khứ đơn</span></a>
+    <a href="grammar-advanced.html#inversion" class="qi"><span class="qi-icon">🔄</span><span class="qi-label">Câu đảo ngữ</span></a>
+    <a href="pronunciation.html#vowels" class="qi"><span class="qi-icon">🔊</span><span class="qi-label">Nguyên âm IPA</span></a>
+    <a href="ielts.html#task2" class="qi"><span class="qi-icon">✍️</span><span class="qi-label">IELTS Writing</span></a>
+    <a href="collocations.html#make-do" class="qi"><span class="qi-icon">⚡</span><span class="qi-label">Make vs Do</span></a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- IELTS BANNER -->
+<div class="section">
+  <div class="ielts-banner">
+    <div style="font-size:48px;flex-shrink:0">🎯</div>
+    <div class="ib-text">
+      <h2>Mục tiêu IELTS 8.0 — Bắt đầu từ hôm nay</h2>
+      <p>Đầy đủ chiến lược 4 kỹ năng, bài mẫu Band 8, AWL 570 từ, collocations và ngữ pháp nâng cao. Mọi thứ bạn cần đều có sẵn.</p>
+    </div>
+    <div class="ib-btns">
+      <a href="ielts.html" class="ib-btn">IELTS Guide →</a>
+      <a href="academic-words.html" class="ib-btn2">AWL 570 từ</a>
+      <a href="grammar-advanced.html" class="ib-btn2">Ngữ pháp Band 8</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ALL MODULES -->
+<div class="section">
+  <div class="sec-label">14 Modules học tập</div>
+  <div class="sec-title">Đầy đủ mọi thứ từ A–Z</div>
+  <div class="sec-desc">Từ bảng chữ cái đến IELTS Band 8 — tất cả trong một website chạy offline</div>
+  <div class="modules-grid">
+    <a href="grammar.html" class="mod-card ft"><span class="mod-emoji">📚</span><div class="mod-title">Ngữ pháp cơ bản</div><div class="mod-desc">16 thì, từ loại, câu điều kiện, bị động — công thức + ví dụ + quiz</div><span class="mod-tag tag-hot">Phổ biến nhất</span></a>
+    <a href="grammar-advanced.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji">🚀</span><div class="mod-title">Ngữ pháp nâng cao</div><div class="mod-desc">Câu đảo ngữ, Cleft, Subjunctive, Modal Perfect — Band 7.5–8</div><span class="mod-tag tag-ielts">Band 8</span></a>
+    <a href="vocabulary.html" class="mod-card"><span class="mod-emoji">💬</span><div class="mod-title">Từ vựng theo chủ đề</div><div class="mod-desc">1000+ từ · Flashcard · Bảng chữ cái · Số · Màu sắc · Gia đình</div><span class="mod-tag tag-new">Flashcard</span></a>
+    <a href="pronunciation.html" class="mod-card"><span class="mod-emoji">🔊</span><div class="mod-title">Phát âm IPA</div><div class="mod-desc">12 nguyên âm + 24 phụ âm · Trọng âm · Ngữ điệu · Nối âm</div></a>
+    <a href="skills.html" class="mod-card"><span class="mod-emoji">🗣️</span><div class="mod-title">4 Kỹ năng</div><div class="mod-desc">Đọc · Nghe · Nói · Viết — chiến thuật, hội thoại, mẫu bài thực tế</div><span class="mod-tag tag-hot">Hot</span></a>
+    <a href="collocations.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji">🔗</span><div class="mod-title">Collocations & Phrasal Verbs</div><div class="mod-desc">200+ collocations · 70+ phrasal verbs · Idioms · Make vs Do</div><span class="mod-tag tag-ielts">Nói tự nhiên</span></a>
+    <a href="ielts.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji">🎯</span><div class="mod-title">IELTS Guide</div><div class="mod-desc">Writing Task 1&2 · Reading 13 dạng · Listening · Speaking · Band calculator</div><span class="mod-tag tag-ielts">Band 7–8</span></a>
+    <a href="academic-words.html" class="mod-card"><span class="mod-emoji">⭐</span><div class="mod-title">AWL 570 từ</div><div class="mod-desc">Academic Word List · Flashcard · Quiz · Sublist 1–10 · Tiến độ</div><span class="mod-tag tag-ielts">IELTS Essential</span></a>
+    <a href="dictionary-everyday.html" class="mod-card"><span class="mod-emoji">📒</span><div class="mod-title">Từ điển đời thường</div><div class="mod-desc">200+ từ A1–B2 · Phiên âm · Ví dụ · Đồng nghĩa · Mức độ thông dụng</div><span class="mod-tag tag-new">A1–B2</span></a>
+    <a href="dictionary-ielts.html" class="mod-card"><span class="mod-emoji">📗</span><div class="mod-title">Từ điển IELTS</div><div class="mod-desc">200+ từ học thuật · Band 6–8 · Collocations · Ghi chú thi</div><span class="mod-tag tag-ielts">Band 6–8+</span></a>
+    <a href="quiz.html" class="mod-card"><span class="mod-emoji">🎮</span><div class="mod-title">Quiz & Bài tập</div><div class="mod-desc">Grammar · Vocabulary · Pronunciation · Điền từ · Sắp xếp câu</div><span class="mod-tag tag-hot">Interactive</span></a>
+    <a href="dictionary.html" class="mod-card"><span class="mod-emoji">🔍</span><div class="mod-title">Tra cứu từ điển</div><div class="mod-desc">Tra từ nhanh · Lưu từ yêu thích · Lịch sử tra cứu · Từ của ngày</div></a>
+    <a href="skills.html#writing" class="mod-card"><span class="mod-emoji">✍️</span><div class="mod-title">Kỹ năng viết</div><div class="mod-desc">Email · Đoạn văn · Từ nối · Cấu trúc PIE · Luyện viết tại chỗ</div></a>
+    <a href="progress.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji">📊</span><div class="mod-title">Progress Dashboard</div><div class="mod-desc">Streak · XP Level · 16 Thành tích · Mục tiêu IELTS · Ghi chú</div><span class="mod-tag tag-new">Theo dõi</span></a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- LEVELS -->
+<div class="section">
+  <div class="sec-label">Trình độ</div>
+  <div class="sec-title">Bạn đang ở đâu?</div>
+  <div class="sec-desc">Chọn cấp độ phù hợp để bắt đầu hiệu quả nhất</div>
+  <div class="levels-grid">
+    <a href="grammar.html" class="lv-card lv-b">
+      <div class="lv-pill">Cơ bản · A1–A2</div>
+      <h3>Người mới hoàn toàn</h3>
+      <ul class="lv-list">
+        <li><span class="li-dot"></span>Bảng chữ cái & Phát âm IPA</li>
+        <li><span class="li-dot"></span>300 từ đầu tiên theo chủ đề</li>
+        <li><span class="li-dot"></span>Hiện tại đơn & Tiếp diễn</li>
+        <li><span class="li-dot"></span>Câu chào hỏi & Giao tiếp cơ bản</li>
+        <li><span class="li-dot"></span>Số, màu sắc, gia đình, thức ăn</li>
+      </ul>
+      <button class="lv-btn">Bắt đầu từ đây →</button>
+    </a>
+    <a href="grammar-advanced.html" class="lv-card lv-i">
+      <div class="lv-pill">Trung cấp · B1–B2</div>
+      <h3>Đã biết cơ bản</h3>
+      <ul class="lv-list">
+        <li><span class="li-dot"></span>16 thì + cấu trúc phức tạp</li>
+        <li><span class="li-dot"></span>AWL 570 từ học thuật</li>
+        <li><span class="li-dot"></span>Collocations & Phrasal Verbs</li>
+        <li><span class="li-dot"></span>Đọc hiểu bài báo tiếng Anh</li>
+        <li><span class="li-dot"></span>Viết email & đoạn văn chuẩn</li>
+      </ul>
+      <button class="lv-btn">Học cấp này →</button>
+    </a>
+    <a href="ielts.html" class="lv-card lv-a">
+      <div class="lv-pill">Nâng cao · C1+ · IELTS 7–8</div>
+      <h3>Hướng tới IELTS 8.0</h3>
+      <ul class="lv-list">
+        <li><span class="li-dot"></span>Ngữ pháp nâng cao Band 8</li>
+        <li><span class="li-dot"></span>IELTS Writing Task 1 & 2</li>
+        <li><span class="li-dot"></span>Speaking Part 1, 2, 3</li>
+        <li><span class="li-dot"></span>Reading & Listening strategies</li>
+        <li><span class="li-dot"></span>Từ vựng học thuật chuyên sâu</li>
+      </ul>
+      <button class="lv-btn">Nâng trình ngay →</button>
+    </a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- STREAK & TIP -->
+<div class="section">
+  <div class="bot-grid">
+    <div class="streak-card">
+      <div class="sc-circle">
+        <div class="sc-num" id="streakNum">0</div>
+        <div class="sc-txt">ngày</div>
+      </div>
+      <div class="streak-info">
+        <h4 id="streakMsg">Bắt đầu streak hôm nay!</h4>
+        <p id="streakSub">Học mỗi ngày để xây dựng thói quen</p>
+      </div>
+      <div class="streak-days" id="streakDays"></div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon-box">💡</div>
+      <div><h4>Mẹo học tiếng Anh hôm nay</h4><p id="dailyTip">Đang tải...</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<footer>
+  <p>EasyEnglish — Trang web tự học tiếng Anh cá nhân · 14 modules · Miễn phí · Offline</p>
+  <div class="footer-links">
+    <a href="grammar.html">Ngữ pháp</a>
+    <a href="grammar-advanced.html">Nâng cao</a>
+    <a href="vocabulary.html">Từ vựng</a>
+    <a href="pronunciation.html">Phát âm</a>
+    <a href="ielts.html">IELTS</a>
+    <a href="collocations.html">Collocations</a>
+    <a href="academic-words.html">AWL</a>
+    <a href="dictionary-everyday.html">Từ điển A1–B2</a>
+    <a href="dictionary-ielts.html">Từ điển IELTS</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="progress.html">Tiến độ</a>
+  </div>
+</footer>
+
+<script>
+const TIPS=['Học 20 phút mỗi ngày đều đặn hiệu quả hơn học 2 tiếng một lần. Não bộ ghi nhớ tốt khi được lặp lại!','Mỗi sáng học 5 từ AWL mới. Sau 4 tháng bạn sẽ thuộc hết 570 từ học thuật quan trọng nhất!','Khi gặp từ mới, đừng chỉ học nghĩa — học cả collocation: không phải "do a mistake" mà là "make a mistake"!','IELTS Writing: Luôn có Overview trong Task 1! Thiếu đoạn này không thể đạt Band 7+.','Phrasal verbs rất quan trọng! Học 3 cái mỗi ngày, 1 tháng bạn có 90 phrasal verbs trong đầu.','Inversion giúp Writing lên Band 8: "Not only does technology create jobs, but it also eliminates them."','Đọc to câu ví dụ sau khi học từ mới — ghi nhớ cả âm, nghĩa và ngữ cảnh cùng một lúc.','Xem phim với phụ đề tiếng Anh 15 phút mỗi tối — cải thiện nghe nói đáng kể sau 1 tháng.'];
+
+function initStreak(){
+  const today=new Date().toDateString();
+  let data=JSON.parse(localStorage.getItem('ee_streak')||'{"count":0,"lastVisit":"","days":[]}');
+  if(data.lastVisit!==today){
+    const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
+    if(data.lastVisit===yesterday.toDateString())data.count++;
+    else if(data.lastVisit==='')data.count=1;
+    else data.count=1;
+    data.lastVisit=today;
+    if(!data.days)data.days=[];
+    if(!data.days.includes(today))data.days.push(today);
+    if(data.days.length>30)data.days=data.days.slice(-30);
+    localStorage.setItem('ee_streak',JSON.stringify(data));
+  }
+  document.getElementById('streakNum').textContent=data.count;
+  document.getElementById('navStreak').textContent='🔥 '+data.count+' ngày';
+  if(data.count>=7){document.getElementById('streakMsg').textContent='🔥 '+data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Tuyệt vời! Tiếp tục duy trì nhé!';}
+  else if(data.count>1){document.getElementById('streakMsg').textContent=data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Học thêm '+(7-data.count)+' ngày để đạt chuỗi 7 ngày!';}
+  const dayNames=['T2','T3','T4','T5','T6','T7','CN'];
+  const dow=new Date().getDay();
+  const container=document.getElementById('streakDays');
+  for(let i=0;i<7;i++){
+    const d=document.createElement('div');d.className='day-dot';
+    const dayIdx=(i+1)%7;
+    if(dayIdx===dow){d.className+=' today';d.textContent=dayNames[i];}
+    else if(data.days&&data.days.some(dd=>{const d2=new Date(dd);return d2.getDay()===dayIdx;})){d.className+=' done';d.textContent=dayNames[i];}
+    else{d.textContent=dayNames[i];}
+    container.appendChild(d);
+  }
+}
+const doy=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
+document.getElementById('dailyTip').textContent=TIPS[doy%TIPS.length];
+initStreak();
+
+// Nav dropdown click toggle
+document.querySelectorAll('.nav-group-btn').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    const group=this.closest('.nav-group');
+    const wasOpen=group.classList.contains('open');
+    document.querySelectorAll('.nav-group.open').forEach(g=>g.classList.remove('open'));
+    if(!wasOpen) group.classList.add('open');
+  });
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-group')) document.querySelectorAll('.nav-group.open').forEach(g=>g.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

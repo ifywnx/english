@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Guide — EasyEnglish</title>
+<meta name="description" content="Hướng dẫn thi IELTS toàn diện: Writing Task 1 & 2, Reading, Listening, Speaking. Mẹo thi, cấu trúc bài, cách tính điểm Band.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:600px;height:600px;background:rgba(232,197,71,0.07);top:-200px;right:-150px}
+.orb2{width:500px;height:500px;background:rgba(123,110,246,0.06);bottom:-100px;left:-150px}
+.orb3{width:300px;height:300px;background:rgba(78,205,196,0.06);top:40%;left:35%}
+
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:12px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:8px 18px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:12px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:12px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+
+.content{padding:36px 48px;max-width:900px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:38px;font-weight:300;margin-bottom:12px;line-height:1.2}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.s-divider{height:0.5px;background:var(--border);margin:36px 0}
+.anchor{scroll-margin-top:80px}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:10px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+
+/* OVERVIEW CARDS */
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.ov-card{border-radius:16px;padding:20px;border:0.5px solid var(--border);text-align:center;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+.ov-card:hover{transform:translateY(-3px)}
+.ov-w{background:rgba(167,139,250,0.08);border-color:rgba(232,197,71,0.2)}
+.ov-r{background:rgba(78,205,196,0.06);border-color:rgba(78,205,196,0.2)}
+.ov-l{background:rgba(123,110,246,0.06);border-color:rgba(123,110,246,0.2)}
+.ov-s{background:rgba(232,121,160,0.06);border-color:rgba(232,121,160,0.2)}
+.ov-icon{font-size:30px;margin-bottom:10px}
+.ov-name{font-size:14px;font-weight:500;margin-bottom:4px}
+.ov-score{font-size:12px;color:var(--text3)}
+.ov-time{font-size:11px;color:var(--text3);margin-top:4px}
+
+/* BAND TABLE */
+.band-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px}
+.band-table th{padding:10px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.band-table td{padding:10px 14px;border:0.5px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.6}
+.band-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-band{font-family:'Fraunces',serif;font-size:20px;font-weight:300}
+.b9{color:#ffd700}.b8{color:var(--coral)}.b7{color:var(--accent)}.b6{color:var(--green)}.b5{color:var(--accent3)}
+
+/* TASK BOX */
+.task-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.task-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.task-badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500}
+.tb-gold{background:rgba(100,216,165,0.15);color:var(--accent)}
+.tb-teal{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.tb-purple{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.tb-pink{background:rgba(232,121,160,0.15);color:var(--pink)}
+.task-title{font-size:16px;font-weight:500}
+.task-time{font-size:12px;color:var(--text3);margin-left:auto}
+
+/* SAMPLE ESSAY */
+.essay-box{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+.essay-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.essay-question{background:rgba(167,139,250,0.08);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+.essay-text{font-size:13px;color:var(--text2);line-height:1.9}
+.essay-text .hi{color:var(--accent);font-weight:500;font-style:normal}
+.essay-text .hi2{color:var(--accent3);font-weight:500;font-style:normal}
+.essay-text .hi3{color:var(--pink);font-weight:500;font-style:normal}
+.essay-text p{margin-bottom:12px}
+.essay-text p:last-child{margin-bottom:0}
+
+/* STRUCTURE BOX */
+.structure{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.str-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px}
+.str-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.str-gold{background:rgba(100,216,165,0.15);color:var(--accent)}
+.str-teal{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.str-purple{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.str-pink{background:rgba(232,121,160,0.15);color:var(--pink)}
+.str-text h4{font-size:13px;font-weight:500;margin-bottom:3px}
+.str-text p{font-size:12px;color:var(--text2);line-height:1.6}
+.str-words{font-size:11px;color:var(--text3);margin-top:3px}
+
+/* TIPS */
+.tip-box{background:rgba(123,110,246,0.07);border:0.5px solid rgba(123,110,246,0.2);border-radius:12px;padding:14px 18px;display:flex;gap:12px;margin-bottom:14px}
+.tip-icon{font-size:18px;flex-shrink:0}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:12px;color:var(--text2);line-height:1.65}
+.warn-box{background:rgba(244,132,95,0.07);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.warn-box strong{color:var(--coral)}
+.ielts-box{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:12px;padding:14px 18px;margin-bottom:14px}
+.ib-label{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.ib-text{font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+
+/* PHRASE TABLE */
+.phrase-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.phrase-table th{padding:8px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.phrase-table td{padding:9px 14px;border:0.5px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.phrase-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-phrase{color:var(--text);font-style:italic}
+.td-use{color:var(--text3);font-size:11px}
+
+/* CRITERIA GRID */
+.criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.crit-card{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px}
+.crit-pct{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);margin-bottom:4px}
+.crit-name{font-size:13px;font-weight:500;margin-bottom:6px}
+.crit-desc{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* READING TYPES */
+.qtype-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.qt-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px}
+.qt-name{font-size:13px;font-weight:500;margin-bottom:4px;color:var(--text)}
+.qt-tip{font-size:12px;color:var(--text2);line-height:1.6}
+.qt-trap{font-size:11px;color:var(--coral);margin-top:5px}
+
+/* SPEAKING PARTS */
+.speaking-parts{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.sp-part{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:18px}
+.sp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sp-num{width:32px;height:32px;border-radius:8px;background:rgba(232,121,160,0.15);color:var(--pink);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;flex-shrink:0}
+.sp-title{font-size:14px;font-weight:500}
+.sp-time{font-size:11px;color:var(--text3);margin-left:auto}
+.sp-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+.sp-samples{display:flex;flex-direction:column;gap:5px}
+.sp-sample{background:var(--card);border-radius:8px;padding:8px 12px}
+.sp-q{font-size:12px;color:var(--text3);font-style:italic;margin-bottom:4px}
+.sp-a{font-size:12px;color:var(--text2);line-height:1.6}
+.sp-a .good{color:var(--green);font-weight:500}
+
+/* CUE CARD */
+.cue-card{background:rgba(232,121,160,0.06);border:1px dashed rgba(232,121,160,0.3);border-radius:12px;padding:20px;margin-bottom:14px}
+.cc-label{font-size:10px;color:var(--pink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.cc-topic{font-size:16px;font-weight:500;margin-bottom:12px}
+.cc-points{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cc-points li{font-size:13px;color:var(--text2);padding-left:16px;position:relative;line-height:1.6}
+.cc-points li::before{content:'•';position:absolute;left:0;color:var(--pink)}
+
+/* QUIZ */
+.quiz-box{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:14px;padding:20px;margin-top:20px}
+.qb-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+.qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
+.qb-hint{font-size:12px;color:var(--text3);margin-bottom:16px;font-style:italic}
+.qb-opts{display:flex;flex-direction:column;gap:8px}
+.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
+.qb-opt:hover:not(:disabled){border-color:rgba(123,110,246,0.4);color:var(--text)}
+.qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
+.qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.qb-fb{margin-top:12px;padding:11px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
+.qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
+.qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
+.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next.show{display:inline-block}
+
+/* SCORE CALCULATOR */
+.calc-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:20px}
+.calc-label{font-size:12px;color:var(--text3);margin-bottom:6px}
+.calc-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.calc-name{font-size:13px;color:var(--text);min-width:80px}
+.calc-slider{flex:1}
+.calc-val{font-size:14px;color:var(--accent);min-width:30px;text-align:right;font-weight:500}
+.calc-result{background:rgba(167,139,250,0.08);border:0.5px solid rgba(100,216,165,0.3);border-radius:10px;padding:14px;text-align:center;margin-top:8px}
+.cr-label{font-size:12px;color:var(--text3);margin-bottom:4px}
+.cr-score{font-family:'Fraunces',serif;font-size:40px;color:var(--accent)}
+.cr-note{font-size:12px;color:var(--text3);margin-top:4px}
+
+/* TASK 1 CHART PHRASES */
+.chart-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.ct-btn{padding:7px 16px;border-radius:20px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.ct-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(232,197,71,0.4);color:var(--accent)}
+.chart-content{display:none}
+.chart-content.show{display:block}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="academic-words.html" class="nav-cta">AWL 570 ★</a>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Tổng quan</div>
+  <a href="#overview" class="sb-item active">📊 Cấu trúc bài thi</a>
+  <a href="#scoring" class="sb-item">🎯 Cách tính điểm Band</a>
+  <a href="#calculator" class="sb-item">🧮 Tính điểm của bạn</a>
+
+  <div class="sidebar-title">✍️ Writing</div>
+  <a href="#task1" class="sb-item">Task 1 — Mô tả biểu đồ</a>
+  <a href="#task1-types" class="sb-item">Các loại biểu đồ</a>
+  <a href="#task1-phrases" class="sb-item">Cụm từ Task 1</a>
+  <a href="#task2" class="sb-item">Task 2 — Bài luận</a>
+  <a href="#task2-types" class="sb-item">7 dạng đề Task 2</a>
+  <a href="#task2-structure" class="sb-item">Cấu trúc bài luận</a>
+  <a href="#task2-sample" class="sb-item">Bài mẫu Band 8</a>
+  <a href="#writing-tips" class="sb-item">Mẹo tăng điểm Writing</a>
+
+  <div class="sidebar-title">📖 Reading</div>
+  <a href="#reading" class="sb-item">Cấu trúc & Chiến thuật</a>
+  <a href="#reading-types" class="sb-item">13 dạng câu hỏi</a>
+  <a href="#reading-traps" class="sb-item">Bẫy thường gặp</a>
+
+  <div class="sidebar-title">🎧 Listening</div>
+  <a href="#listening" class="sb-item">Cấu trúc 4 Section</a>
+  <a href="#listening-tips" class="sb-item">Chiến thuật nghe</a>
+  <a href="#listening-traps" class="sb-item">Bẫy thường gặp</a>
+
+  <div class="sidebar-title">🗣️ Speaking</div>
+  <a href="#speaking" class="sb-item">Part 1, 2, 3</a>
+  <a href="#speaking-part2" class="sb-item">Cue Card luyện tập</a>
+  <a href="#speaking-phrases" class="sb-item">Mẫu câu Band 7+</a>
+  <a href="#speaking-tips" class="sb-item">Mẹo tăng điểm</a>
+</aside>
+
+<main class="content">
+  <div class="page-label">IELTS Academic — Hướng dẫn toàn diện</div>
+  <h1 class="page-title">IELTS từ A đến Z<br><em style="color:var(--accent)">Chiến lược & Kỹ thuật Band 7–8</em></h1>
+  <p class="page-desc">Hướng dẫn đầy đủ cho kỳ thi IELTS Academic — cấu trúc đề thi, chiến thuật từng kỹ năng, bài mẫu Band 8, cụm từ hay và những bẫy cần tránh. Học đúng phương pháp để đạt Band mục tiêu nhanh nhất.</p>
+
+  <!-- OVERVIEW -->
+  <div class="anchor" id="overview">
+    <div class="section-label">Tổng quan</div>
+    <div class="section-title">Cấu trúc bài thi IELTS Academic</div>
+    <div class="overview-grid">
+      <a href="#task1" class="ov-card ov-w">
+        <div class="ov-icon">✍️</div>
+        <div class="ov-name">Writing</div>
+        <div class="ov-score">25% điểm</div>
+        <div class="ov-time">60 phút · 2 Task</div>
+      </a>
+      <a href="#reading" class="ov-card ov-r">
+        <div class="ov-icon">📖</div>
+        <div class="ov-name">Reading</div>
+        <div class="ov-score">25% điểm</div>
+        <div class="ov-time">60 phút · 40 câu</div>
+      </a>
+      <a href="#listening" class="ov-card ov-l">
+        <div class="ov-icon">🎧</div>
+        <div class="ov-name">Listening</div>
+        <div class="ov-score">25% điểm</div>
+        <div class="ov-time">30 phút · 40 câu</div>
+      </a>
+      <a href="#speaking" class="ov-card ov-s">
+        <div class="ov-icon">🗣️</div>
+        <div class="ov-name">Speaking</div>
+        <div class="ov-score">25% điểm</div>
+        <div class="ov-time">11–14 phút · 3 Part</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- SCORING -->
+  <div class="anchor" id="scoring">
+    <div class="section-label">Cách tính điểm</div>
+    <div class="section-title">Thang điểm Band IELTS</div>
+    <table class="band-table">
+      <tr><th>Band</th><th>Trình độ</th><th>Writing/Speaking cần gì</th><th>Reading/Listening</th></tr>
+      <tr><td class="td-band b9">9.0</td><td>Expert</td><td>Hoàn hảo như người bản ngữ</td><td>39–40/40 câu đúng</td></tr>
+      <tr><td class="td-band b8">8.0</td><td>Very Good</td><td>Ngữ pháp đa dạng, từ vựng chính xác, lập luận logic chặt chẽ</td><td>35–36/40 câu</td></tr>
+      <tr><td class="td-band b8" style="color:var(--coral)">7.5</td><td>Very Good</td><td>Cấu trúc phức tạp, hedging, cohesion tốt</td><td>32–34/40 câu</td></tr>
+      <tr><td class="td-band b7">7.0</td><td>Good</td><td>Đa dạng cấu trúc, từ vựng học thuật, ít lỗi</td><td>30–31/40 câu</td></tr>
+      <tr><td class="td-band b7" style="color:var(--accent)">6.5</td><td>Competent</td><td>Ngữ pháp cơ bản ổn, từ vựng khá</td><td>27–29/40 câu</td></tr>
+      <tr><td class="td-band b6">6.0</td><td>Competent</td><td>Hiểu và diễn đạt được ý chính</td><td>23–26/40 câu</td></tr>
+      <tr><td class="td-band b5">5.0</td><td>Modest</td><td>Mắc nhiều lỗi, từ vựng hạn chế</td><td>16–22/40 câu</td></tr>
+    </table>
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-pct">25%</div>
+        <div class="crit-name">Task Achievement/Response</div>
+        <div class="crit-desc">Trả lời đúng câu hỏi, đủ thông tin, lập luận rõ ràng, ví dụ cụ thể. Task 1: phải đề cập main features. Task 2: phải có position rõ.</div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-pct">25%</div>
+        <div class="crit-name">Coherence & Cohesion</div>
+        <div class="crit-desc">Bài viết mạch lạc, logic, có từ nối phù hợp, đoạn văn rõ ràng, tham chiếu (pronoun, synonyms) đúng chỗ.</div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-pct">25%</div>
+        <div class="crit-name">Lexical Resource</div>
+        <div class="crit-desc">Từ vựng đa dạng, chính xác, dùng paraphrasing tốt. Tránh lặp từ, dùng collocations tự nhiên, spelling đúng.</div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-pct">25%</div>
+        <div class="crit-name">Grammatical Range & Accuracy</div>
+        <div class="crit-desc">Đa dạng cấu trúc câu (phức, ghép, rút gọn), dùng các thì đúng, ít lỗi punctuation và subject-verb agreement.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="anchor" id="calculator">
+    <div class="section-label">Công cụ</div>
+    <div class="section-title">Tính Band điểm của bạn</div>
+    <div class="calc-box">
+      <div class="calc-label">Điều chỉnh điểm từng kỹ năng:</div>
+      <div class="calc-row"><span class="calc-name">✍️ Writing</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="6.5" id="w-score" oninput="calcBand()"><span class="calc-val" id="w-val">6.5</span></div>
+      <div class="calc-row"><span class="calc-name">📖 Reading</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="7.0" id="r-score" oninput="calcBand()"><span class="calc-val" id="r-val">7.0</span></div>
+      <div class="calc-row"><span class="calc-name">🎧 Listening</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="7.0" id="l-score" oninput="calcBand()"><span class="calc-val" id="l-val">7.0</span></div>
+      <div class="calc-row"><span class="calc-name">🗣️ Speaking</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="6.5" id="s-score" oninput="calcBand()"><span class="calc-val" id="s-val">6.5</span></div>
+      <div class="calc-result">
+        <div class="cr-label">Band tổng thể của bạn</div>
+        <div class="cr-score" id="overallBand">6.75</div>
+        <div class="cr-note" id="bandNote">→ Làm tròn thành Band 7.0</div>
+      </div>
+    </div>
+    <div class="warn-box"><strong>Cách làm tròn Band IELTS:</strong> Tổng ÷ 4 → làm tròn đến 0.5 gần nhất. Ví dụ: (6.5 + 7.0 + 7.5 + 7.0) ÷ 4 = 7.0 → Band 7.0. Nếu ra 6.875 → làm tròn lên 7.0. Nếu ra 6.625 → làm tròn lên 6.5.</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- WRITING TASK 1 -->
+  <div class="anchor" id="task1">
+    <div class="section-label">Writing — 25% điểm</div>
+    <div class="section-title">Task 1 — Mô tả biểu đồ / Sơ đồ</div>
+    <div class="section-desc">Task 1 chiếm 1/3 điểm Writing. Phải viết ít nhất <strong style="color:var(--accent)">150 từ</strong> trong <strong style="color:var(--accent)">20 phút</strong>. Nhiệm vụ: mô tả thông tin chính trong biểu đồ/sơ đồ một cách khách quan, chính xác.</div>
+
+    <div class="task-box">
+      <div class="task-header">
+        <span class="task-badge tb-gold">Cấu trúc Task 1</span>
+        <span class="task-time">~150–190 từ · 20 phút</span>
+      </div>
+      <div class="structure">
+        <div class="str-item"><div class="str-num str-gold">¶1</div><div class="str-text"><h4>Introduction — Paraphrase đề bài</h4><p>Viết lại câu đề bài bằng ngôn ngữ của bạn. KHÔNG copy nguyên văn. 1–2 câu.</p><div class="str-words">~20 từ</div></div></div>
+        <div class="str-item"><div class="str-num str-teal">¶2</div><div class="str-text"><h4>Overview — Xu hướng chính</h4><p>Tóm tắt 2–3 đặc điểm nổi bật nhất. KHÔNG đề cập số liệu cụ thể. Đây là đoạn QUAN TRỌNG NHẤT — thiếu overview mất điểm Task Achievement rất nhiều.</p><div class="str-words">~40 từ</div></div></div>
+        <div class="str-item"><div class="str-num str-purple">¶3</div><div class="str-text"><h4>Body 1 — Chi tiết nhóm 1</h4><p>Mô tả chi tiết có số liệu cụ thể. Nhóm dữ liệu theo điểm tương đồng hoặc tương phản.</p><div class="str-words">~45 từ</div></div></div>
+        <div class="str-item"><div class="str-num str-pink">¶4</div><div class="str-text"><h4>Body 2 — Chi tiết nhóm 2</h4><p>Tiếp tục mô tả nhóm còn lại. So sánh, tương phản với nhóm 1 nếu cần.</p><div class="str-words">~45 từ</div></div></div>
+      </div>
+    </div>
+
+    <div class="anchor" id="task1-types">
+      <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--text)">Các loại biểu đồ thường gặp</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+        <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">📊</div>
+          <div style="font-size:12px;font-weight:500">Bar chart</div>
+          <div style="font-size:11px;color:var(--text3)">So sánh số liệu</div>
+        </div>
+        <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">📈</div>
+          <div style="font-size:12px;font-weight:500">Line graph</div>
+          <div style="font-size:11px;color:var(--text3)">Xu hướng theo thời gian</div>
+        </div>
+        <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">🥧</div>
+          <div style="font-size:12px;font-weight:500">Pie chart</div>
+          <div style="font-size:11px;color:var(--text3)">Tỷ lệ phần trăm</div>
+        </div>
+        <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">📋</div>
+          <div style="font-size:12px;font-weight:500">Table</div>
+          <div style="font-size:11px;color:var(--text3)">Nhiều loại dữ liệu</div>
+        </div>
+        <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">🗺️</div>
+          <div style="font-size:12px;font-weight:500">Map</div>
+          <div style="font-size:11px;color:var(--text3)">Thay đổi địa điểm</div>
+        </div>
+        <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">⚙️</div>
+          <div style="font-size:12px;font-weight:500">Process/Diagram</div>
+          <div style="font-size:11px;color:var(--text3)">Quy trình, chu kỳ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="anchor" id="task1-phrases">
+      <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--text)">Cụm từ mô tả xu hướng — Task 1</div>
+      <div class="chart-tabs">
+        <button class="ct-btn active" onclick="showChart('increase',this)">📈 Tăng</button>
+        <button class="ct-btn" onclick="showChart('decrease',this)">📉 Giảm</button>
+        <button class="ct-btn" onclick="showChart('stable',this)">➡️ Ổn định</button>
+        <button class="ct-btn" onclick="showChart('compare',this)">⚖️ So sánh</button>
+        <button class="ct-btn" onclick="showChart('overview',this)">🔍 Overview</button>
+      </div>
+
+      <div id="chart-increase" class="chart-content show">
+        <table class="phrase-table">
+          <tr><th>Động từ tăng</th><th>Danh từ tăng</th><th>Mức độ / Trạng từ</th></tr>
+          <tr><td class="td-phrase">rose / increased / grew / climbed / went up / surged / soared / shot up</td><td class="td-phrase">a rise / an increase / a growth / an upward trend / a surge / a jump</td><td class="td-phrase">dramatically / significantly / sharply / steadily / slightly / marginally / gradually</td></tr>
+        </table>
+        <div class="ielts-box"><div class="ib-label">Ví dụ câu Band 7+</div><div class="ib-text">"The number of international students <strong>rose sharply</strong> from 2 million to 5 million between 2000 and 2020, representing <strong>a significant increase</strong> of 150%."</div></div>
+      </div>
+
+      <div id="chart-decrease" class="chart-content">
+        <table class="phrase-table">
+          <tr><th>Động từ giảm</th><th>Danh từ giảm</th><th>Mức độ</th></tr>
+          <tr><td class="td-phrase">fell / dropped / declined / decreased / plummeted / plunged / dipped / slipped</td><td class="td-phrase">a fall / a drop / a decline / a decrease / a downturn / a dip / a slump</td><td class="td-phrase">dramatically / considerably / slightly / gradually / steadily / steeply</td></tr>
+        </table>
+        <div class="ielts-box"><div class="ib-label">Ví dụ câu Band 7+</div><div class="ib-text">"Coal consumption <strong>plummeted dramatically</strong> from 40% to just 15%, <strong>a steep decline</strong> that coincided with the rise of renewable energy."</div></div>
+      </div>
+
+      <div id="chart-stable" class="chart-content">
+        <table class="phrase-table">
+          <tr><th>Diễn đạt ổn định / không đổi</th><th>Ví dụ</th></tr>
+          <tr><td class="td-phrase">remained stable / stayed constant / levelled off / plateaued / showed little change / fluctuated slightly around</td><td class="td-phrase">"The figure <strong>remained relatively stable</strong> at around 30% throughout the period." · "Sales <strong>levelled off</strong> after 2015, hovering around 500 units."</td></tr>
+        </table>
+      </div>
+
+      <div id="chart-compare" class="chart-content">
+        <table class="phrase-table">
+          <tr><th>Cụm từ so sánh</th><th>Ví dụ dùng</th></tr>
+          <tr><td class="td-phrase">In contrast / By comparison / Meanwhile / While / Whereas / On the other hand</td><td class="td-vi">Tương phản giữa 2 đối tượng</td></tr>
+          <tr><td class="td-phrase">accounted for / made up / constituted / represented / comprised</td><td class="td-vi">Diễn đạt tỷ lệ phần trăm</td></tr>
+          <tr><td class="td-phrase">was the highest/lowest · peaked at · reached a peak/low of</td><td class="td-vi">Điểm cao nhất/thấp nhất</td></tr>
+          <tr><td class="td-phrase">was followed by · came second · ranked third</td><td class="td-vi">Thứ tự xếp hạng</td></tr>
+        </table>
+      </div>
+
+      <div id="chart-overview" class="chart-content">
+        <table class="phrase-table">
+          <tr><th>Mở đầu Overview</th><th>Ghi chú</th></tr>
+          <tr><td class="td-phrase">Overall, it is clear that... / In general, the data reveals that... / The most striking feature is... / What stands out most is...</td><td class="td-vi">KHÔNG dùng "In conclusion" cho Task 1</td></tr>
+        </table>
+        <div class="ielts-box"><div class="ib-label">Overview mẫu Band 7.5</div><div class="ib-text">"<strong>Overall, it is evident that</strong> oil remained the dominant energy source throughout the period, while renewable energy experienced the most significant growth, particularly after 2010."</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- WRITING TASK 2 -->
+  <div class="anchor" id="task2">
+    <div class="section-label">Writing Task 2</div>
+    <div class="section-title">Task 2 — Bài luận học thuật</div>
+    <div class="section-desc">Task 2 chiếm 2/3 điểm Writing. Phải viết ít nhất <strong style="color:var(--accent)">250 từ</strong> trong <strong style="color:var(--accent)">40 phút</strong>. Có 7 dạng đề khác nhau, mỗi dạng có cấu trúc khác nhau.</div>
+
+    <div class="anchor" id="task2-types">
+      <div style="font-size:14px;font-weight:500;margin-bottom:12px">7 dạng đề Task 2</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+        <div class="str-item"><div class="str-num str-gold">1</div><div class="str-text"><h4>Opinion / Agree or Disagree</h4><p>"To what extent do you agree or disagree?" → Đưa ra quan điểm RÕ RÀNG, bảo vệ 1 phía hoặc cả 2 phía. Band 7+: dùng partially agree.</p></div></div>
+        <div class="str-item"><div class="str-num str-teal">2</div><div class="str-text"><h4>Discussion (Both views)</h4><p>"Discuss both views and give your own opinion." → Trình bày CẢ 2 quan điểm, sau đó đưa ra ý kiến cá nhân ở kết bài.</p></div></div>
+        <div class="str-item"><div class="str-num str-purple">3</div><div class="str-text"><h4>Advantages & Disadvantages</h4><p>"What are the advantages and disadvantages?" → Trình bày đủ CẢ 2 phía. Nếu hỏi "outweigh" thì phải kết luận bên nào nặng hơn.</p></div></div>
+        <div class="str-item"><div class="str-num str-pink">4</div><div class="str-text"><h4>Problem & Solution</h4><p>"What are the causes? What solutions can you suggest?" → Ít nhất 2 nguyên nhân + 2 giải pháp tương ứng.</p></div></div>
+        <div class="str-item"><div class="str-num str-gold">5</div><div class="str-text"><h4>Two-part Question</h4><p>Hai câu hỏi riêng biệt, cả 2 phải được trả lời đầy đủ và cân bằng.</p></div></div>
+        <div class="str-item"><div class="str-num str-teal">6</div><div class="str-text"><h4>Mixed (Opinion + Discussion)</h4><p>Kết hợp 2 yêu cầu — đọc kỹ đề để không bỏ sót phần nào.</p></div></div>
+        <div class="str-item"><div class="str-num str-purple">7</div><div class="str-text"><h4>Direct Question</h4><p>"Why is this happening? Is this a positive or negative development?" → Trả lời trực tiếp từng câu hỏi.</p></div></div>
+      </div>
+    </div>
+
+    <div class="anchor" id="task2-structure">
+      <div style="font-size:14px;font-weight:500;margin-bottom:12px">Cấu trúc bài luận Band 7+ (Opinion essay)</div>
+      <div class="structure">
+        <div class="str-item"><div class="str-num str-gold">¶1</div><div class="str-text"><h4>Introduction — 2–3 câu</h4><p><strong>Câu 1:</strong> Paraphrase đề bài (KHÔNG copy). <strong>Câu 2:</strong> Thesis statement — nêu rõ quan điểm của bạn. <strong>Câu 3 (tùy chọn):</strong> Outline — nêu sơ lược 2 điểm chính sẽ thảo luận.</p><div class="str-words">~50–60 từ</div></div></div>
+        <div class="str-item"><div class="str-num str-teal">¶2</div><div class="str-text"><h4>Body 1 — Luận điểm chính thứ nhất</h4><p><strong>Topic sentence</strong> → <strong>Explanation</strong> → <strong>Example/Evidence</strong> → <strong>Link back</strong>. Cấu trúc PIE/PEE rõ ràng.</p><div class="str-words">~90–100 từ</div></div></div>
+        <div class="str-item"><div class="str-num str-purple">¶3</div><div class="str-text"><h4>Body 2 — Luận điểm chính thứ hai</h4><p>Tương tự Body 1. Có thể thêm counterargument + refutation để tăng điểm Band.</p><div class="str-words">~90–100 từ</div></div></div>
+        <div class="str-item"><div class="str-num str-pink">¶4</div><div class="str-text"><h4>Conclusion — 2 câu</h4><p><strong>Câu 1:</strong> Restate thesis (không copy). <strong>Câu 2:</strong> Final thought / recommendation. KHÔNG đưa ý mới ở đây!</p><div class="str-words">~40–50 từ</div></div></div>
+      </div>
+    </div>
+
+    <div class="anchor" id="task2-sample">
+      <div style="font-size:14px;font-weight:500;margin-bottom:12px">Bài mẫu Band 8 — Opinion Essay</div>
+      <div class="essay-box">
+        <div class="essay-label">Đề bài</div>
+        <div class="essay-question">Some people believe that the best way to improve public health is to increase the number of sports facilities. Others, however, believe that this would have little effect on public health and that other measures are required. Discuss both views and give your own opinion.</div>
+        <div class="essay-label" style="margin-top:16px">Bài viết mẫu — Band 8 (~280 từ)</div>
+        <div class="essay-text">
+          <p><span class="hi">There is ongoing debate</span> about the most effective approach to enhancing public health, with some advocating for greater investment in sporting infrastructure while others argue that alternative measures would prove more impactful. <span class="hi2">In my view</span>, while sports facilities do play a valuable role, a comprehensive approach addressing lifestyle and diet is ultimately more effective.</p>
+          <p><span class="hi">Proponents of expanding sports facilities</span> contend that providing accessible venues for physical activity <span class="hi2">would inevitably encourage</span> more people to exercise regularly. <span class="hi3">Not only does</span> regular exercise reduce the risk of chronic diseases such as obesity and diabetes, but it also improves mental well-being. <span class="hi">Furthermore</span>, investing in community sports centres can foster social cohesion, which itself has been linked to better health outcomes.</p>
+          <p><span class="hi">Nevertheless</span>, there are compelling reasons to believe that sports facilities alone are insufficient. <span class="hi2">It could be argued that</span> the root causes of poor public health — namely sedentary behaviour, unhealthy diets, and excessive stress — cannot be resolved simply by building more gyms. <span class="hi">For instance</span>, research indicates that dietary habits have a far greater impact on cardiovascular health than exercise frequency. <span class="hi3">Consequently</span>, measures such as taxing unhealthy foods, subsidising nutritious options, and implementing health education programmes would likely yield more substantial improvements.</p>
+          <p><span class="hi">In conclusion</span>, although expanding sports facilities may contribute positively to public health, <span class="hi2">it would be overly simplistic</span> to regard this as a solution in itself. Governments should adopt a multifaceted strategy that combines physical infrastructure with educational and nutritional interventions to achieve meaningful and lasting health improvements.</p>
+        </div>
+      </div>
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div>
+          <h5>Phân tích bài Band 8 này</h5>
+          <p><strong style="color:var(--accent)">Inversion:</strong> "Not only does regular exercise..." · <strong style="color:var(--accent)">Hedging:</strong> "It could be argued that..." · <strong style="color:var(--accent)">Sophisticated connectors:</strong> "Nevertheless", "Consequently", "overly simplistic" · <strong style="color:var(--accent)">Academic vocabulary:</strong> "cardiovascular", "multifaceted", "interventions", "infrastructure" · <strong style="color:var(--accent)">Paraphrasing đề bài</strong> hoàn toàn không copy từ nào.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="anchor" id="writing-tips">
+    <div style="font-size:14px;font-weight:500;margin-bottom:12px">Mẹo tăng điểm Writing</div>
+    <div class="warn-box"><strong>5 lỗi phổ biến nhất cần tránh:</strong><br>
+    1. Copy từ đề bài vào bài viết (mất điểm Lexical Resource)<br>
+    2. Thiếu Overview trong Task 1 (mất điểm Task Achievement ngay lập tức)<br>
+    3. Dùng "I think" / "I believe" quá nhiều — đôi khi dùng hedging như "It could be argued..."<br>
+    4. Đoạn văn không có topic sentence — giám khảo không biết ý chính của đoạn<br>
+    5. Viết thiếu số từ (dưới 150 / 250 từ) — bị phạt nặng</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- READING -->
+  <div class="anchor" id="reading">
+    <div class="section-label">Reading — 25% điểm</div>
+    <div class="section-title">IELTS Reading — Chiến thuật</div>
+    <div class="section-desc">60 phút · 3 bài đọc · 40 câu hỏi. Bài đọc dài 700–900 từ mỗi bài, chủ đề học thuật. <strong style="color:var(--accent)">Phân bố thời gian: ~17–20 phút/bài.</strong></div>
+
+    <div class="tip-box">
+      <div class="tip-icon">⚡</div>
+      <div>
+        <h5>Chiến lược đọc hiệu quả nhất</h5>
+        <p><strong style="color:var(--accent)">Bước 1:</strong> Đọc câu hỏi TRƯỚC khi đọc bài — biết cần tìm gì.<br>
+        <strong style="color:var(--accent)">Bước 2:</strong> Skim title, headings, first sentence mỗi đoạn — nắm bố cục.<br>
+        <strong style="color:var(--accent)">Bước 3:</strong> Scan để tìm từ khóa trong câu hỏi — không đọc từng chữ.<br>
+        <strong style="color:var(--accent)">Bước 4:</strong> Đọc kỹ đoạn liên quan — trả lời câu hỏi.<br>
+        <strong style="color:var(--accent)">Quan trọng:</strong> Nếu câu nào mất hơn 2 phút — bỏ qua, làm câu khác trước!</p>
+      </div>
+    </div>
+
+    <div class="anchor" id="reading-types">
+      <div style="font-size:14px;font-weight:500;margin-bottom:12px">13 dạng câu hỏi Reading</div>
+      <div class="qtype-grid">
+        <div class="qt-item"><div class="qt-name">Multiple Choice (MCQ)</div><div class="qt-tip">Đọc câu hỏi kỹ, chú ý từ như "mainly", "primarily", "NOT". Thường có answer gần đúng nhưng sai chi tiết.</div><div class="qt-trap">⚠️ Bẫy: đáp án dùng từ giống bài nhưng nghĩa khác</div></div>
+        <div class="qt-item"><div class="qt-name">True / False / Not Given</div><div class="qt-tip">"True" = khớp với bài. "False" = trái ngược. "Not Given" = không đề cập. Khó phân biệt False và NG.</div><div class="qt-trap">⚠️ Bẫy: NG ≠ False. Nếu bài không nói gì → NG</div></div>
+        <div class="qt-item"><div class="qt-name">Yes / No / Not Given</div><div class="qt-tip">Dành cho ý kiến/quan điểm của tác giả. "Yes" = tác giả đồng ý. "No" = không đồng ý. NG = không đề cập.</div><div class="qt-trap">⚠️ Bẫy: không nhầm với T/F/NG — loại này về quan điểm</div></div>
+        <div class="qt-item"><div class="qt-name">Matching Headings</div><div class="qt-tip">Đọc đoạn văn xác định ý chính, sau đó chọn heading phù hợp. Đọc câu đầu và câu cuối mỗi đoạn.</div><div class="qt-trap">⚠️ Heading dùng synonym, không copy từ trong bài</div></div>
+        <div class="qt-item"><div class="qt-name">Matching Information</div><div class="qt-tip">Tìm đoạn chứa thông tin cụ thể. Không nhất thiết theo thứ tự trong bài. Scan từng đoạn.</div><div class="qt-trap">⚠️ Một đoạn có thể dùng nhiều lần</div></div>
+        <div class="qt-item"><div class="qt-name">Matching Features</div><div class="qt-tip">Ghép thông tin với người/tổ chức/thời gian. Cần scan bài để tìm tên người/tổ chức.</div><div class="qt-trap">⚠️ Một lựa chọn có thể dùng nhiều lần</div></div>
+        <div class="qt-item"><div class="qt-name">Sentence Completion</div><div class="qt-tip">Điền vào chỗ trống — chú ý giới hạn số từ (ONE WORD ONLY / NO MORE THAN TWO WORDS).</div><div class="qt-trap">⚠️ Viết đúng chính xác từ trong bài, không paraphrase</div></div>
+        <div class="qt-item"><div class="qt-name">Summary Completion</div><div class="qt-tip">Điền từ vào tóm tắt đoạn văn. Tóm tắt thường dùng synonym của từ trong bài.</div><div class="qt-trap">⚠️ Đọc trước tóm tắt để biết tìm đoạn nào trong bài</div></div>
+        <div class="qt-item"><div class="qt-name">Diagram Label Completion</div><div class="qt-tip">Điền nhãn vào sơ đồ/hình ảnh. Tìm vị trí trong bài mô tả sơ đồ đó.</div><div class="qt-trap">⚠️ Chú ý số từ tối đa cho phép</div></div>
+        <div class="qt-item"><div class="qt-name">Short Answer Questions</div><div class="qt-tip">Trả lời ngắn gọn trong số từ cho phép. Dùng từ trực tiếp từ bài đọc.</div><div class="qt-trap">⚠️ Viết số hoặc từ chính xác, không paraphrase</div></div>
+      </div>
+    </div>
+
+    <div class="anchor" id="reading-traps">
+      <div style="font-size:14px;font-weight:500;margin-bottom:10px">Bẫy phổ biến nhất trong Reading</div>
+      <div class="warn-box">
+        <strong>Bẫy 1 — Từ giống nhưng nghĩa khác:</strong> Câu hỏi dùng từ giống bài nhưng ngữ cảnh khác hoàn toàn.<br>
+        <strong>Bẫy 2 — Câu trả lời gần đúng:</strong> MCQ thường có 1–2 đáp án "gần đúng" — cần đọc kỹ để chọn đúng nhất.<br>
+        <strong>Bẫy 3 — Not Given vs False:</strong> "False" = bài viết điều ngược lại. "NG" = bài không đề cập.<br>
+        <strong>Bẫy 4 — Vượt quá giới hạn từ:</strong> Nếu đề bài ghi "ONE WORD ONLY" — chỉ viết 1 từ, dù có thể muốn viết 2.<br>
+        <strong>Bẫy 5 — Mất thời gian:</strong> Đừng đọc toàn bộ bài trước khi xem câu hỏi.
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- LISTENING -->
+  <div class="anchor" id="listening">
+    <div class="section-label">Listening — 25% điểm</div>
+    <div class="section-title">IELTS Listening — 4 Sections</div>
+    <div class="section-desc">30 phút nghe + 10 phút chép đáp án. 4 sections, mỗi section 10 câu. Nghe 1 lần duy nhất — KHÔNG nghe lại.</div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+      <div class="str-item"><div class="str-num str-gold">S1</div><div class="str-text"><h4>Section 1 — Dễ nhất</h4><p>Hội thoại 2 người trong tình huống đời thường (đặt phòng, hỏi thăm). Thường điền form/bảng thông tin.</p></div></div>
+      <div class="str-item"><div class="str-num str-teal">S2</div><div class="str-text"><h4>Section 2 — Một người nói</h4><p>Monologue về chủ đề đời thường (hướng dẫn tham quan, thông báo cộng đồng). Thường có map/diagram.</p></div></div>
+      <div class="str-item"><div class="str-num str-purple">S3</div><div class="str-text"><h4>Section 3 — Khó hơn</h4><p>Hội thoại 2–4 người trong môi trường học thuật (thảo luận nhóm, sinh viên với giáo viên).</p></div></div>
+      <div class="str-item"><div class="str-num str-pink">S4</div><div class="str-text"><h4>Section 4 — Khó nhất</h4><p>Bài giảng học thuật, 1 người nói về chủ đề chuyên sâu. Từ vựng học thuật cao, tốc độ nhanh.</p></div></div>
+    </div>
+
+    <div class="anchor" id="listening-tips">
+      <div style="font-size:14px;font-weight:500;margin-bottom:10px">Chiến thuật làm bài Listening</div>
+      <div class="tip-box"><div class="tip-icon">⏱️</div><div><h5>Tận dụng thời gian đọc đề trước</h5><p>Trước mỗi section có 30–45 giây đọc câu hỏi. Dùng thời gian này để: <strong style="color:var(--accent)">(1)</strong> Đọc câu hỏi, gạch chân từ khóa. <strong style="color:var(--accent)">(2)</strong> Đoán loại thông tin cần nghe (số điện thoại? tên? địa điểm?). <strong style="color:var(--accent)">(3)</strong> Chú ý giới hạn số từ.</p></div></div>
+    </div>
+
+    <div class="anchor" id="listening-traps">
+      <div style="font-size:14px;font-weight:500;margin-bottom:10px">Bẫy thường gặp trong Listening</div>
+      <div class="warn-box">
+        <strong>Bẫy 1 — Sửa đổi (Correction):</strong> "The meeting is on Monday... actually, let me change that, it's on Tuesday." → Đáp án là Tuesday!<br>
+        <strong>Bẫy 2 — Phủ định (Negation):</strong> "He didn't finish the project on Friday..." → Nghe kỹ từ phủ định.<br>
+        <strong>Bẫy 3 — Distractor:</strong> Nói đến A rồi lại chọn B. "I thought about the red one but I'll take the blue one." → Đáp án là blue.<br>
+        <strong>Bẫy 4 — Chính tả:</strong> Tên người/địa điểm thường được đánh vần — nghe và viết chính xác.<br>
+        <strong>Bẫy 5 — Số liệu:</strong> "It costs fourteen pounds" (£14) vs "forty" (£40) — phân biệt -teen và -ty.
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- SPEAKING -->
+  <div class="anchor" id="speaking">
+    <div class="section-label">Speaking — 25% điểm</div>
+    <div class="section-title">IELTS Speaking — 3 Parts</div>
+    <div class="section-desc">Phỏng vấn trực tiếp với giám khảo, kéo dài 11–14 phút. Được chấm theo 4 tiêu chí: Fluency & Coherence, Lexical Resource, Grammar, Pronunciation — mỗi tiêu chí 25%.</div>
+
+    <div class="speaking-parts" id="speaking-part2">
+      <div class="sp-part">
+        <div class="sp-header">
+          <div class="sp-num">1</div>
+          <div class="sp-title">Part 1 — Introduction & Interview</div>
+          <div class="sp-time">4–5 phút</div>
+        </div>
+        <div class="sp-desc">Câu hỏi về bản thân, gia đình, sở thích, công việc/học tập. Câu trả lời ngắn 2–4 câu, tự nhiên như hội thoại thông thường.</div>
+        <div class="sp-samples">
+          <div class="sp-sample">
+            <div class="sp-q">Q: Do you enjoy cooking?</div>
+            <div class="sp-a">Band 5: "Yes, I like cooking." (quá ngắn)<br>Band 7+: "<span class="good">I would say I'm quite passionate about cooking, actually.</span> I find it really therapeutic after a long day. I particularly enjoy experimenting with Vietnamese dishes and <span class="good">occasionally</span> trying out international recipes."</div>
+          </div>
+          <div class="sp-sample">
+            <div class="sp-q">Q: What kind of music do you like?</div>
+            <div class="sp-a">Band 7+: "<span class="good">To be honest</span>, my taste in music is quite varied. I tend to listen to indie pop on a daily basis, but I <span class="good">have a soft spot for</span> classical music when I need to concentrate. <span class="good">Having said that</span>, my all-time favourite genre would probably be jazz."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-part">
+        <div class="sp-header">
+          <div class="sp-num">2</div>
+          <div class="sp-title">Part 2 — Individual Long Turn (Cue Card)</div>
+          <div class="sp-time">1 phút chuẩn bị + 2 phút nói</div>
+        </div>
+        <div class="sp-desc">Nhận 1 cue card với chủ đề và 3–4 gợi ý. Nói liên tục 1–2 phút. Đây là phần nhiều người ngại nhất nhưng hoàn toàn luyện được!</div>
+        <div class="cue-card">
+          <div class="cc-label">Cue Card mẫu</div>
+          <div class="cc-topic">Describe a person who has had a significant influence on your life.</div>
+          <ul class="cc-points">
+            <li>Who this person is</li>
+            <li>How you know them</li>
+            <li>What they did that influenced you</li>
+            <li>And explain why they have been so important to you</li>
+          </ul>
+        </div>
+        <div class="sp-sample">
+          <div class="sp-a"><span class="good">The person I'd like to talk about</span> is my secondary school English teacher, Ms. Lan. <span class="good">I've known her since</span> I was about 13 years old, and she had an absolutely profound impact on my academic journey. <span class="good">What made her truly special was</span> her ability to make literature come alive — she didn't just teach grammar, she sparked a genuine love for the English language in her students. <span class="good">As a result of</span> her encouragement, I started reading English novels in my spare time, which dramatically improved my vocabulary. <span class="good">To this day</span>, I credit her with giving me the confidence to pursue English professionally.</div>
+        </div>
+      </div>
+
+      <div class="sp-part">
+        <div class="sp-header">
+          <div class="sp-num">3</div>
+          <div class="sp-title">Part 3 — Two-way Discussion</div>
+          <div class="sp-time">4–5 phút</div>
+        </div>
+        <div class="sp-desc">Câu hỏi trừu tượng hơn liên quan đến chủ đề Part 2. Cần đưa ra ý kiến, lập luận, so sánh và phân tích ở mức độ sâu hơn.</div>
+        <div class="sp-samples">
+          <div class="sp-sample">
+            <div class="sp-q">Q: Do you think teachers are as influential today as they were in the past?</div>
+            <div class="sp-a"><span class="good">That's an interesting question. I'd argue that</span> while teachers remain crucial, their role has certainly evolved. <span class="good">In the past</span>, teachers were virtually the sole source of knowledge, whereas today, students have unprecedented access to information online. <span class="good">However, I believe that</span> the emotional and motivational aspects of a good teacher are irreplaceable — no algorithm can replicate genuine human mentorship. <span class="good">That said</span>, teachers who fail to adapt to modern technology may find their influence diminishing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="anchor" id="speaking-phrases">
+      <div style="font-size:14px;font-weight:500;margin-bottom:12px">Mẫu câu Band 7+ cho Speaking</div>
+      <table class="phrase-table">
+        <tr><th>Tình huống</th><th>Cụm từ Band 7+</th><th>Thay cho</th></tr>
+        <tr><td>Đưa ra ý kiến</td><td class="td-phrase">I would argue that... / From my perspective... / It seems to me that... / I'm inclined to think that...</td><td class="td-use">I think... / I believe...</td></tr>
+        <tr><td>Thêm ý</td><td class="td-phrase">What's more... / Not only that, but... / On top of that... / Adding to this...</td><td class="td-use">Also... / And...</td></tr>
+        <tr><td>Tương phản</td><td class="td-phrase">Having said that... / Then again... / On the flip side... / That said...</td><td class="td-use">But... / However...</td></tr>
+        <tr><td>Ví dụ</td><td class="td-phrase">A case in point would be... / To illustrate this... / Take ... for example...</td><td class="td-use">For example... / Like...</td></tr>
+        <tr><td>Kéo thời gian</td><td class="td-phrase">That's a thought-provoking question... / Well, let me think about that... / It's difficult to generalise, but...</td><td class="td-use">Uhm... / Er... (filler âm)</td></tr>
+        <tr><td>Không chắc</td><td class="td-phrase">I'm not entirely sure, but I think... / It depends to a large extent on... / That varies considerably...</td><td class="td-use">I don't know... / Maybe...</td></tr>
+        <tr><td>Kết luận</td><td class="td-phrase">All things considered... / On balance... / Ultimately... / When all is said and done...</td><td class="td-use">So... / In conclusion...</td></tr>
+      </table>
+    </div>
+
+    <div class="anchor" id="speaking-tips">
+      <div style="font-size:14px;font-weight:500;margin-bottom:10px">Mẹo tăng điểm Speaking</div>
+      <div class="warn-box">
+        <strong>KHÔNG làm những điều này:</strong><br>
+        ✗ Học thuộc câu trả lời — giám khảo sẽ nhận ra và chuyển sang câu khác<br>
+        ✗ Im lặng dài hơn 3–4 giây — dùng filler phrases để kéo thời gian<br>
+        ✗ Dùng từ vựng quá đơn giản liên tục (nice, good, big, happy)<br>
+        ✗ Nói quá nhanh để cho xong — phát âm rõ ràng quan trọng hơn tốc độ<br>
+        ✗ Chỉnh sửa câu quá nhiều — nói trôi chảy quan trọng hơn hoàn hảo
+      </div>
+      <div class="tip-box"><div class="tip-icon">🎯</div><div><h5>Công thức PEEL cho Part 3</h5><p><strong style="color:var(--accent)">P</strong>oint — Đưa ra quan điểm rõ ràng · <strong style="color:var(--accent)">E</strong>xplain — Giải thích tại sao · <strong style="color:var(--accent)">E</strong>xample — Ví dụ cụ thể · <strong style="color:var(--accent)">L</strong>ink — Liên hệ lại câu hỏi. Dùng công thức này cho mọi câu hỏi Part 3 để trả lời đầy đủ và logic.</p></div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- QUIZ -->
+  <div class="quiz-box" id="q1">
+    <div class="qb-label">Kiểm tra IELTS — Câu 1</div>
+    <div class="qb-q">Trong IELTS Writing Task 1, đoạn nào quan trọng nhất và KHÔNG được thiếu?</div>
+    <div class="qb-hint">💡 Đây là đoạn tóm tắt đặc điểm nổi bật nhất, KHÔNG có số liệu</div>
+    <div class="qb-opts">
+      <button class="qb-opt" onclick="checkQ('q1',this,'wrong','Sai! Introduction cần thiết nhưng không phải quan trọng nhất. Thiếu intro mất ít điểm hơn thiếu Overview.')">Introduction</button>
+      <button class="qb-opt" onclick="checkQ('q1',this,'correct','Đúng! Overview là đoạn quan trọng nhất trong Task 1. Thiếu Overview có thể làm mất hẳn điểm Task Achievement — không thể đạt Band 7+ nếu thiếu đoạn này.')">Overview (tổng quan)</button>
+      <button class="qb-opt" onclick="checkQ('q1',this,'wrong','Sai! Body paragraphs quan trọng nhưng thiếu Overview bị phạt nặng hơn.')">Body paragraphs</button>
+      <button class="qb-opt" onclick="checkQ('q1',this,'wrong','Sai! Task 1 KHÔNG có conclusion — đây là một lỗi phổ biến!')">Conclusion</button>
+    </div>
+    <div class="qb-fb" id="q1-fb"></div>
+    <button class="qb-next" id="q1-next" onclick="resetQ('q1')">Thử lại →</button>
+  </div>
+
+  <div class="quiz-box" id="q2" style="margin-top:12px">
+    <div class="qb-label">Kiểm tra IELTS — Câu 2</div>
+    <div class="qb-q">Trong IELTS Listening, người nói nói: "Let's meet at 3 PM... actually, make it 4." Đáp án là mấy giờ?</div>
+    <div class="qb-hint">💡 Đây là loại bẫy "sửa đổi" (correction) rất phổ biến</div>
+    <div class="qb-opts">
+      <button class="qb-opt" onclick="checkQ('q2',this,'wrong','Sai! 3 PM là thông tin ĐẦU TIÊN bị sửa lại. Luôn chú ý khi người nói dùng "actually", "I mean", "let me change that".')">3 PM</button>
+      <button class="qb-opt" onclick="checkQ('q2',this,'correct','Đúng! "Actually, make it 4" = sửa lại thành 4 PM. Đây là bẫy correction cực phổ biến trong Section 1. Luôn nghe đến hết câu!')">4 PM</button>
+    </div>
+    <div class="qb-fb" id="q2-fb"></div>
+    <button class="qb-next" id="q2-next" onclick="resetQ('q2')">Thử lại →</button>
+  </div>
+
+  <div style="height:60px"></div>
+</main>
+</div>
+
+<script>
+function calcBand(){
+  const w=parseFloat(document.getElementById('w-score').value);
+  const r=parseFloat(document.getElementById('r-score').value);
+  const l=parseFloat(document.getElementById('l-score').value);
+  const s=parseFloat(document.getElementById('s-score').value);
+  document.getElementById('w-val').textContent=w.toFixed(1);
+  document.getElementById('r-val').textContent=r.toFixed(1);
+  document.getElementById('l-val').textContent=l.toFixed(1);
+  document.getElementById('s-val').textContent=s.toFixed(1);
+  const avg=(w+r+l+s)/4;
+  const rounded=Math.round(avg*2)/2;
+  document.getElementById('overallBand').textContent=rounded.toFixed(1);
+  const msgs={9:'Expert — Gần như hoàn hảo!',8.5:'Very Good — Xuất sắc!',8:'Very Good — Rất tốt!',7.5:'Good — Tốt, đủ cho hầu hết mục đích',7:'Good — Đủ cho đại học quốc tế',6.5:'Competent — Đủ cho nhiều trường',6:'Competent — Cần cải thiện thêm',5.5:'Modest — Cần học thêm nhiều',5:'Modest — Cần nỗ lực hơn'};
+  document.getElementById('bandNote').textContent=msgs[rounded]||'→ Band '+rounded;
+}
+
+function showChart(type,btn){
+  document.querySelectorAll('.chart-content').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('.ct-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('chart-'+type).classList.add('show');
+  btn.classList.add('active');
+}
+
+function checkQ(id,btn,type,msg){
+  btn.closest('.quiz-box').querySelectorAll('.qb-opt').forEach(o=>o.disabled=true);
+  btn.classList.add(type);
+  const fb=document.getElementById(id+'-fb');
+  fb.textContent=(type==='correct'?'✓ ':'✗ ')+msg;
+  fb.className='qb-fb '+(type==='correct'?'ok':'no');
+  document.getElementById(id+'-next').classList.add('show');
+}
+function resetQ(id){
+  document.getElementById(id).querySelectorAll('.qb-opt').forEach(o=>{o.disabled=false;o.classList.remove('correct','wrong')});
+  document.getElementById(id+'-fb').className='qb-fb';
+  document.getElementById(id+'-next').classList.remove('show');
+}
+
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('.anchor').forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  if(cur){document.querySelectorAll('.sb-item').forEach(i=>i.classList.toggle('active',i.getAttribute('href')==='#'+cur))}
+});
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

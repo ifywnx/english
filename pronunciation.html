@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phát âm tiếng Anh — EasyEnglish</title>
+<meta name="description" content="Học phát âm tiếng Anh chuẩn IPA: nguyên âm, phụ âm, trọng âm, ngữ điệu, nối âm. Bài tập luyện phát âm tương tác.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#f4845f;--pink:#e879a0;--green:#6bcb77;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(107,203,119,0.08);top:-150px;left:-100px}
+.orb2{width:400px;height:400px;background:rgba(232,197,71,0.05);bottom:0;right:-100px}
+
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:20px 14px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text2);transition:all .15s;text-decoration:none;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif;cursor:pointer}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--green);background:rgba(107,203,119,0.08)}
+.sb-emoji{font-size:14px;width:20px;text-align:center}
+
+.content{padding:40px 48px;max-width:860px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+
+.s-divider{height:0.5px;background:var(--border);margin:40px 0}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:8px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+.lesson-anchor{scroll-margin-top:80px}
+
+/* IPA TABLE */
+.ipa-table-wrap{overflow-x:auto;margin-bottom:20px}
+.ipa-table{width:100%;border-collapse:collapse;font-size:13px}
+.ipa-table th{padding:10px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--text3);font-weight:400;text-align:left}
+.ipa-table td{padding:0}
+.ipa-cell{padding:12px 14px;border:0.5px solid var(--border);cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:3px;height:100%}
+.ipa-cell:hover{background:rgba(107,203,119,0.08);border-color:rgba(107,203,119,0.3)}
+.ipa-symbol{font-size:22px;color:var(--green);font-family:serif;line-height:1}
+.ipa-word{font-size:12px;color:var(--text);font-style:italic}
+.ipa-vi{font-size:11px;color:var(--text3)}
+.ipa-tip{font-size:10px;color:var(--accent);margin-top:2px}
+
+/* SOUND CARD */
+.sound-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.sound-card{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;text-align:center}
+.sound-card:hover{border-color:rgba(107,203,119,0.4);transform:translateY(-2px)}
+.sound-card.active{border-color:var(--green);background:rgba(107,203,119,0.08)}
+.sc-symbol{font-size:32px;color:var(--green);font-family:serif;margin-bottom:6px;display:block}
+.sc-word{font-size:13px;color:var(--text);margin-bottom:2px}
+.sc-vi{font-size:11px;color:var(--text3)}
+.sc-tip{font-size:11px;color:var(--accent);margin-top:4px;font-style:italic}
+
+/* DETAIL PANEL */
+.detail-panel{background:rgba(107,203,119,0.06);border:0.5px solid rgba(107,203,119,0.25);border-radius:14px;padding:22px;margin-bottom:20px;display:none}
+.detail-panel.show{display:block}
+.dp-header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.dp-symbol{font-size:48px;color:var(--green);font-family:serif;line-height:1}
+.dp-info h3{font-size:18px;margin-bottom:4px}
+.dp-info p{font-size:13px;color:var(--text2)}
+.dp-body{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dp-col h4{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.dp-words{display:flex;flex-direction:column;gap:6px}
+.dp-word-item{display:flex;align-items:center;gap:10px;padding:7px 10px;background:var(--card);border-radius:8px;border:0.5px solid var(--border)}
+.dp-word-en{font-size:13px;color:var(--text);font-style:italic;flex:1}
+.dp-word-ipa{font-size:12px;color:var(--accent);font-family:monospace}
+.dp-word-vi{font-size:11px;color:var(--text3)}
+.dp-tips{display:flex;flex-direction:column;gap:6px}
+.dp-tip-item{padding:8px 12px;background:var(--card);border-radius:8px;border-left:2px solid var(--accent);font-size:12px;color:var(--text2);line-height:1.6}
+
+/* STRESS */
+.stress-box{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
+.stress-box h4{font-size:13px;font-weight:500;margin-bottom:10px;color:var(--text)}
+.stress-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.stress-word{font-size:18px;color:var(--text);font-style:italic;min-width:140px}
+.stress-mark{font-size:14px;color:var(--green)}
+.stress-rule{font-size:12px;color:var(--text3)}
+.stress-syllable{display:inline-block;padding:3px 8px;border-radius:4px;font-size:14px;font-style:italic}
+.stress-syllable.strong{background:rgba(107,203,119,0.2);color:var(--green);font-weight:500}
+.stress-syllable.weak{color:var(--text3)}
+
+/* MINIMAL PAIR */
+.pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.pair-card{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.pair-word{font-size:20px;color:var(--text);font-style:italic;margin-bottom:4px}
+.pair-ipa{font-size:13px;color:var(--accent);font-family:monospace;margin-bottom:4px}
+.pair-vi{font-size:12px;color:var(--text3)}
+.pair-diff{text-align:center;font-size:12px;color:var(--coral);margin:8px 0 14px;padding:8px;background:rgba(244,132,95,0.08);border-radius:8px}
+
+/* NOTE */
+.note-box{background:rgba(244,132,95,0.08);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.note-box strong{color:var(--coral)}
+
+.tip-box{background:rgba(100,216,165,0.08);border:0.5px solid rgba(123,110,246,0.25);border-radius:12px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.tip-icon{width:32px;height:32px;border-radius:8px;background:rgba(123,110,246,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* RULES TABLE */
+.rules-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+.rules-table th{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.rules-table td{padding:9px 14px;border:0.5px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.rules-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-rule{color:var(--text);font-weight:500}
+.td-ex{color:var(--accent);font-style:italic;font-family:monospace;font-size:12px}
+.td-vi{color:var(--text3);font-size:11px}
+
+/* QUIZ */
+.quiz-mini{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:14px;padding:20px;margin-top:20px}
+.quiz-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+.quiz-q{font-size:14px;margin-bottom:14px;line-height:1.6;color:var(--text)}
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{padding:10px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif}
+.quiz-opt:hover{border-color:rgba(123,110,246,0.4);color:var(--text)}
+.quiz-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.quiz-result{margin-top:12px;font-size:13px;padding:10px 14px;border-radius:8px;display:none}
+.quiz-result.show{display:block}
+.quiz-result.ok{background:rgba(107,203,119,0.1);color:var(--green)}
+.quiz-result.no{background:rgba(244,132,95,0.1);color:var(--coral)}
+.next-btn{margin-top:8px;padding:7px 16px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.next-btn.show{display:inline-block}
+
+/* MOUTH DIAGRAM */
+.mouth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.mouth-card{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.mouth-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.mouth-symbols{font-size:20px;color:var(--green);font-family:serif;margin-bottom:6px;letter-spacing:6px}
+.mouth-desc{font-size:12px;color:var(--text2);line-height:1.5}
+
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .content{padding:24px 20px}
+  nav{padding:12px 16px}
+  .nav-links{display:none}
+  .page-title{font-size:28px}
+  .sound-grid{grid-template-columns:repeat(3,1fr)}
+  .dp-body{grid-template-columns:1fr}
+  .mouth-grid{grid-template-columns:1fr 1fr}
+  .pair-grid{grid-template-columns:1fr}
+}
+@media(max-width:500px){
+  .content{padding:16px 12px}
+  .sound-grid{grid-template-columns:repeat(2,1fr)}
+  .mouth-grid{grid-template-columns:1fr}
+}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a active">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Tổng quan</div>
+  <a href="#intro" class="sb-item active"><span class="sb-emoji">📖</span>Giới thiệu IPA</a>
+  <a href="#vowels" class="sb-item"><span class="sb-emoji">🔵</span>Nguyên âm (Vowels)</a>
+  <a href="#consonants" class="sb-item"><span class="sb-emoji">🔴</span>Phụ âm (Consonants)</a>
+  <a href="#diphthongs" class="sb-item"><span class="sb-emoji">🟡</span>Nguyên âm đôi</a>
+
+  <div class="sidebar-title">Quy tắc phát âm</div>
+  <a href="#silent" class="sb-item"><span class="sb-emoji">🤫</span>Chữ câm (Silent letters)</a>
+  <a href="#ed-ing" class="sb-item"><span class="sb-emoji">📝</span>Cách đọc -ed / -ing</a>
+  <a href="#s-es" class="sb-item"><span class="sb-emoji">🔤</span>Cách đọc -s / -es</a>
+  <a href="#contractions" class="sb-item"><span class="sb-emoji">✂️</span>Rút gọn (Contractions)</a>
+
+  <div class="sidebar-title">Trọng âm & Ngữ điệu</div>
+  <a href="#stress-word" class="sb-item"><span class="sb-emoji">💪</span>Trọng âm từ</a>
+  <a href="#stress-sentence" class="sb-item"><span class="sb-emoji">📢</span>Trọng âm câu</a>
+  <a href="#intonation" class="sb-item"><span class="sb-emoji">〰️</span>Ngữ điệu câu</a>
+  <a href="#linking" class="sb-item"><span class="sb-emoji">🔗</span>Nối âm (Linking)</a>
+
+  <div class="sidebar-title">Luyện tập</div>
+  <a href="#minimal-pairs" class="sb-item"><span class="sb-emoji">👥</span>Cặp từ dễ nhầm</a>
+  <a href="#practice" class="sb-item"><span class="sb-emoji">🎯</span>Bài tập phát âm</a>
+</aside>
+
+<main class="content">
+  <div class="page-label">Module 3</div>
+  <h1 class="page-title">Phát âm tiếng Anh</h1>
+  <p class="page-desc">Học phát âm chuẩn từ bảng ký hiệu IPA, nguyên âm, phụ âm đến trọng âm và ngữ điệu. Bấm vào từng âm để xem hướng dẫn chi tiết.</p>
+
+  <!-- INTRO -->
+  <div class="lesson-anchor" id="intro">
+    <div class="section-label">Phần 1</div>
+    <div class="section-title">Bảng ký hiệu phiên âm IPA là gì?</div>
+    <div class="section-desc">IPA (International Phonetic Alphabet) là hệ thống ký hiệu quốc tế để ghi lại âm thanh của ngôn ngữ. Trong từ điển, ký hiệu trong // hoặc [] chính là phiên âm IPA.</div>
+
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div>
+        <h5>Tại sao phải học IPA?</h5>
+        <p>Tiếng Anh có 26 chữ cái nhưng đến <strong style="color:var(--accent)">44 âm</strong> khác nhau! Một chữ cái có thể đọc nhiều cách (ví dụ chữ "a" trong cat /æ/, make /eɪ/, all /ɔː/). Biết IPA giúp bạn tự đọc đúng bất kỳ từ nào trong từ điển mà không cần nghe người khác đọc trước.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+      <div class="stress-box" style="text-align:center">
+        <div style="font-size:28px;color:var(--green);font-family:serif;margin-bottom:6px">/kæt/</div>
+        <div style="font-size:13px;color:var(--text)">cat (con mèo)</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">3 ký hiệu = 3 âm</div>
+      </div>
+      <div class="stress-box" style="text-align:center">
+        <div style="font-size:28px;color:var(--green);font-family:serif;margin-bottom:6px">/θɪŋk/</div>
+        <div style="font-size:13px;color:var(--text)">think (nghĩ)</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">θ = âm "th"</div>
+      </div>
+      <div class="stress-box" style="text-align:center">
+        <div style="font-size:28px;color:var(--green);font-family:serif;margin-bottom:6px">/ˈwɔːtər/</div>
+        <div style="font-size:13px;color:var(--text)">water (nước)</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">ˈ = trọng âm</div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Cách đọc ký hiệu IPA:</strong> / / — phiên âm bình thường · [ ] — phiên âm chính xác · ˈ — trọng âm chính (đứng trước âm tiết đó) · ˌ — trọng âm phụ · ː — âm dài (kéo dài hơn)
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- VOWELS -->
+  <div class="lesson-anchor" id="vowels">
+    <div class="section-label">Phần 2</div>
+    <div class="section-title">Nguyên âm — Vowels</div>
+    <div class="section-desc">Tiếng Anh có <strong style="color:var(--accent)">12 nguyên âm đơn</strong>. Bấm vào từng âm để xem hướng dẫn phát âm chi tiết.</div>
+
+    <div class="sound-grid" id="vowelGrid"></div>
+    <div class="detail-panel" id="vowelDetail"></div>
+
+    <div class="mouth-grid">
+      <div class="mouth-card">
+        <div class="mouth-label">Nguyên âm trước</div>
+        <div class="mouth-symbols">iː ɪ e æ</div>
+        <div class="mouth-desc">Miệng mở ít, lưỡi đẩy ra phía trước. Môi căng (smile shape).</div>
+      </div>
+      <div class="mouth-card">
+        <div class="mouth-label">Nguyên âm giữa</div>
+        <div class="mouth-symbols">ə ɜː ʌ</div>
+        <div class="mouth-desc">Lưỡi ở vị trí trung tính, hàm mở vừa phải. Thư giãn nhất.</div>
+      </div>
+      <div class="mouth-card">
+        <div class="mouth-label">Nguyên âm sau</div>
+        <div class="mouth-symbols">uː ʊ ɔː ɒ ɑː</div>
+        <div class="mouth-desc">Môi tròn và nhô ra phía trước. Miệng mở hơn.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- CONSONANTS -->
+  <div class="lesson-anchor" id="consonants">
+    <div class="section-label">Phần 3</div>
+    <div class="section-title">Phụ âm — Consonants</div>
+    <div class="section-desc">Tiếng Anh có <strong style="color:var(--accent)">24 phụ âm</strong>. Một số âm rất khác tiếng Việt, cần chú ý đặc biệt.</div>
+
+    <div class="sound-grid" id="consonantGrid"></div>
+    <div class="detail-panel" id="consonantDetail"></div>
+
+    <div class="tip-box">
+      <div class="tip-icon">⚠️</div>
+      <div>
+        <h5>3 âm khó nhất với người Việt</h5>
+        <p><strong style="color:var(--accent)">θ (th)</strong> — đặt lưỡi giữa hai hàm răng, thổi hơi ra: <em>think, three, bath</em><br>
+        <strong style="color:var(--accent)">ð (th)</strong> — giống θ nhưng có rung thanh quản: <em>the, this, mother</em><br>
+        <strong style="color:var(--accent)">r</strong> — cuộn lưỡi lại, không chạm vào đâu, thổi hơi qua: <em>red, right, road</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- DIPHTHONGS -->
+  <div class="lesson-anchor" id="diphthongs">
+    <div class="section-label">Phần 4</div>
+    <div class="section-title">Nguyên âm đôi — Diphthongs</div>
+    <div class="section-desc">Nguyên âm đôi là sự kết hợp của 2 nguyên âm trong cùng một âm tiết. Tiếng Anh có <strong style="color:var(--accent)">8 nguyên âm đôi</strong>.</div>
+
+    <div class="sound-grid" id="diphthongGrid"></div>
+
+    <div class="note-box">
+      <strong>Cách phát âm nguyên âm đôi:</strong> Bắt đầu từ âm đầu tiên rồi trượt nhẹ sang âm thứ hai. Âm đầu dài hơn, âm sau ngắn và nhẹ hơn. Ví dụ /eɪ/ trong "make": bắt đầu bằng /e/ rồi trượt sang /ɪ/.
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- SILENT LETTERS -->
+  <div class="lesson-anchor" id="silent">
+    <div class="section-label">Phần 5</div>
+    <div class="section-title">Chữ câm — Silent Letters</div>
+    <div class="section-desc">Nhiều chữ trong tiếng Anh được viết nhưng không đọc. Đây là nguyên nhân phổ biến khiến người học phát âm sai.</div>
+
+    <table class="rules-table">
+      <tr><th>Chữ câm</th><th>Quy tắc</th><th>Ví dụ</th><th>Phiên âm</th></tr>
+      <tr>
+        <td class="td-rule">k</td>
+        <td>Câm khi đứng trước n đầu từ</td>
+        <td class="td-ex">know, knife, knee, knock</td>
+        <td class="td-vi">/noʊ/, /naɪf/, /niː/, /nɒk/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">w</td>
+        <td>Câm trong wr- đầu từ & một số từ</td>
+        <td class="td-ex">write, wrong, answer, sword</td>
+        <td class="td-vi">/raɪt/, /rɒŋ/, /ˈɑːnsər/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">h</td>
+        <td>Câm ở đầu một số từ</td>
+        <td class="td-ex">hour, honest, heir, ghost</td>
+        <td class="td-vi">/ˈaʊər/, /ˈɒnɪst/, /ɛr/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">b</td>
+        <td>Câm sau m cuối từ & trước t</td>
+        <td class="td-ex">bomb, thumb, climb, debt</td>
+        <td class="td-vi">/bɒm/, /θʌm/, /klaɪm/, /dɛt/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">p</td>
+        <td>Câm trong ps-, pn-, pt- đầu từ</td>
+        <td class="td-ex">psychology, pneumonia, receipt</td>
+        <td class="td-vi">/saɪˈkɒlədʒi/, /njuːˈmoʊniə/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">gh</td>
+        <td>Câm sau nguyên âm ở nhiều vị trí</td>
+        <td class="td-ex">night, light, thought, through</td>
+        <td class="td-vi">/naɪt/, /laɪt/, /θɔːt/, /θruː/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">e</td>
+        <td>Câm cuối từ (magic e) nhưng làm dài nguyên âm trước</td>
+        <td class="td-ex">make, like, hope, cute</td>
+        <td class="td-vi">/meɪk/, /laɪk/, /hoʊp/, /kjuːt/</td>
+      </tr>
+      <tr>
+        <td class="td-rule">l</td>
+        <td>Câm trong một số từ phổ biến</td>
+        <td class="td-ex">calm, half, walk, talk, would</td>
+        <td class="td-vi">/kɑːm/, /hɑːf/, /wɔːk/, /tɔːk/</td>
+      </tr>
+    </table>
+
+    <div class="quiz-mini" id="quiz-silent">
+      <div class="quiz-label">Kiểm tra nhanh</div>
+      <div class="quiz-q">Từ nào sau đây có chữ câm?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ('quiz-silent',this,'wrong','Sai! "cat" đọc đúng như viết: /kæt/ — không có chữ câm')">cat /kæt/</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-silent',this,'correct','Đúng! "knee" — chữ k câm → đọc là /niː/ (không có âm k)')">knee /niː/</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-silent',this,'wrong','Sai! "big" đọc đúng như viết: /bɪɡ/ — không có chữ câm')">big /bɪɡ/</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-silent',this,'wrong','Sai! "run" đọc đúng: /rʌn/ — không có chữ câm')">run /rʌn/</button>
+      </div>
+      <div class="quiz-result" id="quiz-silent-result"></div>
+      <button class="next-btn" id="quiz-silent-next" onclick="resetQ('quiz-silent')">Thử lại →</button>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- -ED ENDINGS -->
+  <div class="lesson-anchor" id="ed-ing">
+    <div class="section-label">Phần 6</div>
+    <div class="section-title">Cách đọc đuôi -ed (quá khứ)</div>
+    <div class="section-desc">Đuôi -ed trong tiếng Anh không phải lúc nào cũng đọc là "ed". Có 3 cách đọc tùy vào âm cuối của động từ.</div>
+
+    <table class="rules-table">
+      <tr><th>Đọc là</th><th>Khi nào</th><th>Ví dụ</th></tr>
+      <tr>
+        <td class="td-rule">/ɪd/ hoặc /əd/</td>
+        <td>Động từ kết thúc bằng âm <strong style="color:var(--accent)">/t/</strong> hoặc <strong style="color:var(--accent)">/d/</strong></td>
+        <td><span class="td-ex">wanted /ˈwɒntɪd/</span> · <span class="td-vi">muốn</span><br><span class="td-ex">needed /ˈniːdɪd/</span> · <span class="td-vi">cần</span><br><span class="td-ex">started /ˈstɑːtɪd/</span> · <span class="td-vi">bắt đầu</span></td>
+      </tr>
+      <tr>
+        <td class="td-rule">/t/</td>
+        <td>Động từ kết thúc bằng phụ âm <strong style="color:var(--accent)">vô thanh</strong>: /p/ /k/ /f/ /s/ /ʃ/ /tʃ/</td>
+        <td><span class="td-ex">stopped /stɒpt/</span> · <span class="td-vi">dừng</span><br><span class="td-ex">walked /wɔːkt/</span> · <span class="td-vi">đi bộ</span><br><span class="td-ex">watched /wɒtʃt/</span> · <span class="td-vi">xem</span><br><span class="td-ex">laughed /lɑːft/</span> · <span class="td-vi">cười</span></td>
+      </tr>
+      <tr>
+        <td class="td-rule">/d/</td>
+        <td>Động từ kết thúc bằng nguyên âm hoặc phụ âm <strong style="color:var(--accent)">hữu thanh</strong>: /b/ /g/ /v/ /z/ /m/ /n/ /l/...</td>
+        <td><span class="td-ex">played /pleɪd/</span> · <span class="td-vi">chơi</span><br><span class="td-ex">loved /lʌvd/</span> · <span class="td-vi">yêu</span><br><span class="td-ex">called /kɔːld/</span> · <span class="td-vi">gọi</span><br><span class="td-ex">opened /ˈoʊpənd/</span> · <span class="td-vi">mở</span></td>
+      </tr>
+    </table>
+
+    <div class="section-title" id="s-es" style="font-size:20px;margin-top:28px">Cách đọc đuôi -s / -es</div>
+    <div class="section-desc" style="margin-top:8px">Tương tự đuôi -ed, đuôi -s/-es cũng có 3 cách đọc.</div>
+
+    <table class="rules-table">
+      <tr><th>Đọc là</th><th>Khi nào</th><th>Ví dụ</th></tr>
+      <tr>
+        <td class="td-rule">/ɪz/</td>
+        <td>Sau các âm /s/ /z/ /ʃ/ /ʒ/ /tʃ/ /dʒ/</td>
+        <td><span class="td-ex">buses /ˈbʌsɪz/</span><br><span class="td-ex">watches /ˈwɒtʃɪz/</span><br><span class="td-ex">judges /ˈdʒʌdʒɪz/</span></td>
+      </tr>
+      <tr>
+        <td class="td-rule">/s/</td>
+        <td>Sau phụ âm vô thanh /p/ /t/ /k/ /f/ /θ/</td>
+        <td><span class="td-ex">cups /kʌps/</span><br><span class="td-ex">cats /kæts/</span><br><span class="td-ex">books /bʊks/</span></td>
+      </tr>
+      <tr>
+        <td class="td-rule">/z/</td>
+        <td>Sau nguyên âm và phụ âm hữu thanh</td>
+        <td><span class="td-ex">dogs /dɒɡz/</span><br><span class="td-ex">cars /kɑːrz/</span><br><span class="td-ex">plays /pleɪz/</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- CONTRACTIONS -->
+  <div class="lesson-anchor" id="contractions">
+    <div class="section-label">Phần 7</div>
+    <div class="section-title">Rút gọn — Contractions</div>
+    <div class="section-desc">Trong hội thoại tự nhiên, người bản ngữ thường rút gọn hai từ thành một. Học contractions giúp bạn nghe và nói tự nhiên hơn.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+      <div>
+        <div style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Với "be"</div>
+        <div id="contrBe"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Phủ định</div>
+        <div id="contrNeg"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Với "have / has"</div>
+        <div id="contrHave"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Với "will / would"</div>
+        <div id="contrWill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- WORD STRESS -->
+  <div class="lesson-anchor" id="stress-word">
+    <div class="section-label">Phần 8</div>
+    <div class="section-title">Trọng âm từ — Word Stress</div>
+    <div class="section-desc">Trọng âm là âm tiết được phát âm <strong style="color:var(--accent)">to hơn, dài hơn, cao hơn</strong> so với các âm tiết khác. Đặt sai trọng âm có thể khiến người nghe không hiểu!</div>
+
+    <div class="stress-box">
+      <h4>Quy tắc trọng âm từ 2 âm tiết</h4>
+      <div class="stress-row">
+        <div class="stress-word"><span class="stress-syllable strong">TA</span><span class="stress-syllable weak">ble</span></div>
+        <div class="stress-mark">→ âm 1</div>
+        <div class="stress-rule">Danh từ / tính từ 2 âm tiết → thường nhấn âm 1</div>
+      </div>
+      <div class="stress-row">
+        <div class="stress-word"><span class="stress-syllable weak">be</span><span class="stress-syllable strong">GIN</span></div>
+        <div class="stress-mark">→ âm 2</div>
+        <div class="stress-rule">Động từ 2 âm tiết → thường nhấn âm 2</div>
+      </div>
+      <div class="stress-row">
+        <div class="stress-word"><span class="stress-syllable strong">RE</span><span class="stress-syllable weak">cord</span></div>
+        <div class="stress-mark">vs</div>
+        <div class="stress-rule">Danh từ: <em>REcord</em> (đĩa nhạc) · Động từ: <em>reCORD</em> (ghi âm)</div>
+      </div>
+    </div>
+
+    <div class="stress-box">
+      <h4>Các ví dụ trọng âm thông dụng</h4>
+      <div id="stressExamples"></div>
+    </div>
+
+    <div class="note-box">
+      <strong>Mẹo nhận biết trọng âm:</strong> Đặt tay lên cằm. Âm tiết khiến cằm bạn rơi xuống mạnh nhất chính là âm mang trọng âm. Hoặc hát từ đó theo nhịp — âm mạnh nhất là trọng âm!
+    </div>
+
+    <div class="quiz-mini" id="quiz-stress">
+      <div class="quiz-label">Kiểm tra nhanh</div>
+      <div class="quiz-q">Từ "student" /ˈstjuːdənt/ — âm tiết nào mang trọng âm?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ('quiz-stress',this,'correct','Đúng! "STU-dent" — ký hiệu ˈ đứng trước "stju" → âm tiết đầu mang trọng âm')">Âm tiết thứ nhất: STU-dent</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-stress',this,'wrong','Sai! Ký hiệu ˈ trong /ˈstjuːdənt/ đứng trước âm tiết ĐẦU TIÊN')">Âm tiết thứ hai: stu-DENT</button>
+      </div>
+      <div class="quiz-result" id="quiz-stress-result"></div>
+      <button class="next-btn" id="quiz-stress-next" onclick="resetQ('quiz-stress')">Thử lại →</button>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- SENTENCE STRESS -->
+  <div class="lesson-anchor" id="stress-sentence">
+    <div class="section-label">Phần 9</div>
+    <div class="section-title">Trọng âm câu — Sentence Stress</div>
+    <div class="section-desc">Trong câu, không phải tất cả các từ đều được nhấn như nhau. Các từ quan trọng (content words) được nhấn mạnh, từ chức năng (function words) thường đọc nhẹ và nhanh.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+      <div class="stress-box">
+        <h4 style="color:var(--green);margin-bottom:10px">Từ được nhấn (Content words)</h4>
+        <div style="font-size:13px;color:var(--text2);line-height:1.8">
+          ✓ Danh từ: <em style="color:var(--text)">book, teacher, Hanoi</em><br>
+          ✓ Động từ chính: <em style="color:var(--text)">love, eat, go</em><br>
+          ✓ Tính từ: <em style="color:var(--text)">beautiful, hot</em><br>
+          ✓ Trạng từ: <em style="color:var(--text)">quickly, always</em><br>
+          ✓ Từ hỏi: <em style="color:var(--text)">what, where, when</em>
+        </div>
+      </div>
+      <div class="stress-box">
+        <h4 style="color:var(--text3);margin-bottom:10px">Từ đọc nhẹ (Function words)</h4>
+        <div style="font-size:13px;color:var(--text2);line-height:1.8">
+          ✗ Đại từ: <em style="color:var(--text3)">I, he, she, it, we</em><br>
+          ✗ Giới từ: <em style="color:var(--text3)">in, on, at, of, to</em><br>
+          ✗ Mạo từ: <em style="color:var(--text3)">a, an, the</em><br>
+          ✗ Liên từ: <em style="color:var(--text3)">and, but, or</em><br>
+          ✗ Trợ động từ: <em style="color:var(--text3)">am, is, are, do</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="stress-box">
+      <h4>Ví dụ — Từ in HOA là được nhấn</h4>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+        <div style="font-size:16px;color:var(--text);line-height:2">
+          <em>I <strong style="color:var(--accent)">LOVE</strong> <strong style="color:var(--accent)">COFFEE</strong> in the <strong style="color:var(--accent)">MORNING</strong>.</em>
+          <div style="font-size:12px;color:var(--text3)">→ Nhấn: love, coffee, morning. Đọc nhẹ: I, in, the</div>
+        </div>
+        <div style="font-size:16px;color:var(--text);line-height:2">
+          <em>She's going to the <strong style="color:var(--accent)">MARKET</strong> to <strong style="color:var(--accent)">BUY</strong> some <strong style="color:var(--accent)">VEGETABLES</strong>.</em>
+          <div style="font-size:12px;color:var(--text3)">→ Nhấn: market, buy, vegetables. Đọc nhẹ: she's, going, to, the, to, some</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- INTONATION -->
+  <div class="lesson-anchor" id="intonation">
+    <div class="section-label">Phần 10</div>
+    <div class="section-title">Ngữ điệu — Intonation</div>
+    <div class="section-desc">Ngữ điệu là sự lên xuống của giọng nói. Cùng một câu nhưng ngữ điệu khác nhau mang ý nghĩa hoàn toàn khác!</div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+      <div class="stress-box">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="font-size:28px">↘</div>
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--accent);margin-bottom:4px">Giọng xuống (Falling) — Câu khẳng định & câu hỏi Wh-</div>
+            <div style="font-size:13px;color:var(--text2)">Dùng khi nói câu khẳng định, câu mệnh lệnh, câu hỏi có từ để hỏi (what, where, when...)</div>
+            <div style="font-size:13px;color:var(--text);margin-top:6px;font-style:italic">"I <strong>live</strong> in Ha<strong>noi</strong>↘" · "Where are you <strong>go</strong>ing↘?"</div>
+          </div>
+        </div>
+      </div>
+      <div class="stress-box">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="font-size:28px">↗</div>
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--accent3);margin-bottom:4px">Giọng lên (Rising) — Câu hỏi Yes/No</div>
+            <div style="font-size:13px;color:var(--text2)">Dùng khi hỏi câu Yes/No, hoặc muốn tỏ ra lịch sự, không chắc chắn</div>
+            <div style="font-size:13px;color:var(--text);margin-top:6px;font-style:italic">"Do you speak Eng<strong>lish</strong>↗?" · "Are you tired↗?"</div>
+          </div>
+        </div>
+      </div>
+      <div class="stress-box">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="font-size:28px">↗↘</div>
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--accent2);margin-bottom:4px">Giọng lên-xuống (Fall-Rise) — Liệt kê, chưa kết thúc</div>
+            <div style="font-size:13px;color:var(--text2)">Dùng khi liệt kê nhiều thứ (các thứ trước lên, thứ cuối xuống)</div>
+            <div style="font-size:13px;color:var(--text);margin-top:6px;font-style:italic">"I like <strong>coffee</strong>↗, <strong>tea</strong>↗, and <strong>juice</strong>↘."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- LINKING -->
+  <div class="lesson-anchor" id="linking">
+    <div class="section-label">Phần 11</div>
+    <div class="section-title">Nối âm — Linking Sounds</div>
+    <div class="section-desc">Người bản ngữ nói tiếng Anh rất nhanh vì họ nối các từ lại với nhau. Học nối âm giúp bạn nghe và nói tự nhiên hơn.</div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+      <div class="stress-box">
+        <h4>1. Phụ âm + Nguyên âm → Nối liền</h4>
+        <div style="font-size:14px;color:var(--text);margin-top:8px;font-style:italic">
+          "an <strong style="color:var(--accent)">apple</strong>" → đọc như "a-<strong>nap</strong>-ple" /ə.ˈnæp.əl/<br>
+          "turn <strong style="color:var(--accent)">it</strong> off" → đọc như "tur-<strong>ni</strong>-toff" /tɜːr.nɪ.tɒf/<br>
+          "come <strong style="color:var(--accent)">on</strong>" → đọc như "co-<strong>mon</strong>" /kʌ.mɒn/
+        </div>
+      </div>
+      <div class="stress-box">
+        <h4>2. Cùng phụ âm → Đọc một lần, dài hơn</h4>
+        <div style="font-size:14px;color:var(--text);margin-top:8px;font-style:italic">
+          "big <strong style="color:var(--accent)">game</strong>" → đọc như "bi-<strong>gg</strong>ame" /bɪ.ɡeɪm/<br>
+          "good <strong style="color:var(--accent)">day</strong>" → "goo-<strong>dday</strong>" /ɡʊ.deɪ/<br>
+          "hot <strong style="color:var(--accent)">tea</strong>" → "ho-<strong>ttea</strong>" /hɒ.tiː/
+        </div>
+      </div>
+      <div class="stress-box">
+        <h4>3. Âm /t/ và /d/ yếu giữa hai nguyên âm (Flapping — giọng Mỹ)</h4>
+        <div style="font-size:14px;color:var(--text);margin-top:8px;font-style:italic">
+          "water" → đọc như "wa-<strong>d</strong>er" /ˈwɔː.dər/<br>
+          "better" → đọc như "be-<strong>d</strong>er" /ˈbe.dər/<br>
+          "city" → đọc như "si-<strong>d</strong>y" /ˈsɪ.di/
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- MINIMAL PAIRS -->
+  <div class="lesson-anchor" id="minimal-pairs">
+    <div class="section-label">Phần 12</div>
+    <div class="section-title">Cặp từ dễ nhầm — Minimal Pairs</div>
+    <div class="section-desc">Đây là những cặp từ chỉ khác nhau một âm nhưng nghĩa hoàn toàn khác. Luyện phân biệt những cặp này rất quan trọng!</div>
+
+    <div id="minimalPairsGrid"></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- PRACTICE -->
+  <div class="lesson-anchor" id="practice">
+    <div class="section-label">Phần 13</div>
+    <div class="section-title">Bài tập phát âm</div>
+    <div class="section-desc">Kiểm tra kiến thức phát âm của bạn</div>
+
+    <div class="quiz-mini" id="quiz-p1">
+      <div class="quiz-label">Bài 1</div>
+      <div class="quiz-q">Từ "walked" — đuôi -ed đọc là gì?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ('quiz-p1',this,'wrong','Sai! /ɪd/ chỉ dùng sau âm /t/ và /d/. "walk" kết thúc bằng âm /k/ (vô thanh)')">/ ɪd / — như "id"</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-p1',this,'correct','Đúng! "walk" kết thúc bằng /k/ — phụ âm vô thanh → đuôi -ed đọc là /t/ → walked /wɔːkt/')">/ t / — walked /wɔːkt/</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-p1',this,'wrong','Sai! /d/ dùng sau nguyên âm hoặc phụ âm hữu thanh. /k/ là vô thanh')">/ d / — walked /wɔːkd/</button>
+      </div>
+      <div class="quiz-result" id="quiz-p1-result"></div>
+      <button class="next-btn" id="quiz-p1-next" onclick="resetQ('quiz-p1')">Thử lại →</button>
+    </div>
+
+    <div class="quiz-mini" id="quiz-p2" style="margin-top:14px">
+      <div class="quiz-label">Bài 2</div>
+      <div class="quiz-q">Từ "hour" — chữ nào bị câm?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ('quiz-p2',this,'correct','Đúng! "hour" đọc là /aʊər/ — chữ h câm. Đó là lý do tại sao phải nói "an hour" (không phải "a hour") vì đọc bắt đầu bằng nguyên âm /aʊ/')">Chữ h — đọc /aʊər/</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-p2',this,'wrong','Sai! Chữ o không câm. Nó tạo nên âm /aʊ/ trong "hour"')">Chữ o — đọc /hɜːr/</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-p2',this,'wrong','Sai! Chữ r không câm hoàn toàn — trong tiếng Anh Mỹ /r/ được phát âm')">Chữ r — đọc /haʊ/</button>
+      </div>
+      <div class="quiz-result" id="quiz-p2-result"></div>
+      <button class="next-btn" id="quiz-p2-next" onclick="resetQ('quiz-p2')">Thử lại →</button>
+    </div>
+
+    <div class="quiz-mini" id="quiz-p3" style="margin-top:14px">
+      <div class="quiz-label">Bài 3</div>
+      <div class="quiz-q">Câu hỏi "Do you like coffee?" dùng ngữ điệu nào?</div>
+      <div class="quiz-opts">
+        <button class="quiz-opt" onclick="checkQ('quiz-p3',this,'correct','Đúng! Câu hỏi Yes/No dùng ngữ điệu lên ↗ ở cuối câu')">Ngữ điệu lên ↗ (Rising) — vì là câu hỏi Yes/No</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-p3',this,'wrong','Sai! Ngữ điệu xuống ↘ dùng cho câu khẳng định và câu hỏi Wh-')">Ngữ điệu xuống ↘ (Falling)</button>
+        <button class="quiz-opt" onclick="checkQ('quiz-p3',this,'wrong','Sai! Lên-xuống dùng khi liệt kê, không phải câu hỏi Yes/No')">Ngữ điệu lên-xuống ↗↘</button>
+      </div>
+      <div class="quiz-result" id="quiz-p3-result"></div>
+      <button class="next-btn" id="quiz-p3-next" onclick="resetQ('quiz-p3')">Thử lại →</button>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- PRONUNCIATION PRACTICE WITH MIC -->
+  <div class="lesson-anchor" id="pronMicSection">
+    <div class="section-label">Luyện tập</div>
+    <div class="section-title">🎤 Luyện phát âm với Mic</div>
+    <div class="section-desc">Bấm nút 🎤, nói từ hiển thị. Web sẽ nhận diện và cho biết bạn nói đúng chưa. Tập trung vào các từ khó phát âm!</div>
+
+    <div class="pron-mic-card" style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:32px;text-align:center;max-width:520px;margin:0 auto">
+      <div id="pronMicWord" style="font-family:'Fraunces',serif;font-size:40px;color:var(--text);margin-bottom:4px">three</div>
+      <div id="pronMicIpa" style="font-size:18px;color:var(--accent);font-style:italic;margin-bottom:4px">/θriː/</div>
+      <div id="pronMicHint" style="font-size:13px;color:var(--accent3);margin-bottom:16px">Đặt lưỡi giữa 2 hàm răng</div>
+
+      <div style="display:flex;justify-content:center;gap:12px;margin-bottom:16px">
+        <button onclick="speakPronWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:18px" title="Nghe mẫu">🔊</button>
+        <button id="pronMicBtn" onclick="startPronMic()" style="width:60px;height:60px;border-radius:50%;background:rgba(244,132,95,0.15);border:2px solid rgba(244,132,95,0.4);color:var(--coral);cursor:pointer;font-size:24px;transition:all .3s" title="Bấm để nói">🎤</button>
+        <button onclick="nextPronWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(100,216,165,0.15);border:0.5px solid rgba(100,216,165,0.3);color:var(--accent3);cursor:pointer;font-size:18px" title="Từ tiếp theo">→</button>
+      </div>
+      <div id="pronMicResult" style="min-height:40px"></div>
+      <div id="pronMicProgress" style="font-size:12px;color:var(--text3);margin-top:8px">1 / 10</div>
+    </div>
+    <style>
+      #pronMicBtn.recording{background:rgba(244,132,95,0.4);border-color:var(--coral);animation:pron-mic-pulse 1s infinite}
+      @keyframes pron-mic-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(244,132,95,0.4)}50%{transform:scale(1.08);box-shadow:0 0 0 14px rgba(244,132,95,0)}}
+    </style>
+  </div>
+
+  <div style="height:60px"></div>
+</main>
+</div>
+
+<script>
+// ===== DATA =====
+const VOWELS = [
+  {sym:'iː',word:'see',ipa:'/siː/',vi:'nhìn thấy',tip:'Kéo dài, môi cười rộng',words:[{en:'sheep',ipa:'/ʃiːp/',vi:'con cừu'},{en:'feet',ipa:'/fiːt/',vi:'bàn chân'},{en:'tea',ipa:'/tiː/',vi:'trà'}],tips:['Môi căng ra như khi cười','Lưỡi nâng cao về phía trước','Âm dài hơn /ɪ/']},
+  {sym:'ɪ',word:'sit',ipa:'/sɪt/',vi:'ngồi',tip:'Ngắn, thư giãn hơn /iː/',words:[{en:'ship',ipa:'/ʃɪp/',vi:'tàu thuyền'},{en:'bit',ipa:'/bɪt/',vi:'một chút'},{en:'this',ipa:'/ðɪs/',vi:'này'}],tips:['Miệng thư giãn hơn /iː/','Âm ngắn','Phổ biến trong âm tiết không nhấn']},
+  {sym:'e',word:'bed',ipa:'/bɛd/',vi:'giường',tip:'Miệng mở vừa, lưỡi giữa',words:[{en:'red',ipa:'/rɛd/',vi:'màu đỏ'},{en:'pet',ipa:'/pɛt/',vi:'thú cưng'},{en:'egg',ipa:'/ɛɡ/',vi:'trứng'}],tips:['Miệng mở vừa phải','Lưỡi ở vị trí giữa','Khác với /æ/ — mở ít hơn']},
+  {sym:'æ',word:'cat',ipa:'/kæt/',vi:'con mèo',tip:'Mở rộng, lưỡi thấp',words:[{en:'hand',ipa:'/hænd/',vi:'bàn tay'},{en:'man',ipa:'/mæn/',vi:'đàn ông'},{en:'back',ipa:'/bæk/',vi:'lưng'}],tips:['Mở miệng rộng nhất trong nhóm nguyên âm trước','Lưỡi ở thấp, phía trước','Không có âm tương đương trong tiếng Việt']},
+  {sym:'ɑː',word:'car',ipa:'/kɑːr/',vi:'xe ô tô',tip:'Mở rộng, kéo dài',words:[{en:'father',ipa:'/ˈfɑːðər/',vi:'bố'},{en:'park',ipa:'/pɑːrk/',vi:'công viên'},{en:'heart',ipa:'/hɑːrt/',vi:'tim'}],tips:['Mở miệng rộng nhất','Lưỡi thấp, phía sau','Tương tự âm "a" trong tiếng Việt nhưng dài hơn']},
+  {sym:'ɒ',word:'hot',ipa:'/hɒt/',vi:'nóng',tip:'Môi tròn nhẹ (Anh)',words:[{en:'dog',ipa:'/dɒɡ/',vi:'con chó'},{en:'top',ipa:'/tɒp/',vi:'đỉnh'},{en:'lot',ipa:'/lɒt/',vi:'nhiều'}],tips:['Môi tròn và thư giãn (tiếng Anh Anh)','Miệng mở','Tiếng Anh Mỹ thường dùng /ɑː/ thay thế']},
+  {sym:'ɔː',word:'four',ipa:'/fɔːr/',vi:'số bốn',tip:'Môi tròn, kéo dài',words:[{en:'law',ipa:'/lɔː/',vi:'luật'},{en:'ball',ipa:'/bɔːl/',vi:'quả bóng'},{en:'more',ipa:'/mɔːr/',vi:'thêm'}],tips:['Môi tròn và nhô ra','Âm dài','Tương tự "ô" trong tiếng Việt']},
+  {sym:'ʊ',word:'book',ipa:'/bʊk/',vi:'cuốn sách',tip:'Ngắn, môi tròn nhẹ',words:[{en:'good',ipa:'/ɡʊd/',vi:'tốt'},{en:'foot',ipa:'/fʊt/',vi:'bàn chân'},{en:'wood',ipa:'/wʊd/',vi:'gỗ'}],tips:['Môi tròn nhẹ','Âm ngắn hơn /uː/','Nhiều người Việt nhầm với /uː/']},
+  {sym:'uː',word:'food',ipa:'/fuːd/',vi:'thức ăn',tip:'Kéo dài, môi tròn',words:[{en:'moon',ipa:'/muːn/',vi:'mặt trăng'},{en:'blue',ipa:'/bluː/',vi:'màu xanh'},{en:'true',ipa:'/truː/',vi:'thật'}],tips:['Môi tròn và nhô ra nhiều','Âm dài','Tương tự "u" trong tiếng Việt nhưng dài và mạnh hơn']},
+  {sym:'ʌ',word:'cup',ipa:'/kʌp/',vi:'cái cốc',tip:'Trung tính, miệng mở vừa',words:[{en:'love',ipa:'/lʌv/',vi:'tình yêu'},{en:'run',ipa:'/rʌn/',vi:'chạy'},{en:'fun',ipa:'/fʌn/',vi:'vui vẻ'}],tips:['Miệng mở vừa','Thư giãn hoàn toàn','Không có âm tương đương chính xác trong tiếng Việt']},
+  {sym:'ɜː',word:'bird',ipa:'/bɜːrd/',vi:'con chim',tip:'Lưỡi giữa, kéo dài',words:[{en:'word',ipa:'/wɜːrd/',vi:'từ'},{en:'hurt',ipa:'/hɜːrt/',vi:'đau'},{en:'learn',ipa:'/lɜːrn/',vi:'học'}],tips:['Lưỡi ở vị trí trung tính','Môi hơi tròn (không đẳng tròn)','Âm dài và rất đặc trưng của tiếng Anh']},
+  {sym:'ə',word:'about',ipa:'/əˈbaʊt/',vi:'về/khoảng',tip:'Âm schwa — trung tính nhất',words:[{en:'teacher',ipa:'/ˈtiːtʃər/',vi:'giáo viên'},{en:'ago',ipa:'/əˈɡoʊ/',vi:'trước đây'},{en:'sofa',ipa:'/ˈsoʊfə/',vi:'ghế sofa'}],tips:['Âm phổ biến nhất trong tiếng Anh','Xuất hiện ở âm tiết không nhấn','Miệng, lưỡi hoàn toàn thư giãn']},
+];
+
+const CONSONANTS = [
+  {sym:'p',word:'pen',ipa:'/pɛn/',vi:'bút',tip:'Bật hơi môi',words:[{en:'cup',ipa:'/kʌp/',vi:'cốc'},{en:'happy',ipa:'/ˈhæpi/',vi:'vui'},{en:'apple',ipa:'/ˈæpəl/',vi:'táo'}],tips:['Bật môi ra với hơi thở','Vô thanh (không rung cổ họng)','Mạnh hơn âm "p" tiếng Việt']},
+  {sym:'b',word:'book',ipa:'/bʊk/',vi:'sách',tip:'Bật hơi môi có rung',words:[{en:'bag',ipa:'/bæɡ/',vi:'túi'},{en:'rabbit',ipa:'/ˈræbɪt/',vi:'thỏ'},{en:'web',ipa:'/wɛb/',vi:'mạng'}],tips:['Giống /p/ nhưng có rung thanh quản','Hữu thanh','Môi chạm nhau rồi bật ra']},
+  {sym:'t',word:'top',ipa:'/tɒp/',vi:'đỉnh',tip:'Đầu lưỡi chạm vòm',words:[{en:'cat',ipa:'/kæt/',vi:'mèo'},{en:'water',ipa:'/ˈwɔːtər/',vi:'nước'},{en:'butter',ipa:'/ˈbʌtər/',vi:'bơ'}],tips:['Đầu lưỡi chạm vòm trên (alveolar ridge)','Vô thanh','Bật ra với hơi thở']},
+  {sym:'d',word:'dog',ipa:'/dɒɡ/',vi:'chó',tip:'Như /t/ có rung',words:[{en:'bad',ipa:'/bæd/',vi:'xấu'},{en:'middle',ipa:'/ˈmɪdəl/',vi:'giữa'},{en:'end',ipa:'/ɛnd/',vi:'kết thúc'}],tips:['Vị trí lưỡi như /t/','Hữu thanh (rung thanh quản)','Âm cuối thường yếu đi']},
+  {sym:'k',word:'cat',ipa:'/kæt/',vi:'mèo',tip:'Gốc lưỡi chạm vòm',words:[{en:'back',ipa:'/bæk/',vi:'lưng'},{en:'school',ipa:'/skuːl/',vi:'trường'},{en:'kind',ipa:'/kaɪnd/',vi:'tốt bụng'}],tips:['Gốc lưỡi chạm vòm mềm','Vô thanh','Có thể viết c, k, hoặc ck']},
+  {sym:'g',word:'go',ipa:'/ɡoʊ/',vi:'đi',tip:'Như /k/ có rung',words:[{en:'big',ipa:'/bɪɡ/',vi:'lớn'},{en:'egg',ipa:'/ɛɡ/',vi:'trứng'},{en:'again',ipa:'/əˈɡɛn/',vi:'lại'}],tips:['Vị trí lưỡi như /k/','Hữu thanh','Không bao giờ câm trừ một số ngoại lệ']},
+  {sym:'f',word:'fish',ipa:'/fɪʃ/',vi:'cá',tip:'Răng trên cắn môi dưới',words:[{en:'phone',ipa:'/foʊn/',vi:'điện thoại'},{en:'leaf',ipa:'/liːf/',vi:'lá'},{en:'off',ipa:'/ɒf/',vi:'tắt'}],tips:['Răng trên nhẹ nhàng cắn môi dưới','Vô thanh','ph cũng đọc là /f/: phone, photo']},
+  {sym:'v',word:'van',ipa:'/væn/',vi:'xe tải nhỏ',tip:'Như /f/ có rung',words:[{en:'love',ipa:'/lʌv/',vi:'yêu'},{en:'five',ipa:'/faɪv/',vi:'năm'},{en:'river',ipa:'/ˈrɪvər/',vi:'sông'}],tips:['Vị trí như /f/','Hữu thanh (rung thanh quản)','Người Việt hay nhầm với /b/']},
+  {sym:'θ',word:'think',ipa:'/θɪŋk/',vi:'nghĩ',tip:'Lưỡi giữa 2 răng, vô thanh',words:[{en:'three',ipa:'/θriː/',vi:'ba'},{en:'bath',ipa:'/bɑːθ/',vi:'tắm'},{en:'month',ipa:'/mʌnθ/',vi:'tháng'}],tips:['Đặt lưỡi nhẹ giữa hai hàm răng','Thổi hơi qua — vô thanh','Một trong những âm khó nhất với người Việt']},
+  {sym:'ð',word:'this',ipa:'/ðɪs/',vi:'này',tip:'Lưỡi giữa 2 răng, hữu thanh',words:[{en:'the',ipa:'/ðə/',vi:'mạo từ'},{en:'mother',ipa:'/ˈmʌðər/',vi:'mẹ'},{en:'breathe',ipa:'/briːð/',vi:'thở'}],tips:['Giống /θ/ nhưng có rung thanh quản','Hữu thanh','Xuất hiện trong "the, this, that, there, they"']},
+  {sym:'s',word:'sun',ipa:'/sʌn/',vi:'mặt trời',tip:'Hơi qua răng, vô thanh',words:[{en:'sister',ipa:'/ˈsɪstər/',vi:'chị/em gái'},{en:'this',ipa:'/ðɪs/',vi:'này'},{en:'bus',ipa:'/bʌs/',vi:'xe buýt'}],tips:['Hơi đi qua giữa các răng','Vô thanh','Lưỡi gần nhưng không chạm vòm']},
+  {sym:'z',word:'zoo',ipa:'/zuː/',vi:'vườn thú',tip:'Như /s/ có rung',words:[{en:'zero',ipa:'/ˈzɪroʊ/',vi:'số không'},{en:'nose',ipa:'/noʊz/',vi:'mũi'},{en:'quiz',ipa:'/kwɪz/',vi:'câu đố'}],tips:['Vị trí như /s/','Hữu thanh','Xuất hiện nhiều ở đuôi -s của động từ']},
+  {sym:'ʃ',word:'she',ipa:'/ʃiː/',vi:'cô ấy',tip:'Sh — như "sh" tiếng Việt',words:[{en:'ship',ipa:'/ʃɪp/',vi:'tàu'},{en:'fish',ipa:'/fɪʃ/',vi:'cá'},{en:'wash',ipa:'/wɒʃ/',vi:'rửa'}],tips:['Môi hơi tròn và nhô ra','Vô thanh','sh, ti (nation), ci (special) đều đọc /ʃ/']},
+  {sym:'ʒ',word:'vision',ipa:'/ˈvɪʒən/',vi:'tầm nhìn',tip:'Như /ʃ/ có rung',words:[{en:'measure',ipa:'/ˈmɛʒər/',vi:'đo'},{en:'pleasure',ipa:'/ˈplɛʒər/',vi:'niềm vui'},{en:'rouge',ipa:'/ruːʒ/',vi:'son môi'}],tips:['Giống /ʃ/ nhưng hữu thanh','Ít phổ biến hơn','Chủ yếu trong từ gốc Pháp']},
+  {sym:'h',word:'hat',ipa:'/hæt/',vi:'mũ',tip:'Hơi thở từ cổ họng',words:[{en:'hello',ipa:'/həˈloʊ/',vi:'xin chào'},{en:'behind',ipa:'/bɪˈhaɪnd/',vi:'phía sau'},{en:'perhaps',ipa:'/pərˈhæps/',vi:'có lẽ'}],tips:['Chỉ là hơi thở — không tắc','Vô thanh','Câm trong hour, honest, heir']},
+  {sym:'m',word:'man',ipa:'/mæn/',vi:'đàn ông',tip:'Môi chạm, rung mũi',words:[{en:'come',ipa:'/kʌm/',vi:'đến'},{en:'summer',ipa:'/ˈsʌmər/',vi:'mùa hè'},{en:'arm',ipa:'/ɑːrm/',vi:'cánh tay'}],tips:['Môi chạm vào nhau','Hơi đi qua mũi','Hữu thanh']},
+  {sym:'n',word:'now',ipa:'/naʊ/',vi:'bây giờ',tip:'Lưỡi chạm vòm, rung mũi',words:[{en:'moon',ipa:'/muːn/',vi:'mặt trăng'},{en:'inside',ipa:'/ˈɪnsaɪd/',vi:'bên trong'},{en:'lion',ipa:'/ˈlaɪən/',vi:'sư tử'}],tips:['Đầu lưỡi chạm vòm trên','Hơi đi qua mũi','Hữu thanh']},
+  {sym:'ŋ',word:'sing',ipa:'/sɪŋ/',vi:'hát',tip:'Gốc lưỡi, rung mũi',words:[{en:'thing',ipa:'/θɪŋ/',vi:'thứ'},{en:'strong',ipa:'/strɒŋ/',vi:'mạnh'},{en:'morning',ipa:'/ˈmɔːrnɪŋ/',vi:'buổi sáng'}],tips:['Gốc lưỡi chạm vòm mềm','Hơi qua mũi','Không có âm /g/ sau /ŋ/ trong "sing"']},
+  {sym:'l',word:'love',ipa:'/lʌv/',vi:'yêu',tip:'Đầu lưỡi chạm vòm',words:[{en:'feel',ipa:'/fiːl/',vi:'cảm thấy'},{en:'silly',ipa:'/ˈsɪli/',vi:'ngốc'},{en:'cold',ipa:'/koʊld/',vi:'lạnh'}],tips:['Đầu lưỡi chạm vòm trên','Hơi đi qua hai bên lưỡi','/l/ cuối từ thường tối hơn /l/ đầu từ']},
+  {sym:'r',word:'red',ipa:'/rɛd/',vi:'màu đỏ',tip:'Cuộn lưỡi, không chạm',words:[{en:'right',ipa:'/raɪt/',vi:'đúng'},{en:'very',ipa:'/ˈvɛri/',vi:'rất'},{en:'far',ipa:'/fɑːr/',vi:'xa'}],tips:['Cuộn lưỡi lên, không chạm vào đâu','Hữu thanh','Khác hoàn toàn với "r" tiếng Việt']},
+  {sym:'w',word:'wet',ipa:'/wɛt/',vi:'ướt',tip:'Môi tròn, mở nhanh',words:[{en:'well',ipa:'/wɛl/',vi:'tốt'},{en:'away',ipa:'/əˈweɪ/',vi:'đi xa'},{en:'new',ipa:'/njuː/',vi:'mới'}],tips:['Bắt đầu với môi tròn như /uː/','Nhanh chóng mở ra','Hữu thanh']},
+  {sym:'j',word:'yes',ipa:'/jɛs/',vi:'có',tip:'Lưỡi gần vòm, trượt',words:[{en:'year',ipa:'/jɪər/',vi:'năm'},{en:'you',ipa:'/juː/',vi:'bạn'},{en:'beauty',ipa:'/ˈbjuːti/',vi:'vẻ đẹp'}],tips:['Lưỡi tiếp cận vòm cứng nhưng không chạm','Trượt nhanh sang nguyên âm sau','Hữu thanh']},
+  {sym:'tʃ',word:'chair',ipa:'/tʃɛr/',vi:'ghế',tip:'Kết hợp t + sh',words:[{en:'watch',ipa:'/wɒtʃ/',vi:'đồng hồ'},{en:'teacher',ipa:'/ˈtiːtʃər/',vi:'giáo viên'},{en:'match',ipa:'/mætʃ/',vi:'trận đấu'}],tips:['Kết hợp /t/ và /ʃ/','Vô thanh','ch, tch đều đọc /tʃ/']},
+  {sym:'dʒ',word:'jump',ipa:'/dʒʌmp/',vi:'nhảy',tip:'Kết hợp d + vision',words:[{en:'age',ipa:'/eɪdʒ/',vi:'tuổi'},{en:'bridge',ipa:'/brɪdʒ/',vi:'cây cầu'},{en:'judge',ipa:'/dʒʌdʒ/',vi:'thẩm phán'}],tips:['Kết hợp /d/ và /ʒ/','Hữu thanh','j, g (trước e/i), dge đều đọc /dʒ/']},
+];
+
+const DIPHTHONGS = [
+  {sym:'eɪ',word:'make',ipa:'/meɪk/',vi:'làm',tip:'e → ɪ'},
+  {sym:'aɪ',word:'my',ipa:'/maɪ/',vi:'của tôi',tip:'a → ɪ'},
+  {sym:'ɔɪ',word:'boy',ipa:'/bɔɪ/',vi:'bé trai',tip:'ɔ → ɪ'},
+  {sym:'aʊ',word:'now',ipa:'/naʊ/',vi:'bây giờ',tip:'a → ʊ'},
+  {sym:'oʊ',word:'go',ipa:'/ɡoʊ/',vi:'đi',tip:'o → ʊ'},
+  {sym:'ɪə',word:'ear',ipa:'/ɪər/',vi:'tai',tip:'ɪ → ə'},
+  {sym:'eə',word:'air',ipa:'/eər/',vi:'không khí',tip:'e → ə'},
+  {sym:'ʊə',word:'tour',ipa:'/tʊər/',vi:'chuyến du lịch',tip:'ʊ → ə'},
+];
+
+const CONTRACTIONS_BE = [
+  ["I am","I'm"],["you are","you're"],["he is","he's"],
+  ["she is","she's"],["it is","it's"],["we are","we're"],["they are","they're"],
+];
+const CONTRACTIONS_NEG = [
+  ["do not","don't"],["does not","doesn't"],["did not","didn't"],
+  ["is not","isn't"],["are not","aren't"],["was not","wasn't"],
+  ["will not","won't"],["cannot","can't"],["have not","haven't"],
+];
+const CONTRACTIONS_HAVE = [
+  ["I have","I've"],["you have","you've"],["we have","we've"],
+  ["they have","they've"],["he has","he's"],["she has","she's"],
+];
+const CONTRACTIONS_WILL = [
+  ["I will","I'll"],["you will","you'll"],["he will","he'll"],
+  ["she will","she'll"],["we will","we'll"],["they will","they'll"],
+  ["I would","I'd"],["you would","you'd"],
+];
+
+const STRESS_EXAMPLES = [
+  {word:'PHOtograph',note:'Danh từ 3 âm tiết → thường nhấn âm 1'},
+  {word:'phoTOgrapher',note:'Hậu tố -er/-or/-ian → nhấn âm trước nó'},
+  {word:'photoGRAPHic',note:'Hậu tố -ic → nhấn âm tiết ngay trước'},
+  {word:'underSTAND',note:'Động từ ghép → thường nhấn âm cuối'},
+  {word:'BEautiful',note:'Tính từ 3 âm tiết → thường âm 1'},
+  {word:'comPUter',note:'Động từ → nhấn âm 2 (sau đó dùng như danh từ cũng nhấn âm 2)'},
+];
+
+const MINIMAL_PAIRS = [
+  {a:{word:'ship',ipa:'/ʃɪp/',vi:'tàu thuyền'},b:{word:'sheep',ipa:'/ʃiːp/',vi:'con cừu'},diff:'Khác nhau: /ɪ/ ngắn vs /iː/ dài'},
+  {a:{word:'sit',ipa:'/sɪt/',vi:'ngồi'},b:{word:'seat',ipa:'/siːt/',vi:'chỗ ngồi'},diff:'Khác nhau: /ɪ/ vs /iː/'},
+  {a:{word:'live',ipa:'/lɪv/',vi:'sống (động từ)'},b:{word:'leave',ipa:'/liːv/',vi:'rời đi'},diff:'Khác nhau: /ɪ/ vs /iː/'},
+  {a:{word:'bit',ipa:'/bɪt/',vi:'một chút'},b:{word:'beat',ipa:'/biːt/',vi:'đánh bại'},diff:'Khác nhau: /ɪ/ vs /iː/'},
+  {a:{word:'cat',ipa:'/kæt/',vi:'con mèo'},b:{word:'cut',ipa:'/kʌt/',vi:'cắt'},diff:'Khác nhau: /æ/ vs /ʌ/'},
+  {a:{word:'bad',ipa:'/bæd/',vi:'xấu'},b:{word:'bud',ipa:'/bʌd/',vi:'nụ hoa'},diff:'Khác nhau: /æ/ vs /ʌ/'},
+  {a:{word:'pin',ipa:'/pɪn/',vi:'cái ghim'},b:{word:'bin',ipa:'/bɪn/',vi:'thùng rác'},diff:'Khác nhau: /p/ vô thanh vs /b/ hữu thanh'},
+  {a:{word:'think',ipa:'/θɪŋk/',vi:'nghĩ'},b:{word:'sink',ipa:'/sɪŋk/',vi:'bồn rửa tay'},diff:'Khác nhau: /θ/ vs /s/'},
+];
+
+// ===== RENDER =====
+function renderSoundGrid(id, data, detailId, type) {
+  const g = document.getElementById(id);
+  g.innerHTML = data.map((s,i)=>`
+    <div class="sound-card" onclick="showDetail('${detailId}',${i},'${type}')" id="${type}-card-${i}">
+      <span class="sc-symbol">${s.sym}</span>
+      <div class="sc-word"><em>${s.word}</em> ${s.ipa}</div>
+      <div class="sc-vi">${s.vi}</div>
+      <div class="sc-tip">${s.tip}</div>
+    </div>`).join('');
+}
+
+function showDetail(panelId, idx, type) {
+  const data = type==='vowel'?VOWELS:CONSONANTS;
+  const s = data[idx];
+  document.querySelectorAll(`[id^="${type}-card-"]`).forEach(c=>c.classList.remove('active'));
+  document.getElementById(`${type}-card-${idx}`).classList.add('active');
+  const p = document.getElementById(panelId);
+  p.className = 'detail-panel show';
+  p.innerHTML = `
+    <div class="dp-header">
+      <div class="dp-symbol">${s.sym}</div>
+      <div class="dp-info">
+        <h3>/${s.sym}/ — như trong "<em>${s.word}</em>" ${s.ipa}</h3>
+        <p>${s.vi} · ${s.tip}</p>
+      </div>
+    </div>
+    <div class="dp-body">
+      <div class="dp-col">
+        <h4>Từ ví dụ</h4>
+        <div class="dp-words">${s.words.map(w=>`
+          <div class="dp-word-item">
+            <span style="cursor:pointer;font-size:13px" onclick="speakTTS('${w.en}')">🔊</span>
+            <span class="dp-word-en">${w.en}</span>
+            <span class="dp-word-ipa">${w.ipa}</span>
+            <span class="dp-word-vi">${w.vi}</span>
+          </div>`).join('')}</div>
+      </div>
+      <div class="dp-col">
+        <h4>Hướng dẫn phát âm</h4>
+        <div class="dp-tips">${s.tips.map(t=>`<div class="dp-tip-item">${t}</div>`).join('')}</div>
+      </div>
+    </div>`;
+  p.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function renderDiphthongs() {
+  document.getElementById('diphthongGrid').innerHTML = DIPHTHONGS.map(s=>`
+    <div class="sound-card">
+      <span class="sc-symbol">${s.sym}</span>
+      <div class="sc-word"><em>${s.word}</em> ${s.ipa}</div>
+      <div class="sc-vi">${s.vi}</div>
+      <div class="sc-tip">${s.tip} (trượt âm)</div>
+    </div>`).join('');
+}
+
+function renderContractionList(id, data) {
+  document.getElementById(id).innerHTML = data.map(([full,short])=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px">
+      <span style="color:var(--text3);min-width:100px">${full}</span>
+      <span style="color:var(--text3)">→</span>
+      <span style="color:var(--accent);font-weight:500">${short}</span>
+    </div>`).join('');
+}
+
+function renderStressExamples() {
+  document.getElementById('stressExamples').innerHTML = STRESS_EXAMPLES.map(s=>`
+    <div class="stress-row">
+      <div class="stress-word" style="font-size:16px;min-width:180px">${s.word.split('').map(c=>{
+        if(c===c.toUpperCase()&&c.match(/[A-Z]/)) return `<strong style="color:var(--accent)">${c}</strong>`;
+        return `<span style="color:var(--text2)">${c}</span>`;
+      }).join('')}</div>
+      <div class="stress-rule" style="font-size:12px;color:var(--text3)">${s.note}</div>
+    </div>`).join('');
+}
+
+function renderMinimalPairs() {
+  document.getElementById('minimalPairsGrid').innerHTML = MINIMAL_PAIRS.map(p=>`
+    <div class="pair-grid">
+      <div class="pair-card">
+        <div class="pair-word">${p.a.word}</div>
+        <div class="pair-ipa">${p.a.ipa}</div>
+        <div class="pair-vi">${p.a.vi}</div>
+      </div>
+      <div class="pair-card">
+        <div class="pair-word">${p.b.word}</div>
+        <div class="pair-ipa">${p.b.ipa}</div>
+        <div class="pair-vi">${p.b.vi}</div>
+      </div>
+    </div>
+    <div class="pair-diff">⚠ ${p.diff}</div>`).join('');
+}
+
+// Quiz
+function checkQ(id, btn, type, msg) {
+  btn.closest('.quiz-mini').querySelectorAll('.quiz-opt').forEach(o=>o.disabled=true);
+  btn.classList.add(type);
+  const r = document.getElementById(id+'-result');
+  r.textContent=(type==='correct'?'✓ ':'✗ ')+msg;
+  r.className='quiz-result show '+(type==='correct'?'ok':'no');
+  document.getElementById(id+'-next').classList.add('show');
+}
+function resetQ(id) {
+  document.getElementById(id).querySelectorAll('.quiz-opt').forEach(o=>{o.disabled=false;o.classList.remove('correct','wrong')});
+  document.getElementById(id+'-result').className='quiz-result';
+  document.getElementById(id+'-next').classList.remove('show');
+}
+
+// Init
+renderSoundGrid('vowelGrid', VOWELS, 'vowelDetail', 'vowel');
+renderSoundGrid('consonantGrid', CONSONANTS, 'consonantDetail', 'consonant');
+renderDiphthongs();
+renderContractionList('contrBe', CONTRACTIONS_BE);
+renderContractionList('contrNeg', CONTRACTIONS_NEG);
+renderContractionList('contrHave', CONTRACTIONS_HAVE);
+renderContractionList('contrWill', CONTRACTIONS_WILL);
+renderStressExamples();
+renderMinimalPairs();
+
+// Active sidebar
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('.lesson-anchor').forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  if(cur){document.querySelectorAll('.sb-item').forEach(i=>i.classList.toggle('active',i.getAttribute('href')==='#'+cur))}
+});
+
+// ===== TTS =====
+function speakTTS(text) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.8;
+  speechSynthesis.speak(u);
+}
+
+// ===== SPEECH RECOGNITION =====
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+let micRecognition = null;
+const PRON_WORDS = [
+  {word:'three',ipa:'/θriː/',hint:'Đặt lưỡi giữa 2 hàm răng'},
+  {word:'think',ipa:'/θɪŋk/',hint:'Âm /θ/ — không phải /f/'},
+  {word:'ship',ipa:'/ʃɪp/',hint:'Tròn môi — /ʃ/ không phải /s/'},
+  {word:'sheep',ipa:'/ʃiːp/',hint:'Nguyên âm dài /iː/'},
+  {word:'beach',ipa:'/biːtʃ/',hint:'Âm /tʃ/ cuối'},
+  {word:'world',ipa:'/wɜːrld/',hint:'Âm /ɜːr/ — khó nhất'},
+  {word:'girl',ipa:'/ɡɜːrl/',hint:'Âm /ɜːr/ + /l/'},
+  {word:'comfortable',ipa:'/ˈkʌmftəbl/',hint:'3 âm tiết, không phải 4'},
+  {word:'vegetable',ipa:'/ˈvedʒtəbl/',hint:'3 âm tiết'},
+  {word:'pronunciation',ipa:'/prəˌnʌnsiˈeɪʃn/',hint:'Không phải "pronounciation"'}
+];
+let pIdx = 0;
+function initPronMic() {
+  const sec = document.getElementById('pronMicSection');
+  if(!sec) return;
+  if(!SpeechRec) { sec.querySelector('.pron-mic-card').innerHTML='<div style="color:var(--text3);text-align:center;padding:20px">⚠️ Dùng Chrome/Edge để luyện phát âm với mic.</div>'; return; }
+  renderPronWord();
+}
+function renderPronWord() {
+  const w = PRON_WORDS[pIdx];
+  document.getElementById('pronMicWord').textContent = w.word;
+  document.getElementById('pronMicIpa').textContent = w.ipa;
+  document.getElementById('pronMicHint').textContent = w.hint;
+  document.getElementById('pronMicProgress').textContent = `${pIdx+1} / ${PRON_WORDS.length}`;
+  document.getElementById('pronMicResult').innerHTML = '';
+  document.getElementById('pronMicBtn').classList.remove('recording');
+}
+function speakPronWord() { speakTTS(PRON_WORDS[pIdx].word); }
+function startPronMic() {
+  if(!SpeechRec) return;
+  const btn = document.getElementById('pronMicBtn');
+  if(micRecognition) { micRecognition.abort(); micRecognition=null; btn.classList.remove('recording'); return; }
+  micRecognition = new SpeechRec();
+  micRecognition.lang = 'en-US';
+  micRecognition.interimResults = false;
+  btn.classList.add('recording');
+  document.getElementById('pronMicResult').innerHTML = '<div style="color:var(--text3)">🎙️ Đang nghe...</div>';
+  micRecognition.onresult = (e) => {
+    const said = e.results[0][0].transcript.toLowerCase().trim();
+    const expected = PRON_WORDS[pIdx].word.toLowerCase();
+    const correct = said === expected || said.includes(expected) || expected.includes(said);
+    const conf = Math.round(e.results[0][0].confidence * 100);
+    document.getElementById('pronMicResult').innerHTML = correct
+      ? `<div style="color:var(--green);font-size:18px;font-weight:600">✅ Chính xác! "${said}" — ${conf}%</div>`
+      : `<div style="color:var(--coral);font-size:18px;font-weight:600">❌ Bạn nói: "${said}"</div><div style="color:var(--text3);font-size:13px;margin-top:4px">Cần nói: "${expected}" — Thử lại!</div>`;
+    btn.classList.remove('recording');
+    micRecognition = null;
+  };
+  micRecognition.onerror = () => { btn.classList.remove('recording'); micRecognition=null; document.getElementById('pronMicResult').innerHTML='<div style="color:var(--coral)">Không nghe được. Thử lại!</div>'; };
+  micRecognition.onend = () => { btn.classList.remove('recording'); micRecognition=null; };
+  micRecognition.start();
+}
+function nextPronWord() { pIdx = (pIdx + 1) % PRON_WORDS.length; renderPronWord(); }
+initPronMic();
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

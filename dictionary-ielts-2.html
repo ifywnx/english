@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ điển IELTS 2 — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#e879a0;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent3);background:rgba(100,216,165,0.08)}
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#0b1a1e;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;margin-left:6px}
+.nav-cta:hover{background:#7de8b5;transform:translateY(-1px)}
+
+.page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:12px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent2);background:rgba(100,216,165,0.08)}
+
+.content{padding:32px 44px;max-width:1000px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:34px;font-weight:300;margin-bottom:10px}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px}
+.nav-files{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.nf-btn{padding:7px 14px;border-radius:20px;font-size:12px;text-decoration:none;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);transition:all .2s}
+.nf-btn:hover{color:var(--text)}
+.nf-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.4);color:var(--accent2)}
+.filter-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.search-input{flex:1;min-width:180px;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input:focus{border-color:rgba(100,216,165,0.4)}
+.search-input::placeholder{color:var(--text3)}
+.filter-select{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text2);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer}
+.stats-row{display:flex;gap:10px;margin-bottom:18px}
+.stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;flex:1;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:20px;color:var(--accent2)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.word-table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.word-table th{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);font-weight:400;text-align:left}
+.word-table td{padding:10px 14px;border:0.5px solid var(--border);font-size:13px;vertical-align:top;cursor:pointer}
+.word-table tr:hover td{background:rgba(255,255,255,0.02)}
+.word-table tr.exp-open td{background:rgba(100,216,165,0.04)}
+.td-word{color:var(--text);font-weight:500;font-size:14px}
+.td-pron{font-size:11px;color:var(--accent);font-style:italic;display:block;margin-top:2px}
+.td-type{font-size:10px;padding:2px 7px;border-radius:8px;display:inline-block}
+.tn{background:rgba(100,216,165,0.12);color:var(--accent)}
+.tv{background:rgba(100,216,165,0.12);color:var(--accent2)}
+.tadj{background:rgba(244,132,95,0.12);color:var(--coral)}
+.tadv{background:rgba(107,203,119,0.12);color:var(--green)}
+.td-vi{color:var(--text2)}
+.td-ex{color:var(--text3);font-size:11px;font-style:italic;margin-top:2px}
+.btag{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:500;display:inline-block}
+.b60{background:rgba(107,203,119,0.15);color:var(--green)}
+.b65{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.b70{background:rgba(100,216,165,0.15);color:var(--accent)}
+.b75{background:rgba(244,132,95,0.15);color:var(--coral)}
+.b80{background:rgba(232,121,160,0.15);color:var(--pink)}
+.skill-icon{font-size:14px}
+.save-btn{font-size:14px;cursor:pointer;background:none;border:none;opacity:.5;transition:opacity .2s;padding:2px}
+.save-btn:hover,.save-btn.saved{opacity:1}
+.exp-row td{padding:0;border:none}
+.exp-content{background:rgba(100,216,165,0.04);border:0.5px solid rgba(100,216,165,0.15);border-radius:0 0 10px 10px;padding:14px 18px;margin-bottom:2px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.exp-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.exp-examples{display:flex;flex-direction:column;gap:4px}
+.exp-ex{background:var(--card2);border-radius:7px;padding:8px 12px}
+.exp-en{font-size:12px;color:var(--text);font-style:italic;margin-bottom:2px}
+.exp-vi{font-size:11px;color:var(--text3)}
+.exp-chips{display:flex;flex-wrap:wrap;gap:4px}
+.exp-chip{padding:3px 10px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;font-size:11px;color:var(--text2)}
+.exp-ielts{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.2);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--text2);line-height:1.7}
+.exp-ielts strong{color:var(--accent)}
+.topic-hdr{display:flex;align-items:center;gap:12px;margin:24px 0 12px;padding-bottom:8px;border-bottom:0.5px solid var(--border)}
+.th-title{font-family:'Fraunces',serif;font-size:20px;font-weight:300}
+.th-count{font-size:12px;color:var(--text3);margin-left:auto}
+.no-res{text-align:center;color:var(--text3);padding:40px}
+.saved-panel{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.2);border-radius:12px;padding:14px 18px;margin-bottom:18px;display:none}
+.saved-panel.show{display:block}
+.sp-hdr{font-size:13px;font-weight:500;margin-bottom:8px;display:flex;justify-content:space-between}
+.sp-words{display:flex;flex-wrap:wrap;gap:6px}
+.sp-w{padding:4px 12px;background:var(--card2);border:0.5px solid rgba(100,216,165,0.3);border-radius:20px;font-size:12px;color:var(--accent2);cursor:pointer}
+.sp-clear{font-size:11px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển ĐT 1</a>
+        <a href="dictionary-everyday-2.html" class="nav-a">💬 Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS 1</a>
+        <a href="dictionary-ielts-2.html" class="nav-a active">🎯 Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+    <a href="academic-words.html" class="nav-cta">AWL 570 từ ★</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Chủ đề IELTS</div>
+  <button class="sb-item active" onclick="setTopic('all',this)">🌟 Tất cả</button>
+  <button class="sb-item" onclick="setTopic('env2',this)">🌿 Môi trường & Khí hậu</button>
+  <button class="sb-item" onclick="setTopic('tech2',this)">💻 Công nghệ & AI</button>
+  <button class="sb-item" onclick="setTopic('edu2',this)">📚 Giáo dục & Kỹ năng</button>
+  <button class="sb-item" onclick="setTopic('health2',this)">🏥 Sức khỏe & Xã hội</button>
+  <button class="sb-item" onclick="setTopic('econ2',this)">💰 Kinh tế & Lao động</button>
+  <button class="sb-item" onclick="setTopic('social2',this)">👥 Xã hội & Bình đẳng</button>
+  <button class="sb-item" onclick="setTopic('gov2',this)">🏛️ Chính sách & Luật pháp</button>
+  <button class="sb-item" onclick="setTopic('global2',this)">🌍 Toàn cầu hóa & Di cư</button>
+  <button class="sb-item" onclick="setTopic('media2',this)">📱 Truyền thông & Mạng XH</button>
+  <button class="sb-item" onclick="setTopic('urban2',this)">🏙️ Đô thị & Giao thông</button>
+  <button class="sb-item" onclick="setTopic('science',this)">🔬 Khoa học & Nghiên cứu</button>
+  <button class="sb-item" onclick="setTopic('writing',this)">✍️ Từ vựng Writing</button>
+
+  <div class="sidebar-title">Lọc Band</div>
+  <button class="sb-item" onclick="setBand('all',this)">Tất cả Band</button>
+  <button class="sb-item" onclick="setBand('6.5',this)"><span style="color:var(--accent3)">●</span> Band 6.5</button>
+  <button class="sb-item" onclick="setBand('7.0',this)"><span style="color:var(--accent)">●</span> Band 7.0</button>
+  <button class="sb-item" onclick="setBand('7.5',this)"><span style="color:var(--coral)">●</span> Band 7.5</button>
+  <button class="sb-item" onclick="setBand('8.0',this)"><span style="color:var(--pink)">●</span> Band 8.0+</button>
+
+  <div class="sidebar-title">Từ đã lưu</div>
+  <button class="sb-item" onclick="toggleSavedPanel()">⭐ Xem từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedOnly()">📌 Chỉ từ đã lưu</button>
+</aside>
+
+<main class="content">
+  <div class="page-label">Từ điển IELTS — Phần 2</div>
+  <h1 class="page-title">150 từ IELTS tiếp theo<br><em style="color:var(--accent2)">Band 6.5 → 8.0+</em></h1>
+  <p class="page-desc">Tiếp nối Phần 1 — thêm 150 từ học thuật chọn lọc, đặc biệt tập trung vào Band 7.5–8.0 và các từ ít người dùng nhưng gây ấn tượng với giám khảo. Bấm vào từ để xem chi tiết.</p>
+
+  <div class="nav-files">
+    <a href="dictionary-ielts.html" class="nf-btn">📗 IELTS Phần 1 — 80 từ đầu</a>
+    <a href="dictionary-ielts-2.html" class="nf-btn active">📗 IELTS Phần 2 — 150 từ tiếp</a>
+    <a href="academic-words.html" class="nf-btn">⭐ AWL 570 từ</a>
+    <a href="dictionary-everyday.html" class="nf-btn">📒 Từ điển đời thường</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="sShowing">150</div><div class="stat-label">Đang hiển thị</div></div>
+    <div class="stat-box"><div class="stat-num" id="sSaved">0</div><div class="stat-label">Đã lưu</div></div>
+    <div class="stat-box"><div class="stat-num" id="sB75">0</div><div class="stat-label">Band 7.5+</div></div>
+    <div class="stat-box"><div class="stat-num" id="sB80">0</div><div class="stat-label">Band 8.0+</div></div>
+    <div class="stat-box"><div class="stat-num">13</div><div class="stat-label">Chủ đề</div></div>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><span style="color:var(--accent3);font-size:14px">●</span>6.5</div>
+    <div class="leg-item"><span style="color:var(--accent);font-size:14px">●</span>7.0</div>
+    <div class="leg-item"><span style="color:var(--coral);font-size:14px">●</span>7.5</div>
+    <div class="leg-item"><span style="color:var(--pink);font-size:14px">●</span>8.0+</div>
+    <div style="width:1px;background:var(--border)"></div>
+    <div class="leg-item">✍️ Writing · 🗣️ Speaking · 📖 Reading · 📋 Tất cả</div>
+  </div>
+
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="Tìm từ IELTS..." oninput="render()">
+    <select class="filter-select" id="sortSel" onchange="render()">
+      <option value="default">Mặc định</option>
+      <option value="alpha">A → Z</option>
+      <option value="band">Theo Band</option>
+    </select>
+  </div>
+
+  <div class="saved-panel" id="savedPanel">
+    <div class="sp-hdr"><span>⭐ Đã lưu (<span id="spCount">0</span>)</span><button class="sp-clear" onclick="clearSaved()">Xóa tất cả</button></div>
+    <div class="sp-words" id="spWords"></div>
+  </div>
+
+  <div id="container"></div>
+</main>
+</div>
+
+<script>
+const IW2=[
+  // ENVIRONMENT 2
+  {w:'irreversible',p:'/ˌɪrɪˈvɜːrsɪbəl/',t:'adj',band:'7.5',topic:'env2',skill:'writing',vi:'không thể đảo ngược',ex:'Climate change may cause irreversible damage.',exvi:'Biến đổi khí hậu có thể gây ra thiệt hại không thể đảo ngược.',syn:['permanent','irreparable','unalterable'],ielts:'"Irreversible damage/loss" — Band 7.5 for urgency in environment essays.',col:['irreversible damage','irreversible consequences','irreversible harm']},
+  {w:'carbon footprint',p:'/ˈkɑːrbən ˈfʊtprɪnt/',t:'n',band:'6.5',topic:'env2',skill:'writing',vi:'dấu chân carbon',ex:'We must reduce our carbon footprint.',exvi:'Chúng ta phải giảm dấu chân carbon của mình.',syn:['carbon emissions','environmental impact'],ielts:'Core IELTS environment phrase. "Reduce one\'s carbon footprint."',col:['reduce carbon footprint','carbon footprint calculation','individual carbon footprint']},
+  {w:'ecosystem',p:'/ˈiːkoʊsɪstəm/',t:'n',band:'7.0',topic:'env2',skill:'writing',vi:'hệ sinh thái',ex:'Pollution threatens delicate ecosystems.',exvi:'Ô nhiễm đe dọa các hệ sinh thái mong manh.',syn:['ecological system','habitat','biosphere'],ielts:'"Fragile/delicate ecosystem" — very common in environmental writing.',col:['fragile ecosystem','protect ecosystem','ecosystem collapse','marine ecosystem']},
+  {w:'renewable',p:'/rɪˈnjuːəbəl/',t:'adj',band:'6.5',topic:'env2',skill:'writing',vi:'có thể tái tạo',ex:'Investment in renewable energy is crucial.',exvi:'Đầu tư vào năng lượng tái tạo là rất quan trọng.',syn:['sustainable','clean','inexhaustible'],ielts:'"Renewable energy sources" — essential IELTS environment vocabulary.',col:['renewable energy','renewable resources','shift to renewables']},
+  {w:'catastrophic',p:'/ˌkætəˈstrɒfɪk/',t:'adj',band:'7.0',topic:'env2',skill:'writing',vi:'thảm họa',ex:'The flooding had catastrophic consequences.',exvi:'Lũ lụt có hậu quả thảm khốc.',syn:['devastating','disastrous','cataclysmic'],ielts:'"Catastrophic consequences/impact" — strong adjective for Band 7+.',col:['catastrophic failure','catastrophic impact','potentially catastrophic']},
+  {w:'conservation',p:'/ˌkɒnsəˈveɪʃən/',t:'n',band:'6.5',topic:'env2',skill:'writing',vi:'bảo tồn',ex:'Wildlife conservation is a global priority.',exvi:'Bảo tồn động vật hoang dã là ưu tiên toàn cầu.',syn:['preservation','protection','safeguarding'],ielts:'"Wildlife/nature conservation" — Band 6.5 environment core.',col:['wildlife conservation','conservation efforts','conservation area']},
+  {w:'unprecedented',p:'/ʌnˈprɛsɪdɛntɪd/',t:'adj',band:'7.5',topic:'env2',skill:'writing',vi:'chưa từng có',ex:'We face unprecedented environmental challenges.',exvi:'Chúng ta đối mặt với những thách thức môi trường chưa từng có.',syn:['unparalleled','historic','extraordinary'],ielts:'"Unprecedented scale/level" — Band 7.5 strong adjective.',col:['unprecedented scale','unprecedented growth','historically unprecedented']},
+  {w:'overexploitation',p:'/ˌoʊvərɛksplɔɪˈteɪʃən/',t:'n',band:'8.0',topic:'env2',skill:'writing',vi:'khai thác quá mức',ex:'Overexploitation of fish stocks threatens oceans.',exvi:'Khai thác quá mức nguồn cá đe dọa đại dương.',syn:['overuse','unsustainable exploitation','resource depletion'],ielts:'Band 8 precise vocabulary for environmental over-use topics.',col:['overexploitation of resources','overexploitation of fisheries']},
+  {w:'carbon-neutral',p:'/ˈkɑːrbən ˈnjuːtrəl/',t:'adj',band:'7.0',topic:'env2',skill:'writing',vi:'trung hòa carbon',ex:'The company aims to become carbon-neutral by 2030.',exvi:'Công ty hướng đến mục tiêu trung hòa carbon vào năm 2030.',syn:['net-zero','climate-neutral'],ielts:'"Achieve carbon neutrality" — key policy and environment vocabulary.',col:['carbon-neutral economy','achieve carbon neutrality','carbon-neutral target']},
+  {w:'resilience',p:'/rɪˈzɪliəns/',t:'n',band:'7.5',topic:'env2',skill:'writing',vi:'khả năng phục hồi (môi trường)',ex:'Cities must build climate resilience.',exvi:'Các thành phố phải xây dựng khả năng phục hồi trước khí hậu.',syn:['adaptability','resistance','robustness'],ielts:'"Build climate resilience" — climate adaptation language Band 7.5.',col:['build resilience','climate resilience','enhance resilience']},
+
+  // TECHNOLOGY 2
+  {w:'artificial intelligence',p:'/ˌɑːrtɪfɪʃəl ɪnˈtɛlɪdʒəns/',t:'n',band:'6.5',topic:'tech2',skill:'writing',vi:'trí tuệ nhân tạo',ex:'Artificial intelligence is transforming industries.',exvi:'Trí tuệ nhân tạo đang chuyển đổi các ngành công nghiệp.',syn:['AI','machine intelligence','machine learning'],ielts:'Often abbreviated AI. Core IELTS technology topic.',col:['artificial intelligence revolution','AI-driven','AI-powered systems']},
+  {w:'algorithm',p:'/ˈælɡərɪðəm/',t:'n',band:'7.0',topic:'tech2',skill:'writing',vi:'thuật toán',ex:'Social media algorithms reinforce biases.',exvi:'Thuật toán mạng xã hội củng cố định kiến.',syn:['program','formula','automated process'],ielts:'"Algorithms shape what we see" — media and technology topic.',col:['biased algorithm','recommendation algorithm','algorithmic decision-making']},
+  {w:'automation',p:'/ˌɔːtəˈmeɪʃən/',t:'n',band:'7.0',topic:'tech2',skill:'writing',vi:'tự động hóa',ex:'Automation displaces low-skilled workers.',exvi:'Tự động hóa thay thế người lao động kỹ năng thấp.',syn:['mechanisation','robotics','computerisation'],ielts:'"The rise of automation" — employment and technology.',col:['industrial automation','workplace automation','automation era','wave of automation']},
+  {w:'innovation',p:'/ˌɪnəˈveɪʃən/',t:'n',band:'6.5',topic:'tech2',skill:'writing',vi:'đổi mới, sáng tạo',ex:'Technological innovation drives economic growth.',exvi:'Đổi mới công nghệ thúc đẩy tăng trưởng kinh tế.',syn:['advancement','breakthrough','novelty'],ielts:'Collocates: "foster/drive/stifle innovation". Very frequent.',col:['technological innovation','foster innovation','disruptive innovation','spirit of innovation']},
+  {w:'dependency',p:'/dɪˈpɛndənsi/',t:'n',band:'7.0',topic:'tech2',skill:'writing',vi:'sự phụ thuộc',ex:'Our dependency on technology is growing.',exvi:'Sự phụ thuộc của chúng ta vào công nghệ ngày càng tăng.',syn:['reliance','dependence','addiction'],ielts:'"Over-dependency on technology" — a common IELTS essay argument.',col:['over-dependency','growing dependency','technology dependency','reduce dependency']},
+  {w:'cybersecurity',p:'/ˈsaɪbərsɪˌkjʊərɪti/',t:'n',band:'7.0',topic:'tech2',skill:'writing',vi:'an ninh mạng',ex:'Cybersecurity threats are increasing globally.',exvi:'Các mối đe dọa an ninh mạng đang gia tăng toàn cầu.',syn:['data security','digital security','online security'],ielts:'Technology and privacy — increasingly tested IELTS topic.',col:['cybersecurity threat','cybersecurity breach','improve cybersecurity']},
+  {w:'autonomous',p:'/ɔːˈtɒnəməs/',t:'adj',band:'7.5',topic:'tech2',skill:'writing',vi:'tự hành, tự chủ',ex:'Autonomous vehicles will transform transport.',exvi:'Xe tự hành sẽ chuyển đổi giao thông.',syn:['self-governing','independent','self-driving'],ielts:'"Autonomous vehicles/systems" — future technology topic.',col:['autonomous vehicle','autonomous system','fully autonomous','autonomous decision-making']},
+  {w:'digital divide',p:'/ˈdɪdʒɪtəl dɪˈvaɪd/',t:'n',band:'7.5',topic:'tech2',skill:'writing',vi:'khoảng cách số',ex:'The digital divide widens inequality.',exvi:'Khoảng cách số làm gia tăng bất bình đẳng.',syn:['technological gap','information gap'],ielts:'"Bridge the digital divide" — equality and technology.',col:['bridge the digital divide','widen the digital divide','overcome the digital divide']},
+  {w:'ethical concerns',p:'/ˈɛθɪkəl kənˈsɜːrnz/',t:'n',band:'7.0',topic:'tech2',skill:'writing',vi:'mối lo ngại về đạo đức',ex:'AI raises serious ethical concerns.',exvi:'AI đặt ra những mối lo ngại đạo đức nghiêm trọng.',syn:['moral issues','ethical implications','moral dilemmas'],ielts:'"Raise ethical concerns" — very frequent in AI and science essays.',col:['raise ethical concerns','address ethical issues','ethical implications']},
+  {w:'disruptive',p:'/dɪsˈrʌptɪv/',t:'adj',band:'7.5',topic:'tech2',skill:'writing',vi:'có tính đột phá, phá vỡ',ex:'Smartphones were a disruptive technology.',exvi:'Điện thoại thông minh là một công nghệ đột phá.',syn:['game-changing','revolutionary','transformative'],ielts:'"Disruptive technology/innovation" — business and tech essays.',col:['disruptive technology','disruptive innovation','disruptive force','disruptive impact']},
+
+  // EDUCATION 2
+  {w:'critical thinking',p:'/ˈkrɪtɪkəl ˈθɪŋkɪŋ/',t:'n',band:'7.0',topic:'edu2',skill:'writing',vi:'tư duy phản biện',ex:'Schools must foster critical thinking skills.',exvi:'Trường học phải nuôi dưỡng kỹ năng tư duy phản biện.',syn:['analytical thinking','reasoning skills'],ielts:'"Foster/develop critical thinking" — education reform topic.',col:['develop critical thinking','critical thinking skills','promote critical thinking']},
+  {w:'lifelong learning',p:'/ˈlaɪflɒŋ ˈlɜːrnɪŋ/',t:'n',band:'6.5',topic:'edu2',skill:'writing',vi:'học tập suốt đời',ex:'Lifelong learning is essential in the modern economy.',exvi:'Học tập suốt đời là cần thiết trong nền kinh tế hiện đại.',syn:['continuous learning','ongoing education'],ielts:'"Embrace lifelong learning" — key employment and education theme.',col:['embrace lifelong learning','promote lifelong learning','culture of lifelong learning']},
+  {w:'curriculum',p:'/kəˈrɪkjʊləm/',t:'n',band:'6.5',topic:'edu2',skill:'writing',vi:'chương trình giảng dạy',ex:'The curriculum needs to be updated.',exvi:'Chương trình giảng dạy cần được cập nhật.',syn:['syllabus','course content','programme'],ielts:'"Revamp/reform the curriculum" — education policy topic.',col:['update curriculum','national curriculum','curriculum reform','design curriculum']},
+  {w:'graduate',p:'/ˈɡrædʒuɪt/',t:'n/v',band:'6.5',topic:'edu2',skill:'writing',vi:'tốt nghiệp / sinh viên tốt nghiệp',ex:'Many graduates struggle to find work.',exvi:'Nhiều sinh viên tốt nghiệp gặp khó khăn khi tìm việc.',syn:['alumnus','degree holder'],ielts:'"Graduate employment" — education and economy crossover topic.',col:['graduate employment','recent graduate','postgraduate','graduate skills']},
+  {w:'equity in education',p:'/ˈɛkwɪti ɪn ˌɛdjʊˈkeɪʃən/',t:'n',band:'7.5',topic:'edu2',skill:'writing',vi:'bình đẳng trong giáo dục',ex:'Equity in education must be prioritised.',exvi:'Bình đẳng trong giáo dục phải được ưu tiên.',syn:['educational equality','equal access to education'],ielts:'"Ensure equity in education" — a high-scoring IELTS phrase.',col:['promote equity','achieve equity','educational equity','equity and inclusion']},
+  {w:'interdisciplinary',p:'/ˌɪntəˈdɪsɪplɪnəri/',t:'adj',band:'8.0',topic:'edu2',skill:'writing',vi:'liên ngành',ex:'Interdisciplinary approaches solve complex problems.',exvi:'Các cách tiếp cận liên ngành giải quyết những vấn đề phức tạp.',syn:['cross-disciplinary','multidisciplinary','integrated'],ielts:'Band 8 academic term for education and research.',col:['interdisciplinary approach','interdisciplinary research','interdisciplinary collaboration']},
+  {w:'competency',p:'/ˈkɒmpɪtənsi/',t:'n',band:'7.0',topic:'edu2',skill:'writing',vi:'năng lực, thẩm quyền',ex:'Digital competency is now a core requirement.',exvi:'Năng lực số hiện là yêu cầu cốt lõi.',syn:['skill','ability','capability','proficiency'],ielts:'"Core competencies" — education and employment overlap.',col:['core competency','digital competency','develop competencies','key competencies']},
+
+  // HEALTH 2
+  {w:'preventable',p:'/prɪˈvɛntəbəl/',t:'adj',band:'7.0',topic:'health2',skill:'writing',vi:'có thể phòng ngừa',ex:'Many deaths from cancer are preventable.',exvi:'Nhiều ca tử vong do ung thư có thể phòng ngừa.',syn:['avoidable','manageable','controllable'],ielts:'"Preventable disease/death" — public health core vocabulary.',col:['preventable disease','largely preventable','preventable death','preventable illness']},
+  {w:'epidemic',p:'/ˌɛpɪˈdɛmɪk/',t:'n',band:'7.0',topic:'health2',skill:'writing',vi:'dịch bệnh',ex:'An obesity epidemic is sweeping the world.',exvi:'Một dịch bệnh béo phì đang càn quét thế giới.',syn:['outbreak','surge','crisis'],ielts:'"Obesity/mental health epidemic" — figurative use impresses examiners.',col:['global epidemic','obesity epidemic','epidemic proportions','contain an epidemic']},
+  {w:'holistic',p:'/hoʊˈlɪstɪk/',t:'adj',band:'7.5',topic:'health2',skill:'writing',vi:'toàn diện',ex:'A holistic approach to health is needed.',exvi:'Cần một cách tiếp cận sức khỏe toàn diện.',syn:['comprehensive','all-encompassing','integrated'],ielts:'"A holistic approach" — healthcare and education Band 7.5.',col:['holistic approach','holistic healthcare','holistic development','holistic well-being']},
+  {w:'pandemic',p:'/pænˈdɛmɪk/',t:'n',band:'7.0',topic:'health2',skill:'writing',vi:'đại dịch',ex:'The COVID-19 pandemic changed the world.',exvi:'Đại dịch COVID-19 đã thay đổi thế giới.',syn:['global epidemic','worldwide outbreak'],ielts:'"In the wake of the pandemic" — very current IELTS topic.',col:['global pandemic','pandemic response','pandemic impact','post-pandemic']},
+  {w:'sedentary lifestyle',p:'/ˈsɛdəntəri ˈlaɪfstaɪl/',t:'n',band:'7.0',topic:'health2',skill:'writing',vi:'lối sống ít vận động',ex:'A sedentary lifestyle contributes to obesity.',exvi:'Lối sống ít vận động góp phần gây béo phì.',syn:['inactive lifestyle','physically inactive','desk-bound life'],ielts:'Health and technology crossover: "smartphones promote sedentary lifestyles".',col:['sedentary lifestyle','combat sedentary behaviour','increasingly sedentary']},
+  {w:'longevity',p:'/lɒnˈdʒɛvɪti/',t:'n',band:'7.5',topic:'health2',skill:'writing',vi:'tuổi thọ',ex:'Advances in medicine have increased longevity.',exvi:'Những tiến bộ y học đã tăng tuổi thọ.',syn:['life expectancy','long life','lifespan'],ielts:'"Increase longevity" — aging population topic Band 7.5.',col:['increase longevity','human longevity','longevity gap','longevity research']},
+  {w:'immunisation',p:'/ˌɪmjʊnaɪˈzeɪʃən/',t:'n',band:'7.0',topic:'health2',skill:'writing',vi:'tiêm chủng',ex:'Immunisation programmes save millions of lives.',exvi:'Các chương trình tiêm chủng cứu sống hàng triệu người.',syn:['vaccination','immunization'],ielts:'Public health policy topic. "Mass immunisation campaigns".',col:['immunisation programme','mass immunisation','childhood immunisation','vaccine hesitancy']},
+
+  // ECONOMY 2
+  {w:'disparity',p:'/dɪˈspærɪti/',t:'n',band:'7.5',topic:'econ2',skill:'writing',vi:'sự chênh lệch',ex:'The wealth disparity between rich and poor is growing.',exvi:'Khoảng cách giàu nghèo ngày càng gia tăng.',syn:['inequality','gap','imbalance','divide'],ielts:'"Growing disparity" — society and economics Band 7.5.',col:['wealth disparity','income disparity','growing disparity','stark disparity']},
+  {w:'outsourcing',p:'/ˈaʊtsɔːrsɪŋ/',t:'n',band:'7.0',topic:'econ2',skill:'writing',vi:'thuê ngoài, gia công',ex:'Outsourcing reduces costs but affects local jobs.',exvi:'Thuê ngoài giảm chi phí nhưng ảnh hưởng đến việc làm địa phương.',syn:['offshoring','contracting out','subcontracting'],ielts:'Globalisation and employment topic. "Offshore outsourcing".',col:['outsource jobs','global outsourcing','outsourcing trend']},
+  {w:'productivity',p:'/ˌprɒdʌkˈtɪvɪti/',t:'n',band:'7.0',topic:'econ2',skill:'writing',vi:'năng suất',ex:'Technology boosts worker productivity.',exvi:'Công nghệ tăng năng suất của người lao động.',syn:['efficiency','output','performance'],ielts:'"Increase/boost productivity" — economics and technology topic.',col:['labour productivity','boost productivity','productivity gains','declining productivity']},
+  {w:'fiscal policy',p:'/ˈfɪskəl ˈpɒlɪsi/',t:'n',band:'8.0',topic:'econ2',skill:'writing',vi:'chính sách tài khóa',ex:'Fiscal policy can stimulate economic growth.',exvi:'Chính sách tài khóa có thể kích thích tăng trưởng kinh tế.',syn:['government spending policy','budget policy'],ielts:'Band 8 economics term. "Expansionary fiscal policy".',col:['fiscal policy measures','tighten fiscal policy','expansionary fiscal policy']},
+  {w:'gig economy',p:'/ɡɪɡ ɪˈkɒnəmi/',t:'n',band:'7.5',topic:'econ2',skill:'writing',vi:'nền kinh tế gig (làm theo hợp đồng ngắn hạn)',ex:'The gig economy offers flexibility but lacks security.',exvi:'Nền kinh tế gig mang lại sự linh hoạt nhưng thiếu an ninh.',syn:['freelance economy','platform economy','on-demand economy'],ielts:'"The rise of the gig economy" — labour market change Band 7.5.',col:['gig economy workers','grow the gig economy','gig economy platforms']},
+  {w:'remittance',p:'/rɪˈmɪtəns/',t:'n',band:'7.5',topic:'econ2',skill:'writing',vi:'tiền kiều hối',ex:'Remittances are vital for developing economies.',exvi:'Kiều hối rất quan trọng đối với các nền kinh tế đang phát triển.',syn:['money transfer','foreign currency transfer'],ielts:'Migration and development: "workers send remittances home".',col:['remittance payments','send remittances','remittance flows','remittance income']},
+  {w:'austerity',p:'/ɒˈstɛrɪti/',t:'n',band:'8.0',topic:'econ2',skill:'writing',vi:'chính sách thắt lưng buộc bụng',ex:'Austerity measures deepened the recession.',exvi:'Các biện pháp thắt lưng buộc bụng làm trầm trọng thêm suy thoái.',syn:['fiscal tightening','budget cuts','belt-tightening'],ielts:'Band 8 economics. "Impose austerity" — government spending cuts.',col:['austerity measures','impose austerity','age of austerity','austerity programme']},
+
+  // SOCIETY 2
+  {w:'demographic',p:'/ˌdɛməˈɡræfɪk/',t:'adj/n',band:'7.5',topic:'social2',skill:'writing',vi:'nhân khẩu học',ex:'Demographic changes challenge pension systems.',exvi:'Những thay đổi nhân khẩu học thách thức hệ thống lương hưu.',syn:['population-related','societal','census-based'],ielts:'"Demographic shift/change" — aging society topic Band 7.5.',col:['demographic shift','demographic change','demographic data','aging demographic']},
+  {w:'polarisation',p:'/ˌpoʊlərɪˈzeɪʃən/',t:'n',band:'8.0',topic:'social2',skill:'writing',vi:'phân cực',ex:'Political polarisation is increasing worldwide.',exvi:'Phân cực chính trị đang gia tăng trên toàn thế giới.',syn:['division','fragmentation','splitting'],ielts:'Band 8. "Social/political polarisation" — media and society.',col:['political polarisation','social polarisation','increasing polarisation','polarised society']},
+  {w:'cohesion',p:'/koʊˈhiːʒən/',t:'n',band:'7.5',topic:'social2',skill:'writing',vi:'sự gắn kết xã hội',ex:'Immigration can challenge social cohesion.',exvi:'Nhập cư có thể thách thức sự gắn kết xã hội.',syn:['unity','solidarity','harmony','togetherness'],ielts:'"Social cohesion" — multicultural society Band 7.5.',col:['social cohesion','community cohesion','promote cohesion','lack of cohesion']},
+  {w:'stigmatise',p:'/ˈstɪɡmətaɪz/',t:'v',band:'7.5',topic:'social2',skill:'writing',vi:'kỳ thị',ex:'Mental illness is often stigmatised.',exvi:'Bệnh tâm thần thường bị kỳ thị.',syn:['discriminate against','label','brand'],ielts:'"Stigmatise vulnerable groups" — social justice topic Band 7.5.',col:['stigmatise mental illness','feel stigmatised','destigmatise']},
+  {w:'empowerment',p:'/ɪmˈpaʊərmənt/',t:'n',band:'7.0',topic:'social2',skill:'writing',vi:'sự trao quyền',ex:'Education leads to the empowerment of women.',exvi:'Giáo dục dẫn đến sự trao quyền của phụ nữ.',syn:['enablement','liberation','self-sufficiency'],ielts:'"Women\'s empowerment" — gender equality Band 7.',col:['women\'s empowerment','economic empowerment','promote empowerment','empowerment of communities']},
+  {w:'intergenerational',p:'/ˌɪntəˌdʒɛnəˈreɪʃənəl/',t:'adj',band:'8.0',topic:'social2',skill:'writing',vi:'liên thế hệ',ex:'There is an intergenerational conflict over housing.',exvi:'Có sự xung đột liên thế hệ về nhà ở.',syn:['cross-generational','between generations'],ielts:'Band 8. "Intergenerational equity/conflict" — aging society essays.',col:['intergenerational equity','intergenerational conflict','intergenerational wealth']},
+  {w:'systemic',p:'/sɪˈstɛmɪk/',t:'adj',band:'8.0',topic:'social2',skill:'writing',vi:'có hệ thống, mang tính cấu trúc',ex:'Systemic racism must be dismantled.',exvi:'Chủ nghĩa phân biệt chủng tộc có hệ thống phải bị xóa bỏ.',syn:['structural','institutional','deep-rooted'],ielts:'Band 8. "Systemic racism/inequality" — very current social issue.',col:['systemic racism','systemic inequality','systemic change','address systemic issues']},
+
+  // GOVERNMENT 2
+  {w:'governance',p:'/ˈɡʌvənəns/',t:'n',band:'7.5',topic:'gov2',skill:'writing',vi:'quản trị, cai trị',ex:'Good governance is essential for development.',exvi:'Quản trị tốt là cần thiết cho phát triển.',syn:['administration','management','rule'],ielts:'"Good governance" — politics and development Band 7.5.',col:['good governance','global governance','corporate governance','democratic governance']},
+  {w:'legislation',p:'/ˌlɛdʒɪˈsleɪʃən/',t:'n',band:'7.0',topic:'gov2',skill:'writing',vi:'luật pháp',ex:'Stricter legislation is needed to combat pollution.',exvi:'Cần luật pháp nghiêm ngặt hơn để chống ô nhiễm.',syn:['law','regulation','statute','act'],ielts:'"Introduce/pass legislation" — government action language.',col:['introduce legislation','pass legislation','strict legislation','anti-discrimination legislation']},
+  {w:'referendum',p:'/ˌrɛfəˈrɛndəm/',t:'n',band:'7.5',topic:'gov2',skill:'writing',vi:'trưng cầu dân ý',ex:'A referendum was held on the issue.',exvi:'Một cuộc trưng cầu dân ý đã được tổ chức.',syn:['public vote','plebiscite','ballot'],ielts:'Democracy and governance — occasionally tested in IELTS.',col:['hold a referendum','vote in a referendum','referendum result']},
+  {w:'bureaucracy',p:'/bjʊˈrɒkrəsi/',t:'n',band:'7.5',topic:'gov2',skill:'writing',vi:'bộ máy quan liêu',ex:'Excessive bureaucracy slows economic progress.',exvi:'Bộ máy quan liêu quá mức làm chậm tiến bộ kinh tế.',syn:['red tape','administration','officialdom'],ielts:'"Cut through bureaucracy" — reform and efficiency essays.',col:['excessive bureaucracy','cut bureaucracy','bureaucratic obstacles','reduce bureaucracy']},
+  {w:'accountability',p:'/əˌkaʊntəˈbɪlɪti/',t:'n',band:'7.5',topic:'gov2',skill:'writing',vi:'trách nhiệm giải trình',ex:'Greater accountability is needed from corporations.',exvi:'Cần có trách nhiệm giải trình cao hơn từ các tập đoàn.',syn:['responsibility','answerability','transparency'],ielts:'"Hold governments accountable" — democracy and ethics.',col:['hold accountable','lack of accountability','corporate accountability','democratic accountability']},
+  {w:'sovereignty',p:'/ˈsɒvrɪnti/',t:'n',band:'8.0',topic:'gov2',skill:'writing',vi:'chủ quyền',ex:'Nations must protect their sovereignty.',exvi:'Các quốc gia phải bảo vệ chủ quyền của mình.',syn:['independence','self-governance','autonomy'],ielts:'Band 8. "National sovereignty" — international relations.',col:['national sovereignty','territorial sovereignty','sovereignty dispute','protect sovereignty']},
+
+  // GLOBALISATION 2
+  {w:'transnational',p:'/trænzˈnæʃənəl/',t:'adj',band:'8.0',topic:'global2',skill:'writing',vi:'xuyên quốc gia',ex:'Transnational corporations dominate world trade.',exvi:'Các tập đoàn xuyên quốc gia thống trị thương mại thế giới.',syn:['multinational','global','cross-border'],ielts:'Band 8. "Transnational corporation/cooperation" — globalisation.',col:['transnational corporation','transnational migration','transnational cooperation']},
+  {w:'diaspora',p:'/daɪˈæspərə/',t:'n',band:'8.0',topic:'global2',skill:'writing',vi:'cộng đồng ly hương, kiều dân',ex:'The Vietnamese diaspora maintains strong cultural ties.',exvi:'Cộng đồng người Việt ly hương duy trì mối liên kết văn hóa mạnh mẽ.',syn:['expatriate community','overseas community'],ielts:'Band 8 — migration and culture. "Diaspora communities".',col:['diaspora community','Vietnamese diaspora','global diaspora','maintain diaspora ties']},
+  {w:'bilateral',p:'/baɪˈlætərəl/',t:'adj',band:'7.5',topic:'global2',skill:'writing',vi:'song phương',ex:'The two countries signed a bilateral trade agreement.',exvi:'Hai quốc gia đã ký một hiệp định thương mại song phương.',syn:['two-sided','mutual','between two parties'],ielts:'"Bilateral agreement/relations" — international relations Band 7.5.',col:['bilateral agreement','bilateral trade','bilateral relations','bilateral cooperation']},
+  {w:'assimilation',p:'/əˌsɪmɪˈleɪʃən/',t:'n',band:'7.5',topic:'global2',skill:'writing',vi:'sự đồng hóa',ex:'Cultural assimilation can erode native traditions.',exvi:'Đồng hóa văn hóa có thể xói mòn các truyền thống bản địa.',syn:['integration','absorption','cultural adoption'],ielts:'"Cultural assimilation vs integration" — migration debate.',col:['cultural assimilation','forced assimilation','resist assimilation','degree of assimilation']},
+  {w:'protectionism',p:'/prəˈtɛkʃənɪzəm/',t:'n',band:'8.0',topic:'global2',skill:'writing',vi:'chủ nghĩa bảo hộ',ex:'Trade protectionism harms global economic growth.',exvi:'Chủ nghĩa bảo hộ thương mại gây hại cho tăng trưởng kinh tế toàn cầu.',syn:['trade barriers','economic nationalism'],ielts:'Band 8. "Rising protectionism" — international trade essays.',col:['trade protectionism','rise of protectionism','economic protectionism']},
+  {w:'multilateral',p:'/ˌmʌltiˈlætərəl/',t:'adj',band:'8.0',topic:'global2',skill:'writing',vi:'đa phương',ex:'Multilateral cooperation is essential for climate action.',exvi:'Hợp tác đa phương là cần thiết cho hành động khí hậu.',syn:['multinational','multi-party','involving many countries'],ielts:'Band 8 diplomacy language. "Multilateral agreement/forum".',col:['multilateral agreement','multilateral cooperation','multilateral institutions']},
+
+  // MEDIA 2
+  {w:'echo chamber',p:'/ˈɛkoʊ ˈtʃeɪmbər/',t:'n',band:'7.5',topic:'media2',skill:'writing',vi:'buồng vang',ex:'Social media creates echo chambers.',exvi:'Mạng xã hội tạo ra các buồng vang.',syn:['filter bubble','information silo'],ielts:'"Echo chambers reinforce bias" — media and society Band 7.5.',col:['social media echo chamber','create echo chambers','break out of echo chambers']},
+  {w:'misinformation',p:'/ˌmɪsɪnfəˈmeɪʃən/',t:'n',band:'7.0',topic:'media2',skill:'writing',vi:'thông tin sai lệch',ex:'Misinformation spreads rapidly online.',exvi:'Thông tin sai lệch lan truyền nhanh chóng trực tuyến.',syn:['false information','disinformation','fake news'],ielts:'"Combat misinformation" — media responsibility essay.',col:['spread misinformation','combat misinformation','online misinformation','disinformation campaign']},
+  {w:'media literacy',p:'/ˈmiːdiə ˈlɪtərəsi/',t:'n',band:'7.5',topic:'media2',skill:'writing',vi:'năng lực truyền thông',ex:'Media literacy helps people identify fake news.',exvi:'Năng lực truyền thông giúp mọi người xác định tin giả.',syn:['digital literacy','critical media awareness'],ielts:'"Develop media literacy" — education and media crossover.',col:['promote media literacy','media literacy skills','lack of media literacy']},
+  {w:'viral',p:'/ˈvaɪrəl/',t:'adj',band:'6.5',topic:'media2',skill:'writing',vi:'lan truyền rộng rãi',ex:'Misinformation often goes viral.',exvi:'Thông tin sai lệch thường lan truyền rộng rãi.',syn:['trending','widespread','shared widely'],ielts:'"Content goes viral" — social media and communication.',col:['go viral','viral content','viral misinformation','viral campaign']},
+  {w:'data privacy',p:'/ˈdeɪtə ˈprɪvəsi/',t:'n',band:'7.0',topic:'media2',skill:'writing',vi:'quyền riêng tư dữ liệu',ex:'Data privacy is a growing concern.',exvi:'Quyền riêng tư dữ liệu là mối lo ngại ngày càng tăng.',syn:['data protection','information privacy','digital privacy'],ielts:'"Protect data privacy" — technology and rights topic.',col:['protect data privacy','data privacy breach','data privacy law','violate data privacy']},
+  {w:'algorithmic bias',p:'/ˌælɡəˈrɪðmɪk ˈbaɪəs/',t:'n',band:'8.0',topic:'media2',skill:'writing',vi:'thiên lệch thuật toán',ex:'Algorithmic bias reinforces social inequalities.',exvi:'Thiên lệch thuật toán củng cố bất bình đẳng xã hội.',syn:['computational bias','automated discrimination'],ielts:'Band 8 — AI ethics and fairness topic.',col:['algorithmic bias','combat algorithmic bias','expose algorithmic bias']},
+
+  // URBAN 2
+  {w:'infrastructure',p:'/ˈɪnfrəstrʌktʃər/',t:'n',band:'6.5',topic:'urban2',skill:'writing',vi:'cơ sở hạ tầng',ex:'Developing countries need modern infrastructure.',exvi:'Các nước đang phát triển cần cơ sở hạ tầng hiện đại.',syn:['facilities','systems','framework'],ielts:'"Invest in infrastructure" — development core vocabulary.',col:['public infrastructure','transport infrastructure','infrastructure investment','crumbling infrastructure']},
+  {w:'urban sprawl',p:'/ˈɜːrbən sprɔːl/',t:'n',band:'7.5',topic:'urban2',skill:'writing',vi:'đô thị lan rộng',ex:'Urban sprawl destroys natural habitats.',exvi:'Đô thị lan rộng phá hủy môi trường sống tự nhiên.',syn:['suburban expansion','city spread','uncontrolled growth'],ielts:'"Combat urban sprawl" — urban planning and environment.',col:['combat urban sprawl','urban sprawl problem','unchecked urban sprawl']},
+  {w:'gentrification',p:'/ˌdʒɛntrɪfɪˈkeɪʃən/',t:'n',band:'8.0',topic:'urban2',skill:'writing',vi:'quý tộc hóa khu phố',ex:'Gentrification displaces low-income residents.',exvi:'Quý tộc hóa khu phố khiến cư dân thu nhập thấp phải rời đi.',syn:['neighbourhood transformation','upscaling'],ielts:'Band 8 — urban inequality and housing.',col:['urban gentrification','rapid gentrification','combat gentrification']},
+  {w:'sustainable city',p:'/səˈsteɪnəbəl ˈsɪti/',t:'n',band:'7.0',topic:'urban2',skill:'writing',vi:'thành phố bền vững',ex:'Sustainable cities prioritise public transport.',exvi:'Các thành phố bền vững ưu tiên giao thông công cộng.',syn:['eco-city','green city'],ielts:'"Build a sustainable city" — urban planning Band 7.',col:['sustainable city development','smart city','green city initiatives']},
+  {w:'congestion',p:'/kənˈdʒɛstʃən/',t:'n',band:'7.0',topic:'urban2',skill:'writing',vi:'tắc nghẽn',ex:'Traffic congestion costs billions annually.',exvi:'Tắc nghẽn giao thông gây thiệt hại hàng tỷ đô mỗi năm.',syn:['gridlock','traffic jam','overcrowding'],ielts:'"Ease/reduce congestion" — urban transport Band 7.',col:['traffic congestion','ease congestion','chronic congestion','congestion charge']},
+  {w:'displacement',p:'/dɪsˈpleɪsmənt/',t:'n',band:'7.5',topic:'urban2',skill:'writing',vi:'sự di dời, thay thế',ex:'Industrial displacement creates unemployment.',exvi:'Sự thay thế công nghiệp tạo ra thất nghiệp.',syn:['relocation','dispossession','removal'],ielts:'"Displacement of workers/communities" — economy and urban change.',col:['population displacement','job displacement','displacement of communities']},
+
+  // SCIENCE
+  {w:'empirical',p:'/ɪmˈpɪrɪkəl/',t:'adj',band:'8.0',topic:'science',skill:'writing',vi:'thực nghiệm, dựa trên bằng chứng',ex:'Empirical evidence supports this theory.',exvi:'Bằng chứng thực nghiệm hỗ trợ lý thuyết này.',syn:['evidence-based','experimental','observable'],ielts:'Band 8 academic science language. "Empirical evidence/data".',col:['empirical evidence','empirical research','empirical data','empirically proven']},
+  {w:'longitudinal',p:'/ˌlɒŋdʒɪˈtjuːdɪnəl/',t:'adj',band:'8.0',topic:'science',skill:'writing',vi:'theo chiều dọc (nghiên cứu dài hạn)',ex:'A longitudinal study tracked participants over 20 years.',exvi:'Một nghiên cứu dài hạn theo dõi người tham gia trong 20 năm.',syn:['long-term','extended study'],ielts:'Band 8 research methodology. "Longitudinal study" — very impressive.',col:['longitudinal study','longitudinal research','longitudinal data']},
+  {w:'hypothesis',p:'/haɪˈpɒθɪsɪs/',t:'n',band:'7.5',topic:'science',skill:'writing',vi:'giả thuyết',ex:'Scientists tested the hypothesis.',exvi:'Các nhà khoa học đã kiểm tra giả thuyết.',syn:['theory','assumption','thesis','proposition'],ielts:'"Test/support/reject a hypothesis" — research methodology.',col:['test a hypothesis','support the hypothesis','reject a hypothesis','formulate a hypothesis']},
+  {w:'correlation',p:'/ˌkɒrəˈleɪʃən/',t:'n',band:'7.5',topic:'science',skill:'writing',vi:'mối tương quan',ex:'There is a correlation between poverty and crime.',exvi:'Có mối tương quan giữa nghèo đói và tội phạm.',syn:['relationship','link','connection','association'],ielts:'"A strong correlation between X and Y" — very useful phrasing.',col:['strong correlation','positive correlation','negative correlation','correlation does not imply causation']},
+  {w:'peer-reviewed',p:'/ˈpɪər rɪˈvjuːd/',t:'adj',band:'8.0',topic:'science',skill:'writing',vi:'được đánh giá ngang hàng',ex:'Only peer-reviewed research should be cited.',exvi:'Chỉ nên trích dẫn nghiên cứu được đánh giá ngang hàng.',syn:['academically validated','scientifically reviewed'],ielts:'Band 8 — academic writing: "peer-reviewed journals".',col:['peer-reviewed journal','peer-reviewed study','peer-reviewed evidence']},
+  {w:'paradigm shift',p:'/ˈpærədaɪm ʃɪft/',t:'n',band:'8.0',topic:'science',skill:'writing',vi:'sự thay đổi mô hình tư duy',ex:'The internet caused a paradigm shift in communication.',exvi:'Internet đã gây ra sự thay đổi mô hình trong giao tiếp.',syn:['revolutionary change','fundamental shift','sea change'],ielts:'Band 8 impressive phrase. "A paradigm shift in thinking".',col:['paradigm shift in education','cause a paradigm shift','represent a paradigm shift']},
+
+  // WRITING VOCABULARY (general academic)
+  {w:'arguably',p:'/ˈɑːrɡjʊəbli/',t:'adv',band:'7.0',topic:'writing',skill:'writing',vi:'có thể lập luận rằng',ex:'Arguably, education is the most powerful tool.',exvi:'Có thể lập luận rằng giáo dục là công cụ mạnh mẽ nhất.',syn:['one could argue','it can be argued','possibly'],ielts:'"Arguably" opens strong essay statements — hedging Band 7.',col:['arguably the most','arguably the greatest','arguably the best approach']},
+  {w:'underscore',p:'/ˌʌndərˈskɔːr/',t:'v',band:'7.5',topic:'writing',skill:'writing',vi:'nhấn mạnh, làm nổi bật',ex:'This underscores the need for urgent action.',exvi:'Điều này nhấn mạnh sự cần thiết phải hành động khẩn cấp.',syn:['highlight','emphasise','reinforce','stress'],ielts:'"This underscores..." — formal alternative to "this shows". Band 7.5.',col:['underscore the importance','underscore the need','underscore the point']},
+  {w:'warrant',p:'/ˈwɒrənt/',t:'v/n',band:'7.5',topic:'writing',skill:'writing',vi:'đảm bảo, biện minh cho',ex:'The issue warrants further investigation.',exvi:'Vấn đề này biện minh cho việc điều tra thêm.',syn:['justify','deserve','merit','require'],ielts:'"The issue warrants attention" — formal academic verb Band 7.5.',col:['warrant further investigation','warrant concern','warrant attention']},
+  {w:'infer',p:'/ɪnˈfɜːr/',t:'v',band:'7.0',topic:'writing',skill:'reading',vi:'suy ra, rút ra kết luận',ex:'We can infer from the data that urbanisation is accelerating.',exvi:'Chúng ta có thể suy ra từ dữ liệu rằng đô thị hóa đang tăng tốc.',syn:['deduce','conclude','gather','derive'],ielts:'"It can be inferred from..." — Reading inference questions.',col:['infer from data','it can be inferred that','infer meaning']},
+  {w:'substantiate',p:'/səbˈstænʃieɪt/',t:'v',band:'8.0',topic:'writing',skill:'writing',vi:'chứng minh, xác nhận bằng bằng chứng',ex:'The claim must be substantiated with evidence.',exvi:'Tuyên bố phải được chứng minh bằng bằng chứng.',syn:['prove','support','back up','verify','corroborate'],ielts:'Band 8. "Substantiate a claim/argument" — academic writing.',col:['substantiate a claim','substantiate with evidence','fail to substantiate']},
+  {w:'nuanced',p:'/ˈnjuːɑːnst/',t:'adj',band:'8.0',topic:'writing',skill:'writing',vi:'có sắc thái, tinh tế',ex:'A nuanced analysis recognises complexity.',exvi:'Một phân tích có sắc thái nhận ra sự phức tạp.',syn:['subtle','sophisticated','considered','balanced'],ielts:'Band 8. "A nuanced argument/approach" — shows examiner maturity.',col:['nuanced argument','nuanced approach','nuanced analysis','nuanced understanding']},
+  {w:'counterargument',p:'/ˈkaʊntərˌɑːrɡjʊmənt/',t:'n',band:'7.5',topic:'writing',skill:'writing',vi:'lập luận phản bác',ex:'A strong essay acknowledges the counterargument.',exvi:'Một bài luận mạnh thừa nhận lập luận phản bác.',syn:['opposing view','rebuttal','counter-claim'],ielts:'"Address the counterargument" — Band 7.5 essay technique.',col:['acknowledge counterargument','address the counterargument','refute the counterargument']},
+  {w:'caveat',p:'/ˈkæviæt/',t:'n',band:'8.0',topic:'writing',skill:'writing',vi:'cảnh báo, điều kiện kèm theo',ex:'There is one important caveat to this argument.',exvi:'Có một điều kiện quan trọng kèm theo lập luận này.',syn:['qualification','proviso','warning','condition'],ielts:'Band 8 academic writing. "With the caveat that..." — shows critical thinking.',col:['with the caveat that','important caveat','add a caveat','caveat emptor']},
+  {w:'cogent',p:'/ˈkoʊdʒənt/',t:'adj',band:'8.0',topic:'writing',skill:'writing',vi:'thuyết phục, chặt chẽ',ex:'She made a cogent argument for reform.',exvi:'Cô ấy đưa ra một lập luận thuyết phục cho cải cách.',syn:['convincing','compelling','persuasive','logical'],ielts:'Band 8. "A cogent argument" — impressive adjective for persuasive writing.',col:['cogent argument','cogent reasoning','cogent explanation']},
+  {w:'elicit',p:'/ɪˈlɪsɪt/',t:'v',band:'7.5',topic:'writing',skill:'writing',vi:'gợi ra, thu thập (phản ứng)',ex:'The policy elicited strong public reaction.',exvi:'Chính sách này gợi ra phản ứng mạnh mẽ của công chúng.',syn:['evoke','provoke','draw out','bring about'],ielts:'"Elicit a response/reaction" — formal alternative to "cause/get".',col:['elicit a response','elicit information','elicit feedback','elicit concern']},
+];
+
+let saved=new Set(JSON.parse(localStorage.getItem('il2_saved')||'[]'));
+let topic='all',band='all',savedOnly=false,expandedWord=null;
+
+function getFiltered(){
+  let d=[...IW2];
+  if(topic!=='all') d=d.filter(w=>w.topic===topic);
+  if(band!=='all') d=d.filter(w=>w.band===band);
+  if(savedOnly) d=d.filter(w=>saved.has(w.w));
+  const q=document.getElementById('searchInput')?.value.toLowerCase().trim();
+  if(q) d=d.filter(w=>w.w.includes(q)||w.vi.includes(q));
+  const s=document.getElementById('sortSel')?.value||'default';
+  if(s==='alpha') d=[...d].sort((a,b)=>a.w.localeCompare(b.w));
+  else if(s==='band') d=[...d].sort((a,b)=>parseFloat(a.band)-parseFloat(b.band));
+  return d;
+}
+
+const BC={'6.5':'b65','7.0':'b70','7.5':'b75','8.0':'b80'};
+const TC={n:'tn',v:'tv',adj:'tadj',adv:'tadv','adj/n':'tadj','n/v':'tn','n/adj':'tn'};
+const SK={writing:'✍️',speaking:'🗣️',reading:'📖',all:'📋'};
+const TL={env2:'🌿 Môi trường & Khí hậu',tech2:'💻 Công nghệ & AI',edu2:'📚 Giáo dục & Kỹ năng',health2:'🏥 Sức khỏe & Xã hội',econ2:'💰 Kinh tế & Lao động',social2:'👥 Xã hội & Bình đẳng',gov2:'🏛️ Chính sách & Luật pháp',global2:'🌍 Toàn cầu hóa & Di cư',media2:'📱 Truyền thông & Mạng XH',urban2:'🏙️ Đô thị & Giao thông',science:'🔬 Khoa học & Nghiên cứu',writing:'✍️ Từ vựng Writing'};
+
+function render(){
+  const data=getFiltered();
+  document.getElementById('sShowing').textContent=data.length;
+  document.getElementById('sSaved').textContent=saved.size;
+  document.getElementById('sB75').textContent=IW2.filter(w=>parseFloat(w.band)>=7.5).length;
+  document.getElementById('sB80').textContent=IW2.filter(w=>parseFloat(w.band)>=8.0).length;
+  const container=document.getElementById('container');
+  if(!data.length){container.innerHTML='<div class="no-res">Không tìm thấy từ nào.</div>';return;}
+  if(topic==='all'){
+    const groups={};
+    data.forEach(w=>{if(!groups[w.topic])groups[w.topic]=[];groups[w.topic].push(w);});
+    container.innerHTML=Object.keys(groups).map(t=>`
+      <div class="topic-hdr"><span style="font-size:20px">${TL[t]?.split(' ')[0]||'📌'}</span><span class="th-title">${TL[t]||t}</span><span class="th-count">${groups[t].length} từ</span></div>
+      ${tableHTML(groups[t])}`).join('');
+  } else {
+    container.innerHTML=tableHTML(data);
+  }
+}
+
+function tableHTML(words){
+  return `<table class="word-table">
+    <tr><th>Từ / Phiên âm</th><th>Loại</th><th>Band</th><th>KN</th><th>Nghĩa & Ví dụ</th><th>IELTS Note</th><th>★</th></tr>
+    ${words.map(w=>`
+      <tr onclick="toggleExp('${w.w.replace(/\s/g,'_')}')">
+        <td><span class="td-word">${w.w}</span><span class="td-pron">${w.p}</span></td>
+        <td><span class="td-type ${TC[w.t]||'tn'}">${w.t}</span></td>
+        <td><span class="btag ${BC[w.band]||'b70'}">${w.band}</span></td>
+        <td class="skill-icon">${SK[w.skill]||'📋'}</td>
+        <td><div class="td-vi">${w.vi}</div><div class="td-ex">"${w.ex}"</div></td>
+        <td class="td-ex" style="max-width:160px">${w.ielts||''}</td>
+        <td><button class="save-btn${saved.has(w.w)?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${saved.has(w.w)?'⭐':'☆'}</button></td>
+      </tr>
+      <tr id="exp-${w.w.replace(/\s/g,'_')}" style="display:none"><td colspan="7" style="padding:0;border:none">
+        <div class="exp-content">
+          <div class="exp-grid">
+            <div>
+              <div class="exp-label">Ví dụ câu</div>
+              <div class="exp-examples"><div class="exp-ex"><div class="exp-en">"${w.ex}"</div><div class="exp-vi">${w.exvi}</div></div></div>
+              ${w.syn?.length?`<div class="exp-label" style="margin-top:8px">Từ đồng nghĩa</div><div class="exp-chips">${w.syn.map(s=>`<span class="exp-chip">${s}</span>`).join('')}</div>`:''}
+              ${w.col?.length?`<div class="exp-label" style="margin-top:8px">Collocations</div><div class="exp-chips">${w.col.map(s=>`<span class="exp-chip">${s}</span>`).join('')}</div>`:''}
+            </div>
+            <div>
+              <div class="exp-label">IELTS Band ${w.band} Usage</div>
+              <div class="exp-ielts">${w.ielts||'Từ học thuật quan trọng.'}</div>
+              <div style="margin-top:8px;font-size:11px;color:var(--text3)">Chủ đề: ${TL[w.topic]||w.topic} · Kỹ năng: ${SK[w.skill]} ${w.skill}</div>
+            </div>
+          </div>
+        </div>
+      </td></tr>`).join('')}
+  </table>`;
+}
+
+function toggleExp(id){
+  const row=document.getElementById('exp-'+id);
+  const isOpen=row.style.display!=='none';
+  if(expandedWord) document.getElementById('exp-'+expandedWord).style.display='none';
+  row.style.display=isOpen?'none':'table-row';
+  expandedWord=isOpen?null:id;
+}
+
+function toggleSave(word){
+  if(saved.has(word)) saved.delete(word);
+  else saved.add(word);
+  localStorage.setItem('il2_saved',JSON.stringify([...saved]));
+  render();
+  renderSavedPanel();
+}
+
+function setTopic(t,el){topic=t;document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');render();}
+function setBand(b,el){band=b;render();}
+function toggleSavedOnly(){savedOnly=!savedOnly;render();}
+function toggleSavedPanel(){document.getElementById('savedPanel').classList.toggle('show');renderSavedPanel();}
+
+function renderSavedPanel(){
+  document.getElementById('spCount').textContent=saved.size;
+  const sp=document.getElementById('spWords');
+  if(!saved.size){sp.innerHTML='<span style="font-size:12px;color:var(--text3)">Chưa lưu từ nào.</span>';return;}
+  sp.innerHTML=[...saved].map(w=>`<span class="sp-w">${w}</span>`).join('');
+}
+
+function clearSaved(){if(confirm('Xóa tất cả?')){saved.clear();localStorage.removeItem('il2_saved');render();renderSavedPanel();}}
+
+render();
+renderSavedPanel();
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop=el.closest('.nav-drop');
+  const wasOpen=drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

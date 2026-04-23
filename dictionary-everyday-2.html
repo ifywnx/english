@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ điển Đời thường 2 — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(240,194,122,0.08);top:-150px;left:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;right:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent3);background:rgba(240,194,122,0.08)}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+.nav-sub{display:block;padding:7px 14px 7px 28px;border-radius:8px;font-size:11px;color:var(--text3);text-decoration:none;transition:all .15s}
+.nav-sub:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#0f0e17;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;margin-left:6px}
+.nav-cta:hover{background:#f0d060;transform:translateY(-1px)}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển ĐT 1</a>
+        <a href="dictionary-everyday-2.html" class="nav-a active">💬 Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+    <a href="academic-words.html" class="nav-cta">AWL 570 từ ★</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Chủ đề</div>
+  <button class="sb-item active" onclick="filterTopic('all',this)">🌟 Tất cả</button>
+  <button class="sb-item" onclick="filterTopic('describe',this)">🎨 Mô tả & Tính từ</button>
+  <button class="sb-item" onclick="filterTopic('think',this)">🧠 Suy nghĩ & Ý kiến</button>
+  <button class="sb-item" onclick="filterTopic('change',this)">🔄 Thay đổi & Phát triển</button>
+  <button class="sb-item" onclick="filterTopic('problem',this)">⚠️ Vấn đề & Giải quyết</button>
+  <button class="sb-item" onclick="filterTopic('relate',this)">🤝 Quan hệ & Giao tiếp</button>
+  <button class="sb-item" onclick="filterTopic('quantity',this)">📊 Số lượng & Mức độ</button>
+  <button class="sb-item" onclick="filterTopic('move',this)">🚗 Di chuyển & Vị trí</button>
+  <button class="sb-item" onclick="filterTopic('cause',this)">🔗 Nguyên nhân & Kết quả</button>
+  <button class="sb-item" onclick="filterTopic('daily2',this)">☀️ Sinh hoạt & Thói quen</button>
+  <button class="sb-item" onclick="filterTopic('opinion',this)">💬 Diễn đạt ý kiến</button>
+  <button class="sb-item" onclick="filterTopic('academic2',this)">📚 Học thuật nhẹ</button>
+  <button class="sb-item" onclick="filterTopic('personality',this)">😎 Tính cách & Thái độ</button>
+  <button class="sb-item" onclick="filterTopic('modern',this)">📱 Cuộc sống hiện đại</button>
+
+  <div class="sidebar-title">Lọc Band</div>
+  <button class="sb-item" onclick="filterBand('all',this)">Tất cả</button>
+  <button class="sb-item" onclick="filterBand('A1',this)"><span style="color:var(--green)">●</span> A1</button>
+  <button class="sb-item" onclick="filterBand('A2',this)"><span style="color:var(--accent3)">●</span> A2</button>
+  <button class="sb-item" onclick="filterBand('B1',this)"><span style="color:var(--accent)">●</span> B1</button>
+  <button class="sb-item" onclick="filterBand('B2',this)"><span style="color:var(--coral)">●</span> B2</button>
+</aside>
+
+<main class="content">
+  <div class="page-label">Từ điển Đời thường — Phần 2</div>
+  <h1 class="page-title">150 từ tiếp theo<br><em style="color:var(--accent3)">A1 đến B2</em></h1>
+  <p class="page-desc">Tiếp nối Phần 1 — thêm 150 từ thông dụng trong cuộc sống hàng ngày, giao tiếp, suy nghĩ và diễn đạt ý kiến. Bấm vào từ để xem chi tiết đầy đủ.</p>
+
+  <div class="nav-files">
+    <a href="dictionary-everyday.html" class="nf-btn">📒 Phần 1 — 60 từ đầu</a>
+    <a href="dictionary-everyday-2.html" class="nf-btn active">📒 Phần 2 — 150 từ tiếp theo</a>
+    <a href="dictionary-ielts.html" class="nf-btn">📗 Từ điển IELTS</a>
+    <a href="academic-words.html" class="nf-btn">⭐ AWL 570 từ</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="statShowing">150</div><div class="stat-label">Đang hiển thị</div></div>
+    <div class="stat-box"><div class="stat-num" id="statSaved">0</div><div class="stat-label">Đã lưu</div></div>
+    <div class="stat-box"><div class="stat-num">14</div><div class="stat-label">Chủ đề</div></div>
+    <div class="stat-box"><div class="stat-num">A1–B2</div><div class="stat-label">Cấp độ</div></div>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><span style="color:var(--green);font-size:14px">●</span>A1 Mới bắt đầu</div>
+    <div class="leg-item"><span style="color:var(--accent3);font-size:14px">●</span>A2 Cơ bản</div>
+    <div class="leg-item"><span style="color:var(--accent);font-size:14px">●</span>B1 Trung cấp</div>
+    <div class="leg-item"><span style="color:var(--coral);font-size:14px">●</span>B2 Khá</div>
+    <div style="width:1px;background:var(--border)"></div>
+    <div class="leg-item">🟢 Rất thường dùng</div>
+    <div class="leg-item">🟡 Thường dùng</div>
+    <div class="leg-item">🔵 Trang trọng</div>
+    <div class="leg-item">🩷 Thông tục</div>
+  </div>
+
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="Tìm từ tiếng Anh hoặc tiếng Việt..." oninput="renderWords()">
+    <select class="filter-select" id="sortSelect" onchange="renderWords()">
+      <option value="default">Mặc định</option>
+      <option value="alpha">A → Z</option>
+      <option value="band">Theo Band</option>
+      <option value="usage">Thông dụng nhất</option>
+    </select>
+  </div>
+
+  <div id="wordsContainer"></div>
+</main>
+</div>
+
+<script>
+const WORDS2 = [
+  // DESCRIBE
+  {w:'vivid',p:'/ˈvɪvɪd/',type:'adj',band:'B1',usage:'daily',topic:'describe',vi:'sinh động, rực rỡ',meanings:[{vi:'sinh động, rõ nét',en:'producing powerful feelings or strong, clear images in the mind',ex:[{en:'She has vivid memories of her childhood.',vi:'Cô ấy có những ký ức sinh động về tuổi thơ.'},{en:'The painting uses vivid colours.',vi:'Bức tranh dùng màu sắc rực rỡ.'}]}],synonyms:['bright','striking','colourful','clear','graphic'],antonyms:['dull','faded','vague'],collocations:['vivid imagination','vivid description','vivid memory','vivid colours'],tip:'Dùng "vivid" để mô tả cảm giác, ký ức, hay màu sắc mạnh mẽ. Rất ấn tượng trong IELTS Speaking.'},
+  {w:'subtle',p:'/ˈsʌtəl/',type:'adj',band:'B2',usage:'formal',topic:'describe',vi:'tinh tế, nhẹ nhàng, khó nhận ra',meanings:[{vi:'tinh tế, khó nhận ra ngay',en:'not obvious or easily noticed; requiring careful thought',ex:[{en:'There is a subtle difference between the two.',vi:'Có sự khác biệt tinh tế giữa hai cái.'},{en:'She gave a subtle hint.',vi:'Cô ấy đưa ra một gợi ý tinh tế.'}]}],synonyms:['delicate','understated','fine','nuanced'],antonyms:['obvious','blatant','overt'],collocations:['subtle difference','subtle hint','subtle change','subtle irony'],tip:'"Subtle" nâng cao hơn "small/slight". IELTS: "a subtle shift in attitude" = sự thay đổi tinh tế trong thái độ.'},
+  {w:'striking',p:'/ˈstraɪkɪŋ/',type:'adj',band:'B1',usage:'daily',topic:'describe',vi:'nổi bật, ấn tượng',meanings:[{vi:'nổi bật, ấn tượng ngay lập tức',en:'very noticeable or unusual in appearance',ex:[{en:'She has a striking resemblance to her sister.',vi:'Cô ấy có nét giống chị mình một cách nổi bật.'},{en:'The contrast was striking.',vi:'Sự tương phản rất nổi bật.'}]}],synonyms:['remarkable','outstanding','stunning','impressive','eye-catching'],antonyms:['ordinary','unremarkable','bland'],collocations:['striking resemblance','striking difference','visually striking'],tip:'Mạnh hơn "noticeable". IELTS Task 1: "The most striking feature is..." — band 7+ opener.'},
+  {w:'harsh',p:'/hɑːrʃ/',type:'adj',band:'B1',usage:'daily',topic:'describe',vi:'khắc nghiệt, gay gắt',meanings:[{vi:'khắc nghiệt, nghiêm khắc',en:'unpleasantly rough, severe, or cruel',ex:[{en:'The winter was particularly harsh this year.',vi:'Mùa đông năm nay đặc biệt khắc nghiệt.'},{en:'She received harsh criticism.',vi:'Cô ấy nhận phê bình gay gắt.'}]}],synonyms:['severe','rough','brutal','strict','stern'],antonyms:['mild','gentle','lenient','soft'],collocations:['harsh weather','harsh criticism','harsh conditions','harsh reality'],tip:'"The harsh reality" = thực tế phũ phàng — rất phổ biến trong writing và speaking.'},
+  {w:'fragile',p:'/ˈfrædʒaɪl/',type:'adj',band:'B1',usage:'daily',topic:'describe',vi:'dễ vỡ, mong manh',meanings:[{vi:'dễ vỡ, yếu ớt',en:'easily broken or damaged; delicate',ex:[{en:'Handle with care — it is fragile.',vi:'Cẩn thận — cái này dễ vỡ.'},{en:'The peace agreement is fragile.',vi:'Thỏa thuận hòa bình rất mong manh.'}]}],synonyms:['delicate','breakable','frail','brittle','vulnerable'],antonyms:['sturdy','strong','robust','resilient'],collocations:['fragile economy','fragile ecosystem','handle with care'],tip:'"Fragile" dùng nghĩa bóng rất hay: "a fragile relationship/ecosystem".'},
+  {w:'blatant',p:'/ˈbleɪtənt/',type:'adj',band:'B2',usage:'formal',topic:'describe',vi:'trắng trợn, lộ liễu',meanings:[{vi:'lộ liễu, không che giấu',en:'done openly and unashamedly; obvious',ex:[{en:'It was a blatant lie.',vi:'Đó là một lời nói dối trắng trợn.'},{en:'The company showed blatant disregard for safety.',vi:'Công ty thể hiện sự coi thường an toàn một cách lộ liễu.'}]}],synonyms:['flagrant','obvious','brazen','outright','glaring'],antonyms:['subtle','hidden','concealed'],collocations:['blatant lie','blatant disregard','blatant violation'],tip:'Stronger than "obvious". Use for negative things done openly: "blatant discrimination".'},
+  {w:'mundane',p:'/mʌnˈdeɪn/',type:'adj',band:'B2',usage:'daily',topic:'describe',vi:'tẻ nhạt, bình thường hàng ngày',meanings:[{vi:'tẻ nhạt, nhàm chán',en:'lacking interest or excitement; ordinary',ex:[{en:'Life can feel mundane sometimes.',vi:'Cuộc sống đôi khi có thể cảm thấy tẻ nhạt.'},{en:'Even mundane tasks can be satisfying.',vi:'Ngay cả những công việc tẻ nhạt cũng có thể thỏa mãn.'}]}],synonyms:['ordinary','boring','routine','humdrum','commonplace'],antonyms:['exciting','extraordinary','novel'],collocations:['mundane tasks','mundane life','mundane routine','escape the mundane'],tip:'"Mundane" = bình thường đến mức nhàm chán. Khác với "ordinary" — mundane mang hàm ý tiêu cực hơn.'},
+  {w:'flawless',p:'/ˈflɔːləs/',type:'adj',band:'B1',usage:'daily',topic:'describe',vi:'hoàn hảo, không tì vết',meanings:[{vi:'hoàn hảo, không có khiếm khuyết',en:'without any imperfections or defects; perfect',ex:[{en:'Her English is flawless.',vi:'Tiếng Anh của cô ấy hoàn hảo.'},{en:'The performance was absolutely flawless.',vi:'Màn trình diễn hoàn toàn hoàn hảo.'}]}],synonyms:['perfect','impeccable','faultless','immaculate'],antonyms:['flawed','imperfect','defective'],collocations:['flawless performance','flawless English','flawless skin','flawless execution'],tip:'"Flawless" = perfect nhưng mạnh hơn. "Her IELTS score was flawless" — perfect score.'},
+
+  // THINK & OPINION
+  {w:'perceive',p:'/pəˈsiːv/',type:'v',band:'B2',usage:'formal',topic:'think',vi:'nhận thức, cảm nhận',meanings:[{vi:'nhận thức, hiểu, cảm nhận',en:'to become aware of or understand something',ex:[{en:'How do you perceive this problem?',vi:'Bạn nhận thức vấn đề này như thế nào?'},{en:'Technology is often perceived as a solution.',vi:'Công nghệ thường được nhận thức là một giải pháp.'}]}],synonyms:['understand','view','see','recognise','regard'],antonyms:['misunderstand','ignore'],collocations:['perceived threat','widely perceived','perceive as','perception of'],tip:'IELTS Writing: "it is widely perceived that..." — band 7+ academic phrase.'},
+  {w:'assume',p:'/əˈsjuːm/',type:'v',band:'B1',usage:'daily',topic:'think',vi:'giả định, cho rằng',meanings:[{vi:'giả định, coi như đúng',en:'to accept as true without proof',ex:[{en:"Don't assume — ask first.",vi:'Đừng giả định — hỏi trước đã.'},{en:'It is safe to assume that prices will rise.',vi:'Có thể cho rằng giá cả sẽ tăng.'}]}],synonyms:['presume','suppose','take for granted','believe'],antonyms:['question','doubt','verify'],collocations:['assume responsibility','it is assumed that','safe to assume','assume the worst'],tip:'"It is assumed that" — formal academic opener. "assume the worst" = bi quan nhất.'},
+  {w:'speculate',p:'/ˈspɛkjʊleɪt/',type:'v',band:'B2',usage:'formal',topic:'think',vi:'suy đoán, phỏng đoán',meanings:[{vi:'suy đoán không có bằng chứng chắc chắn',en:'to form a theory without firm evidence',ex:[{en:'Scientists speculate about life on other planets.',vi:'Các nhà khoa học suy đoán về sự sống trên các hành tinh khác.'},{en:'I can only speculate about his reasons.',vi:'Tôi chỉ có thể phỏng đoán lý do của anh ấy.'}]}],synonyms:['guess','theorise','conjecture','hypothesise'],antonyms:['know','confirm','verify'],collocations:['wildly speculate','speculate about','open to speculation'],tip:'IELTS Writing: "It is widely speculated that..." — good hedging language.'},
+  {w:'overlook',p:'/ˌoʊvərˈlʊk/',type:'v',band:'B1',usage:'daily',topic:'think',vi:'bỏ sót, không chú ý / nhìn xuống',meanings:[{vi:'bỏ qua, không nhận ra',en:'to fail to notice or consider something',ex:[{en:"Don't overlook the small details.",vi:'Đừng bỏ sót những chi tiết nhỏ.'},{en:'The problem was overlooked for years.',vi:'Vấn đề bị bỏ qua trong nhiều năm.'}]},{vi:'nhìn xuống từ phía trên',en:'to have a view over something',ex:[{en:'The balcony overlooks the garden.',vi:'Ban công nhìn xuống khu vườn.'}]}],synonyms:['miss','ignore','disregard','fail to notice'],antonyms:['notice','observe','spot'],collocations:['often overlooked','overlook a detail','easy to overlook'],tip:'Two meanings! "Overlook a mistake" = bỏ qua (tha thứ). "Overlook a detail" = bỏ sót.'},
+  {w:'contemplate',p:'/ˈkɒntəmpleɪt/',type:'v',band:'B2',usage:'formal',topic:'think',vi:'suy ngẫm, cân nhắc',meanings:[{vi:'suy ngẫm sâu, cân nhắc kỹ',en:'to think deeply about something; to consider doing something',ex:[{en:'She contemplated changing careers.',vi:'Cô ấy suy ngẫm về việc đổi nghề.'},{en:'He sat quietly, contemplating the future.',vi:'Anh ấy ngồi yên lặng, suy ngẫm về tương lai.'}]}],synonyms:['consider','ponder','reflect on','mull over','meditate on'],antonyms:['ignore','dismiss','act impulsively'],collocations:['contemplate change','worth contemplating','deeply contemplate'],tip:'More formal than "think about". "Contemplate one\'s future" sounds educated and reflective.'},
+  {w:'acknowledge',p:'/əkˈnɒlɪdʒ/',type:'v',band:'B2',usage:'formal',topic:'think',vi:'thừa nhận, công nhận',meanings:[{vi:'thừa nhận, chấp nhận sự thật',en:'to accept or admit the existence of something',ex:[{en:'We must acknowledge both sides of the argument.',vi:'Chúng ta phải thừa nhận cả hai phía của lập luận.'},{en:'She acknowledged making a mistake.',vi:'Cô ấy thừa nhận đã mắc lỗi.'}]}],synonyms:['admit','recognise','concede','accept','admit to'],antonyms:['deny','ignore','reject'],collocations:['widely acknowledged','acknowledge a problem','acknowledgement of'],tip:'IELTS Task 2 concession: "While it must be acknowledged that..." = thừa nhận nhưng vẫn phản bác.'},
+  {w:'naive',p:'/naɪˈiːv/',type:'adj',band:'B1',usage:'daily',topic:'think',vi:'ngây thơ, nhẹ dạ',meanings:[{vi:'ngây thơ, thiếu kinh nghiệm thực tế',en:'showing lack of experience, wisdom, or judgement',ex:[{en:"It would be naive to think this is easy.",vi:'Sẽ là ngây thơ khi nghĩ điều này dễ dàng.'},{en:'He was naive about how the world works.',vi:'Anh ấy ngây thơ về cách thế giới vận hành.'}]}],synonyms:['innocent','gullible','inexperienced','unsophisticated'],antonyms:['worldly','cynical','experienced','savvy'],collocations:['naively optimistic','dangerously naive','naive assumption'],tip:'"It would be naive to assume..." = một cách lịch sự để nói ai đó đang thiếu suy nghĩ thực tế.'},
+
+  // CHANGE & DEVELOP
+  {w:'evolve',p:'/ɪˈvɒlv/',type:'v',band:'B1',usage:'daily',topic:'change',vi:'tiến hóa, phát triển dần',meanings:[{vi:'thay đổi và phát triển dần theo thời gian',en:'to develop gradually over time',ex:[{en:'Language evolves constantly.',vi:'Ngôn ngữ không ngừng tiến hóa.'},{en:'The role of women in society has evolved significantly.',vi:'Vai trò của phụ nữ trong xã hội đã thay đổi đáng kể.'}]}],synonyms:['develop','change','progress','adapt','advance'],antonyms:['stagnate','remain static'],collocations:['evolve over time','constantly evolving','evolve naturally','rapidly evolving'],tip:'More sophisticated than "change". IELTS: "The concept has evolved to encompass..."'},
+  {w:'surge',p:'/sɜːrdʒ/',type:'n/v',band:'B2',usage:'formal',topic:'change',vi:'tăng vọt, đột biến',meanings:[{vi:'tăng mạnh và nhanh',en:'a sudden and great increase',ex:[{en:'There was a surge in demand for electric cars.',vi:'Có sự tăng vọt trong nhu cầu xe điện.'},{en:'Prices surged overnight.',vi:'Giá cả tăng vọt qua đêm.'}]}],synonyms:['spike','jump','leap','soar','rise sharply'],antonyms:['drop','plummet','decline'],collocations:['surge in demand','power surge','surge of emotions','surge ahead'],tip:'IELTS Task 1: "There was a sharp surge in..." — more vivid than "increase quickly".'},
+  {w:'plateau',p:'/ˈplætoʊ/',type:'n/v',band:'B2',usage:'formal',topic:'change',vi:'bình ổn, chững lại',meanings:[{vi:'đạt mức ổn định sau khi tăng',en:'to reach a level where there is little change',ex:[{en:'Sales have plateaued after rapid growth.',vi:'Doanh số đã chững lại sau khi tăng nhanh.'},{en:'His learning reached a plateau.',vi:'Việc học của anh ấy đạt đến mức bình ổn.'}]}],synonyms:['level off','stabilise','flatten out'],antonyms:['rise','fall','fluctuate'],collocations:['reach a plateau','growth plateau','hit a plateau'],tip:'IELTS Task 1: "Sales plateaued at around 500 units" — very professional language.'},
+  {w:'deteriorate',p:'/dɪˈtɪəriəreɪt/',type:'v',band:'B2',usage:'formal',topic:'change',vi:'suy giảm, xấu đi',meanings:[{vi:'trở nên tệ hơn, suy giảm',en:'to become progressively worse',ex:[{en:"Her health deteriorated rapidly.",vi:'Sức khỏe của cô ấy suy giảm nhanh chóng.'},{en:'The situation has deteriorated significantly.',vi:'Tình hình đã xấu đi đáng kể.'}]}],synonyms:['worsen','decline','degrade','go downhill'],antonyms:['improve','recover','progress'],collocations:['rapidly deteriorating','condition deteriorates','deteriorating health'],tip:'Formal alternative to "get worse". IELTS: "Environmental conditions have deteriorated."'},
+  {w:'fluctuate',p:'/ˈflʌktʃueɪt/',type:'v',band:'B2',usage:'formal',topic:'change',vi:'dao động, biến động',meanings:[{vi:'thay đổi lên xuống liên tục',en:'to change frequently, going up and down',ex:[{en:'Prices fluctuate depending on demand.',vi:'Giá cả dao động tùy theo nhu cầu.'},{en:'His mood fluctuates throughout the day.',vi:'Tâm trạng anh ấy dao động suốt cả ngày.'}]}],synonyms:['vary','oscillate','swing','waver'],antonyms:['stabilise','remain constant'],collocations:['fluctuate wildly','price fluctuations','fluctuate between'],tip:'IELTS Task 1 essential: "The figure fluctuated between 20% and 35%."'},
+  {w:'stagnate',p:'/ˈstæɡneɪt/',type:'v',band:'B2',usage:'formal',topic:'change',vi:'trì trệ, không phát triển',meanings:[{vi:'không phát triển, dậm chân tại chỗ',en:'to stop developing or making progress',ex:[{en:'The economy stagnated for years.',vi:'Nền kinh tế trì trệ trong nhiều năm.'},{en:"Don't let your skills stagnate.",vi:'Đừng để kỹ năng của bạn trì trệ.'}]}],synonyms:['stall','plateau','languish','be stuck'],antonyms:['progress','grow','develop'],collocations:['economic stagnation','career stagnation','stagnant growth'],tip:'Opposite of "progress/thrive". IELTS: "Without investment, innovation stagnates."'},
+
+  // PROBLEM & SOLUTION
+  {w:'tackle',p:'/ˈtækəl/',type:'v',band:'B1',usage:'daily',topic:'problem',vi:'giải quyết, đối phó',meanings:[{vi:'giải quyết vấn đề khó',en:'to deal with a difficult problem',ex:[{en:'We must tackle climate change urgently.',vi:'Chúng ta phải giải quyết biến đổi khí hậu một cách khẩn cấp.'},{en:'How do you tackle stress?',vi:'Bạn đối phó với stress như thế nào?'}]}],synonyms:['address','deal with','handle','confront','take on'],antonyms:['avoid','ignore','neglect'],collocations:['tackle a problem','tackle climate change','tackle discrimination'],tip:'More energetic than "address". "Tackle" implies active effort. Very common in IELTS essays.'},
+  {w:'exacerbate',p:'/ɪɡˈzæsəbeɪt/',type:'v',band:'B2',usage:'formal',topic:'problem',vi:'làm trầm trọng thêm',meanings:[{vi:'làm tình huống xấu hơn',en:'to make a problem worse',ex:[{en:'Stress can exacerbate health problems.',vi:'Stress có thể làm trầm trọng thêm các vấn đề sức khỏe.'},{en:'Pollution exacerbates climate change.',vi:'Ô nhiễm làm trầm trọng thêm biến đổi khí hậu.'}]}],synonyms:['worsen','aggravate','compound','intensify'],antonyms:['alleviate','improve','mitigate'],collocations:['exacerbate the problem','further exacerbated by'],tip:'Band 8 vocabulary. Impresses IELTS examiners significantly. "The issue is exacerbated by..."'},
+  {w:'obstacle',p:'/ˈɒbstəkəl/',type:'n',band:'B1',usage:'daily',topic:'problem',vi:'trở ngại, rào cản',meanings:[{vi:'thứ cản trở tiến trình',en:'something that blocks your way or prevents progress',ex:[{en:'Language is the biggest obstacle to integration.',vi:'Ngôn ngữ là trở ngại lớn nhất cho việc hội nhập.'},{en:'She overcame many obstacles.',vi:'Cô ấy đã vượt qua nhiều trở ngại.'}]}],synonyms:['barrier','hurdle','challenge','impediment','stumbling block'],antonyms:['help','advantage','stepping stone'],collocations:['overcome obstacles','major obstacle','obstacle to progress','face obstacles'],tip:'"Overcome obstacles" = vượt qua trở ngại — rất phổ biến trong IELTS Speaking Part 2.'},
+  {w:'remedy',p:'/ˈrɛmɪdi/',type:'n/v',band:'B2',usage:'formal',topic:'problem',vi:'giải pháp, biện pháp khắc phục',meanings:[{vi:'biện pháp chữa trị hoặc khắc phục',en:'a solution to a problem; to solve a problem',ex:[{en:'There is no easy remedy for poverty.',vi:'Không có giải pháp dễ dàng cho nghèo đói.'},{en:'How can we remedy this situation?',vi:'Làm thế nào chúng ta có thể khắc phục tình huống này?'}]}],synonyms:['solution','cure','fix','answer','treatment'],antonyms:['problem','cause','aggravation'],collocations:['legal remedy','remedy a situation','remedy the problem','no easy remedy'],tip:'More formal than "solution". Implies fixing something that went wrong. IELTS Task 2 vocabulary.'},
+  {w:'alleviate',p:'/əˈliːvieɪt/',type:'v',band:'B2',usage:'formal',topic:'problem',vi:'làm giảm nhẹ',meanings:[{vi:'làm bớt đau, bớt khó khăn',en:'to make suffering or a problem less severe',ex:[{en:'Exercise can alleviate depression.',vi:'Tập thể dục có thể làm giảm nhẹ trầm cảm.'},{en:'Measures to alleviate poverty are needed.',vi:'Cần các biện pháp giảm nhẹ nghèo đói.'}]}],synonyms:['relieve','ease','reduce','lessen','mitigate'],antonyms:['worsen','aggravate','intensify'],collocations:['alleviate suffering','alleviate poverty','alleviate pain','measures to alleviate'],tip:'IELTS Writing: "measures to alleviate the problem" = band 7+ formal language.'},
+  {w:'dilemma',p:'/dɪˈlɛmə/',type:'n',band:'B1',usage:'daily',topic:'problem',vi:'tình huống khó xử, tiến thoái lưỡng nan',meanings:[{vi:'tình huống có 2 lựa chọn đều không tốt',en:'a situation where a difficult choice must be made',ex:[{en:'She faced a moral dilemma.',vi:'Cô ấy đối mặt với một tình huống khó xử về đạo đức.'},{en:"It's a classic dilemma: work or family?",vi:'Đây là tình huống khó xử kinh điển: công việc hay gia đình?'}]}],synonyms:['predicament','quandary','catch-22','difficult choice'],antonyms:['easy choice','clear-cut decision'],collocations:['moral dilemma','classic dilemma','face a dilemma','ethical dilemma'],tip:'"Face a dilemma" = đứng trước tình huống khó chọn. Very common in IELTS Speaking Part 3.'},
+
+  // RELATIONSHIPS
+  {w:'empathy',p:'/ˈɛmpəθi/',type:'n',band:'B2',usage:'daily',topic:'relate',vi:'sự đồng cảm',meanings:[{vi:'khả năng hiểu và chia sẻ cảm xúc người khác',en:'the ability to understand and share the feelings of another',ex:[{en:'Good leaders show empathy.',vi:'Những nhà lãnh đạo tốt thể hiện sự đồng cảm.'},{en:'She has great empathy for others.',vi:'Cô ấy có sự đồng cảm sâu sắc với người khác.'}]}],synonyms:['compassion','understanding','sympathy','sensitivity'],antonyms:['indifference','callousness','apathy'],collocations:['show empathy','lack of empathy','empathy and compassion'],tip:'"Empathy" ≠ "sympathy". Sympathy = thương hại. Empathy = hiểu và cảm thấy cùng.'},
+  {w:'rapport',p:'/ræˈpɔːr/',type:'n',band:'B2',usage:'formal',topic:'relate',vi:'mối quan hệ thân thiết, sự hòa hợp',meanings:[{vi:'mối quan hệ tốt đẹp, dễ hiểu nhau',en:'a close and harmonious relationship',ex:[{en:'She quickly built rapport with her students.',vi:'Cô ấy nhanh chóng xây dựng mối quan hệ tốt với học sinh.'},{en:'Good rapport is essential in customer service.',vi:'Mối quan hệ tốt rất cần thiết trong dịch vụ khách hàng.'}]}],synonyms:['connection','bond','chemistry','understanding','harmony'],antonyms:['tension','hostility','conflict'],collocations:['build rapport','good rapport','instant rapport','establish rapport'],tip:'"Build rapport" là kỹ năng quan trọng. Rất hay dùng trong context kinh doanh và giao tiếp.'},
+  {w:'friction',p:'/ˈfrɪkʃən/',type:'n',band:'B2',usage:'daily',topic:'relate',vi:'ma sát, mâu thuẫn, bất đồng',meanings:[{vi:'mâu thuẫn, căng thẳng trong quan hệ',en:'disagreement or conflict between people',ex:[{en:'There is friction between the two departments.',vi:'Có mâu thuẫn giữa hai phòng ban.'},{en:'Cultural differences can cause friction.',vi:'Sự khác biệt văn hóa có thể gây ra ma sát.'}]},{vi:'ma sát vật lý',en:'the resistance when surfaces rub together',ex:[{en:'Friction causes heat.',vi:'Ma sát tạo ra nhiệt.'}]}],synonyms:['conflict','tension','disagreement','discord'],antonyms:['harmony','agreement','cooperation'],collocations:['cause friction','cultural friction','friction between','reduce friction'],tip:'Nghĩa bóng rất thông dụng: "friction in a relationship" = căng thẳng trong mối quan hệ.'},
+  {w:'negotiate',p:'/nɪˈɡoʊʃieɪt/',type:'v',band:'B1',usage:'formal',topic:'relate',vi:'thương lượng, đàm phán',meanings:[{vi:'thảo luận để đạt được thỏa thuận',en:'to discuss something in order to reach an agreement',ex:[{en:'They negotiated a pay rise.',vi:'Họ thương lượng tăng lương.'},{en:'Countries must negotiate to resolve conflicts.',vi:'Các quốc gia phải đàm phán để giải quyết xung đột.'}]}],synonyms:['discuss','bargain','mediate','work out','broker'],antonyms:['impose','dictate','force'],collocations:['negotiate a deal','negotiate terms','reach a negotiated settlement'],tip:'IELTS: "governments must negotiate" is very common in Task 2 problem-solution essays.'},
+  {w:'collaborate',p:'/kəˈlæbəreɪt/',type:'v',band:'B1',usage:'formal',topic:'relate',vi:'cộng tác, hợp tác',meanings:[{vi:'làm việc cùng nhau để đạt mục tiêu chung',en:'to work jointly with others on a project',ex:[{en:'Scientists collaborated across countries.',vi:'Các nhà khoa học cộng tác xuyên quốc gia.'},{en:'We need to collaborate more effectively.',vi:'Chúng ta cần cộng tác hiệu quả hơn.'}]}],synonyms:['cooperate','work together','team up','partner'],antonyms:['compete','work alone','go solo'],collocations:['collaborate on a project','collaborate with','collaborative effort','collaborative approach'],tip:'More formal than "work together". IELTS: "nations must collaborate to tackle..."'},
+
+  // QUANTITY & DEGREE
+  {w:'substantial',p:'/səbˈstænʃəl/',type:'adj',band:'B2',usage:'formal',topic:'quantity',vi:'đáng kể, lớn lao',meanings:[{vi:'lớn, quan trọng, có ý nghĩa',en:'of considerable importance, size, or worth',ex:[{en:'There was a substantial increase in sales.',vi:'Có sự tăng đáng kể trong doanh số.'},{en:'She made a substantial contribution.',vi:'Cô ấy đã có đóng góp đáng kể.'}]}],synonyms:['considerable','significant','sizeable','large','notable'],antonyms:['small','minor','negligible','trivial'],collocations:['substantial increase','substantial evidence','substantial change','substantial improvement'],tip:'Formal alternative to "big/large". IELTS: "a substantial rise of 40%" = band 7+ Task 1.'},
+  {w:'negligible',p:'/ˈnɛɡlɪdʒɪbəl/',type:'adj',band:'B2',usage:'formal',topic:'quantity',vi:'không đáng kể, cực nhỏ',meanings:[{vi:'quá nhỏ để coi là quan trọng',en:'so small as to be unimportant',ex:[{en:'The difference is negligible.',vi:'Sự khác biệt là không đáng kể.'},{en:'The side effects are negligible.',vi:'Tác dụng phụ là không đáng kể.'}]}],synonyms:['insignificant','minimal','tiny','trivial','marginal'],antonyms:['significant','substantial','considerable'],collocations:['negligible impact','negligible difference','virtually negligible'],tip:'Opposite of "substantial". IELTS Task 1: "The change was negligible" — about flat lines.'},
+  {w:'overwhelming',p:'/ˌoʊvərˈwɛlmɪŋ/',type:'adj',band:'B1',usage:'daily',topic:'quantity',vi:'áp đảo, quá lớn',meanings:[{vi:'áp đảo, quá nhiều để xử lý',en:'very great in amount; very strong',ex:[{en:'There is overwhelming evidence for climate change.',vi:'Có bằng chứng áp đảo về biến đổi khí hậu.'},{en:'She felt an overwhelming desire to succeed.',vi:'Cô ấy cảm thấy khao khát áp đảo muốn thành công.'}]}],synonyms:['overpowering','staggering','enormous','massive'],antonyms:['weak','minimal','slight'],collocations:['overwhelming majority','overwhelming evidence','overwhelming response','feel overwhelmed'],tip:'"Overwhelming majority/evidence" rất phổ biến trong văn học thuật. "Overwhelming" mạnh hơn "strong".'},
+  {w:'scarcely',p:'/ˈskɛrsli/',type:'adv',band:'B2',usage:'formal',topic:'quantity',vi:'hầu như không, vừa mới',meanings:[{vi:'hầu như không đủ, rất ít',en:'only just; almost not',ex:[{en:'There is scarcely any food left.',vi:'Hầu như không còn thức ăn.'},{en:'I could scarcely believe it.',vi:'Tôi hầu như không thể tin được.'}]}],synonyms:['barely','hardly','almost not','seldom'],antonyms:['easily','plenty','abundantly'],collocations:['scarcely any','scarcely believe','scarcely enough'],tip:'"Scarcely" = barely/hardly. Formal, good for writing. "Scarcely a day passes without..."'},
+  {w:'abundant',p:'/əˈbʌndənt/',type:'adj',band:'B1',usage:'formal',topic:'quantity',vi:'phong phú, dồi dào',meanings:[{vi:'có rất nhiều, dư thừa',en:'existing or available in large quantities',ex:[{en:'Vietnam has abundant natural resources.',vi:'Việt Nam có nguồn tài nguyên thiên nhiên phong phú.'},{en:'Food was abundant at the festival.',vi:'Đồ ăn dồi dào ở lễ hội.'}]}],synonyms:['plentiful','ample','rich','copious','bountiful'],antonyms:['scarce','limited','sparse'],collocations:['abundant resources','abundant evidence','abundant wildlife'],tip:'"Abundant wildlife/resources" — IELTS environment topics. More formal than "plenty of".'},
+
+  // MOVEMENT & POSITION
+  {w:'adjacent',p:'/əˈdʒeɪsənt/',type:'adj',band:'B2',usage:'formal',topic:'move',vi:'liền kề, tiếp giáp',meanings:[{vi:'ở gần hoặc tiếp giáp',en:'next to or adjoining something',ex:[{en:'The hotel is adjacent to the airport.',vi:'Khách sạn liền kề sân bay.'},{en:'The two buildings are adjacent.',vi:'Hai tòa nhà liền kề nhau.'}]}],synonyms:['neighbouring','next to','adjoining','bordering'],antonyms:['distant','far','separate'],collocations:['adjacent to','adjacent room','adjacent area','adjacent countries'],tip:'IELTS map tasks: "adjacent to the library" = formal way to describe location.'},
+  {w:'migrate',p:'/maɪˈɡreɪt/',type:'v',band:'B1',usage:'formal',topic:'move',vi:'di cư',meanings:[{vi:'di chuyển từ nơi này đến nơi khác',en:'to move from one place or country to another',ex:[{en:'Many people migrate to cities for work.',vi:'Nhiều người di cư đến thành phố để làm việc.'},{en:'Birds migrate south in winter.',vi:'Chim di cư về phía nam vào mùa đông.'}]}],synonyms:['move','relocate','emigrate','immigrate'],antonyms:['stay','remain','settle'],collocations:['migrate to cities','migration patterns','labour migration','seasonal migration'],tip:'"Rural-urban migration" = làn sóng di cư nông thôn ra thành thị — key IELTS topic.'},
+  {w:'relocate',p:'/ˌriːloʊˈkeɪt/',type:'v',band:'B1',usage:'formal',topic:'move',vi:'di chuyển, chuyển đến nơi khác',meanings:[{vi:'chuyển công ty hoặc hộ gia đình đến nơi mới',en:'to move to a new place',ex:[{en:'The company relocated to a cheaper city.',vi:'Công ty chuyển đến một thành phố rẻ hơn.'},{en:'Many families relocated after the flood.',vi:'Nhiều gia đình di chuyển sau lũ lụt.'}]}],synonyms:['move','transfer','resettle'],antonyms:['stay','remain'],collocations:['relocate to','forced relocation','corporate relocation'],tip:'Business context: "The headquarters was relocated to Singapore." More formal than "move".'},
+
+  // CAUSE & EFFECT
+  {w:'trigger',p:'/ˈtrɪɡər/',type:'v/n',band:'B1',usage:'daily',topic:'cause',vi:'kích hoạt, gây ra (bất ngờ)',meanings:[{vi:'gây ra một phản ứng hoặc sự kiện',en:'to cause something to happen',ex:[{en:'Stress can trigger illness.',vi:'Stress có thể gây ra bệnh tật.'},{en:'What triggered the crisis?',vi:'Điều gì đã kích hoạt cuộc khủng hoảng?'}]}],synonyms:['cause','spark','prompt','set off','initiate'],antonyms:['prevent','stop','suppress'],collocations:['trigger a response','trigger anxiety','trigger debate','pull the trigger'],tip:'"Trigger" implies something that starts a chain reaction. IELTS: "unemployment can trigger crime."'},
+  {w:'stem from',p:'/stɛm frɒm/',type:'phr.v',band:'B2',usage:'formal',topic:'cause',vi:'bắt nguồn từ, xuất phát từ',meanings:[{vi:'có nguyên nhân từ',en:'to have a particular origin or cause',ex:[{en:'Many problems stem from poverty.',vi:'Nhiều vấn đề bắt nguồn từ nghèo đói.'},{en:'Her anxiety stems from childhood trauma.',vi:'Sự lo âu của cô ấy bắt nguồn từ chấn thương thời thơ ấu.'}]}],synonyms:['originate from','come from','arise from','result from'],antonyms:['lead to','result in'],collocations:['stems from poverty','stems from a lack of','problems that stem from'],tip:'IELTS Writing cause language: "Much of this stems from..." — more sophisticated than "comes from".'},
+  {w:'consequently',p:'/ˈkɒnsɪkwəntli/',type:'adv',band:'B1',usage:'formal',topic:'cause',vi:'do đó, vì vậy',meanings:[{vi:'là kết quả của điều vừa nói',en:'as a result',ex:[{en:'He did not study; consequently, he failed.',vi:'Anh ấy không học; do đó, anh ấy trượt.'},{en:'Resources are limited; consequently, difficult choices must be made.',vi:'Nguồn lực có hạn; do đó, phải đưa ra những lựa chọn khó khăn.'}]}],synonyms:['therefore','thus','hence','as a result','for this reason'],antonyms:['nevertheless','however'],collocations:['consequently leading to','as a consequence','direct consequence'],tip:'More formal than "so". Use as a sentence connector: "...; consequently,...". IELTS Writing essential.'},
+
+  // DAILY LIFE 2
+  {w:'indulge',p:'/ɪnˈdʌldʒ/',type:'v',band:'B2',usage:'daily',topic:'daily2',vi:'nuông chiều, thỏa thích',meanings:[{vi:'thỏa mãn một ham muốn, không kiềm chế',en:'to allow yourself to enjoy something pleasurable',ex:[{en:'I like to indulge in chocolate occasionally.',vi:'Tôi thích thỏa thích ăn chocolate thỉnh thoảng.'},{en:"She indulged her daughter's every wish.",vi:'Cô ấy nuông chiều từng mong muốn của con gái.'}]}],synonyms:['treat yourself','pamper','give in to','satisfy'],antonyms:['resist','abstain','deny'],collocations:['indulge in','indulge a craving','self-indulgent'],tip:'"Treat yourself" = positive version of indulge. "Self-indulgent" = quá nuông chiều bản thân.'},
+  {w:'stroll',p:'/stroʊl/',type:'v/n',band:'A2',usage:'daily',topic:'daily2',vi:'đi dạo thong thả',meanings:[{vi:'đi bộ chậm rãi, thư thả',en:'to walk in a slow relaxed way',ex:[{en:'We strolled along the beach.',vi:'Chúng tôi đi dạo dọc bãi biển.'},{en:'Let\'s go for a stroll in the park.',vi:'Hãy đi dạo trong công viên nhé.'}]}],synonyms:['walk','saunter','amble','wander'],antonyms:['rush','sprint','dash'],collocations:['go for a stroll','leisurely stroll','stroll along','evening stroll'],tip:'"Stroll" implies relaxation. "Let\'s go for a stroll" = đi dạo cho khỏe — rất thường dùng.'},
+  {w:'unwind',p:'/ʌnˈwaɪnd/',type:'v',band:'B1',usage:'daily',topic:'daily2',vi:'thư giãn, xả stress',meanings:[{vi:'thư giãn sau khi căng thẳng',en:'to relax after a period of work or worry',ex:[{en:'I like to unwind by reading.',vi:'Tôi thích thư giãn bằng cách đọc sách.'},{en:'How do you unwind after work?',vi:'Bạn thư giãn sau giờ làm như thế nào?'}]}],synonyms:['relax','decompress','de-stress','chill out','wind down'],antonyms:['stress','tense up','worry'],collocations:['unwind after work','ways to unwind','help you unwind'],tip:'More vivid than "relax". IELTS Speaking: "I unwind by going for a run." — sounds natural.'},
+  {w:'linger',p:'/ˈlɪŋɡər/',type:'v',band:'B2',usage:'daily',topic:'daily2',vi:'nán lại, lưu luyến',meanings:[{vi:'ở lại lâu hơn cần thiết',en:'to remain or stay somewhere longer than expected',ex:[{en:'She lingered over her coffee.',vi:'Cô ấy nán lại uống cà phê lâu hơn.'},{en:'The smell lingered for days.',vi:'Mùi vẫn còn lưu lại nhiều ngày.'}]}],synonyms:['stay','remain','hang around','linger on','persist'],antonyms:['rush away','leave quickly','disappear'],collocations:['linger over','linger on','the feeling lingers','lingering doubt'],tip:'"A lingering doubt" = nghi ngờ vẫn còn đó. Very expressive in creative writing and IELTS.'},
+  {w:'indispensable',p:'/ˌɪndɪˈspɛnsəbəl/',type:'adj',band:'B2',usage:'formal',topic:'daily2',vi:'không thể thiếu, cần thiết tuyệt đối',meanings:[{vi:'cực kỳ cần thiết, không thể thiếu được',en:'absolutely necessary',ex:[{en:'A good dictionary is indispensable for language learners.',vi:'Từ điển tốt là không thể thiếu với người học ngôn ngữ.'},{en:'Water is indispensable to life.',vi:'Nước là không thể thiếu cho sự sống.'}]}],synonyms:['essential','vital','crucial','necessary','invaluable'],antonyms:['unnecessary','dispensable','optional'],collocations:['indispensable tool','indispensable to','prove indispensable'],tip:'Stronger than "important" or "necessary". IELTS: "Technology has become indispensable in modern life."'},
+  {w:'meticulous',p:'/məˈtɪkjʊləs/',type:'adj',band:'B2',usage:'formal',topic:'daily2',vi:'tỉ mỉ, cẩn thận từng chi tiết',meanings:[{vi:'chú ý đến từng chi tiết nhỏ',en:'showing great attention to detail',ex:[{en:'She is meticulous about her work.',vi:'Cô ấy rất tỉ mỉ trong công việc.'},{en:'The report was meticulous in its analysis.',vi:'Báo cáo rất tỉ mỉ trong phân tích.'}]}],synonyms:['thorough','careful','precise','exact','painstaking'],antonyms:['careless','sloppy','hasty','negligent'],collocations:['meticulous attention','meticulous planning','meticulous detail'],tip:'"Meticulous" = careful to an impressive degree. IELTS: "meticulous research" — shows professionalism.'},
+
+  // EXPRESSING OPINION
+  {w:'nevertheless',p:'/ˌnɛvəðəˈlɛs/',type:'adv',band:'B2',usage:'formal',topic:'opinion',vi:'tuy nhiên, mặc dù vậy',meanings:[{vi:'dù vậy, nhưng vẫn',en:'in spite of what has just been said; however',ex:[{en:'It was raining; nevertheless, we went out.',vi:'Trời mưa; tuy nhiên, chúng tôi vẫn ra ngoài.'},{en:'The results were mixed; nevertheless, progress was made.',vi:'Kết quả không đồng đều; tuy nhiên, tiến bộ đã được ghi nhận.'}]}],synonyms:['however','nonetheless','yet','still','even so'],antonyms:['therefore','consequently'],collocations:['nevertheless important','nevertheless worth considering'],tip:'More formal than "however". Use after a semicolon: "...; nevertheless,..." Great for IELTS concession.'},
+  {w:'albeit',p:'/ɔːlˈbiːɪt/',type:'conj',band:'B2',usage:'formal',topic:'opinion',vi:'mặc dù, dù',meanings:[{vi:'mặc dù (tuy nhỏ, tuy chậm)',en:'though; even though',ex:[{en:'Progress was made, albeit slowly.',vi:'Tiến bộ đã đạt được, mặc dù chậm chạp.'},{en:'It was a success, albeit a modest one.',vi:'Đó là thành công, mặc dù là thành công khiêm tốn.'}]}],synonyms:['although','even though','though'],antonyms:[],collocations:['albeit slowly','albeit briefly','albeit small'],tip:'Band 8 word! Placed before the subordinate idea. "Growth occurred, albeit at a slower pace." Very impressive.'},
+  {w:'contentious',p:'/kənˈtɛnʃəs/',type:'adj',band:'B2',usage:'formal',topic:'opinion',vi:'gây tranh cãi, gây tranh luận',meanings:[{vi:'gây ra tranh luận, bất đồng',en:'causing disagreement or controversy',ex:[{en:'Immigration is a contentious issue.',vi:'Nhập cư là vấn đề gây tranh cãi.'},{en:'The decision was highly contentious.',vi:'Quyết định đó gây ra nhiều tranh cãi.'}]}],synonyms:['controversial','debatable','disputed','divisive'],antonyms:['uncontroversial','accepted','agreed upon'],collocations:['contentious issue','highly contentious','remain contentious'],tip:'Similar to "controversial". IELTS: "This remains a highly contentious topic." — shows academic awareness.'},
+  {w:'nuance',p:'/ˈnjuːɑːns/',type:'n',band:'B2',usage:'formal',topic:'opinion',vi:'sắc thái, chi tiết tinh tế',meanings:[{vi:'sự khác biệt nhỏ và tinh tế trong ý nghĩa',en:'a subtle difference in meaning, expression, or understanding',ex:[{en:'There are nuances in the language that are hard to translate.',vi:'Có những sắc thái trong ngôn ngữ rất khó dịch.'},{en:'The policy lacks nuance.',vi:'Chính sách thiếu sắc thái.'}]}],synonyms:['subtlety','distinction','shade of meaning','detail'],antonyms:['bluntness','simplicity'],collocations:['subtle nuance','cultural nuance','nuanced understanding','lack nuance'],tip:'"Nuanced" = tốt hơn "balanced". IELTS Speaking Band 8: "There are important nuances to consider..."'},
+  {w:'debatable',p:'/dɪˈbeɪtəbəl/',type:'adj',band:'B1',usage:'formal',topic:'opinion',vi:'còn nhiều tranh cãi, đáng bàn',meanings:[{vi:'chưa chắc chắn, còn đang được thảo luận',en:'open to discussion or argument; not certain',ex:[{en:"Whether technology helps education is debatable.",vi:'Liệu công nghệ có giúp ích cho giáo dục hay không là điều còn tranh cãi.'},{en:'That claim is highly debatable.',vi:'Tuyên bố đó còn nhiều tranh cãi.'}]}],synonyms:['questionable','arguable','controversial','open to debate'],antonyms:['certain','indisputable','clear-cut'],collocations:['highly debatable','open to debate','that is debatable','debatable claim'],tip:'"That\'s debatable!" = casual disagreement. "The point is debatable" = formal. Both very useful.'},
+
+  // ACADEMIC (light)
+  {w:'facilitate',p:'/fəˈsɪlɪteɪt/',type:'v',band:'B2',usage:'formal',topic:'academic2',vi:'tạo điều kiện, xúc tiến',meanings:[{vi:'làm cho điều gì đó dễ dàng hơn',en:'to make an action or process easier',ex:[{en:'Technology facilitates communication.',vi:'Công nghệ tạo điều kiện cho giao tiếp.'},{en:'Good infrastructure facilitates trade.',vi:'Cơ sở hạ tầng tốt xúc tiến thương mại.'}]}],synonyms:['enable','assist','aid','promote','foster'],antonyms:['hinder','obstruct','impede'],collocations:['facilitate communication','facilitate trade','facilitate learning'],tip:'IELTS: "Technology facilitates access to information." Sounds much more academic than "help/make easier".'},
+  {w:'inevitable',p:'/ɪnˈɛvɪtəbəl/',type:'adj',band:'B1',usage:'formal',topic:'academic2',vi:'không thể tránh khỏi',meanings:[{vi:'chắc chắn sẽ xảy ra, không thể tránh',en:'certain to happen and impossible to avoid',ex:[{en:'Change is inevitable.',vi:'Thay đổi là không thể tránh khỏi.'},{en:'Conflict was inevitable given the circumstances.',vi:'Xung đột là không thể tránh khỏi trong hoàn cảnh đó.'}]}],synonyms:['unavoidable','inescapable','certain','bound to happen'],antonyms:['avoidable','preventable','uncertain'],collocations:['inevitable conclusion','seemingly inevitable','inevitable change','inevitable consequences'],tip:'"Change is inevitable" — classic phrase. IELTS: "it is inevitable that technology will replace..." shows strong position.'},
+  {w:'diverse',p:'/daɪˈvɜːrs/',type:'adj',band:'B1',usage:'daily',topic:'academic2',vi:'đa dạng',meanings:[{vi:'nhiều loại khác nhau, đa dạng',en:'showing a great deal of variety',ex:[{en:'Vietnam has a diverse culture.',vi:'Việt Nam có nền văn hóa đa dạng.'},{en:'We need a diverse range of skills.',vi:'Chúng ta cần một loạt kỹ năng đa dạng.'}]}],synonyms:['varied','different','wide-ranging','mixed','assorted'],antonyms:['uniform','homogeneous','similar'],collocations:['diverse range','culturally diverse','diverse opinions','diverse backgrounds'],tip:'"Diverse" is very flexible. IELTS: "a diverse range of perspectives" = more sophisticated than "many different".'},
+  {w:'integral',p:'/ˈɪntɪɡrəl/',type:'adj',band:'B2',usage:'formal',topic:'academic2',vi:'không thể thiếu, cốt lõi',meanings:[{vi:'là phần thiết yếu của một tổng thể',en:'necessary to make a whole complete; essential',ex:[{en:'Exercise is integral to a healthy lifestyle.',vi:'Tập thể dục là phần không thể thiếu của lối sống lành mạnh.'},{en:'She played an integral role in the project.',vi:'Cô ấy đóng vai trò cốt lõi trong dự án.'}]}],synonyms:['essential','fundamental','core','vital','central'],antonyms:['peripheral','minor','optional'],collocations:['integral part','integral role','integral to success'],tip:'"Integral part of..." = phần cốt lõi của. More formal than "important part of".'},
+  {w:'prevalent',p:'/ˈprɛvələnt/',type:'adj',band:'B2',usage:'formal',topic:'academic2',vi:'phổ biến, thịnh hành',meanings:[{vi:'tồn tại hoặc phổ biến rộng rãi',en:'widespread or common at a particular time',ex:[{en:'Obesity is increasingly prevalent.',vi:'Béo phì ngày càng phổ biến.'},{en:'This view was prevalent in the 19th century.',vi:'Quan điểm này phổ biến vào thế kỷ 19.'}]}],synonyms:['widespread','common','rampant','pervasive','dominant'],antonyms:['rare','uncommon','unusual'],collocations:['increasingly prevalent','prevalent attitude','prevalent in society'],tip:'More formal than "common". IELTS: "Obesity has become increasingly prevalent in developed nations."'},
+
+  // PERSONALITY
+  {w:'resilient',p:'/rɪˈzɪliənt/',type:'adj',band:'B2',usage:'daily',topic:'personality',vi:'kiên cường, có khả năng phục hồi',meanings:[{vi:'có khả năng vượt qua khó khăn và hồi phục',en:'able to recover quickly from difficult conditions',ex:[{en:'Children are remarkably resilient.',vi:'Trẻ em vô cùng kiên cường.'},{en:'A resilient economy recovers quickly.',vi:'Nền kinh tế kiên cường phục hồi nhanh chóng.'}]}],synonyms:['strong','tough','adaptable','robust','flexible'],antonyms:['fragile','vulnerable','weak'],collocations:['remarkably resilient','resilient economy','build resilience','emotionally resilient'],tip:'"Resilience" is a key trait employers look for. IELTS Speaking: "I consider myself fairly resilient."'},
+  {w:'persistent',p:'/pəˈsɪstənt/',type:'adj',band:'B1',usage:'daily',topic:'personality',vi:'kiên trì, dai dẳng',meanings:[{vi:'tiếp tục không từ bỏ',en:'continuing firmly despite difficulty',ex:[{en:'She was persistent in her efforts.',vi:'Cô ấy kiên trì trong nỗ lực của mình.'},{en:'The problem is persistent and difficult to solve.',vi:'Vấn đề dai dẳng và khó giải quyết.'}]}],synonyms:['determined','tenacious','relentless','persevering'],antonyms:['giving up','inconsistent','quitting'],collocations:['persistent effort','persistent problem','persistent headache','be persistent'],tip:'Can be positive (kiên trì) or negative (dai dẳng). Context determines. "Persistent cough" = ho không dứt.'},
+  {w:'compassionate',p:'/kəmˈpæʃənɪt/',type:'adj',band:'B2',usage:'daily',topic:'personality',vi:'nhân từ, có lòng trắc ẩn',meanings:[{vi:'quan tâm và thương cảm với người khác',en:'feeling or showing sympathy and concern for others',ex:[{en:'A compassionate leader cares for their team.',vi:'Một nhà lãnh đạo nhân từ quan tâm đến nhóm của mình.'},{en:'She is known for her compassionate nature.',vi:'Cô ấy nổi tiếng với bản tính nhân từ.'}]}],synonyms:['kind','empathetic','caring','sympathetic','humane'],antonyms:['callous','cold-hearted','indifferent'],collocations:['compassionate leader','show compassion','compassionate care'],tip:'IELTS Speaking Part 3: "Leaders should be both decisive and compassionate." — balanced view.'},
+  {w:'pragmatic',p:'/præɡˈmætɪk/',type:'adj',band:'B2',usage:'formal',topic:'personality',vi:'thực dụng, thiết thực',meanings:[{vi:'giải quyết vấn đề theo cách thực tế',en:'dealing with problems in a practical way rather than following a fixed theory',ex:[{en:'A pragmatic approach to the problem is needed.',vi:'Cần có cách tiếp cận thực dụng với vấn đề.'},{en:'She is pragmatic rather than idealistic.',vi:'Cô ấy thực dụng hơn là duy tâm.'}]}],synonyms:['practical','realistic','sensible','down-to-earth'],antonyms:['idealistic','unrealistic','impractical'],collocations:['pragmatic approach','take a pragmatic view','pragmatic solution'],tip:'"A pragmatic approach" = very sophisticated IELTS phrase. More impressive than "practical approach".'},
+  {w:'versatile',p:'/ˈvɜːrsətaɪl/',type:'adj',band:'B1',usage:'daily',topic:'personality',vi:'đa năng, linh hoạt',meanings:[{vi:'có thể làm hoặc dùng được nhiều thứ',en:'able to adapt to many functions or activities',ex:[{en:'She is a versatile actress.',vi:'Cô ấy là một diễn viên đa năng.'},{en:'Python is a versatile programming language.',vi:'Python là ngôn ngữ lập trình đa năng.'}]}],synonyms:['adaptable','flexible','all-round','multi-skilled'],antonyms:['specialized','limited','one-dimensional'],collocations:['versatile player','versatile skill set','highly versatile'],tip:'"Versatile" shows adaptability — a highly valued trait. IELTS: "Being versatile is increasingly important."'},
+
+  // MODERN LIFE
+  {w:'immersive',p:'/ɪˈmɜːrsɪv/',type:'adj',band:'B2',usage:'daily',topic:'modern',vi:'đắm chìm, trải nghiệm sâu',meanings:[{vi:'tạo cảm giác hoàn toàn hòa mình vào',en:'providing deep involvement and engagement',ex:[{en:'VR creates an immersive experience.',vi:'Thực tế ảo tạo ra trải nghiệm đắm chìm.'},{en:'The immersive museum tour was unforgettable.',vi:'Chuyến tham quan bảo tàng đắm chìm thật không thể quên.'}]}],synonyms:['engaging','absorbing','captivating','all-encompassing'],antonyms:['detached','superficial'],collocations:['immersive experience','immersive technology','immersive environment'],tip:'"Immersive learning/experience" — growing in importance with VR/AR technologies.'},
+  {w:'nomadic',p:'/noʊˈmædɪk/',type:'adj',band:'B2',usage:'daily',topic:'modern',vi:'du mục, lang thang',meanings:[{vi:'không định cư một chỗ, di chuyển liên tục',en:'living a lifestyle of moving from place to place',ex:[{en:'He lives a nomadic lifestyle.',vi:'Anh ấy sống một cuộc sống du mục.'},{en:'Digital nomads work remotely while travelling.',vi:'Du mục kỹ thuật số làm việc từ xa trong khi đi du lịch.'}]}],synonyms:['wandering','travelling','itinerant'],antonyms:['settled','stationary','rooted'],collocations:['nomadic lifestyle','digital nomad','nomadic culture'],tip:'"Digital nomad" = freelancer ai đó làm việc online và di chuyển khắp nơi — xu hướng hiện đại.'},
+  {w:'sustainability',p:'/səˌsteɪnəˈbɪlɪti/',type:'n',band:'B1',usage:'formal',topic:'modern',vi:'tính bền vững',meanings:[{vi:'khả năng duy trì lâu dài mà không gây hại',en:'the ability to exist constantly without harming the environment',ex:[{en:'Sustainability is a key business concern.',vi:'Tính bền vững là mối quan tâm kinh doanh chính.'},{en:'We must prioritize environmental sustainability.',vi:'Chúng ta phải ưu tiên tính bền vững môi trường.'}]}],synonyms:['eco-friendliness','long-term viability','environmental responsibility'],antonyms:['unsustainability','short-termism'],collocations:['environmental sustainability','sustainable development','promote sustainability'],tip:'IELTS top topic. "sustainable" = adjective form. Collocates: "sustainable future/growth/solution".'},
+  {w:'mindset',p:'/ˈmaɪndset/',type:'n',band:'B1',usage:'daily',topic:'modern',vi:'tư duy, cách nghĩ',meanings:[{vi:'cách nhìn nhận, thái độ và niềm tin',en:'a set of attitudes and beliefs that affect how you think',ex:[{en:'You need a growth mindset to succeed.',vi:'Bạn cần tư duy phát triển để thành công.'},{en:'A positive mindset changes everything.',vi:'Tư duy tích cực thay đổi tất cả.'}]}],synonyms:['attitude','way of thinking','outlook','mentality','perspective'],antonyms:[],collocations:['growth mindset','positive mindset','fixed mindset','shift your mindset'],tip:'"Growth mindset" (Carol Dweck concept) = believe you can improve through effort. Very modern and popular.'},
+  {w:'burnout',p:'/ˈbɜːrnaʊt/',type:'n',band:'B1',usage:'daily',topic:'modern',vi:'kiệt sức vì làm việc quá nhiều',meanings:[{vi:'trạng thái kiệt sức do làm việc quá độ kéo dài',en:'physical or mental collapse caused by overwork or stress',ex:[{en:'Burnout is common in high-pressure jobs.',vi:'Kiệt sức phổ biến trong các công việc áp lực cao.'},{en:'She took a sabbatical to recover from burnout.',vi:'Cô ấy xin nghỉ để hồi phục sau khi kiệt sức.'}]}],synonyms:['exhaustion','burnout','collapse','fatigue'],antonyms:['renewal','recovery','rest'],collocations:['suffer from burnout','avoid burnout','burnout culture','work-related burnout'],tip:'"Burnout" is a WHO-recognised occupational phenomenon. IELTS mental health + work-life balance topics.'},
+  {w:'digitalise',p:'/ˈdɪdʒɪtəlaɪz/',type:'v',band:'B2',usage:'formal',topic:'modern',vi:'số hóa',meanings:[{vi:'chuyển đổi sang dạng kỹ thuật số',en:'to convert something to digital form',ex:[{en:'Many businesses have digitalised their records.',vi:'Nhiều doanh nghiệp đã số hóa hồ sơ của họ.'},{en:'Governments are digitalising public services.',vi:'Các chính phủ đang số hóa dịch vụ công.'}]}],synonyms:['digitize','automate','computerise','modernise'],antonyms:['analog','physical'],collocations:['digitalise services','digital transformation','digitalisation of industry'],tip:'"Digital transformation" is the business buzzword. "Digitalise" = make digital. Growing IELTS topic.'},
+  {w:'disruption',p:'/dɪsˈrʌpʃən/',type:'n',band:'B2',usage:'formal',topic:'modern',vi:'sự gián đoạn, phá vỡ',meanings:[{vi:'sự thay đổi đột ngột gây gián đoạn',en:'a disturbance that interrupts an event or process',ex:[{en:'Technology causes disruption in many industries.',vi:'Công nghệ gây ra sự gián đoạn trong nhiều ngành công nghiệp.'},{en:'The pandemic caused widespread disruption.',vi:'Đại dịch gây ra sự gián đoạn trên diện rộng.'}]}],synonyms:['disturbance','interruption','upheaval','disorder'],antonyms:['stability','continuity','order'],collocations:['cause disruption','digital disruption','economic disruption','creative disruption'],tip:'"Disruptive technology" = công nghệ thay đổi hoàn toàn ngành. "Creative disruption" = phá vỡ để đổi mới.'},
+];
+
+let savedWords = new Set(JSON.parse(localStorage.getItem('ev2_saved')||'[]'));
+let currentTopic='all', currentBand='all';
+let expandedWord=null;
+
+const BAND_CLASSES={A1:'tag-a1',A2:'tag-a2',B1:'tag-b1',B2:'tag-b2'};
+const USAGE_ICONS={daily:'🟢',formal:'🔵',slang:'🩷',medium:'🟡'};
+const USAGE_LABELS={daily:'Rất thường dùng',formal:'Trang trọng',slang:'Thông tục',medium:'Thường dùng'};
+const TYPE_CLASSES={'n':'tag-n','v':'tag-v','adj':'tag-adj','adv':'tag-adv','phr.v':'tag-v','n/v':'tag-n','v/n':'tag-n','adj/n':'tag-adj','conj':'tag-n'};
+const TOPIC_LABELS={describe:'🎨 Mô tả & Tính từ',think:'🧠 Suy nghĩ & Ý kiến',change:'🔄 Thay đổi & Phát triển',problem:'⚠️ Vấn đề & Giải quyết',relate:'🤝 Quan hệ & Giao tiếp',quantity:'📊 Số lượng & Mức độ',move:'🚗 Di chuyển & Vị trí',cause:'🔗 Nguyên nhân & Kết quả',daily2:'☀️ Sinh hoạt & Thói quen',opinion:'💬 Diễn đạt ý kiến',academic2:'📚 Học thuật nhẹ',personality:'😎 Tính cách & Thái độ',modern:'📱 Cuộc sống hiện đại'};
+
+function getFiltered(){
+  let data=[...WORDS2];
+  if(currentTopic!=='all') data=data.filter(w=>w.topic===currentTopic);
+  if(currentBand!=='all') data=data.filter(w=>w.band===currentBand);
+  const q=document.getElementById('searchInput')?.value.toLowerCase().trim();
+  if(q) data=data.filter(w=>w.w.includes(q)||w.vi.includes(q)||w.meanings.some(m=>m.vi.includes(q)));
+  const sort=document.getElementById('sortSelect')?.value||'default';
+  if(sort==='alpha') data=[...data].sort((a,b)=>a.w.localeCompare(b.w));
+  else if(sort==='band') data=[...data].sort((a,b)=>['A1','A2','B1','B2'].indexOf(a.band)-['A1','A2','B1','B2'].indexOf(b.band));
+  else if(sort==='usage') data=[...data].sort((a,b)=>['daily','medium','formal','slang'].indexOf(a.usage)-['daily','medium','formal','slang'].indexOf(b.usage));
+  return data;
+}
+
+function dots(usage){
+  const n={daily:5,formal:3,slang:4,medium:3}[usage]||3;
+  const cls=usage==='daily'?'on':usage==='slang'?'on med':'on low';
+  return Array.from({length:5},(_,i)=>`<div class="um-dot${i<n?' '+cls:''}"></div>`).join('');
+}
+
+function renderWords(){
+  const data=getFiltered();
+  document.getElementById('statShowing').textContent=data.length;
+  document.getElementById('statSaved').textContent=savedWords.size;
+  const container=document.getElementById('wordsContainer');
+  if(!data.length){container.innerHTML='<div class="no-res">Không tìm thấy từ nào. Thử thay đổi bộ lọc.</div>';return;}
+
+  if(currentTopic==='all'){
+    const groups={};
+    data.forEach(w=>{if(!groups[w.topic])groups[w.topic]=[];groups[w.topic].push(w);});
+    container.innerHTML=Object.keys(groups).map(t=>`
+      <div class="section-hdr"><span class="sh-emoji">${TOPIC_LABELS[t]?.split(' ')[0]||'📌'}</span><span class="sh-title">${TOPIC_LABELS[t]||t}</span><span class="sh-count">${groups[t].length} từ</span></div>
+      <div class="words-grid">${groups[t].map(w=>cardHTML(w)).join('')}</div>`).join('');
+  } else {
+    container.innerHTML=`<div class="words-grid">${data.map(w=>cardHTML(w)).join('')}</div>`;
+  }
+}
+
+function cardHTML(w){
+  const saved=savedWords.has(w.w);
+  return `<div class="word-card${saved?' saved':''}" id="wc2-${w.w}" onclick="toggleExp('${w.w}')">
+    <div class="wc-top">
+      <div class="wc-word">${w.w}</div>
+      <button class="wc-save${saved?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${saved?'⭐':'☆'}</button>
+    </div>
+    <div class="wc-meta">
+      <span class="wc-pron">${w.p}</span>
+      <span class="tag ${TYPE_CLASSES[w.type]||'tag-n'}">${w.type}</span>
+      <span class="tag ${BAND_CLASSES[w.band]}">${w.band}</span>
+      <span class="tag ${w.usage==='daily'?'tag-daily':w.usage==='formal'?'tag-formal':w.usage==='slang'?'tag-slang':'tag-daily'}">${USAGE_ICONS[w.usage]} ${USAGE_LABELS[w.usage]}</span>
+    </div>
+    <div class="wc-vi">${w.meanings[0].vi}</div>
+    <div class="wc-ex">"${w.meanings[0].ex[0].en}"</div>
+    <div class="um-meter"><span class="um-label">Tần suất:</span><div class="um-dots">${dots(w.usage)}</div></div>
+    <div class="wc-detail">
+      ${w.meanings.map((m,i)=>`
+        <div style="margin-bottom:10px">
+          <div class="ds-label">Nghĩa ${w.meanings.length>1?i+1+': ':''}${m.vi}</div>
+          <div class="ds-content">${m.en}</div>
+          <div class="ds-examples">${m.ex.map(e=>`<div class="ds-ex"><div class="ds-ex-en">"${e.en}"</div><div class="ds-ex-vi">${e.vi}</div></div>`).join('')}</div>
+        </div>`).join('')}
+      ${w.synonyms?.length?`<div class="ds-label">Từ đồng nghĩa</div><div class="ds-chips">${w.synonyms.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div>`:''}
+      ${w.antonyms?.length?`<div class="ds-label" style="margin-top:6px">Từ trái nghĩa</div><div class="ds-chips">${w.antonyms.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div>`:''}
+      ${w.collocations?.length?`<div class="ds-label" style="margin-top:6px">Cụm từ thông dụng</div><div class="ds-chips">${w.collocations.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div>`:''}
+      ${w.tip?`<div class="tip-note"><span>💡 Mẹo: </span>${w.tip}</div>`:''}
+    </div>
+  </div>`;
+}
+
+function toggleExp(word){
+  const card=document.getElementById('wc2-'+word);
+  const isExp=card.classList.contains('expanded');
+  if(expandedWord) document.getElementById('wc2-'+expandedWord)?.classList.remove('expanded');
+  card.classList.toggle('expanded',!isExp);
+  expandedWord=isExp?null:word;
+}
+
+function toggleSave(word){
+  if(savedWords.has(word)) savedWords.delete(word);
+  else savedWords.add(word);
+  localStorage.setItem('ev2_saved',JSON.stringify([...savedWords]));
+  document.getElementById('statSaved').textContent=savedWords.size;
+  const card=document.getElementById('wc2-'+word);
+  if(card){card.classList.toggle('saved',savedWords.has(word));const btn=card.querySelector('.wc-save');if(btn){btn.textContent=savedWords.has(word)?'⭐':'☆';btn.classList.toggle('saved',savedWords.has(word));}}
+}
+
+function filterTopic(topic,el){currentTopic=topic;document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');renderWords();}
+function filterBand(band,el){currentBand=band;renderWords();}
+
+renderWords();
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

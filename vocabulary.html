@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ vựng tiếng Anh — EasyEnglish</title>
+<meta name="description" content="Học từ vựng tiếng Anh theo chủ đề với flashcard, phiên âm IPA, ví dụ câu. Hơn 350 từ vựng miễn phí cho người mới bắt đầu.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#f4845f;--pink:#e879a0;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(78,205,196,0.09);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(232,197,71,0.05);bottom:0;left:-100px}
+
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:20px 14px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;text-decoration:none;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent3);background:rgba(240,194,122,0.08)}
+.sb-emoji{font-size:14px;width:20px;text-align:center}
+
+.content{padding:40px 48px;max-width:860px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+
+/* TOPIC TABS */
+.topic-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.tab-btn{padding:8px 16px;border-radius:20px;font-size:13px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.tab-btn:hover{border-color:rgba(255,255,255,0.15);color:var(--text)}
+.tab-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent3)}
+
+/* WORD GRID */
+.word-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px}
+.word-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .2s;position:relative}
+.word-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-2px)}
+.word-card.learned{border-color:rgba(100,216,165,0.4);background:rgba(78,205,196,0.05)}
+.word-en{font-size:15px;font-weight:500;color:var(--text);margin-bottom:2px}
+.word-pron{font-size:11px;color:var(--accent);margin-bottom:4px;font-style:italic}
+.word-vi{font-size:13px;color:var(--text2)}
+.word-type{font-size:10px;color:var(--text3);margin-top:6px}
+.word-ex{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.5;border-top:0.5px solid var(--border);padding-top:6px;display:none}
+.word-card:hover .word-ex{display:block}
+.learned-badge{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--accent3);display:none;align-items:center;justify-content:center;font-size:10px;color:#0f0e17}
+.word-card.learned .learned-badge{display:flex}
+
+/* SEARCH */
+.search-bar{display:flex;gap:10px;margin-bottom:24px}
+.search-input{flex:1;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input:focus{border-color:rgba(100,216,165,0.4)}
+.search-input::placeholder{color:var(--text3)}
+
+/* FLASHCARD */
+.flashcard-section{margin-bottom:40px}
+.fc-container{perspective:1000px;height:200px;margin-bottom:16px;cursor:pointer}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fc-inner.flipped{transform:rotateY(180deg)}
+.fc-front,.fc-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.fc-front{background:var(--card2);border:0.5px solid var(--border)}
+.fc-back{background:rgba(240,194,122,0.08);border:0.5px solid rgba(100,216,165,0.3);transform:rotateY(180deg)}
+.fc-word{font-family:'Fraunces',serif;font-size:36px;color:var(--text);margin-bottom:8px}
+.fc-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:4px}
+.fc-hint{font-size:12px;color:var(--text3)}
+.fc-vi{font-family:'Fraunces',serif;font-size:28px;color:var(--accent3);margin-bottom:8px}
+.fc-ex{font-size:13px;color:var(--text2);text-align:center;font-style:italic;line-height:1.6}
+.fc-controls{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+.fc-btn{padding:9px 20px;border-radius:8px;font-size:13px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.fc-btn:hover{background:var(--card);color:var(--text)}
+.fc-btn.good{border-color:rgba(100,216,165,0.4);color:var(--accent3)}
+.fc-btn.good:hover{background:rgba(240,194,122,0.1)}
+.fc-btn.skip{border-color:rgba(244,132,95,0.4);color:var(--coral)}
+.fc-progress{text-align:center;font-size:12px;color:var(--text3)}
+
+/* SECTION DIVIDER */
+.s-divider{height:0.5px;background:var(--border);margin:40px 0}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:6px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+
+/* ALPHABET */
+.alpha-section{scroll-margin-top:80px;margin-bottom:40px}
+.alpha-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:20px}
+.alpha-card{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center}
+.alpha-letter{font-family:'Fraunces',serif;font-size:28px;color:var(--accent)}
+.alpha-lower{font-size:20px;color:var(--text2);margin-bottom:4px}
+.alpha-sound{font-size:11px;color:var(--text3);font-style:italic}
+
+/* STATS BAR */
+.stats-row{display:flex;gap:12px;margin-bottom:28px}
+.stat-box{flex:1;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:24px;color:var(--accent3)}
+.stat-label{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* TOPIC SECTION */
+.topic-section{scroll-margin-top:80px}
+
+/* COLOR GRID */
+.color-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+.color-item{border-radius:10px;padding:14px 10px;text-align:center;border:0.5px solid rgba(255,255,255,0.1)}
+.color-en{font-size:13px;font-weight:500;margin-bottom:2px}
+.color-vi{font-size:11px;color:rgba(255,255,255,0.7)}
+
+/* NUMBER TABLE */
+.num-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px}
+.num-item{background:var(--card2);border:0.5px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+.num-n{font-family:'Fraunces',serif;font-size:20px;color:var(--accent)}
+.num-en{font-size:12px;color:var(--text)}
+.num-vi{font-size:11px;color:var(--text3)}
+
+/* PHRASE LIST */
+.phrase-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.phrase-item{background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+.p-en{font-size:14px;color:var(--text);font-style:italic}
+.p-vi{font-size:13px;color:var(--text2)}
+.p-note{font-size:11px;color:var(--text3);grid-column:1/-1;margin-top:2px}
+
+/* COMMON 100 */
+.common-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cw-item{background:var(--card2);border:0.5px solid var(--border);border-radius:8px;padding:8px 10px}
+.cw-en{font-size:13px;color:var(--text)}
+.cw-vi{font-size:11px;color:var(--text3)}
+.cw-pron{font-size:10px;color:var(--accent);font-style:italic}
+
+/* NOTE BOX */
+.note-box{background:rgba(244,132,95,0.08);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.note-box strong{color:var(--coral)}
+
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .content{padding:24px 20px}
+  .word-grid{grid-template-columns:repeat(2,1fr)}
+  .color-grid{grid-template-columns:repeat(3,1fr)}
+  .num-grid{grid-template-columns:repeat(4,1fr)}
+  .common-grid{grid-template-columns:repeat(3,1fr)}
+  .alpha-grid{grid-template-columns:repeat(4,1fr)}
+  nav{padding:12px 16px}
+  .nav-links{display:none}
+  .page-title{font-size:28px}
+}
+@media(max-width:500px){
+  .word-grid{grid-template-columns:1fr}
+  .color-grid{grid-template-columns:repeat(2,1fr)}
+  .num-grid{grid-template-columns:repeat(3,1fr)}
+  .common-grid{grid-template-columns:repeat(2,1fr)}
+  .alpha-grid{grid-template-columns:repeat(3,1fr)}
+  .stats-row{flex-wrap:wrap}
+  .stat-box{min-width:calc(50% - 8px)}
+  .phrase-item{grid-template-columns:1fr}
+  #days div[style]{grid-template-columns:1fr !important}
+}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a active">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Công cụ</div>
+  <a href="#flashcard" class="sb-item active"><span class="sb-emoji">🃏</span>Flashcard học từ</a>
+  <a href="#search-section" class="sb-item"><span class="sb-emoji">🔍</span>Tìm kiếm từ</a>
+  <a href="#common100" class="sb-item"><span class="sb-emoji">⭐</span>100 từ thông dụng</a>
+
+  <div class="sidebar-title">Chủ đề cơ bản</div>
+  <a href="#alphabet" class="sb-item"><span class="sb-emoji">🔤</span>Bảng chữ cái</a>
+  <a href="#numbers" class="sb-item"><span class="sb-emoji">🔢</span>Số đếm</a>
+  <a href="#colors" class="sb-item"><span class="sb-emoji">🎨</span>Màu sắc</a>
+  <a href="#greetings" class="sb-item"><span class="sb-emoji">👋</span>Chào hỏi</a>
+  <a href="#days" class="sb-item"><span class="sb-emoji">📅</span>Ngày & Tháng</a>
+  <a href="#time" class="sb-item"><span class="sb-emoji">⏰</span>Thời gian</a>
+
+  <div class="sidebar-title">Chủ đề cuộc sống</div>
+  <a href="#family" class="sb-item"><span class="sb-emoji">👨‍👩‍👧</span>Gia đình</a>
+  <a href="#body" class="sb-item"><span class="sb-emoji">🧑</span>Cơ thể người</a>
+  <a href="#food" class="sb-item"><span class="sb-emoji">🍜</span>Thức ăn</a>
+  <a href="#animals" class="sb-item"><span class="sb-emoji">🐶</span>Động vật</a>
+  <a href="#house" class="sb-item"><span class="sb-emoji">🏠</span>Nhà ở</a>
+  <a href="#clothes" class="sb-item"><span class="sb-emoji">👕</span>Quần áo</a>
+  <a href="#jobs" class="sb-item"><span class="sb-emoji">💼</span>Nghề nghiệp</a>
+  <a href="#weather" class="sb-item"><span class="sb-emoji">🌤️</span>Thời tiết</a>
+  <a href="#transport" class="sb-item"><span class="sb-emoji">🚌</span>Giao thông</a>
+  <a href="#emotions" class="sb-item"><span class="sb-emoji">😊</span>Cảm xúc</a>
+
+  <div class="sidebar-title">Chủ đề nâng cao</div>
+  <a href="#technology" class="sb-item"><span class="sb-emoji">💻</span>Công nghệ</a>
+  <a href="#travel" class="sb-item"><span class="sb-emoji">✈️</span>Du lịch</a>
+  <a href="#environment" class="sb-item"><span class="sb-emoji">🌿</span>Môi trường</a>
+  <a href="#health" class="sb-item"><span class="sb-emoji">🏥</span>Sức khỏe</a>
+</aside>
+
+<main class="content">
+  <div class="page-label">Module 2</div>
+  <h1 class="page-title">Từ vựng tiếng Anh</h1>
+  <p class="page-desc">Học từ vựng theo chủ đề — có phiên âm, nghĩa, ví dụ câu. Dùng Flashcard để ghi nhớ nhanh hơn. Bấm vào từ để xem câu ví dụ!</p>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="learnedCount">0</div><div class="stat-label">Từ đã học</div></div>
+    <div class="stat-box"><div class="stat-num">430+</div><div class="stat-label">Tổng từ vựng</div></div>
+    <div class="stat-box"><div class="stat-num">20</div><div class="stat-label">Chủ đề</div></div>
+    <div class="stat-box"><div class="stat-num" id="streakDisplay">0</div><div class="stat-label">Ngày streak</div></div>
+  </div>
+
+  <!-- FLASHCARD -->
+  <div class="flashcard-section" id="flashcard">
+    <div class="section-label">Công cụ học</div>
+    <div class="section-title">Flashcard — Lật thẻ học từ</div>
+    <div class="section-desc">Bấm vào thẻ để xem nghĩa. Chọn "Nhớ rồi" hoặc "Học lại" để luyện tập.</div>
+
+    <div class="fc-container" onclick="flipCard()">
+      <div class="fc-inner" id="fcInner">
+        <div class="fc-front">
+          <div class="fc-word" id="fcWord">hello</div>
+          <div class="fc-pron" id="fcPron">/həˈloʊ/</div>
+          <button class="speak-btn" onclick="event.stopPropagation();speakTTS(document.getElementById('fcWord').textContent)" style="margin:8px auto 0;width:36px;height:36px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">🔊</button>
+          <div class="fc-hint">👆 Bấm để xem nghĩa</div>
+        </div>
+        <div class="fc-back">
+          <div class="fc-vi" id="fcVi">xin chào</div>
+          <div class="fc-ex" id="fcEx">"Hello! How are you?" — Xin chào! Bạn có khỏe không?</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="fc-btn skip" onclick="nextCard(false)">✗ Học lại</button>
+      <button class="fc-btn" onclick="flipCard()">↩ Lật thẻ</button>
+      <button class="fc-btn good" onclick="nextCard(true)">✓ Nhớ rồi!</button>
+    </div>
+    <div class="fc-progress" id="fcProgress">Thẻ 1 / 20</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- PRONUNCIATION PRACTICE -->
+  <div id="micSection" style="scroll-margin-top:80px;margin-bottom:40px">
+    <div class="section-label">Luyện phát âm</div>
+    <div class="section-title">🎤 Nói thử — Kiểm tra phát âm</div>
+    <div class="section-desc">Bấm nút mic, nói từ hiển thị, web sẽ nhận diện xem bạn nói đúng chưa.</div>
+
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:32px;text-align:center;max-width:500px;margin:0 auto">
+      <div id="micWord" style="font-family:'Fraunces',serif;font-size:36px;color:var(--text);margin-bottom:4px">hello</div>
+      <div id="micIpa" style="font-size:16px;color:var(--accent);font-style:italic;margin-bottom:4px">/həˈloʊ/</div>
+      <div id="micVi" style="font-size:14px;color:var(--text3);margin-bottom:16px">xin chào</div>
+
+      <div style="display:flex;justify-content:center;gap:12px;margin-bottom:16px">
+        <button onclick="speakMicWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:18px" title="Nghe mẫu">🔊</button>
+        <button id="micBtn" onclick="startMic()" style="width:56px;height:56px;border-radius:50%;background:rgba(244,132,95,0.15);border:2px solid rgba(244,132,95,0.4);color:var(--coral);cursor:pointer;font-size:22px;transition:all .3s" title="Bấm để nói">🎤</button>
+        <button onclick="nextMicWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(100,216,165,0.15);border:0.5px solid rgba(100,216,165,0.3);color:var(--accent3);cursor:pointer;font-size:18px" title="Từ tiếp theo">→</button>
+      </div>
+      <div id="micResult" style="min-height:40px"></div>
+      <div id="micProgress" style="font-size:12px;color:var(--text3);margin-top:8px">1 / 10</div>
+    </div>
+    <style>
+      #micBtn.recording{background:rgba(244,132,95,0.4);border-color:var(--coral);animation:mic-pulse 1s infinite}
+      @keyframes mic-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(244,132,95,0.4)}50%{transform:scale(1.08);box-shadow:0 0 0 12px rgba(244,132,95,0)}}
+    </style>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- SEARCH -->
+  <div id="search-section" style="scroll-margin-top:80px;margin-bottom:40px">
+    <div class="section-label">Tìm kiếm</div>
+    <div class="section-title">Tra từ nhanh</div>
+    <div class="search-bar">
+      <input class="search-input" id="searchInput" type="text" placeholder="Nhập từ tiếng Anh hoặc tiếng Việt..." oninput="searchWords()">
+    </div>
+    <div id="searchResults" class="word-grid" style="display:none"></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- ALPHABET -->
+  <div class="alpha-section topic-section" id="alphabet">
+    <div class="section-label">Bài 1</div>
+    <div class="section-title">Bảng chữ cái tiếng Anh</div>
+    <div class="section-desc">26 chữ cái — chữ hoa, chữ thường và cách đọc tên chữ cái</div>
+    <div class="alpha-grid" id="alphaGrid"></div>
+    <div class="note-box"><strong>Nguyên âm (Vowels):</strong> A, E, I, O, U — 5 chữ cái quan trọng nhất. Mọi từ tiếng Anh đều chứa ít nhất một nguyên âm. Các chữ còn lại là <strong>phụ âm (Consonants)</strong>.</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- NUMBERS -->
+  <div class="topic-section" id="numbers">
+    <div class="section-label">Bài 2</div>
+    <div class="section-title">Số đếm</div>
+    <div class="section-desc">Số từ 1–100, số thứ tự và cách đọc số lớn</div>
+    <div style="margin-bottom:14px;font-size:13px;color:var(--text3)">Số cơ bản 1–20</div>
+    <div class="num-grid" id="num120"></div>
+    <div style="margin:16px 0 10px;font-size:13px;color:var(--text3)">Số tròn chục 20–100</div>
+    <div class="num-grid" id="numTens"></div>
+    <div class="note-box">
+      <strong>Cách đọc số lớn:</strong> 21 = twenty-<strong>one</strong> (có gạch nối) · 35 = thirty-five · 100 = one hundred · 1,000 = one thousand · 1,000,000 = one million<br>
+      <strong>Số thứ tự:</strong> 1st (first), 2nd (second), 3rd (third), 4th (fourth)... 20th (twentieth)
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- COLORS -->
+  <div class="topic-section" id="colors">
+    <div class="section-label">Bài 3</div>
+    <div class="section-title">Màu sắc — Colors</div>
+    <div class="section-desc">Các màu cơ bản và màu mở rộng trong tiếng Anh</div>
+    <div class="color-grid" id="colorGrid"></div>
+    <div class="phrase-list">
+      <div class="phrase-item">
+        <div class="p-en">What color is it?</div>
+        <div class="p-vi">Nó màu gì?</div>
+        <div class="p-note">→ Câu hỏi về màu sắc</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">My favorite color is blue.</div>
+        <div class="p-vi">Màu yêu thích của tôi là màu xanh dương.</div>
+        <div class="p-note">→ Nói về màu yêu thích</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">She is wearing a red dress.</div>
+        <div class="p-vi">Cô ấy đang mặc váy đỏ.</div>
+        <div class="p-note">→ Tính từ chỉ màu đặt trước danh từ</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- GREETINGS -->
+  <div class="topic-section" id="greetings">
+    <div class="section-label">Bài 4</div>
+    <div class="section-title">Chào hỏi & Giao tiếp cơ bản</div>
+    <div class="section-desc">Những câu chào hỏi thông dụng nhất trong tiếng Anh</div>
+    <div class="phrase-list" id="greetingList"></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- DAYS & MONTHS -->
+  <div class="topic-section" id="days">
+    <div class="section-label">Bài 5</div>
+    <div class="section-title">Ngày & Tháng</div>
+    <div class="section-desc">Các ngày trong tuần, tháng trong năm và cách nói ngày tháng</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+      <div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Ngày trong tuần</div>
+        <div id="daysList"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Tháng trong năm</div>
+        <div id="monthsList"></div>
+      </div>
+    </div>
+    <div class="note-box"><strong>Cách nói ngày tháng:</strong> Tháng đứng trước, ngày sau (kiểu Mỹ): "January 15, 2025" hoặc "01/15/2025". Kiểu Anh: "15 January 2025". Nói: "January the fifteenth" hoặc "the fifteenth of January".</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- TIME -->
+  <div class="topic-section" id="time">
+    <div class="section-label">Bài 6</div>
+    <div class="section-title">Thời gian — Time</div>
+    <div class="section-desc">Từ vựng về thời gian, các buổi trong ngày</div>
+    <div class="word-grid" id="timeGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">What time is it?</div><div class="p-vi">Mấy giờ rồi?</div></div>
+      <div class="phrase-item"><div class="p-en">It's 3 o'clock.</div><div class="p-vi">Bây giờ là 3 giờ.</div></div>
+      <div class="phrase-item"><div class="p-en">I wake up at 6 in the morning.</div><div class="p-vi">Tôi thức dậy lúc 6 giờ sáng.</div></div>
+    </div>
+    <div class="note-box"><strong>Cách nói giờ:</strong> 3:00 = three o'clock · 3:15 = three fifteen / a quarter past three · 3:30 = three thirty / half past three · 3:45 = three forty-five / a quarter to four</div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- FAMILY -->
+  <div class="topic-section" id="family">
+    <div class="section-label">Bài 7</div>
+    <div class="section-title">Gia đình — Family</div>
+    <div class="section-desc">Từ vựng về các thành viên trong gia đình</div>
+    <div class="word-grid" id="familyGrid"></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- BODY -->
+  <div class="topic-section" id="body">
+    <div class="section-label">Bài 8</div>
+    <div class="section-title">Cơ thể người — Body Parts</div>
+    <div class="section-desc">Từ vựng về các bộ phận cơ thể từ đầu đến chân</div>
+    <div class="word-grid" id="bodyGrid"></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- FOOD -->
+  <div class="topic-section" id="food">
+    <div class="section-label">Bài 9</div>
+    <div class="section-title">Thức ăn & Đồ uống — Food & Drinks</div>
+    <div class="section-desc">Từ vựng về thức ăn, đồ uống và cách gọi món</div>
+    <div class="word-grid" id="foodGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item">
+        <div class="p-en">Can I have the menu, please?</div>
+        <div class="p-vi">Cho tôi xem thực đơn được không?</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">I'd like to order a bowl of pho.</div>
+        <div class="p-vi">Tôi muốn gọi một bát phở.</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">The food is delicious!</div>
+        <div class="p-vi">Đồ ăn ngon quá!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- ANIMALS -->
+  <div class="topic-section" id="animals">
+    <div class="section-label">Bài 10</div>
+    <div class="section-title">Động vật — Animals</div>
+    <div class="section-desc">Từ vựng về động vật phổ biến</div>
+    <div class="word-grid" id="animalsGrid"></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- HOUSE -->
+  <div class="topic-section" id="house">
+    <div class="section-label">Bài 11</div>
+    <div class="section-title">Nhà ở — House</div>
+    <div class="section-desc">Từ vựng về nhà cửa, phòng ốc và đồ nội thất</div>
+    <div class="word-grid" id="houseGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">Welcome to my house!</div><div class="p-vi">Chào mừng đến nhà tôi!</div></div>
+      <div class="phrase-item"><div class="p-en">My house has 3 bedrooms.</div><div class="p-vi">Nhà tôi có 3 phòng ngủ.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- CLOTHES -->
+  <div class="topic-section" id="clothes">
+    <div class="section-label">Bài 12</div>
+    <div class="section-title">Quần áo — Clothes</div>
+    <div class="section-desc">Từ vựng về quần áo, phụ kiện thời trang</div>
+    <div class="word-grid" id="clothesGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">What are you wearing?</div><div class="p-vi">Bạn đang mặc gì?</div></div>
+      <div class="phrase-item"><div class="p-en">I need to buy new shoes.</div><div class="p-vi">Tôi cần mua giày mới.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- JOBS -->
+  <div class="topic-section" id="jobs">
+    <div class="section-label">Bài 13</div>
+    <div class="section-title">Nghề nghiệp — Jobs</div>
+    <div class="section-desc">Từ vựng về các nghề nghiệp thông dụng</div>
+    <div class="word-grid" id="jobsGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item">
+        <div class="p-en">What do you do for a living?</div>
+        <div class="p-vi">Bạn làm nghề gì?</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">I am a teacher.</div>
+        <div class="p-vi">Tôi là giáo viên.</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">She works as an engineer.</div>
+        <div class="p-vi">Cô ấy làm kỹ sư.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- WEATHER -->
+  <div class="topic-section" id="weather">
+    <div class="section-label">Bài 14</div>
+    <div class="section-title">Thời tiết — Weather</div>
+    <div class="section-desc">Từ vựng về thời tiết và khí hậu</div>
+    <div class="word-grid" id="weatherGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">How's the weather today?</div><div class="p-vi">Thời tiết hôm nay thế nào?</div></div>
+      <div class="phrase-item"><div class="p-en">It's raining outside.</div><div class="p-vi">Bên ngoài đang mưa.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- TRANSPORT -->
+  <div class="topic-section" id="transport">
+    <div class="section-label">Bài 15</div>
+    <div class="section-title">Giao thông — Transport</div>
+    <div class="section-desc">Từ vựng về phương tiện giao thông</div>
+    <div class="word-grid" id="transportGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">How do you go to school?</div><div class="p-vi">Bạn đi đến trường bằng gì?</div></div>
+      <div class="phrase-item"><div class="p-en">I go to work by bus.</div><div class="p-vi">Tôi đi làm bằng xe buýt.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- EMOTIONS -->
+  <div class="topic-section" id="emotions">
+    <div class="section-label">Bài 16</div>
+    <div class="section-title">Cảm xúc — Emotions</div>
+    <div class="section-desc">Diễn đạt cảm xúc trong tiếng Anh</div>
+    <div class="word-grid" id="emotionsGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item">
+        <div class="p-en">How are you feeling today?</div>
+        <div class="p-vi">Hôm nay bạn cảm thấy thế nào?</div>
+      </div>
+      <div class="phrase-item">
+        <div class="p-en">I feel so happy right now!</div>
+        <div class="p-vi">Tôi cảm thấy rất vui lúc này!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- TECHNOLOGY -->
+  <div class="topic-section" id="technology">
+    <div class="section-label">Bài 17</div>
+    <div class="section-title">Công nghệ — Technology</div>
+    <div class="section-desc">Từ vựng về công nghệ, internet và thiết bị số</div>
+    <div class="word-grid" id="techGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">Can you connect to the WiFi?</div><div class="p-vi">Bạn có thể kết nối WiFi được không?</div></div>
+      <div class="phrase-item"><div class="p-en">I need to update my software.</div><div class="p-vi">Tôi cần cập nhật phần mềm.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- TRAVEL -->
+  <div class="topic-section" id="travel">
+    <div class="section-label">Bài 18</div>
+    <div class="section-title">Du lịch — Travel</div>
+    <div class="section-desc">Từ vựng cần thiết khi đi du lịch</div>
+    <div class="word-grid" id="travelGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">Where is the nearest hotel?</div><div class="p-vi">Khách sạn gần nhất ở đâu?</div></div>
+      <div class="phrase-item"><div class="p-en">I'd like to book a room, please.</div><div class="p-vi">Tôi muốn đặt phòng ạ.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- ENVIRONMENT -->
+  <div class="topic-section" id="environment">
+    <div class="section-label">Bài 19</div>
+    <div class="section-title">Môi trường — Environment</div>
+    <div class="section-desc">Từ vựng về môi trường và thiên nhiên</div>
+    <div class="word-grid" id="envGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">We should recycle more to protect the environment.</div><div class="p-vi">Chúng ta nên tái chế nhiều hơn để bảo vệ môi trường.</div></div>
+      <div class="phrase-item"><div class="p-en">Climate change is a global problem.</div><div class="p-vi">Biến đổi khí hậu là vấn đề toàn cầu.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- HEALTH -->
+  <div class="topic-section" id="health">
+    <div class="section-label">Bài 20</div>
+    <div class="section-title">Sức khỏe — Health</div>
+    <div class="section-desc">Từ vựng về sức khỏe và y tế</div>
+    <div class="word-grid" id="healthGrid"></div>
+    <div class="phrase-list" style="margin-top:16px">
+      <div class="phrase-item"><div class="p-en">I have a headache and a fever.</div><div class="p-vi">Tôi bị đau đầu và sốt.</div></div>
+      <div class="phrase-item"><div class="p-en">You should see a doctor.</div><div class="p-vi">Bạn nên đi khám bác sĩ.</div></div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- COMMON 100 -->
+  <div class="topic-section" id="common100">
+    <div class="section-label">Bài 17</div>
+    <div class="section-title">100 từ tiếng Anh thông dụng nhất</div>
+    <div class="section-desc">Đây là 100 từ xuất hiện nhiều nhất trong tiếng Anh. Học thuộc những từ này giúp bạn hiểu được ~50% văn bản tiếng Anh!</div>
+    <div class="common-grid" id="common100Grid"></div>
+  </div>
+
+  <div style="height:60px"></div>
+</main>
+</div>
+
+<script>
+// ===== DATA =====
+const FLASHCARDS = [
+  {word:'hello',pron:'/həˈloʊ/',vi:'xin chào',ex:'"Hello! How are you?" — Xin chào! Bạn có khỏe không?'},
+  {word:'goodbye',pron:'/ˌɡʊdˈbaɪ/',vi:'tạm biệt',ex:'"Goodbye! See you tomorrow." — Tạm biệt! Hẹn gặp lại ngày mai.'},
+  {word:'thank you',pron:'/ˈθæŋk juː/',vi:'cảm ơn',ex:'"Thank you very much!" — Cảm ơn bạn rất nhiều!'},
+  {word:'please',pron:'/pliːz/',vi:'làm ơn / xin',ex:'"Please sit down." — Làm ơn ngồi xuống.'},
+  {word:'sorry',pron:'/ˈsɒri/',vi:'xin lỗi',ex:'"I\'m sorry for being late." — Tôi xin lỗi vì đến muộn.'},
+  {word:'yes',pron:'/jɛs/',vi:'có / vâng',ex:'"Yes, I understand." — Có, tôi hiểu.'},
+  {word:'no',pron:'/noʊ/',vi:'không',ex:'"No, thank you." — Không, cảm ơn.'},
+  {word:'beautiful',pron:'/ˈbjuːtɪfəl/',vi:'đẹp',ex:'"What a beautiful day!" — Thật là một ngày đẹp!'},
+  {word:'happy',pron:'/ˈhæpi/',vi:'vui / hạnh phúc',ex:'"I am very happy today." — Hôm nay tôi rất vui.'},
+  {word:'love',pron:'/lʌv/',vi:'tình yêu / yêu',ex:'"I love learning English." — Tôi yêu việc học tiếng Anh.'},
+  {word:'eat',pron:'/iːt/',vi:'ăn',ex:'"Let\'s eat together!" — Chúng ta cùng ăn nhé!'},
+  {word:'drink',pron:'/drɪŋk/',vi:'uống',ex:'"I drink coffee every morning." — Mỗi sáng tôi uống cà phê.'},
+  {word:'go',pron:'/ɡoʊ/',vi:'đi',ex:'"Let\'s go to the market." — Chúng ta đi chợ nhé.'},
+  {word:'come',pron:'/kʌm/',vi:'đến / lại',ex:'"Please come here." — Làm ơn lại đây.'},
+  {word:'want',pron:'/wɒnt/',vi:'muốn',ex:'"I want to learn English." — Tôi muốn học tiếng Anh.'},
+  {word:'need',pron:'/niːd/',vi:'cần',ex:'"I need your help." — Tôi cần sự giúp đỡ của bạn.'},
+  {word:'work',pron:'/wɜːrk/',vi:'làm việc / công việc',ex:'"She works at a hospital." — Cô ấy làm việc ở bệnh viện.'},
+  {word:'study',pron:'/ˈstʌdi/',vi:'học / nghiên cứu',ex:'"I study English every day." — Tôi học tiếng Anh mỗi ngày.'},
+  {word:'friend',pron:'/frɛnd/',vi:'bạn bè',ex:'"She is my best friend." — Cô ấy là bạn thân nhất của tôi.'},
+  {word:'family',pron:'/ˈfæməli/',vi:'gia đình',ex:'"My family is very important to me." — Gia đình rất quan trọng với tôi.'},
+];
+
+const ALPHA = [
+  {u:'A',l:'a',s:'eɪ'},{u:'B',l:'b',s:'biː'},{u:'C',l:'c',s:'siː'},
+  {u:'D',l:'d',s:'diː'},{u:'E',l:'e',s:'iː'},{u:'F',l:'f',s:'ɛf'},
+  {u:'G',l:'g',s:'dʒiː'},{u:'H',l:'h',s:'eɪtʃ'},{u:'I',l:'i',s:'aɪ'},
+  {u:'J',l:'j',s:'dʒeɪ'},{u:'K',l:'k',s:'keɪ'},{u:'L',l:'l',s:'ɛl'},
+  {u:'M',l:'m',s:'ɛm'},{u:'N',l:'n',s:'ɛn'},{u:'O',l:'o',s:'oʊ'},
+  {u:'P',l:'p',s:'piː'},{u:'Q',l:'q',s:'kjuː'},{u:'R',l:'r',s:'ɑːr'},
+  {u:'S',l:'s',s:'ɛs'},{u:'T',l:'t',s:'tiː'},{u:'U',l:'u',s:'juː'},
+  {u:'V',l:'v',s:'viː'},{u:'W',l:'w',s:'ˈdʌbljuː'},{u:'X',l:'x',s:'ɛks'},
+  {u:'Y',l:'y',s:'waɪ'},{u:'Z',l:'z',s:'ziː/zɛd'},
+];
+
+const NUMBERS_1_20 = [
+  [1,'one','một'],[2,'two','hai'],[3,'three','ba'],[4,'four','bốn'],[5,'five','năm'],
+  [6,'six','sáu'],[7,'seven','bảy'],[8,'eight','tám'],[9,'nine','chín'],[10,'ten','mười'],
+  [11,'eleven','mười một'],[12,'twelve','mười hai'],[13,'thirteen','mười ba'],[14,'fourteen','mười bốn'],[15,'fifteen','mười lăm'],
+  [16,'sixteen','mười sáu'],[17,'seventeen','mười bảy'],[18,'eighteen','mười tám'],[19,'nineteen','mười chín'],[20,'twenty','hai mươi'],
+];
+const TENS = [
+  [20,'twenty','hai mươi'],[30,'thirty','ba mươi'],[40,'forty','bốn mươi'],
+  [50,'fifty','năm mươi'],[60,'sixty','sáu mươi'],[70,'seventy','bảy mươi'],
+  [80,'eighty','tám mươi'],[90,'ninety','chín mươi'],[100,'one hundred','một trăm'],[1000,'one thousand','một nghìn'],
+];
+
+const COLORS = [
+  {en:'red',vi:'đỏ',bg:'#c0392b',text:'#fff'},
+  {en:'blue',vi:'xanh dương',bg:'#2980b9',text:'#fff'},
+  {en:'green',vi:'xanh lá',bg:'#27ae60',text:'#fff'},
+  {en:'yellow',vi:'vàng',bg:'#f1c40f',text:'#222'},
+  {en:'orange',vi:'cam',bg:'#e67e22',text:'#fff'},
+  {en:'purple',vi:'tím',bg:'#8e44ad',text:'#fff'},
+  {en:'pink',vi:'hồng',bg:'#fd79a8',text:'#fff'},
+  {en:'black',vi:'đen',bg:'#2d3436',text:'#fff'},
+  {en:'white',vi:'trắng',bg:'#dfe6e9',text:'#222'},
+  {en:'gray',vi:'xám',bg:'#636e72',text:'#fff'},
+  {en:'brown',vi:'nâu',bg:'#795548',text:'#fff'},
+  {en:'gold',vi:'vàng kim',bg:'#f9ca24',text:'#222'},
+  {en:'silver',vi:'bạc',bg:'#b2bec3',text:'#222'},
+  {en:'navy',vi:'xanh đậm',bg:'#1e3799',text:'#fff'},
+  {en:'cream',vi:'kem',bg:'#ffeaa7',text:'#222'},
+];
+
+const GREETINGS = [
+  {en:'Hello! / Hi!',vi:'Xin chào!',note:'Câu chào thông dụng nhất, dùng mọi lúc'},
+  {en:'Good morning!',vi:'Chào buổi sáng!',note:'Dùng từ sáng sớm đến khoảng 12h trưa'},
+  {en:'Good afternoon!',vi:'Chào buổi chiều!',note:'Dùng từ 12h trưa đến khoảng 6h chiều'},
+  {en:'Good evening!',vi:'Chào buổi tối!',note:'Dùng từ chiều tối trở đi'},
+  {en:'Good night!',vi:'Chúc ngủ ngon!',note:'Dùng khi chia tay vào buổi tối / trước khi đi ngủ'},
+  {en:'How are you?',vi:'Bạn có khỏe không?',note:'Câu hỏi thăm sức khỏe thông dụng'},
+  {en:'I\'m fine, thank you!',vi:'Tôi khỏe, cảm ơn!',note:'Trả lời câu hỏi "How are you?"'},
+  {en:'Nice to meet you!',vi:'Rất vui được gặp bạn!',note:'Khi gặp ai đó lần đầu'},
+  {en:'What\'s your name?',vi:'Tên bạn là gì?',note:'Hỏi tên'},
+  {en:'My name is ...',vi:'Tên tôi là ...',note:'Giới thiệu tên bản thân'},
+  {en:'Where are you from?',vi:'Bạn đến từ đâu?',note:'Hỏi quê quán / đất nước'},
+  {en:'I\'m from Vietnam.',vi:'Tôi đến từ Việt Nam.',note:'Trả lời về quê quán'},
+  {en:'See you later!',vi:'Gặp lại sau nhé!',note:'Tạm biệt — sẽ gặp lại'},
+  {en:'Goodbye! / Bye!',vi:'Tạm biệt!',note:'Câu chào khi chia tay'},
+];
+
+const DAYS = ['Monday — Thứ Hai','Tuesday — Thứ Ba','Wednesday — Thứ Tư','Thursday — Thứ Năm','Friday — Thứ Sáu','Saturday — Thứ Bảy','Sunday — Chủ Nhật'];
+const MONTHS = ['January — Tháng 1','February — Tháng 2','March — Tháng 3','April — Tháng 4','May — Tháng 5','June — Tháng 6','July — Tháng 7','August — Tháng 8','September — Tháng 9','October — Tháng 10','November — Tháng 11','December — Tháng 12'];
+
+const FAMILY_WORDS = [
+  {en:'father',pron:'/ˈfɑːðər/',vi:'bố / cha',ex:'My father is a doctor.'},
+  {en:'mother',pron:'/ˈmʌðər/',vi:'mẹ',ex:'My mother cooks very well.'},
+  {en:'son',pron:'/sʌn/',vi:'con trai',ex:'Their son is 10 years old.'},
+  {en:'daughter',pron:'/ˈdɔːtər/',vi:'con gái',ex:'She has one daughter.'},
+  {en:'brother',pron:'/ˈbrʌðər/',vi:'anh / em trai',ex:'My brother lives in Saigon.'},
+  {en:'sister',pron:'/ˈsɪstər/',vi:'chị / em gái',ex:'My sister is a teacher.'},
+  {en:'grandfather',pron:'/ˈɡrændfɑːðər/',vi:'ông',ex:'My grandfather is 75 years old.'},
+  {en:'grandmother',pron:'/ˈɡrændmʌðər/',vi:'bà',ex:'My grandmother makes great food.'},
+  {en:'uncle',pron:'/ˈʌŋkəl/',vi:'chú / bác / cậu',ex:'My uncle works in Hanoi.'},
+  {en:'aunt',pron:'/ænt/',vi:'cô / dì / bác gái',ex:'My aunt is very kind.'},
+  {en:'husband',pron:'/ˈhʌzbənd/',vi:'chồng',ex:'Her husband is a businessman.'},
+  {en:'wife',pron:'/waɪf/',vi:'vợ',ex:'His wife is a nurse.'},
+];
+
+const BODY_WORDS = [
+  {en:'head',pron:'/hɛd/',vi:'đầu',ex:'She nodded her head.'},
+  {en:'eye',pron:'/aɪ/',vi:'mắt',ex:'He has blue eyes.'},
+  {en:'nose',pron:'/noʊz/',vi:'mũi',ex:'She has a small nose.'},
+  {en:'mouth',pron:'/maʊθ/',vi:'miệng',ex:'Open your mouth, please.'},
+  {en:'ear',pron:'/ɪər/',vi:'tai',ex:'He can\'t hear with his left ear.'},
+  {en:'hair',pron:'/hɛr/',vi:'tóc',ex:'She has long black hair.'},
+  {en:'hand',pron:'/hænd/',vi:'tay / bàn tay',ex:'Please wash your hands.'},
+  {en:'arm',pron:'/ɑːrm/',vi:'cánh tay',ex:'She broke her arm last year.'},
+  {en:'leg',pron:'/lɛɡ/',vi:'chân / cẳng chân',ex:'He hurt his leg playing football.'},
+  {en:'foot',pron:'/fʊt/',vi:'bàn chân',ex:'She has small feet.'},
+  {en:'back',pron:'/bæk/',vi:'lưng',ex:'My back hurts from sitting too long.'},
+  {en:'shoulder',pron:'/ˈʃoʊldər/',vi:'vai',ex:'He has broad shoulders.'},
+];
+
+const FOOD_WORDS = [
+  {en:'rice',pron:'/raɪs/',vi:'cơm / gạo',ex:'Vietnamese people eat rice every day.'},
+  {en:'bread',pron:'/brɛd/',vi:'bánh mì',ex:'I have bread for breakfast.'},
+  {en:'egg',pron:'/ɛɡ/',vi:'trứng',ex:'She eats two eggs every morning.'},
+  {en:'chicken',pron:'/ˈtʃɪkɪn/',vi:'gà / thịt gà',ex:'I like grilled chicken.'},
+  {en:'fish',pron:'/fɪʃ/',vi:'cá',ex:'Vietnamese people love fish sauce.'},
+  {en:'vegetable',pron:'/ˈvɛdʒtəbəl/',vi:'rau củ',ex:'Eat more vegetables!'},
+  {en:'fruit',pron:'/fruːt/',vi:'trái cây',ex:'Tropical fruits are delicious.'},
+  {en:'water',pron:'/ˈwɔːtər/',vi:'nước',ex:'Please give me a glass of water.'},
+  {en:'coffee',pron:'/ˈkɒfi/',vi:'cà phê',ex:'Vietnamese coffee is very strong.'},
+  {en:'milk',pron:'/mɪlk/',vi:'sữa',ex:'I drink milk every morning.'},
+  {en:'noodle',pron:'/ˈnuːdəl/',vi:'mì / bún',ex:'Pho is a noodle soup.'},
+  {en:'soup',pron:'/suːp/',vi:'súp / canh',ex:'She cooked a delicious soup.'},
+];
+
+const ANIMAL_WORDS = [
+  {en:'dog',pron:'/dɒɡ/',vi:'chó',ex:'My dog is very friendly.'},
+  {en:'cat',pron:'/kæt/',vi:'mèo',ex:'The cat is sleeping.'},
+  {en:'bird',pron:'/bɜːrd/',vi:'chim',ex:'The bird sings beautifully.'},
+  {en:'fish',pron:'/fɪʃ/',vi:'cá',ex:'We have fish in our pond.'},
+  {en:'cow',pron:'/kaʊ/',vi:'bò',ex:'Cows produce milk.'},
+  {en:'pig',pron:'/pɪɡ/',vi:'lợn / heo',ex:'Pigs are intelligent animals.'},
+  {en:'chicken',pron:'/ˈtʃɪkɪn/',vi:'gà',ex:'We raise chickens on the farm.'},
+  {en:'elephant',pron:'/ˈɛlɪfənt/',vi:'voi',ex:'Elephants have a great memory.'},
+  {en:'tiger',pron:'/ˈtaɪɡər/',vi:'hổ',ex:'Tigers are endangered.'},
+  {en:'monkey',pron:'/ˈmʌŋki/',vi:'khỉ',ex:'Monkeys love bananas.'},
+  {en:'snake',pron:'/sneɪk/',vi:'rắn',ex:'Some snakes are poisonous.'},
+  {en:'rabbit',pron:'/ˈræbɪt/',vi:'thỏ',ex:'The rabbit runs very fast.'},
+];
+
+const JOB_WORDS = [
+  {en:'teacher',pron:'/ˈtiːtʃər/',vi:'giáo viên',ex:'She is an English teacher.'},
+  {en:'doctor',pron:'/ˈdɒktər/',vi:'bác sĩ',ex:'My father is a doctor.'},
+  {en:'nurse',pron:'/nɜːrs/',vi:'y tá',ex:'The nurse takes care of patients.'},
+  {en:'engineer',pron:'/ˌɛndʒɪˈnɪər/',vi:'kỹ sư',ex:'He works as a software engineer.'},
+  {en:'farmer',pron:'/ˈfɑːrmər/',vi:'nông dân',ex:'Farmers work very hard.'},
+  {en:'chef',pron:'/ʃɛf/',vi:'đầu bếp',ex:'The chef cooks amazing food.'},
+  {en:'driver',pron:'/ˈdraɪvər/',vi:'tài xế',ex:'He is a taxi driver.'},
+  {en:'student',pron:'/ˈstjuːdənt/',vi:'học sinh / sinh viên',ex:'She is a university student.'},
+  {en:'police',pron:'/pəˈliːs/',vi:'cảnh sát',ex:'The police officer helped us.'},
+  {en:'soldier',pron:'/ˈsoʊldʒər/',vi:'lính / quân nhân',ex:'He is a brave soldier.'},
+  {en:'businessman',pron:'/ˈbɪznɪsmæn/',vi:'doanh nhân',ex:'He is a successful businessman.'},
+  {en:'artist',pron:'/ˈɑːrtɪst/',vi:'nghệ sĩ',ex:'She is a talented artist.'},
+];
+
+const EMOTION_WORDS = [
+  {en:'happy',pron:'/ˈhæpi/',vi:'vui / hạnh phúc',ex:'I feel very happy today!'},
+  {en:'sad',pron:'/sæd/',vi:'buồn',ex:'She looks sad. What happened?'},
+  {en:'angry',pron:'/ˈæŋɡri/',vi:'tức giận',ex:'He was angry about the result.'},
+  {en:'scared',pron:'/skɛrd/',vi:'sợ hãi',ex:'She was scared of the dark.'},
+  {en:'surprised',pron:'/sərˈpraɪzd/',vi:'ngạc nhiên',ex:'I was surprised by the gift.'},
+  {en:'tired',pron:'/ˈtaɪərd/',vi:'mệt mỏi',ex:'I am so tired after work.'},
+  {en:'excited',pron:'/ɪkˈsaɪtɪd/',vi:'hào hứng / phấn khích',ex:'She is excited about the trip.'},
+  {en:'bored',pron:'/bɔːrd/',vi:'chán',ex:'I am bored. Let\'s do something.'},
+  {en:'nervous',pron:'/ˈnɜːrvəs/',vi:'lo lắng / hồi hộp',ex:'He felt nervous before the exam.'},
+  {en:'proud',pron:'/praʊd/',vi:'tự hào',ex:'I am proud of you!'},
+  {en:'lonely',pron:'/ˈloʊnli/',vi:'cô đơn',ex:'She feels lonely without her friends.'},
+  {en:'calm',pron:'/kɑːm/',vi:'bình tĩnh / yên bình',ex:'Stay calm and breathe slowly.'},
+];
+
+const COMMON_100 = [
+  ['the','ðə','mạo từ'],['be','biː','là/thì'],['of','ɒv','của'],['and','ænd','và'],
+  ['a','ə','một'],['in','ɪn','trong'],['to','tuː','đến/để'],['have','hæv','có'],
+  ['it','ɪt','nó'],['I','aɪ','tôi'],['that','ðæt','đó'],['for','fɔː','cho/vì'],
+  ['on','ɒn','trên'],['with','wɪð','với'],['he','hiː','anh ấy'],['as','æz','như'],
+  ['you','juː','bạn'],['do','duː','làm'],['at','æt','tại'],['this','ðɪs','này'],
+  ['but','bʌt','nhưng'],['his','hɪz','của anh ấy'],['by','baɪ','bởi'],['from','frɒm','từ'],
+  ['they','ðeɪ','họ'],['we','wiː','chúng ta'],['say','seɪ','nói'],['her','hɜː','của cô ấy'],
+  ['she','ʃiː','cô ấy'],['or','ɔː','hoặc'],['an','æn','một'],['will','wɪl','sẽ'],
+  ['my','maɪ','của tôi'],['one','wʌn','một'],['all','ɔːl','tất cả'],['would','wʊd','sẽ'],
+  ['there','ðɛr','ở đó'],['their','ðɛr','của họ'],['what','wɒt','gì'],['so','soʊ','vì vậy'],
+  ['up','ʌp','lên'],['out','aʊt','ra'],['if','ɪf','nếu'],['about','əˈbaʊt','về'],
+  ['who','huː','ai'],['get','ɡɛt','được'],['which','wɪtʃ','cái nào'],['go','ɡoʊ','đi'],
+  ['me','miː','tôi'],['when','wɛn','khi'],['make','meɪk','làm'],['can','kæn','có thể'],
+  ['like','laɪk','thích'],['time','taɪm','thời gian'],['no','noʊ','không'],['just','dʒʌst','chỉ/vừa'],
+  ['him','hɪm','anh ấy'],['know','noʊ','biết'],['take','teɪk','lấy'],['people','ˈpiːpl','mọi người'],
+  ['into','ˈɪntuː','vào'],['year','jɪər','năm'],['your','jɔːr','của bạn'],['good','ɡʊd','tốt'],
+  ['some','sʌm','một số'],['could','kʊd','có thể'],['them','ðɛm','họ'],['see','siː','thấy/xem'],
+  ['other','ˈʌðər','khác'],['than','ðæn','hơn'],['then','ðɛn','sau đó'],['now','naʊ','bây giờ'],
+  ['look','lʊk','nhìn'],['come','kʌm','đến'],['its','ɪts','của nó'],['over','ˈoʊvər','trên/qua'],
+  ['think','θɪŋk','nghĩ'],['also','ˈɔːlsoʊ','cũng'],['back','bæk','lại/lưng'],['after','ˈæftər','sau'],
+  ['use','juːz','dùng'],['two','tuː','hai'],['how','haʊ','thế nào'],['our','aʊər','của chúng ta'],
+  ['work','wɜːrk','làm việc'],['first','fɜːrst','đầu tiên'],['well','wɛl','tốt'],['way','weɪ','cách'],
+  ['even','ˈiːvən','thậm chí'],['new','njuː','mới'],['want','wɒnt','muốn'],['because','bɪˈkɒz','vì'],
+  ['any','ˈɛni','bất kỳ'],['these','ðiːz','những này'],['give','ɡɪv','cho'],['day','deɪ','ngày'],
+  ['most','moʊst','hầu hết'],['us','ʌs','chúng tôi'],['between','bɪˈtwiːn','giữa'],['need','niːd','cần'],
+  ['large','lɑːrdʒ','lớn'],['often','ˈɒfən','thường'],['hand','hænd','tay'],['high','haɪ','cao'],
+];
+
+const TIME_WORDS = [
+  {en:'hour',pron:'/aʊər/',vi:'giờ',ex:'There are 24 hours in a day.'},
+  {en:'minute',pron:'/ˈmɪnɪt/',vi:'phút',ex:'Wait a minute, please.'},
+  {en:'second',pron:'/ˈsɛkənd/',vi:'giây',ex:'It only took a few seconds.'},
+  {en:'clock',pron:'/klɒk/',vi:'đồng hồ (treo tường)',ex:'The clock says 3 o\'clock.'},
+  {en:'watch',pron:'/wɒtʃ/',vi:'đồng hồ (đeo tay)',ex:'She wears a gold watch.'},
+  {en:'morning',pron:'/ˈmɔːrnɪŋ/',vi:'buổi sáng',ex:'I exercise every morning.'},
+  {en:'afternoon',pron:'/ˌæftərˈnuːn/',vi:'buổi chiều',ex:'We have class in the afternoon.'},
+  {en:'evening',pron:'/ˈiːvnɪŋ/',vi:'buổi tối',ex:'We eat dinner in the evening.'},
+  {en:'night',pron:'/naɪt/',vi:'ban đêm',ex:'The stars shine at night.'},
+  {en:'today',pron:'/təˈdeɪ/',vi:'hôm nay',ex:'Today is a beautiful day.'},
+  {en:'tomorrow',pron:'/təˈmɒroʊ/',vi:'ngày mai',ex:'See you tomorrow!'},
+  {en:'yesterday',pron:'/ˈjɛstərdeɪ/',vi:'hôm qua',ex:'I saw her yesterday.'},
+];
+
+const HOUSE_WORDS = [
+  {en:'house',pron:'/haʊs/',vi:'nhà',ex:'We live in a small house.'},
+  {en:'room',pron:'/ruːm/',vi:'phòng',ex:'This room is very big.'},
+  {en:'kitchen',pron:'/ˈkɪtʃɪn/',vi:'nhà bếp',ex:'She cooks in the kitchen.'},
+  {en:'bedroom',pron:'/ˈbɛdruːm/',vi:'phòng ngủ',ex:'My bedroom is upstairs.'},
+  {en:'bathroom',pron:'/ˈbæθruːm/',vi:'phòng tắm',ex:'The bathroom is clean.'},
+  {en:'door',pron:'/dɔːr/',vi:'cửa',ex:'Please close the door.'},
+  {en:'window',pron:'/ˈwɪndoʊ/',vi:'cửa sổ',ex:'Open the window for fresh air.'},
+  {en:'table',pron:'/ˈteɪbəl/',vi:'bàn',ex:'Put the book on the table.'},
+  {en:'chair',pron:'/tʃɛr/',vi:'ghế',ex:'Please sit on this chair.'},
+  {en:'bed',pron:'/bɛd/',vi:'giường',ex:'The bed is very comfortable.'},
+  {en:'garden',pron:'/ˈɡɑːrdən/',vi:'vườn',ex:'We grow flowers in the garden.'},
+  {en:'roof',pron:'/ruːf/',vi:'mái nhà',ex:'The roof is made of tiles.'},
+];
+
+const CLOTHES_WORDS = [
+  {en:'shirt',pron:'/ʃɜːrt/',vi:'áo sơ mi',ex:'He wears a white shirt.'},
+  {en:'pants',pron:'/pænts/',vi:'quần dài',ex:'These pants are too long.'},
+  {en:'dress',pron:'/drɛs/',vi:'váy',ex:'She bought a new dress.'},
+  {en:'shoes',pron:'/ʃuːz/',vi:'giày',ex:'I need new shoes.'},
+  {en:'hat',pron:'/hæt/',vi:'mũ / nón',ex:'Wear a hat in the sun.'},
+  {en:'jacket',pron:'/ˈdʒækɪt/',vi:'áo khoác',ex:'Put on your jacket, it\'s cold.'},
+  {en:'skirt',pron:'/skɜːrt/',vi:'chân váy',ex:'She wears a short skirt.'},
+  {en:'socks',pron:'/sɒks/',vi:'tất / vớ',ex:'I wear socks every day.'},
+  {en:'scarf',pron:'/skɑːrf/',vi:'khăn quàng',ex:'She wears a red scarf.'},
+  {en:'uniform',pron:'/ˈjuːnɪfɔːrm/',vi:'đồng phục',ex:'Students wear uniforms to school.'},
+  {en:'sandals',pron:'/ˈsændəlz/',vi:'dép',ex:'I wear sandals at home.'},
+  {en:'gloves',pron:'/ɡlʌvz/',vi:'găng tay',ex:'Wear gloves to keep warm.'},
+];
+
+const WEATHER_WORDS = [
+  {en:'sunny',pron:'/ˈsʌni/',vi:'nắng',ex:'It\'s a sunny day today.'},
+  {en:'rainy',pron:'/ˈreɪni/',vi:'mưa',ex:'It\'s rainy outside.'},
+  {en:'cloudy',pron:'/ˈklaʊdi/',vi:'nhiều mây',ex:'The sky is cloudy today.'},
+  {en:'windy',pron:'/ˈwɪndi/',vi:'nhiều gió',ex:'It\'s too windy to go out.'},
+  {en:'hot',pron:'/hɒt/',vi:'nóng',ex:'Summer in Vietnam is very hot.'},
+  {en:'cold',pron:'/koʊld/',vi:'lạnh',ex:'It\'s cold in winter.'},
+  {en:'warm',pron:'/wɔːrm/',vi:'ấm',ex:'The weather is warm today.'},
+  {en:'cool',pron:'/kuːl/',vi:'mát',ex:'The evening air is cool.'},
+  {en:'storm',pron:'/stɔːrm/',vi:'bão',ex:'A storm is coming tonight.'},
+  {en:'snow',pron:'/snoʊ/',vi:'tuyết',ex:'It never snows in Saigon.'},
+  {en:'fog',pron:'/fɒɡ/',vi:'sương mù',ex:'The fog is very thick today.'},
+  {en:'temperature',pron:'/ˈtɛmpərətʃər/',vi:'nhiệt độ',ex:'The temperature is 30 degrees.'},
+];
+
+const TRANSPORT_WORDS = [
+  {en:'car',pron:'/kɑːr/',vi:'ô tô',ex:'He drives a red car.'},
+  {en:'bus',pron:'/bʌs/',vi:'xe buýt',ex:'I go to school by bus.'},
+  {en:'bicycle',pron:'/ˈbaɪsɪkəl/',vi:'xe đạp',ex:'She rides a bicycle to work.'},
+  {en:'motorcycle',pron:'/ˈmoʊtərsaɪkəl/',vi:'xe máy',ex:'Most Vietnamese ride motorcycles.'},
+  {en:'train',pron:'/treɪn/',vi:'tàu hỏa',ex:'The train arrives at 9 AM.'},
+  {en:'airplane',pron:'/ˈɛrpleɪn/',vi:'máy bay',ex:'We travel by airplane.'},
+  {en:'boat',pron:'/boʊt/',vi:'thuyền',ex:'They crossed the river by boat.'},
+  {en:'taxi',pron:'/ˈtæksi/',vi:'xe taxi',ex:'Let\'s take a taxi home.'},
+  {en:'truck',pron:'/trʌk/',vi:'xe tải',ex:'The truck carries heavy goods.'},
+  {en:'subway',pron:'/ˈsʌbweɪ/',vi:'tàu điện ngầm',ex:'The subway is very fast.'},
+  {en:'road',pron:'/roʊd/',vi:'đường',ex:'This road is very busy.'},
+  {en:'bridge',pron:'/brɪdʒ/',vi:'cầu',ex:'We crossed the bridge.'},
+const TECH_WORDS = [
+  {en:'computer',pron:'/kəmˈpjuːtər/',vi:'máy tính',ex:'I use a computer for work.'},
+  {en:'internet',pron:'/ˈɪntərnet/',vi:'internet',ex:'The internet is very fast here.'},
+  {en:'website',pron:'/ˈwebsɑɪt/',vi:'trang web',ex:'This website is very useful.'},
+  {en:'download',pron:'/ˈdaʊnloʊd/',vi:'tải xuống',ex:'Please download the file.'},
+  {en:'password',pron:'/ˈpæswɜːrd/',vi:'mật khẩu',ex:'Don\'t share your password.'},
+  {en:'screen',pron:'/skriːn/',vi:'màn hình',ex:'The screen is too bright.'},
+  {en:'keyboard',pron:'/ˈkiːbɔːrd/',vi:'bàn phím',ex:'She types fast on the keyboard.'},
+  {en:'software',pron:'/ˈsɒftweər/',vi:'phần mềm',ex:'We need to update the software.'},
+  {en:'smartphone',pron:'/ˈsmɑːrtfoʊn/',vi:'điện thoại thông minh',ex:'Almost everyone has a smartphone.'},
+  {en:'email',pron:'/ˈiːmeɪl/',vi:'thư điện tử',ex:'I\'ll send you an email.'},
+  {en:'cloud',pron:'/klaʊd/',vi:'đám mây (điện toán)',ex:'Save your files to the cloud.'},
+  {en:'data',pron:'/ˈdeɪtə/',vi:'dữ liệu',ex:'We need more data to decide.'},
+  {en:'update',pron:'/ʌpˈdeɪt/',vi:'cập nhật',ex:'Please update your app.'},
+  {en:'search',pron:'/sɜːrtʃ/',vi:'tìm kiếm',ex:'Search for the answer online.'},
+  {en:'battery',pron:'/ˈbætəri/',vi:'pin',ex:'My battery is low.'},
+  {en:'charger',pron:'/ˈtʃɑːrdʒər/',vi:'sạc',ex:'Where is my phone charger?'},
+  {en:'WiFi',pron:'/ˈwaɪfaɪ/',vi:'wifi',ex:'Can I have the WiFi password?'},
+  {en:'app',pron:'/æp/',vi:'ứng dụng',ex:'Download this learning app.'},
+  {en:'mouse',pron:'/maʊs/',vi:'chuột máy tính',ex:'Click the left mouse button.'},
+  {en:'laptop',pron:'/ˈlæptɒp/',vi:'máy tính xách tay',ex:'I bought a new laptop.'},
+];
+
+const TRAVEL_WORDS = [
+  {en:'airport',pron:'/ˈɜːrpɔːrt/',vi:'sân bay',ex:'We arrived at the airport early.'},
+  {en:'passport',pron:'/ˈpæspɔːrt/',vi:'hộ chiếu',ex:'Don\'t forget your passport.'},
+  {en:'luggage',pron:'/ˈlʌgɪdʒ/',vi:'hành lý',ex:'My luggage is very heavy.'},
+  {en:'hotel',pron:'/hoʊˈtel/',vi:'khách sạn',ex:'The hotel has a nice view.'},
+  {en:'booking',pron:'/ˈbʊkɪŋ/',vi:'đặt chỗ',ex:'I made a booking online.'},
+  {en:'flight',pron:'/flaɪt/',vi:'chuyến bay',ex:'Our flight departs at 6 AM.'},
+  {en:'tour',pron:'/tʊər/',vi:'chuyến tham quan',ex:'We took a city tour.'},
+  {en:'map',pron:'/mæp/',vi:'bản đồ',ex:'Can you show me on the map?'},
+  {en:'souvenir',pron:'/ˌsuːvəˈnɪər/',vi:'quà lưu niệm',ex:'I bought some souvenirs.'},
+  {en:'beach',pron:'/biːtʃ/',vi:'bãi biển',ex:'Let\'s go to the beach!'},
+  {en:'ticket',pron:'/ˈtɪkɪt/',vi:'vé',ex:'How much is the ticket?'},
+  {en:'visa',pron:'/ˈviːzə/',vi:'thị thực',ex:'Do I need a visa to enter?'},
+  {en:'backpack',pron:'/ˈbækpæk/',vi:'ba lô',ex:'Pack your backpack carefully.'},
+  {en:'sightseeing',pron:'/ˈsaɪtsiːɪŋ/',vi:'tham quan',ex:'We went sightseeing in Hanoi.'},
+  {en:'resort',pron:'/rɪˈzɔːrt/',vi:'khu nghỉ dưỡng',ex:'They stayed at a beach resort.'},
+  {en:'destination',pron:'/ˌdes.tɪˈneɪ.ʃən/',vi:'điểm đến',ex:'Da Nang is a popular destination.'},
+  {en:'check-in',pron:'/ˈtʃekɪn/',vi:'làm thủ tục',ex:'Check-in time is 2 PM.'},
+  {en:'departure',pron:'/dɪˈpɑːrtʃər/',vi:'khởi hành',ex:'The departure gate is B12.'},
+  {en:'currency',pron:'/ˈkʌrənsi/',vi:'tiền tệ',ex:'What currency do they use?'},
+  {en:'guide',pron:'/ɡaɪd/',vi:'hướng dẫn viên',ex:'Our tour guide was very helpful.'},
+];
+
+const ENV_WORDS = [
+  {en:'pollution',pron:'/pəˈluːʃən/',vi:'ô nhiễm',ex:'Air pollution is a big problem.'},
+  {en:'recycle',pron:'/riːˈsaɪkl/',vi:'tái chế',ex:'Please recycle your bottles.'},
+  {en:'climate',pron:'/ˈklaɪmət/',vi:'khí hậu',ex:'The climate is changing rapidly.'},
+  {en:'energy',pron:'/ˈenərdʒi/',vi:'năng lượng',ex:'Solar energy is clean.'},
+  {en:'forest',pron:'/ˈfɒrɪst/',vi:'rừng',ex:'We must protect the forests.'},
+  {en:'wildlife',pron:'/ˈwaɪldlaɪf/',vi:'động vật hoang dã',ex:'Wildlife is in danger.'},
+  {en:'ocean',pron:'/ˈoʊʃən/',vi:'đại dương',ex:'Plastic pollutes our oceans.'},
+  {en:'waste',pron:'/weɪst/',vi:'rác thải',ex:'Reduce waste at home.'},
+  {en:'solar',pron:'/ˈsoʊlər/',vi:'năng lượng mặt trời',ex:'Solar panels save energy.'},
+  {en:'organic',pron:'/ɔːrˈɡænɪk/',vi:'hữu cơ',ex:'I prefer organic food.'},
+  {en:'endangered',pron:'/ɪnˈdeɪndʒərd/',vi:'có nguy cơ tuyệt chủng',ex:'Tigers are endangered animals.'},
+  {en:'deforestation',pron:'/diˌfɒrɪˈsteɪʃən/',vi:'phá rừng',ex:'Deforestation destroys habitats.'},
+  {en:'greenhouse',pron:'/ˈɡriːnhaʊs/',vi:'nhà kính',ex:'Greenhouse gases warm the Earth.'},
+  {en:'ecosystem',pron:'/ˈiːkoʊsɪstəm/',vi:'hệ sinh thái',ex:'Coral reefs are important ecosystems.'},
+  {en:'drought',pron:'/draʊt/',vi:'hạn hán',ex:'The drought killed many crops.'},
+  {en:'flood',pron:'/flʌd/',vi:'lũ lụt',ex:'The flood destroyed many homes.'},
+  {en:'carbon',pron:'/ˈkɑːrbən/',vi:'carbon',ex:'We need to reduce carbon emissions.'},
+  {en:'biodiversity',pron:'/ˌbaɪoʊdaɪˈvɜːrsəti/',vi:'đa dạng sinh học',ex:'Biodiversity is essential for life.'},
+  {en:'renewable',pron:'/rɪˈnjuːəbəl/',vi:'tái tạo được',ex:'Wind is a renewable energy source.'},
+  {en:'sustainable',pron:'/səˈsteɪnəbəl/',vi:'bền vững',ex:'We need sustainable development.'},
+];
+
+const HEALTH_WORDS = [
+  {en:'exercise',pron:'/ˈeksərsaɪz/',vi:'tập thể dục',ex:'Exercise is good for health.'},
+  {en:'diet',pron:'/ˈdaɪət/',vi:'chế độ ăn',ex:'A healthy diet is important.'},
+  {en:'vitamin',pron:'/ˈvaɪtəmɪn/',vi:'vitamin',ex:'Take your vitamins daily.'},
+  {en:'symptom',pron:'/ˈsɪmptəm/',vi:'triệu chứng',ex:'What are your symptoms?'},
+  {en:'fever',pron:'/ˈfiːvər/',vi:'sốt',ex:'She has a high fever.'},
+  {en:'headache',pron:'/ˈhedeɪk/',vi:'đau đầu',ex:'I have a terrible headache.'},
+  {en:'medicine',pron:'/ˈmedəsɪn/',vi:'thuốc',ex:'Take this medicine three times a day.'},
+  {en:'hospital',pron:'/ˈhɒspɪtl/',vi:'bệnh viện',ex:'He was taken to the hospital.'},
+  {en:'doctor',pron:'/ˈdɒktər/',vi:'bác sĩ',ex:'You should see a doctor.'},
+  {en:'patient',pron:'/ˈpeɪʃənt/',vi:'bệnh nhân',ex:'The patient needs rest.'},
+  {en:'allergy',pron:'/ˈælərdʒi/',vi:'dị ứng',ex:'I have an allergy to peanuts.'},
+  {en:'stress',pron:'/stres/',vi:'căng thẳng',ex:'Too much stress is bad for health.'},
+  {en:'nutrition',pron:'/njuːˈtrɪʃən/',vi:'dinh dưỡng',ex:'Good nutrition helps you grow.'},
+  {en:'vaccine',pron:'/vækˈsiːn/',vi:'vắc-xin',ex:'The vaccine protects against disease.'},
+  {en:'hygiene',pron:'/ˈhaɪdʒiːn/',vi:'vệ sinh',ex:'Good hygiene prevents illness.'},
+  {en:'therapy',pron:'/ˈθerəpi/',vi:'trị liệu',ex:'Physical therapy helped her recover.'},
+  {en:'diagnosis',pron:'/ˌdaɪəɡˈnoʊsɪs/',vi:'chẩn đoán',ex:'The doctor gave a diagnosis.'},
+  {en:'prescription',pron:'/prɪˈskrɪpʃən/',vi:'đơn thuốc',ex:'The doctor wrote a prescription.'},
+  {en:'mental',pron:'/ˈmentl/',vi:'tinh thần',ex:'Mental health is just as important.'},
+  {en:'obesity',pron:'/oʊˈbiːsəti/',vi:'béo phì',ex:'Obesity is a growing health problem.'},
+];
+
+const ALL_WORDS_RAW = [...FAMILY_WORDS,...BODY_WORDS,...FOOD_WORDS,...ANIMAL_WORDS,...HOUSE_WORDS,...CLOTHES_WORDS,...JOB_WORDS,...WEATHER_WORDS,...TRANSPORT_WORDS,...EMOTION_WORDS,...TIME_WORDS,...TECH_WORDS,...TRAVEL_WORDS,...ENV_WORDS,...HEALTH_WORDS,...FLASHCARDS];
+const _seen = new Set();
+const ALL_WORDS = ALL_WORDS_RAW.filter(w=>{if(_seen.has(w.en))return false;_seen.add(w.en);return true;});
+
+// ===== LEARNED STATE =====
+let learned = JSON.parse(localStorage.getItem('ee_learned')||'[]');
+function toggleLearn(word) {
+  const idx = learned.indexOf(word);
+  if(idx>-1) learned.splice(idx,1); else learned.push(word);
+  localStorage.setItem('ee_learned',JSON.stringify(learned));
+  document.getElementById('learnedCount').textContent = learned.length;
+}
+function isLearned(w){return learned.includes(w)}
+
+// ===== RENDER FUNCTIONS =====
+function wordCard(w, onclick_extra='') {
+  const lrn = isLearned(w.en);
+  return `<div class="word-card ${lrn?'learned':''}" onclick="toggleLearn('${w.en}');this.classList.toggle('learned');document.getElementById('learnedCount').textContent=JSON.parse(localStorage.getItem('ee_learned')||'[]').length">
+    <div class="learned-badge">✓</div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="cursor:pointer;font-size:14px" onclick="event.stopPropagation();speakTTS('${w.en}')">🔊</span>
+      <div class="word-en">${w.en}</div>
+    </div>
+    <div class="word-pron">${w.pron}</div>
+    <div class="word-vi">${w.vi}</div>
+    <div class="word-ex">💡 ${w.ex}</div>
+  </div>`;
+}
+
+function renderAlpha(){
+  const g = document.getElementById('alphaGrid');
+  const vowels='AEIOU';
+  g.innerHTML = ALPHA.map(a=>`
+    <div class="alpha-card">
+      <div class="alpha-letter" style="${vowels.includes(a.u)?'color:var(--accent3)':''}">${a.u}</div>
+      <div class="alpha-lower">${a.l}</div>
+      <div class="alpha-sound">/${a.s}/</div>
+    </div>`).join('');
+}
+
+function renderNumbers(){
+  document.getElementById('num120').innerHTML = NUMBERS_1_20.map(([n,en,vi])=>`
+    <div class="num-item"><div class="num-n">${n}</div><div class="num-en">${en}</div><div class="num-vi">${vi}</div></div>`).join('');
+  document.getElementById('numTens').innerHTML = TENS.map(([n,en,vi])=>`
+    <div class="num-item"><div class="num-n">${n}</div><div class="num-en">${en}</div><div class="num-vi">${vi}</div></div>`).join('');
+}
+
+function renderColors(){
+  document.getElementById('colorGrid').innerHTML = COLORS.map(c=>`
+    <div class="color-item" style="background:${c.bg}">
+      <div class="color-en" style="color:${c.text}">${c.en}</div>
+      <div class="color-vi" style="color:${c.text}">${c.vi}</div>
+    </div>`).join('');
+}
+
+function renderGreetings(){
+  document.getElementById('greetingList').innerHTML = GREETINGS.map(g=>`
+    <div class="phrase-item">
+      <div class="p-en">${g.en}</div>
+      <div class="p-vi">${g.vi}</div>
+      <div class="p-note">→ ${g.note}</div>
+    </div>`).join('');
+}
+
+function renderDaysMonths(){
+  document.getElementById('daysList').innerHTML = DAYS.map(d=>`
+    <div style="padding:7px 10px;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--text2)">${d}</div>`).join('');
+  document.getElementById('monthsList').innerHTML = MONTHS.map(m=>`
+    <div style="padding:7px 10px;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--text2)">${m}</div>`).join('');
+}
+
+function renderWordGrid(id, words){
+  document.getElementById(id).innerHTML = words.map(w=>wordCard(w)).join('');
+}
+
+function renderCommon100(){
+  document.getElementById('common100Grid').innerHTML = COMMON_100.map(([en,pron,vi])=>`
+    <div class="cw-item">
+      <div class="cw-en">${en}</div>
+      <div class="cw-pron">/${pron}/</div>
+      <div class="cw-vi">${vi}</div>
+    </div>`).join('');
+}
+
+// ===== FLASHCARD =====
+let fcIndex = 0, fcFlipped = false, fcKnown = 0;
+function renderCard(){
+  const c = FLASHCARDS[fcIndex];
+  document.getElementById('fcWord').textContent = c.word;
+  document.getElementById('fcPron').textContent = c.pron;
+  document.getElementById('fcVi').textContent = c.vi;
+  document.getElementById('fcEx').textContent = c.ex;
+  document.getElementById('fcProgress').textContent = `Thẻ ${fcIndex+1} / ${FLASHCARDS.length}  ·  Nhớ được: ${fcKnown}`;
+  document.getElementById('fcInner').classList.remove('flipped');
+  fcFlipped = false;
+}
+function flipCard(){
+  fcFlipped = !fcFlipped;
+  document.getElementById('fcInner').classList.toggle('flipped', fcFlipped);
+}
+function nextCard(knew){
+  if(knew) fcKnown++;
+  fcIndex = (fcIndex+1) % FLASHCARDS.length;
+  if(fcIndex===0) fcKnown=0;
+  renderCard();
+}
+
+// ===== SEARCH =====
+function searchWords(){
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const res = document.getElementById('searchResults');
+  if(!q){res.style.display='none';return;}
+  const found = ALL_WORDS.filter(w=>w.en.toLowerCase().includes(q)||w.vi.includes(q));
+  if(!found.length){res.style.display='grid';res.innerHTML='<div style="color:var(--text3);font-size:13px;grid-column:1/-1">Không tìm thấy từ nào.</div>';return;}
+  res.style.display='grid';
+  res.innerHTML = found.slice(0,12).map(w=>wordCard(w)).join('');
+}
+
+// ===== INIT =====
+renderAlpha();
+renderNumbers();
+renderColors();
+renderGreetings();
+renderDaysMonths();
+renderWordGrid('familyGrid', FAMILY_WORDS);
+renderWordGrid('bodyGrid', BODY_WORDS);
+renderWordGrid('foodGrid', FOOD_WORDS);
+renderWordGrid('animalsGrid', ANIMAL_WORDS);
+renderWordGrid('houseGrid', HOUSE_WORDS);
+renderWordGrid('clothesGrid', CLOTHES_WORDS);
+renderWordGrid('jobsGrid', JOB_WORDS);
+renderWordGrid('weatherGrid', WEATHER_WORDS);
+renderWordGrid('transportGrid', TRANSPORT_WORDS);
+renderWordGrid('emotionsGrid', EMOTION_WORDS);
+renderWordGrid('timeGrid', TIME_WORDS);
+renderWordGrid('techGrid', TECH_WORDS);
+renderWordGrid('travelGrid', TRAVEL_WORDS);
+renderWordGrid('envGrid', ENV_WORDS);
+renderWordGrid('healthGrid', HEALTH_WORDS);
+renderCommon100();
+renderCard();
+document.getElementById('learnedCount').textContent = learned.length;
+
+// streak
+const sd = JSON.parse(localStorage.getItem('ee_streak')||'{"count":0}');
+document.getElementById('streakDisplay').textContent = sd.count||0;
+
+// ===== TTS =====
+function speakTTS(text) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.85;
+  speechSynthesis.speak(u);
+}
+
+// ===== SPEECH RECOGNITION =====
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+let micRecognition = null;
+const MIC_WORDS = [
+  {word:'hello',ipa:'/həˈloʊ/',vi:'xin chào'},
+  {word:'beautiful',ipa:'/ˈbjuːtɪfl/',vi:'đẹp'},
+  {word:'study',ipa:'/ˈstʌdi/',vi:'học'},
+  {word:'important',ipa:'/ɪmˈpɔːrtnt/',vi:'quan trọng'},
+  {word:'difficult',ipa:'/ˈdɪfɪkəlt/',vi:'khó'},
+  {word:'understand',ipa:'/ˌʌndərˈstænd/',vi:'hiểu'},
+  {word:'family',ipa:'/ˈfæməli/',vi:'gia đình'},
+  {word:'teacher',ipa:'/ˈtiːtʃər/',vi:'giáo viên'},
+  {word:'language',ipa:'/ˈlæŋɡwɪdʒ/',vi:'ngôn ngữ'},
+  {word:'practice',ipa:'/ˈpræktɪs/',vi:'luyện tập'}
+];
+let micIdx = 0;
+function initMicSection() {
+  const sec = document.getElementById('micSection');
+  if(!SpeechRec) { sec.innerHTML='<div style="color:var(--text3);text-align:center;padding:20px">⚠️ Trình duyệt chưa hỗ trợ Speech Recognition. Dùng Chrome hoặc Edge để luyện phát âm.</div>'; return; }
+  renderMicWord();
+}
+function renderMicWord() {
+  const w = MIC_WORDS[micIdx];
+  document.getElementById('micWord').textContent = w.word;
+  document.getElementById('micIpa').textContent = w.ipa;
+  document.getElementById('micVi').textContent = w.vi;
+  document.getElementById('micProgress').textContent = `${micIdx+1} / ${MIC_WORDS.length}`;
+  document.getElementById('micResult').innerHTML = '';
+  document.getElementById('micBtn').classList.remove('recording');
+}
+function speakMicWord() {
+  speakTTS(MIC_WORDS[micIdx].word);
+}
+function startMic() {
+  if(!SpeechRec) return;
+  const btn = document.getElementById('micBtn');
+  if(micRecognition) { micRecognition.abort(); micRecognition=null; btn.classList.remove('recording'); return; }
+  micRecognition = new SpeechRec();
+  micRecognition.lang = 'en-US';
+  micRecognition.interimResults = false;
+  btn.classList.add('recording');
+  document.getElementById('micResult').innerHTML = '<div style="color:var(--text3)">🎙️ Đang nghe...</div>';
+  micRecognition.onresult = (e) => {
+    const said = e.results[0][0].transcript.toLowerCase().trim();
+    const expected = MIC_WORDS[micIdx].word.toLowerCase();
+    const correct = said === expected || said.includes(expected) || expected.includes(said);
+    const conf = Math.round(e.results[0][0].confidence * 100);
+    document.getElementById('micResult').innerHTML = correct
+      ? `<div style="color:var(--green);font-size:18px;font-weight:600">✅ Chính xác! "${said}" — ${conf}%</div>`
+      : `<div style="color:var(--coral);font-size:18px;font-weight:600">❌ Bạn nói: "${said}"</div><div style="color:var(--text3);font-size:13px;margin-top:4px">Cần nói: "${expected}" — Thử lại!</div>`;
+    btn.classList.remove('recording');
+    micRecognition = null;
+  };
+  micRecognition.onerror = () => { btn.classList.remove('recording'); micRecognition=null; document.getElementById('micResult').innerHTML='<div style="color:var(--coral)">Không nghe được. Thử lại!</div>'; };
+  micRecognition.onend = () => { btn.classList.remove('recording'); micRecognition=null; };
+  micRecognition.start();
+}
+function nextMicWord() {
+  micIdx = (micIdx + 1) % MIC_WORDS.length;
+  renderMicWord();
+}
+if(document.getElementById('micSection')) initMicSection();
+
+// Sidebar active on scroll
+const sections = document.querySelectorAll('.topic-section,[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  if(cur){document.querySelectorAll('.sb-item').forEach(i=>{i.classList.toggle('active',i.getAttribute('href')==='#'+cur)})}
+});
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

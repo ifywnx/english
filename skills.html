@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 Kỹ năng tiếng Anh — EasyEnglish</title>
+<meta name="description" content="Luyện 4 kỹ năng tiếng Anh: Đọc, Nghe, Nói, Viết. Bài đọc có câu hỏi, hội thoại tình huống, mẫu email và luyện viết tương tác.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#f4845f;--pink:#e879a0;--green:#6bcb77;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(232,121,160,0.08);top:-100px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(123,110,246,0.06);bottom:0;left:-100px}
+
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:20px 14px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--pink);background:rgba(232,121,160,0.08)}
+.sb-emoji{font-size:14px;width:20px;text-align:center}
+
+.content{padding:40px 48px;max-width:860px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+
+.s-divider{height:0.5px;background:var(--border);margin:40px 0}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:8px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+.lesson-anchor{scroll-margin-top:80px}
+
+/* SKILL HEADER CARDS */
+.skill-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:36px}
+.skill-card{border-radius:14px;padding:18px;border:0.5px solid var(--border);cursor:pointer;text-decoration:none;display:block;transition:all .2s}
+.skill-card:hover{transform:translateY(-3px)}
+.sc-reading{background:rgba(78,205,196,0.06);border-color:rgba(78,205,196,0.2)}
+.sc-listening{background:rgba(123,110,246,0.06);border-color:rgba(123,110,246,0.2)}
+.sc-speaking{background:rgba(232,121,160,0.06);border-color:rgba(232,121,160,0.2)}
+.sc-writing{background:rgba(167,139,250,0.08);border-color:rgba(232,197,71,0.2)}
+.skill-card:hover{border-color:rgba(255,255,255,0.2)}
+.skill-icon{font-size:28px;margin-bottom:10px}
+.skill-name{font-size:14px;font-weight:500;margin-bottom:4px}
+.skill-desc{font-size:11px;color:var(--text3)}
+
+/* STRATEGY BOX */
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.strategy-item{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px}
+.si-num{font-family:'Fraunces',serif;font-size:24px;color:var(--accent);margin-bottom:8px}
+.si-title{font-size:13px;font-weight:500;margin-bottom:6px}
+.si-desc{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* READING PASSAGE */
+.passage-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:20px}
+.passage-meta{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.p-level{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.lv-easy{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.lv-med{background:rgba(100,216,165,0.15);color:var(--accent)}
+.lv-hard{background:rgba(232,121,160,0.15);color:var(--pink)}
+.p-topic{font-size:11px;color:var(--text3)}
+.passage-title{font-family:'Fraunces',serif;font-size:18px;margin-bottom:12px}
+.passage-text{font-size:14px;color:var(--text2);line-height:1.9}
+.passage-text strong{color:var(--text)}
+.vocab-highlight{color:var(--accent);cursor:pointer;border-bottom:1px dashed rgba(232,197,71,0.4)}
+.vocab-popup{display:none;background:var(--card);border:0.5px solid var(--border);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:13px;color:var(--text2)}
+.vocab-popup.show{display:block}
+.reading-qs{margin-top:16px;border-top:0.5px solid var(--border);padding-top:16px}
+.rq-title{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.rq-item{margin-bottom:12px}
+.rq-q{font-size:13px;color:var(--text);margin-bottom:8px}
+.rq-opts{display:flex;flex-direction:column;gap:5px}
+.rq-opt{padding:8px 12px;border-radius:7px;border:0.5px solid var(--border);background:var(--bg3);font-size:12px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:left}
+.rq-opt:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.rq-opt.correct{border-color:var(--accent3);background:rgba(240,194,122,0.1);color:var(--accent3)}
+.rq-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+
+/* DIALOGUE */
+.dialogue-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+.dialogue-title{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px}
+.dl-line{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.dl-line:last-child{margin-bottom:0}
+.dl-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px}
+.av-a{background:rgba(123,110,246,0.2)}
+.av-b{background:rgba(78,205,196,0.2)}
+.dl-bubble{background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:10px 14px;flex:1}
+.dl-en{font-size:13px;color:var(--text);margin-bottom:3px}
+.dl-vi{font-size:12px;color:var(--text3);font-style:italic}
+.dl-note{font-size:11px;color:var(--accent);margin-top:4px}
+
+/* PHRASE TABLE */
+.phrase-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+.phrase-table th{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.phrase-table td{padding:9px 14px;border:0.5px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.phrase-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-en{color:var(--text);font-style:italic}
+.td-vi{color:var(--text3);font-size:12px}
+
+/* WRITING TEMPLATE */
+.template-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+.template-title{font-size:13px;font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.template-section{margin-bottom:12px;padding:10px 14px;background:var(--card);border-radius:8px;border-left:2px solid var(--accent)}
+.ts-label{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.ts-content{font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+.ts-vi{font-size:11px;color:var(--text3);margin-top:4px}
+
+/* NOTE BOX */
+.note-box{background:rgba(244,132,95,0.08);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.note-box strong{color:var(--coral)}
+.tip-box{background:rgba(100,216,165,0.08);border:0.5px solid rgba(123,110,246,0.25);border-radius:12px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.tip-icon{width:32px;height:32px;border-radius:8px;background:rgba(123,110,246,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* LISTENING TIPS */
+.listen-steps{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.ls-item{display:flex;gap:14px;align-items:flex-start;background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px}
+.ls-num{width:28px;height:28px;border-radius:8px;background:rgba(123,110,246,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--accent2);flex-shrink:0}
+.ls-text h4{font-size:13px;font-weight:500;margin-bottom:4px}
+.ls-text p{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* WORD CONNECTOR */
+.connector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.connector-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px}
+.conn-category{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.conn-words{display:flex;flex-wrap:wrap;gap:5px}
+.conn-chip{padding:3px 10px;border-radius:20px;font-size:11px;background:rgba(100,216,165,0.1);color:var(--accent2)}
+
+/* SITUATION CARDS */
+.situation-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.situation-card{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .2s}
+.situation-card:hover{border-color:rgba(232,121,160,0.3);transform:translateY(-2px)}
+.sit-icon{font-size:24px;margin-bottom:8px}
+.sit-title{font-size:13px;font-weight:500;margin-bottom:4px}
+.sit-desc{font-size:12px;color:var(--text3)}
+.sit-expanded{display:none;margin-top:12px;border-top:0.5px solid var(--border);padding-top:12px}
+.sit-expanded.show{display:block}
+
+/* WRITING PRACTICE */
+.writing-prompt{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:12px;padding:16px;margin-bottom:14px}
+.wp-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.wp-text{font-size:14px;color:var(--text);line-height:1.7}
+.writing-area{width:100%;min-height:120px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical;outline:none;line-height:1.7}
+.writing-area:focus{border-color:rgba(232,197,71,0.4)}
+.writing-area::placeholder{color:var(--text3)}
+.check-btn{margin-top:10px;padding:9px 20px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500}
+.word-count{font-size:11px;color:var(--text3);margin-top:6px}
+.prompt-btn{padding:7px 16px;border-radius:8px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:10px}
+.prompt-btn:hover{background:var(--card);color:var(--text);border-color:rgba(232,197,71,0.4)}
+
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .content{padding:24px 20px}
+  .skill-cards{grid-template-columns:repeat(2,1fr)}
+  .strategy-grid{grid-template-columns:1fr}
+  .situation-grid{grid-template-columns:1fr}
+  .connector-grid{grid-template-columns:1fr 1fr}
+  nav{padding:12px 16px}
+  .nav-links{display:none}
+  .page-title{font-size:28px}
+  .phrase-table{font-size:12px}
+  .phrase-table th,.phrase-table td{padding:7px 10px}
+}
+@media(max-width:500px){
+  .skill-cards{grid-template-columns:1fr}
+  .connector-grid{grid-template-columns:1fr}
+  .phrase-table{display:block;overflow-x:auto}
+}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a active">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Đọc hiểu</div>
+  <a href="#reading" class="sb-item active"><span class="sb-emoji">📰</span>Kỹ năng đọc</a>
+  <a href="#read-strategies" class="sb-item"><span class="sb-emoji">🧠</span>Chiến thuật đọc</a>
+  <a href="#read-passage1" class="sb-item"><span class="sb-emoji">📄</span>Bài đọc 1 — Dễ</a>
+  <a href="#read-passage2" class="sb-item"><span class="sb-emoji">📄</span>Bài đọc 2 — Vừa</a>
+
+  <div class="sidebar-title">Nghe hiểu</div>
+  <a href="#listening" class="sb-item"><span class="sb-emoji">🎧</span>Kỹ năng nghe</a>
+  <a href="#listen-tips" class="sb-item"><span class="sb-emoji">💡</span>Cách luyện nghe</a>
+  <a href="#listen-vocab" class="sb-item"><span class="sb-emoji">🔤</span>Từ hay gặp khi nghe</a>
+
+  <div class="sidebar-title">Nói & Giao tiếp</div>
+  <a href="#speaking" class="sb-item"><span class="sb-emoji">🗣️</span>Kỹ năng nói</a>
+  <a href="#situations" class="sb-item"><span class="sb-emoji">🎭</span>Tình huống giao tiếp</a>
+  <a href="#phrases" class="sb-item"><span class="sb-emoji">💬</span>Mẫu câu thực tế</a>
+
+  <div class="sidebar-title">Viết</div>
+  <a href="#writing" class="sb-item"><span class="sb-emoji">✍️</span>Kỹ năng viết</a>
+  <a href="#email" class="sb-item"><span class="sb-emoji">📧</span>Viết email</a>
+  <a href="#paragraph" class="sb-item"><span class="sb-emoji">📝</span>Viết đoạn văn</a>
+  <a href="#connectors" class="sb-item"><span class="sb-emoji">🔗</span>Từ nối câu</a>
+  <a href="#practice-writing" class="sb-item"><span class="sb-emoji">🎯</span>Luyện viết</a>
+</aside>
+
+<main class="content">
+  <div class="page-label">Module 4</div>
+  <h1 class="page-title">4 Kỹ năng tiếng Anh</h1>
+  <p class="page-desc">Đọc · Nghe · Nói · Viết — bốn kỹ năng cốt lõi để sử dụng tiếng Anh thực tế. Mỗi kỹ năng có chiến thuật, bài tập và mẫu câu thực dụng.</p>
+
+  <div class="skill-cards">
+    <a href="#reading" class="skill-card sc-reading">
+      <div class="skill-icon">📰</div>
+      <div class="skill-name">Đọc hiểu</div>
+      <div class="skill-desc">Reading comprehension</div>
+    </a>
+    <a href="#listening" class="skill-card sc-listening">
+      <div class="skill-icon">🎧</div>
+      <div class="skill-name">Nghe hiểu</div>
+      <div class="skill-desc">Listening skills</div>
+    </a>
+    <a href="#speaking" class="skill-card sc-speaking">
+      <div class="skill-icon">🗣️</div>
+      <div class="skill-name">Nói & Giao tiếp</div>
+      <div class="skill-desc">Speaking & communication</div>
+    </a>
+    <a href="#writing" class="skill-card sc-writing">
+      <div class="skill-icon">✍️</div>
+      <div class="skill-name">Kỹ năng viết</div>
+      <div class="skill-desc">Writing skills</div>
+    </a>
+  </div>
+
+  <!-- ===== READING ===== -->
+  <div class="lesson-anchor" id="reading">
+    <div class="section-label" style="color:var(--accent3)">Kỹ năng 1</div>
+    <div class="section-title">Đọc hiểu — Reading</div>
+    <div class="section-desc">Đọc hiểu không chỉ là hiểu nghĩa từng từ mà là nắm bắt ý chính, chi tiết và ý đồ của tác giả. Học các chiến thuật đọc giúp bạn đọc nhanh và hiểu sâu hơn.</div>
+  </div>
+
+  <div class="lesson-anchor" id="read-strategies">
+    <div class="section-label" style="color:var(--accent3)">Chiến thuật</div>
+    <div class="section-title" style="font-size:20px">6 chiến thuật đọc hiệu quả</div>
+    <div class="strategy-grid">
+      <div class="strategy-item">
+        <div class="si-num">1</div>
+        <div class="si-title">Skimming — Đọc lướt</div>
+        <div class="si-desc">Đọc nhanh để nắm ý chính. Tập trung vào tiêu đề, câu đầu đoạn, từ in đậm. Không đọc từng chữ.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="si-num">2</div>
+        <div class="si-title">Scanning — Quét thông tin</div>
+        <div class="si-desc">Tìm kiếm thông tin cụ thể (số liệu, tên người, ngày tháng) mà không đọc toàn bộ bài.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="si-num">3</div>
+        <div class="si-title">Context clues — Đoán nghĩa</div>
+        <div class="si-desc">Khi gặp từ lạ, dùng ngữ cảnh xung quanh để đoán nghĩa thay vì tra từ điển ngay.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="si-num">4</div>
+        <div class="si-title">Topic sentence — Câu chủ đề</div>
+        <div class="si-desc">Câu đầu (hoặc cuối) mỗi đoạn thường chứa ý chính của cả đoạn đó. Đọc kỹ những câu này.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="si-num">5</div>
+        <div class="si-title">Inference — Suy luận</div>
+        <div class="si-desc">Đọc "giữa các dòng" — hiểu điều tác giả ngụ ý nhưng không nói thẳng ra.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="si-num">6</div>
+        <div class="si-title">Đọc lại có chú thích</div>
+        <div class="si-desc">Gạch dưới từ quan trọng, viết note bên lề, tóm tắt mỗi đoạn bằng 1 câu tiếng Việt.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="read-passage1">
+    <div class="section-label" style="color:var(--accent3)">Bài đọc 1</div>
+    <div class="section-title" style="font-size:20px">Bài đọc cơ bản — Trình độ A1/A2</div>
+    <div class="passage-box">
+      <div class="passage-meta">
+        <span class="p-level lv-easy">Dễ — A1/A2</span>
+        <span class="p-topic">Chủ đề: Cuộc sống hằng ngày</span>
+      </div>
+      <div class="passage-title">My Daily Routine — Lịch trình hằng ngày của tôi</div>
+      <div class="passage-text">
+        My name is <strong>Linh</strong>. I am a student. I live in <span class="vocab-highlight" onclick="showVocab('hanoi')">Hanoi</span>, Vietnam.
+        <div class="vocab-popup" id="hanoi">📍 <strong>Hanoi</strong> /həˈnɔɪ/ — Hà Nội, thủ đô Việt Nam</div>
+        <br><br>
+        I <span class="vocab-highlight" onclick="showVocab('wake')">wake up</span> at 6 o'clock every morning. First, I <strong>brush my teeth</strong> and <strong>wash my face</strong>.
+        <div class="vocab-popup" id="wake">⏰ <strong>wake up</strong> /weɪk ʌp/ — thức dậy (phrasal verb)</div>
+        Then I eat <span class="vocab-highlight" onclick="showVocab('breakfast')">breakfast</span> with my family. I usually have <strong>rice and eggs</strong>.
+        <div class="vocab-popup" id="breakfast">🍳 <strong>breakfast</strong> /ˈbrɛkfəst/ — bữa sáng (bữa ăn đầu tiên trong ngày)</div>
+        <br><br>
+        I go to school at 7:30. My school is <span class="vocab-highlight" onclick="showVocab('nearby')">nearby</span>, so I <strong>ride my bicycle</strong>.
+        <div class="vocab-popup" id="nearby">🗺️ <strong>nearby</strong> /ˈnɪərbaɪ/ — gần đó, ở gần</div>
+        Classes start at 8 o'clock. I study <strong>Math, English, Science</strong> and <strong>History</strong>.
+        <br><br>
+        After school, I come home at 5 PM. I do my <span class="vocab-highlight" onclick="showVocab('homework')">homework</span> and help my mother with housework.
+        <div class="vocab-popup" id="homework">📚 <strong>homework</strong> /ˈhoʊmwɜːrk/ — bài tập về nhà</div>
+        In the evening, I <strong>read books</strong> or watch TV. I go to bed at 10 PM.
+        <br><br>
+        I love my daily routine. It makes me feel <span class="vocab-highlight" onclick="showVocab('organized')">organized</span> and happy.
+        <div class="vocab-popup" id="organized">✅ <strong>organized</strong> /ˈɔːrɡənaɪzd/ — ngăn nắp, có tổ chức</div>
+      </div>
+      <div class="reading-qs">
+        <div class="rq-title">Câu hỏi đọc hiểu — Bấm chọn đáp án</div>
+        <div class="rq-item">
+          <div class="rq-q">1. What time does Linh wake up?</div>
+          <div class="rq-opts">
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! 7:30 là giờ đi học, không phải thức dậy.')">7:30 AM</button>
+            <button class="rq-opt" onclick="checkRQ(this,'correct','Đúng! "I wake up at 6 o\'clock every morning."')">6:00 AM</button>
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! 8:00 là giờ bắt đầu lớp học.')">8:00 AM</button>
+          </div>
+        </div>
+        <div class="rq-item">
+          <div class="rq-q">2. How does Linh go to school?</div>
+          <div class="rq-opts">
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! Không đề cập đến xe buýt.')">By bus</button>
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! Không đề cập đến đi bộ.')">On foot</button>
+            <button class="rq-opt" onclick="checkRQ(this,'correct','Đúng! "I ride my bicycle" — Linh đi xe đạp đến trường.')">By bicycle</button>
+          </div>
+        </div>
+        <div class="rq-item">
+          <div class="rq-q">3. What does Linh do after school?</div>
+          <div class="rq-opts">
+            <button class="rq-opt" onclick="checkRQ(this,'correct','Đúng! "I do my homework and help my mother with housework."')">Does homework and helps mother</button>
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! Linh đọc sách vào buổi tối, không phải ngay sau khi đi học về.')">Reads books immediately</button>
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! Linh không chơi thể thao được đề cập trong bài.')">Plays sports</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="read-passage2">
+    <div class="section-label" style="color:var(--accent3)">Bài đọc 2</div>
+    <div class="section-title" style="font-size:20px">Bài đọc trung cấp — Trình độ B1/B2</div>
+    <div class="passage-box">
+      <div class="passage-meta">
+        <span class="p-level lv-med">Trung bình — B1/B2</span>
+        <span class="p-topic">Chủ đề: Công nghệ & Cuộc sống</span>
+      </div>
+      <div class="passage-title">The Impact of Smartphones — Tác động của điện thoại thông minh</div>
+      <div class="passage-text">
+        Smartphones have <span class="vocab-highlight" onclick="showVocab('revolutionized')">revolutionized</span> the way we live, work, and communicate. Today, more than 6 billion people around the world own a smartphone — that is nearly <strong>80% of the global population</strong>.
+        <div class="vocab-popup" id="revolutionized">🔄 <strong>revolutionize</strong> /ˌrɛvəˈluːʃənaɪz/ — cách mạng hóa, thay đổi hoàn toàn</div>
+        <br><br>
+        On the positive side, smartphones have made communication <span class="vocab-highlight" onclick="showVocab('instant')">instant</span> and effortless. We can video call someone on the other side of the world for free. Social media platforms connect millions of people, allowing them to share ideas and stay informed about world events.
+        <div class="vocab-popup" id="instant">⚡ <strong>instant</strong> /ˈɪnstənt/ — tức thì, ngay lập tức. "Effortless" = không cần cố gắng</div>
+        <br><br>
+        However, excessive smartphone use has raised serious <span class="vocab-highlight" onclick="showVocab('concerns')">concerns</span>. Studies show that spending too much time on social media is linked to increased anxiety and depression, particularly among teenagers. Many people also struggle with <strong>digital addiction</strong> — the inability to put their phone down even during meals or conversations.
+        <div class="vocab-popup" id="concerns">⚠️ <strong>concern</strong> /kənˈsɜːrn/ — mối lo ngại, điều đáng lo. "Raise concerns" = gây ra lo ngại</div>
+        <br><br>
+        <strong>In conclusion</strong>, smartphones are powerful tools that can improve our lives when used <span class="vocab-highlight" onclick="showVocab('wisely')">wisely</span>. The key is balance — using technology to enhance our lives without letting it control us.
+        <div class="vocab-popup" id="wisely">🧠 <strong>wisely</strong> /ˈwaɪzli/ — một cách khôn ngoan. "Wise" (tính từ) → "wisely" (trạng từ)</div>
+      </div>
+      <div class="reading-qs">
+        <div class="rq-title">Câu hỏi đọc hiểu</div>
+        <div class="rq-item">
+          <div class="rq-q">1. According to the passage, what percentage of the world population owns a smartphone?</div>
+          <div class="rq-opts">
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai!')">50%</button>
+            <button class="rq-opt" onclick="checkRQ(this,'correct','Đúng! "nearly 80% of the global population"')">80%</button>
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai!')">60%</button>
+          </div>
+        </div>
+        <div class="rq-item">
+          <div class="rq-q">2. What is "digital addiction" according to the passage?</div>
+          <div class="rq-opts">
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai! Đây là mô tả của mạng xã hội, không phải digital addiction.')">Using social media to connect with people</button>
+            <button class="rq-opt" onclick="checkRQ(this,'correct','Đúng! "the inability to put their phone down even during meals or conversations"')">The inability to stop using phone even in social situations</button>
+            <button class="rq-opt" onclick="checkRQ(this,'wrong','Sai!')">Buying too many digital devices</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- ===== LISTENING ===== -->
+  <div class="lesson-anchor" id="listening">
+    <div class="section-label" style="color:var(--accent2)">Kỹ năng 2</div>
+    <div class="section-title">Nghe hiểu — Listening</div>
+    <div class="section-desc">Nghe hiểu thường là kỹ năng khó nhất với người học tiếng Anh vì người bản ngữ nói rất nhanh và nối âm nhiều. Nhưng với phương pháp đúng, bạn hoàn toàn có thể cải thiện nhanh chóng.</div>
+  </div>
+
+  <div class="lesson-anchor" id="listen-tips">
+    <div class="section-label" style="color:var(--accent2)">Cách luyện</div>
+    <div class="section-title" style="font-size:20px">7 bước luyện nghe hiệu quả</div>
+    <div class="listen-steps">
+      <div class="ls-item">
+        <div class="ls-num">1</div>
+        <div class="ls-text"><h4>Nghe chủ động (Active listening)</h4><p>Không chỉ để âm thanh chạy qua. Tập trung 100%, ghi chép từ khóa, dừng lại khi không hiểu.</p></div>
+      </div>
+      <div class="ls-item">
+        <div class="ls-num">2</div>
+        <div class="ls-text"><h4>Nghe nhiều lần theo cấp độ</h4><p>Lần 1: Nghe tổng thể để hiểu ý chính. Lần 2: Nghe chi tiết. Lần 3: Đọc script cùng lúc nghe để kiểm tra.</p></div>
+      </div>
+      <div class="ls-item">
+        <div class="ls-num">3</div>
+        <div class="ls-text"><h4>Dictation — Viết lại những gì nghe được</h4><p>Dừng sau mỗi câu, viết lại những gì bạn nghe. So sánh với script. Phương pháp này rất hiệu quả nhưng cần kiên nhẫn.</p></div>
+      </div>
+      <div class="ls-item">
+        <div class="ls-num">4</div>
+        <div class="ls-text"><h4>Shadowing — Nhái theo</h4><p>Nghe và nói theo ngay lập tức, bắt chước giọng điệu, nhịp điệu, intonation của người bản ngữ. Cải thiện cả nghe lẫn nói.</p></div>
+      </div>
+      <div class="ls-item">
+        <div class="ls-num">5</div>
+        <div class="ls-text"><h4>Xem phim/video có phụ đề tiếng Anh</h4><p>Bắt đầu với phụ đề tiếng Anh, sau đó chuyển sang không phụ đề. YouTube, Netflix, BBC Learning English đều tuyệt vời.</p></div>
+      </div>
+      <div class="ls-item">
+        <div class="ls-num">6</div>
+        <div class="ls-text"><h4>Nghe podcast mỗi ngày</h4><p>BBC 6 Minute English, ESL Pod, Voice of America Learning English — nói chậm, rõ ràng, phù hợp cho người học. 15 phút/ngày là đủ.</p></div>
+      </div>
+      <div class="ls-item">
+        <div class="ls-num">7</div>
+        <div class="ls-text"><h4>Làm quen với nhiều giọng accent</h4><p>Tiếng Anh Anh, Mỹ, Úc đều khác nhau. Luyện với nhiều giọng để không bị "khó nghe" khi gặp giọng lạ.</p></div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div>
+        <h5>Tại sao nghe khó dù học nhiều từ vựng?</h5>
+        <p>Người bản ngữ dùng: <strong style="color:var(--accent)">contractions</strong> (I'm, they're, won't), <strong style="color:var(--accent)">linking sounds</strong> (nối âm), <strong style="color:var(--accent)">weak forms</strong> (đọc nhẹ các từ chức năng: "to" đọc thành /tə/, "and" thành /ən/), và <strong style="color:var(--accent)">reduction</strong> (gonna = going to, wanna = want to, gotta = got to). Học những điều này giúp bạn nghe tốt hơn ngay!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="listen-vocab">
+    <div class="section-label" style="color:var(--accent2)">Từ rút gọn khi nói</div>
+    <div class="section-title" style="font-size:20px">Người bản ngữ nói thế nào?</div>
+    <table class="phrase-table">
+      <tr><th>Viết chính xác</th><th>Nói bình thường</th><th>Phiên âm thực tế</th><th>Nghĩa</th></tr>
+      <tr><td class="td-en">going to</td><td class="td-en">gonna</td><td>/ˈɡɒnə/</td><td class="td-vi">sắp, sẽ</td></tr>
+      <tr><td class="td-en">want to</td><td class="td-en">wanna</td><td>/ˈwɒnə/</td><td class="td-vi">muốn</td></tr>
+      <tr><td class="td-en">got to / have to</td><td class="td-en">gotta</td><td>/ˈɡɒtə/</td><td class="td-vi">phải</td></tr>
+      <tr><td class="td-en">kind of</td><td class="td-en">kinda</td><td>/ˈkaɪndə/</td><td class="td-vi">hơi, kiểu như</td></tr>
+      <tr><td class="td-en">sort of</td><td class="td-en">sorta</td><td>/ˈsɔːrtə/</td><td class="td-vi">kiểu như, có vẻ</td></tr>
+      <tr><td class="td-en">a lot of</td><td class="td-en">a lotta</td><td>/ə ˈlɒtə/</td><td class="td-vi">nhiều</td></tr>
+      <tr><td class="td-en">let me</td><td class="td-en">lemme</td><td>/ˈlɛmi/</td><td class="td-vi">để tôi</td></tr>
+      <tr><td class="td-en">give me</td><td class="td-en">gimme</td><td>/ˈɡɪmi/</td><td class="td-vi">cho tôi</td></tr>
+      <tr><td class="td-en">don't know</td><td class="td-en">dunno</td><td>/dəˈnoʊ/</td><td class="td-vi">không biết</td></tr>
+      <tr><td class="td-en">what are you</td><td class="td-en">whatcha</td><td>/ˈwɒtʃə/</td><td class="td-vi">bạn đang...</td></tr>
+    </table>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- ===== SPEAKING ===== -->
+  <div class="lesson-anchor" id="speaking">
+    <div class="section-label" style="color:var(--pink)">Kỹ năng 3</div>
+    <div class="section-title">Nói & Giao tiếp — Speaking</div>
+    <div class="section-desc">Nói tiếng Anh tự tin là mục tiêu của hầu hết người học. Bí quyết không phải là biết nhiều từ mà là dám nói và biết cách diễn đạt ý tưởng tự nhiên.</div>
+
+    <div class="tip-box">
+      <div class="tip-icon">🎯</div>
+      <div>
+        <h5>3 bí quyết nói tiếng Anh tự tin</h5>
+        <p><strong style="color:var(--accent)">1. Đừng dịch trong đầu</strong> — Nghĩ thẳng bằng tiếng Anh, không dịch từ tiếng Việt.<br>
+        <strong style="color:var(--accent)">2. Dùng filler words</strong> — "Well...", "You know...", "I mean..." để có thêm thời gian suy nghĩ.<br>
+        <strong style="color:var(--accent)">3. Paraphrase</strong> — Khi không biết từ, mô tả bằng những từ đơn giản hơn ("It's like a tool you use to...")</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="situations">
+    <div class="section-label" style="color:var(--pink)">Tình huống</div>
+    <div class="section-title" style="font-size:20px">Hội thoại theo tình huống — Bấm để xem</div>
+    <div class="situation-grid">
+      <div class="situation-card" onclick="toggleSit(this)">
+        <div class="sit-icon">☕</div>
+        <div class="sit-title">Gọi đồ ở quán cà phê</div>
+        <div class="sit-desc">Ordering at a café</div>
+        <div class="sit-expanded">
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Hi! What can I get for you?</div><div class="dl-vi">Xin chào! Bạn muốn gọi gì?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">I'd like a large iced coffee, please.</div><div class="dl-vi">Cho tôi một ly cà phê đá cỡ lớn.</div><div class="dl-note">"I'd like" = lịch sự hơn "I want"</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Sure! Would you like any milk or sugar?</div><div class="dl-vi">Được! Bạn có muốn thêm sữa hay đường không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">No milk, please. And can I have it to go?</div><div class="dl-vi">Không sữa. Và tôi muốn mang về được không?</div><div class="dl-note">"to go" = mang về, "for here" = dùng tại chỗ</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Of course! That'll be $3.50.</div><div class="dl-vi">Dĩ nhiên! Tổng cộng 3.50 đô.</div></div></div>
+        </div>
+      </div>
+      <div class="situation-card" onclick="toggleSit(this)">
+        <div class="sit-icon">🏨</div>
+        <div class="sit-title">Nhận phòng khách sạn</div>
+        <div class="sit-desc">Hotel check-in</div>
+        <div class="sit-expanded">
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Good evening! Do you have a reservation?</div><div class="dl-vi">Chào buổi tối! Bạn có đặt phòng trước không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes, I have a booking under the name Nguyen Van A.</div><div class="dl-vi">Vâng, tôi có đặt phòng dưới tên Nguyễn Văn A.</div><div class="dl-note">"under the name" = đặt theo tên</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Let me check... Yes, one double room for 2 nights. Can I see your ID?</div><div class="dl-vi">Để tôi kiểm tra... Đúng, một phòng đôi 2 đêm. Cho xem CMND được không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Here you go. Also, is breakfast included?</div><div class="dl-vi">Đây. Ngoài ra, giá có bao gồm bữa sáng không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Yes, breakfast is from 7 to 10 AM at the restaurant on floor 2.</div><div class="dl-vi">Có, bữa sáng từ 7 đến 10h tại nhà hàng tầng 2.</div></div></div>
+        </div>
+      </div>
+      <div class="situation-card" onclick="toggleSit(this)">
+        <div class="sit-icon">🏥</div>
+        <div class="sit-title">Đi khám bác sĩ</div>
+        <div class="sit-desc">At the doctor's</div>
+        <div class="sit-expanded">
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">What seems to be the problem?</div><div class="dl-vi">Bạn có vấn đề gì vậy?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">I have a terrible headache and a sore throat. I've had it for two days.</div><div class="dl-vi">Tôi bị đau đầu dữ dội và đau họng. Tôi bị thế này hai ngày rồi.</div><div class="dl-note">"sore throat" = đau họng · "have had" = đã bị (HT hoàn thành)</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Do you have a fever? Any coughing?</div><div class="dl-vi">Bạn có bị sốt không? Có ho không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes, I have a slight fever. And I've been coughing a lot.</div><div class="dl-vi">Vâng, tôi bị sốt nhẹ. Và tôi ho nhiều.</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">I see. It looks like you have the flu. I'll prescribe some medicine. Rest and drink plenty of water.</div><div class="dl-vi">Tôi hiểu. Có vẻ bạn bị cúm. Tôi sẽ kê thuốc. Nghỉ ngơi và uống nhiều nước.</div></div></div>
+        </div>
+      </div>
+      <div class="situation-card" onclick="toggleSit(this)">
+        <div class="sit-icon">🛒</div>
+        <div class="sit-title">Mua sắm</div>
+        <div class="sit-desc">Shopping</div>
+        <div class="sit-expanded">
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Can I help you?</div><div class="dl-vi">Tôi có thể giúp gì bạn không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes, I'm looking for a blue shirt. Do you have this in a medium size?</div><div class="dl-vi">Tôi đang tìm một cái áo màu xanh. Bạn có cỡ medium không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Let me check... Yes! Here you go. Would you like to try it on?</div><div class="dl-vi">Để tôi kiểm tra... Có! Đây. Bạn muốn thử không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes please. Where's the fitting room?</div><div class="dl-vi">Vâng. Phòng thử đồ ở đâu vậy?</div><div class="dl-note">"fitting room" = phòng thử đồ</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">It fits perfectly! How much is it?</div><div class="dl-vi">Vừa vặn quá! Bao nhiêu tiền?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">It's $25. We also have a 10% discount today.</div><div class="dl-vi">25 đô. Hôm nay chúng tôi có giảm 10%.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="phrases">
+    <div class="section-label" style="color:var(--pink)">Mẫu câu</div>
+    <div class="section-title" style="font-size:20px">Mẫu câu giao tiếp thực tế</div>
+    <table class="phrase-table">
+      <tr><th>Tình huống</th><th>Mẫu câu tiếng Anh</th><th>Nghĩa tiếng Việt</th></tr>
+      <tr><td rowspan="3">Hỏi lại khi không hiểu</td><td class="td-en">Sorry, could you repeat that?</td><td class="td-vi">Xin lỗi, bạn có thể nói lại không?</td></tr>
+      <tr><td class="td-en">I'm sorry, I didn't catch that.</td><td class="td-vi">Xin lỗi, tôi không nghe rõ.</td></tr>
+      <tr><td class="td-en">Could you speak more slowly, please?</td><td class="td-vi">Bạn có thể nói chậm hơn không?</td></tr>
+      <tr><td rowspan="3">Đồng ý / Phản đối</td><td class="td-en">I totally agree with you.</td><td class="td-vi">Tôi hoàn toàn đồng ý với bạn.</td></tr>
+      <tr><td class="td-en">I see your point, but...</td><td class="td-vi">Tôi hiểu quan điểm của bạn, nhưng...</td></tr>
+      <tr><td class="td-en">I'm afraid I disagree.</td><td class="td-vi">Tôi e rằng tôi không đồng ý.</td></tr>
+      <tr><td rowspan="3">Hỏi đường</td><td class="td-en">Excuse me, how do I get to...?</td><td class="td-vi">Xin lỗi, làm thế nào để đến...?</td></tr>
+      <tr><td class="td-en">Is it far from here?</td><td class="td-vi">Có xa đây không?</td></tr>
+      <tr><td class="td-en">Turn left/right at the traffic light.</td><td class="td-vi">Rẽ trái/phải tại đèn giao thông.</td></tr>
+      <tr><td rowspan="3">Đề nghị / Lời mời</td><td class="td-en">Would you like some coffee?</td><td class="td-vi">Bạn muốn uống cà phê không?</td></tr>
+      <tr><td class="td-en">Shall we go for lunch?</td><td class="td-vi">Chúng ta đi ăn trưa nhé?</td></tr>
+      <tr><td class="td-en">That sounds great!</td><td class="td-vi">Nghe hay đấy!</td></tr>
+    </table>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- ===== WRITING ===== -->
+  <div class="lesson-anchor" id="writing">
+    <div class="section-label" style="color:var(--accent)">Kỹ năng 4</div>
+    <div class="section-title">Kỹ năng viết — Writing</div>
+    <div class="section-desc">Viết tốt đòi hỏi cấu trúc rõ ràng, từ nối phù hợp và ý tưởng được trình bày logic. Học cách viết email, đoạn văn và bài luận theo đúng chuẩn quốc tế.</div>
+  </div>
+
+  <div class="lesson-anchor" id="email">
+    <div class="section-label" style="color:var(--accent)">Email</div>
+    <div class="section-title" style="font-size:20px">Cách viết Email tiếng Anh</div>
+    <div class="template-box">
+      <div class="template-title">📧 Email xin việc / liên hệ chuyên nghiệp</div>
+      <div class="template-section">
+        <div class="ts-label">Subject (Tiêu đề)</div>
+        <div class="ts-content">Application for Marketing Manager Position — [Your Name]</div>
+        <div class="ts-vi">Ứng tuyển vị trí Quản lý Marketing — [Tên của bạn]</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Salutation (Lời chào)</div>
+        <div class="ts-content">Dear Mr./Ms. [Last Name], / Dear Hiring Manager,</div>
+        <div class="ts-vi">Kính gửi Ông/Bà [Họ], / Kính gửi Bộ phận Tuyển dụng,</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Opening (Mở đầu)</div>
+        <div class="ts-content">I am writing to apply for the Marketing Manager position advertised on your website. I am a highly motivated professional with 3 years of experience in digital marketing.</div>
+        <div class="ts-vi">Tôi viết thư này để ứng tuyển vị trí Quản lý Marketing đăng trên website của quý công ty. Tôi là chuyên gia có động lực cao với 3 năm kinh nghiệm trong marketing kỹ thuật số.</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Body (Nội dung chính)</div>
+        <div class="ts-content">In my previous role at XYZ Company, I successfully increased social media engagement by 40% and led a team of 5 marketing specialists. I am confident that my skills and experience make me an excellent candidate for this position.</div>
+        <div class="ts-vi">Trong vai trò trước đây tại Công ty XYZ, tôi đã tăng thành công mức độ tương tác mạng xã hội lên 40% và dẫn dắt nhóm 5 chuyên viên marketing.</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Closing (Kết thúc)</div>
+        <div class="ts-content">I would welcome the opportunity to discuss this position further. Please find my resume attached. Thank you for your time and consideration.</div>
+        <div class="ts-vi">Tôi rất muốn có cơ hội thảo luận thêm về vị trí này. Vui lòng xem CV đính kèm. Cảm ơn thời gian và sự xem xét của bạn.</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Sign-off (Chào kết)</div>
+        <div class="ts-content">Yours sincerely, / Best regards, / Kind regards,<br>[Your Full Name]</div>
+        <div class="ts-vi">Trân trọng, / Thân ái, / [Tên đầy đủ của bạn]</div>
+      </div>
+    </div>
+
+    <div class="template-box">
+      <div class="template-title">📧 Email không chính thức — gửi bạn bè</div>
+      <div class="template-section">
+        <div class="ts-label">Salutation</div>
+        <div class="ts-content">Hi [Name]! / Hey [Name],</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Opening</div>
+        <div class="ts-content">Hope you're doing well! / How have you been? / It's been a while!</div>
+        <div class="ts-vi">Hy vọng bạn vẫn khỏe! / Dạo này bạn thế nào? / Lâu quá không gặp!</div>
+      </div>
+      <div class="template-section">
+        <div class="ts-label">Sign-off</div>
+        <div class="ts-content">Talk soon! / Cheers! / Take care! / Best, [Name]</div>
+        <div class="ts-vi">Liên lạc sau nhé! / Chào nhé! / Bảo trọng! / [Tên]</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="paragraph">
+    <div class="section-label" style="color:var(--accent)">Đoạn văn</div>
+    <div class="section-title" style="font-size:20px">Cấu trúc đoạn văn chuẩn</div>
+    <div class="template-box">
+      <div class="template-title">📝 Cấu trúc PIE — Point · Illustration · Explanation</div>
+      <div class="template-section" style="border-color:var(--pink)">
+        <div class="ts-label" style="color:var(--pink)">Point — Câu chủ đề</div>
+        <div class="ts-content">Learning English has many benefits for Vietnamese students.</div>
+        <div class="ts-vi">Học tiếng Anh mang lại nhiều lợi ích cho học sinh Việt Nam.</div>
+      </div>
+      <div class="template-section" style="border-color:var(--accent2)">
+        <div class="ts-label" style="color:var(--accent2)">Illustration — Ví dụ/bằng chứng</div>
+        <div class="ts-content">For example, English proficiency opens doors to international universities and global job opportunities. A recent survey found that bilingual employees earn 5-20% more than their monolingual peers.</div>
+        <div class="ts-vi">Ví dụ, thành thạo tiếng Anh mở ra cánh cửa đến các trường đại học quốc tế và cơ hội việc làm toàn cầu...</div>
+      </div>
+      <div class="template-section" style="border-color:var(--accent3)">
+        <div class="ts-label" style="color:var(--accent3)">Explanation — Giải thích / Kết nối</div>
+        <div class="ts-content">Therefore, investing time in learning English is not just an academic exercise but a valuable life skill that can significantly improve one's career prospects and quality of life.</div>
+        <div class="ts-vi">Do đó, đầu tư thời gian học tiếng Anh không chỉ là bài tập học thuật mà là kỹ năng sống quý giá...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-anchor" id="connectors">
+    <div class="section-label" style="color:var(--accent)">Từ nối</div>
+    <div class="section-title" style="font-size:20px">Từ nối câu — Connectors</div>
+    <div class="section-desc">Từ nối giúp bài viết mạch lạc và chuyên nghiệp hơn. Đây là những từ bắt buộc phải biết khi viết văn tiếng Anh.</div>
+    <div class="connector-grid" id="connectorGrid"></div>
+  </div>
+
+  <div class="lesson-anchor" id="practice-writing">
+    <div class="section-label" style="color:var(--accent)">Luyện viết</div>
+    <div class="section-title" style="font-size:20px">Thực hành viết ngay tại đây</div>
+    <div class="writing-prompt">
+      <div class="wp-label">Đề bài hôm nay</div>
+      <div class="wp-text" id="writingPrompt">Loading...</div>
+      <button class="prompt-btn" onclick="nextPrompt()">🔄 Đổi đề bài khác</button>
+    </div>
+    <textarea class="writing-area" id="writingArea" placeholder="Viết đoạn văn tiếng Anh của bạn ở đây (50-100 từ)..." oninput="countWords()"></textarea>
+    <div class="word-count" id="wordCount">0 từ</div>
+    <button class="check-btn" onclick="checkWriting()">Kiểm tra bài viết →</button>
+    <div id="writingFeedback" style="margin-top:12px;display:none"></div>
+  </div>
+
+  <div style="height:60px"></div>
+</main>
+</div>
+
+<script>
+const CONNECTORS = [
+  {cat:'Thêm ý',words:['Furthermore','Moreover','In addition','Besides','Also','What is more']},
+  {cat:'Tương phản',words:['However','Nevertheless','On the other hand','In contrast','Although','Despite']},
+  {cat:'Nguyên nhân',words:['Because','Since','As','Due to','Owing to','As a result of']},
+  {cat:'Kết quả',words:['Therefore','Thus','Hence','Consequently','As a result','For this reason']},
+  {cat:'Ví dụ',words:['For example','For instance','Such as','Including','Namely','To illustrate']},
+  {cat:'Kết luận',words:['In conclusion','To sum up','Overall','In summary','To conclude','All in all']},
+];
+
+const WRITING_PROMPTS = [
+  'Viết về một ngày điển hình trong cuộc sống của bạn. (Write about a typical day in your life.)',
+  'Mô tả thành phố hoặc nơi bạn đang sống. (Describe the city or place where you live.)',
+  'Nghề nghiệp nào bạn muốn làm trong tương lai và tại sao? (What job do you want in the future and why?)',
+  'Bạn thích ăn món gì nhất? Mô tả món ăn đó. (What is your favorite food? Describe it.)',
+  'Viết về một người bạn ngưỡng mộ và lý do. (Write about someone you admire and why.)',
+  'Ưu và nhược điểm của mạng xã hội. (Advantages and disadvantages of social media.)',
+  'Tại sao học tiếng Anh lại quan trọng? (Why is learning English important?)',
+];
+
+function renderConnectors() {
+  document.getElementById('connectorGrid').innerHTML = CONNECTORS.map(c=>`
+    <div class="connector-item">
+      <div class="conn-category">${c.cat}</div>
+      <div class="conn-words">${c.words.map(w=>`<span class="conn-chip">${w}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+function toggleSit(card) {
+  const exp = card.querySelector('.sit-expanded');
+  exp.classList.toggle('show');
+}
+
+function showVocab(id) {
+  const popup = document.getElementById(id);
+  const wasOpen = popup.classList.contains('show');
+  document.querySelectorAll('.vocab-popup').forEach(p=>p.classList.remove('show'));
+  if(!wasOpen) popup.classList.add('show');
+}
+
+function checkRQ(btn, type, msg) {
+  const container = btn.closest('.rq-opts');
+  if(btn.disabled) return;
+  container.querySelectorAll('.rq-opt').forEach(o=>o.disabled=true);
+  btn.classList.add(type);
+  const existing = container.parentNode.querySelector('.rq-feedback');
+  if(existing) existing.remove();
+  const note = document.createElement('div');
+  note.className = 'rq-feedback';
+  if(type==='correct') {
+    note.style.cssText='font-size:12px;color:var(--accent3);margin-top:6px;padding:6px 10px;background:rgba(240,194,122,0.1);border-radius:6px';
+    note.textContent = '✓ ' + msg;
+  } else {
+    note.style.cssText='font-size:12px;color:var(--coral);margin-top:6px;padding:6px 10px;background:rgba(244,132,95,0.08);border-radius:6px';
+    note.textContent = '✗ ' + msg;
+  }
+  container.parentNode.appendChild(note);
+}
+
+function countWords() {
+  const text = document.getElementById('writingArea').value.trim();
+  const count = text ? text.split(/\s+/).length : 0;
+  document.getElementById('wordCount').textContent = count + ' từ';
+}
+
+function checkWriting() {
+  const text = document.getElementById('writingArea').value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const fb = document.getElementById('writingFeedback');
+  fb.style.display = 'block';
+  
+  let tips = [];
+  if(words < 30) tips.push('📝 Bài còn ngắn. Cố gắng viết ít nhất 50 từ!');
+  if(words >= 50) tips.push('✅ Độ dài tốt! ' + words + ' từ.');
+  
+  const connectors = ['however','furthermore','moreover','therefore','although','in addition','for example','in conclusion','on the other hand','as a result'];
+  const usedConn = connectors.filter(c => text.toLowerCase().includes(c));
+  if(usedConn.length === 0) tips.push('💡 Thêm từ nối để bài viết mạch lạc hơn: "However", "Furthermore", "In addition"...');
+  else tips.push('✅ Bạn đã dùng từ nối: ' + usedConn.join(', '));
+  
+  const sentences = text.split(/[.!?]+/).filter(s=>s.trim().length > 0);
+  if(sentences.length < 3) tips.push('📌 Cố gắng viết ít nhất 4-5 câu để bài đầy đủ hơn.');
+  
+  const capitalOk = sentences.every(s => s.trim()[0] === s.trim()[0].toUpperCase());
+  if(!capitalOk) tips.push('⚠️ Nhớ viết hoa chữ đầu mỗi câu!');
+  else tips.push('✅ Viết hoa đầu câu đúng!');
+  
+  fb.innerHTML = `<div style="background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px">
+    <div style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Nhận xét bài viết</div>
+    ${tips.map(t=>`<div style="font-size:13px;color:var(--text2);padding:6px 0;border-bottom:0.5px solid var(--border)">${t}</div>`).join('')}
+    <div style="font-size:12px;color:var(--text3);margin-top:10px">💬 Để nhận phản hồi chi tiết hơn, dùng tab Từ điển hoặc hỏi AI trợ lý.</div>
+  </div>`;
+}
+
+// Daily writing prompt
+let promptIndex = new Date().getDay();
+document.getElementById('writingPrompt').textContent = WRITING_PROMPTS[promptIndex];
+
+function nextPrompt() {
+  promptIndex = (promptIndex + 1) % WRITING_PROMPTS.length;
+  document.getElementById('writingPrompt').textContent = WRITING_PROMPTS[promptIndex];
+}
+
+renderConnectors();
+
+// Sidebar scroll
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('.lesson-anchor').forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  if(cur){document.querySelectorAll('.sb-item').forEach(i=>i.classList.toggle('active',i.getAttribute('href')==='#'+cur))}
+});
+
+
+// ===== TTS =====
+function speakTTS(text) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.85;
+  speechSynthesis.speak(u);
+}
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

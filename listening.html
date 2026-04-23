@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Practice — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;--accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;--coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;--text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;--border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0b1a1e}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent3);background:rgba(100,216,165,0.08)}
+.nav-drop{position:relative}.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#0b1a1e;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;margin-left:6px}
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:34px;font-weight:300;margin-bottom:10px}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:24px}
+.mode-tabs{display:flex;gap:8px;margin-bottom:24px}
+.mode-tab{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.mode-tab.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
+.mode-tab:hover{color:var(--text)}
+.exercise-box{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center}
+.play-btn{width:80px;height:80px;border-radius:50%;border:2px solid var(--accent);background:rgba(100,216,165,0.1);cursor:pointer;font-size:32px;color:var(--accent);transition:all .2s;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.play-btn:hover{background:rgba(100,216,165,0.2);transform:scale(1.05)}
+.speed-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.speed-btn{padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif}
+.speed-btn.active{color:var(--accent);border-color:rgba(100,216,165,0.3)}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto}
+.opt-btn{padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.opt-btn:hover{border-color:rgba(100,216,165,0.3);background:rgba(100,216,165,0.05)}
+.opt-btn.correct{background:rgba(107,203,119,0.15);border-color:var(--green);color:var(--green)}
+.opt-btn.wrong{background:rgba(255,138,128,0.15);border-color:var(--coral);color:var(--coral)}
+.dict-input{width:100%;max-width:500px;margin:20px auto 0;padding:14px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:16px;font-family:'DM Sans',sans-serif;text-align:center;outline:none}
+.dict-input:focus{border-color:rgba(100,216,165,0.4)}
+.dict-input::placeholder{color:var(--text3)}
+.score-bar{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.score-item{font-size:13px;color:var(--text2)}
+.score-item strong{color:var(--accent)}
+.feedback-msg{margin-top:14px;padding:12px 18px;border-radius:10px;font-size:14px;display:none}
+.feedback-msg.show{display:block}
+.progress-bar{height:4px;background:var(--card2);border-radius:2px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);transition:width .3s;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-mark">E</div><span class="logo-name">Easy<span>English</span></span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">Luyện tập</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="quiz.html" class="nav-a">📝 Quiz</a>
+        <a href="writing-checker.html" class="nav-a">✍️ Writing Checker</a>
+        <a href="listening.html" class="nav-a active">🎧 Listening</a>
+        <a href="spaced-repetition.html" class="nav-a">🧠 Spaced Repetition</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="page-label">Luyện nghe tiếng Anh</div>
+  <h1 class="page-title">Listening Practice 🎧</h1>
+  <p class="page-desc">Luyện nghe với Web Speech API. Chọn chế độ, bấm 🔊 để nghe, rồi trả lời.</p>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" onclick="setMode('choose',this)">🎯 Nghe & Chọn</button>
+    <button class="mode-tab" onclick="setMode('dictation',this)">✍️ Nghe & Viết</button>
+    <button class="mode-tab" onclick="setMode('word',this)">🔤 Nghe từ</button>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+
+  <div class="exercise-box">
+    <div class="speed-toggle">
+      <button class="speed-btn active" id="speedNormal" onclick="setSpeed(0.9)">🐇 Normal</button>
+      <button class="speed-btn" id="speedSlow" onclick="setSpeed(0.6)">🐢 Slow</button>
+    </div>
+
+    <button class="play-btn" onclick="playAudio()">🔊</button>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:16px">Bấm để nghe <span id="replayHint">(bấm lại để nghe lần nữa)</span></div>
+
+    <div id="optionsArea"></div>
+    <div class="feedback-msg" id="fbMsg"></div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-item">Đúng: <strong id="sCorrect">0</strong></div>
+    <div class="score-item">Sai: <strong id="sWrong" style="color:var(--coral)">0</strong></div>
+    <div class="score-item">Câu: <strong id="sCurrent">1</strong>/<strong id="sTotal">10</strong></div>
+  </div>
+</div>
+
+<script>
+const SENTENCES = [
+  {en:"I would like a cup of coffee, please.",vi:"Tôi muốn một ly cà phê.",opts:["Tôi muốn một ly cà phê.","Tôi muốn một ly trà.","Tôi thích uống nước cam.","Tôi cần một chiếc bánh."]},
+  {en:"The weather is beautiful today.",vi:"Thời tiết hôm nay đẹp.",opts:["Thời tiết hôm nay đẹp.","Trời mưa hôm nay.","Hôm nay rất lạnh.","Trời đang nắng gắt."]},
+  {en:"Can you help me find the library?",vi:"Bạn có thể giúp tôi tìm thư viện không?",opts:["Bạn có thể giúp tôi tìm thư viện không?","Bạn có muốn đi siêu thị không?","Thư viện ở đâu vậy?","Bạn có sách không?"]},
+  {en:"She has been studying English for three years.",vi:"Cô ấy đã học tiếng Anh được ba năm.",opts:["Cô ấy đã học tiếng Anh được ba năm.","Cô ấy mới bắt đầu học.","Anh ấy học tiếng Pháp.","Cô ấy giỏi tiếng Anh."]},
+  {en:"The train arrives at nine o'clock in the morning.",vi:"Tàu đến lúc chín giờ sáng.",opts:["Tàu đến lúc chín giờ sáng.","Tàu khởi hành lúc mười giờ.","Máy bay đến trưa.","Xe buýt đến lúc tám giờ."]},
+  {en:"I forgot to bring my umbrella.",vi:"Tôi quên mang ô.",opts:["Tôi quên mang ô.","Tôi mang theo áo mưa.","Tôi để quên sách.","Trời không mưa."]},
+  {en:"Please turn off the lights before you leave.",vi:"Vui lòng tắt đèn trước khi đi.",opts:["Vui lòng tắt đèn trước khi đi.","Hãy bật đèn lên.","Đừng quên khóa cửa.","Bạn có thể mở cửa sổ không?"]},
+  {en:"My brother is taller than me.",vi:"Anh trai tôi cao hơn tôi.",opts:["Anh trai tôi cao hơn tôi.","Em gái tôi rất đẹp.","Tôi là người cao nhất.","Bạn tôi thấp hơn tôi."]},
+  {en:"We should protect the environment for future generations.",vi:"Chúng ta nên bảo vệ môi trường cho thế hệ tương lai.",opts:["Chúng ta nên bảo vệ môi trường cho thế hệ tương lai.","Môi trường rất quan trọng.","Tương lai rất khó đoán.","Trái đất đang nóng lên."]},
+  {en:"The restaurant is located next to the park.",vi:"Nhà hàng nằm cạnh công viên.",opts:["Nhà hàng nằm cạnh công viên.","Công viên rất đẹp.","Nhà hàng đã đóng cửa.","Tôi thích ăn ở nhà."]},
+];
+
+const WORDS = [
+  {en:'beautiful',vi:'đẹp',opts:['beautiful','wonderful','grateful','powerful']},
+  {en:'environment',vi:'môi trường',opts:['environment','entertainment','equipment','experiment']},
+  {en:'education',vi:'giáo dục',opts:['education','evolution','evaluation','elimination']},
+  {en:'technology',vi:'công nghệ',opts:['technology','psychology','methodology','archaeology']},
+  {en:'comfortable',vi:'thoải mái',opts:['comfortable','considerable','comparable','remarkable']},
+  {en:'experience',vi:'kinh nghiệm',opts:['experience','experiment','expression','expectation']},
+  {en:'communication',vi:'giao tiếp',opts:['communication','competition','combination','compensation']},
+  {en:'opportunity',vi:'cơ hội',opts:['opportunity','community','university','personality']},
+  {en:'development',vi:'phát triển',opts:['development','department','management','achievement']},
+  {en:'sustainable',vi:'bền vững',opts:['sustainable','substantial','suitable','considerable']},
+];
+
+let mode='choose',speed=0.9,current=0,correct=0,wrong=0,answered=false;
+
+function setMode(m,el){
+  mode=m;current=0;correct=0;wrong=0;answered=false;
+  document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  updateUI();
+}
+
+function setSpeed(s){
+  speed=s;
+  document.getElementById('speedNormal').classList.toggle('active',s===0.9);
+  document.getElementById('speedSlow').classList.toggle('active',s===0.6);
+}
+
+function getData(){return mode==='word'?WORDS:SENTENCES;}
+function getTotal(){return getData().length;}
+
+function playAudio(){
+  speechSynthesis.cancel();
+  const d=getData()[current];
+  const u=new SpeechSynthesisUtterance(d.en);
+  u.lang='en-US';u.rate=speed;
+  speechSynthesis.speak(u);
+}
+
+function updateUI(){
+  const d=getData();const item=d[current];const total=d.length;
+  document.getElementById('sCorrect').textContent=correct;
+  document.getElementById('sWrong').textContent=wrong;
+  document.getElementById('sCurrent').textContent=current+1;
+  document.getElementById('sTotal').textContent=total;
+  document.getElementById('progFill').style.width=((current/total)*100)+'%';
+  document.getElementById('fbMsg').className='feedback-msg';
+  answered=false;
+
+  const area=document.getElementById('optionsArea');
+  if(mode==='dictation'){
+    area.innerHTML=`<input class="dict-input" id="dictInput" placeholder="Gõ lại câu bạn nghe..." onkeydown="if(event.key==='Enter')checkDictation()">
+      <div style="margin-top:12px"><button class="opt-btn" style="max-width:200px;margin:0 auto" onclick="checkDictation()">✔ Kiểm tra</button></div>`;
+  } else {
+    const opts=item.opts.sort(()=>Math.random()-0.5);
+    area.innerHTML='<div class="options">'+opts.map(o=>`<button class="opt-btn" onclick="checkAnswer(this,'${o.replace(/'/g,"\\'")}')">${o}</button>`).join('')+'</div>';
+  }
+}
+
+function checkAnswer(btn,answer){
+  if(answered)return;answered=true;
+  const d=getData()[current];
+  const correctAns=mode==='word'?d.en:d.vi;
+  if(answer===correctAns){
+    btn.classList.add('correct');correct++;
+    showFB('✅ Đúng rồi!','rgba(107,203,119,0.1)','var(--green)');
+  } else {
+    btn.classList.add('wrong');wrong++;
+    document.querySelectorAll('.opt-btn').forEach(b=>{if(b.textContent===correctAns)b.classList.add('correct');});
+    showFB(`❌ Sai! Đáp án: "${correctAns}"`,'rgba(255,138,128,0.1)','var(--coral)');
+  }
+  setTimeout(()=>{if(current<getData().length-1){current++;updateUI();}else{showComplete();}},1500);
+}
+
+function checkDictation(){
+  if(answered)return;answered=true;
+  const input=document.getElementById('dictInput').value.trim().toLowerCase().replace(/[^a-z0-9\s]/g,'');
+  const expected=getData()[current].en.toLowerCase().replace(/[^a-z0-9\s]/g,'');
+  if(input===expected){correct++;showFB('✅ Tuyệt vời! Đúng hoàn toàn!','rgba(107,203,119,0.1)','var(--green)');}
+  else{wrong++;showFB(`❌ Câu đúng: "${getData()[current].en}"`,'rgba(255,138,128,0.1)','var(--coral)');}
+  setTimeout(()=>{if(current<getData().length-1){current++;updateUI();}else{showComplete();}},2000);
+}
+
+function showFB(msg,bg,color){
+  const el=document.getElementById('fbMsg');
+  el.innerHTML=msg;el.style.background=bg;el.style.color=color;
+  el.className='feedback-msg show';
+}
+
+function showComplete(){
+  const total=getData().length;const pct=Math.round((correct/total)*100);
+  document.getElementById('optionsArea').innerHTML=`
+    <div style="padding:20px;text-align:center">
+      <div style="font-family:'Fraunces',serif;font-size:48px;color:var(--accent);margin-bottom:8px">${pct}%</div>
+      <div style="font-size:14px;color:var(--text2);margin-bottom:16px">Đúng ${correct}/${total} câu</div>
+      <button class="opt-btn" style="max-width:200px;margin:0 auto;background:var(--accent);color:#0b1a1e;font-weight:500" onclick="current=0;correct=0;wrong=0;updateUI()">🔄 Làm lại</button>
+    </div>`;
+  document.getElementById('progFill').style.width='100%';
+}
+
+updateUI();
+
+function toggleDrop(el){const d=el.closest('.nav-drop');const o=d.classList.contains('open');document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));if(!o)d.classList.add('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

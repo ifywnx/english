@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ điển tiếng Anh — EasyEnglish</title>
+<meta name="description" content="Từ điển Anh-Việt có phiên âm IPA, nghĩa đầy đủ, ví dụ câu thực tế, từ đồng nghĩa và từ liên quan. Tra cứu nhanh.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#f4845f;--green:#6bcb77;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(240,194,122,0.08);top:-100px;left:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;right:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+
+.content{padding:40px 48px;max-width:900px;margin:0 auto;position:relative;z-index:1}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:32px}
+
+/* SEARCH BAR */
+.search-wrap{position:relative;margin-bottom:24px}
+.search-big{width:100%;padding:16px 60px 16px 20px;background:var(--card2);border:1px solid rgba(100,216,165,0.3);border-radius:14px;color:var(--text);font-size:16px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
+.search-big:focus{border-color:rgba(78,205,196,0.6)}
+.search-big::placeholder{color:var(--text3)}
+.search-icon{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text3)}
+.search-hint{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.hint-chip{padding:5px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:12px;color:var(--text2);cursor:pointer;transition:all .2s}
+.hint-chip:hover{border-color:rgba(100,216,165,0.4);color:var(--accent3)}
+
+/* RESULT CARD */
+.result-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px;display:none}
+.result-card.show{display:block}
+.rc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.rc-word{font-family:'Fraunces',serif;font-size:40px;color:var(--text);margin-bottom:4px}
+.rc-pron{font-size:15px;color:var(--accent);font-style:italic;margin-bottom:8px}
+.rc-type-row{display:flex;gap:6px;flex-wrap:wrap}
+.type-chip{padding:3px 12px;border-radius:20px;font-size:11px;font-weight:500}
+.chip-n{background:rgba(100,216,165,0.15);color:var(--accent)}
+.chip-v{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.chip-adj{background:rgba(244,132,95,0.15);color:var(--coral)}
+.chip-adv{background:rgba(107,203,119,0.15);color:var(--green)}
+.chip-phrase{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.rc-actions{display:flex;gap:8px}
+.save-btn{padding:8px 16px;background:rgba(100,216,165,0.1);border:0.5px solid rgba(100,216,165,0.3);border-radius:8px;font-size:12px;color:var(--accent);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.save-btn:hover{background:rgba(232,197,71,0.2)}
+.save-btn.saved{background:rgba(240,194,122,0.1);border-color:rgba(100,216,165,0.3);color:var(--accent3)}
+
+/* SPEAK BUTTON */
+.speak-btn{width:40px;height:40px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.speak-btn:hover{background:rgba(123,110,246,0.3);transform:scale(1.1)}
+.speak-btn.playing{animation:pulse-speak .8s infinite}
+@keyframes pulse-speak{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.api-badge{display:inline-block;padding:2px 8px;background:rgba(240,194,122,0.1);border:0.5px solid rgba(78,205,196,0.2);border-radius:4px;font-size:9px;color:var(--accent3);margin-left:8px;vertical-align:middle}
+.loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* MEANINGS */
+.meanings{margin-bottom:20px}
+.meaning-item{padding:14px 0;border-bottom:0.5px solid var(--border)}
+.meaning-item:last-child{border-bottom:none}
+.m-num{font-size:11px;color:var(--text3);margin-bottom:4px}
+.m-vi{font-size:18px;color:var(--text);margin-bottom:8px}
+.m-en-def{font-size:13px;color:var(--text2);margin-bottom:10px;font-style:italic}
+.m-examples{display:flex;flex-direction:column;gap:6px}
+.m-ex{background:var(--card2);border:0.5px solid var(--border);border-radius:8px;padding:10px 14px}
+.m-ex-en{font-size:13px;color:var(--text);font-style:italic;margin-bottom:3px}
+.m-ex-vi{font-size:12px;color:var(--text3)}
+.m-tag{display:inline-block;margin-top:6px;padding:2px 8px;background:rgba(255,255,255,0.05);border-radius:4px;font-size:10px;color:var(--text3)}
+
+/* RELATED */
+.related-section{margin-bottom:16px}
+.rs-title{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.rs-words{display:flex;flex-wrap:wrap;gap:6px}
+.rs-chip{padding:5px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s}
+.rs-chip:hover{border-color:rgba(100,216,165,0.4);color:var(--accent3)}
+
+/* WORD OF DAY */
+.wod-card{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:18px;padding:24px;margin-bottom:24px}
+.wod-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.wod-word{font-family:'Fraunces',serif;font-size:32px;color:var(--text);margin-bottom:4px;cursor:pointer}
+.wod-word:hover{color:var(--accent)}
+.wod-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:6px}
+.wod-vi{font-size:16px;color:var(--text2);margin-bottom:8px}
+.wod-ex{font-size:13px;color:var(--text3);font-style:italic;border-left:2px solid rgba(100,216,165,0.3);padding-left:12px}
+
+/* SAVED WORDS */
+.saved-section{margin-top:32px}
+.saved-title{font-size:16px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.clear-btn{font-size:12px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+.saved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.saved-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:all .2s}
+.saved-item:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.si-en{font-size:14px;color:var(--text)}
+.si-pron{font-size:11px;color:var(--accent);font-style:italic}
+.si-vi{font-size:12px;color:var(--text3)}
+
+/* HISTORY */
+.history-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.hist-item{padding:5px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:12px;color:var(--text2);cursor:pointer;transition:all .2s}
+.hist-item:hover{color:var(--text);border-color:rgba(255,255,255,0.15)}
+
+.s-divider{height:0.5px;background:var(--border);margin:28px 0}
+.empty-msg{text-align:center;color:var(--text3);font-size:14px;padding:24px}
+
+/* BROWSE */
+.alpha-bar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.alpha-btn{width:34px;height:34px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.alpha-btn:hover{color:var(--text);border-color:rgba(100,216,165,0.3)}
+.alpha-btn.active{background:rgba(100,216,165,0.15);color:var(--accent);border-color:rgba(100,216,165,0.4)}
+.level-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.lv-btn{padding:6px 14px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lv-btn:hover{color:var(--text)}
+.lv-btn.active{color:var(--text);border-color:rgba(100,216,165,0.3)}
+.lv-btn.active[data-lv='A1']{background:rgba(107,203,119,0.15);color:var(--green)}
+.lv-btn.active[data-lv='A2']{background:rgba(100,216,165,0.15);color:var(--accent)}
+.lv-btn.active[data-lv='B1']{background:rgba(240,194,122,0.15);color:var(--accent3)}
+.lv-btn.active[data-lv='B2']{background:rgba(167,139,250,0.15);color:var(--accent2)}
+.lv-btn.active[data-lv='C1']{background:rgba(244,132,95,0.15);color:var(--coral)}
+.lv-btn.active[data-lv='All']{background:rgba(100,216,165,0.1);color:var(--accent)}
+.browse-count{font-size:12px;color:var(--text3);margin-bottom:12px}
+.browse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px}
+.bw-card{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:all .15s}
+.bw-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.bw-word{font-size:14px;font-weight:500;margin-bottom:2px}
+.bw-ipa{font-size:11px;color:var(--accent);font-style:italic}
+.bw-vi{font-size:12px;color:var(--text3);margin-top:2px}
+.bw-meta{display:flex;gap:4px;margin-top:4px}
+.bw-lv{font-size:9px;padding:2px 6px;border-radius:4px;font-weight:500}
+.lv-A1{background:rgba(107,203,119,0.15);color:var(--green)}
+.lv-A2{background:rgba(100,216,165,0.15);color:var(--accent)}
+.lv-B1{background:rgba(240,194,122,0.15);color:var(--accent3)}
+.lv-B2{background:rgba(167,139,250,0.15);color:var(--accent2)}
+.lv-C1{background:rgba(244,132,95,0.15);color:var(--coral)}
+.bw-type{font-size:9px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.05);color:var(--text3)}
+
+@media(max-width:900px){
+  .content{padding:24px 20px}
+  nav{padding:12px 16px}
+  .nav-links{display:none}
+  .page-title{font-size:28px}
+  .saved-grid{grid-template-columns:1fr 1fr}
+  .browse-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+  .saved-grid{grid-template-columns:1fr}
+  .browse-grid{grid-template-columns:1fr}
+  .rc-header{flex-direction:column}
+}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
+</nav>
+
+<div class="content">
+  <div class="page-label">Module 6</div>
+  <h1 class="page-title">Từ điển Anh–Việt</h1>
+  <p class="page-desc">Tra cứu từ vựng — có phiên âm IPA, nghĩa đầy đủ, ví dụ câu thực tế, từ đồng nghĩa và từ liên quan.</p>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <input class="search-big" id="searchInput" type="text" placeholder="Nhập từ tiếng Anh để tra cứu..." oninput="searchWord()" onkeydown="if(event.key==='Enter')searchWord(true)" autocomplete="off" autofocus>
+    <span class="search-icon">🔍</span>
+  </div>
+  <div class="search-hint" id="searchHint">
+    <span style="font-size:12px;color:var(--text3);align-self:center">Tra nhanh:</span>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="historySection" style="display:none">
+    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Đã tra gần đây:</div>
+    <div class="history-row" id="historyRow"></div>
+    <div class="s-divider"></div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card" id="resultCard"></div>
+
+  <!-- NOT FOUND -->
+  <div class="empty-msg" id="notFound" style="display:none">
+    Không tìm thấy từ "<span id="notFoundWord"></span>". Thử lại với từ khác hoặc kiểm tra chính tả.
+  </div>
+
+  <!-- WORD OF THE DAY -->
+  <div class="wod-card" id="wodCard">
+    <div class="wod-label">⭐ Từ của ngày hôm nay</div>
+    <div class="wod-word" id="wodWord" onclick="lookupFromWod()"></div>
+    <div class="wod-pron" id="wodPron"></div>
+    <div class="wod-vi" id="wodVi"></div>
+    <div class="wod-ex" id="wodEx"></div>
+  </div>
+
+  <!-- SAVED WORDS -->
+  <div class="saved-section">
+    <div class="saved-title">
+      <span>📌 Từ đã lưu (<span id="savedCount">0</span>)</span>
+      <button class="clear-btn" onclick="clearSaved()">Xóa tất cả</button>
+    </div>
+    <div class="saved-grid" id="savedGrid"><div class="empty-msg">Chưa có từ nào được lưu. Tra từ và bấm "Lưu từ" để thêm vào đây.</div></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- BROWSE -->
+  <div id="browseSection">
+    <div style="font-size:20px;font-family:'Fraunces',serif;margin-bottom:12px">📖 Danh sách từ A–Z</div>
+    <div class="alpha-bar" id="alphaBar"></div>
+    <div class="level-tabs" id="levelTabs">
+      <button class="lv-btn active" data-lv="All" onclick="setLevel('All',this)">Tất cả</button>
+      <button class="lv-btn" data-lv="A1" onclick="setLevel('A1',this)">🟢 A1</button>
+      <button class="lv-btn" data-lv="A2" onclick="setLevel('A2',this)">🔵 A2</button>
+      <button class="lv-btn" data-lv="B1" onclick="setLevel('B1',this)">🟡 B1</button>
+      <button class="lv-btn" data-lv="B2" onclick="setLevel('B2',this)">🟣 B2</button>
+      <button class="lv-btn" data-lv="C1" onclick="setLevel('C1',this)">🔴 C1</button>
+    </div>
+    <div class="browse-count" id="browseCount"></div>
+    <div class="browse-grid" id="browseGrid"></div>
+  </div>
+</div>
+
+<script src="dict-data.js"></script>
+<script>
+// ===== DICTIONARY DATA =====
+const DICT = {
+  'beautiful':{
+    pron:'/ˈbjuːtɪfəl/',
+    types:['adj'],
+    meanings:[
+      {vi:'đẹp, xinh đẹp',enDef:'very attractive or pleasing to the senses',examples:[
+        {en:'She has a beautiful smile.',vi:'Cô ấy có nụ cười đẹp.'},
+        {en:'What a beautiful day!',vi:'Thật là một ngày đẹp!'},
+        {en:'The sunset was absolutely beautiful.',vi:'Hoàng hôn thật tuyệt đẹp.'},
+      ],tag:'Tính từ'},
+      {vi:'tuyệt vời, xuất sắc (nghĩa mở rộng)',enDef:'very good or excellent',examples:[
+        {en:'That was a beautiful goal!',vi:'Đó là một bàn thắng tuyệt đẹp!'},
+      ],tag:'Nghĩa mở rộng'},
+    ],
+    synonyms:['gorgeous','lovely','stunning','attractive','pretty'],
+    antonyms:['ugly','hideous','unattractive'],
+    related:['beauty','beautifully','beautify'],
+    phrases:['beauty is in the eye of the beholder','beautiful mind'],
+  },
+  'happy':{
+    pron:'/ˈhæpi/',
+    types:['adj'],
+    meanings:[
+      {vi:'vui vẻ, hạnh phúc',enDef:'feeling or showing pleasure or contentment',examples:[
+        {en:'I am very happy today.',vi:'Hôm nay tôi rất vui.'},
+        {en:'She was happy to hear the news.',vi:'Cô ấy vui mừng khi nghe tin tức.'},
+        {en:"Happy birthday! I hope you're happy today.",vi:'Chúc mừng sinh nhật! Mong bạn vui vẻ hôm nay.'},
+      ],tag:'Tính từ'},
+      {vi:'hài lòng, đồng ý (với điều gì đó)',enDef:'satisfied or willing to do something',examples:[
+        {en:"I'm happy to help you anytime.",vi:'Tôi rất vui được giúp bạn bất cứ lúc nào.'},
+      ],tag:'Nghĩa 2'},
+    ],
+    synonyms:['joyful','glad','pleased','content','delighted'],
+    antonyms:['sad','unhappy','miserable','depressed'],
+    related:['happiness','happily','unhappy','happier','happiest'],
+    phrases:['happy-go-lucky','happy hour','trigger happy'],
+  },
+  'study':{
+    pron:'/ˈstʌdi/',
+    types:['v','n'],
+    meanings:[
+      {vi:'học, nghiên cứu (động từ)',enDef:'to devote time and attention to acquiring knowledge',examples:[
+        {en:'I study English every day.',vi:'Tôi học tiếng Anh mỗi ngày.'},
+        {en:'She studied medicine at university.',vi:'Cô ấy học y khoa ở đại học.'},
+        {en:'He is studying for his exams.',vi:'Anh ấy đang ôn thi.'},
+      ],tag:'Động từ (V)'},
+      {vi:'cuộc nghiên cứu, bài nghiên cứu (danh từ)',enDef:'a detailed investigation and analysis of a subject',examples:[
+        {en:'A recent study shows that coffee is good for health.',vi:'Một nghiên cứu gần đây cho thấy cà phê tốt cho sức khỏe.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'phòng làm việc / đọc sách (danh từ)',enDef:'a room used for reading, writing, or academic work',examples:[
+        {en:'He has a study at home where he reads.',vi:'Anh ấy có một phòng đọc sách ở nhà.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['learn','research','examine','investigate','analyze'],
+    antonyms:['ignore','neglect'],
+    related:['student','studies','studied','studying','studious'],
+    phrases:['study abroad','study group','case study','field of study'],
+  },
+  'important':{
+    pron:'/ɪmˈpɔːrtənt/',
+    types:['adj'],
+    meanings:[
+      {vi:'quan trọng',enDef:'of great significance or value; having a major effect',examples:[
+        {en:'English is very important in today\'s world.',vi:'Tiếng Anh rất quan trọng trong thế giới ngày nay.'},
+        {en:'It is important to eat healthy food.',vi:'Việc ăn thức ăn lành mạnh rất quan trọng.'},
+        {en:'She made an important decision.',vi:'Cô ấy đưa ra một quyết định quan trọng.'},
+      ],tag:'Tính từ'},
+    ],
+    synonyms:['significant','crucial','vital','essential','critical','key'],
+    antonyms:['unimportant','trivial','insignificant','minor'],
+    related:['importance','importantly','unimportant'],
+    phrases:['most importantly','of great importance','self-important'],
+  },
+  'love':{
+    pron:'/lʌv/',
+    types:['n','v'],
+    meanings:[
+      {vi:'tình yêu, tình thương (danh từ)',enDef:'an intense feeling of deep affection',examples:[
+        {en:'Love is the most powerful emotion.',vi:'Tình yêu là cảm xúc mạnh mẽ nhất.'},
+        {en:'She fell in love at first sight.',vi:'Cô ấy yêu từ cái nhìn đầu tiên.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'yêu thích (động từ)',enDef:'to feel a deep romantic or strong affection for someone/something',examples:[
+        {en:'I love learning English.',vi:'Tôi yêu thích việc học tiếng Anh.'},
+        {en:'She loves her family very much.',vi:'Cô ấy yêu thương gia đình mình rất nhiều.'},
+        {en:"I'd love a cup of coffee.",vi:'Tôi rất muốn uống một tách cà phê.'},
+      ],tag:'Động từ (V)'},
+    ],
+    synonyms:['adore','cherish','treasure','affection','devotion'],
+    antonyms:['hate','dislike','loathe'],
+    related:['lovely','lover','loving','lovable','beloved','fall in love'],
+    phrases:['fall in love','love at first sight','head over heels','love affair','tough love'],
+  },
+  'difficult':{
+    pron:'/ˈdɪfɪkəlt/',
+    types:['adj'],
+    meanings:[
+      {vi:'khó, khó khăn',enDef:'needing much effort or skill to accomplish, deal with, or understand',examples:[
+        {en:'English grammar can be difficult at first.',vi:'Ngữ pháp tiếng Anh có thể khó lúc đầu.'},
+        {en:'It was a very difficult exam.',vi:'Đó là một kỳ thi rất khó.'},
+        {en:'She had a difficult childhood.',vi:'Cô ấy có tuổi thơ khó khăn.'},
+      ],tag:'Tính từ'},
+      {vi:'khó tính (về người)',enDef:'(of a person) not easy to please or satisfy',examples:[
+        {en:'He can be very difficult to work with.',vi:'Anh ta có thể rất khó làm việc cùng.'},
+      ],tag:'Nghĩa 2'},
+    ],
+    synonyms:['hard','tough','challenging','demanding','complex','complicated'],
+    antonyms:['easy','simple','straightforward','effortless'],
+    related:['difficulty','difficulties','difficultly'],
+    phrases:['with difficulty','overcome difficulties','face difficulties'],
+  },
+  'work':{
+    pron:'/wɜːrk/',
+    types:['v','n'],
+    meanings:[
+      {vi:'làm việc (động từ)',enDef:'to be engaged in physical or mental activity in order to achieve a result',examples:[
+        {en:'She works at a hospital.',vi:'Cô ấy làm việc ở bệnh viện.'},
+        {en:'I work from 8 AM to 5 PM.',vi:'Tôi làm việc từ 8h sáng đến 5h chiều.'},
+        {en:'He works hard every day.',vi:'Anh ấy làm việc chăm chỉ mỗi ngày.'},
+      ],tag:'Động từ (V)'},
+      {vi:'công việc, việc làm (danh từ)',enDef:'activity involving mental or physical effort done in order to achieve a purpose',examples:[
+        {en:'I have a lot of work to do today.',vi:'Hôm nay tôi có nhiều việc cần làm.'},
+        {en:'She found work as a nurse.',vi:'Cô ấy tìm được việc làm là y tá.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'tác phẩm, công trình (danh từ)',enDef:'a piece of art, literature, or music',examples:[
+        {en:"Shakespeare's works are famous worldwide.",vi:'Các tác phẩm của Shakespeare nổi tiếng toàn thế giới.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['labor','toil','employment','job','occupation','effort'],
+    antonyms:['play','rest','leisure','holiday'],
+    related:['worker','working','worked','workplace','workforce','homework','teamwork','network'],
+    phrases:['work out','work on','teamwork','network','work ethic','framework'],
+  },
+  'understand':{
+    pron:'/ˌʌndərˈstænd/',
+    types:['v'],
+    meanings:[
+      {vi:'hiểu, hiểu được',enDef:'to perceive the intended meaning of words, a language, or a speaker',examples:[
+        {en:'Do you understand the question?',vi:'Bạn có hiểu câu hỏi không?'},
+        {en:'I don\'t understand this grammar rule.',vi:'Tôi không hiểu quy tắc ngữ pháp này.'},
+        {en:'She understands how difficult it is.',vi:'Cô ấy hiểu điều đó khó khăn thế nào.'},
+      ],tag:'Động từ (V)'},
+      {vi:'thông cảm, thấu hiểu',enDef:'to be sympathetically aware of',examples:[
+        {en:'I understand your situation.',vi:'Tôi thông cảm với hoàn cảnh của bạn.'},
+      ],tag:'Nghĩa 2'},
+    ],
+    synonyms:['comprehend','grasp','follow','get','realize','appreciate'],
+    antonyms:['misunderstand','confuse'],
+    related:['understanding','understandable','misunderstand','understood'],
+    phrases:['understand each other','make yourself understood','beyond understanding'],
+  },
+  'help':{
+    pron:'/hɛlp/',
+    types:['v','n'],
+    meanings:[
+      {vi:'giúp đỡ, hỗ trợ (động từ)',enDef:'to make it easier for someone to do something by offering services or resources',examples:[
+        {en:'Can you help me with this problem?',vi:'Bạn có thể giúp tôi với vấn đề này không?'},
+        {en:'She helped him carry the bags.',vi:'Cô ấy giúp anh ấy mang túi.'},
+        {en:'I\'d be happy to help!',vi:'Tôi rất vui được giúp đỡ!'},
+      ],tag:'Động từ (V)'},
+      {vi:'sự giúp đỡ, trợ giúp (danh từ)',enDef:'assistance; aid given to someone',examples:[
+        {en:'Thank you for your help!',vi:'Cảm ơn sự giúp đỡ của bạn!'},
+        {en:'I need some help with my homework.',vi:'Tôi cần giúp đỡ với bài tập về nhà.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['assist','support','aid','facilitate','contribute'],
+    antonyms:['hinder','obstruct','harm'],
+    related:['helpful','helpless','helper','helping hand'],
+    phrases:['help out','help yourself','can\'t help','with a little help','self-help'],
+  },
+  'time':{
+    pron:'/taɪm/',
+    types:['n','v'],
+    meanings:[
+      {vi:'thời gian (danh từ)',enDef:'the indefinite continued progress of existence in the past, present, and future',examples:[
+        {en:'Time flies when you\'re having fun.',vi:'Thời gian trôi nhanh khi bạn vui vẻ.'},
+        {en:'I don\'t have time right now.',vi:'Bây giờ tôi không có thời gian.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'lần, lượt (danh từ)',enDef:'an instance of something happening',examples:[
+        {en:'This is the third time I\'ve visited Hanoi.',vi:'Đây là lần thứ ba tôi đến Hà Nội.'},
+        {en:'How many times have you been there?',vi:'Bạn đã đến đó bao nhiêu lần?'},
+      ],tag:'Danh từ (N) — đếm được'},
+      {vi:'thời điểm, giờ giấc',enDef:'a point of time as measured in hours and minutes',examples:[
+        {en:'What time is it?',vi:'Mấy giờ rồi?'},
+        {en:'The meeting starts at 9 o\'clock.',vi:'Cuộc họp bắt đầu lúc 9 giờ.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['period','moment','duration','era','occasion','instance'],
+    antonyms:[],
+    related:['timetable','timeline','overtime','pastime','timing','timely'],
+    phrases:['in time','on time','at the same time','waste time','save time','take time','time after time','time flies'],
+  },
+};
+
+const QUICK_WORDS = ['beautiful','happy','study','important','love','difficult','work','understand','help','time'];
+
+const WOD_LIST = [
+  {word:'persevere',pron:'/ˌpɜːrsɪˈvɪər/',vi:'kiên trì, bền bỉ',ex:'"If you persevere, you will succeed." — Nếu bạn kiên trì, bạn sẽ thành công.'},
+  {word:'eloquent',pron:'/ˈɛləkwənt/',vi:'hùng hồn, diễn đạt giỏi',ex:'"She gave an eloquent speech." — Cô ấy có một bài phát biểu hùng hồn.'},
+  {word:'ambiguous',pron:'/æmˈbɪɡjuəs/',vi:'mơ hồ, không rõ ràng',ex:'"The instructions were ambiguous." — Hướng dẫn rất mơ hồ.'},
+  {word:'resilient',pron:'/rɪˈzɪliənt/',vi:'có khả năng phục hồi, dẻo dai',ex:'"Children are very resilient." — Trẻ em rất dẻo dai.'},
+  {word:'meticulous',pron:'/məˈtɪkjʊləs/',vi:'tỉ mỉ, cẩn thận từng chi tiết',ex:'"She is meticulous about her work." — Cô ấy rất tỉ mỉ trong công việc.'},
+  {word:'benevolent',pron:'/bɪˈnɛvələnt/',vi:'nhân từ, tốt bụng',ex:'"A benevolent leader cares for the people." — Một nhà lãnh đạo nhân từ quan tâm đến người dân.'},
+  {word:'eloquence',pron:'/ˈɛləkwəns/',vi:'sự hùng hồn, tài ăn nói',ex:'"His eloquence impressed everyone." — Tài hùng biện của anh ấy gây ấn tượng với mọi người.'},
+];
+
+let searchHistory = JSON.parse(localStorage.getItem('ee_dict_history')||'[]');
+let savedWords = JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
+let currentWord = '';
+
+// Quick search hints
+document.getElementById('searchHint').innerHTML += QUICK_WORDS.map(w=>`
+  <span class="hint-chip" onclick="lookupWord('${w}')">${w}</span>`).join('');
+
+// Word of the day
+const doy = Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
+const wod = WOD_LIST[doy % WOD_LIST.length];
+document.getElementById('wodWord').textContent = wod.word;
+document.getElementById('wodPron').textContent = wod.pron;
+document.getElementById('wodVi').textContent = wod.vi;
+document.getElementById('wodEx').textContent = wod.ex;
+function lookupFromWod() { lookupWord(wod.word); }
+
+function searchWord(force=false) {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q) { hideResult(); return; }
+  if(force || q.length >= 2) lookupWord(q);
+}
+
+async function lookupWord(word) {
+  word = word.toLowerCase().trim();
+  document.getElementById('searchInput').value = word;
+  document.getElementById('notFound').style.display='none';
+
+  // 1. Thử local DICT trước
+  if(DICT[word]) {
+    currentWord = word;
+    addHistory(word);
+    renderResult(word, DICT[word], false);
+    return;
+  }
+
+  // 2. Gọi Dictionary API
+  try {
+    const rc = document.getElementById('resultCard');
+    rc.innerHTML = '<div style="text-align:center;padding:40px"><div class="loading-spinner"></div><div style="margin-top:12px;color:var(--text3);font-size:13px">Đang tra từ...</div></div>';
+    rc.classList.add('show');
+
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+    const entry = parseApiResponse(data);
+    DICT[word] = entry; // cache lại
+    currentWord = word;
+    addHistory(word);
+    renderResult(word, entry, true);
+  } catch(e) {
+    // 3. Không tìm thấy ở cả 2
+    hideResult();
+    const close = Object.keys(DICT).filter(k=>k.startsWith(word[0])||k.includes(word.slice(0,3)));
+    const nf = document.getElementById('notFound');
+    nf.style.display='block';
+    if(close.length) {
+      nf.innerHTML=`Không tìm thấy "<strong>${word}</strong>". Thử: ${close.slice(0,4).map(w=>`<span class="hist-item" onclick="lookupWord('${w}')" style="cursor:pointer">${w}</span>`).join(' ')}`;
+    } else {
+      nf.innerHTML=`Không tìm thấy "<strong>${word}</strong>". Kiểm tra chính tả hoặc thử từ khác.`;
+    }
+  }
+}
+
+function parseApiResponse(data) {
+  const d = data[0];
+  const phonetic = d.phonetic || (d.phonetics && d.phonetics.find(p=>p.text))?.text || '';
+  const audioUrl = (d.phonetics && d.phonetics.find(p=>p.audio && p.audio.length>0))?.audio || '';
+  const types = [...new Set(d.meanings.map(m=>({noun:'n',verb:'v',adjective:'adj',adverb:'adv'}[m.partOfSpeech]||m.partOfSpeech)))];
+  const meanings = d.meanings.flatMap(m=>m.definitions.slice(0,2).map(def=>({
+    tag: m.partOfSpeech,
+    vi: def.definition,
+    enDef: def.definition,
+    examples: def.example ? [{en:def.example, vi:''}] : []
+  }))).slice(0,4);
+  const synonyms = d.meanings.flatMap(m=>m.synonyms||[]).slice(0,6);
+  const antonyms = d.meanings.flatMap(m=>m.antonyms||[]).slice(0,4);
+  return { pron:phonetic, types, meanings, synonyms, antonyms, related:[], phrases:[], audioUrl };
+}
+
+function hideResult() {
+  document.getElementById('resultCard').classList.remove('show');
+}
+
+// --- TTS + Audio ---
+let currentAudio = null;
+function speak(text, audioUrl) {
+  if(currentAudio) { currentAudio.pause(); currentAudio=null; }
+  speechSynthesis.cancel();
+  if(audioUrl) {
+    currentAudio = new Audio(audioUrl);
+    currentAudio.play().catch(()=>speakTTS(text));
+  } else {
+    speakTTS(text);
+  }
+}
+function speakTTS(text) {
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.85;
+  speechSynthesis.speak(u);
+}
+
+function renderResult(word, e, fromApi=false) {
+  const isSaved = savedWords.some(s=>s.word===word);
+  const typeLabels = {n:'Danh từ (N)',v:'Động từ (V)',adj:'Tính từ (Adj)',adv:'Trạng từ (Adv)',phrase:'Cụm từ'};
+  const chipClass = {n:'chip-n',v:'chip-v',adj:'chip-adj',adv:'chip-adv',phrase:'chip-phrase'};
+  const audioUrl = e.audioUrl || '';
+  const apiBadge = fromApi ? '<span class="api-badge">📡 Online</span>' : '';
+
+  const rc = document.getElementById('resultCard');
+  rc.innerHTML = `
+    <div class="rc-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="speak-btn" onclick="speak('${word}','${audioUrl}')" title="Nghe phát âm">🔊</button>
+        <div>
+          <div class="rc-word">${word} ${apiBadge}</div>
+          <div class="rc-pron">${e.pron}</div>
+          <div class="rc-type-row">${e.types.map(t=>`<span class="type-chip ${chipClass[t]||'chip-n'}">${typeLabels[t]||t}</span>`).join('')}</div>
+        </div>
+      </div>
+      <div class="rc-actions">
+        <button class="save-btn ${isSaved?'saved':''}" id="saveBtn" onclick="toggleSave('${word}')">
+          ${isSaved?'✓ Đã lưu':'+ Lưu từ'}
+        </button>
+      </div>
+    </div>
+    <div class="meanings">
+      ${e.meanings.map((m,i)=>`
+        <div class="meaning-item">
+          <div class="m-num">Nghĩa ${i+1} <span class="m-tag">${m.tag}</span></div>
+          <div class="m-vi">${m.vi}</div>
+          ${m.enDef !== m.vi ? `<div class="m-en-def">${m.enDef}</div>` : ''}
+          <div class="m-examples">${m.examples.map(ex=>`
+            <div class="m-ex">
+              <div class="m-ex-en" style="display:flex;align-items:center;gap:8px">
+                <span style="cursor:pointer" onclick="speakTTS('${ex.en.replace(/'/g,"\\'")}')">🔊</span>
+                "${ex.en}"
+              </div>
+              ${ex.vi ? `<div class="m-ex-vi">${ex.vi}</div>` : ''}
+            </div>`).join('')}</div>
+        </div>`).join('')}
+    </div>
+    ${e.synonyms.length?`
+    <div class="related-section">
+      <div class="rs-title">Từ đồng nghĩa</div>
+      <div class="rs-words">${e.synonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w}')">${w}</span>`).join('')}</div>
+    </div>`:''}
+    ${e.antonyms.length?`
+    <div class="related-section">
+      <div class="rs-title">Từ trái nghĩa</div>
+      <div class="rs-words">${e.antonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w}')">${w}</span>`).join('')}</div>
+    </div>`:''}
+    ${e.related&&e.related.length?`
+    <div class="related-section">
+      <div class="rs-title">Từ liên quan</div>
+      <div class="rs-words">${e.related.map(w=>`<span class="rs-chip" onclick="lookupWord('${w.split(' ')[0]}')">${w}</span>`).join('')}</div>
+    </div>`:''}
+    ${e.phrases&&e.phrases.length?`
+    <div class="related-section">
+      <div class="rs-title">Cụm từ & Thành ngữ</div>
+      <div class="rs-words">${e.phrases.map(p=>`<span class="rs-chip">${p}</span>`).join('')}</div>
+    </div>`:''}
+  `;
+  rc.classList.add('show');
+  rc.scrollIntoView({behavior:'smooth',block:'nearest'});
+  document.getElementById('wodCard').style.display='none';
+}
+
+function toggleSave(word) {
+  const entry = DICT[word];
+  const idx = savedWords.findIndex(s=>s.word===word);
+  if(idx>-1) {
+    savedWords.splice(idx,1);
+    document.getElementById('saveBtn').textContent='+ Lưu từ';
+    document.getElementById('saveBtn').classList.remove('saved');
+  } else {
+    if(entry) {
+      savedWords.push({word, pron:entry.pron, vi:entry.meanings[0].vi});
+      document.getElementById('saveBtn').textContent='✓ Đã lưu';
+      document.getElementById('saveBtn').classList.add('saved');
+    }
+  }
+  localStorage.setItem('ee_saved_words', JSON.stringify(savedWords));
+  renderSaved();
+}
+
+function addHistory(word) {
+  searchHistory = [word, ...searchHistory.filter(h=>h!==word)].slice(0,8);
+  localStorage.setItem('ee_dict_history', JSON.stringify(searchHistory));
+  renderHistory();
+}
+
+function renderHistory() {
+  const hs = document.getElementById('historySection');
+  const hr = document.getElementById('historyRow');
+  if(!searchHistory.length) { hs.style.display='none'; return; }
+  hs.style.display='block';
+  hr.innerHTML = searchHistory.map(h=>`<span class="hist-item" onclick="lookupWord('${h}')">${h}</span>`).join('');
+}
+
+function renderSaved() {
+  const grid = document.getElementById('savedGrid');
+  document.getElementById('savedCount').textContent = savedWords.length;
+  if(!savedWords.length) { grid.innerHTML='<div class="empty-msg">Chưa có từ nào được lưu. Tra từ và bấm "Lưu từ" để thêm vào đây.</div>'; return; }
+  grid.innerHTML = savedWords.map(s=>`
+    <div class="saved-item" onclick="lookupWord('${s.word}')">
+      <div class="si-en">${s.word}</div>
+      <div class="si-pron">${s.pron}</div>
+      <div class="si-vi">${s.vi}</div>
+    </div>`).join('');
+}
+
+function clearSaved() {
+  if(confirm('Xóa tất cả từ đã lưu?')) { savedWords=[]; localStorage.removeItem('ee_saved_words'); renderSaved(); }
+}
+
+renderHistory();
+renderSaved();
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+
+// ===== BROWSE =====
+let curLetter='All',curLevel='All';
+const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+document.getElementById('alphaBar').innerHTML=
+  '<button class="alpha-btn active" onclick="setLetter(\'All\',this)">All</button>'+
+  LETTERS.map(l=>`<button class="alpha-btn" onclick="setLetter('${l}',this)">${l}</button>`).join('');
+
+function setLetter(l,btn){
+  curLetter=l;
+  document.querySelectorAll('.alpha-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBrowse();
+}
+function setLevel(lv,btn){
+  curLevel=lv;
+  document.querySelectorAll('.lv-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBrowse();
+}
+function renderBrowse(){
+  if(typeof BROWSE==='undefined')return;
+  let list=BROWSE;
+  if(curLetter!=='All') list=list.filter(w=>w[0].charAt(0).toUpperCase()===curLetter);
+  if(curLevel!=='All') list=list.filter(w=>w[3]===curLevel);
+  document.getElementById('browseCount').textContent=`Hiển thị ${list.length} từ`;
+  document.getElementById('browseGrid').innerHTML=list.map(w=>`
+    <div class="bw-card" onclick="lookupWord('${w[0]}')">
+      <div class="bw-word">${w[0]}</div>
+      <div class="bw-ipa">${w[1]}</div>
+      <div class="bw-vi">${w[2]}</div>
+      <div class="bw-meta"><span class="bw-lv lv-${w[3]}">${w[3]}</span><span class="bw-type">${w[4]}</span></div>
+    </div>`).join('')||'<div class="empty-msg">Không có từ nào</div>';
+}
+renderBrowse();
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

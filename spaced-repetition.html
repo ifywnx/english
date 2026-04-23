@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaced Repetition — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;--accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;--coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;--text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;--border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0b1a1e}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-a{padding:7px 12px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent3);background:rgba(100,216,165,0.08)}
+.nav-drop{position:relative}.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.content{max-width:700px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:34px;font-weight:300;margin-bottom:10px}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:24px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.s-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.s-num{font-family:'Fraunces',serif;font-size:24px;color:var(--accent)}
+.s-label{font-size:10px;color:var(--text3);margin-top:4px}
+.card-box{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:40px;text-align:center;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;perspective:1000px}
+.card-box:hover{border-color:rgba(100,216,165,0.2)}
+.card-word{font-family:'Fraunces',serif;font-size:36px;margin-bottom:8px}
+.card-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:8px}
+.card-hint{font-size:12px;color:var(--text3)}
+.card-vi{font-size:20px;color:var(--accent2);margin-bottom:8px}
+.card-ex{font-size:13px;color:var(--text3);font-style:italic}
+.rate-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}
+.rate-btn{padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text2);transition:all .15s}
+.rate-btn:hover{transform:translateY(-2px)}
+.rate-btn.r1{border-color:rgba(255,138,128,0.3)}.rate-btn.r1:hover{background:rgba(255,138,128,0.1);color:var(--coral)}
+.rate-btn.r2{border-color:rgba(240,194,122,0.3)}.rate-btn.r2:hover{background:rgba(240,194,122,0.1);color:var(--accent3)}
+.rate-btn.r3{border-color:rgba(100,216,165,0.3)}.rate-btn.r3:hover{background:rgba(100,216,165,0.1);color:var(--accent)}
+.rate-btn.r4{border-color:rgba(107,203,119,0.3)}.rate-btn.r4:hover{background:rgba(107,203,119,0.1);color:var(--green)}
+.add-section{margin-top:30px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px}
+.add-row{display:flex;gap:8px;margin-top:10px}
+.add-input{flex:1;padding:10px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.add-input:focus{border-color:rgba(100,216,165,0.3)}
+.add-btn{padding:10px 18px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500}
+.empty-state{text-align:center;padding:40px;color:var(--text3)}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-mark">E</div><span class="logo-name">Easy<span>English</span></span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">Luyện tập</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="quiz.html" class="nav-a">📝 Quiz</a>
+        <a href="writing-checker.html" class="nav-a">✍️ Writing Checker</a>
+        <a href="listening.html" class="nav-a">🎧 Listening</a>
+        <a href="spaced-repetition.html" class="nav-a active">🧠 Spaced Repetition</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="page-label">Ôn tập thông minh</div>
+  <h1 class="page-title">Spaced Repetition 🧠</h1>
+  <p class="page-desc">Thuật toán SM-2 giúp bạn ôn từ vào thời điểm sắp quên. Bấm vào thẻ để xem nghĩa, rồi đánh giá mức độ nhớ.</p>
+
+  <div class="stats-grid">
+    <div class="s-card"><div class="s-num" id="sDue">0</div><div class="s-label">Cần ôn hôm nay</div></div>
+    <div class="s-card"><div class="s-num" id="sTotal">0</div><div class="s-label">Tổng từ</div></div>
+    <div class="s-card"><div class="s-num" id="sMastered">0</div><div class="s-label">Đã thuộc</div></div>
+    <div class="s-card"><div class="s-num" id="sReviewed">0</div><div class="s-label">Ôn hôm nay</div></div>
+  </div>
+
+  <div class="card-box" id="cardBox" onclick="flipCard()">
+    <div id="cardFront">
+      <div class="card-word" id="cWord">—</div>
+      <div class="card-pron" id="cPron"></div>
+      <div class="card-hint">👆 Bấm để xem nghĩa</div>
+    </div>
+    <div id="cardBack" style="display:none">
+      <div class="card-vi" id="cVi"></div>
+      <div class="card-ex" id="cEx"></div>
+    </div>
+  </div>
+
+  <div class="rate-btns" id="rateBtns" style="display:none">
+    <button class="rate-btn r1" onclick="rate(1)">😵 Quên</button>
+    <button class="rate-btn r2" onclick="rate(2)">😕 Khó</button>
+    <button class="rate-btn r3" onclick="rate(3)">🙂 Nhớ</button>
+    <button class="rate-btn r4" onclick="rate(4)">😎 Dễ</button>
+  </div>
+
+  <div class="add-section">
+    <div style="font-size:14px;font-weight:500;margin-bottom:4px">➕ Thêm từ mới</div>
+    <div style="font-size:12px;color:var(--text3)">Hoặc bấm "Nạp từ mẫu" để bắt đầu nhanh</div>
+    <div class="add-row">
+      <input class="add-input" id="addWord" placeholder="Từ tiếng Anh">
+      <input class="add-input" id="addVi" placeholder="Nghĩa tiếng Việt">
+      <button class="add-btn" onclick="addWord()">Thêm</button>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:8px">
+      <button class="rate-btn" onclick="loadSample()" style="font-size:11px">📥 Nạp 30 từ mẫu</button>
+      <button class="rate-btn" onclick="if(confirm('Xóa tất cả?')){localStorage.removeItem('sr_cards');cards=[];idx=0;reviewed=0;updateStats();showCard()}" style="font-size:11px;color:var(--coral)">🗑️ Xóa tất cả</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let cards=JSON.parse(localStorage.getItem('sr_cards')||'[]');
+let idx=0,flipped=false,reviewed=0;
+
+const SAMPLE=[
+  {w:'abandon',vi:'từ bỏ',ex:'They abandoned the project.'},
+  {w:'benefit',vi:'lợi ích',ex:'Education benefits everyone.'},
+  {w:'comprehensive',vi:'toàn diện',ex:'A comprehensive review.'},
+  {w:'demonstrate',vi:'chứng minh',ex:'The data demonstrates growth.'},
+  {w:'enhance',vi:'nâng cao',ex:'Technology enhances learning.'},
+  {w:'facilitate',vi:'tạo điều kiện',ex:'Teachers facilitate learning.'},
+  {w:'generate',vi:'tạo ra',ex:'Solar panels generate electricity.'},
+  {w:'hypothesis',vi:'giả thuyết',ex:'Test the hypothesis.'},
+  {w:'implement',vi:'triển khai',ex:'Implement the new policy.'},
+  {w:'justify',vi:'biện minh',ex:'Justify your answer.'},
+  {w:'significant',vi:'quan trọng',ex:'A significant improvement.'},
+  {w:'substantial',vi:'đáng kể',ex:'Substantial evidence supports this.'},
+  {w:'prevalent',vi:'phổ biến',ex:'Obesity is prevalent in cities.'},
+  {w:'mitigate',vi:'giảm nhẹ',ex:'Mitigate the effects of climate change.'},
+  {w:'exacerbate',vi:'làm trầm trọng',ex:'Pollution exacerbates health issues.'},
+  {w:'undermine',vi:'phá hoại',ex:'This undermines public trust.'},
+  {w:'advocate',vi:'ủng hộ',ex:'She advocates for equality.'},
+  {w:'allocate',vi:'phân bổ',ex:'Allocate more funds to education.'},
+  {w:'controversy',vi:'tranh cãi',ex:'This topic causes controversy.'},
+  {w:'deteriorate',vi:'xấu đi',ex:'Air quality has deteriorated.'},
+  {w:'elaborate',vi:'chi tiết',ex:'Please elaborate on your point.'},
+  {w:'fluctuate',vi:'dao động',ex:'Prices fluctuate daily.'},
+  {w:'inevitable',vi:'không tránh khỏi',ex:'Change is inevitable.'},
+  {w:'phenomenon',vi:'hiện tượng',ex:'A global phenomenon.'},
+  {w:'perspective',vi:'quan điểm',ex:'From my perspective...'},
+  {w:'sustainable',vi:'bền vững',ex:'Sustainable development.'},
+  {w:'unprecedented',vi:'chưa từng có',ex:'An unprecedented crisis.'},
+  {w:'vulnerable',vi:'dễ tổn thương',ex:'Vulnerable communities need support.'},
+  {w:'paradox',vi:'nghịch lý',ex:'The paradox of choice.'},
+  {w:'resilience',vi:'sức chống chịu',ex:'Build community resilience.'},
+];
+
+function loadSample(){
+  const existing=new Set(cards.map(c=>c.w));
+  let added=0;
+  SAMPLE.forEach(s=>{
+    if(!existing.has(s.w)){
+      cards.push({w:s.w,vi:s.vi,ex:s.ex||'',ef:2.5,interval:1,rep:0,due:Date.now()});
+      added++;
+    }
+  });
+  save();updateStats();showCard();
+  alert(`Đã thêm ${added} từ mới!`);
+}
+
+function addWord(){
+  const w=document.getElementById('addWord').value.trim();
+  const vi=document.getElementById('addVi').value.trim();
+  if(!w||!vi){alert('Nhập đủ từ và nghĩa!');return;}
+  if(cards.find(c=>c.w===w)){alert('Từ đã tồn tại!');return;}
+  cards.push({w,vi,ex:'',ef:2.5,interval:1,rep:0,due:Date.now()});
+  save();updateStats();showCard();
+  document.getElementById('addWord').value='';
+  document.getElementById('addVi').value='';
+}
+
+function getDue(){
+  const now=Date.now();
+  return cards.filter(c=>c.due<=now);
+}
+
+function updateStats(){
+  const due=getDue();
+  document.getElementById('sDue').textContent=due.length;
+  document.getElementById('sTotal').textContent=cards.length;
+  document.getElementById('sMastered').textContent=cards.filter(c=>c.interval>=7).length;
+  document.getElementById('sReviewed').textContent=reviewed;
+}
+
+function showCard(){
+  const due=getDue();
+  flipped=false;
+  document.getElementById('cardFront').style.display='';
+  document.getElementById('cardBack').style.display='none';
+  document.getElementById('rateBtns').style.display='none';
+
+  if(!due.length){
+    if(!cards.length){
+      document.getElementById('cWord').textContent='Chưa có từ nào';
+      document.getElementById('cPron').textContent='Thêm từ mới hoặc nạp từ mẫu bên dưới';
+    } else {
+      document.getElementById('cWord').textContent='🎉 Hoàn tất!';
+      document.getElementById('cPron').textContent='Không còn từ cần ôn hôm nay';
+    }
+    return;
+  }
+  const c=due[0];idx=cards.indexOf(c);
+  document.getElementById('cWord').textContent=c.w;
+  document.getElementById('cPron').textContent='';
+  document.getElementById('cVi').textContent=c.vi;
+  document.getElementById('cEx').textContent=c.ex?`"${c.ex}"`:'';
+}
+
+function flipCard(){
+  if(!getDue().length)return;
+  if(!flipped){
+    flipped=true;
+    document.getElementById('cardFront').style.display='none';
+    document.getElementById('cardBack').style.display='';
+    document.getElementById('rateBtns').style.display='grid';
+    // TTS
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(cards[idx].w);
+    u.lang='en-US';u.rate=0.85;speechSynthesis.speak(u);
+  }
+}
+
+function rate(q){
+  const c=cards[idx];
+  // SM-2 algorithm simplified
+  if(q<=1){c.rep=0;c.interval=1;c.ef=Math.max(1.3,c.ef-0.3);}
+  else if(q===2){c.interval=1;c.ef=Math.max(1.3,c.ef-0.15);}
+  else if(q===3){
+    if(c.rep===0)c.interval=1;
+    else if(c.rep===1)c.interval=3;
+    else c.interval=Math.round(c.interval*c.ef);
+    c.rep++;
+  } else {
+    if(c.rep===0)c.interval=2;
+    else if(c.rep===1)c.interval=4;
+    else c.interval=Math.round(c.interval*c.ef*1.1);
+    c.rep++;c.ef=Math.min(3.0,c.ef+0.1);
+  }
+  c.due=Date.now()+c.interval*86400000;
+  reviewed++;
+  save();updateStats();showCard();
+}
+
+function save(){localStorage.setItem('sr_cards',JSON.stringify(cards));}
+
+updateStats();showCard();
+
+function toggleDrop(el){const d=el.closest('.nav-drop');const o=d.classList.contains('open');document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));if(!o)d.classList.add('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

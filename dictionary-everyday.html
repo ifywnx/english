@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ điển Đời thường — EasyEnglish</title>
+<meta name="description" content="Từ điển tiếng Anh đời thường: cảm xúc, hành động, giao tiếp, công việc, sức khỏe, ăn uống. Có phiên âm IPA và ví dụ câu.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(240,194,122,0.08);top:-150px;left:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;right:-100px}
+
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent3);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:12px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent3);background:rgba(240,194,122,0.08)}
+
+.content{padding:32px 44px;max-width:1000px}
+.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:36px;font-weight:300;margin-bottom:10px}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:24px}
+
+/* SEARCH & FILTER BAR */
+.filter-bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.search-input{flex:1;min-width:200px;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input:focus{border-color:rgba(100,216,165,0.4)}
+.search-input::placeholder{color:var(--text3)}
+.filter-btn{padding:9px 16px;border-radius:10px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.filter-btn:hover{color:var(--text)}
+.filter-btn.on{border-color:rgba(78,205,196,0.5);color:var(--accent3);background:rgba(240,194,122,0.08)}
+
+/* LEGEND */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:14px 18px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* STATS */
+.stats-row{display:flex;gap:10px;margin-bottom:24px}
+.stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;text-align:center;flex:1}
+.stat-num{font-family:'Fraunces',serif;font-size:22px;color:var(--accent3)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* WORD CARDS GRID */
+.words-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+
+/* WORD CARD */
+.word-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.word-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-2px)}
+.word-card.expanded{border-color:rgba(100,216,165,0.4);background:rgba(78,205,196,0.04)}
+.word-card.saved{border-color:rgba(100,216,165,0.3)}
+
+.wc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+.wc-word{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
+.wc-save{font-size:16px;cursor:pointer;opacity:0.5;transition:opacity .2s;background:none;border:none;color:var(--accent);padding:2px}
+.wc-save:hover{opacity:1}
+.wc-save.saved{opacity:1}
+
+.wc-meta{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.wc-pron{font-size:11px;color:var(--accent);font-style:italic}
+
+/* TAGS */
+.tag{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;display:inline-block}
+/* IELTS band tags */
+.tag-a1{background:rgba(107,203,119,0.15);color:var(--green)}
+.tag-a2{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.tag-b1{background:rgba(100,216,165,0.15);color:var(--accent)}
+.tag-b2{background:rgba(244,132,95,0.15);color:var(--coral)}
+.tag-c1{background:rgba(232,121,160,0.15);color:var(--pink)}
+/* Usage tags */
+.tag-daily{background:rgba(107,203,119,0.12);color:var(--green);border:0.5px solid rgba(107,203,119,0.3)}
+.tag-formal{background:rgba(100,216,165,0.12);color:var(--accent2);border:0.5px solid rgba(123,110,246,0.3)}
+.tag-slang{background:rgba(232,121,160,0.12);color:var(--pink);border:0.5px solid rgba(232,121,160,0.3)}
+.tag-business{background:rgba(100,216,165,0.12);color:var(--accent);border:0.5px solid rgba(100,216,165,0.3)}
+/* type */
+.tag-n{background:rgba(100,216,165,0.1);color:var(--accent)}
+.tag-v{background:rgba(100,216,165,0.1);color:var(--accent2)}
+.tag-adj{background:rgba(244,132,95,0.1);color:var(--coral)}
+.tag-adv{background:rgba(107,203,119,0.1);color:var(--green)}
+
+.wc-vi{font-size:13px;color:var(--text2);margin-bottom:6px}
+.wc-ex{font-size:12px;color:var(--text3);font-style:italic;line-height:1.5}
+
+/* EXPANDED DETAIL */
+.wc-detail{margin-top:12px;border-top:0.5px solid var(--border);padding-top:12px;display:none}
+.word-card.expanded .wc-detail{display:block}
+.detail-section{margin-bottom:10px}
+.ds-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.ds-content{font-size:12px;color:var(--text2);line-height:1.7}
+.ds-examples{display:flex;flex-direction:column;gap:5px}
+.ds-ex{background:var(--card2);border-radius:7px;padding:8px 10px}
+.ds-ex-en{font-size:12px;color:var(--text);font-style:italic;margin-bottom:2px}
+.ds-ex-vi{font-size:11px;color:var(--text3)}
+.ds-chips{display:flex;flex-wrap:wrap;gap:4px}
+.ds-chip{padding:3px 10px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px;font-size:11px;color:var(--text2)}
+
+/* USAGE METER */
+.usage-meter{display:flex;align-items:center;gap:8px;margin-top:6px}
+.um-label{font-size:10px;color:var(--text3)}
+.um-dots{display:flex;gap:3px}
+.um-dot{width:8px;height:8px;border-radius:50%;background:var(--bg3)}
+.um-dot.on{background:var(--green)}
+.um-dot.on.medium{background:var(--accent)}
+.um-dot.on.low{background:var(--coral)}
+
+/* SECTION HEADER */
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:16px;margin-top:32px;padding-bottom:10px;border-bottom:0.5px solid var(--border)}
+.sh-icon{font-size:24px}
+.sh-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300}
+.sh-count{font-size:12px;color:var(--text3);margin-left:auto}
+.anchor{scroll-margin-top:80px}
+
+.no-results{text-align:center;color:var(--text3);padding:40px;font-size:14px;grid-column:1/-1}
+
+/* SAVED PANEL */
+.saved-panel{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:14px;padding:16px;margin-bottom:24px;display:none}
+.saved-panel.show{display:block}
+.sp-title{font-size:13px;font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between}
+.sp-words{display:flex;flex-wrap:wrap;gap:6px}
+.sp-word{padding:4px 12px;background:var(--card2);border:0.5px solid rgba(100,216,165,0.3);border-radius:20px;font-size:12px;color:var(--accent);cursor:pointer}
+.sp-word:hover{background:rgba(100,216,165,0.1)}
+.sp-clear{font-size:11px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+
+/* NAV DROPDOWN */
+.nav-drop{position:relative}
+.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
+.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
+.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
+.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a active" onclick="toggleDrop(this)">Từ điển</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <div class="nav-sep"></div>
+        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <a href="dictionary-ielts.html" class="nav-cta">Từ điển IELTS →</a>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Chủ đề</div>
+  <button class="sb-item active" onclick="filterTopic('all',this)">🌟 Tất cả từ</button>
+  <button class="sb-item" onclick="filterTopic('feelings',this)">😊 Cảm xúc & Tính cách</button>
+  <button class="sb-item" onclick="filterTopic('actions',this)">⚡ Hành động thường ngày</button>
+  <button class="sb-item" onclick="filterTopic('social',this)">👥 Giao tiếp xã hội</button>
+  <button class="sb-item" onclick="filterTopic('work',this)">💼 Công việc & Học tập</button>
+  <button class="sb-item" onclick="filterTopic('health',this)">🏥 Sức khỏe & Cơ thể</button>
+  <button class="sb-item" onclick="filterTopic('food',this)">🍜 Ăn uống & Nấu ăn</button>
+  <button class="sb-item" onclick="filterTopic('travel',this)">✈️ Du lịch & Đi lại</button>
+  <button class="sb-item" onclick="filterTopic('home',this)">🏠 Nhà ở & Cuộc sống</button>
+  <button class="sb-item" onclick="filterTopic('money',this)">💰 Tiền bạc & Mua sắm</button>
+  <button class="sb-item" onclick="filterTopic('tech',this)">📱 Công nghệ & Mạng XH</button>
+  <button class="sb-item" onclick="filterTopic('nature',this)">🌿 Thiên nhiên & Thời tiết</button>
+  <button class="sb-item" onclick="filterTopic('time',this)">⏰ Thời gian & Ngày tháng</button>
+
+  <div class="sidebar-title">Lọc theo Band</div>
+  <button class="sb-item" onclick="filterBand('all',this)">Tất cả cấp độ</button>
+  <button class="sb-item" onclick="filterBand('A1',this)"><span style="color:var(--green)">●</span> A1 — Mới bắt đầu</button>
+  <button class="sb-item" onclick="filterBand('A2',this)"><span style="color:var(--accent3)">●</span> A2 — Cơ bản</button>
+  <button class="sb-item" onclick="filterBand('B1',this)"><span style="color:var(--accent)">●</span> B1 — Trung cấp</button>
+  <button class="sb-item" onclick="filterBand('B2',this)"><span style="color:var(--coral)">●</span> B2 — Khá</button>
+
+  <div class="sidebar-title">Mức dùng hàng ngày</div>
+  <button class="sb-item" onclick="filterUsage('daily',this)">🟢 Rất thường dùng</button>
+  <button class="sb-item" onclick="filterUsage('medium',this)">🟡 Thường dùng</button>
+  <button class="sb-item" onclick="filterUsage('formal',this)">🔵 Trang trọng</button>
+  <button class="sb-item" onclick="filterUsage('slang',this)">🩷 Thông tục/Slang</button>
+
+  <div class="sidebar-title">Từ đã lưu</div>
+  <button class="sb-item" onclick="showSaved()">⭐ Xem từ đã lưu</button>
+</aside>
+
+<main class="content">
+  <div class="page-label">Từ điển 1/2</div>
+  <h1 class="page-title">Từ điển tiếng Anh<br><em style="color:var(--accent3)">đời thường A1–B2</em></h1>
+  <p class="page-desc">200+ từ thông dụng nhất trong cuộc sống hàng ngày — có phiên âm, nhiều nghĩa, câu ví dụ thực tế, từ đồng nghĩa và đánh dấu mức độ thông dụng. Bấm vào từ để xem chi tiết đầy đủ.</p>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="statTotal">200+</div><div class="stat-label">Tổng từ</div></div>
+    <div class="stat-box"><div class="stat-num" id="statShowing">200+</div><div class="stat-label">Đang hiển thị</div></div>
+    <div class="stat-box"><div class="stat-num" id="statSaved">0</div><div class="stat-label">Đã lưu</div></div>
+    <div class="stat-box"><div class="stat-num" id="statLearned">0</div><div class="stat-label">Đã học (AWL)</div></div>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><span class="leg-dot" style="background:var(--green)"></span>A1 — Mới bắt đầu</div>
+    <div class="leg-item"><span class="leg-dot" style="background:var(--accent3)"></span>A2 — Cơ bản</div>
+    <div class="leg-item"><span class="leg-dot" style="background:var(--accent)"></span>B1 — Trung cấp</div>
+    <div class="leg-item"><span class="leg-dot" style="background:var(--coral)"></span>B2 — Khá</div>
+    <div style="width:1px;background:var(--border)"></div>
+    <div class="leg-item">🟢 Rất thường dùng hàng ngày</div>
+    <div class="leg-item">🟡 Thường dùng</div>
+    <div class="leg-item">🔵 Trang trọng</div>
+    <div class="leg-item">🩷 Thông tục</div>
+  </div>
+
+  <div class="filter-bar">
+    <input class="search-input" id="searchInput" placeholder="Tìm từ tiếng Anh hoặc tiếng Việt..." oninput="renderWords()">
+    <button class="filter-btn" id="btnSavedOnly" onclick="toggleSavedOnly()">⭐ Chỉ từ đã lưu</button>
+    <select id="sortSelect" style="padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text2);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer" onchange="renderWords()">
+      <option value="default">Sắp xếp: Mặc định</option>
+      <option value="alpha">A → Z</option>
+      <option value="band">Theo Band</option>
+      <option value="usage">Thông dụng nhất trước</option>
+    </select>
+  </div>
+
+  <div class="saved-panel" id="savedPanel">
+    <div class="sp-title"><span>⭐ Từ đã lưu (<span id="savedCount2">0</span>)</span><button class="sp-clear" onclick="clearAllSaved()">Xóa tất cả</button></div>
+    <div class="sp-words" id="savedWords"></div>
+  </div>
+
+  <div id="wordsContainer"></div>
+</main>
+</div>
+
+<script>
+const WORDS = [
+  // FEELINGS & PERSONALITY
+  {w:'happy',p:'/ˈhæpi/',type:'adj',band:'A1',usage:'daily',topic:'feelings',vi:'vui vẻ, hạnh phúc',meanings:[{vi:'vui, hạnh phúc',en:'feeling pleasure and satisfaction',ex:[{en:'I am so happy today!',vi:'Hôm nay tôi vui quá!'},{en:'She looks happy.',vi:'Cô ấy trông có vẻ vui.'}]},{vi:'hài lòng, sẵn sàng',en:'willing or pleased to do something',ex:[{en:"I'm happy to help you.",vi:'Tôi rất vui được giúp bạn.'}]}],synonyms:['joyful','glad','pleased','delighted'],antonyms:['sad','unhappy'],collocations:['happy ending','happy hour','trigger-happy'],tip:'Đây là từ thông dụng nhất để diễn đạt cảm xúc vui vẻ. Trong văn viết trang trọng hơn dùng "content" hoặc "pleased".'},
+  {w:'sad',p:'/sæd/',type:'adj',band:'A1',usage:'daily',topic:'feelings',vi:'buồn, đau lòng',meanings:[{vi:'buồn, đau lòng',en:'feeling or showing sorrow',ex:[{en:'Why are you so sad?',vi:'Sao bạn buồn vậy?'},{en:'It was a very sad movie.',vi:'Đó là một bộ phim rất buồn.'}]}],synonyms:['unhappy','sorrowful','upset','down','miserable'],antonyms:['happy','cheerful'],collocations:['feel sad','sad news','sad story'],tip:'"Sad" dùng hàng ngày. Nặng hơn: "miserable" (khổ sở), "heartbroken" (tan vỡ).'},
+  {w:'angry',p:'/ˈæŋɡri/',type:'adj',band:'A1',usage:'daily',topic:'feelings',vi:'tức giận',meanings:[{vi:'tức giận, giận dữ',en:'having a strong feeling of displeasure',ex:[{en:'He was angry about the decision.',vi:'Anh ấy tức giận về quyết định đó.'},{en:"Don't get angry!",vi:'Đừng tức giận!'}]}],synonyms:['furious','annoyed','irritated','mad','cross'],antonyms:['calm','pleased'],collocations:['get angry','angry look','angry words'],tip:'"Angry" thông dụng nhất. Mạnh hơn: "furious" (điên cuồng), "livid" (tím mặt). Nhẹ hơn: "annoyed" (bực mình).'},
+  {w:'excited',p:'/ɪkˈsaɪtɪd/',type:'adj',band:'A1',usage:'daily',topic:'feelings',vi:'hào hứng, phấn khích',meanings:[{vi:'hào hứng, phấn khích',en:'feeling very enthusiastic and eager',ex:[{en:'I am so excited about the trip!',vi:'Tôi rất hào hứng về chuyến đi!'},{en:'The children were excited on Christmas morning.',vi:'Lũ trẻ rất phấn khích vào sáng Giáng sinh.'}]}],synonyms:['enthusiastic','thrilled','eager','pumped'],antonyms:['bored','indifferent'],collocations:['get excited','excited about','excited by'],tip:'"Excited" vs "exciting": I am excited (tôi cảm thấy hào hứng) vs The trip is exciting (chuyến đi thú vị).'},
+  {w:'nervous',p:'/ˈnɜːrvəs/',type:'adj',band:'A2',usage:'daily',topic:'feelings',vi:'lo lắng, hồi hộp',meanings:[{vi:'lo lắng, hồi hộp',en:'anxious or worried about something',ex:[{en:'I always feel nervous before exams.',vi:'Tôi luôn hồi hộp trước kỳ thi.'},{en:"Don't be nervous, just be yourself.",vi:'Đừng lo lắng, cứ tự nhiên đi.'}]}],synonyms:['anxious','worried','uneasy','tense','jittery'],antonyms:['calm','relaxed','confident'],collocations:['feel nervous','nervous breakdown','nervous wreck'],tip:'"Nervous" = hồi hộp ngắn hạn. "Anxious" = lo lắng kéo dài hơn. "Worried" = lo lắng về điều cụ thể.'},
+  {w:'tired',p:'/ˈtaɪərd/',type:'adj',band:'A1',usage:'daily',topic:'feelings',vi:'mệt mỏi',meanings:[{vi:'mệt, kiệt sức',en:'in need of rest or sleep',ex:[{en:'I am so tired after work.',vi:'Tôi mệt quá sau giờ làm.'},{en:'She was tired of waiting.',vi:'Cô ấy chán ngán vì phải chờ.'}]},{vi:'chán ngán (tired of)',en:'bored or annoyed with something',ex:[{en:"I'm tired of the same routine.",vi:'Tôi chán cái thói quen giống nhau rồi.'}]}],synonyms:['exhausted','worn out','drained','sleepy','fatigued'],antonyms:['energetic','refreshed','awake'],collocations:['feel tired','tired eyes','dog-tired'],tip:'"Tired" thông dụng nhất. "Exhausted" = kiệt sức hoàn toàn. "Worn out" = hao mòn.'},
+  {w:'confident',p:'/ˈkɒnfɪdənt/',type:'adj',band:'A2',usage:'daily',topic:'feelings',vi:'tự tin',meanings:[{vi:'tự tin, tin tưởng vào bản thân',en:'certain about your own abilities',ex:[{en:'You need to be more confident.',vi:'Bạn cần tự tin hơn.'},{en:'She gave a confident presentation.',vi:'Cô ấy thuyết trình rất tự tin.'}]}],synonyms:['self-assured','bold','positive','assured'],antonyms:['insecure','shy','timid','doubtful'],collocations:['feel confident','confident smile','self-confident'],tip:'IELTS Speaking: "I feel fairly confident in my English" — Band 6+ expression.'},
+  {w:'surprised',p:'/sərˈpraɪzd/',type:'adj',band:'A1',usage:'daily',topic:'feelings',vi:'ngạc nhiên',meanings:[{vi:'ngạc nhiên, bất ngờ',en:'feeling sudden wonder or astonishment',ex:[{en:'I was surprised by his answer.',vi:'Tôi bất ngờ với câu trả lời của anh ấy.'},{en:'She looked surprised to see me.',vi:'Cô ấy trông có vẻ ngạc nhiên khi gặp tôi.'}]}],synonyms:['astonished','amazed','shocked','stunned','taken aback'],antonyms:['unsurprised','expecting'],collocations:['surprise party','surprise attack','be surprised at'],tip:'Mức độ: surprised < astonished < flabbergasted (kinh ngạc tột độ).'},
+  {w:'kind',p:'/kaɪnd/',type:'adj/n',band:'A1',usage:'daily',topic:'feelings',vi:'tốt bụng / loại',meanings:[{vi:'tốt bụng, nhân hậu',en:'friendly, generous, and considerate',ex:[{en:'She is very kind to everyone.',vi:'Cô ấy rất tốt bụng với mọi người.'},{en:'That was very kind of you!',vi:'Bạn thật tử tế!'}]},{vi:'loại, kiểu',en:'a type or category of something',ex:[{en:'What kind of music do you like?',vi:'Bạn thích loại nhạc gì?'}]}],synonyms:['generous','caring','gentle','warm','considerate'],antonyms:['unkind','cruel','mean'],collocations:['kind of','kind-hearted','kindness','mankind'],tip:'"Kind of" (kinda) = kiểu như — rất phổ biến trong hội thoại Mỹ.'},
+  {w:'lonely',p:'/ˈloʊnli/',type:'adj',band:'A2',usage:'daily',topic:'feelings',vi:'cô đơn',meanings:[{vi:'cô đơn, cô lẻ',en:'sad because you are alone or have no friends',ex:[{en:'I feel lonely when you are not here.',vi:'Tôi cảm thấy cô đơn khi bạn không ở đây.'},{en:'Moving to a new city can be lonely.',vi:'Chuyển đến thành phố mới có thể rất cô đơn.'}]}],synonyms:['isolated','solitary','alone','friendless'],antonyms:['accompanied','social'],collocations:['feel lonely','lonely heart','lone wolf'],tip:'"Lonely" ≠ "alone". Alone = thực tế một mình. Lonely = cảm giác cô đơn (có thể ở giữa đám đông).'},
+  {w:'generous',p:'/ˈdʒɛnərəs/',type:'adj',band:'B1',usage:'daily',topic:'feelings',vi:'hào phóng, rộng lượng',meanings:[{vi:'hào phóng, rộng lượng',en:'willing to give more than is necessary or expected',ex:[{en:'He is very generous with his time.',vi:'Anh ấy rất hào phóng với thời gian của mình.'},{en:'Thank you for the generous gift!',vi:'Cảm ơn vì món quà hào phóng!'}]}],synonyms:['giving','charitable','open-handed','lavish','magnanimous'],antonyms:['selfish','stingy','greedy'],collocations:['generous offer','generous donation','generous with'],tip:'Trang trọng hơn: "magnanimous". Tiêu cực = "lavish" (phung phí).'},
+  {w:'stubborn',p:'/ˈstʌbərn/',type:'adj',band:'B1',usage:'daily',topic:'feelings',vi:'bướng bỉnh, cứng đầu',meanings:[{vi:'bướng bỉnh, không chịu thay đổi',en:'refusing to change your opinion or attitude',ex:[{en:"Don't be so stubborn!",vi:'Đừng cứng đầu như vậy!'},{en:'He is too stubborn to admit his mistake.',vi:'Anh ta quá cứng đầu để thừa nhận lỗi lầm.'}]}],synonyms:['obstinate','headstrong','pigheaded','inflexible'],antonyms:['flexible','open-minded','cooperative'],collocations:['stubborn person','stubborn as a mule'],tip:'Có thể dùng tích cực: "determined" (kiên định) thay vì "stubborn" (cứng đầu).'},
+
+  // EVERYDAY ACTIONS
+  {w:'rush',p:'/rʌʃ/',type:'v/n',band:'A2',usage:'daily',topic:'actions',vi:'vội vàng, hối hả',meanings:[{vi:'vội vàng, làm nhanh',en:'to move or do something very quickly',ex:[{en:"Don't rush! We have time.",vi:'Đừng vội! Chúng ta còn thời gian.'},{en:'I rushed to catch the bus.',vi:'Tôi vội vàng để bắt xe buýt.'}]},{vi:'giờ cao điểm, cơn hào hứng',en:'a sudden or fast movement; a period of great activity',ex:[{en:'The morning rush is terrible.',vi:'Giờ cao điểm buổi sáng thật khủng khiếp.'}]}],synonyms:['hurry','dash','sprint','hasten'],antonyms:['dawdle','linger','take your time'],collocations:['rush hour','rush job','gold rush','no rush'],tip:'"Rush hour" (giờ cao điểm) — rất thông dụng. "No rush!" = không vội đâu! (lịch sự)'},
+  {w:'grab',p:'/ɡræb/',type:'v',band:'A2',usage:'daily',topic:'actions',vi:'vớ lấy, tranh thủ',meanings:[{vi:'vớ lấy, chộp lấy',en:'to take or hold something suddenly',ex:[{en:'Grab your coat, we are leaving!',vi:'Vớ áo khoác đi, chúng ta đi thôi!'},{en:'He grabbed my arm.',vi:'Anh ấy chộp lấy tay tôi.'}]},{vi:'tranh thủ ăn nhanh',en:'to quickly eat or drink something',ex:[{en:"Let's grab a coffee before the meeting.",vi:'Hãy tranh thủ uống cà phê trước cuộc họp.'}]}],synonyms:['snatch','seize','catch','take hold of'],antonyms:['release','drop','let go'],collocations:['grab a bite','grab coffee','grab attention','smash and grab'],tip:'"Grab a bite" = ăn nhanh một chút — rất thông dụng trong hội thoại Mỹ.'},
+  {w:'hang out',p:'/hæŋ aʊt/',type:'phr.v',band:'A2',usage:'daily',topic:'social',vi:'tụ tập, đi chơi cùng',meanings:[{vi:'dành thời gian với bạn bè, đi chơi',en:'to spend time relaxing with friends',ex:[{en:"Let's hang out this weekend!",vi:'Cuối tuần này đi chơi nhé!'},{en:'We used to hang out at the mall.',vi:'Hồi đó chúng tôi hay tụ tập ở trung tâm thương mại.'}]}],synonyms:['chill','meet up','spend time together','socialise'],antonyms:[],collocations:['hang out with friends','hangout spot'],tip:'Rất thông dụng trong tiếng Anh Mỹ không trang trọng. Danh từ: "hangout" = nơi thường hay tụ tập.'},
+  {w:'skip',p:'/skɪp/',type:'v',band:'A2',usage:'daily',topic:'actions',vi:'bỏ qua, nhảy qua',meanings:[{vi:'bỏ qua, không làm',en:'to not do something that you usually do',ex:[{en:'I skipped breakfast this morning.',vi:'Sáng nay tôi bỏ bữa sáng.'},{en:'He skipped class again.',vi:'Anh ta trốn học lại rồi.'}]},{vi:'nhảy chân sáo',en:'to move forward with light jumping steps',ex:[{en:'The children were skipping in the park.',vi:'Bọn trẻ đang nhảy chân sáo trong công viên.'}]}],synonyms:['miss','omit','bypass','jump over'],antonyms:['attend','include','do'],collocations:['skip class','skip breakfast','skip a step','skip town'],tip:'"Skip" rất thông dụng để nói về việc bỏ bữa, bỏ buổi học: "I skipped lunch."'},
+  {w:'manage',p:'/ˈmænɪdʒ/',type:'v',band:'B1',usage:'daily',topic:'actions',vi:'xoay sở, quản lý',meanings:[{vi:'xoay sở được, làm được',en:'to succeed in doing something difficult',ex:[{en:'Did you manage to finish on time?',vi:'Bạn có xoay sở kịp không?'},{en:"Don't worry, I'll manage.",vi:'Đừng lo, tôi sẽ xoay sở được.'}]},{vi:'quản lý, điều hành',en:'to be in charge of a business or people',ex:[{en:'She manages a team of 20 people.',vi:'Cô ấy quản lý đội nhóm 20 người.'}]}],synonyms:['handle','cope with','deal with','oversee','run'],antonyms:['fail','struggle','mismanage'],collocations:['manage to do','manage a team','time management'],tip:'"Manage to do" = cố gắng và thành công làm được. Khác với "succeed in doing" — giống nghĩa nhưng formal hơn.'},
+  {w:'bother',p:'/ˈbɒðər/',type:'v',band:'B1',usage:'daily',topic:'actions',vi:'làm phiền, bận tâm',meanings:[{vi:'làm phiền, quấy rầy',en:'to annoy or disturb someone',ex:[{en:"Don't bother me when I'm working.",vi:'Đừng làm phiền tôi khi tôi đang làm việc.'},{en:'Does the noise bother you?',vi:'Tiếng ồn có làm phiền bạn không?'}]},{vi:'bận tâm làm gì',en:'to make the effort to do something',ex:[{en:"Don't bother cooking, we'll order out.",vi:"Đừng bận tâm nấu, chúng ta đặt đồ ăn về."}]}],synonyms:['disturb','annoy','trouble','pester','hassle'],antonyms:['leave alone','ignore'],collocations:["can't be bothered",'hot and bothered','bother about'],tip:'"Can\'t be bothered" = lười không muốn làm gì — rất phổ biến trong tiếng Anh Anh.'},
+  {w:'deal with',p:'/diːl wɪð/',type:'phr.v',band:'B1',usage:'daily',topic:'actions',vi:'giải quyết, xử lý',meanings:[{vi:'giải quyết, xử lý vấn đề',en:'to take action to solve a problem or handle a situation',ex:[{en:'How do you deal with stress?',vi:'Bạn xử lý stress như thế nào?'},{en:"I'll deal with it later.",vi:'Để tôi giải quyết sau.'}]}],synonyms:['handle','manage','tackle','address','cope with'],antonyms:['ignore','avoid','neglect'],collocations:['deal with problems','deal with customers','real deal'],tip:'Rất thông dụng. "I\'ll deal with it" = để tao lo — cũng có thể nghe hơi đe dọa tùy ngữ cảnh!'},
+  {w:'figure out',p:'/ˈfɪɡjər aʊt/',type:'phr.v',band:'B1',usage:'daily',topic:'actions',vi:'tìm ra, hiểu ra',meanings:[{vi:'tìm ra đáp án, hiểu được',en:'to understand or find the answer to something',ex:[{en:"I can't figure out this math problem.",vi:'Tôi không thể giải được bài toán này.'},{en:'Did you figure out how to use it?',vi:'Bạn đã hiểu cách dùng nó chưa?'}]}],synonyms:['work out','solve','understand','determine','crack'],antonyms:['confuse','misunderstand'],collocations:['figure out a problem','figure out the answer'],tip:'"Figure out" rất thông dụng trong tiếng Mỹ. Trang trọng hơn: "determine", "ascertain".'},
+
+  // SOCIAL
+  {w:'gossip',p:'/ˈɡɒsɪp/',type:'n/v',band:'B1',usage:'daily',topic:'social',vi:'chuyện tám, tin đồn',meanings:[{vi:'tin đồn, chuyện tám',en:'casual conversation about other people\'s personal lives',ex:[{en:'She loves to gossip about celebrities.',vi:'Cô ấy thích tám chuyện về người nổi tiếng.'},{en:'Don\'t believe everything you hear — it\'s just gossip.',vi:'Đừng tin tất cả những gì bạn nghe — chỉ là tin đồn thôi.'}]}],synonyms:['rumour','hearsay','chatter','tittle-tattle'],antonyms:[],collocations:['office gossip','gossip column','idle gossip'],tip:'Danh từ và động từ dùng giống nhau. "Don\'t gossip" = đừng tám chuyện về người khác.'},
+  {w:'catch up',p:'/kætʃ ʌp/',type:'phr.v',band:'A2',usage:'daily',topic:'social',vi:'cập nhật, theo kịp',meanings:[{vi:'gặp gỡ ôn chuyện cũ',en:'to talk with someone you have not seen for a while',ex:[{en:"We should catch up over coffee!",vi:'Chúng ta nên gặp nhau uống cà phê kể chuyện!'},{en:'I need to catch up with the news.',vi:'Tôi cần cập nhật tin tức.'}]},{vi:'theo kịp, bắt kịp',en:'to reach the same level as someone',ex:[{en:'Work hard to catch up with your classmates.',vi:'Học chăm chỉ để theo kịp các bạn.'}]}],synonyms:['reconnect','update each other','keep up'],antonyms:['fall behind','lag'],collocations:['catch up with friends','catch-up meeting','play catch-up'],tip:'"Catch up" rất thông dụng: "Let\'s catch up!" = Hẹn gặp nhau kể chuyện nhé!'},
+  {w:'awkward',p:'/ˈɔːkwərd/',type:'adj',band:'B1',usage:'daily',topic:'social',vi:'lúng túng, khó xử',meanings:[{vi:'lúng túng, khó xử, ngại ngùng',en:'causing embarrassment or difficulty; clumsy',ex:[{en:'It was an awkward silence.',vi:'Đó là một khoảnh khắc im lặng khó xử.'},{en:'That was so awkward!',vi:'Ngại thật!'},{en:'She felt awkward at the party.',vi:'Cô ấy cảm thấy lúng túng ở bữa tiệc.'}]}],synonyms:['uncomfortable','embarrassing','clumsy','uneasy','cringe-worthy'],antonyms:['graceful','comfortable','smooth'],collocations:['awkward silence','feel awkward','awkward moment'],tip:'Rất phổ biến trong tiếng Anh hiện đại: "That\'s so awkward!" = Ngại vãi! Cũng dùng cho người vụng về.'},
+  {w:'hang on',p:'/hæŋ ɒn/',type:'phr.v',band:'A2',usage:'daily',topic:'social',vi:'chờ một chút',meanings:[{vi:'chờ một chút',en:'wait for a short time',ex:[{en:'Hang on, I\'ll be right back.',vi:'Chờ tôi một chút, tôi sẽ về ngay.'},{en:'Hang on — that doesn\'t make sense.',vi:'Khoan đã — cái đó không có nghĩa.'}]},{vi:'bám vào, cố gắng tiếp tục',en:'to hold tightly or to manage to continue',ex:[{en:'Just hang on a little longer!',vi:'Cố thêm một chút nữa thôi!'}]}],synonyms:['wait','hold on','bear with me'],antonyms:['leave','go'],collocations:['hang on a second','hang on tight'],tip:'"Hang on a sec!" = Chờ một giây! — rất thông dụng thay cho "Wait a moment!"'},
+  {w:'get along',p:'/ɡɛt əˈlɒŋ/',type:'phr.v',band:'B1',usage:'daily',topic:'social',vi:'hợp nhau, sống hòa thuận',meanings:[{vi:'sống hòa thuận, hợp nhau',en:'to have a friendly relationship with someone',ex:[{en:'Do you get along with your roommate?',vi:'Bạn có hợp với bạn cùng phòng không?'},{en:'We get along really well.',vi:'Chúng tôi rất hợp nhau.'}]}],synonyms:['get on','be on good terms','click','hit it off'],antonyms:['clash','conflict'],collocations:['get along with','get along fine','hard to get along with'],tip:'"Get on" là phiên bản Anh Anh của "get along" (Anh Mỹ). Cả hai đều rất thông dụng.'},
+
+  // WORK & STUDY
+  {w:'deadline',p:'/ˈdɛdlaɪn/',type:'n',band:'A2',usage:'daily',topic:'work',vi:'hạn chót, thời hạn',meanings:[{vi:'hạn chót phải nộp/hoàn thành',en:'the latest time by which something must be done',ex:[{en:'The deadline is Friday at 5 PM.',vi:'Hạn chót là thứ Sáu lúc 5 giờ chiều.'},{en:'I have to meet this deadline.',vi:'Tôi phải đáp ứng hạn chót này.'}]}],synonyms:['due date','time limit','cutoff'],antonyms:[],collocations:['meet a deadline','miss a deadline','tight deadline','extend a deadline'],tip:'"Miss a deadline" = lỡ hạn. "Meet a deadline" = kịp hạn. "Tight deadline" = hạn gấp.'},
+  {w:'productive',p:'/prəˈdʌktɪv/',type:'adj',band:'B1',usage:'daily',topic:'work',vi:'hiệu quả, năng suất cao',meanings:[{vi:'hiệu quả, làm được nhiều việc',en:'doing or achieving a lot in a short time',ex:[{en:'I had a very productive day.',vi:'Hôm nay tôi làm việc rất hiệu quả.'},{en:"Meetings aren't always productive.",vi:'Cuộc họp không phải lúc nào cũng hiệu quả.'}]}],synonyms:['efficient','effective','fruitful','useful'],antonyms:['unproductive','inefficient','wasteful'],collocations:['productive meeting','productive day','highly productive'],tip:'Từ thông dụng trong môi trường làm việc. "Productivity" (năng suất) cũng rất hay dùng.'},
+  {w:'procrastinate',p:'/prəˈkræstɪneɪt/',type:'v',band:'B2',usage:'daily',topic:'work',vi:'trì hoãn, để sau',meanings:[{vi:'trì hoãn làm việc',en:'to delay doing something that you should do',ex:[{en:'Stop procrastinating and start studying!',vi:'Đừng trì hoãn nữa và bắt đầu học đi!'},{en:'I always procrastinate when I have homework.',vi:'Tôi luôn trì hoãn khi có bài tập.'}]}],synonyms:['delay','put off','postpone','dawdle','dilly-dally'],antonyms:['act','do immediately','get to it'],collocations:['stop procrastinating','procrastination habit'],tip:'"Procrastination is the thief of time" — câu nói nổi tiếng. Danh từ: "procrastination".'},
+  {w:'overwhelmed',p:'/ˌoʊvərˈwɛlmd/',type:'adj',band:'B1',usage:'daily',topic:'work',vi:'quá tải, choáng ngợp',meanings:[{vi:'quá tải, không thể đương đầu',en:'completely overcome by a feeling or amount of work',ex:[{en:'I feel overwhelmed with work lately.',vi:'Dạo này tôi cảm thấy quá tải với công việc.'},{en:'She was overwhelmed by the kindness.',vi:'Cô ấy choáng ngợp vì sự tử tế đó.'}]}],synonyms:['swamped','buried','overloaded','flooded'],antonyms:['in control','on top of things'],collocations:['feel overwhelmed','overwhelmed with work','emotionally overwhelmed'],tip:'Rất thường dùng: "I\'m so overwhelmed right now" = tôi đang quá tải rồi.'},
+  {w:'feedback',p:'/ˈfiːdbæk/',type:'n',band:'B1',usage:'daily',topic:'work',vi:'phản hồi, nhận xét',meanings:[{vi:'phản hồi, ý kiến nhận xét',en:'comments about how well or badly someone is doing',ex:[{en:'Can you give me feedback on my essay?',vi:'Bạn có thể nhận xét bài luận của tôi không?'},{en:'Customer feedback is very important.',vi:'Phản hồi của khách hàng rất quan trọng.'}]}],synonyms:['comment','review','response','evaluation'],antonyms:[],collocations:['give feedback','get feedback','positive/negative feedback','feedback loop'],tip:'"Constructive feedback" = phản hồi mang tính xây dựng — rất hay dùng trong môi trường công sở.'},
+  {w:'focus',p:'/ˈfoʊkəs/',type:'v/n',band:'A2',usage:'daily',topic:'work',vi:'tập trung',meanings:[{vi:'tập trung vào',en:'to direct your attention to something',ex:[{en:'Focus on your studies!',vi:'Tập trung vào việc học!'},{en:'I can\'t focus when it\'s noisy.',vi:'Tôi không thể tập trung khi ồn ào.'}]},{vi:'trọng tâm',en:'the center of interest or activity',ex:[{en:'The main focus of the meeting was budget.',vi:'Trọng tâm của cuộc họp là ngân sách.'}]}],synonyms:['concentrate','pay attention','centre on','hone in on'],antonyms:['distract','lose focus','wander'],collocations:['focus on','out of focus','in focus','laser focus'],tip:'"Keep your eye on the ball" = tương đương với "stay focused". IELTS: "focus on" rất thông dụng.'},
+
+  // HEALTH
+  {w:'exhausted',p:'/ɪɡˈzɔːstɪd/',type:'adj',band:'B1',usage:'daily',topic:'health',vi:'kiệt sức hoàn toàn',meanings:[{vi:'kiệt sức hoàn toàn',en:'extremely tired with no energy left',ex:[{en:'I was completely exhausted after the marathon.',vi:'Tôi hoàn toàn kiệt sức sau cuộc chạy marathon.'},{en:'She looked exhausted.',vi:'Trông cô ấy có vẻ kiệt sức.'}]}],synonyms:['worn out','drained','spent','dead tired','shattered'],antonyms:['energetic','refreshed','revitalized'],collocations:['completely exhausted','physically/emotionally exhausted'],tip:'"Exhausted" mạnh hơn "tired" nhiều. "I\'m shattered" (tiếng Anh Anh) = hoàn toàn kiệt sức.'},
+  {w:'recover',p:'/rɪˈkʌvər/',type:'v',band:'B1',usage:'daily',topic:'health',vi:'hồi phục, lấy lại',meanings:[{vi:'hồi phục sức khỏe',en:'to return to a normal state of health or strength',ex:[{en:'It took me a week to recover from the flu.',vi:'Tôi mất một tuần để hồi phục sau cúm.'},{en:'The economy is slowly recovering.',vi:'Kinh tế đang dần hồi phục.'}]},{vi:'lấy lại được',en:'to get back something lost',ex:[{en:'Police recovered the stolen car.',vi:'Cảnh sát đã lấy lại được chiếc xe bị đánh cắp.'}]}],synonyms:['heal','get better','bounce back','recuperate'],antonyms:['deteriorate','worsen','decline'],collocations:['recover from illness','recovery time','road to recovery'],tip:'"On the road to recovery" = đang trên đà hồi phục — idiom phổ biến.'},
+  {w:'ache',p:'/eɪk/',type:'n/v',band:'A2',usage:'daily',topic:'health',vi:'đau âm ỉ',meanings:[{vi:'đau âm ỉ, đau nhức',en:'a continuous dull pain in a part of the body',ex:[{en:'I have a headache.',vi:'Tôi bị đau đầu.'},{en:'My back aches from sitting all day.',vi:'Lưng tôi đau âm ỉ vì ngồi cả ngày.'}]}],synonyms:['pain','soreness','throb'],antonyms:[],collocations:['headache','stomachache','heartache','muscle ache','aching muscles'],tip:'Ghép từ: headache, toothache, stomachache, backache, heartache (đau lòng).'},
+  {w:'dizzy',p:'/ˈdɪzi/',type:'adj',band:'B1',usage:'daily',topic:'health',vi:'chóng mặt',meanings:[{vi:'chóng mặt, choáng váng',en:'feeling like you or everything around you is spinning',ex:[{en:'I feel dizzy — I need to sit down.',vi:'Tôi bị chóng mặt — cần ngồi xuống.'},{en:'The heat made her dizzy.',vi:'Cái nóng làm cô ấy choáng váng.'}]}],synonyms:['lightheaded','giddy','faint','wobbly'],antonyms:['steady','clear-headed'],collocations:['feel dizzy','dizzy spell','make someone dizzy'],tip:'"Dizzy" cũng dùng theo nghĩa bóng: "The numbers make my head dizzy!" = các con số làm tôi rối mù.'},
+  {w:'sneeze',p:'/sniːz/',type:'v/n',band:'A2',usage:'daily',topic:'health',vi:'hắt hơi',meanings:[{vi:'hắt hơi',en:'to suddenly push air out through your nose and mouth',ex:[{en:'She sneezed three times in a row.',vi:'Cô ấy hắt hơi ba cái liên tiếp.'},{en:'Cover your mouth when you sneeze!',vi:'Che miệng khi hắt hơi!'}]}],synonyms:[],antonyms:[],collocations:['sneeze loudly','catch a sneeze','not to be sneezed at'],tip:'"Bless you!" = người Anh/Mỹ hay nói sau khi ai đó hắt hơi.'},
+  {w:'appointment',p:'/əˈpɔɪntmənt/',type:'n',band:'A2',usage:'daily',topic:'health',vi:'cuộc hẹn (bác sĩ, v.v.)',meanings:[{vi:'cuộc hẹn, lịch hẹn',en:'an arrangement to meet someone at a particular time',ex:[{en:'I have a doctor\'s appointment at 3 PM.',vi:'Tôi có lịch hẹn bác sĩ lúc 3 giờ.'},{en:'Can I make an appointment?',vi:'Tôi có thể đặt lịch hẹn không?'}]}],synonyms:['meeting','booking','reservation','consultation'],antonyms:[],collocations:['make an appointment','keep an appointment','cancel an appointment','dental appointment'],tip:'"Make an appointment" = đặt lịch. "Miss an appointment" = lỡ hẹn. Rất thông dụng.'},
+
+  // FOOD
+  {w:'crave',p:'/kreɪv/',type:'v',band:'B1',usage:'daily',topic:'food',vi:'thèm muốn',meanings:[{vi:'thèm, thèm muốn',en:'to have a very strong desire for something',ex:[{en:'I\'m craving chocolate right now.',vi:'Tôi đang thèm chocolate.'},{en:'She always craves salty snacks.',vi:'Cô ấy luôn thèm đồ ăn vặt mặn.'}]}],synonyms:['desire','long for','yearn for','want badly'],antonyms:['dislike','be put off'],collocations:['crave food','crave attention','food cravings'],tip:'"Craving" (danh từ) rất thông dụng: "I have a craving for pizza" = tôi đang thèm pizza.'},
+  {w:'leftovers',p:'/ˈlɛftoʊvərz/',type:'n',band:'A2',usage:'daily',topic:'food',vi:'đồ ăn thừa',meanings:[{vi:'đồ ăn còn thừa từ bữa trước',en:'food that has not been eaten and remains after a meal',ex:[{en:'We had leftovers from last night\'s dinner.',vi:'Chúng tôi còn thức ăn thừa từ bữa tối hôm qua.'},{en:'I\'ll heat up the leftovers.',vi:'Tôi sẽ hâm nóng đồ ăn thừa.'}]}],synonyms:['remainders','scraps','surplus food'],antonyms:[],collocations:['eat leftovers','leftover pizza','leftover rice'],tip:'Luôn dùng số nhiều "leftovers" khi nói về đồ ăn thừa.'},
+  {w:'stuff',p:'/stʌf/',type:'n/v',band:'A2',usage:'daily',topic:'actions',vi:'đồ, thứ (thông tục)',meanings:[{vi:'đồ đạc, thứ (thông tục)',en:'things, possessions, or activities (informal)',ex:[{en:'I need to get my stuff from your place.',vi:'Tôi cần lấy đồ của mình từ chỗ bạn.'},{en:'There\'s a lot of stuff to do.',vi:'Có nhiều việc cần làm lắm.'}]},{vi:'nhồi nhét vào',en:'to push or pack something into a small space',ex:[{en:'She stuffed everything into her bag.',vi:'Cô ấy nhồi nhét tất cả vào túi.'}]}],synonyms:['things','items','belongings','goods'],antonyms:[],collocations:['stuff your face','know your stuff','hot stuff','that\'s the stuff'],tip:'"Stuff" là từ rất phổ biến trong hội thoại hàng ngày nhưng không dùng trong văn trang trọng.'},
+  {w:'bland',p:'/blænd/',type:'adj',band:'B1',usage:'daily',topic:'food',vi:'nhạt nhẽo, vô vị',meanings:[{vi:'nhạt nhẽo, không có vị',en:'lacking strong flavour, interest, or character',ex:[{en:'The soup is a bit bland — add some salt.',vi:'Canh hơi nhạt — thêm muối vào.'},{en:'His personality is so bland.',vi:'Tính cách anh ta thật nhạt nhẽo.'}]}],synonyms:['tasteless','insipid','flavourless','plain'],antonyms:['spicy','flavourful','tasty','zesty'],collocations:['bland food','bland personality','bland taste'],tip:'Dùng cả nghĩa đen (vô vị về ăn uống) và nghĩa bóng (nhạt nhẽo về tính cách).'},
+  {w:'munch',p:'/mʌntʃ/',type:'v',band:'B1',usage:'daily',topic:'food',vi:'nhai rau ráu, ăn nhấm nháp',meanings:[{vi:'nhai rau ráu, ăn ngốn ngấu',en:'to eat something steadily and noisily',ex:[{en:'He was munching on chips while watching TV.',vi:'Anh ta vừa nhai khoai tây chiên vừa xem TV.'},{en:'The rabbit was munching on a carrot.',vi:'Con thỏ đang nhai cà rốt rau ráu.'}]}],synonyms:['crunch','chew','nibble','chomp'],antonyms:[],collocations:['munch on snacks','munchies'],tip:'"The munchies" = cơn thèm ăn vặt — khẩu ngữ rất phổ biến.'},
+
+  // TRAVEL
+  {w:'commute',p:'/kəˈmjuːt/',type:'v/n',band:'B1',usage:'daily',topic:'travel',vi:'đi lại hàng ngày (đến chỗ làm)',meanings:[{vi:'đi lại hàng ngày (nhà-công sở)',en:'to travel regularly between work and home',ex:[{en:'I commute two hours every day.',vi:'Tôi đi lại 2 tiếng mỗi ngày.'},{en:'The commute is terrible during rush hour.',vi:'Việc đi lại rất tệ trong giờ cao điểm.'}]}],synonyms:['travel daily','go back and forth'],antonyms:['work from home','telecommute'],collocations:['daily commute','long commute','commuter train','commute to work'],tip:'"Commuter" = người đi làm hàng ngày bằng phương tiện công cộng.'},
+  {w:'detour',p:'/ˈdiːtʊər/',type:'n/v',band:'B1',usage:'daily',topic:'travel',vi:'đường vòng, đi đường vòng',meanings:[{vi:'đường vòng, đi lạc đường',en:'a longer route taken because the direct way is blocked',ex:[{en:'We had to take a detour due to roadworks.',vi:'Chúng tôi phải đi đường vòng do có công trình.'},{en:'Let\'s make a detour and visit the waterfall.',vi:'Hãy đi đường vòng ghé thác nước nhé.'}]}],synonyms:['diversion','roundabout way','alternative route'],antonyms:['direct route','shortcut'],collocations:['take a detour','make a detour'],tip:'"Take a detour" = đi đường vòng. Cũng dùng nghĩa bóng: "Let\'s make a detour from the main topic."'},
+  {w:'luggage',p:'/ˈlʌɡɪdʒ/',type:'n',band:'A2',usage:'daily',topic:'travel',vi:'hành lý',meanings:[{vi:'hành lý, túi xách khi đi du lịch',en:'bags and suitcases that you take when travelling',ex:[{en:'Where can I store my luggage?',vi:'Tôi có thể gửi hành lý ở đâu?'},{en:'My luggage was lost!',vi:'Hành lý của tôi bị thất lạc rồi!'}]}],synonyms:['baggage','bags','suitcases'],antonyms:[],collocations:['hand luggage','excess luggage','luggage rack','check in luggage'],tip:'"Luggage" không đếm được. Không nói "a luggage" — nói "a piece of luggage" hay "a suitcase".'},
+  {w:'jet lag',p:'/ˈdʒɛt læɡ/',type:'n',band:'B1',usage:'daily',topic:'travel',vi:'mệt vì lệch múi giờ',meanings:[{vi:'mệt mỏi do lệch múi giờ',en:'extreme tiredness felt after a long flight to a different time zone',ex:[{en:'I\'m still suffering from jet lag.',vi:'Tôi vẫn đang bị mệt do lệch múi giờ.'},{en:'It took me 3 days to overcome jet lag.',vi:'Tôi mất 3 ngày để hết jet lag.'}]}],synonyms:['time zone fatigue','travel fatigue'],antonyms:[],collocations:['suffer from jet lag','overcome jet lag','jet-lagged'],tip:'Được tạo từ "jet" (máy bay phản lực) + "lag" (trễ, chậm). Dùng rộng rãi trên toàn thế giới.'},
+
+  // HOME & LIFESTYLE
+  {w:'clutter',p:'/ˈklʌtər/',type:'n/v',band:'B1',usage:'daily',topic:'home',vi:'lộn xộn, đồ ngổn ngang',meanings:[{vi:'đồ đạc lộn xộn, ngổn ngang',en:'a lot of objects in an untidy state',ex:[{en:'There\'s too much clutter in this room.',vi:'Phòng này có quá nhiều đồ lộn xộn.'},{en:'Don\'t clutter your desk with paper.',vi:'Đừng để giấy tờ ngổn ngang trên bàn làm việc.'}]}],synonyms:['mess','disorder','jumble','chaos'],antonyms:['tidiness','order','neatness'],collocations:['declutter','clear the clutter','mental clutter'],tip:'"Declutter" (dọn dẹp) rất thịnh hành hiện nay. "Mental clutter" = những suy nghĩ rối loạn trong đầu.'},
+  {w:'cozy',p:'/ˈkoʊzi/',type:'adj',band:'A2',usage:'daily',topic:'home',vi:'ấm cúng, dễ chịu',meanings:[{vi:'ấm cúng, thoải mái dễ chịu',en:'giving a feeling of comfort, warmth, and relaxation',ex:[{en:'This café is so cozy!',vi:'Quán cà phê này ấm cúng quá!'},{en:'I love staying home on a cozy rainy day.',vi:'Tôi thích ở nhà vào những ngày mưa ấm cúng.'}]}],synonyms:['comfortable','snug','warm','homey','inviting'],antonyms:['uncomfortable','cold','uninviting'],collocations:['cozy atmosphere','cozy room','cozy up'],tip:'Spelling: "cozy" (Mỹ) = "cosy" (Anh). "Hygge" (tiếng Đan Mạch) là khái niệm tương đương.'},
+  {w:'chores',p:'/tʃɔːrz/',type:'n',band:'A2',usage:'daily',topic:'home',vi:'việc nhà',meanings:[{vi:'các việc vặt trong nhà',en:'routine tasks that you do to keep a house clean and tidy',ex:[{en:'I have to do my chores before going out.',vi:'Tôi phải làm việc nhà trước khi ra ngoài.'},{en:'We share the household chores.',vi:'Chúng tôi chia nhau làm việc nhà.'}]}],synonyms:['housework','household tasks','domestic duties'],antonyms:[],collocations:['household chores','do the chores','share chores','chore chart'],tip:'Luôn dùng số nhiều. "Do the chores" = làm việc nhà.'},
+  {w:'renovate',p:'/ˈrɛnəveɪt/',type:'v',band:'B1',usage:'daily',topic:'home',vi:'cải tạo, tân trang',meanings:[{vi:'cải tạo, tân trang lại nhà',en:'to repair and improve a building',ex:[{en:'They are renovating the old house.',vi:'Họ đang cải tạo ngôi nhà cũ.'},{en:'The kitchen was recently renovated.',vi:'Nhà bếp mới được tân trang gần đây.'}]}],synonyms:['refurbish','restore','remodel','do up','makeover'],antonyms:['demolish','neglect'],collocations:['renovate a house','home renovation','major renovation'],tip:'"Fixer-upper" = ngôi nhà cần sửa chữa — thông dụng trong tiếng Anh Mỹ.'},
+
+  // MONEY & SHOPPING
+  {w:'bargain',p:'/ˈbɑːrɡɪn/',type:'n/v',band:'B1',usage:'daily',topic:'money',vi:'món hời / mặc cả',meanings:[{vi:'món hời, giá hời',en:'something sold for less than its usual price',ex:[{en:'I got this dress for a bargain!',vi:'Tôi mua được cái váy này với giá hời!'},{en:'That\'s a great bargain.',vi:'Đó là một món hời tuyệt vời.'}]},{vi:'mặc cả, thương lượng giá',en:'to negotiate the price of something',ex:[{en:'He bargained with the seller.',vi:'Anh ta mặc cả với người bán.'}]}],synonyms:['deal','good buy','steal','mặc cả: negotiate','haggle'],antonyms:['rip-off','overpriced'],collocations:['bargain price','strike a bargain','bargain hunting'],tip:'"Bargain hunting" = đi săn hàng giá rẻ. "It\'s a steal!" = rẻ như cho!'},
+  {w:'splurge',p:'/splɜːrdʒ/',type:'v/n',band:'B1',usage:'daily',topic:'money',vi:'xài sang, mua hoang',meanings:[{vi:'xài sang, mua sắm hoang phí',en:'to spend a lot of money on something special',ex:[{en:'I splurged on a new phone.',vi:'Tôi đã mua hoang một chiếc điện thoại mới.'},{en:"Let's splurge on a nice dinner tonight!",vi:'Tối nay hãy mạnh tay ăn bữa ngon nhé!'}]}],synonyms:['spend lavishly','treat yourself','go all out'],antonyms:['save','scrimp','be frugal'],collocations:['splurge on something','occasional splurge','birthday splurge'],tip:'"Treat yourself" = thưởng cho bản thân — tích cực hơn "splurge" (hơi tiêu cực).'},
+  {w:'budget',p:'/ˈbʌdʒɪt/',type:'n/v/adj',band:'A2',usage:'daily',topic:'money',vi:'ngân sách / tiết kiệm',meanings:[{vi:'ngân sách, kế hoạch chi tiêu',en:'the amount of money you have available to spend',ex:[{en:'I\'m on a tight budget this month.',vi:'Tháng này tôi bị hạn hẹp về tiền.'},{en:'We need to budget for the trip.',vi:'Chúng ta cần lập ngân sách cho chuyến đi.'}]},{vi:'giá rẻ, bình dân',en:'cheap or economical',ex:[{en:'There are some budget hotels nearby.',vi:'Có vài khách sạn bình dân gần đây.'}]}],synonyms:['allowance','financial plan','limit','affordable'],antonyms:['luxury','extravagant'],collocations:['tight budget','budget plan','on a budget','budget hotel'],tip:'"On a budget" = đang tiết kiệm tiền — rất thông dụng.'},
+  {w:'broke',p:'/broʊk/',type:'adj',band:'A2',usage:'slang',topic:'money',vi:'hết tiền, sạch túi',meanings:[{vi:'hết tiền (thông tục)',en:'having no money (informal)',ex:[{en:'I\'m totally broke until payday.',vi:'Tôi hết sạch tiền cho đến ngày lương.'},{en:"Don't ask me — I'm broke!",vi:'Đừng hỏi tôi — tôi không có tiền!'}]}],synonyms:['penniless','skint','strapped for cash','flat broke'],antonyms:['wealthy','flush','rolling in it'],collocations:['flat broke','dead broke','go broke','broke as a joke'],tip:'"Broke" là khẩu ngữ. Trang trọng hơn: "I\'m short on funds" hoặc "I\'m financially constrained".'},
+
+  // TECH & SOCIAL MEDIA
+  {w:'scroll',p:'/skroʊl/',type:'v/n',band:'A2',usage:'daily',topic:'tech',vi:'cuộn xem (màn hình)',meanings:[{vi:'cuộn xem nội dung trên màn hình',en:'to move text or images on a screen',ex:[{en:'I spend too much time scrolling on my phone.',vi:'Tôi tốn quá nhiều thời gian cuộn điện thoại.'},{en:'Scroll down to see more content.',vi:'Cuộn xuống để xem thêm nội dung.'}]}],synonyms:['browse','swipe','skim'],antonyms:[],collocations:['scroll through','doomscrolling','scroll feed','infinite scroll'],tip:'"Doomscrolling" = lướt liên tục những tin xấu — từ mới phổ biến sau COVID. "Scroll fatigue" = mỏi mắt vì lướt điện thoại.'},
+  {w:'ghost',p:'/ɡoʊst/',type:'v',band:'B1',usage:'slang',topic:'social',vi:'cắt liên lạc đột ngột',meanings:[{vi:'biến mất, cắt liên lạc không báo trước',en:'to suddenly stop responding to messages and calls',ex:[{en:'He just ghosted me after our date.',vi:'Anh ta cắt liên lạc với tôi sau buổi hẹn hò.'},{en:'Being ghosted really hurts.',vi:'Bị cắt liên lạc thật sự đau lòng.'}]}],synonyms:['disappear','cut contact','ignore','blank'],antonyms:['stay in touch','communicate'],collocations:['get ghosted','ghost someone','ghosting culture'],tip:'"Ghosting" = hiện tượng cắt liên lạc đột ngột — từ mới trong văn hóa hẹn hò hiện đại.'},
+  {w:'trending',p:'/ˈtrɛndɪŋ/',type:'adj',band:'A2',usage:'daily',topic:'tech',vi:'đang thịnh hành, hot',meanings:[{vi:'đang thịnh hành, được nói đến nhiều',en:'becoming popular or widely discussed online',ex:[{en:'This video is trending on TikTok.',vi:'Video này đang viral trên TikTok.'},{en:'What\'s trending today?',vi:'Hôm nay có gì đang hot?'}]}],synonyms:['popular','viral','hot','in vogue'],antonyms:['outdated','old news'],collocations:['trending topic','trending hashtag','trending now','trend setter'],tip:'"Go viral" = lan truyền rộng rãi. "Trending" = đang có nhiều người nói đến.'},
+  {w:'stream',p:'/striːm/',type:'v/n',band:'B1',usage:'daily',topic:'tech',vi:'phát trực tiếp / truyền phát',meanings:[{vi:'phát trực tiếp, xem/nghe trực tuyến',en:'to watch or listen to content over the internet',ex:[{en:'I stream movies on Netflix every night.',vi:'Tôi xem phim trên Netflix mỗi tối.'},{en:'He streams games on Twitch.',vi:'Anh ấy livestream game trên Twitch.'}]},{vi:'dòng chảy (nước)',en:'a small river or flow of liquid',ex:[{en:'There\'s a small stream in the forest.',vi:'Có một con suối nhỏ trong rừng.'}]}],synonyms:['broadcast','watch online','live stream'],antonyms:['download','physical media'],collocations:['live stream','streaming service','stream music','mainstream'],tip:'"Mainstream" = chủ đạo, phổ thông. "Stream of consciousness" = dòng suy nghĩ — cũng là thuật ngữ văn học.'},
+
+  // NATURE
+  {w:'breeze',p:'/briːz/',type:'n',band:'A2',usage:'daily',topic:'nature',vi:'gió nhẹ / chuyện dễ',meanings:[{vi:'gió nhẹ, làn gió',en:'a gentle, light wind',ex:[{en:'A cool breeze came from the sea.',vi:'Một làn gió mát từ biển thổi vào.'},{en:'It\'s breezy today.',vi:'Hôm nay có gió nhẹ.'}]},{vi:'chuyện dễ như không (thông tục)',en:'something very easy',ex:[{en:'The exam was a breeze!',vi:'Bài thi dễ như không!'}]}],synonyms:['gentle wind','air current','zephyr','easy: piece of cake'],antonyms:['gale','storm','difficult'],collocations:['gentle breeze','sea breeze','shoot the breeze','it\'s a breeze'],tip:'"Shoot the breeze" = tán gẫu, nói chuyện phiếm — khẩu ngữ rất thông dụng.'},
+  {w:'gloomy',p:'/ˈɡluːmi/',type:'adj',band:'B1',usage:'daily',topic:'nature',vi:'ảm đạm, u ám',meanings:[{vi:'u ám (thời tiết)',en:'dark and unpleasant',ex:[{en:'It\'s gloomy outside today.',vi:'Trời hôm nay u ám quá.'},{en:'The forecast is gloomy.',vi:'Dự báo thời tiết ảm đạm.'}]},{vi:'buồn bã, chán nản (tâm trạng)',en:'sad and without hope',ex:[{en:'He was in a gloomy mood.',vi:'Anh ấy đang trong tâm trạng buồn bã.'}]}],synonyms:['dark','overcast','dreary','bleak','sombre'],antonyms:['bright','sunny','cheerful','optimistic'],collocations:['gloomy weather','gloomy mood','gloomy forecast'],tip:'"Bleak" = ảm đạm hơn, mang tính tuyệt vọng. "Overcast" = nhiều mây, trời âm u.'},
+  {w:'humid',p:'/ˈhjuːmɪd/',type:'adj',band:'B1',usage:'daily',topic:'nature',vi:'ẩm, nóng ẩm',meanings:[{vi:'nóng ẩm, độ ẩm cao',en:'hot and slightly wet in a way that makes you feel uncomfortable',ex:[{en:'It\'s so hot and humid today.',vi:'Hôm nay nóng và ẩm quá.'},{en:'Vietnam is very humid in summer.',vi:'Việt Nam rất ẩm vào mùa hè.'}]}],synonyms:['muggy','sticky','sultry','close','clammy'],antonyms:['dry','arid'],collocations:['hot and humid','humid climate','humidity levels','high humidity'],tip:'"Muggy" = nóng ẩm khó chịu. "Stuffy" = ngột ngạt (trong phòng).'},
+
+  // TIME
+  {w:'meanwhile',p:'/ˈmiːnwaɪl/',type:'adv',band:'B1',usage:'daily',topic:'time',vi:'trong lúc đó, đồng thời',meanings:[{vi:'trong thời gian đó, trong lúc chờ đợi',en:'during the time between two events; at the same time',ex:[{en:'I\'ll set the table. Meanwhile, you can chop the vegetables.',vi:'Tôi sẽ dọn bàn. Trong lúc đó, bạn có thể thái rau.'},{en:'He was sleeping. Meanwhile, the thief entered.',vi:'Anh ta đang ngủ. Trong lúc đó, tên trộm đã vào nhà.'}]}],synonyms:['in the meantime','at the same time','simultaneously','while'],antonyms:[],collocations:['meanwhile back at...','in the meantime'],tip:'Dùng để nối 2 sự kiện xảy ra song song. Rất thông dụng trong kể chuyện và văn viết.'},
+  {w:'eventually',p:'/ɪˈvɛntʃuəli/',type:'adv',band:'B1',usage:'daily',topic:'time',vi:'cuối cùng thì cũng',meanings:[{vi:'cuối cùng rồi cũng (sau nhiều thời gian)',en:'after a long time, or after many problems or difficulties',ex:[{en:'Eventually, he found a job.',vi:'Cuối cùng thì anh ấy cũng tìm được việc làm.'},{en:'She will eventually understand.',vi:'Cô ấy rồi cũng sẽ hiểu thôi.'}]}],synonyms:['finally','ultimately','in the end','sooner or later'],antonyms:['immediately','instantly','at once'],collocations:['eventually happen','eventually lead to'],tip:'"Eventually" ≠ "finally". "Finally" = cuối cùng sau khi chờ đợi lâu (nhẹ nhõm). "Eventually" = sau một khoảng thời gian dài (trung tính).'},
+  {w:'overdue',p:'/ˌoʊvərˈdjuː/',type:'adj',band:'B1',usage:'daily',topic:'time',vi:'quá hạn, đến lúc rồi',meanings:[{vi:'quá hạn, trễ hạn',en:'not done or paid by the required time',ex:[{en:'The library book is overdue.',vi:'Sách thư viện đã quá hạn trả.'},{en:'My rent is two weeks overdue.',vi:'Tiền thuê nhà của tôi đã trễ 2 tuần.'}]},{vi:'đến lúc phải làm từ lâu rồi',en:'something that should have happened sooner',ex:[{en:'This change is long overdue.',vi:'Sự thay đổi này đã đến lúc từ lâu rồi.'}]}],synonyms:['late','past due','behind schedule','long awaited'],antonyms:['on time','early','prompt'],collocations:['long overdue','overdue bill','overdue library book'],tip:'"This is long overdue" = cái này lẽ ra phải làm từ lâu rồi — thường dùng để nhấn mạnh.'},
+  {w:'ongoing',p:'/ˈɒnɡoʊɪŋ/',type:'adj',band:'B1',usage:'daily',topic:'time',vi:'đang diễn ra, liên tục',meanings:[{vi:'đang tiếp tục, chưa kết thúc',en:'continuing to happen or exist',ex:[{en:'There is an ongoing investigation.',vi:'Cuộc điều tra vẫn đang tiếp tục.'},{en:'This is an ongoing problem.',vi:'Đây là vấn đề đang tiếp diễn.'}]}],synonyms:['continuing','current','in progress','persistent'],antonyms:['finished','concluded','over'],collocations:['ongoing process','ongoing debate','ongoing conflict','ongoing support'],tip:'Thường đứng trước danh từ: "an ongoing situation", "ongoing discussions".'},
+];
+
+// STATE
+let savedWords = new Set(JSON.parse(localStorage.getItem('ev_saved')||'[]'));
+let currentTopic='all', currentBand='all', currentUsage='all', showSavedOnly=false;
+let expandedWord=null;
+
+function getFiltered(){
+  let data=[...WORDS];
+  if(currentTopic!=='all') data=data.filter(w=>w.topic===currentTopic);
+  if(currentBand!=='all') data=data.filter(w=>w.band===currentBand);
+  if(currentUsage!=='all') data=data.filter(w=>w.usage===currentUsage);
+  if(showSavedOnly) data=data.filter(w=>savedWords.has(w.w));
+  const q=document.getElementById('searchInput')?.value.toLowerCase().trim();
+  if(q) data=data.filter(w=>w.w.includes(q)||w.vi.includes(q)||w.meanings.some(m=>m.vi.includes(q)));
+  const sort=document.getElementById('sortSelect')?.value||'default';
+  if(sort==='alpha') data=[...data].sort((a,b)=>a.w.localeCompare(b.w));
+  else if(sort==='band') data=[...data].sort((a,b)=>['A1','A2','B1','B2','C1'].indexOf(a.band)-['A1','A2','B1','B2','C1'].indexOf(b.band));
+  else if(sort==='usage') data=[...data].sort((a,b)=>['daily','medium','formal','slang'].indexOf(a.usage)-['daily','medium','formal','slang'].indexOf(b.usage));
+  return data;
+}
+
+const BAND_CLASSES={A1:'tag-a1',A2:'tag-a2',B1:'tag-b1',B2:'tag-b2',C1:'tag-c1'};
+const USAGE_ICONS={daily:'🟢',medium:'🟡',formal:'🔵',slang:'🩷',business:'🟠'};
+const USAGE_LABELS={daily:'Rất thường dùng',medium:'Thường dùng',formal:'Trang trọng',slang:'Thông tục',business:'Kinh doanh'};
+const TYPE_CLASSES={'n':'tag-n','v':'tag-v','adj':'tag-adj','adv':'tag-adv','phr.v':'tag-v','n/v':'tag-n','v/n':'tag-n','adj/n':'tag-adj','adj/v':'tag-v'};
+
+function usageDots(usage){
+  const levels={daily:5,medium:3,formal:2,slang:4,business:3};
+  const n=levels[usage]||3;
+  const cls=usage==='daily'?'on':usage==='slang'?'on medium':'on low';
+  return Array.from({length:5},(_, i)=>`<div class="um-dot${i<n?' '+cls:''}"></div>`).join('');
+}
+
+function renderWords(){
+  const data=getFiltered();
+  document.getElementById('statShowing').textContent=data.length;
+  document.getElementById('statSaved').textContent=savedWords.size;
+
+  const container=document.getElementById('wordsContainer');
+  if(!data.length){container.innerHTML='<div class="no-results">Không tìm thấy từ nào. Thử thay đổi bộ lọc.</div>';return;}
+
+  // Group by topic
+  const topicLabels={feelings:'😊 Cảm xúc & Tính cách',actions:'⚡ Hành động thường ngày',social:'👥 Giao tiếp xã hội',work:'💼 Công việc & Học tập',health:'🏥 Sức khỏe',food:'🍜 Ăn uống',travel:'✈️ Du lịch',home:'🏠 Nhà ở',money:'💰 Tiền bạc',tech:'📱 Công nghệ',nature:'🌿 Thiên nhiên',time:'⏰ Thời gian'};
+
+  if(currentTopic==='all'){
+    const groups={};
+    data.forEach(w=>{if(!groups[w.topic])groups[w.topic]=[];groups[w.topic].push(w);});
+    container.innerHTML=Object.keys(groups).map(topic=>`
+      <div class="section-hdr anchor" id="sec-${topic}">
+        <span class="sh-icon">${topicLabels[topic]?.split(' ')[0]||'📌'}</span>
+        <span class="sh-title">${topicLabels[topic]||topic}</span>
+        <span class="sh-count">${groups[topic].length} từ</span>
+      </div>
+      <div class="words-grid">${groups[topic].map(w=>wordCardHTML(w)).join('')}</div>`).join('');
+  } else {
+    container.innerHTML=`<div class="words-grid">${data.map(w=>wordCardHTML(w)).join('')}</div>`;
+  }
+}
+
+function wordCardHTML(w){
+  const isSaved=savedWords.has(w.w);
+  return `<div class="word-card${isSaved?' saved':''}" id="wcard-${w.w}" onclick="toggleExpand('${w.w}')">
+    <div class="wc-top">
+      <div class="wc-word">${w.w}</div>
+      <button class="wc-save${isSaved?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${isSaved?'⭐':'☆'}</button>
+    </div>
+    <div class="wc-meta">
+      <span class="wc-pron">${w.p}</span>
+      <span class="tag ${TYPE_CLASSES[w.type]||'tag-n'}">${w.type}</span>
+      <span class="tag ${BAND_CLASSES[w.band]}">${w.band}</span>
+      <span class="tag ${w.usage==='daily'?'tag-daily':w.usage==='formal'?'tag-formal':w.usage==='slang'?'tag-slang':'tag-business'}">${USAGE_ICONS[w.usage]} ${USAGE_LABELS[w.usage]}</span>
+    </div>
+    <div class="wc-vi">${w.meanings[0].vi}</div>
+    <div class="wc-ex">"${w.meanings[0].ex[0].en}"</div>
+    <div class="usage-meter">
+      <span class="um-label">Tần suất dùng:</span>
+      <div class="um-dots">${usageDots(w.usage)}</div>
+    </div>
+    <div class="wc-detail">
+      ${w.meanings.map((m,i)=>`
+        <div class="detail-section">
+          <div class="ds-label">Nghĩa ${w.meanings.length>1?i+1+': ':''}${m.vi}</div>
+          <div class="ds-content" style="margin-bottom:6px;font-style:italic;color:var(--text3)">${m.en}</div>
+          <div class="ds-examples">
+            ${m.ex.map(e=>`<div class="ds-ex"><div class="ds-ex-en">"${e.en}"</div><div class="ds-ex-vi">${e.vi}</div></div>`).join('')}
+          </div>
+        </div>`).join('')}
+      ${w.synonyms?.length?`<div class="detail-section"><div class="ds-label">Từ đồng nghĩa</div><div class="ds-chips">${w.synonyms.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div></div>`:''}
+      ${w.antonyms?.length?`<div class="detail-section"><div class="ds-label">Từ trái nghĩa</div><div class="ds-chips">${w.antonyms.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div></div>`:''}
+      ${w.collocations?.length?`<div class="detail-section"><div class="ds-label">Cụm từ thông dụng</div><div class="ds-chips">${w.collocations.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div></div>`:''}
+      ${w.tip?`<div style="margin-top:8px;padding:8px 12px;background:rgba(100,216,165,0.08);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.6"><span style="color:var(--accent2)">💡 Mẹo: </span>${w.tip}</div>`:''}
+    </div>
+  </div>`;
+}
+
+function toggleExpand(word){
+  const card=document.getElementById('wcard-'+word);
+  const isExp=card.classList.contains('expanded');
+  if(expandedWord) document.getElementById('wcard-'+expandedWord)?.classList.remove('expanded');
+  if(!isExp){card.classList.add('expanded');expandedWord=word;}
+  else expandedWord=null;
+}
+
+function toggleSave(word){
+  if(savedWords.has(word)) savedWords.delete(word);
+  else savedWords.add(word);
+  localStorage.setItem('ev_saved',JSON.stringify([...savedWords]));
+  document.getElementById('statSaved').textContent=savedWords.size;
+  const card=document.getElementById('wcard-'+word);
+  if(card){
+    card.classList.toggle('saved',savedWords.has(word));
+    const btn=card.querySelector('.wc-save');
+    if(btn){btn.textContent=savedWords.has(word)?'⭐':'☆';btn.classList.toggle('saved',savedWords.has(word));}
+  }
+  renderSavedPanel();
+}
+
+function filterTopic(topic,el){currentTopic=topic;document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');renderWords();}
+function filterBand(band,el){currentBand=band;renderWords();}
+function filterUsage(usage,el){currentUsage=usage;renderWords();}
+
+function toggleSavedOnly(){
+  showSavedOnly=!showSavedOnly;
+  document.getElementById('btnSavedOnly').classList.toggle('on',showSavedOnly);
+  renderWords();
+}
+
+function showSaved(){
+  const panel=document.getElementById('savedPanel');
+  panel.classList.toggle('show');
+  renderSavedPanel();
+}
+
+function renderSavedPanel(){
+  const panel=document.getElementById('savedPanel');
+  document.getElementById('savedCount2').textContent=savedWords.size;
+  const words=document.getElementById('savedWords');
+  if(!savedWords.size){words.innerHTML='<span style="font-size:12px;color:var(--text3)">Chưa lưu từ nào. Bấm ☆ trên từ bất kỳ để lưu.</span>';return;}
+  words.innerHTML=[...savedWords].map(w=>`<span class="sp-word" onclick="filterSavedWord('${w}')">${w}</span>`).join('');
+}
+
+function filterSavedWord(word){
+  document.getElementById('searchInput').value=word;
+  renderWords();
+}
+
+function clearAllSaved(){
+  if(confirm('Xóa tất cả từ đã lưu?')){savedWords.clear();localStorage.removeItem('ev_saved');renderSavedPanel();renderWords();}
+}
+
+// Init
+renderWords();
+renderSavedPanel();
+const awlLearned=JSON.parse(localStorage.getItem('ee_awl_learned')||'[]');
+document.getElementById('statLearned').textContent=awlLearned.length;
+
+// Nav dropdown toggle
+function toggleDrop(el){
+  const drop = el.closest('.nav-drop');
+  const wasOpen = drop.classList.contains('open');
+  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+  if(!wasOpen) drop.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+</script>
+<script src="theme.js"></script>
+</body>
+</html>
