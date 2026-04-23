@@ -16,13 +16,13 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(100,216,165,0.1);top:-150px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(232,197,71,0.05);bottom:0;left:-100px}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+nav{max-width:100vw;overflow:hidden;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
@@ -53,8 +53,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .content{padding:40px 48px;max-width:820px}
 .page-header{margin-bottom:40px}
 .page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:48px;font-weight:300;margin-bottom:12px}
-.page-desc{font-size:18px;color:var(--text2);line-height:1.7}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:12px}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.7}
 
 /* LESSON */
 .lesson{margin-bottom:60px;scroll-margin-top:80px}
@@ -162,12 +162,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .content{padding:24px 20px}
   nav{padding:12px 16px}
   .nav-links{display:none}
-  .page-title{font-size:28px}
+  .page-title{font-size:clamp(26px,4vw,48px)}
   .tense-row{grid-template-columns:1fr}
 }
 @media(max-width:500px){
   .content{padding:16px 12px}
-  .page-title{font-size:24px}
+  .page-title{font-size:clamp(26px,4vw,48px)}
 }
 
 /* NAV DROPDOWN */
@@ -175,7 +175,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
 .nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
 .nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
 .nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
@@ -195,21 +195,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
   nav{padding:12px 16px}
   .content{padding:20px 16px}
-  .page-title,.page-title{font-size:28px!important}
-  .page-desc{font-size:15px!important}
+  .page-title,.page-title{font-size:clamp(26px,4vw,48px)!important}
+  .page-desc{font-size:clamp(14px,1.4vw,18px)!important}
   .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
   .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
   .nav-drop>.nav-a::after{display:none}
 }
 @media(max-width:500px){
-  .page-title{font-size:24px!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
 }
 
 @media(max-width:768px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   nav{padding:10px 14px!important}
-  .page-title{font-size:26px!important;word-wrap:break-word}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
   .stats-grid{grid-template-columns:1fr 1fr!important}
@@ -228,7 +228,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:none}
   .logo-name{font-size:16px}
 }
+
+@media(max-width:768px){
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  .nav-drop-menu{min-width:unset!important;width:100%!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+}
+
+/* === MOBILE MASTER FIX === */
+@media(max-width:768px){
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hamburger{display:block!important}
+}
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -245,8 +267,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a active" onclick="toggleDrop(this)">Ngữ pháp</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a">Từ vựng</a>
@@ -257,22 +279,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
-        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
         <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
         <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
-        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
-        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
         <div class="nav-sep"></div>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
       </div></div>
     </div>
     <a href="progress.html" class="nav-a">Tiến độ</a>
@@ -363,7 +385,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="wordtype-grid">
       <div class="wt-card" id="noun">
-        <div class="wt-title">📌 Danh từ — Noun</div>
+        <div class="wt-title"><i data-lucide="pin" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Danh từ — Noun</div>
         <div class="wt-vi">Tên của người, vật, nơi chốn, khái niệm</div>
         <div class="wt-examples">
           <span class="wt-chip" style="background:rgba(100,216,165,0.1);color:var(--accent)">cat (mèo)</span>
@@ -417,7 +439,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
         </div>
       </div>
       <div class="wt-card" id="adverb">
-        <div class="wt-title">🚀 Trạng từ — Adverb</div>
+        <div class="wt-title"><i data-lucide="rocket" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Trạng từ — Adverb</div>
         <div class="wt-vi">Bổ sung ý nghĩa cho động từ, tính từ, trạng từ khác</div>
         <div class="wt-examples">
           <span class="wt-chip" style="background:rgba(232,121,160,0.1);color:var(--pink)">quickly (nhanh)</span>
@@ -469,29 +491,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <strong>Quy tắc thêm -s/-es:</strong> Với he/she/it — động từ tận cùng bằng -s, -sh, -ch, -x, -o → thêm <strong>-es</strong> (go→goes, watch→watches). Động từ tận cùng bằng phụ âm + y → đổi y→i rồi thêm <strong>-es</strong> (study→studies). Còn lại → thêm <strong>-s</strong> (eat→eats).
     </div>
     <div class="usage-grid">
-      <div class="usage-item"><div class="usage-icon">🔄</div><div class="usage-text"><strong style="color:var(--accent3)">Thói quen lặp lại</strong><br>I drink coffee every morning.</div></div>
-      <div class="usage-item"><div class="usage-icon">🌍</div><div class="usage-text"><strong style="color:var(--accent3)">Sự thật hiển nhiên</strong><br>The sun rises in the east.</div></div>
+      <div class="usage-item"><div class="usage-icon"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div class="usage-text"><strong style="color:var(--accent3)">Thói quen lặp lại</strong><br>I drink coffee every morning.</div></div>
+      <div class="usage-item"><div class="usage-icon"><i data-lucide="globe" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div class="usage-text"><strong style="color:var(--accent3)">Sự thật hiển nhiên</strong><br>The sun rises in the east.</div></div>
       <div class="usage-item"><div class="usage-icon">📅</div><div class="usage-text"><strong style="color:var(--accent3)">Lịch trình cố định</strong><br>The train leaves at 7 AM.</div></div>
       <div class="usage-item"><div class="usage-icon">❤️</div><div class="usage-text"><strong style="color:var(--accent3)">Sở thích, cảm xúc</strong><br>She loves reading books.</div></div>
     </div>
     <div class="examples-title">Ví dụ chi tiết</div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I study English every day.')">🔊</span> I <keyword class="keyword">study</keyword> English every day.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I study English every day.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <keyword class="keyword">study</keyword> English every day.</div>
       <div class="ex-vi">Tôi học tiếng Anh mỗi ngày.</div>
       <div class="ex-note">→ Thói quen hằng ngày, dùng "every day"</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She works at a hospital.')">🔊</span> She <keyword class="keyword">works</keyword> at a hospital.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She works at a hospital.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <keyword class="keyword">works</keyword> at a hospital.</div>
       <div class="ex-vi">Cô ấy làm việc ở bệnh viện.</div>
       <div class="ex-note">→ He/she/it → thêm -s vào động từ: work → works</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('He does not like coffee.')">🔊</span> He <keyword class="keyword">does not</keyword> like coffee.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('He does not like coffee.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> He <keyword class="keyword">does not</keyword> like coffee.</div>
       <div class="ex-vi">Anh ấy không thích cà phê.</div>
       <div class="ex-note">→ Phủ định với he/she/it: dùng "does not" (doesn't)</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Do you speak English?')">🔊</span> <keyword class="keyword">Do</keyword> you speak English?</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Do you speak English?')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <keyword class="keyword">Do</keyword> you speak English?</div>
       <div class="ex-vi">Bạn có nói tiếng Anh không?</div>
       <div class="ex-note">→ Câu hỏi với I/you/we/they: dùng "Do"</div>
     </div>
@@ -548,17 +570,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="examples-title">Ví dụ chi tiết</div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I am studying English now.')">🔊</span> I <keyword class="keyword">am studying</keyword> English now.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I am studying English now.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <keyword class="keyword">am studying</keyword> English now.</div>
       <div class="ex-vi">Tôi đang học tiếng Anh bây giờ.</div>
       <div class="ex-note">→ "now" = dấu hiệu của thì hiện tại tiếp diễn</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She is not working today.')">🔊</span> She <keyword class="keyword">is not working</keyword> today.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She is not working today.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <keyword class="keyword">is not working</keyword> today.</div>
       <div class="ex-vi">Hôm nay cô ấy không đi làm.</div>
       <div class="ex-note">→ Phủ định: is + not + V-ing</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They are coming to the party tomorrow.')">🔊</span> They <keyword class="keyword">are coming</keyword> to the party tomorrow.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They are coming to the party tomorrow.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> They <keyword class="keyword">are coming</keyword> to the party tomorrow.</div>
       <div class="ex-vi">Họ sẽ đến bữa tiệc vào ngày mai.</div>
       <div class="ex-note">→ Kế hoạch đã sắp xếp trước trong tương lai gần</div>
     </div>
@@ -605,29 +627,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="note-box"><strong>have/has:</strong> I, you, we, they → <strong>have</strong> | He, she, it → <strong>has</strong><br><strong>V3 (past participle):</strong> Động từ quy tắc thêm -ed (work→worked). Động từ bất quy tắc phải học thuộc (go→gone, eat→eaten, see→seen, do→done, write→written).</div>
     <div class="usage-grid">
-      <div class="usage-item"><div class="usage-icon">✅</div><div class="usage-text"><strong style="color:var(--accent3)">Kinh nghiệm trong cuộc đời</strong><br>I have visited Japan.</div></div>
-      <div class="usage-item"><div class="usage-icon">🔄</div><div class="usage-text"><strong style="color:var(--accent3)">Vừa mới xảy ra</strong><br>She has just finished lunch.</div></div>
-      <div class="usage-item"><div class="usage-icon">📊</div><div class="usage-text"><strong style="color:var(--accent3)">Kết quả hiện tại</strong><br>I have lost my key. (hiện tại vẫn mất)</div></div>
+      <div class="usage-item"><div class="usage-icon"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div class="usage-text"><strong style="color:var(--accent3)">Kinh nghiệm trong cuộc đời</strong><br>I have visited Japan.</div></div>
+      <div class="usage-item"><div class="usage-icon"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div class="usage-text"><strong style="color:var(--accent3)">Vừa mới xảy ra</strong><br>She has just finished lunch.</div></div>
+      <div class="usage-item"><div class="usage-icon"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div class="usage-text"><strong style="color:var(--accent3)">Kết quả hiện tại</strong><br>I have lost my key. (hiện tại vẫn mất)</div></div>
       <div class="usage-item"><div class="usage-icon">⏳</div><div class="usage-text"><strong style="color:var(--accent3)">Kéo dài đến hiện tại</strong><br>We have lived here for 5 years.</div></div>
     </div>
     <div class="examples-title">Ví dụ chi tiết</div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I have never eaten sushi.')">🔊</span> I <keyword class="keyword">have never eaten</keyword> sushi.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I have never eaten sushi.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <keyword class="keyword">have never eaten</keyword> sushi.</div>
       <div class="ex-vi">Tôi chưa bao giờ ăn sushi.</div>
       <div class="ex-note">→ Kinh nghiệm: "never" = chưa bao giờ trong cuộc đời</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She has just called me.')">🔊</span> She <keyword class="keyword">has just called</keyword> me.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She has just called me.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <keyword class="keyword">has just called</keyword> me.</div>
       <div class="ex-vi">Cô ấy vừa mới gọi cho tôi.</div>
       <div class="ex-note">→ "just" = vừa mới (cách đây rất ngắn)</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They have lived in Hanoi for 10 years.')">🔊</span> They <keyword class="keyword">have lived</keyword> in Hanoi for 10 years.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They have lived in Hanoi for 10 years.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> They <keyword class="keyword">have lived</keyword> in Hanoi for 10 years.</div>
       <div class="ex-vi">Họ đã sống ở Hà Nội được 10 năm rồi (và vẫn đang sống).</div>
       <div class="ex-note">→ "for + khoảng thời gian" = kéo dài từ quá khứ đến hiện tại</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Have you ever been to Paris?')">🔊</span> <keyword class="keyword">Have</keyword> you ever <keyword class="keyword">been</keyword> to Paris?</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Have you ever been to Paris?')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <keyword class="keyword">Have</keyword> you ever <keyword class="keyword">been</keyword> to Paris?</div>
       <div class="ex-vi">Bạn đã từng đến Paris chưa?</div>
       <div class="ex-note">→ "ever" trong câu hỏi = đã từng (trong cuộc đời)</div>
     </div>
@@ -664,17 +686,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="note-box"><strong>Động từ quy tắc:</strong> thêm -ed (work→worked, play→played, study→studied)<br><strong>Động từ bất quy tắc:</strong> phải học thuộc (go→went, eat→ate, see→saw, buy→bought, come→came, do→did, have→had, make→made, take→took, write→wrote)</div>
     <div class="examples-title">Ví dụ chi tiết</div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I watched a movie last night.')">🔊</span> I <keyword class="keyword">watched</keyword> a movie last night.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I watched a movie last night.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <keyword class="keyword">watched</keyword> a movie last night.</div>
       <div class="ex-vi">Tối qua tôi đã xem một bộ phim.</div>
       <div class="ex-note">→ "last night" = tối qua → thời điểm cụ thể trong quá khứ</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She went to the market this morning.')">🔊</span> She <keyword class="keyword">went</keyword> to the market this morning.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She went to the market this morning.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <keyword class="keyword">went</keyword> to the market this morning.</div>
       <div class="ex-vi">Sáng nay cô ấy đã đi chợ.</div>
       <div class="ex-note">→ "go" là bất quy tắc → went (không phải goed!)</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They didn\'t come to the party.')">🔊</span> They <keyword class="keyword">didn't come</keyword> to the party.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They didn\'t come to the party.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> They <keyword class="keyword">didn't come</keyword> to the party.</div>
       <div class="ex-vi">Họ đã không đến buổi tiệc.</div>
       <div class="ex-note">→ Phủ định: did not + V (nguyên thể, không chia)</div>
     </div>
@@ -756,19 +778,19 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div class="formula-row"><span class="f-type">(-) Phủ định</span><span class="f-eq">S + was/were + not + V-ing</span></div>
       <div class="formula-row"><span class="f-type">(?) Câu hỏi</span><span class="f-eq">Was/Were + S + V-ing?</span></div>
     </div>
-    <div class="note-box">📌 <strong>Khi nào dùng was, khi nào dùng were?</strong><br>• <strong>was</strong> → I, he, she, it (số ít)<br>• <strong>were</strong> → you, we, they (số nhiều + "you")</div>
+    <div class="note-box"><i data-lucide="pin" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> <strong>Khi nào dùng was, khi nào dùng were?</strong><br>• <strong>was</strong> → I, he, she, it (số ít)<br>• <strong>were</strong> → you, we, they (số nhiều + "you")</div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I was studying when you called me.')">🔊</span> I <strong style="color:var(--accent)">was studying</strong> when you called me.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I was studying when you called me.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <strong style="color:var(--accent)">was studying</strong> when you called me.</div>
       <div class="ex-vi">Tôi đang học thì bạn gọi tôi.</div>
       <div class="ex-note">→ "was studying" = hành động đang diễn ra; "called" = hành động cắt ngang</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('While she was cooking, he was watching TV.')">🔊</span> While she <strong style="color:var(--accent)">was cooking</strong>, he <strong style="color:var(--accent)">was watching</strong> TV.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('While she was cooking, he was watching TV.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> While she <strong style="color:var(--accent)">was cooking</strong>, he <strong style="color:var(--accent)">was watching</strong> TV.</div>
       <div class="ex-vi">Trong khi cô ấy đang nấu ăn, anh ấy đang xem TV.</div>
       <div class="ex-note">→ Hai hành động xảy ra song song trong quá khứ</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('At 8 PM last night, they were having dinner.')">🔊</span> At 8 PM last night, they <strong style="color:var(--accent)">were having</strong> dinner.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('At 8 PM last night, they were having dinner.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> At 8 PM last night, they <strong style="color:var(--accent)">were having</strong> dinner.</div>
       <div class="ex-vi">Lúc 8 giờ tối qua, họ đang ăn tối.</div>
       <div class="ex-note">→ Hành động đang diễn ra tại thời điểm cụ thể trong quá khứ</div>
     </div>
@@ -781,7 +803,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="note-box">⚠️ <strong>Phân biệt while vs when:</strong><br>• <strong>while</strong> + quá khứ tiếp diễn (hành động dài): While I <em>was walking</em>...<br>• <strong>when</strong> + quá khứ đơn (hành động ngắn): ...when it <em>started</em> to rain.</div>
     <div class="quiz-box">
-      <div class="quiz-q">📝 Chọn đáp án đúng: "She _____ a book when the phone rang."</div>
+      <div class="quiz-q"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chọn đáp án đúng: "She _____ a book when the phone rang."</div>
       <div class="quiz-opts" id="quiz-pc2">
         <button class="quiz-opt" onclick="checkQuiz('quiz-pc2',this,'correct','Đúng! Hành động đang diễn ra bị cắt ngang → quá khứ tiếp diễn')">was reading</button>
         <button class="quiz-opt" onclick="checkQuiz('quiz-pc2',this,'wrong','Sai! "read" là quá khứ đơn, không diễn tả hành động đang diễn ra')">read</button>
@@ -811,17 +833,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div class="formula-row"><span class="f-type">(?) Câu hỏi</span><span class="f-eq">Had + S + V3?</span></div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I had finished my homework before she arrived.')">🔊</span> I <strong style="color:var(--accent)">had finished</strong> my homework <strong style="color:var(--accent2)">before</strong> she arrived.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I had finished my homework before she arrived.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <strong style="color:var(--accent)">had finished</strong> my homework <strong style="color:var(--accent2)">before</strong> she arrived.</div>
       <div class="ex-vi">Tôi đã hoàn thành bài tập trước khi cô ấy đến.</div>
       <div class="ex-note">→ "had finished" xảy ra TRƯỚC → quá khứ hoàn thành; "arrived" xảy ra SAU → quá khứ đơn</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('When we arrived at the cinema, the movie had already started.')">🔊</span> When we arrived at the cinema, the movie <strong style="color:var(--accent)">had already started</strong>.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('When we arrived at the cinema, the movie had already started.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> When we arrived at the cinema, the movie <strong style="color:var(--accent)">had already started</strong>.</div>
       <div class="ex-vi">Khi chúng tôi đến rạp, phim đã bắt đầu rồi.</div>
       <div class="ex-note">→ Phim bắt đầu TRƯỚC khi chúng tôi đến</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She had never seen the ocean before she moved to Da Nang.')">🔊</span> She <strong style="color:var(--accent)">had never seen</strong> the ocean before she moved to Da Nang.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She had never seen the ocean before she moved to Da Nang.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <strong style="color:var(--accent)">had never seen</strong> the ocean before she moved to Da Nang.</div>
       <div class="ex-vi">Cô ấy chưa bao giờ thấy biển trước khi chuyển đến Đà Nẵng.</div>
       <div class="ex-note">→ Kinh nghiệm trước một mốc thời gian quá khứ</div>
     </div>
@@ -839,7 +861,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <tr><td class="td-en">Thường đi với: before, after, by the time, already</td><td class="td-en">Thường đi với: yesterday, last week, ago</td></tr>
     </table>
     <div class="quiz-box">
-      <div class="quiz-q">📝 Chọn đáp án đúng: "After she _____ dinner, she watched TV."</div>
+      <div class="quiz-q"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chọn đáp án đúng: "After she _____ dinner, she watched TV."</div>
       <div class="quiz-opts" id="quiz-pp">
         <button class="quiz-opt" onclick="checkQuiz('quiz-pp',this,'correct','Đúng! Nấu ăn xảy ra TRƯỚC xem TV → quá khứ hoàn thành')">had cooked</button>
         <button class="quiz-opt" onclick="checkQuiz('quiz-pp',this,'wrong','Sai! "cooked" là quá khứ đơn — nhưng câu có "after" → cần quá khứ hoàn thành cho hành động trước')">cooked</button>
@@ -869,17 +891,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div class="formula-row"><span class="f-type">(?) Câu hỏi</span><span class="f-eq">Will + S + be + V-ing?</span></div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('At 10 AM tomorrow, I will be taking an exam.')">🔊</span> At 10 AM tomorrow, I <strong style="color:var(--accent)">will be taking</strong> an exam.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('At 10 AM tomorrow, I will be taking an exam.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> At 10 AM tomorrow, I <strong style="color:var(--accent)">will be taking</strong> an exam.</div>
       <div class="ex-vi">Lúc 10 giờ sáng mai, tôi sẽ đang thi.</div>
       <div class="ex-note">→ Hành động sẽ đang diễn ra tại thời điểm cụ thể trong tương lai</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This time next week, we will be lying on the beach.')">🔊</span> This time next week, we <strong style="color:var(--accent)">will be lying</strong> on the beach.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This time next week, we will be lying on the beach.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> This time next week, we <strong style="color:var(--accent)">will be lying</strong> on the beach.</div>
       <div class="ex-vi">Giờ này tuần sau, chúng tôi sẽ đang nằm trên bãi biển.</div>
       <div class="ex-note">→ "this time next week" = dấu hiệu điển hình</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Dont call me at 9 PM. I will be sleeping.')">🔊</span> Don't call me at 9 PM. I <strong style="color:var(--accent)">will be sleeping</strong>.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Dont call me at 9 PM. I will be sleeping.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Don't call me at 9 PM. I <strong style="color:var(--accent)">will be sleeping</strong>.</div>
       <div class="ex-vi">Đừng gọi tôi lúc 9 tối. Tôi sẽ đang ngủ.</div>
       <div class="ex-note">→ Dự đoán hành động sẽ đang diễn ra</div>
     </div>
@@ -891,7 +913,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <span class="signal-chip">all day tomorrow</span>
     </div>
     <div class="quiz-box">
-      <div class="quiz-q">📝 Chọn đáp án đúng: "This time tomorrow, she _____ to Japan."</div>
+      <div class="quiz-q"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chọn đáp án đúng: "This time tomorrow, she _____ to Japan."</div>
       <div class="quiz-opts" id="quiz-fc">
         <button class="quiz-opt" onclick="checkQuiz('quiz-fc',this,'correct','Đúng! Hành động sẽ đang diễn ra tại thời điểm cụ thể trong tương lai')">will be flying</button>
         <button class="quiz-opt" onclick="checkQuiz('quiz-fc',this,'wrong','Sai! "will fly" là tương lai đơn — câu có this time tomorrow → cần tương lai tiếp diễn')">will fly</button>
@@ -921,17 +943,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div class="formula-row"><span class="f-type">(?) Câu hỏi</span><span class="f-eq">Will + S + have + V3?</span></div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By next month, I will have finished this course.')">🔊</span> By next month, I <strong style="color:var(--accent)">will have finished</strong> this course.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By next month, I will have finished this course.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By next month, I <strong style="color:var(--accent)">will have finished</strong> this course.</div>
       <div class="ex-vi">Đến tháng tới, tôi sẽ hoàn thành khóa học này.</div>
       <div class="ex-note">→ "by next month" = hoàn thành trước mốc thời gian tương lai</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She will have graduated by the time you come back.')">🔊</span> She <strong style="color:var(--accent)">will have graduated</strong> by the time you come back.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She will have graduated by the time you come back.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <strong style="color:var(--accent)">will have graduated</strong> by the time you come back.</div>
       <div class="ex-vi">Cô ấy sẽ đã tốt nghiệp khi bạn quay lại.</div>
       <div class="ex-note">→ Tốt nghiệp xảy ra TRƯỚC khi bạn quay lại</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By 2030, scientists will have discovered a cure for cancer.')">🔊</span> By 2030, scientists <strong style="color:var(--accent)">will have discovered</strong> a cure for cancer.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By 2030, scientists will have discovered a cure for cancer.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By 2030, scientists <strong style="color:var(--accent)">will have discovered</strong> a cure for cancer.</div>
       <div class="ex-vi">Đến năm 2030, các nhà khoa học sẽ tìm ra cách chữa ung thư.</div>
       <div class="ex-note">→ Dự đoán sẽ hoàn thành trước năm 2030</div>
     </div>
@@ -948,7 +970,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <tr><td class="td-en">Thường đi với: by, by the time, before</td><td class="td-en">Thường đi với: tomorrow, next week, soon</td></tr>
     </table>
     <div class="quiz-box">
-      <div class="quiz-q">📝 Chọn đáp án đúng: "By the end of this year, we _____ 1000 new words."</div>
+      <div class="quiz-q"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chọn đáp án đúng: "By the end of this year, we _____ 1000 new words."</div>
       <div class="quiz-opts" id="quiz-fp">
         <button class="quiz-opt" onclick="checkQuiz('quiz-fp',this,'correct','Đúng! "By the end of this year" → hoàn thành trước mốc → tương lai hoàn thành')">will have learned</button>
         <button class="quiz-opt" onclick="checkQuiz('quiz-fp',this,'wrong','Sai! "will learn" là tương lai đơn — câu có by → cần tương lai hoàn thành')">will learn</button>
@@ -972,19 +994,19 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <p>Trong tiếng Anh có 4 loại câu cơ bản. Mỗi loại có cấu trúc và mục đích sử dụng khác nhau.</p>
     </div>
     <div class="ex-item" style="grid-template-columns:auto 1fr">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu khẳng định (+)I like coffee.')">🔊</span> <strong style="color:var(--accent)">Câu khẳng định (+)</strong><br><em>I like coffee.</em></div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu khẳng định (+)I like coffee.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <strong style="color:var(--accent)">Câu khẳng định (+)</strong><br><em>I like coffee.</em></div>
       <div class="ex-vi">Tôi thích cà phê.<br><span style="color:var(--text3);font-size:11px">S + V + O — thứ tự bình thường</span></div>
     </div>
     <div class="ex-item" style="grid-template-columns:auto 1fr">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu phủ định (-)I do not like coffee.')">🔊</span> <strong style="color:var(--coral)">Câu phủ định (-)</strong><br><em>I do not like coffee.</em></div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu phủ định (-)I do not like coffee.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <strong style="color:var(--coral)">Câu phủ định (-)</strong><br><em>I do not like coffee.</em></div>
       <div class="ex-vi">Tôi không thích cà phê.<br><span style="color:var(--text3);font-size:11px">S + do/does/did + not + V</span></div>
     </div>
     <div class="ex-item" style="grid-template-columns:auto 1fr">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu hỏi (?)Do you like coffee?')">🔊</span> <strong style="color:var(--accent2)">Câu hỏi (?)</strong><br><em>Do you like coffee?</em></div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu hỏi (?)Do you like coffee?')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <strong style="color:var(--accent2)">Câu hỏi (?)</strong><br><em>Do you like coffee?</em></div>
       <div class="ex-vi">Bạn có thích cà phê không?<br><span style="color:var(--text3);font-size:11px">Do/Does/Did + S + V?</span></div>
     </div>
     <div class="ex-item" style="grid-template-columns:auto 1fr">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu mệnh lệnh (!)Drink your coffee!')">🔊</span> <strong style="color:var(--accent3)">Câu mệnh lệnh (!)</strong><br><em>Drink your coffee!</em></div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Câu mệnh lệnh (!)Drink your coffee!')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <strong style="color:var(--accent3)">Câu mệnh lệnh (!)</strong><br><em>Drink your coffee!</em></div>
       <div class="ex-vi">Uống cà phê của bạn đi!<br><span style="color:var(--text3);font-size:11px">V + ... (bỏ chủ từ "you")</span></div>
     </div>
   </div>
@@ -1006,7 +1028,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="note-box"><strong>⚠️ Chú ý:</strong> Dùng "an" theo âm đọc chứ không phải chữ viết! "a university" (vì đọc là /juː-/ bắt đầu bằng phụ âm y). "an hour" (vì đọc là /aʊər/ bắt đầu bằng nguyên âm, chữ h câm). Không dùng a/an với danh từ số nhiều và danh từ không đếm được.</div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I saw a dog. The dog was very cute.')">🔊</span> I saw <keyword class="keyword">a</keyword> dog. <keyword class="keyword">The</keyword> dog was very cute.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I saw a dog. The dog was very cute.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I saw <keyword class="keyword">a</keyword> dog. <keyword class="keyword">The</keyword> dog was very cute.</div>
       <div class="ex-vi">Tôi thấy một con chó. Con chó đó rất dễ thương.</div>
       <div class="ex-note">→ Lần đầu nhắc → "a". Lần sau (đã biết rồi) → "the"</div>
     </div>
@@ -1040,12 +1062,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
 
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I was born in 1995, on March 15th, at 3 AM.')">🔊</span> I was born <strong style="color:var(--accent)">in</strong> 1995, <strong style="color:var(--accent)">on</strong> March 15th, <strong style="color:var(--accent)">at</strong> 3 AM.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I was born in 1995, on March 15th, at 3 AM.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I was born <strong style="color:var(--accent)">in</strong> 1995, <strong style="color:var(--accent)">on</strong> March 15th, <strong style="color:var(--accent)">at</strong> 3 AM.</div>
       <div class="ex-vi">Tôi sinh năm 1995, vào ngày 15 tháng 3, lúc 3 giờ sáng.</div>
       <div class="ex-note">→ in + năm, on + ngày cụ thể, at + giờ</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The book is on the table in the living room.')">🔊</span> The book is <strong style="color:var(--accent)">on</strong> the table <strong style="color:var(--accent)">in</strong> the living room.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The book is on the table in the living room.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> The book is <strong style="color:var(--accent)">on</strong> the table <strong style="color:var(--accent)">in</strong> the living room.</div>
       <div class="ex-vi">Quyển sách ở trên bàn trong phòng khách.</div>
     </div>
 
@@ -1059,21 +1081,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
 
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She is taller than her sister.')">🔊</span> She is <strong style="color:var(--accent)">taller than</strong> her sister.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She is taller than her sister.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She is <strong style="color:var(--accent)">taller than</strong> her sister.</div>
       <div class="ex-vi">Cô ấy cao hơn chị gái.</div>
       <div class="ex-note">→ tall (1 âm tiết) → thêm -er: taller</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This book is more interesting than that one.')">🔊</span> This book is <strong style="color:var(--accent)">more interesting than</strong> that one.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This book is more interesting than that one.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> This book is <strong style="color:var(--accent)">more interesting than</strong> that one.</div>
       <div class="ex-vi">Quyển sách này thú vị hơn quyển kia.</div>
       <div class="ex-note">→ interesting (3 âm tiết) → dùng more</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('He is the smartest student in the class.')">🔊</span> He is <strong style="color:var(--accent)">the smartest</strong> student in the class.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('He is the smartest student in the class.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> He is <strong style="color:var(--accent)">the smartest</strong> student in the class.</div>
       <div class="ex-vi">Anh ấy là học sinh giỏi nhất lớp.</div>
     </div>
     <div class="ex-item">
-      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She is as tall as her brother.')">🔊</span> She is <strong style="color:var(--accent)">as tall as</strong> her brother.</div>
+      <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She is as tall as her brother.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She is <strong style="color:var(--accent)">as tall as</strong> her brother.</div>
       <div class="ex-vi">Cô ấy cao bằng anh trai.</div>
       <div class="ex-note">→ as...as = bằng nhau</div>
     </div>
@@ -1081,7 +1103,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="note-box">⚠️ <strong>So sánh bất quy tắc:</strong><br>• good → better → the best<br>• bad → worse → the worst<br>• far → farther/further → the farthest/furthest<br>• many/much → more → the most<br>• little → less → the least</div>
 
     <div class="quiz-box">
-      <div class="quiz-q">📝 Chọn đáp án đúng: "This is ___ book I've ever read."</div>
+      <div class="quiz-q"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chọn đáp án đúng: "This is ___ book I've ever read."</div>
       <div class="quiz-opts" id="quiz-comp">
         <button class="quiz-opt" onclick="checkQuiz('quiz-comp',this,'correct','Đúng! So sánh nhất của good = the best')">the best</button>
         <button class="quiz-opt" onclick="checkQuiz('quiz-comp',this,'wrong','Sai! better là so sánh hơn, không phải nhất')">better</button>
@@ -1234,5 +1256,6 @@ document.addEventListener('click',e=>{
 });
 </script>
 <script src="theme.js"></script>
+<script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
 </body>
 </html>

@@ -16,13 +16,13 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:600px;height:600px;background:rgba(232,197,71,0.07);top:-200px;right:-150px}
 .orb2{width:500px;height:500px;background:rgba(123,110,246,0.06);bottom:-100px;left:-150px}
 .orb3{width:300px;height:300px;background:rgba(78,205,196,0.06);top:40%;left:35%}
 
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+nav{max-width:100vw;overflow:hidden;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
@@ -43,8 +43,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 
 .content{padding:36px 48px;max-width:900px}
 .page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:38px;font-weight:300;margin-bottom:12px;line-height:1.2}
-.page-desc{font-size:18px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:12px;line-height:1.2}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.75;margin-bottom:28px}
 .s-divider{height:0.5px;background:var(--border);margin:36px 0}
 .anchor{scroll-margin-top:80px}
 .section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
@@ -201,7 +201,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
 .nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
 .nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
 .nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
@@ -221,21 +221,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
   nav{padding:12px 16px}
   .content{padding:20px 16px}
-  .page-title,.page-title{font-size:28px!important}
-  .page-desc{font-size:15px!important}
+  .page-title,.page-title{font-size:clamp(26px,4vw,48px)!important}
+  .page-desc{font-size:clamp(14px,1.4vw,18px)!important}
   .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
   .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
   .nav-drop>.nav-a::after{display:none}
 }
 @media(max-width:500px){
-  .page-title{font-size:24px!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
 }
 
 @media(max-width:768px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   nav{padding:10px 14px!important}
-  .page-title{font-size:26px!important;word-wrap:break-word}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
   .stats-grid{grid-template-columns:1fr 1fr!important}
@@ -254,7 +254,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:none}
   .logo-name{font-size:16px}
 }
+
+@media(max-width:768px){
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  .nav-drop-menu{min-width:unset!important;width:100%!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+}
+
+/* === MOBILE MASTER FIX === */
+@media(max-width:768px){
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hamburger{display:block!important}
+}
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -272,8 +294,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a">Từ vựng</a>
@@ -284,22 +306,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
-        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
         <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
         <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
       <span class="nav-a active" onclick="toggleDrop(this)">IELTS</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
-        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
-        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
         <div class="nav-sep"></div>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
       </div></div>
     </div>
     <a href="progress.html" class="nav-a">Tiến độ</a>
@@ -310,11 +332,11 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 <div class="page-wrap">
 <aside class="sidebar">
   <div class="sidebar-title">Tổng quan</div>
-  <a href="#overview" class="sb-item active">📊 Cấu trúc bài thi</a>
-  <a href="#scoring" class="sb-item">🎯 Cách tính điểm Band</a>
+  <a href="#overview" class="sb-item active"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Cấu trúc bài thi</a>
+  <a href="#scoring" class="sb-item"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Cách tính điểm Band</a>
   <a href="#calculator" class="sb-item">🧮 Tính điểm của bạn</a>
 
-  <div class="sidebar-title">✍️ Writing</div>
+  <div class="sidebar-title"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Writing</div>
   <a href="#task1" class="sb-item">Task 1 — Mô tả biểu đồ</a>
   <a href="#task1-types" class="sb-item">Các loại biểu đồ</a>
   <a href="#task1-phrases" class="sb-item">Cụm từ Task 1</a>
@@ -324,17 +346,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <a href="#task2-sample" class="sb-item">Bài mẫu Band 8</a>
   <a href="#writing-tips" class="sb-item">Mẹo tăng điểm Writing</a>
 
-  <div class="sidebar-title">📖 Reading</div>
+  <div class="sidebar-title"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Reading</div>
   <a href="#reading" class="sb-item">Cấu trúc & Chiến thuật</a>
   <a href="#reading-types" class="sb-item">13 dạng câu hỏi</a>
   <a href="#reading-traps" class="sb-item">Bẫy thường gặp</a>
 
-  <div class="sidebar-title">🎧 Listening</div>
+  <div class="sidebar-title"><i data-lucide="headphones" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Listening</div>
   <a href="#listening" class="sb-item">Cấu trúc 4 Section</a>
   <a href="#listening-tips" class="sb-item">Chiến thuật nghe</a>
   <a href="#listening-traps" class="sb-item">Bẫy thường gặp</a>
 
-  <div class="sidebar-title">🗣️ Speaking</div>
+  <div class="sidebar-title"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Speaking</div>
   <a href="#speaking" class="sb-item">Part 1, 2, 3</a>
   <a href="#speaking-part2" class="sb-item">Cue Card luyện tập</a>
   <a href="#speaking-phrases" class="sb-item">Mẫu câu Band 7+</a>
@@ -352,25 +374,25 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="section-title">Cấu trúc bài thi IELTS Academic</div>
     <div class="overview-grid">
       <a href="#task1" class="ov-card ov-w">
-        <div class="ov-icon">✍️</div>
+        <div class="ov-icon"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
         <div class="ov-name">Writing</div>
         <div class="ov-score">25% điểm</div>
         <div class="ov-time">60 phút · 2 Task</div>
       </a>
       <a href="#reading" class="ov-card ov-r">
-        <div class="ov-icon">📖</div>
+        <div class="ov-icon"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
         <div class="ov-name">Reading</div>
         <div class="ov-score">25% điểm</div>
         <div class="ov-time">60 phút · 40 câu</div>
       </a>
       <a href="#listening" class="ov-card ov-l">
-        <div class="ov-icon">🎧</div>
+        <div class="ov-icon"><i data-lucide="headphones" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
         <div class="ov-name">Listening</div>
         <div class="ov-score">25% điểm</div>
         <div class="ov-time">30 phút · 40 câu</div>
       </a>
       <a href="#speaking" class="ov-card ov-s">
-        <div class="ov-icon">🗣️</div>
+        <div class="ov-icon"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
         <div class="ov-name">Speaking</div>
         <div class="ov-score">25% điểm</div>
         <div class="ov-time">11–14 phút · 3 Part</div>
@@ -422,10 +444,10 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="section-title">Tính Band điểm của bạn</div>
     <div class="calc-box">
       <div class="calc-label">Điều chỉnh điểm từng kỹ năng:</div>
-      <div class="calc-row"><span class="calc-name">✍️ Writing</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="6.5" id="w-score" oninput="calcBand()"><span class="calc-val" id="w-val">6.5</span></div>
-      <div class="calc-row"><span class="calc-name">📖 Reading</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="7.0" id="r-score" oninput="calcBand()"><span class="calc-val" id="r-val">7.0</span></div>
-      <div class="calc-row"><span class="calc-name">🎧 Listening</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="7.0" id="l-score" oninput="calcBand()"><span class="calc-val" id="l-val">7.0</span></div>
-      <div class="calc-row"><span class="calc-name">🗣️ Speaking</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="6.5" id="s-score" oninput="calcBand()"><span class="calc-val" id="s-val">6.5</span></div>
+      <div class="calc-row"><span class="calc-name"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Writing</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="6.5" id="w-score" oninput="calcBand()"><span class="calc-val" id="w-val">6.5</span></div>
+      <div class="calc-row"><span class="calc-name"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Reading</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="7.0" id="r-score" oninput="calcBand()"><span class="calc-val" id="r-val">7.0</span></div>
+      <div class="calc-row"><span class="calc-name"><i data-lucide="headphones" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Listening</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="7.0" id="l-score" oninput="calcBand()"><span class="calc-val" id="l-val">7.0</span></div>
+      <div class="calc-row"><span class="calc-name"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Speaking</span><input type="range" class="calc-slider" min="1" max="9" step="0.5" value="6.5" id="s-score" oninput="calcBand()"><span class="calc-val" id="s-val">6.5</span></div>
       <div class="calc-result">
         <div class="cr-label">Band tổng thể của bạn</div>
         <div class="cr-score" id="overallBand">6.75</div>
@@ -460,12 +482,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--text)">Các loại biểu đồ thường gặp</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
         <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
-          <div style="font-size:22px;margin-bottom:6px">📊</div>
+          <div style="font-size:22px;margin-bottom:6px"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
           <div style="font-size:12px;font-weight:500">Bar chart</div>
           <div style="font-size:11px;color:var(--text3)">So sánh số liệu</div>
         </div>
         <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
-          <div style="font-size:22px;margin-bottom:6px">📈</div>
+          <div style="font-size:22px;margin-bottom:6px"><i data-lucide="trending-up" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
           <div style="font-size:12px;font-weight:500">Line graph</div>
           <div style="font-size:11px;color:var(--text3)">Xu hướng theo thời gian</div>
         </div>
@@ -475,7 +497,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
           <div style="font-size:11px;color:var(--text3)">Tỷ lệ phần trăm</div>
         </div>
         <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center">
-          <div style="font-size:22px;margin-bottom:6px">📋</div>
+          <div style="font-size:22px;margin-bottom:6px"><i data-lucide="clipboard-list" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
           <div style="font-size:12px;font-weight:500">Table</div>
           <div style="font-size:11px;color:var(--text3)">Nhiều loại dữ liệu</div>
         </div>
@@ -495,7 +517,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="anchor" id="task1-phrases">
       <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--text)">Cụm từ mô tả xu hướng — Task 1</div>
       <div class="chart-tabs">
-        <button class="ct-btn active" onclick="showChart('increase',this)">📈 Tăng</button>
+        <button class="ct-btn active" onclick="showChart('increase',this)"><i data-lucide="trending-up" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Tăng</button>
         <button class="ct-btn" onclick="showChart('decrease',this)">📉 Giảm</button>
         <button class="ct-btn" onclick="showChart('stable',this)">➡️ Ổn định</button>
         <button class="ct-btn" onclick="showChart('compare',this)">⚖️ So sánh</button>
@@ -590,7 +612,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
         </div>
       </div>
       <div class="tip-box">
-        <div class="tip-icon">💡</div>
+        <div class="tip-icon"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
         <div>
           <h5>Phân tích bài Band 8 này</h5>
           <p><strong style="color:var(--accent)">Inversion:</strong> "Not only does regular exercise..." · <strong style="color:var(--accent)">Hedging:</strong> "It could be argued that..." · <strong style="color:var(--accent)">Sophisticated connectors:</strong> "Nevertheless", "Consequently", "overly simplistic" · <strong style="color:var(--accent)">Academic vocabulary:</strong> "cardiovascular", "multifaceted", "interventions", "infrastructure" · <strong style="color:var(--accent)">Paraphrasing đề bài</strong> hoàn toàn không copy từ nào.</p>
@@ -779,7 +801,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
         ✗ Nói quá nhanh để cho xong — phát âm rõ ràng quan trọng hơn tốc độ<br>
         ✗ Chỉnh sửa câu quá nhiều — nói trôi chảy quan trọng hơn hoàn hảo
       </div>
-      <div class="tip-box"><div class="tip-icon">🎯</div><div><h5>Công thức PEEL cho Part 3</h5><p><strong style="color:var(--accent)">P</strong>oint — Đưa ra quan điểm rõ ràng · <strong style="color:var(--accent)">E</strong>xplain — Giải thích tại sao · <strong style="color:var(--accent)">E</strong>xample — Ví dụ cụ thể · <strong style="color:var(--accent)">L</strong>ink — Liên hệ lại câu hỏi. Dùng công thức này cho mọi câu hỏi Part 3 để trả lời đầy đủ và logic.</p></div></div>
+      <div class="tip-box"><div class="tip-icon"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div><h5>Công thức PEEL cho Part 3</h5><p><strong style="color:var(--accent)">P</strong>oint — Đưa ra quan điểm rõ ràng · <strong style="color:var(--accent)">E</strong>xplain — Giải thích tại sao · <strong style="color:var(--accent)">E</strong>xample — Ví dụ cụ thể · <strong style="color:var(--accent)">L</strong>ink — Liên hệ lại câu hỏi. Dùng công thức này cho mọi câu hỏi Part 3 để trả lời đầy đủ và logic.</p></div></div>
     </div>
   </div>
 
@@ -789,7 +811,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <div class="quiz-box" id="q1">
     <div class="qb-label">Kiểm tra IELTS — Câu 1</div>
     <div class="qb-q">Trong IELTS Writing Task 1, đoạn nào quan trọng nhất và KHÔNG được thiếu?</div>
-    <div class="qb-hint">💡 Đây là đoạn tóm tắt đặc điểm nổi bật nhất, KHÔNG có số liệu</div>
+    <div class="qb-hint"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Đây là đoạn tóm tắt đặc điểm nổi bật nhất, KHÔNG có số liệu</div>
     <div class="qb-opts">
       <button class="qb-opt" onclick="checkQ('q1',this,'wrong','Sai! Introduction cần thiết nhưng không phải quan trọng nhất. Thiếu intro mất ít điểm hơn thiếu Overview.')">Introduction</button>
       <button class="qb-opt" onclick="checkQ('q1',this,'correct','Đúng! Overview là đoạn quan trọng nhất trong Task 1. Thiếu Overview có thể làm mất hẳn điểm Task Achievement — không thể đạt Band 7+ nếu thiếu đoạn này.')">Overview (tổng quan)</button>
@@ -803,7 +825,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <div class="quiz-box" id="q2" style="margin-top:12px">
     <div class="qb-label">Kiểm tra IELTS — Câu 2</div>
     <div class="qb-q">Trong IELTS Listening, người nói nói: "Let's meet at 3 PM... actually, make it 4." Đáp án là mấy giờ?</div>
-    <div class="qb-hint">💡 Đây là loại bẫy "sửa đổi" (correction) rất phổ biến</div>
+    <div class="qb-hint"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Đây là loại bẫy "sửa đổi" (correction) rất phổ biến</div>
     <div class="qb-opts">
       <button class="qb-opt" onclick="checkQ('q2',this,'wrong','Sai! 3 PM là thông tin ĐẦU TIÊN bị sửa lại. Luôn chú ý khi người nói dùng "actually", "I mean", "let me change that".')">3 PM</button>
       <button class="qb-opt" onclick="checkQ('q2',this,'correct','Đúng! "Actually, make it 4" = sửa lại thành 4 PM. Đây là bẫy correction cực phổ biến trong Section 1. Luôn nghe đến hết câu!')">4 PM</button>
@@ -872,5 +894,6 @@ document.addEventListener('click',e=>{
 });
 </script>
 <script src="theme.js"></script>
+<script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
 </body>
 </html>

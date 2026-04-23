@@ -15,11 +15,11 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+nav{max-width:100vw;overflow:hidden;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
@@ -32,7 +32,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
 .nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
 .nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
 .nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
@@ -50,14 +50,14 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 
 .content{padding:32px 44px;max-width:1000px}
 .page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:46px;font-weight:300;margin-bottom:10px}
-.page-desc{font-size:18px;color:var(--text2);line-height:1.75;margin-bottom:20px}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:10px}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.75;margin-bottom:20px}
 .nav-files{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
 .nf-btn{padding:7px 14px;border-radius:20px;font-size:12px;text-decoration:none;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);transition:all .2s}
 .nf-btn:hover{color:var(--text)}
 .nf-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.4);color:var(--accent2)}
 .filter-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.search-input{flex:1;min-width:180px;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input{flex:1;min-width:0;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
 .search-input:focus{border-color:rgba(100,216,165,0.4)}
 .search-input::placeholder{color:var(--text3)}
 .filter-select{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text2);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer}
@@ -127,21 +127,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
   nav{padding:12px 16px}
   .content{padding:20px 16px}
-  .page-title,.page-title{font-size:28px!important}
-  .page-desc{font-size:15px!important}
+  .page-title,.page-title{font-size:clamp(26px,4vw,48px)!important}
+  .page-desc{font-size:clamp(14px,1.4vw,18px)!important}
   .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
   .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
   .nav-drop>.nav-a::after{display:none}
 }
 @media(max-width:500px){
-  .page-title{font-size:24px!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
 }
 
 @media(max-width:768px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   nav{padding:10px 14px!important}
-  .page-title{font-size:26px!important;word-wrap:break-word}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
   .stats-grid{grid-template-columns:1fr 1fr!important}
@@ -160,7 +160,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:none}
   .logo-name{font-size:16px}
 }
+
+@media(max-width:768px){
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  .nav-drop-menu{min-width:unset!important;width:100%!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+}
+
+/* === MOBILE MASTER FIX === */
+@media(max-width:768px){
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hamburger{display:block!important}
+}
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -176,8 +198,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a">Từ vựng</a>
@@ -188,19 +210,19 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a active" onclick="toggleDrop(this)">Từ điển</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
-        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển ĐT 1</a>
-        <a href="dictionary-everyday-2.html" class="nav-a">💬 Từ điển ĐT 2</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS 1</a>
-        <a href="dictionary-ielts-2.html" class="nav-a active">🎯 Từ điển IELTS 2</a>
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ điển ĐT 1</a>
+        <a href="dictionary-everyday-2.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ điển IELTS 1</a>
+        <a href="dictionary-ielts-2.html" class="nav-a active"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
-        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
-        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
       </div></div>
     </div>
     <a href="progress.html" class="nav-a">Tiến độ</a>
@@ -214,16 +236,16 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <button class="sb-item active" onclick="setTopic('all',this)">🌟 Tất cả</button>
   <button class="sb-item" onclick="setTopic('env2',this)">🌿 Môi trường & Khí hậu</button>
   <button class="sb-item" onclick="setTopic('tech2',this)">💻 Công nghệ & AI</button>
-  <button class="sb-item" onclick="setTopic('edu2',this)">📚 Giáo dục & Kỹ năng</button>
+  <button class="sb-item" onclick="setTopic('edu2',this)"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Giáo dục & Kỹ năng</button>
   <button class="sb-item" onclick="setTopic('health2',this)">🏥 Sức khỏe & Xã hội</button>
   <button class="sb-item" onclick="setTopic('econ2',this)">💰 Kinh tế & Lao động</button>
   <button class="sb-item" onclick="setTopic('social2',this)">👥 Xã hội & Bình đẳng</button>
   <button class="sb-item" onclick="setTopic('gov2',this)">🏛️ Chính sách & Luật pháp</button>
-  <button class="sb-item" onclick="setTopic('global2',this)">🌍 Toàn cầu hóa & Di cư</button>
+  <button class="sb-item" onclick="setTopic('global2',this)"><i data-lucide="globe" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Toàn cầu hóa & Di cư</button>
   <button class="sb-item" onclick="setTopic('media2',this)">📱 Truyền thông & Mạng XH</button>
   <button class="sb-item" onclick="setTopic('urban2',this)">🏙️ Đô thị & Giao thông</button>
   <button class="sb-item" onclick="setTopic('science',this)">🔬 Khoa học & Nghiên cứu</button>
-  <button class="sb-item" onclick="setTopic('writing',this)">✍️ Từ vựng Writing</button>
+  <button class="sb-item" onclick="setTopic('writing',this)"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ vựng Writing</button>
 
   <div class="sidebar-title">Lọc Band</div>
   <button class="sb-item" onclick="setBand('all',this)">Tất cả Band</button>
@@ -233,8 +255,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <button class="sb-item" onclick="setBand('8.0',this)"><span style="color:var(--pink)">●</span> Band 8.0+</button>
 
   <div class="sidebar-title">Từ đã lưu</div>
-  <button class="sb-item" onclick="toggleSavedPanel()">⭐ Xem từ đã lưu</button>
-  <button class="sb-item" onclick="toggleSavedOnly()">📌 Chỉ từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedPanel()"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Xem từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedOnly()"><i data-lucide="pin" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chỉ từ đã lưu</button>
 </aside>
 
 <main class="content">
@@ -245,7 +267,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <div class="nav-files">
     <a href="dictionary-ielts.html" class="nf-btn">📗 IELTS Phần 1 — 80 từ đầu</a>
     <a href="dictionary-ielts-2.html" class="nf-btn active">📗 IELTS Phần 2 — 150 từ tiếp</a>
-    <a href="academic-words.html" class="nf-btn">⭐ AWL 570 từ</a>
+    <a href="academic-words.html" class="nf-btn"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> AWL 570 từ</a>
     <a href="dictionary-everyday.html" class="nf-btn">📒 Từ điển đời thường</a>
   </div>
 
@@ -263,7 +285,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="leg-item"><span style="color:var(--coral);font-size:14px">●</span>7.5</div>
     <div class="leg-item"><span style="color:var(--pink);font-size:14px">●</span>8.0+</div>
     <div style="width:1px;background:var(--border)"></div>
-    <div class="leg-item">✍️ Writing · 🗣️ Speaking · 📖 Reading · 📋 Tất cả</div>
+    <div class="leg-item"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Writing · 🗣️ Speaking · 📖 Reading · 📋 Tất cả</div>
   </div>
 
   <div class="filter-bar">
@@ -276,7 +298,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   </div>
 
   <div class="saved-panel" id="savedPanel">
-    <div class="sp-hdr"><span>⭐ Đã lưu (<span id="spCount">0</span>)</span><button class="sp-clear" onclick="clearSaved()">Xóa tất cả</button></div>
+    <div class="sp-hdr"><span><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Đã lưu (<span id="spCount">0</span>)</span><button class="sp-clear" onclick="clearSaved()">Xóa tất cả</button></div>
     <div class="sp-words" id="spWords"></div>
   </div>
 
@@ -517,5 +539,6 @@ document.addEventListener('click',e=>{
 });
 </script>
 <script src="theme.js"></script>
+<script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
 </body>
 </html>

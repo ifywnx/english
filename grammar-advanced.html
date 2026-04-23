@@ -16,12 +16,12 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:600px;height:600px;background:rgba(232,121,160,0.08);top:-200px;right:-150px}
 .orb2{width:500px;height:500px;background:rgba(123,110,246,0.07);bottom:-100px;left:-150px}
 
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+nav{max-width:100vw;overflow:hidden;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
@@ -46,8 +46,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 
 .content{padding:36px 48px;max-width:860px}
 .page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:38px;font-weight:300;margin-bottom:12px;line-height:1.2}
-.page-desc{font-size:18px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:12px;line-height:1.2}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.75;margin-bottom:28px}
 
 .s-divider{height:0.5px;background:var(--border);margin:36px 0}
 .anchor{scroll-margin-top:80px}
@@ -80,7 +80,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .formula-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px}
 .f-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;flex-wrap:wrap}
 .f-row:last-child{margin-bottom:0}
-.f-type{font-size:11px;color:var(--text3);min-width:100px;padding-top:3px}
+.f-type{font-size:11px;color:var(--text3);min-width:0;padding-top:3px}
 .f-eq{color:var(--text);font-family:monospace;font-size:13px;background:rgba(255,255,255,0.05);padding:5px 12px;border-radius:6px;line-height:1.6}
 .f-note{font-size:11px;color:var(--text3);font-style:italic;padding-top:4px}
 
@@ -162,7 +162,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
 .nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
 .nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
 .nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
@@ -182,21 +182,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
   nav{padding:12px 16px}
   .content{padding:20px 16px}
-  .page-title,.page-title{font-size:28px!important}
-  .page-desc{font-size:15px!important}
+  .page-title,.page-title{font-size:clamp(26px,4vw,48px)!important}
+  .page-desc{font-size:clamp(14px,1.4vw,18px)!important}
   .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
   .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
   .nav-drop>.nav-a::after{display:none}
 }
 @media(max-width:500px){
-  .page-title{font-size:24px!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
 }
 
 @media(max-width:768px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   nav{padding:10px 14px!important}
-  .page-title{font-size:26px!important;word-wrap:break-word}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
   .stats-grid{grid-template-columns:1fr 1fr!important}
@@ -215,7 +215,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:none}
   .logo-name{font-size:16px}
 }
+
+@media(max-width:768px){
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  .nav-drop-menu{min-width:unset!important;width:100%!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+}
+
+/* === MOBILE MASTER FIX === */
+@media(max-width:768px){
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hamburger{display:block!important}
+}
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -232,8 +254,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a active" onclick="toggleDrop(this)">Ngữ pháp</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a">Từ vựng</a>
@@ -244,22 +266,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
-        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
         <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
         <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
-        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
-        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
         <div class="nav-sep"></div>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
       </div></div>
     </div>
     <a href="progress.html" class="nav-a">Tiến độ</a>
@@ -323,7 +345,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Quá khứ tiếp diễn</div><div class="lesson-sub">Past Continuous — đang xảy ra tại thời điểm trong quá khứ</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-6">⭐ Band 6.0+</div>
+    <div class="band-tag bt-6"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Band 6.0+</div>
     <div class="formula">
       <div class="formula-label">Công thức</div>
       <div class="f-row"><span class="f-type">(+) Khẳng định</span><span class="f-eq">S + was/were + V-ing</span><span class="f-note">I/he/she/it → was · you/we/they → were</span></div>
@@ -333,22 +355,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="use-grid">
       <div class="use-item"><div class="use-icon">⏸️</div><div class="use-title">Đang xảy ra tại thời điểm QK</div><div class="use-desc">At 9 PM last night, I was watching TV.<br><em style="color:var(--text3)">Lúc 9 giờ tối qua tôi đang xem TV.</em></div></div>
       <div class="use-item"><div class="use-icon">⚡</div><div class="use-title">Bị gián đoạn bởi hành động khác</div><div class="use-desc">I was cooking when she called.<br><em style="color:var(--text3)">Tôi đang nấu ăn thì cô ấy gọi điện.</em></div></div>
-      <div class="use-item"><div class="use-icon">🔄</div><div class="use-title">Hai hành động song song</div><div class="use-desc">While I was studying, he was sleeping.<br><em style="color:var(--text3)">Trong khi tôi học, anh ấy đang ngủ.</em></div></div>
+      <div class="use-item"><div class="use-icon"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div><div class="use-title">Hai hành động song song</div><div class="use-desc">While I was studying, he was sleeping.<br><em style="color:var(--text3)">Trong khi tôi học, anh ấy đang ngủ.</em></div></div>
       <div class="use-item"><div class="use-icon">🎭</div><div class="use-title">Bối cảnh cho câu chuyện</div><div class="use-desc">The sun was shining, birds were singing...<br><em style="color:var(--text3)">Mặt trời đang chiếu sáng, chim đang hót...</em></div></div>
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I was studying when the earthquake happened.')">🔊</span> I <span class="hi">was studying</span> when the earthquake <span class="hi2">happened</span>.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I was studying when the earthquake happened.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <span class="hi">was studying</span> when the earthquake <span class="hi2">happened</span>.</div>
         <div class="ex-vi">Tôi đang học thì trận động đất xảy ra.</div>
         <div class="ex-note">→ Past Continuous (đang học) bị gián đoạn bởi Past Simple (xảy ra)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('While she was presenting, everyone was listening attentively.')">🔊</span> While she <span class="hi">was presenting</span>, everyone <span class="hi2">was listening</span> attentively.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('While she was presenting, everyone was listening attentively.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> While she <span class="hi">was presenting</span>, everyone <span class="hi2">was listening</span> attentively.</div>
         <div class="ex-vi">Trong khi cô ấy đang thuyết trình, mọi người đang lắng nghe chăm chú.</div>
         <div class="ex-note">→ Hai hành động song song → dùng "while" + cả hai chia tiếp diễn</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Were you sleeping when I called you at midnight?')">🔊</span> <span class="hi">Were</span> you <span class="hi">sleeping</span> when I called you at midnight?</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Were you sleeping when I called you at midnight?')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">Were</span> you <span class="hi">sleeping</span> when I called you at midnight?</div>
         <div class="ex-vi">Bạn có đang ngủ không khi tôi gọi lúc nửa đêm?</div>
         <div class="ex-note">→ Câu hỏi: Were + S + V-ing?</div>
       </div>
@@ -357,7 +379,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="quiz-box" id="q-pc">
       <div class="qb-label">Kiểm tra nhanh</div>
       <div class="qb-q">Chọn đáp án đúng: "She ___ dinner when her friend arrived."</div>
-      <div class="qb-hint">💡 Hành động đang xảy ra → bị gián đoạn bởi hành động khác</div>
+      <div class="qb-hint"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Hành động đang xảy ra → bị gián đoạn bởi hành động khác</div>
       <div class="qb-opts">
         <button class="qb-opt" onclick="checkQ('q-pc',this,'wrong','Sai! "cooked" là quá khứ đơn — hành động đã hoàn thành. Cần dùng tiếp diễn vì đang nấu thì bạn đến.')">cooked</button>
         <button class="qb-opt" onclick="checkQ('q-pc',this,'correct','Đúng! "was cooking" = đang nấu ăn (tiếp diễn) thì bạn đến (gián đoạn). Công thức: was + V-ing.')">was cooking</button>
@@ -378,7 +400,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Quá khứ hoàn thành</div><div class="lesson-sub">Past Perfect — xảy ra trước một sự việc khác trong quá khứ</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-6">⭐ Band 6.5+</div>
+    <div class="band-tag bt-6"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Band 6.5+</div>
     <div class="theory">
       <p><strong>Quá khứ hoàn thành</strong> dùng khi có <strong>2 hành động trong quá khứ</strong> — hành động xảy ra TRƯỚC dùng Past Perfect, hành động xảy ra SAU dùng Past Simple.</p>
     </div>
@@ -390,17 +412,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('When I arrived, she had already left.')">🔊</span> When I arrived, she <span class="hi">had already left</span>.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('When I arrived, she had already left.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> When I arrived, she <span class="hi">had already left</span>.</div>
         <div class="ex-vi">Khi tôi đến, cô ấy đã đi rồi (đi trước khi tôi đến).</div>
         <div class="ex-note">→ She left (TRƯỚC) → I arrived (SAU). Cái trước dùng had + V3.</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('He failed the exam because he hadn\'t studied.')">🔊</span> He failed the exam because he <span class="hi">hadn't studied</span>.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('He failed the exam because he hadn\'t studied.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> He failed the exam because he <span class="hi">hadn't studied</span>.</div>
         <div class="ex-vi">Anh ấy trượt vì đã không học (trước đó).</div>
         <div class="ex-note">→ hadn't studied (TRƯỚC) → failed (SAU). Giải thích nguyên nhân.</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By the time the film started, we had found our seats.')">🔊</span> By the time the film started, we <span class="hi">had found</span> our seats.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By the time the film started, we had found our seats.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By the time the film started, we <span class="hi">had found</span> our seats.</div>
         <div class="ex-vi">Trước khi phim bắt đầu, chúng tôi đã tìm được chỗ ngồi.</div>
         <div class="ex-note">→ "by the time" = trước khi. Hành động hoàn thành TRƯỚC → Past Perfect.</div>
       </div>
@@ -422,7 +444,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="quiz-box" id="q-pp">
       <div class="qb-label">Kiểm tra nhanh</div>
       <div class="qb-q">"By the time we arrived at the cinema, the film ___."</div>
-      <div class="qb-hint">💡 Phim kết thúc TRƯỚC khi chúng ta đến</div>
+      <div class="qb-hint"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Phim kết thúc TRƯỚC khi chúng ta đến</div>
       <div class="qb-opts">
         <button class="qb-opt" onclick="checkQ('q-pp',this,'wrong','Sai! "started" là quá khứ đơn — không diễn đạt được thứ tự rõ ràng.')">started</button>
         <button class="qb-opt" onclick="checkQ('q-pp',this,'wrong','Sai! "was starting" là tiếp diễn — phim đang bắt đầu, nhưng ý câu là đã kết thúc rồi.')">was starting</button>
@@ -443,7 +465,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Hiện tại hoàn thành tiếp diễn</div><div class="lesson-sub">Present Perfect Continuous — đã làm và vẫn đang làm</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.0+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.0+</div>
     <div class="formula">
       <div class="formula-label">Công thức</div>
       <div class="f-row"><span class="f-type">(+) Khẳng định</span><span class="f-eq">S + have/has been + V-ing</span></div>
@@ -462,12 +484,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I have been studying English for 3 years.')">🔊</span> I <span class="hi">have been studying</span> English for 3 years.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I have been studying English for 3 years.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <span class="hi">have been studying</span> English for 3 years.</div>
         <div class="ex-vi">Tôi đã học tiếng Anh được 3 năm rồi (và vẫn đang học).</div>
         <div class="ex-note">→ "for 3 years" = khoảng thời gian kéo dài đến hiện tại</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She looks tired. She has been working since 6 AM.')">🔊</span> She looks tired. She <span class="hi">has been working</span> since 6 AM.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She looks tired. She has been working since 6 AM.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She looks tired. She <span class="hi">has been working</span> since 6 AM.</div>
         <div class="ex-vi">Cô ấy trông mệt. Cô ấy đã làm việc từ 6h sáng đến giờ.</div>
         <div class="ex-note">→ Giải thích kết quả hiện tại (trông mệt) bằng hành động kéo dài</div>
       </div>
@@ -487,7 +509,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Tương lai hoàn thành</div><div class="lesson-sub">Future Perfect — sẽ hoàn thành trước một thời điểm tương lai</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.0+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.0+</div>
     <div class="formula">
       <div class="formula-label">Công thức</div>
       <div class="f-row"><span class="f-type">(+) Khẳng định</span><span class="f-eq">S + will have + V3</span></div>
@@ -496,12 +518,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By 2030, scientists will have found a cure for cancer.')">🔊</span> By 2030, scientists <span class="hi">will have found</span> a cure for cancer.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By 2030, scientists will have found a cure for cancer.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By 2030, scientists <span class="hi">will have found</span> a cure for cancer.</div>
         <div class="ex-vi">Trước năm 2030, các nhà khoa học sẽ tìm ra phương thuốc chữa ung thư.</div>
         <div class="ex-note">→ "By 2030" = trước thời điểm 2030 → dùng Future Perfect</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By the time you arrive, I will have cooked dinner.')">🔊</span> By the time you arrive, I <span class="hi">will have cooked</span> dinner.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By the time you arrive, I will have cooked dinner.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By the time you arrive, I <span class="hi">will have cooked</span> dinner.</div>
         <div class="ex-vi">Trước khi bạn đến, tôi sẽ nấu xong bữa tối rồi.</div>
         <div class="ex-note">→ "by the time you arrive" → hành động hoàn thành trước</div>
       </div>
@@ -521,7 +543,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Quá khứ hoàn thành tiếp diễn</div><div class="lesson-sub">Past Perfect Continuous — đã đang làm trước một sự việc quá khứ khác</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.0+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.0+</div>
     <div class="formula">
       <div class="formula-label">Công thức</div>
       <div class="f-row"><span class="f-type">(+) Khẳng định</span><span class="f-eq">S + had been + V-ing</span></div>
@@ -541,17 +563,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She was tired because she had been running for an hour.')">🔊</span> She was tired because she <span class="hi">had been running</span> for an hour.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She was tired because she had been running for an hour.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She was tired because she <span class="hi">had been running</span> for an hour.</div>
         <div class="ex-vi">Cô ấy mệt vì đã chạy được một tiếng rồi.</div>
         <div class="ex-note">→ Giải thích nguyên nhân (mệt) bằng hành động kéo dài trước đó</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They had been waiting for 2 hours when the train finally arrived.')">🔊</span> They <span class="hi">had been waiting</span> for 2 hours when the train finally arrived.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They had been waiting for 2 hours when the train finally arrived.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> They <span class="hi">had been waiting</span> for 2 hours when the train finally arrived.</div>
         <div class="ex-vi">Họ đã đợi 2 tiếng khi tàu cuối cùng cũng đến.</div>
         <div class="ex-note">→ "for 2 hours" + "when..." = kéo dài trước sự kiện quá khứ</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The ground was wet because it had been raining all night.')">🔊</span> The ground was wet because it <span class="hi">had been raining</span> all night.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The ground was wet because it had been raining all night.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> The ground was wet because it <span class="hi">had been raining</span> all night.</div>
         <div class="ex-vi">Mặt đất ướt vì trời đã mưa suốt đêm.</div>
         <div class="ex-note">→ Kết quả nhìn thấy ở quá khứ, nguyên nhân là hành động kéo dài</div>
       </div>
@@ -571,7 +593,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Tương lai tiếp diễn</div><div class="lesson-sub">Future Continuous — sẽ đang làm gì tại một thời điểm tương lai</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-6">⭐ Band 6.0+</div>
+    <div class="band-tag bt-6"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Band 6.0+</div>
     <div class="formula">
       <div class="formula-label">Công thức</div>
       <div class="f-row"><span class="f-type">(+) Khẳng định</span><span class="f-eq">S + will be + V-ing</span></div>
@@ -591,17 +613,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This time tomorrow, I will be flying to London.')">🔊</span> This time tomorrow, I <span class="hi">will be flying</span> to London.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This time tomorrow, I will be flying to London.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> This time tomorrow, I <span class="hi">will be flying</span> to London.</div>
         <div class="ex-vi">Giờ này ngày mai, tôi sẽ đang bay đến London.</div>
         <div class="ex-note">→ "this time tomorrow" = thời điểm cụ thể trong tương lai → dùng Future Continuous</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Don\'t call me at 8 PM. I will be having dinner.')">🔊</span> Don't call me at 8 PM. I <span class="hi">will be having</span> dinner.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Don\'t call me at 8 PM. I will be having dinner.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Don't call me at 8 PM. I <span class="hi">will be having</span> dinner.</div>
         <div class="ex-vi">Đừng gọi lúc 8h tối. Tôi sẽ đang ăn tối.</div>
         <div class="ex-note">→ Hành động đang diễn ra tại thời điểm xác định trong tương lai</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('When you arrive, we will be waiting for you at the airport.')">🔊</span> When you arrive, we <span class="hi">will be waiting</span> for you at the airport.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('When you arrive, we will be waiting for you at the airport.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> When you arrive, we <span class="hi">will be waiting</span> for you at the airport.</div>
         <div class="ex-vi">Khi bạn đến, chúng tôi sẽ đang đợi bạn ở sân bay.</div>
         <div class="ex-note">→ "when you arrive" = mốc thời gian → hành động đang xảy ra tại mốc đó</div>
       </div>
@@ -621,7 +643,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Tương lai hoàn thành tiếp diễn</div><div class="lesson-sub">Future Perfect Continuous — sẽ đã đang làm gì được bao lâu</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-8">⭐⭐⭐ Band 8.0+</div>
+    <div class="band-tag bt-8"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐⭐ Band 8.0+</div>
     <div class="formula">
       <div class="formula-label">Công thức</div>
       <div class="f-row"><span class="f-type">(+) Khẳng định</span><span class="f-eq">S + will have been + V-ing</span></div>
@@ -640,17 +662,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By next month, she will have been working here for 10 years.')">🔊</span> By next month, she <span class="hi">will have been working</span> here for 10 years.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By next month, she will have been working here for 10 years.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By next month, she <span class="hi">will have been working</span> here for 10 years.</div>
         <div class="ex-vi">Đến tháng sau, cô ấy sẽ đã làm việc ở đây được 10 năm.</div>
         <div class="ex-note">→ "by next month" + "for 10 years" = kéo dài đến mốc tương lai</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By the time you finish, I will have been waiting for 3 hours.')">🔊</span> By the time you finish, I <span class="hi">will have been waiting</span> for 3 hours.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By the time you finish, I will have been waiting for 3 hours.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By the time you finish, I <span class="hi">will have been waiting</span> for 3 hours.</div>
         <div class="ex-vi">Khi bạn xong, tôi sẽ đã đợi được 3 tiếng rồi.</div>
         <div class="ex-note">→ Nhấn mạnh sự kéo dài của hành động đợi cho đến khi bạn xong</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By 2030, we will have been living in this house for 20 years.')">🔊</span> By 2030, we <span class="hi">will have been living</span> in this house for 20 years.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('By 2030, we will have been living in this house for 20 years.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> By 2030, we <span class="hi">will have been living</span> in this house for 20 years.</div>
         <div class="ex-vi">Đến năm 2030, chúng tôi sẽ đã sống ở nhà này được 20 năm.</div>
         <div class="ex-note">→ Thì hiếm nhất, gây ấn tượng mạnh trong IELTS Writing</div>
       </div>
@@ -670,7 +692,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Câu đảo ngữ — Inversion</div><div class="lesson-sub">Never have I seen... · Not only... but also... · Rarely...</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-8">⭐⭐⭐ Band 8.0+</div>
+    <div class="band-tag bt-8"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐⭐ Band 8.0+</div>
     <div class="theory">
       <p>Câu đảo ngữ là khi đưa trạng từ phủ định hoặc hạn chế ra đầu câu, sau đó <strong>đảo trợ động từ lên trước chủ từ</strong>. Đây là cấu trúc rất ấn tượng trong IELTS Writing và Speaking, thể hiện trình độ ngữ pháp cao.</p>
     </div>
@@ -724,7 +746,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="quiz-box" id="q-inv">
       <div class="qb-label">Kiểm tra nhanh</div>
       <div class="qb-q">Chuyển sang câu đảo ngữ: "I have rarely seen such dedication."</div>
-      <div class="qb-hint">💡 "Rarely" đứng đầu → đảo trợ động từ lên trước S</div>
+      <div class="qb-hint"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> "Rarely" đứng đầu → đảo trợ động từ lên trước S</div>
       <div class="qb-opts">
         <button class="qb-opt" onclick="checkQ('q-inv',this,'wrong','Sai! Không đảo đúng. Cần: Rarely + trợ động từ + S + V')">Rarely I have seen such dedication.</button>
         <button class="qb-opt" onclick="checkQ('q-inv',this,'correct','Đúng! "Rarely" đứng đầu → đảo "have" lên trước "I": Rarely have I seen. Đây là cấu trúc đảo ngữ chuẩn.')">Rarely have I seen such dedication.</button>
@@ -744,7 +766,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Câu giả định — Subjunctive</div><div class="lesson-sub">I suggest that he study... · It is vital that she be...</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.5+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.5+</div>
     <div class="theory">
       <p>Subjunctive dùng sau các động từ và tính từ biểu thị <strong>đề nghị, yêu cầu, mong muốn, sự cần thiết</strong>. Đặc điểm quan trọng: động từ trong mệnh đề "that" <strong>LUÔN ở dạng nguyên thể</strong> (không chia), dù chủ từ là ngôi 3.</p>
     </div>
@@ -765,17 +787,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The doctor recommends that the patient take more rest. (không phải "takes")')">🔊</span> The doctor <span class="hi">recommends</span> that the patient <span class="hi2">take</span> more rest. <em style="font-style:normal;color:var(--text3)">(không phải "takes")</em></div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The doctor recommends that the patient take more rest. (không phải "takes")')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> The doctor <span class="hi">recommends</span> that the patient <span class="hi2">take</span> more rest. <em style="font-style:normal;color:var(--text3)">(không phải "takes")</em></div>
         <div class="ex-vi">Bác sĩ khuyến nghị bệnh nhân nghỉ ngơi nhiều hơn.</div>
         <div class="ex-note">→ recommend + that + S + V nguyên thể (dù "patient" = ngôi 3)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It is essential that every student submit their assignment on time.')">🔊</span> It is <span class="hi">essential</span> that every student <span class="hi2">submit</span> their assignment on time.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It is essential that every student submit their assignment on time.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> It is <span class="hi">essential</span> that every student <span class="hi2">submit</span> their assignment on time.</div>
         <div class="ex-vi">Điều quan trọng là mỗi học sinh phải nộp bài đúng hạn.</div>
         <div class="ex-note">→ essential that + V nguyên thể (không phải "submits")</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The committee insists that the policy be revised immediately.')">🔊</span> The committee <span class="hi">insists</span> that the policy <span class="hi2">be</span> revised immediately.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The committee insists that the policy be revised immediately.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> The committee <span class="hi">insists</span> that the policy <span class="hi2">be</span> revised immediately.</div>
         <div class="ex-vi">Ủy ban nhấn mạnh rằng chính sách cần được sửa đổi ngay.</div>
         <div class="ex-note">→ "be" thay vì "is" — đây là subjunctive của "be"</div>
       </div>
@@ -795,23 +817,23 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Câu chẻ — Cleft Sentences</div><div class="lesson-sub">It is... that · What... is · The reason why...</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.5+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.5+</div>
     <div class="theory">
       <p>Câu chẻ dùng để <strong>nhấn mạnh một phần của câu</strong>. Thay vì nói bình thường, ta "tách" câu ra để làm nổi bật thông tin quan trọng.</p>
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Bình thường: Education helps people escape poverty.Câu chẻ: It is education that helps people escape poverty.')">🔊</span> Bình thường: <em style="color:var(--text3)">Education helps people escape poverty.</em><br>Câu chẻ: <span class="hi">It is education that</span> helps people escape poverty.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Bình thường: Education helps people escape poverty.Câu chẻ: It is education that helps people escape poverty.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Bình thường: <em style="color:var(--text3)">Education helps people escape poverty.</em><br>Câu chẻ: <span class="hi">It is education that</span> helps people escape poverty.</div>
         <div class="ex-vi">Chính giáo dục mới giúp người ta thoát nghèo.</div>
         <div class="ex-note">→ "It is X that..." — nhấn mạnh X là yếu tố quan trọng</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('What the government needs to do is invest more in infrastructure.')">🔊</span> <span class="hi">What the government needs to do</span> is invest more in infrastructure.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('What the government needs to do is invest more in infrastructure.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">What the government needs to do</span> is invest more in infrastructure.</div>
         <div class="ex-vi">Điều mà chính phủ cần làm là đầu tư nhiều hơn vào cơ sở hạ tầng.</div>
         <div class="ex-note">→ "What S + V is..." — nhấn mạnh hành động/giải pháp</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The reason why many young people leave rural areas is that there are few job opportunities.')">🔊</span> <span class="hi">The reason why</span> many young people leave rural areas <span class="hi2">is that</span> there are few job opportunities.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The reason why many young people leave rural areas is that there are few job opportunities.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">The reason why</span> many young people leave rural areas <span class="hi2">is that</span> there are few job opportunities.</div>
         <div class="ex-vi">Lý do tại sao nhiều thanh niên rời bỏ nông thôn là vì thiếu cơ hội việc làm.</div>
         <div class="ex-note">→ "The reason why... is that..." — giải thích nguyên nhân một cách nhấn mạnh</div>
       </div>
@@ -831,7 +853,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Mệnh đề quan hệ nâng cao</div><div class="lesson-sub">Defining vs Non-defining · Reduced relative clauses</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.0+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.0+</div>
     <div class="compare-grid">
       <div class="cmp-card" style="background:rgba(232,197,71,0.05);border-color:rgba(232,197,71,0.2)">
         <div class="cmp-label" style="color:var(--accent)">Defining (không dấu phẩy)</div>
@@ -847,12 +869,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: The report which was published last year → Reduced: The report published last year shows alarming trends.')">🔊</span> Full: The report <em style="color:var(--text3)">which was published last year</em> → Reduced: The report <span class="hi">published last year</span> shows alarming trends.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: The report which was published last year → Reduced: The report published last year shows alarming trends.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Full: The report <em style="color:var(--text3)">which was published last year</em> → Reduced: The report <span class="hi">published last year</span> shows alarming trends.</div>
         <div class="ex-vi">Báo cáo được công bố năm ngoái cho thấy xu hướng đáng lo ngại.</div>
         <div class="ex-note">→ Bỏ "which was" → dùng V3 trực tiếp (passive participle)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: People who live in cities → Reduced: People living in cities face unique challenges.')">🔊</span> Full: People <em style="color:var(--text3)">who live in cities</em> → Reduced: People <span class="hi">living in cities</span> face unique challenges.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: People who live in cities → Reduced: People living in cities face unique challenges.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Full: People <em style="color:var(--text3)">who live in cities</em> → Reduced: People <span class="hi">living in cities</span> face unique challenges.</div>
         <div class="ex-vi">Những người sống ở thành phố đối mặt với những thách thức đặc thù.</div>
         <div class="ex-note">→ Bỏ "who" → dùng V-ing (active participle)</div>
       </div>
@@ -872,7 +894,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Câu tường thuật — Reported Speech</div><div class="lesson-sub">He said that... · She told me to... · They asked whether...</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-6">⭐ Band 6.5+</div>
+    <div class="band-tag bt-6"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Band 6.5+</div>
     <div class="theory">
       <p>Khi thuật lại lời nói của người khác, thì trong câu thường <strong>lùi về quá khứ một bậc</strong> (backshift). Đây là quy tắc quan trọng trong IELTS Writing và Listening.</p>
     </div>
@@ -887,12 +909,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     </table>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Direct: "I am working on a new project."Reported: She said she was working on a new project.')">🔊</span> Direct: "I <span class="hi">am working</span> on a new project."<br>Reported: She said she <span class="hi2">was working</span> on a new project.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Direct: "I am working on a new project."Reported: She said she was working on a new project.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Direct: "I <span class="hi">am working</span> on a new project."<br>Reported: She said she <span class="hi2">was working</span> on a new project.</div>
         <div class="ex-vi">Cô ấy nói cô ấy đang làm dự án mới.</div>
         <div class="ex-note">→ am working → was working (lùi 1 bậc)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Direct: "Have you finished the report?"Reported: He asked whether I had finished the report.')">🔊</span> Direct: "Have you <span class="hi">finished</span> the report?"<br>Reported: He asked whether I <span class="hi2">had finished</span> the report.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Direct: "Have you finished the report?"Reported: He asked whether I had finished the report.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Direct: "Have you <span class="hi">finished</span> the report?"<br>Reported: He asked whether I <span class="hi2">had finished</span> the report.</div>
         <div class="ex-vi">Anh ấy hỏi tôi đã hoàn thành báo cáo chưa.</div>
         <div class="ex-note">→ Câu hỏi Yes/No → whether/if + câu tường thuật</div>
       </div>
@@ -908,29 +930,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Modal Perfect — Suy luận về quá khứ</div><div class="lesson-sub">must have / could have / should have / might have</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.5+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.5+</div>
     <div class="formula">
       <div class="formula-label">Cấu trúc chung</div>
       <div class="f-row"><span class="f-type">Công thức</span><span class="f-eq">Modal + have + V3</span><span class="f-note">Dùng để suy luận hoặc tiếc nuối về quá khứ</span></div>
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She must have worked very hard to get that score.')">🔊</span> She <span class="hi">must have worked</span> very hard to get that score.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She must have worked very hard to get that score.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <span class="hi">must have worked</span> very hard to get that score.</div>
         <div class="ex-vi">Cô ấy chắc chắn đã làm việc rất chăm chỉ để đạt điểm đó.</div>
         <div class="ex-note">→ must have + V3 = chắc chắn đã... (suy luận chắc chắn)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I should have studied more before the IELTS test.')">🔊</span> I <span class="hi">should have studied</span> more before the IELTS test.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I should have studied more before the IELTS test.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <span class="hi">should have studied</span> more before the IELTS test.</div>
         <div class="ex-vi">Tôi lẽ ra nên học nhiều hơn trước kỳ thi IELTS.</div>
         <div class="ex-note">→ should have + V3 = lẽ ra nên... (nhưng đã không làm — hối tiếc)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They could have avoided the problem if they had planned better.')">🔊</span> They <span class="hi">could have avoided</span> the problem if they had planned better.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('They could have avoided the problem if they had planned better.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> They <span class="hi">could have avoided</span> the problem if they had planned better.</div>
         <div class="ex-vi">Họ lẽ ra có thể tránh được vấn đề nếu lên kế hoạch tốt hơn.</div>
         <div class="ex-note">→ could have + V3 = đáng lẽ có thể... (nhưng đã không)</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The accident might have been caused by poor road conditions.')">🔊</span> The accident <span class="hi">might have been caused</span> by poor road conditions.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The accident might have been caused by poor road conditions.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> The accident <span class="hi">might have been caused</span> by poor road conditions.</div>
         <div class="ex-vi">Tai nạn có thể đã được gây ra bởi điều kiện đường xá kém.</div>
         <div class="ex-note">→ might have + V3 = có thể đã... (không chắc chắn)</div>
       </div>
@@ -942,7 +964,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="quiz-box" id="q-modal">
       <div class="qb-label">Kiểm tra nhanh</div>
       <div class="qb-q">"He didn't eat all day. He ___ been very hungry." — Điền cấu trúc đúng để suy luận chắc chắn.</div>
-      <div class="qb-hint">💡 Suy luận chắc chắn về quá khứ → must have + V3</div>
+      <div class="qb-hint"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Suy luận chắc chắn về quá khứ → must have + V3</div>
       <div class="qb-opts">
         <button class="qb-opt" onclick="checkQ('q-modal',this,'wrong','Sai! "should have been" = lẽ ra nên... (hối tiếc, không phải suy luận chắc chắn).')">should have been</button>
         <button class="qb-opt" onclick="checkQ('q-modal',this,'correct','Đúng! "must have been" = chắc chắn đã... Suy luận chắc chắn dựa trên bằng chứng (không ăn cả ngày → chắc đói).')">must have been</button>
@@ -963,7 +985,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Câu điều kiện hỗn hợp</div><div class="lesson-sub">Mixed Conditionals — kết hợp quá khứ và hiện tại</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-8">⭐⭐⭐ Band 8.0+</div>
+    <div class="band-tag bt-8"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐⭐ Band 8.0+</div>
     <div class="theory">
       <p>Câu điều kiện hỗn hợp kết hợp điều kiện loại 2 và loại 3 — dùng khi <strong>điều kiện ở quá khứ nhưng kết quả ảnh hưởng đến hiện tại</strong>, hoặc ngược lại.</p>
     </div>
@@ -992,7 +1014,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Hedging — Ngôn ngữ dè dặt học thuật</div><div class="lesson-sub">It appears that... · This suggests... · It could be argued...</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.0+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.0+</div>
     <div class="theory">
       <p><strong>Hedging</strong> là dùng ngôn ngữ không chắc chắn tuyệt đối trong văn học thuật — thể hiện rằng bạn có căn cứ nhưng cũng thừa nhận có thể sai. Đây là đặc điểm của văn Academic chuyên nghiệp.</p>
     </div>
@@ -1010,11 +1032,11 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <p><strong>Các cụm hedging quan trọng:</strong></p>
     </div>
     <div class="ex-list">
-      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It appears/seems that urbanisation is accelerating globally.')">🔊</span> <span class="hi">It appears/seems that</span> urbanisation is accelerating globally.</div><div class="ex-vi">Có vẻ như đô thị hóa đang tăng tốc trên toàn cầu.</div></div>
-      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This suggests/indicates that further research is needed.')">🔊</span> <span class="hi">This suggests/indicates that</span> further research is needed.</div><div class="ex-vi">Điều này gợi ý rằng cần thêm nghiên cứu.</div></div>
-      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It could be argued that social media does more harm than good.')">🔊</span> <span class="hi">It could be argued that</span> social media does more harm than good.</div><div class="ex-vi">Có thể lập luận rằng mạng xã hội gây hại nhiều hơn lợi.</div></div>
-      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('There is evidence to suggest that diet plays a crucial role in mental health.')">🔊</span> <span class="hi">There is evidence to suggest that</span> diet plays a crucial role in mental health.</div><div class="ex-vi">Có bằng chứng cho thấy chế độ ăn đóng vai trò quan trọng trong sức khỏe tâm thần.</div></div>
-      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It would appear that governments are reluctant to take decisive action.')">🔊</span> <span class="hi">It would appear that</span> governments are reluctant to take decisive action.</div><div class="ex-vi">Có vẻ như các chính phủ không muốn hành động quyết đoán.</div></div>
+      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It appears/seems that urbanisation is accelerating globally.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">It appears/seems that</span> urbanisation is accelerating globally.</div><div class="ex-vi">Có vẻ như đô thị hóa đang tăng tốc trên toàn cầu.</div></div>
+      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('This suggests/indicates that further research is needed.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">This suggests/indicates that</span> further research is needed.</div><div class="ex-vi">Điều này gợi ý rằng cần thêm nghiên cứu.</div></div>
+      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It could be argued that social media does more harm than good.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">It could be argued that</span> social media does more harm than good.</div><div class="ex-vi">Có thể lập luận rằng mạng xã hội gây hại nhiều hơn lợi.</div></div>
+      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('There is evidence to suggest that diet plays a crucial role in mental health.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">There is evidence to suggest that</span> diet plays a crucial role in mental health.</div><div class="ex-vi">Có bằng chứng cho thấy chế độ ăn đóng vai trò quan trọng trong sức khỏe tâm thần.</div></div>
+      <div class="ex-item"><div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('It would appear that governments are reluctant to take decisive action.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> <span class="hi">It would appear that</span> governments are reluctant to take decisive action.</div><div class="ex-vi">Có vẻ như các chính phủ không muốn hành động quyết đoán.</div></div>
     </div>
   </div>
 
@@ -1027,23 +1049,23 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Mệnh đề phân từ — Participle Clauses</div><div class="lesson-sub">Having done... · Being... · Built in 1990...</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-8">⭐⭐⭐ Band 8.0+</div>
+    <div class="band-tag bt-8"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐⭐ Band 8.0+</div>
     <div class="theory">
       <p>Mệnh đề phân từ thay thế mệnh đề phụ đầy đủ — giúp câu văn <strong>súc tích, chuyên nghiệp</strong> hơn. Đây là dấu hiệu rõ của Band 7.5-8.0 trong IELTS Writing.</p>
     </div>
     <div class="ex-list">
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: After he had completed his research, he published the findings.Participle: Having completed his research, he published the findings.')">🔊</span> Full: <em style="color:var(--text3)">After he had completed his research,</em> he published the findings.<br>Participle: <span class="hi">Having completed his research,</span> he published the findings.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: After he had completed his research, he published the findings.Participle: Having completed his research, he published the findings.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Full: <em style="color:var(--text3)">After he had completed his research,</em> he published the findings.<br>Participle: <span class="hi">Having completed his research,</span> he published the findings.</div>
         <div class="ex-vi">Sau khi hoàn thành nghiên cứu, ông ấy công bố kết quả.</div>
         <div class="ex-note">→ "Having + V3" = sau khi đã làm gì đó</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: Because it is situated on the coast, the city is vulnerable to flooding.Participle: Situated on the coast, the city is vulnerable to flooding.')">🔊</span> Full: <em style="color:var(--text3)">Because it is situated on the coast,</em> the city is vulnerable to flooding.<br>Participle: <span class="hi">Situated on the coast,</span> the city is vulnerable to flooding.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: Because it is situated on the coast, the city is vulnerable to flooding.Participle: Situated on the coast, the city is vulnerable to flooding.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Full: <em style="color:var(--text3)">Because it is situated on the coast,</em> the city is vulnerable to flooding.<br>Participle: <span class="hi">Situated on the coast,</span> the city is vulnerable to flooding.</div>
         <div class="ex-vi">Vì tọa lạc ven biển, thành phố dễ bị lũ lụt.</div>
         <div class="ex-note">→ V3 (passive) đứng đầu = vì được... / khi được...</div>
       </div>
       <div class="ex-item">
-        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: While they were acknowledging the challenges, they remained optimistic.Participle: Acknowledging the challenges, they remained optimistic.')">🔊</span> Full: <em style="color:var(--text3)">While they were acknowledging the challenges,</em> they remained optimistic.<br>Participle: <span class="hi">Acknowledging the challenges,</span> they remained optimistic.</div>
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('Full: While they were acknowledging the challenges, they remained optimistic.Participle: Acknowledging the challenges, they remained optimistic.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> Full: <em style="color:var(--text3)">While they were acknowledging the challenges,</em> they remained optimistic.<br>Participle: <span class="hi">Acknowledging the challenges,</span> they remained optimistic.</div>
         <div class="ex-vi">Dù thừa nhận những thách thức, họ vẫn lạc quan.</div>
         <div class="ex-note">→ V-ing đứng đầu = trong khi / mặc dù đang...</div>
       </div>
@@ -1063,7 +1085,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div><div class="lesson-title">Cohesion & Coherence</div><div class="lesson-sub">Liên kết câu và đoạn văn — Tiêu chí Band 7+ IELTS Writing</div></div>
     </div>
     <div class="lesson-divider"></div>
-    <div class="band-tag bt-7">⭐⭐ Band 7.0+</div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ⭐ Band 7.0+</div>
     <div class="theory">
       <p><strong>Cohesion</strong> = cách các câu liên kết với nhau bằng từ nối và tham chiếu. <strong>Coherence</strong> = ý tứ mạch lạc, logic. Đây là 2 trong 4 tiêu chí chấm IELTS Writing (chiếm 25% điểm mỗi tiêu chí).</p>
     </div>
@@ -1144,5 +1166,6 @@ document.addEventListener('click',e=>{
 });
 </script>
 <script src="theme.js"></script>
+<script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
 </body>
 </html>

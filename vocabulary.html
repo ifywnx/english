@@ -16,12 +16,12 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(78,205,196,0.09);top:-150px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(232,197,71,0.05);bottom:0;left:-100px}
 
-nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
+nav{max-width:100vw;overflow:hidden;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
@@ -43,8 +43,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 
 .content{padding:40px 48px;max-width:860px}
 .page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:48px;font-weight:300;margin-bottom:12px}
-.page-desc{font-size:18px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:12px}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.7;margin-bottom:36px}
 
 /* TOPIC TABS */
 .topic-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
@@ -158,7 +158,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .alpha-grid{grid-template-columns:repeat(4,1fr)}
   nav{padding:12px 16px}
   .nav-links{display:none}
-  .page-title{font-size:28px}
+  .page-title{font-size:clamp(26px,4vw,48px)}
 }
 @media(max-width:500px){
   .word-grid{grid-template-columns:1fr}
@@ -177,7 +177,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
 .nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
 .nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
 .nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
@@ -197,21 +197,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
   nav{padding:12px 16px}
   .content{padding:20px 16px}
-  .page-title,.page-title{font-size:28px!important}
-  .page-desc{font-size:15px!important}
+  .page-title,.page-title{font-size:clamp(26px,4vw,48px)!important}
+  .page-desc{font-size:clamp(14px,1.4vw,18px)!important}
   .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
   .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
   .nav-drop>.nav-a::after{display:none}
 }
 @media(max-width:500px){
-  .page-title{font-size:24px!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
 }
 
 @media(max-width:768px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   nav{padding:10px 14px!important}
-  .page-title{font-size:26px!important;word-wrap:break-word}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
   .stats-grid{grid-template-columns:1fr 1fr!important}
@@ -230,7 +230,29 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:none}
   .logo-name{font-size:16px}
 }
+
+@media(max-width:768px){
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  .nav-drop-menu{min-width:unset!important;width:100%!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+}
+
+/* === MOBILE MASTER FIX === */
+@media(max-width:768px){
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hamburger{display:block!important}
+}
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -247,8 +269,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="grammar.html" class="nav-a">📚 Ngữ pháp cơ bản</a>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a active">Từ vựng</a>
@@ -259,22 +281,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="dictionary.html" class="nav-a">📖 Từ điển Anh-Việt</a>
-        <a href="dictionary-everyday.html" class="nav-a">💬 Từ điển Đời thường</a>
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
         <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
         <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
       <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a">📊 IELTS Guide</a>
-        <a href="academic-words.html" class="nav-a">📚 AWL 570 từ</a>
-        <a href="collocations.html" class="nav-a">✍️ Collocations</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
         <div class="nav-sep"></div>
-        <a href="grammar-advanced.html" class="nav-a">🔥 Ngữ pháp nâng cao</a>
-        <a href="dictionary-ielts.html" class="nav-a">🎯 Từ điển IELTS</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
       </div></div>
     </div>
     <a href="progress.html" class="nav-a">Tiến độ</a>
@@ -285,12 +307,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 <div class="page-wrap">
 <aside class="sidebar">
   <div class="sidebar-title">Công cụ</div>
-  <a href="#flashcard" class="sb-item active"><span class="sb-emoji">🃏</span>Flashcard học từ</a>
+  <a href="#flashcard" class="sb-item active"><span class="sb-emoji"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Flashcard học từ</a>
   <a href="#search-section" class="sb-item"><span class="sb-emoji">🔍</span>Tìm kiếm từ</a>
-  <a href="#common100" class="sb-item"><span class="sb-emoji">⭐</span>100 từ thông dụng</a>
+  <a href="#common100" class="sb-item"><span class="sb-emoji"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>100 từ thông dụng</a>
 
   <div class="sidebar-title">Chủ đề cơ bản</div>
-  <a href="#alphabet" class="sb-item"><span class="sb-emoji">🔤</span>Bảng chữ cái</a>
+  <a href="#alphabet" class="sb-item"><span class="sb-emoji"><i data-lucide="type" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Bảng chữ cái</a>
   <a href="#numbers" class="sb-item"><span class="sb-emoji">🔢</span>Số đếm</a>
   <a href="#colors" class="sb-item"><span class="sb-emoji">🎨</span>Màu sắc</a>
   <a href="#greetings" class="sb-item"><span class="sb-emoji">👋</span>Chào hỏi</a>
@@ -302,7 +324,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   <a href="#body" class="sb-item"><span class="sb-emoji">🧑</span>Cơ thể người</a>
   <a href="#food" class="sb-item"><span class="sb-emoji">🍜</span>Thức ăn</a>
   <a href="#animals" class="sb-item"><span class="sb-emoji">🐶</span>Động vật</a>
-  <a href="#house" class="sb-item"><span class="sb-emoji">🏠</span>Nhà ở</a>
+  <a href="#house" class="sb-item"><span class="sb-emoji"><i data-lucide="home" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Nhà ở</a>
   <a href="#clothes" class="sb-item"><span class="sb-emoji">👕</span>Quần áo</a>
   <a href="#jobs" class="sb-item"><span class="sb-emoji">💼</span>Nghề nghiệp</a>
   <a href="#weather" class="sb-item"><span class="sb-emoji">🌤️</span>Thời tiết</a>
@@ -339,7 +361,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
         <div class="fc-front">
           <div class="fc-word" id="fcWord">hello</div>
           <div class="fc-pron" id="fcPron">/həˈloʊ/</div>
-          <button class="speak-btn" onclick="event.stopPropagation();speakTTS(document.getElementById('fcWord').textContent)" style="margin:8px auto 0;width:36px;height:36px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">🔊</button>
+          <button class="speak-btn" onclick="event.stopPropagation();speakTTS(document.getElementById('fcWord').textContent)" style="margin:8px auto 0;width:36px;height:36px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </button>
           <div class="fc-hint">👆 Bấm để xem nghĩa</div>
         </div>
         <div class="fc-back">
@@ -370,7 +392,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
       <div id="micVi" style="font-size:14px;color:var(--text3);margin-bottom:16px">xin chào</div>
 
       <div style="display:flex;justify-content:center;gap:12px;margin-bottom:16px">
-        <button onclick="speakMicWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:18px" title="Nghe mẫu">🔊</button>
+        <button onclick="speakMicWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:18px" title="Nghe mẫu"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </button>
         <button id="micBtn" onclick="startMic()" style="width:56px;height:56px;border-radius:50%;background:rgba(244,132,95,0.15);border:2px solid rgba(244,132,95,0.4);color:var(--coral);cursor:pointer;font-size:22px;transition:all .3s" title="Bấm để nói">🎤</button>
         <button onclick="nextMicWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(100,216,165,0.15);border:0.5px solid rgba(100,216,165,0.3);color:var(--accent3);cursor:pointer;font-size:18px" title="Từ tiếp theo">→</button>
       </div>
@@ -395,21 +417,21 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
   nav{padding:12px 16px}
   .content{padding:20px 16px}
-  .page-title,.page-title{font-size:28px!important}
-  .page-desc{font-size:15px!important}
+  .page-title,.page-title{font-size:clamp(26px,4vw,48px)!important}
+  .page-desc{font-size:clamp(14px,1.4vw,18px)!important}
   .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
   .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
   .nav-drop>.nav-a::after{display:none}
 }
 @media(max-width:500px){
-  .page-title{font-size:24px!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
 }
 
 @media(max-width:768px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   nav{padding:10px 14px!important}
-  .page-title{font-size:26px!important;word-wrap:break-word}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
   .stats-grid{grid-template-columns:1fr 1fr!important}
@@ -427,6 +449,27 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
   img{max-width:100%;height:auto}
   .nav-cta{display:none}
   .logo-name{font-size:16px}
+}
+
+@media(max-width:768px){
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  .nav-drop-menu{min-width:unset!important;width:100%!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+}
+
+/* === MOBILE MASTER FIX === */
+@media(max-width:768px){
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .hamburger{display:block!important}
 }
 </style>
   </div>
@@ -1159,12 +1202,12 @@ function wordCard(w, onclick_extra='') {
   return `<div class="word-card ${lrn?'learned':''}" onclick="toggleLearn('${w.en}');this.classList.toggle('learned');document.getElementById('learnedCount').textContent=JSON.parse(localStorage.getItem('ee_learned')||'[]').length">
     <div class="learned-badge">✓</div>
     <div style="display:flex;align-items:center;gap:6px">
-      <span style="cursor:pointer;font-size:14px" onclick="event.stopPropagation();speakTTS('${w.en}')">🔊</span>
+      <span style="cursor:pointer;font-size:14px" onclick="event.stopPropagation();speakTTS('${w.en}')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>
       <div class="word-en">${w.en}</div>
     </div>
     <div class="word-pron">${w.pron}</div>
     <div class="word-vi">${w.vi}</div>
-    <div class="word-ex">💡 ${w.ex}</div>
+    <div class="word-ex"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> ${w.ex}</div>
   </div>`;
 }
 
@@ -1342,8 +1385,8 @@ function startMic() {
     const correct = said === expected || said.includes(expected) || expected.includes(said);
     const conf = Math.round(e.results[0][0].confidence * 100);
     document.getElementById('micResult').innerHTML = correct
-      ? `<div style="color:var(--green);font-size:18px;font-weight:600">✅ Chính xác! "${said}" — ${conf}%</div>`
-      : `<div style="color:var(--coral);font-size:18px;font-weight:600">❌ Bạn nói: "${said}"</div><div style="color:var(--text3);font-size:13px;margin-top:4px">Cần nói: "${expected}" — Thử lại!</div>`;
+      ? `<div style="color:var(--green);font-size:18px;font-weight:600"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Chính xác! "${said}" — ${conf}%</div>`
+      : `<div style="color:var(--coral);font-size:18px;font-weight:600"><i data-lucide="x-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Bạn nói: "${said}"</div><div style="color:var(--text3);font-size:13px;margin-top:4px">Cần nói: "${expected}" — Thử lại!</div>`;
     btn.classList.remove('recording');
     micRecognition = null;
   };
@@ -1377,5 +1420,6 @@ document.addEventListener('click',e=>{
 });
 </script>
 <script src="theme.js"></script>
+<script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
 </body>
 </html>
