@@ -16,7 +16,7 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(240,194,122,0.08);top:-150px;left:-100px}
 .orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;right:-100px}
@@ -27,7 +27,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
 .logo-name span{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:2px}
-.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:15px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
 .nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
 .nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent3);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
@@ -36,14 +36,14 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
 .sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
 .sidebar-title:first-child{margin-top:0}
-.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:12px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
 .sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .sb-item.active{color:var(--accent3);background:rgba(240,194,122,0.08)}
 
 .content{padding:32px 44px;max-width:1000px}
-.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
 .page-title{font-family:'Fraunces',serif;font-size:36px;font-weight:300;margin-bottom:10px}
-.page-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:24px}
+.page-desc{font-size:18px;color:var(--text2);line-height:1.75;margin-bottom:24px}
 
 /* SEARCH & FILTER BAR */
 .filter-bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
@@ -56,7 +56,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 
 /* LEGEND */
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:14px 18px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2)}
 .leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
 /* STATS */
@@ -103,14 +103,14 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .tag-adv{background:rgba(107,203,119,0.1);color:var(--green)}
 
 .wc-vi{font-size:13px;color:var(--text2);margin-bottom:6px}
-.wc-ex{font-size:12px;color:var(--text3);font-style:italic;line-height:1.5}
+.wc-ex{font-size:14px;color:var(--text3);font-style:italic;line-height:1.5}
 
 /* EXPANDED DETAIL */
 .wc-detail{margin-top:12px;border-top:0.5px solid var(--border);padding-top:12px;display:none}
 .word-card.expanded .wc-detail{display:block}
 .detail-section{margin-bottom:10px}
 .ds-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
-.ds-content{font-size:12px;color:var(--text2);line-height:1.7}
+.ds-content{font-size:14px;color:var(--text2);line-height:1.7}
 .ds-examples{display:flex;flex-direction:column;gap:5px}
 .ds-ex{background:var(--card2);border-radius:7px;padding:8px 10px}
 .ds-ex-en{font-size:12px;color:var(--text);font-style:italic;margin-bottom:2px}
@@ -131,7 +131,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:16px;margin-top:32px;padding-bottom:10px;border-bottom:0.5px solid var(--border)}
 .sh-icon{font-size:24px}
 .sh-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300}
-.sh-count{font-size:12px;color:var(--text3);margin-left:auto}
+.sh-count{font-size:14px;color:var(--text3);margin-left:auto}
 .anchor{scroll-margin-top:80px}
 
 .no-results{text-align:center;color:var(--text3);padding:40px;font-size:14px;grid-column:1/-1}
@@ -155,6 +155,30 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
 .nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+
+/* HAMBURGER MENU */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;z-index:201}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:4px;overflow-y:auto;z-index:199}
+  .nav-links.open{display:flex}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+  .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
+  nav{padding:12px 16px}
+  .content{padding:20px 16px}
+  .page-title,.page-title{font-size:28px!important}
+  .page-desc{font-size:15px!important}
+  .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
+  .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
+  .nav-drop>.nav-a::after{display:none}
+}
+@media(max-width:500px){
+  .page-title{font-size:24px!important}
+}
 </style>
 </head>
 <body>
@@ -166,6 +190,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="logo-mark">E</div>
     <span class="logo-name">Easy<span>English</span></span>
   </a>
+  <button class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="index.html" class="nav-a">Trang chủ</a>
     <div class="nav-drop">
@@ -465,7 +490,7 @@ function wordCardHTML(w){
       ${w.synonyms?.length?`<div class="detail-section"><div class="ds-label">Từ đồng nghĩa</div><div class="ds-chips">${w.synonyms.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div></div>`:''}
       ${w.antonyms?.length?`<div class="detail-section"><div class="ds-label">Từ trái nghĩa</div><div class="ds-chips">${w.antonyms.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div></div>`:''}
       ${w.collocations?.length?`<div class="detail-section"><div class="ds-label">Cụm từ thông dụng</div><div class="ds-chips">${w.collocations.map(s=>`<span class="ds-chip">${s}</span>`).join('')}</div></div>`:''}
-      ${w.tip?`<div style="margin-top:8px;padding:8px 12px;background:rgba(100,216,165,0.08);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.6"><span style="color:var(--accent2)">💡 Mẹo: </span>${w.tip}</div>`:''}
+      ${w.tip?`<div style="margin-top:8px;padding:8px 12px;background:rgba(100,216,165,0.08);border-radius:8px;font-size:14px;color:var(--text2);line-height:1.6"><span style="color:var(--accent2)">💡 Mẹo: </span>${w.tip}</div>`:''}
     </div>
   </div>`;
 }
@@ -512,7 +537,7 @@ function renderSavedPanel(){
   const panel=document.getElementById('savedPanel');
   document.getElementById('savedCount2').textContent=savedWords.size;
   const words=document.getElementById('savedWords');
-  if(!savedWords.size){words.innerHTML='<span style="font-size:12px;color:var(--text3)">Chưa lưu từ nào. Bấm ☆ trên từ bất kỳ để lưu.</span>';return;}
+  if(!savedWords.size){words.innerHTML='<span style="font-size:14px;color:var(--text3)">Chưa lưu từ nào. Bấm ☆ trên từ bất kỳ để lưu.</span>';return;}
   words.innerHTML=[...savedWords].map(w=>`<span class="sp-word" onclick="filterSavedWord('${w}')">${w}</span>`).join('');
 }
 
