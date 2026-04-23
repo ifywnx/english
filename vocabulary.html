@@ -16,7 +16,7 @@
   --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:19px;line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(78,205,196,0.09);top:-150px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(232,197,71,0.05);bottom:0;left:-100px}
@@ -27,7 +27,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
 .logo-name span{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:2px}
-.nav-a{padding:8px 14px;border-radius:8px;font-size:13px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.nav-a{padding:8px 14px;border-radius:8px;font-size:15px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
 .nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
 .nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
@@ -42,9 +42,9 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .sb-emoji{font-size:14px;width:20px;text-align:center}
 
 .content{padding:40px 48px;max-width:860px}
-.page-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
-.page-title{font-family:'Fraunces',serif;font-size:40px;font-weight:300;margin-bottom:12px}
-.page-desc{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:36px}
+.page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:48px;font-weight:300;margin-bottom:12px}
+.page-desc{font-size:18px;color:var(--text2);line-height:1.7;margin-bottom:36px}
 
 /* TOPIC TABS */
 .topic-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
@@ -82,7 +82,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .fc-back{background:rgba(240,194,122,0.08);border:0.5px solid rgba(100,216,165,0.3);transform:rotateY(180deg)}
 .fc-word{font-family:'Fraunces',serif;font-size:36px;color:var(--text);margin-bottom:8px}
 .fc-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:4px}
-.fc-hint{font-size:12px;color:var(--text3)}
+.fc-hint{font-size:14px;color:var(--text3)}
 .fc-vi{font-family:'Fraunces',serif;font-size:28px;color:var(--accent3);margin-bottom:8px}
 .fc-ex{font-size:13px;color:var(--text2);text-align:center;font-style:italic;line-height:1.6}
 .fc-controls{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
@@ -91,7 +91,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .fc-btn.good{border-color:rgba(100,216,165,0.4);color:var(--accent3)}
 .fc-btn.good:hover{background:rgba(240,194,122,0.1)}
 .fc-btn.skip{border-color:rgba(244,132,95,0.4);color:var(--coral)}
-.fc-progress{text-align:center;font-size:12px;color:var(--text3)}
+.fc-progress{text-align:center;font-size:14px;color:var(--text3)}
 
 /* SECTION DIVIDER */
 .s-divider{height:0.5px;background:var(--border);margin:40px 0}
@@ -139,7 +139,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 /* COMMON 100 */
 .common-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .cw-item{background:var(--card2);border:0.5px solid var(--border);border-radius:8px;padding:8px 10px}
-.cw-en{font-size:13px;color:var(--text)}
+.cw-en{font-size:15px;color:var(--text)}
 .cw-vi{font-size:11px;color:var(--text3)}
 .cw-pron{font-size:10px;color:var(--accent);font-style:italic}
 
@@ -182,6 +182,30 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
 .nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
+
+/* HAMBURGER MENU */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;z-index:201}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:4px;overflow-y:auto;z-index:199}
+  .nav-links.open{display:flex}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+  .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
+  nav{padding:12px 16px}
+  .content{padding:20px 16px}
+  .page-title,.page-title{font-size:28px!important}
+  .page-desc{font-size:15px!important}
+  .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
+  .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
+  .nav-drop>.nav-a::after{display:none}
+}
+@media(max-width:500px){
+  .page-title{font-size:24px!important}
+}
 </style>
 </head>
 <body>
@@ -193,6 +217,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="logo-mark">E</div>
     <span class="logo-name">Easy<span>English</span></span>
   </a>
+  <button class="hamburger" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="index.html" class="nav-a">Trang chủ</a>
     <div class="nav-drop">
@@ -326,12 +351,36 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
         <button onclick="nextMicWord()" style="width:44px;height:44px;border-radius:50%;background:rgba(100,216,165,0.15);border:0.5px solid rgba(100,216,165,0.3);color:var(--accent3);cursor:pointer;font-size:18px" title="Từ tiếp theo">→</button>
       </div>
       <div id="micResult" style="min-height:40px"></div>
-      <div id="micProgress" style="font-size:12px;color:var(--text3);margin-top:8px">1 / 10</div>
+      <div id="micProgress" style="font-size:14px;color:var(--text3);margin-top:8px">1 / 10</div>
     </div>
     <style>
       #micBtn.recording{background:rgba(244,132,95,0.4);border-color:var(--coral);animation:mic-pulse 1s infinite}
       @keyframes mic-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(244,132,95,0.4)}50%{transform:scale(1.08);box-shadow:0 0 0 12px rgba(244,132,95,0)}}
-    </style>
+    
+/* HAMBURGER MENU */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;z-index:201}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:4px;overflow-y:auto;z-index:199}
+  .nav-links.open{display:flex}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+  .nav-cta{display:block;text-align:center;margin-top:12px;font-size:16px;padding:14px}
+  nav{padding:12px 16px}
+  .content{padding:20px 16px}
+  .page-title,.page-title{font-size:28px!important}
+  .page-desc{font-size:15px!important}
+  .nav-drop-menu{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;padding:0 0 0 16px}
+  .nav-drop-menu-inner{background:transparent;border:none;box-shadow:none;padding:0}
+  .nav-drop>.nav-a::after{display:none}
+}
+@media(max-width:500px){
+  .page-title{font-size:24px!important}
+}
+</style>
   </div>
 
   <div class="s-divider"></div>
@@ -420,11 +469,11 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
     <div class="section-desc">Các ngày trong tuần, tháng trong năm và cách nói ngày tháng</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
       <div>
-        <div style="font-size:12px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Ngày trong tuần</div>
+        <div style="font-size:14px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Ngày trong tuần</div>
         <div id="daysList"></div>
       </div>
       <div>
-        <div style="font-size:12px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Tháng trong năm</div>
+        <div style="font-size:14px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Tháng trong năm</div>
         <div id="monthsList"></div>
       </div>
     </div>
