@@ -5,7 +5,7 @@
 
 const THEMES = {
   aura: {
-    name: 'Aura', icon: '🌿', type: 'dark',
+    name: 'Aura', icon: 'leaf', type: 'dark',
     colors: ['#1a3338','#64d8a5','#a78bfa','#f0c27a'],
     vars: {
       '--bg':'#0b1a1e','--bg2':'#12282e','--bg3':'#1a3338',
@@ -19,7 +19,7 @@ const THEMES = {
     }
   },
   midnight: {
-    name: 'Midnight', icon: '🌙', type: 'dark',
+    name: 'Midnight', icon: 'moon', type: 'dark',
     colors: ['#1e2140','#6c8cff','#a78bfa','#ff8a80'],
     vars: {
       '--bg':'#0e1225','--bg2':'#161b35','--bg3':'#1e2140',
@@ -33,7 +33,7 @@ const THEMES = {
     }
   },
   orchid: {
-    name: 'Orchid Noir', icon: '🌸', type: 'dark',
+    name: 'Orchid Noir', icon: 'flower-2', type: 'dark',
     colors: ['#2a1e30','#d4a5e5','#e879a0','#f0c27a'],
     vars: {
       '--bg':'#150e1a','--bg2':'#1f1628','--bg3':'#2a1e30',
@@ -47,7 +47,7 @@ const THEMES = {
     }
   },
   sunset: {
-    name: 'Sunset', icon: '🌅', type: 'dark',
+    name: 'Sunset', icon: 'sunset', type: 'dark',
     colors: ['#2a2018','#f0c27a','#ff8a80','#a78bfa'],
     vars: {
       '--bg':'#1a1410','--bg2':'#241c14','--bg3':'#2e241c',
@@ -61,7 +61,7 @@ const THEMES = {
     }
   },
   forest: {
-    name: 'Forest', icon: '🌲', type: 'dark',
+    name: 'Forest', icon: 'trees', type: 'dark',
     colors: ['#1a2e1a','#6bcb77','#a5d6a7','#f0c27a'],
     vars: {
       '--bg':'#0e1a0e','--bg2':'#142814','--bg3':'#1a2e1a',
@@ -75,7 +75,7 @@ const THEMES = {
     }
   },
   aero: {
-    name: 'Aero', icon: '☁️', type: 'light',
+    name: 'Aero', icon: 'cloud', type: 'light',
     colors: ['#e8f4f0','#0d9488','#6366f1','#f59e0b'],
     vars: {
       '--bg':'#f0f7f4','--bg2':'#e4eeea','--bg3':'#d8e6e0',
@@ -89,7 +89,7 @@ const THEMES = {
     }
   },
   rose: {
-    name: 'Rosé', icon: '🌷', type: 'light',
+    name: 'Rosé', icon: 'heart', type: 'light',
     colors: ['#fce4ec','#e91e63','#9c27b0','#ff9800'],
     vars: {
       '--bg':'#fef2f4','--bg2':'#fce4ec','--bg3':'#f8d4dc',
@@ -103,7 +103,7 @@ const THEMES = {
     }
   },
   cotton: {
-    name: 'Cotton Candy', icon: '🍬', type: 'light',
+    name: 'Cotton Candy', icon: 'candy', type: 'light',
     colors: ['#e8e0f0','#7c4dff','#e040fb','#ff6e40'],
     vars: {
       '--bg':'#f5f0fa','--bg2':'#ece4f4','--bg3':'#e0d6ec',
@@ -117,6 +117,12 @@ const THEMES = {
     }
   }
 };
+
+/* ── Make SVG icon ───────────────────────── */
+function makeIcon(name, size) {
+  size = size || 16;
+  return '<i data-lucide="' + name + '" style="width:' + size + 'px;height:' + size + 'px;display:inline-block;vertical-align:middle"></i>';
+}
 
 /* ── Apply Theme ────────────────────────── */
 function applyTheme(id) {
@@ -156,71 +162,63 @@ function applyTheme(id) {
 
 /* ── Theme Picker UI ────────────────────── */
 function createThemePicker() {
-  // Floating button
+  // Floating button — SVG palette icon
   const btn = document.createElement('button');
   btn.id = 'themeToggleBtn';
-  btn.innerHTML = '🎨';
+  btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>';
   btn.title = 'Đổi giao diện';
-  btn.style.cssText = `
-    position:fixed;bottom:24px;right:24px;z-index:9999;
-    width:48px;height:48px;border-radius:50%;border:none;
-    font-size:22px;cursor:pointer;
-    background:var(--card2);color:var(--text);
-    box-shadow:0 4px 20px rgba(0,0,0,0.3);
-    transition:all .2s;display:flex;align-items:center;justify-content:center;
-    backdrop-filter:blur(10px);border:0.5px solid var(--border);
-  `;
+  btn.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)';
   btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
   btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
 
   // Panel
   const panel = document.createElement('div');
   panel.id = 'themePanel';
-  panel.style.cssText = `
-    position:fixed;bottom:82px;right:24px;z-index:9998;
-    width:280px;border-radius:16px;padding:18px;
-    background:var(--card);border:0.5px solid var(--border);
-    box-shadow:0 12px 40px rgba(0,0,0,0.4);
-    backdrop-filter:blur(20px);
-    display:none;opacity:0;transform:translateY(10px);
-    transition:opacity .2s,transform .2s;
-  `;
+  panel.style.cssText = 'position:fixed;bottom:82px;right:24px;z-index:9998;width:280px;border-radius:16px;padding:18px;background:var(--card);border:0.5px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.4);backdrop-filter:blur(20px);display:none;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;max-height:70vh;overflow-y:auto';
 
   const currentTheme = localStorage.getItem('ee_theme') || 'aura';
 
-  let html = `
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <span style="font-family:'Fraunces',serif;font-size:16px;color:var(--text)">Giao diện</span>
-      <button id="tpClose" style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--text3);padding:2px">✕</button>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-  `;
+  function renderPanel() {
+    const activeTheme = localStorage.getItem('ee_theme') || 'aura';
+    let html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-family:\'Fraunces\',serif;font-size:16px;color:var(--text)">Giao diện</span><button id="tpClose" style="background:none;border:none;cursor:pointer;color:var(--text3);padding:4px;display:flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
 
-  Object.entries(THEMES).forEach(([id, t]) => {
-    const isActive = id === currentTheme;
-    html += `
-      <button class="tp-option${isActive ? ' active' : ''}" data-theme="${id}" style="
-        display:flex;align-items:center;gap:8px;padding:10px 12px;
-        border-radius:10px;border:1.5px solid ${isActive ? 'var(--accent)' : 'var(--border)'};
-        background:${isActive ? 'rgba(100,216,165,0.08)' : 'var(--card2)'};
-        cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;
-        color:var(--text);font-size:12px;text-align:left;
-      ">
-        <span style="font-size:16px">${t.icon}</span>
-        <div>
-          <div style="font-weight:500;font-size:12px">${t.name}</div>
-          <div style="display:flex;gap:3px;margin-top:3px">
-            ${t.colors.map(c => `<span style="width:10px;height:10px;border-radius:50%;background:${c};display:inline-block;border:0.5px solid rgba(0,0,0,0.15)"></span>`).join('')}
-          </div>
-        </div>
-        ${isActive ? '<span style="margin-left:auto;font-size:12px">✓</span>' : ''}
-      </button>
-    `;
-  });
+    Object.entries(THEMES).forEach(([id, t]) => {
+      const isActive = id === activeTheme;
+      html += '<button class="tp-option' + (isActive ? ' active' : '') + '" data-theme="' + id + '" style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1.5px solid ' + (isActive ? 'var(--accent)' : 'var(--border)') + ';background:' + (isActive ? 'rgba(100,216,165,0.08)' : 'var(--card2)') + ';cursor:pointer;transition:all .15s;font-family:\'DM Sans\',sans-serif;color:var(--text);font-size:12px;text-align:left;position:relative">';
+      html += '<div style="display:flex;gap:3px;flex-shrink:0">';
+      t.colors.forEach(function(c) {
+        html += '<span style="width:8px;height:8px;border-radius:50%;background:' + c + ';display:inline-block;border:0.5px solid rgba(0,0,0,0.15)"></span>';
+      });
+      html += '</div>';
+      html += '<span style="font-weight:500;font-size:11px;white-space:nowrap">' + t.name + '</span>';
+      if (isActive) {
+        html += '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>';
+      }
+      html += '</button>';
+    });
 
-  html += '</div>';
-  panel.innerHTML = html;
+    html += '</div>';
+    panel.innerHTML = html;
 
+    // Re-bind close button
+    panel.querySelector('#tpClose').addEventListener('click', closePanel);
+
+    // Re-bind theme selection
+    panel.querySelectorAll('.tp-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        applyTheme(opt.dataset.theme);
+        renderPanel(); // Re-render entire panel to avoid checkmark accumulation
+        // Update panel bg
+        setTimeout(() => {
+          panel.style.background = getComputedStyle(document.documentElement).getPropertyValue('--card');
+          panel.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border');
+        }, 50);
+      });
+    });
+  }
+
+  renderPanel();
   document.body.appendChild(panel);
   document.body.appendChild(btn);
 
@@ -230,8 +228,8 @@ function createThemePicker() {
     e.stopPropagation();
     isOpen = !isOpen;
     if (isOpen) {
+      renderPanel(); // Fresh render each time
       panel.style.display = 'block';
-      // Update panel colors after showing
       panel.style.background = getComputedStyle(document.documentElement).getPropertyValue('--card');
       requestAnimationFrame(() => {
         panel.style.opacity = '1';
@@ -248,37 +246,6 @@ function createThemePicker() {
     setTimeout(() => { panel.style.display = 'none'; }, 200);
     isOpen = false;
   }
-
-  panel.querySelector('#tpClose').addEventListener('click', closePanel);
-
-  // Theme selection
-  panel.querySelectorAll('.tp-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      const id = opt.dataset.theme;
-      applyTheme(id);
-      // Refresh panel appearance
-      panel.querySelectorAll('.tp-option').forEach(o => {
-        const active = o.dataset.theme === id;
-        o.classList.toggle('active', active);
-        o.style.borderColor = active ? 'var(--accent)' : 'var(--border)';
-        o.style.background = active ? 'rgba(100,216,165,0.08)' : 'var(--card2)';
-        // Update checkmark
-        const check = o.querySelector('span[style*="margin-left:auto"]');
-        if (check) check.remove();
-        if (active) {
-          const cm = document.createElement('span');
-          cm.style.cssText = 'margin-left:auto;font-size:12px';
-          cm.textContent = '✓';
-          o.appendChild(cm);
-        }
-      });
-      // Update panel bg
-      setTimeout(() => {
-        panel.style.background = getComputedStyle(document.documentElement).getPropertyValue('--card');
-        panel.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border');
-      }, 50);
-    });
-  });
 
   // Click outside to close
   document.addEventListener('click', (e) => {
