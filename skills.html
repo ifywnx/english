@@ -21,15 +21,6 @@ body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-heig
 .orb1{width:500px;height:500px;background:rgba(232,121,160,0.08);top:-100px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(123,110,246,0.06);bottom:0;left:-100px}
 
-nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
-.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
-.logo-name span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-a{padding:8px 14px;border-radius:8px;font-size:15px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
-.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
-.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
 .nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
 
 .page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
@@ -177,7 +168,6 @@ nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:c
   .strategy-grid{grid-template-columns:1fr}
   .situation-grid{grid-template-columns:1fr}
   .connector-grid{grid-template-columns:1fr 1fr}
-  nav{padding:12px 16px}
   
   .page-title{font-size:clamp(26px,4vw,48px)}
   .phrase-table{font-size:12px}
@@ -190,20 +180,10 @@ nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:c
 }
 
 /* NAV DROPDOWN */
-.nav-drop{position:relative}
-.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
-.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
-.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
-.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
-.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
-.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
-.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
 
 @media(max-width:900px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
-  nav{padding:10px 14px!important}
   .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
@@ -221,7 +201,6 @@ nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:c
   .alpha-btn{width:28px;height:28px;font-size:11px}
   img{max-width:100%;height:auto}
   .nav-cta{display:none}
-  .logo-name{font-size:16px}
 }
 
 @media(max-width:900px){
@@ -275,12 +254,34 @@ table{width:100%;border-collapse:collapse}
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:calc(100vw - 32px);font-size:13px}
 }
 
+/* === UNIFIED NAV === */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.nav-a{padding:8px 14px;color:var(--text2);text-decoration:none;font-size:14px;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent)}
+.nav-drop{position:relative}
+.nav-drop>.nav-a::after{content:" ▾";font-size:10px}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
+/* === HAMBURGER === */
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
 .hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-@media(max-width:900px){.hamburger{display:block!important}}
+/* === MOBILE NAV === */
+@media(max-width:900px){
+  nav{padding:10px 14px}
+  .nav-links{display:none!important}
+  .hamburger{display:block!important}
+}
 </style>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
@@ -297,68 +298,68 @@ table{width:100%;border-collapse:collapse}
   <div class="nav-links">
     <a href="index.html" class="nav-a">Trang chủ</a>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp ▾</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
         <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a">Từ vựng</a>
     <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
     <a href="pronunciation.html" class="nav-a">Phát âm</a>
-    <a href="skills.html" class="nav-a active">4 Kỹ năng</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
     <a href="quiz.html" class="nav-a">Bài tập</a>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển ▾</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
         <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
-        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-everyday-2.html" class="nav-a"><i data-lucide="book-copy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển ĐT 2</a>
         <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
-        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+        <a href="dictionary-ielts-2.html" class="nav-a"><i data-lucide="book-copy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS ▾</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="trophy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
         <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
         <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
-        <div class="nav-sep"></div>
-        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
         <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
       </div></div>
     </div>
     <a href="progress.html" class="nav-a">Tiến độ</a>
   </div>
-  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
 </nav>
-<!-- MOBILE MENU -->
 <div id="mobileMenu" style="display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);z-index:9999;padding:20px 16px;overflow-y:auto;flex-direction:column;gap:2px">
-  <a href="index.html">Trang chủ</a>
-  <a href="grammar.html">Ngữ pháp cơ bản</a>
-  <a href="grammar-advanced.html">Ngữ pháp nâng cao</a>
-  <a href="vocabulary.html">Từ vựng</a>
-  <a href="synonyms.html">Đồng / Trái nghĩa</a>
-  <a href="pronunciation.html">Phát âm</a>
-  <a href="skills.html">4 Kỹ năng</a>
-  <a href="quiz.html">Bài tập</a>
-  <a href="dictionary.html">Từ điển Anh-Việt</a>
-  <a href="dictionary-everyday.html">Từ điển Đời thường</a>
-  <a href="dictionary-ielts.html">Từ điển IELTS</a>
-  <a href="ielts.html">IELTS Guide</a>
-  <a href="academic-words.html">AWL 570 từ</a>
-  <a href="collocations.html">Collocations</a>
-  <a href="listening.html">Luyện nghe</a>
-  <a href="writing-checker.html">Writing Checker</a>
-  <a href="spaced-repetition.html">Ôn tập lặp lại</a>
-  <a href="progress.html">Tiến độ</a>
+  <a href="index.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Trang chủ</a>
+  <a href="grammar.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp cơ bản</a>
+  <a href="grammar-advanced.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp nâng cao</a>
+  <a href="vocabulary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ vựng</a>
+  <a href="synonyms.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Đồng/Trái nghĩa</a>
+  <a href="pronunciation.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Phát âm</a>
+  <a href="skills.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">4 Kỹ năng</a>
+  <a href="quiz.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Bài tập</a>
+  <a href="dictionary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Anh-Việt</a>
+  <a href="dictionary-everyday.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Đời thường</a>
+  <a href="dictionary-everyday-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển ĐT 2</a>
+  <a href="dictionary-ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS</a>
+  <a href="dictionary-ielts-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS 2</a>
+  <a href="ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">IELTS Guide</a>
+  <a href="academic-words.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">AWL 570 từ</a>
+  <a href="collocations.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Collocations</a>
+  <a href="progress.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Tiến độ</a>
+  <a href="spaced-repetition.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Spaced Repetition</a>
+  <a href="listening.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Listening</a>
+  <a href="writing-checker.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Writing Checker</a>
 </div>
-
+<!-- MOBILE MENU -->
 <div class="page-wrap">
 <aside class="sidebar">
   <div class="sidebar-title">Đọc hiểu</div>
-  <a href="#reading" class="sb-item active"><span class="sb-emoji">📰</span>Kỹ năng đọc</a>
+  <a href="#reading" class="sb-item active"><span class="sb-emoji"><i data-lucide="newspaper" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span>Kỹ năng đọc</a>
   <a href="#read-strategies" class="sb-item"><span class="sb-emoji"><i data-lucide="brain" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Chiến thuật đọc</a>
   <a href="#read-passage1" class="sb-item"><span class="sb-emoji"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Bài đọc 1 — Dễ</a>
   <a href="#read-passage2" class="sb-item"><span class="sb-emoji"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Bài đọc 2 — Vừa</a>
@@ -370,14 +371,14 @@ table{width:100%;border-collapse:collapse}
 
   <div class="sidebar-title">Nói & Giao tiếp</div>
   <a href="#speaking" class="sb-item"><span class="sb-emoji"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Kỹ năng nói</a>
-  <a href="#situations" class="sb-item"><span class="sb-emoji">🎭</span>Tình huống giao tiếp</a>
+  <a href="#situations" class="sb-item"><span class="sb-emoji"><i data-lucide="drama" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span>Tình huống giao tiếp</a>
   <a href="#phrases" class="sb-item"><span class="sb-emoji"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Mẫu câu thực tế</a>
 
   <div class="sidebar-title">Viết</div>
   <a href="#writing" class="sb-item"><span class="sb-emoji"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Kỹ năng viết</a>
-  <a href="#email" class="sb-item"><span class="sb-emoji">📧</span>Viết email</a>
+  <a href="#email" class="sb-item"><span class="sb-emoji"><i data-lucide="mail" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span>Viết email</a>
   <a href="#paragraph" class="sb-item"><span class="sb-emoji"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Viết đoạn văn</a>
-  <a href="#connectors" class="sb-item"><span class="sb-emoji">🔗</span>Từ nối câu</a>
+  <a href="#connectors" class="sb-item"><span class="sb-emoji"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span>Từ nối câu</a>
   <a href="#practice-writing" class="sb-item"><span class="sb-emoji"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span>Luyện viết</a>
 </aside>
 
@@ -388,7 +389,7 @@ table{width:100%;border-collapse:collapse}
 
   <div class="skill-cards">
     <a href="#reading" class="skill-card sc-reading">
-      <div class="skill-icon">📰</div>
+      <div class="skill-icon"><i data-lucide="newspaper" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div>
       <div class="skill-name">Đọc hiểu</div>
       <div class="skill-desc">Reading comprehension</div>
     </a>
@@ -464,15 +465,15 @@ table{width:100%;border-collapse:collapse}
       <div class="passage-title">My Daily Routine — Lịch trình hằng ngày của tôi</div>
       <div class="passage-text">
         My name is <strong>Linh</strong>. I am a student. I live in <span class="vocab-highlight" onclick="showVocab('hanoi')">Hanoi</span>, Vietnam.
-        <div class="vocab-popup" id="hanoi">📍 <strong>Hanoi</strong> /həˈnɔɪ/ — Hà Nội, thủ đô Việt Nam</div>
+        <div class="vocab-popup" id="hanoi"><i data-lucide="map-pin" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> <strong>Hanoi</strong> /həˈnɔɪ/ — Hà Nội, thủ đô Việt Nam</div>
         <br><br>
         I <span class="vocab-highlight" onclick="showVocab('wake')">wake up</span> at 6 o'clock every morning. First, I <strong>brush my teeth</strong> and <strong>wash my face</strong>.
-        <div class="vocab-popup" id="wake">⏰ <strong>wake up</strong> /weɪk ʌp/ — thức dậy (phrasal verb)</div>
+        <div class="vocab-popup" id="wake"><i data-lucide="clock" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> <strong>wake up</strong> /weɪk ʌp/ — thức dậy (phrasal verb)</div>
         Then I eat <span class="vocab-highlight" onclick="showVocab('breakfast')">breakfast</span> with my family. I usually have <strong>rice and eggs</strong>.
-        <div class="vocab-popup" id="breakfast">🍳 <strong>breakfast</strong> /ˈbrɛkfəst/ — bữa sáng (bữa ăn đầu tiên trong ngày)</div>
+        <div class="vocab-popup" id="breakfast"><i data-lucide="egg-fried" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> <strong>breakfast</strong> /ˈbrɛkfəst/ — bữa sáng (bữa ăn đầu tiên trong ngày)</div>
         <br><br>
         I go to school at 7:30. My school is <span class="vocab-highlight" onclick="showVocab('nearby')">nearby</span>, so I <strong>ride my bicycle</strong>.
-        <div class="vocab-popup" id="nearby">🗺️ <strong>nearby</strong> /ˈnɪərbaɪ/ — gần đó, ở gần</div>
+        <div class="vocab-popup" id="nearby"><i data-lucide="map" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> <strong>nearby</strong> /ˈnɪərbaɪ/ — gần đó, ở gần</div>
         Classes start at 8 o'clock. I study <strong>Math, English, Science</strong> and <strong>History</strong>.
         <br><br>
         After school, I come home at 5 PM. I do my <span class="vocab-highlight" onclick="showVocab('homework')">homework</span> and help my mother with housework.
@@ -526,10 +527,10 @@ table{width:100%;border-collapse:collapse}
         <div class="vocab-popup" id="revolutionized"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> <strong>revolutionize</strong> /ˌrɛvəˈluːʃənaɪz/ — cách mạng hóa, thay đổi hoàn toàn</div>
         <br><br>
         On the positive side, smartphones have made communication <span class="vocab-highlight" onclick="showVocab('instant')">instant</span> and effortless. We can video call someone on the other side of the world for free. Social media platforms connect millions of people, allowing them to share ideas and stay informed about world events.
-        <div class="vocab-popup" id="instant">⚡ <strong>instant</strong> /ˈɪnstənt/ — tức thì, ngay lập tức. "Effortless" = không cần cố gắng</div>
+        <div class="vocab-popup" id="instant"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> <strong>instant</strong> /ˈɪnstənt/ — tức thì, ngay lập tức. "Effortless" = không cần cố gắng</div>
         <br><br>
         However, excessive smartphone use has raised serious <span class="vocab-highlight" onclick="showVocab('concerns')">concerns</span>. Studies show that spending too much time on social media is linked to increased anxiety and depression, particularly among teenagers. Many people also struggle with <strong>digital addiction</strong> — the inability to put their phone down even during meals or conversations.
-        <div class="vocab-popup" id="concerns">⚠️ <strong>concern</strong> /kənˈsɜːrn/ — mối lo ngại, điều đáng lo. "Raise concerns" = gây ra lo ngại</div>
+        <div class="vocab-popup" id="concerns"><i data-lucide="alert-triangle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> <strong>concern</strong> /kənˈsɜːrn/ — mối lo ngại, điều đáng lo. "Raise concerns" = gây ra lo ngại</div>
         <br><br>
         <strong>In conclusion</strong>, smartphones are powerful tools that can improve our lives when used <span class="vocab-highlight" onclick="showVocab('wisely')">wisely</span>. The key is balance — using technology to enhance our lives without letting it control us.
         <div class="vocab-popup" id="wisely"><i data-lucide="brain" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> <strong>wisely</strong> /ˈwaɪzli/ — một cách khôn ngoan. "Wise" (tính từ) → "wisely" (trạng từ)</div>
@@ -650,52 +651,52 @@ table{width:100%;border-collapse:collapse}
     <div class="section-title" style="font-size:20px">Hội thoại theo tình huống — Bấm để xem</div>
     <div class="situation-grid">
       <div class="situation-card" onclick="toggleSit(this)">
-        <div class="sit-icon">☕</div>
+        <div class="sit-icon"><i data-lucide="coffee" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div>
         <div class="sit-title">Gọi đồ ở quán cà phê</div>
         <div class="sit-desc">Ordering at a café</div>
         <div class="sit-expanded">
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Hi! What can I get for you?</div><div class="dl-vi">Xin chào! Bạn muốn gọi gì?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">I'd like a large iced coffee, please.</div><div class="dl-vi">Cho tôi một ly cà phê đá cỡ lớn.</div><div class="dl-note">"I'd like" = lịch sự hơn "I want"</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Sure! Would you like any milk or sugar?</div><div class="dl-vi">Được! Bạn có muốn thêm sữa hay đường không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">No milk, please. And can I have it to go?</div><div class="dl-vi">Không sữa. Và tôi muốn mang về được không?</div><div class="dl-note">"to go" = mang về, "for here" = dùng tại chỗ</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Of course! That'll be $3.50.</div><div class="dl-vi">Dĩ nhiên! Tổng cộng 3.50 đô.</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Hi! What can I get for you?</div><div class="dl-vi">Xin chào! Bạn muốn gọi gì?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">I'd like a large iced coffee, please.</div><div class="dl-vi">Cho tôi một ly cà phê đá cỡ lớn.</div><div class="dl-note">"I'd like" = lịch sự hơn "I want"</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Sure! Would you like any milk or sugar?</div><div class="dl-vi">Được! Bạn có muốn thêm sữa hay đường không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">No milk, please. And can I have it to go?</div><div class="dl-vi">Không sữa. Và tôi muốn mang về được không?</div><div class="dl-note">"to go" = mang về, "for here" = dùng tại chỗ</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Of course! That'll be $3.50.</div><div class="dl-vi">Dĩ nhiên! Tổng cộng 3.50 đô.</div></div></div>
         </div>
       </div>
       <div class="situation-card" onclick="toggleSit(this)">
-        <div class="sit-icon">🏨</div>
+        <div class="sit-icon"><i data-lucide="hotel" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div>
         <div class="sit-title">Nhận phòng khách sạn</div>
         <div class="sit-desc">Hotel check-in</div>
         <div class="sit-expanded">
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Good evening! Do you have a reservation?</div><div class="dl-vi">Chào buổi tối! Bạn có đặt phòng trước không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes, I have a booking under the name Nguyen Van A.</div><div class="dl-vi">Vâng, tôi có đặt phòng dưới tên Nguyễn Văn A.</div><div class="dl-note">"under the name" = đặt theo tên</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Let me check... Yes, one double room for 2 nights. Can I see your ID?</div><div class="dl-vi">Để tôi kiểm tra... Đúng, một phòng đôi 2 đêm. Cho xem CMND được không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Here you go. Also, is breakfast included?</div><div class="dl-vi">Đây. Ngoài ra, giá có bao gồm bữa sáng không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Yes, breakfast is from 7 to 10 AM at the restaurant on floor 2.</div><div class="dl-vi">Có, bữa sáng từ 7 đến 10h tại nhà hàng tầng 2.</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Good evening! Do you have a reservation?</div><div class="dl-vi">Chào buổi tối! Bạn có đặt phòng trước không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Yes, I have a booking under the name Nguyen Van A.</div><div class="dl-vi">Vâng, tôi có đặt phòng dưới tên Nguyễn Văn A.</div><div class="dl-note">"under the name" = đặt theo tên</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Let me check... Yes, one double room for 2 nights. Can I see your ID?</div><div class="dl-vi">Để tôi kiểm tra... Đúng, một phòng đôi 2 đêm. Cho xem CMND được không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Here you go. Also, is breakfast included?</div><div class="dl-vi">Đây. Ngoài ra, giá có bao gồm bữa sáng không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Yes, breakfast is from 7 to 10 AM at the restaurant on floor 2.</div><div class="dl-vi">Có, bữa sáng từ 7 đến 10h tại nhà hàng tầng 2.</div></div></div>
         </div>
       </div>
       <div class="situation-card" onclick="toggleSit(this)">
-        <div class="sit-icon">🏥</div>
+        <div class="sit-icon"><i data-lucide="building" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div>
         <div class="sit-title">Đi khám bác sĩ</div>
         <div class="sit-desc">At the doctor's</div>
         <div class="sit-expanded">
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">What seems to be the problem?</div><div class="dl-vi">Bạn có vấn đề gì vậy?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">I have a terrible headache and a sore throat. I've had it for two days.</div><div class="dl-vi">Tôi bị đau đầu dữ dội và đau họng. Tôi bị thế này hai ngày rồi.</div><div class="dl-note">"sore throat" = đau họng · "have had" = đã bị (HT hoàn thành)</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Do you have a fever? Any coughing?</div><div class="dl-vi">Bạn có bị sốt không? Có ho không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes, I have a slight fever. And I've been coughing a lot.</div><div class="dl-vi">Vâng, tôi bị sốt nhẹ. Và tôi ho nhiều.</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">I see. It looks like you have the flu. I'll prescribe some medicine. Rest and drink plenty of water.</div><div class="dl-vi">Tôi hiểu. Có vẻ bạn bị cúm. Tôi sẽ kê thuốc. Nghỉ ngơi và uống nhiều nước.</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">What seems to be the problem?</div><div class="dl-vi">Bạn có vấn đề gì vậy?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">I have a terrible headache and a sore throat. I've had it for two days.</div><div class="dl-vi">Tôi bị đau đầu dữ dội và đau họng. Tôi bị thế này hai ngày rồi.</div><div class="dl-note">"sore throat" = đau họng · "have had" = đã bị (HT hoàn thành)</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Do you have a fever? Any coughing?</div><div class="dl-vi">Bạn có bị sốt không? Có ho không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Yes, I have a slight fever. And I've been coughing a lot.</div><div class="dl-vi">Vâng, tôi bị sốt nhẹ. Và tôi ho nhiều.</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">I see. It looks like you have the flu. I'll prescribe some medicine. Rest and drink plenty of water.</div><div class="dl-vi">Tôi hiểu. Có vẻ bạn bị cúm. Tôi sẽ kê thuốc. Nghỉ ngơi và uống nhiều nước.</div></div></div>
         </div>
       </div>
       <div class="situation-card" onclick="toggleSit(this)">
-        <div class="sit-icon">🛒</div>
+        <div class="sit-icon"><i data-lucide="shopping-cart" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div>
         <div class="sit-title">Mua sắm</div>
         <div class="sit-desc">Shopping</div>
         <div class="sit-expanded">
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Can I help you?</div><div class="dl-vi">Tôi có thể giúp gì bạn không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes, I'm looking for a blue shirt. Do you have this in a medium size?</div><div class="dl-vi">Tôi đang tìm một cái áo màu xanh. Bạn có cỡ medium không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">Let me check... Yes! Here you go. Would you like to try it on?</div><div class="dl-vi">Để tôi kiểm tra... Có! Đây. Bạn muốn thử không?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">Yes please. Where's the fitting room?</div><div class="dl-vi">Vâng. Phòng thử đồ ở đâu vậy?</div><div class="dl-note">"fitting room" = phòng thử đồ</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-b">🙋</div><div class="dl-bubble"><div class="dl-en">It fits perfectly! How much is it?</div><div class="dl-vi">Vừa vặn quá! Bao nhiêu tiền?</div></div></div>
-          <div class="dl-line"><div class="dl-avatar av-a">👤</div><div class="dl-bubble"><div class="dl-en">It's $25. We also have a 10% discount today.</div><div class="dl-vi">25 đô. Hôm nay chúng tôi có giảm 10%.</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Can I help you?</div><div class="dl-vi">Tôi có thể giúp gì bạn không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Yes, I'm looking for a blue shirt. Do you have this in a medium size?</div><div class="dl-vi">Tôi đang tìm một cái áo màu xanh. Bạn có cỡ medium không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Let me check... Yes! Here you go. Would you like to try it on?</div><div class="dl-vi">Để tôi kiểm tra... Có! Đây. Bạn muốn thử không?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">Yes please. Where's the fitting room?</div><div class="dl-vi">Vâng. Phòng thử đồ ở đâu vậy?</div><div class="dl-note">"fitting room" = phòng thử đồ</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-b"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">It fits perfectly! How much is it?</div><div class="dl-vi">Vừa vặn quá! Bao nhiêu tiền?</div></div></div>
+          <div class="dl-line"><div class="dl-avatar av-a"><i data-lucide="user" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div><div class="dl-bubble"><div class="dl-en">It's $25. We also have a 10% discount today.</div><div class="dl-vi">25 đô. Hôm nay chúng tôi có giảm 10%.</div></div></div>
         </div>
       </div>
     </div>
@@ -734,7 +735,7 @@ table{width:100%;border-collapse:collapse}
     <div class="section-label" style="color:var(--accent)">Email</div>
     <div class="section-title" style="font-size:20px">Cách viết Email tiếng Anh</div>
     <div class="template-box">
-      <div class="template-title">📧 Email xin việc / liên hệ chuyên nghiệp</div>
+      <div class="template-title"><i data-lucide="mail" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Email xin việc / liên hệ chuyên nghiệp</div>
       <div class="template-section">
         <div class="ts-label">Subject (Tiêu đề)</div>
         <div class="ts-content">Application for Marketing Manager Position — [Your Name]</div>
@@ -768,7 +769,7 @@ table{width:100%;border-collapse:collapse}
     </div>
 
     <div class="template-box">
-      <div class="template-title">📧 Email không chính thức — gửi bạn bè</div>
+      <div class="template-title"><i data-lucide="mail" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Email không chính thức — gửi bạn bè</div>
       <div class="template-section">
         <div class="ts-label">Salutation</div>
         <div class="ts-content">Hi [Name]! / Hey [Name],</div>
@@ -885,10 +886,10 @@ function checkRQ(btn, type, msg) {
   note.className = 'rq-feedback';
   if(type==='correct') {
     note.style.cssText='font-size:12px;color:var(--accent3);margin-top:6px;padding:6px 10px;background:rgba(240,194,122,0.1);border-radius:6px';
-    note.textContent = '✓ ' + msg;
+    note.textContent = '• ' + msg;
   } else {
     note.style.cssText='font-size:12px;color:var(--coral);margin-top:6px;padding:6px 10px;background:rgba(244,132,95,0.08);border-radius:6px';
-    note.textContent = '✗ ' + msg;
+    note.textContent = '• ' + msg;
   }
   container.parentNode.appendChild(note);
 }
@@ -906,25 +907,25 @@ function checkWriting() {
   fb.style.display = 'block';
   
   let tips = [];
-  if(words < 30) tips.push('📝 Bài còn ngắn. Cố gắng viết ít nhất 50 từ!');
-  if(words >= 50) tips.push('✅ Độ dài tốt! ' + words + ' từ.');
+  if(words < 30) tips.push('• Bài còn ngắn. Cố gắng viết ít nhất 50 từ!');
+  if(words >= 50) tips.push('• Độ dài tốt! ' + words + ' từ.');
   
   const connectors = ['however','furthermore','moreover','therefore','although','in addition','for example','in conclusion','on the other hand','as a result'];
   const usedConn = connectors.filter(c => text.toLowerCase().includes(c));
-  if(usedConn.length === 0) tips.push('💡 Thêm từ nối để bài viết mạch lạc hơn: "However", "Furthermore", "In addition"...');
-  else tips.push('✅ Bạn đã dùng từ nối: ' + usedConn.join(', '));
+  if(usedConn.length === 0) tips.push('• Thêm từ nối để bài viết mạch lạc hơn: "However", "Furthermore", "In addition"...');
+  else tips.push('• Bạn đã dùng từ nối: ' + usedConn.join(', '));
   
   const sentences = text.split(/[.!?]+/).filter(s=>s.trim().length > 0);
-  if(sentences.length < 3) tips.push('📌 Cố gắng viết ít nhất 4-5 câu để bài đầy đủ hơn.');
+  if(sentences.length < 3) tips.push('• Cố gắng viết ít nhất 4-5 câu để bài đầy đủ hơn.');
   
   const capitalOk = sentences.every(s => s.trim()[0] === s.trim()[0].toUpperCase());
-  if(!capitalOk) tips.push('⚠️ Nhớ viết hoa chữ đầu mỗi câu!');
-  else tips.push('✅ Viết hoa đầu câu đúng!');
+  if(!capitalOk) tips.push('• Nhớ viết hoa chữ đầu mỗi câu!');
+  else tips.push('• Viết hoa đầu câu đúng!');
   
   fb.innerHTML = `<div style="background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px">
     <div style="font-size:14px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">Nhận xét bài viết</div>
     ${tips.map(t=>`<div style="font-size:13px;color:var(--text2);padding:6px 0;border-bottom:0.5px solid var(--border)">${t}</div>`).join('')}
-    <div style="font-size:14px;color:var(--text3);margin-top:10px"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Để nhận phản hồi chi tiết hơn, dùng tab Từ điển hoặc hỏi AI trợ lý.</div>
+    <div style="font-size:14px;color:var(--text3);margin-top:10px">• Để nhận phản hồi chi tiết hơn, dùng tab Từ điển hoặc hỏi AI trợ lý.</div>
   </div>`;
 }
 

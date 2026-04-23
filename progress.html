@@ -22,15 +22,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .orb2{width:500px;height:500px;background:rgba(167,139,250,0.08);bottom:-100px;left:-150px}
 .orb3{width:300px;height:300px;background:rgba(78,205,196,0.07);top:40%;left:30%}
 
-nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
-.logo-name{font-family:'Fraunces',serif;font-size:18px;color:var(--text)}
-.logo-name span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-a{padding:8px 14px;border-radius:8px;font-size:15px;color:var(--text2);text-decoration:none;transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif}
-.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
-.nav-a.active{color:var(--accent);background:rgba(167,139,250,0.08)}
 .nav-cta{padding:9px 20px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:13px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
 
 .content{padding:40px 48px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
@@ -173,7 +164,6 @@ nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:c
 
 @media(max-width:900px){
   .content{padding:24px 20px}
-  nav{padding:12px 16px}
   
   .page-title{font-size:clamp(26px,4vw,48px)}
   .hero-stats{grid-template-columns:repeat(3,1fr)}
@@ -192,20 +182,10 @@ nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:c
 }
 
 /* NAV DROPDOWN */
-.nav-drop{position:relative}
-.nav-drop>.nav-a{display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none}
-.nav-drop>.nav-a::after{content:'▾';font-size:10px;opacity:.6;transition:transform .2s}
-.nav-drop.open>.nav-a::after,.nav-drop:hover>.nav-a::after{transform:rotate(180deg)}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:0;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;z-index:300}
-.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
-.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
-.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:12px;white-space:nowrap}
-.nav-drop-menu .nav-sep{height:0.5px;background:var(--border);margin:4px 8px}
 
 @media(max-width:900px){
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
-  nav{padding:10px 14px!important}
   .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
   .sidebar{display:none!important}
   main.content{margin-left:0!important;padding:20px 14px!important}
@@ -223,7 +203,6 @@ nav{max-width:100vw;position:sticky;top:0;z-index:200;display:flex;align-items:c
   .alpha-btn{width:28px;height:28px;font-size:11px}
   img{max-width:100%;height:auto}
   .nav-cta{display:none}
-  .logo-name{font-size:16px}
 }
 
 @media(max-width:900px){
@@ -277,12 +256,34 @@ table{width:100%;border-collapse:collapse}
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:calc(100vw - 32px);font-size:13px}
 }
 
+/* === UNIFIED NAV === */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.nav-a{padding:8px 14px;color:var(--text2);text-decoration:none;font-size:14px;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent)}
+.nav-drop{position:relative}
+.nav-drop>.nav-a::after{content:" ▾";font-size:10px}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
+/* === HAMBURGER === */
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
 .hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-@media(max-width:900px){.hamburger{display:block!important}}
+/* === MOBILE NAV === */
+@media(max-width:900px){
+  nav{padding:10px 14px}
+  .nav-links{display:none!important}
+  .hamburger{display:block!important}
+}
 </style>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
@@ -300,10 +301,11 @@ table{width:100%;border-collapse:collapse}
   <div class="nav-links">
     <a href="index.html" class="nav-a">Trang chủ</a>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp ▾</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
         <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
       </div></div>
     </div>
     <a href="vocabulary.html" class="nav-a">Từ vựng</a>
@@ -312,52 +314,51 @@ table{width:100%;border-collapse:collapse}
     <a href="skills.html" class="nav-a">4 Kỹ năng</a>
     <a href="quiz.html" class="nav-a">Bài tập</a>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển ▾</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
         <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
-        <a href="dictionary-everyday-2.html" class="nav-sub">Từ điển ĐT 2</a>
+        <a href="dictionary-everyday-2.html" class="nav-a"><i data-lucide="book-copy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển ĐT 2</a>
         <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
-        <a href="dictionary-ielts-2.html" class="nav-sub">Từ điển IELTS 2</a>
+        <a href="dictionary-ielts-2.html" class="nav-a"><i data-lucide="book-copy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS 2</a>
       </div></div>
     </div>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS ▾</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
-        <a href="ielts.html" class="nav-a"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="ielts.html" class="nav-a"><i data-lucide="trophy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
         <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
         <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
-        <div class="nav-sep"></div>
-        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
         <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
       </div></div>
     </div>
-    <a href="progress.html" class="nav-a active">Tiến độ</a>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
   </div>
-  <a href="quiz.html" class="nav-cta">Làm bài tập →</a>
 </nav>
-<!-- MOBILE MENU -->
 <div id="mobileMenu" style="display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);z-index:9999;padding:20px 16px;overflow-y:auto;flex-direction:column;gap:2px">
-  <a href="index.html">Trang chủ</a>
-  <a href="grammar.html">Ngữ pháp cơ bản</a>
-  <a href="grammar-advanced.html">Ngữ pháp nâng cao</a>
-  <a href="vocabulary.html">Từ vựng</a>
-  <a href="synonyms.html">Đồng / Trái nghĩa</a>
-  <a href="pronunciation.html">Phát âm</a>
-  <a href="skills.html">4 Kỹ năng</a>
-  <a href="quiz.html">Bài tập</a>
-  <a href="dictionary.html">Từ điển Anh-Việt</a>
-  <a href="dictionary-everyday.html">Từ điển Đời thường</a>
-  <a href="dictionary-ielts.html">Từ điển IELTS</a>
-  <a href="ielts.html">IELTS Guide</a>
-  <a href="academic-words.html">AWL 570 từ</a>
-  <a href="collocations.html">Collocations</a>
-  <a href="listening.html">Luyện nghe</a>
-  <a href="writing-checker.html">Writing Checker</a>
-  <a href="spaced-repetition.html">Ôn tập lặp lại</a>
-  <a href="progress.html">Tiến độ</a>
+  <a href="index.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Trang chủ</a>
+  <a href="grammar.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp cơ bản</a>
+  <a href="grammar-advanced.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp nâng cao</a>
+  <a href="vocabulary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ vựng</a>
+  <a href="synonyms.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Đồng/Trái nghĩa</a>
+  <a href="pronunciation.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Phát âm</a>
+  <a href="skills.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">4 Kỹ năng</a>
+  <a href="quiz.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Bài tập</a>
+  <a href="dictionary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Anh-Việt</a>
+  <a href="dictionary-everyday.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Đời thường</a>
+  <a href="dictionary-everyday-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển ĐT 2</a>
+  <a href="dictionary-ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS</a>
+  <a href="dictionary-ielts-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS 2</a>
+  <a href="ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">IELTS Guide</a>
+  <a href="academic-words.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">AWL 570 từ</a>
+  <a href="collocations.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Collocations</a>
+  <a href="progress.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Tiến độ</a>
+  <a href="spaced-repetition.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Spaced Repetition</a>
+  <a href="listening.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Listening</a>
+  <a href="writing-checker.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Writing Checker</a>
 </div>
-
+<!-- MOBILE MENU -->
 <div class="content">
   <div class="page-label">Dashboard</div>
   <h1 class="page-title">Tiến độ học tập của bạn</h1>
@@ -381,7 +382,7 @@ table{width:100%;border-collapse:collapse}
       <div class="hs-icon"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
       <div class="hs-num" id="hs-vocab">0</div>
       <div class="hs-label">Từ vựng đã lưu</div>
-      <div class="hs-change hs-up" id="vocab-msg">Bấm ⭐ để lưu từ</div>
+      <div class="hs-change hs-up" id="vocab-msg">Bấm <i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> để lưu từ</div>
     </div>
     <div class="hs-card hs-quiz">
       <div class="hs-icon"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
@@ -390,7 +391,7 @@ table{width:100%;border-collapse:collapse}
       <div class="hs-change" id="quiz-acc" style="color:var(--coral)">0% chính xác</div>
     </div>
     <div class="hs-card hs-days">
-      <div class="hs-icon">📅</div>
+      <div class="hs-icon"><i data-lucide="calendar" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></div>
       <div class="hs-num" id="hs-days">0</div>
       <div class="hs-label">Ngày học tổng</div>
       <div class="hs-change hs-up" id="days-msg">Hôm nay tính rồi!</div>
@@ -417,7 +418,7 @@ table{width:100%;border-collapse:collapse}
   <!-- STREAK CALENDAR -->
   <div class="calendar-section">
     <div class="cs-header">
-      <div class="cs-title">📅 Lịch học — 3 tháng gần nhất</div>
+      <div class="cs-title"><i data-lucide="calendar" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Lịch học — 3 tháng gần nhất</div>
       <div class="cs-streak" id="cal-streak-text"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> 0 ngày liên tiếp</div>
     </div>
     <div class="cal-grid" id="calGrid"></div>
@@ -482,7 +483,7 @@ table{width:100%;border-collapse:collapse}
   <div class="s-divider"></div>
 
   <div class="reset-section">
-    <button class="reset-btn" onclick="resetData()">⚠️ Xóa toàn bộ dữ liệu học tập</button>
+    <button class="reset-btn" onclick="resetData()"><i data-lucide="alert-triangle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Xóa toàn bộ dữ liệu học tập</button>
     <div style="font-size:11px;color:var(--text3);margin-top:8px">Thao tác này không thể hoàn tác. Tất cả streak, AWL, từ đã lưu sẽ bị xóa.</div>
   </div>
 </div>
@@ -534,35 +535,35 @@ function calcXP(data) {
 
 // ===== ACHIEVEMENTS =====
 const ACHIEVEMENTS = [
-  {icon:'🌱', name:'Bắt đầu', desc:'Mở website lần đầu', check: d => true},
+  {icon:'•', name:'Bắt đầu', desc:'Mở website lần đầu', check: d => true},
   {icon:'🔥', name:'3 ngày streak', desc:'Học 3 ngày liên tiếp', check: d => d.streak.count >= 3},
-  {icon:'💪', name:'7 ngày streak', desc:'Học 7 ngày liên tiếp', check: d => d.streak.count >= 7},
-  {icon:'🏃', name:'30 ngày streak', desc:'Học 30 ngày liên tiếp', check: d => d.streak.count >= 30},
-  {icon:'📚', name:'Từ vựng đầu tiên', desc:'Lưu từ vựng đầu tiên', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 1},
-  {icon:'💬', name:'50 từ vựng', desc:'Học 50 từ vựng', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 50},
-  {icon:'🎯', name:'Quiz đầu tiên', desc:'Làm đúng câu quiz đầu tiên', check: d => d.quizCorrect >= 1},
-  {icon:'🏆', name:'100 câu đúng', desc:'Trả lời đúng 100 câu quiz', check: d => d.quizCorrect >= 100},
-  {icon:'📖', name:'AWL 50 từ', desc:'Học 50 từ Academic Word List', check: d => d.awlLearned.length >= 50},
-  {icon:'🌟', name:'AWL 100 từ', desc:'Học 100 từ AWL', check: d => d.awlLearned.length >= 100},
-  {icon:'👑', name:'AWL 300 từ', desc:'Học 300 từ AWL — Band 7 level!', check: d => d.awlLearned.length >= 300},
-  {icon:'🚀', name:'AWL hoàn thành', desc:'Học hết 570 từ AWL!', check: d => d.awlLearned.length >= 570},
-  {icon:'📝', name:'Ghi chú đầu tiên', desc:'Viết ghi chú học tập', check: d => d.notes.length >= 1},
-  {icon:'⭐', name:'Level 5', desc:'Đạt Level 5 — Chiến binh IELTS', check: d => calcXP(d) >= 1000},
-  {icon:'💎', name:'Level 7', desc:'Đạt Level 7 — Band 7 Hunter!', check: d => calcXP(d) >= 4000},
-  {icon:'🎓', name:'Master', desc:'Đạt Level 8 — Master English!', check: d => calcXP(d) >= 8000},
+  {icon:'•', name:'7 ngày streak', desc:'Học 7 ngày liên tiếp', check: d => d.streak.count >= 7},
+  {icon:'•', name:'30 ngày streak', desc:'Học 30 ngày liên tiếp', check: d => d.streak.count >= 30},
+  {icon:'•', name:'Từ vựng đầu tiên', desc:'Lưu từ vựng đầu tiên', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 1},
+  {icon:'•', name:'50 từ vựng', desc:'Học 50 từ vựng', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 50},
+  {icon:'•', name:'Quiz đầu tiên', desc:'Làm đúng câu quiz đầu tiên', check: d => d.quizCorrect >= 1},
+  {icon:'•', name:'100 câu đúng', desc:'Trả lời đúng 100 câu quiz', check: d => d.quizCorrect >= 100},
+  {icon:'•', name:'AWL 50 từ', desc:'Học 50 từ Academic Word List', check: d => d.awlLearned.length >= 50},
+  {icon:'•', name:'AWL 100 từ', desc:'Học 100 từ AWL', check: d => d.awlLearned.length >= 100},
+  {icon:'•', name:'AWL 300 từ', desc:'Học 300 từ AWL — Band 7 level!', check: d => d.awlLearned.length >= 300},
+  {icon:'•', name:'AWL hoàn thành', desc:'Học hết 570 từ AWL!', check: d => d.awlLearned.length >= 570},
+  {icon:'•', name:'Ghi chú đầu tiên', desc:'Viết ghi chú học tập', check: d => d.notes.length >= 1},
+  {icon:'•', name:'Level 5', desc:'Đạt Level 5 — Chiến binh IELTS', check: d => calcXP(d) >= 1000},
+  {icon:'•', name:'Level 7', desc:'Đạt Level 7 — Band 7 Hunter!', check: d => calcXP(d) >= 4000},
+  {icon:'•', name:'Master', desc:'Đạt Level 8 — Master English!', check: d => calcXP(d) >= 8000},
 ];
 
 // ===== MODULES =====
 const MODULES = [
-  {icon:'📚', name:'Ngữ pháp cơ bản', link:'grammar.html', key:'grammar', max:100, getVal: d => Math.min(d.quizCorrect * 2, 100)},
+  {icon:'•', name:'Ngữ pháp cơ bản', link:'grammar.html', key:'grammar', max:100, getVal: d => Math.min(d.quizCorrect * 2, 100)},
   {icon:'🔥', name:'Ngữ pháp nâng cao', link:'grammar-advanced.html', key:'grammar-adv', max:100, getVal: d => Math.min(d.streak.count * 5, 100)},
-  {icon:'💬', name:'Từ vựng đời thường', link:'vocabulary.html', key:'vocab', max:100, getVal: d => Math.min((d.vocabLearned.length / 2), 100)},
-  {icon:'🔊', name:'Phát âm IPA', link:'pronunciation.html', key:'pron', max:100, getVal: d => Math.min(d.streak.count * 3, 100)},
-  {icon:'📖', name:'AWL — 570 từ', link:'academic-words.html', key:'awl', max:570, getVal: d => d.awlLearned.length},
-  {icon:'🎯', name:'IELTS Writing/Reading', link:'ielts.html', key:'ielts', max:100, getVal: d => Math.min(d.quizCorrect * 3, 100)},
-  {icon:'✍️', name:'Collocations', link:'collocations.html', key:'coll', max:100, getVal: d => Math.min(d.streak.count * 4, 100)},
-  {icon:'💾', name:'Từ điển IELTS', link:'dictionary-ielts.html', key:'dict', max:100, getVal: d => Math.min(d.ilSaved.length * 2, 100)},
-  {icon:'📝', name:'Bài tập Quiz', link:'quiz.html', key:'quiz', max:100, getVal: d => Math.min((d.quizCorrect / Math.max(d.quizDone,1)) * 100, 100)},
+  {icon:'•', name:'Từ vựng đời thường', link:'vocabulary.html', key:'vocab', max:100, getVal: d => Math.min((d.vocabLearned.length / 2), 100)},
+  {icon:'•', name:'Phát âm IPA', link:'pronunciation.html', key:'pron', max:100, getVal: d => Math.min(d.streak.count * 3, 100)},
+  {icon:'•', name:'AWL — 570 từ', link:'academic-words.html', key:'awl', max:570, getVal: d => d.awlLearned.length},
+  {icon:'•', name:'IELTS Writing/Reading', link:'ielts.html', key:'ielts', max:100, getVal: d => Math.min(d.quizCorrect * 3, 100)},
+  {icon:'•', name:'Collocations', link:'collocations.html', key:'coll', max:100, getVal: d => Math.min(d.streak.count * 4, 100)},
+  {icon:'•', name:'Từ điển IELTS', link:'dictionary-ielts.html', key:'dict', max:100, getVal: d => Math.min(d.ilSaved.length * 2, 100)},
+  {icon:'•', name:'Bài tập Quiz', link:'quiz.html', key:'quiz', max:100, getVal: d => Math.min((d.quizCorrect / Math.max(d.quizDone,1)) * 100, 100)},
 ];
 
 const MODULE_COLORS = ['var(--accent)','var(--pink)','var(--accent3)','var(--green)','var(--accent2)','var(--coral)','var(--accent)','var(--accent3)','var(--green)'];
@@ -582,7 +583,7 @@ function renderHeroStats(data) {
   document.getElementById('hs-days').textContent = (data.streak.days || []).length;
 
   if(data.streak.count >= 7) document.getElementById('streak-msg').textContent = '🔥 Tuyệt vời!';
-  else if(data.streak.count >= 3) document.getElementById('streak-msg').textContent = '👍 Đang tốt!';
+  else if(data.streak.count >= 3) document.getElementById('streak-msg').textContent = '• Đang tốt!';
   if(totalSaved > 0) document.getElementById('vocab-msg').textContent = `+${totalSaved} từ trong túi`;
 }
 
@@ -594,16 +595,16 @@ function renderXP(data) {
 
   document.getElementById('xpLevel').textContent = lv.level;
   document.getElementById('xpTitle').textContent = lv.title;
-  document.getElementById('xpSub').textContent = lv.level >= 8 ? 'Bạn đã đạt cấp độ cao nhất! 🎉' : `Cần ${nextLv.min - xp} XP nữa để lên Level ${nextLv.level}`;
+  document.getElementById('xpSub').textContent = lv.level >= 8 ? 'Bạn đã đạt cấp độ cao nhất! •' : `Cần ${nextLv.min - xp} XP nữa để lên Level ${nextLv.level}`;
   document.getElementById('xpBar').style.width = progress + '%';
   document.getElementById('xpText').textContent = `${xp} / ${lv.level >= 8 ? '∞' : nextLv.min} XP`;
 
   const badgesEl = document.getElementById('xpBadges');
   const badges = [];
   if(data.streak.count >= 7) badges.push({text:'🔥 Week Warrior', bg:'rgba(232,197,71,0.2)', color:'var(--accent)'});
-  if(data.awlLearned.length >= 100) badges.push({text:'📚 AWL 100', bg:'rgba(123,110,246,0.2)', color:'var(--accent2)'});
-  if(data.quizCorrect >= 50) badges.push({text:'🎯 Quiz Pro', bg:'rgba(244,132,95,0.2)', color:'var(--coral)'});
-  if(data.awlLearned.length >= 300) badges.push({text:'👑 AWL 300', bg:'rgba(232,121,160,0.2)', color:'var(--pink)'});
+  if(data.awlLearned.length >= 100) badges.push({text:'• AWL 100', bg:'rgba(123,110,246,0.2)', color:'var(--accent2)'});
+  if(data.quizCorrect >= 50) badges.push({text:'• Quiz Pro', bg:'rgba(244,132,95,0.2)', color:'var(--coral)'});
+  if(data.awlLearned.length >= 300) badges.push({text:'• AWL 300', bg:'rgba(232,121,160,0.2)', color:'var(--pink)'});
   badgesEl.innerHTML = badges.map(b => `<span class="xp-badge" style="background:${b.bg};color:${b.color}">${b.text}</span>`).join('');
 }
 
@@ -627,7 +628,7 @@ function renderCalendar(data) {
     const dayNum = d.getDate();
     const cell = document.createElement('div');
     cell.className = `cal-cell ${learned ? 'cal-2' : 'cal-0'} ${isToday ? 'cal-today' : ''}`;
-    cell.title = `${d.toLocaleDateString('vi-VN')}${learned ? ' ✓ Đã học' : ''}`;
+    cell.title = `${d.toLocaleDateString('vi-VN')}${learned ? ' • Đã học' : ''}`;
     cell.textContent = dayNum;
     grid.appendChild(cell);
   }
@@ -698,11 +699,11 @@ function renderGoals(data) {
   const goalsEl = document.getElementById('goalsList');
   goalsEl.innerHTML = goals.map((g, i) => `
     <div class="goal-item">
-      <div class="goal-check ${g.done ? 'done' : ''}" onclick="toggleGoal(${i})">${g.done ? '✓' : ''}</div>
+      <div class="goal-check ${g.done ? 'done' : ''}" onclick="toggleGoal(${i})">${g.done ? '•' : ''}</div>
       <div class="goal-text ${g.done ? 'done' : ''}">${g.text}</div>
       <div style="display:flex;gap:8px;align-items:center">
         <div class="goal-xp">+${g.done ? '10' : '10'} XP</div>
-        <button onclick="deleteGoal(${i})" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px">✕</button>
+        <button onclick="deleteGoal(${i})" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px">•</button>
       </div>
     </div>`).join('') || '<div style="font-size:14px;color:var(--text3);padding:10px 0">Chưa có mục tiêu. Thêm mục tiêu để theo dõi tiến độ!</div>';
 }
@@ -780,7 +781,7 @@ function renderAchievements(data) {
       <div class="ach-icon">${a.icon}</div>
       <div class="ach-name">${a.name}</div>
       <div class="ach-desc">${a.desc}</div>
-      <div class="ach-badge">${unlocked ? '✓ Đạt được' : '🔒 Chưa đạt'}</div>
+      <div class="ach-badge">${unlocked ? '• Đạt được' : '• Chưa đạt'}</div>
     </div>`;
   }).join('');
 }
@@ -794,7 +795,7 @@ function renderNotes(data) {
     <div class="note-card">
       <div class="note-date">${n.date}</div>
       ${n.text}
-      <button class="note-del" onclick="deleteNote(${i})">✕</button>
+      <button class="note-del" onclick="deleteNote(${i})">•</button>
     </div>`).join('');
 
   grid.innerHTML = noteCards + `
