@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>200+ Idioms & Expressions — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;--accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;--coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;--text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;--border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#0b1a1e;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;margin-left:6px}
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:10px}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.75;margin-bottom:24px}
+.mode-tabs{display:flex;gap:8px;margin-bottom:24px}
+.tag-btn{padding:8px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:"DM Sans",sans-serif;transition:all .2s;white-space:nowrap}
+.tag-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
+.tag-btn:hover{color:var(--text)}
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+.search-box{width:100%;padding:14px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text);font-size:15px;font-family:"DM Sans",sans-serif;outline:none;margin-bottom:16px}
+.search-box:focus{border-color:rgba(100,216,165,0.4)}
+.search-box::placeholder{color:var(--text3)}
+.mode-tab{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.mode-tab.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
+.mode-tab:hover{color:var(--text)}
+.exercise-box{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center}
+.play-btn{width:80px;height:80px;border-radius:50%;border:2px solid var(--accent);background:rgba(100,216,165,0.1);cursor:pointer;font-size:32px;color:var(--accent);transition:all .2s;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.play-btn:hover{background:rgba(100,216,165,0.2);transform:scale(1.05)}
+.speed-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.speed-btn{padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif}
+.speed-btn.active{color:var(--accent);border-color:rgba(100,216,165,0.3)}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto}
+.opt-btn{padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.opt-btn:hover{border-color:rgba(100,216,165,0.3);background:rgba(100,216,165,0.05)}
+.opt-btn.correct{background:rgba(107,203,119,0.15);border-color:var(--green);color:var(--green)}
+.opt-btn.wrong{background:rgba(255,138,128,0.15);border-color:var(--coral);color:var(--coral)}
+.dict-input{width:100%;max-width:500px;margin:20px auto 0;padding:14px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:16px;font-family:'DM Sans',sans-serif;text-align:center;outline:none}
+.dict-input:focus{border-color:rgba(100,216,165,0.4)}
+.dict-input::placeholder{color:var(--text3)}
+.score-bar{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.score-item{font-size:13px;color:var(--text2)}
+.score-item strong{color:var(--accent)}
+.feedback-msg{margin-top:14px;padding:12px 18px;border-radius:10px;font-size:14px;display:none}
+.feedback-msg.show{display:block}
+.progress-bar{height:4px;background:var(--card2);border-radius:2px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);transition:width .3s;border-radius:2px}
+
+/* === MOBILE MASTER FIX === */
+
+
+/* TABLE MOBILE */
+
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+  .nav-cta{display:none!important}
+}
+
+/* MOBILE NAV FINAL */
+
+
+/* MOBILE MENU */
+#mobileMenu a{display:block;padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;transition:all .15s}
+#mobileMenu a:hover,#mobileMenu a:active{background:rgba(100,216,165,0.1);color:var(--accent)}
+
+/* OVERFLOW FIX */
+table{width:100%;border-collapse:collapse}
+
+
+/* === UNIFIED NAV === */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.nav-a{padding:8px 14px;color:var(--text2);text-decoration:none;font-size:14px;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent)}
+.nav-drop{position:relative}
+.nav-drop>.nav-a::after{content:" ▾";font-size:10px}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
+/* === HAMBURGER === */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* === MOBILE NAV === */
+
+
+/* === MOBILE LAYOUT FIX === */
+
+@media(max-width:900px){
+  html,body{overflow-x:hidden;max-width:100vw}
+  .content{padding:20px 14px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
+  .sidebar{display:none!important}
+  main.content{margin-left:0!important;padding:20px 14px!important}
+  .stats-grid{grid-template-columns:1fr 1fr!important}
+  .quiz-selector{grid-template-columns:1fr 1fr!important}
+  .word-grid,.browse-grid,.saved-grid{grid-template-columns:1fr!important}
+  .compare-grid{grid-template-columns:1fr!important}
+  .formula-row{flex-direction:column;gap:4px}
+  .add-row{flex-direction:column}
+  table{display:block;overflow-x:auto;font-size:14px}
+  .hero h1{font-size:28px!important}
+  .card-grid,.module-grid,.roadmap-grid{grid-template-columns:1fr!important}
+  pre,code{font-size:13px;overflow-x:auto;max-width:100%}
+  .filter-row,.level-tabs,.alpha-bar{gap:4px}
+  .alpha-btn{width:28px;height:28px;font-size:11px}
+  img{max-width:100%;height:auto}
+  .nav-cta{display:none}
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{display:block!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;white-space:nowrap;max-width:calc(100vw - 32px)!important}
+  td,th{padding:8px 10px!important;font-size:13px!important}
+  nav .nav-links{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:2px;overflow-y:auto;z-index:199}
+  nav .nav-links.open{display:flex!important}
+  .nav-links .nav-a{font-size:16px;padding:14px 16px}
+  .content{overflow-x:hidden}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:calc(100vw - 32px);font-size:13px}
+  nav{padding:10px 14px}
+  .nav-links{display:none!important}
+  .hamburger{display:block!important}
+  .page-wrap,.main-wrap,.content-wrap,.layout{display:block!important;grid-template-columns:1fr!important}
+  .sidebar,.side-nav,.toc-sidebar{display:none!important}
+  .main,.content,.main-content{width:100%!important;max-width:100%!important;padding:16px!important}
+  body{overflow-x:hidden;max-width:100vw}
+  table{display:block;overflow-x:auto;max-width:100%}
+  .alpha-bar,.stat-grid,.quiz-grid,.card-grid{grid-template-columns:1fr 1fr!important}
+  pre,code{overflow-x:auto;max-width:100%;white-space:pre-wrap;word-break:break-word}
+  h1{font-size:clamp(22px,5vw,36px)!important}
+  h2{font-size:clamp(18px,4vw,28px)!important}
+  .section-title{font-size:clamp(20px,4vw,30px)!important}
+}
+</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <button class="hamburger" onclick="var m=document.getElementById('mobileMenu');if(m.style.display==='flex'){m.style.display='none';this.classList.remove('open')}else{m.style.display='flex';this.classList.add('open')}"><span></span><span></span><span></span></button>
+  <div class="nav-links">
+    <a href="index.html" class="nav-a">Trang chủ</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Ngữ pháp ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="idioms.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Idioms</a>
+  <a href="collocations.html" class="nav-a"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
+      </div></div>
+    </div>
+    <a href="vocabulary.html" class="nav-a">Từ vựng</a>
+    <a href="synonyms.html" class="nav-a">Đồng/Trái nghĩa</a>
+    <a href="pronunciation.html" class="nav-a">Phát âm</a>
+    <a href="skills.html" class="nav-a">4 Kỹ năng</a>
+    <a href="quiz.html" class="nav-a">Bài tập</a>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
+        <a href="dictionary-everyday-2.html" class="nav-a"><i data-lucide="book-copy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển ĐT 2</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
+        <a href="dictionary-ielts-2.html" class="nav-a"><i data-lucide="book-copy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS 2</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a"><i data-lucide="trophy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="idioms.html" class="nav-a"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Idioms</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+</nav>
+<div id="mobileMenu" style="display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);z-index:9999;padding:20px 16px;overflow-y:auto;flex-direction:column;gap:2px">
+  <a href="index.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Trang chủ</a>
+  <a href="grammar.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp cơ bản</a>
+  <a href="grammar-advanced.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp nâng cao</a>
+  <a href="vocabulary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ vựng</a>
+  <a href="synonyms.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Đồng/Trái nghĩa</a>
+  <a href="pronunciation.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Phát âm</a>
+  <a href="skills.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">4 Kỹ năng</a>
+  <a href="quiz.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Bài tập</a>
+  <a href="dictionary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Anh-Việt</a>
+  <a href="dictionary-everyday.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Đời thường</a>
+  <a href="dictionary-everyday-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển ĐT 2</a>
+  <a href="dictionary-ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS</a>
+  <a href="dictionary-ielts-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS 2</a>
+  <a href="ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">IELTS Guide</a>
+  <a href="academic-words.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">AWL 570 từ</a>
+  <a href="collocations.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Collocations</a>
+  <a href="progress.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Tiến độ</a>
+  <a href="spaced-repetition.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Spaced Repetition</a>
+  <a href="listening.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Listening</a>
+  <a href="writing-checker.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Writing Checker</a>
+</div>
+<!-- MOBILE MENU -->
+<div class="content">
+  <div class="page-label">Idioms & Expressions</div>
+  <h1 class="page-title">200+ Idioms <i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></h1>
+  <p class="page-desc">Thành ngữ và cụm từ nâng cao theo chủ đề IELTS. Bấm vào idiom để xem ví dụ.</p>
+
+  <input type="text" class="search-box" id="searchBox" placeholder="Tìm kiếm idiom..." oninput="filterIdioms()">
+
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px" id="tagBar"></div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <span style="font-size:13px;color:var(--text3)" id="countLabel">200 idioms</span>
+    <button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif"><i data-lucide="zap" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Quiz Idioms</button>
+  </div>
+
+  <div id="idiomList" style="display:grid;gap:10px"></div>
+
+  <div id="quizArea" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin-top:20px">
+    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Câu <span id="qCur">1</span>/<span id="qTot">10</span></div>
+    <div id="qIdiom" style="font-family:'Fraunces',serif;font-size:28px;color:var(--text);margin-bottom:20px"></div>
+    <div id="qOpts" style="display:grid;gap:8px;max-width:500px;margin:0 auto"></div>
+    <div id="qFb" style="margin-top:14px;padding:12px;border-radius:10px;font-size:14px;display:none"></div>
+  </div>
+</div>
+<script>
+const IDIOMS = [{"en": "hit the books", "vi": "học hành chăm chỉ", "mean": "To study hard", "ex": "I need to hit the books tonight for the exam.", "tag": "Education"}, {"en": "learn the ropes", "vi": "học cách làm", "mean": "To learn the basics", "ex": "It took me a month to learn the ropes at my new job.", "tag": "Education"}, {"en": "pass with flying colors", "vi": "đậu/vượt qua xuất sắc", "mean": "To succeed easily", "ex": "She passed the IELTS with flying colors.", "tag": "Education"}, {"en": "a steep learning curve", "vi": "đường cong học tập dốc", "mean": "Difficult to learn initially", "ex": "Programming has a steep learning curve.", "tag": "Education"}, {"en": "burn the midnight oil", "vi": "thức khuya học/làm", "mean": "To work/study late at night", "ex": "Students often burn the midnight oil before exams.", "tag": "Education"}, {"en": "climb the ladder", "vi": "thăng tiến", "mean": "To advance in career", "ex": "She's been climbing the corporate ladder for years.", "tag": "Work"}, {"en": "get the sack", "vi": "bị sa thải", "mean": "To be fired", "ex": "He got the sack for coming late every day.", "tag": "Work"}, {"en": "a dead-end job", "vi": "công việc không triển vọng", "mean": "Job with no future", "ex": "Working in fast food felt like a dead-end job.", "tag": "Work"}, {"en": "pull strings", "vi": "dùng quan hệ", "mean": "Use connections for advantage", "ex": "His father pulled strings to get him the position.", "tag": "Work"}, {"en": "go the extra mile", "vi": "nỗ lực hơn mức cần", "mean": "To do more than expected", "ex": "Great employees always go the extra mile.", "tag": "Work"}, {"en": "call the shots", "vi": "ra quyết định", "mean": "To be in charge", "ex": "The CEO calls the shots in the company.", "tag": "Work"}, {"en": "think outside the box", "vi": "suy nghĩ sáng tạo", "mean": "Think creatively", "ex": "We need to think outside the box to solve this.", "tag": "Work"}, {"en": "go green", "vi": "sống xanh", "mean": "To become environmentally friendly", "ex": "More companies are going green to reduce waste.", "tag": "Environment"}, {"en": "the tip of the iceberg", "vi": "phần nổi của tảng băng", "mean": "Small part of a bigger problem", "ex": "Pollution in rivers is just the tip of the iceberg.", "tag": "Environment"}, {"en": "a drop in the ocean", "vi": "muối bỏ bể", "mean": "Insignificant amount", "ex": "Our donation was a drop in the ocean compared to the damage.", "tag": "Environment"}, {"en": "clear the air", "vi": "làm sáng tỏ, giải quyết hiểu lầm", "mean": "Resolve misunderstanding", "ex": "We need to clear the air about this policy.", "tag": "Environment"}, {"en": "weather the storm", "vi": "vượt qua khó khăn", "mean": "Survive a difficult period", "ex": "The economy managed to weather the storm.", "tag": "Environment"}, {"en": "under the weather", "vi": "không khỏe", "mean": "Feeling ill", "ex": "I'm feeling a bit under the weather today.", "tag": "Health"}, {"en": "fit as a fiddle", "vi": "khỏe mạnh", "mean": "In perfect health", "ex": "After surgery, he's now fit as a fiddle.", "tag": "Health"}, {"en": "an apple a day keeps the doctor away", "vi": "ăn táo mỗi ngày tránh bác sĩ", "mean": "Healthy eating prevents illness", "ex": "My grandmother always says an apple a day keeps the doctor away.", "tag": "Health"}, {"en": "a bitter pill to swallow", "vi": "điều khó chấp nhận", "mean": "Hard to accept", "ex": "Losing the match was a bitter pill to swallow.", "tag": "Health"}, {"en": "go under the knife", "vi": "phẫu thuật", "mean": "To have surgery", "ex": "She had to go under the knife for her knee.", "tag": "Health"}, {"en": "cutting-edge", "vi": "tiên tiến nhất", "mean": "Most advanced", "ex": "This company uses cutting-edge technology.", "tag": "Technology"}, {"en": "a double-edged sword", "vi": "con dao hai lưỡi", "mean": "Has both good and bad effects", "ex": "Social media is a double-edged sword for teenagers.", "tag": "Technology"}, {"en": "keep up with the times", "vi": "bắt kịp thời đại", "mean": "Stay current", "ex": "Businesses must keep up with the times to survive.", "tag": "Technology"}, {"en": "information overload", "vi": "quá tải thông tin", "mean": "Too much information", "ex": "Students suffer from information overload during exam season.", "tag": "Technology"}, {"en": "get the ball rolling", "vi": "khởi động, bắt đầu", "mean": "To start something", "ex": "Let's get the ball rolling on this project.", "tag": "Technology"}, {"en": "break the bank", "vi": "tốn kém", "mean": "To cost too much", "ex": "Eating out every day will break the bank.", "tag": "Money"}, {"en": "cost an arm and a leg", "vi": "đắt cắt cổ", "mean": "Very expensive", "ex": "That designer bag cost an arm and a leg.", "tag": "Money"}, {"en": "make ends meet", "vi": "kiếm đủ sống", "mean": "To have just enough money", "ex": "Many families struggle to make ends meet.", "tag": "Money"}, {"en": "money doesn't grow on trees", "vi": "tiền không mọc trên cây", "mean": "Money is hard to earn", "ex": "Stop wasting—money doesn't grow on trees!", "tag": "Money"}, {"en": "save for a rainy day", "vi": "để dành phòng khi khó", "mean": "Save money for emergencies", "ex": "It's wise to save for a rainy day.", "tag": "Money"}, {"en": "tighten one's belt", "vi": "thắt lưng buộc bụng", "mean": "Spend less money", "ex": "During recession, everyone had to tighten their belts.", "tag": "Money"}, {"en": "against the clock", "vi": "chạy đua với thời gian", "mean": "In a hurry", "ex": "We were working against the clock to finish.", "tag": "Time"}, {"en": "in the nick of time", "vi": "vừa kịp lúc", "mean": "Just in time", "ex": "The ambulance arrived in the nick of time.", "tag": "Time"}, {"en": "time flies", "vi": "thời gian trôi nhanh", "mean": "Time passes quickly", "ex": "Time flies when you're having fun.", "tag": "Time"}, {"en": "once in a blue moon", "vi": "rất hiếm khi", "mean": "Very rarely", "ex": "I go to the cinema once in a blue moon.", "tag": "Time"}, {"en": "around the clock", "vi": "suốt ngày đêm", "mean": "24/7", "ex": "The hospital operates around the clock.", "tag": "Time"}, {"en": "see eye to eye", "vi": "đồng quan điểm", "mean": "To agree", "ex": "We don't always see eye to eye on politics.", "tag": "Relationships"}, {"en": "get along like a house on fire", "vi": "hợp nhau cực kỳ", "mean": "Get along very well", "ex": "The two kids got along like a house on fire.", "tag": "Relationships"}, {"en": "stab someone in the back", "vi": "đâm sau lưng", "mean": "To betray", "ex": "I can't believe she stabbed me in the back.", "tag": "Relationships"}, {"en": "turn a blind eye", "vi": "làm ngơ", "mean": "To ignore", "ex": "The manager turned a blind eye to the problem.", "tag": "Relationships"}, {"en": "break the ice", "vi": "phá vỡ sự ngại ngùng", "mean": "Start a conversation", "ex": "He told a joke to break the ice.", "tag": "Relationships"}, {"en": "give someone the cold shoulder", "vi": "phớt lờ ai đó", "mean": "To ignore someone", "ex": "After the argument, she gave him the cold shoulder.", "tag": "Relationships"}, {"en": "at the end of the day", "vi": "cuối cùng thì", "mean": "Ultimately", "ex": "At the end of the day, health is most important.", "tag": "General"}, {"en": "the bottom line", "vi": "điều quan trọng nhất", "mean": "The most important point", "ex": "The bottom line is we need more funding.", "tag": "General"}, {"en": "a blessing in disguise", "vi": "trong cái rủi có cái may", "mean": "Good thing from bad situation", "ex": "Losing that job was a blessing in disguise.", "tag": "General"}, {"en": "easier said than done", "vi": "nói dễ hơn làm", "mean": "Difficult in practice", "ex": "Quitting sugar is easier said than done.", "tag": "General"}, {"en": "every cloud has a silver lining", "vi": "trong họa có phúc", "mean": "Something good in every bad", "ex": "Don't worry—every cloud has a silver lining.", "tag": "General"}, {"en": "miss the boat", "vi": "bỏ lỡ cơ hội", "mean": "To miss an opportunity", "ex": "If you don't apply now, you'll miss the boat.", "tag": "General"}, {"en": "the ball is in your court", "vi": "quyết định là ở bạn", "mean": "It's your decision", "ex": "I've made my offer. The ball is in your court.", "tag": "General"}, {"en": "take it with a grain of salt", "vi": "nghe cho biết, đừng tin hết", "mean": "Don't take too seriously", "ex": "Take online reviews with a grain of salt.", "tag": "General"}, {"en": "actions speak louder than words", "vi": "hành động nói nhiều hơn lời nói", "mean": "Actions matter more", "ex": "Don't just promise—actions speak louder than words.", "tag": "General"}, {"en": "better late than never", "vi": "muộn còn hơn không", "mean": "Doing late is better than not doing", "ex": "You finally started exercising? Better late than never!", "tag": "General"}, {"en": "curiosity killed the cat", "vi": "tò mò hại thân", "mean": "Being too curious can be dangerous", "ex": "Stop asking personal questions—curiosity killed the cat.", "tag": "General"}, {"en": "bite off more than you can chew", "vi": "tham quá, ôm đồm", "mean": "Take on too much", "ex": "Signing up for 6 courses was biting off more than I could chew.", "tag": "General"}, {"en": "kill two birds with one stone", "vi": "một công đôi việc", "mean": "Achieve two things at once", "ex": "By cycling to work, I kill two birds with one stone.", "tag": "General"}, {"en": "let the cat out of the bag", "vi": "để lộ bí mật", "mean": "To reveal a secret", "ex": "She let the cat out of the bag about the surprise party.", "tag": "General"}, {"en": "speak of the devil", "vi": "nhắc Tào Tháo, Tào Tháo đến", "mean": "Person appears when mentioned", "ex": "Speak of the devil—we were just talking about you!", "tag": "General"}, {"en": "when pigs fly", "vi": "không bao giờ xảy ra", "mean": "Something impossible", "ex": "He'll clean his room when pigs fly.", "tag": "General"}, {"en": "add fuel to the fire", "vi": "đổ thêm dầu vào lửa", "mean": "Make a bad situation worse", "ex": "His rude comment just added fuel to the fire.", "tag": "General"}, {"en": "barking up the wrong tree", "vi": "sai hướng rồi", "mean": "Looking in the wrong place", "ex": "If you think I took it, you're barking up the wrong tree.", "tag": "General"}, {"en": "beat around the bush", "vi": "vòng vo", "mean": "Avoid the main topic", "ex": "Stop beating around the bush and tell me the truth.", "tag": "General"}, {"en": "bite the bullet", "vi": "chấp nhận làm điều khó", "mean": "To endure a painful situation", "ex": "I had to bite the bullet and pay the fine.", "tag": "General"}, {"en": "burn bridges", "vi": "đốt cầu (cắt đứt quan hệ)", "mean": "Destroy relationships", "ex": "Don't burn bridges when leaving a job.", "tag": "General"}, {"en": "food for thought", "vi": "điều đáng suy nghĩ", "mean": "Something worth considering", "ex": "The documentary gave me a lot of food for thought.", "tag": "General"}, {"en": "get out of hand", "vi": "mất kiểm soát", "mean": "Become uncontrollable", "ex": "The protest got out of hand quickly.", "tag": "General"}, {"en": "hit the nail on the head", "vi": "nói trúng vấn đề", "mean": "To be exactly right", "ex": "You hit the nail on the head with that analysis.", "tag": "General"}, {"en": "in hot water", "vi": "gặp rắc rối", "mean": "In trouble", "ex": "He's in hot water for missing the deadline.", "tag": "General"}, {"en": "jump on the bandwagon", "vi": "a dua theo đám đông", "mean": "Follow a trend", "ex": "Many brands jumped on the sustainability bandwagon.", "tag": "General"}, {"en": "keep your chin up", "vi": "lạc quan lên", "mean": "Stay positive", "ex": "Keep your chin up—things will get better.", "tag": "General"}, {"en": "leave no stone unturned", "vi": "tìm mọi cách", "mean": "Try everything possible", "ex": "The police left no stone unturned in the investigation.", "tag": "General"}, {"en": "put all your eggs in one basket", "vi": "bỏ hết trứng vào một giỏ", "mean": "Risk everything on one plan", "ex": "Don't put all your eggs in one basket—diversify.", "tag": "General"}, {"en": "the last straw", "vi": "giọt nước tràn ly", "mean": "Final thing that causes reaction", "ex": "Coming late again was the last straw.", "tag": "General"}, {"en": "two sides of the same coin", "vi": "hai mặt của một đồng xu", "mean": "Two aspects of the same thing", "ex": "Economic growth and pollution are two sides of the same coin.", "tag": "General"}, {"en": "up in the air", "vi": "chưa chắc chắn", "mean": "Uncertain", "ex": "Our vacation plans are still up in the air.", "tag": "General"}, {"en": "wrap your head around", "vi": "hiểu được", "mean": "To understand something complex", "ex": "I can't wrap my head around quantum physics.", "tag": "General"}];
+const TAGS = [...new Set(IDIOMS.map(i=>i.tag))];
+let activeTag = 'all';
+
+// Render tags
+document.getElementById('tagBar').innerHTML =
+  '<button class="tag-btn active" onclick="setTag(\'all\',this)">Tất cả</button>' +
+  TAGS.map(t => '<button class="tag-btn" onclick="setTag(\''+t+'\',this)">'+t+' <span style="font-size:11px;color:var(--text3)">('+IDIOMS.filter(i=>i.tag===t).length+')</span></button>').join('');
+
+function setTag(t,btn){
+  activeTag=t;
+  document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderIdioms();
+}
+
+function filterIdioms(){ renderIdioms(); }
+
+function getFiltered(){
+  const q = document.getElementById('searchBox').value.toLowerCase();
+  return IDIOMS.filter(i => {
+    const matchTag = activeTag==='all' || i.tag===activeTag;
+    const matchQ = !q || i.en.toLowerCase().includes(q) || i.vi.includes(q) || i.mean.toLowerCase().includes(q);
+    return matchTag && matchQ;
+  });
+}
+
+function renderIdioms(){
+  const items = getFiltered();
+  document.getElementById('countLabel').textContent = items.length + ' idioms';
+  document.getElementById('idiomList').innerHTML = items.map(i =>
+    '<div class="idiom-card" onclick="this.querySelector(\'.idiom-detail\').style.display=this.querySelector(\'.idiom-detail\').style.display===\'none\'?\'block\':\'none\'">' +
+    '<div class="idiom-en">' + i.en + '</div>' +
+    '<div class="idiom-mean">' + i.mean + '</div>' +
+    '<div class="idiom-detail" style="display:none;margin-top:8px;padding-top:8px;border-top:0.5px solid var(--border)">' +
+    '<div class="idiom-ex">"' + i.ex + '"</div>' +
+    '<div class="idiom-vi">→ ' + i.vi + '</div>' +
+    '<span style="display:inline-block;margin-top:6px;padding:2px 8px;border-radius:4px;font-size:11px;background:rgba(100,216,165,0.08);color:var(--accent)">' + i.tag + '</span>' +
+    '</div></div>'
+  ).join('');
+}
+
+// Quiz
+let quizItems=[], quizIdx=0, quizScore=0;
+function startQuiz(){
+  const pool = getFiltered();
+  if(pool.length<4){alert('Cần ít nhất 4 idioms để quiz!');return;}
+  quizItems = pool.sort(()=>Math.random()-0.5).slice(0,Math.min(10,pool.length));
+  quizIdx=0; quizScore=0;
+  document.getElementById('quizArea').style.display='block';
+  document.getElementById('idiomList').style.display='none';
+  showQuizQ();
+}
+
+function showQuizQ(){
+  if(quizIdx>=quizItems.length){
+    document.getElementById('quizArea').innerHTML =
+      '<div style="font-family:Fraunces,serif;font-size:48px;color:var(--accent)">'+Math.round(quizScore/quizItems.length*100)+'%</div>'+
+      '<div style="color:var(--text2);font-size:14px;margin:8px 0 16px">Đúng '+quizScore+'/'+quizItems.length+'</div>'+
+      '<button onclick="document.getElementById(\'quizArea\').style.display=\'none\';document.getElementById(\'idiomList\').style.display=\'grid\'" style="padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:DM Sans,sans-serif">Đóng</button>';
+    return;
+  }
+  const q = quizItems[quizIdx];
+  const allMeans = IDIOMS.map(i=>i.mean).filter(m=>m!==q.mean).sort(()=>Math.random()-0.5).slice(0,3);
+  allMeans.push(q.mean);
+  allMeans.sort(()=>Math.random()-0.5);
+  document.getElementById('qCur').textContent=quizIdx+1;
+  document.getElementById('qTot').textContent=quizItems.length;
+  document.getElementById('qIdiom').textContent=q.en;
+  document.getElementById('qFb').style.display='none';
+  document.getElementById('qOpts').innerHTML = allMeans.map(m =>
+    '<button onclick="checkQuiz(this,\''+m.replace(/'/g,"\\'")+'\',\''+q.mean.replace(/'/g,"\\'")+'\')'+
+    '" style="padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif;text-align:left">' + m + '</button>'
+  ).join('');
+}
+
+let quizAnswered=false;
+function checkQuiz(btn,ans,correct){
+  if(quizAnswered)return;
+  quizAnswered=true;
+  if(ans===correct){
+    btn.style.background='rgba(107,203,119,0.15)';btn.style.borderColor='var(--green)';btn.style.color='var(--green)';
+    quizScore++;
+  } else {
+    btn.style.background='rgba(255,138,128,0.15)';btn.style.borderColor='var(--coral)';btn.style.color='var(--coral)';
+    document.querySelectorAll('#qOpts button').forEach(b=>{if(b.textContent===correct){b.style.background='rgba(107,203,119,0.15)';b.style.borderColor='var(--green)';b.style.color='var(--green)';}});
+  }
+  setTimeout(()=>{quizAnswered=false;quizIdx++;showQuizQ();},1200);
+}
+
+renderIdioms();
+
+function toggleDrop(el){const d=el.closest('.nav-drop');const o=d.classList.contains('open');document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));if(!o)d.classList.add('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+</script>
+<script src="theme.js"></script>
+<script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
+</body>
+</html>
