@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
+<meta name="description" content="EasyEnglish — Trang web tự học tiếng Anh miễn phí từ A-Z cho người Việt. Ngữ pháp, từ vựng, phát âm, IELTS, bài tập tương tác.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EasyEnglish — Tự học tiếng Anh từ A-Z</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -215,7 +221,6 @@ footer p{font-size:14px;color:var(--text3)}
 /* OVERFLOW FIX */
 table{width:100%;border-collapse:collapse}
 
-
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
 .hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -225,8 +230,69 @@ table{width:100%;border-collapse:collapse}
 .ielts-banner .hero-btns,.ielts-banner .btn-row{flex-wrap:wrap!important;gap:8px!important}
 /* INDEX MOBILE FIX */
 
-
 /* === MOBILE LAYOUT FIX === */
+
+.rm-band{padding:12px 0 4px;font-size:12px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;border-top:0.5px solid var(--border);margin-top:8px}
+.rm-band:first-child{border-top:none;margin-top:0}
+.rm-band-tag{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;background:rgba(100,216,165,0.12);color:var(--accent);letter-spacing:0.5px}
+.rm-band-tag.b6{background:rgba(108,140,255,0.12);color:#6c8cff}
+.rm-band-tag.b7{background:rgba(167,139,250,0.12);color:var(--accent2)}
+.rm-band-tag.b8{background:rgba(240,194,122,0.12);color:var(--accent3)}
+.rm-band-tag.b9{background:rgba(255,138,128,0.12);color:var(--coral)}
+.rm-band{cursor:pointer;user-select:none}
+.rm-band::after{content:'▾';font-size:10px;opacity:0.4;margin-left:auto;transition:transform .2s}
+.rm-band.collapsed::after{transform:rotate(-90deg)}
+.rm-band-items{overflow:hidden;max-height:500px;transition:max-height .3s ease,opacity .2s;opacity:1}
+.rm-band-items.hidden{max-height:0;opacity:0}
+
+/* === UNIFIED NAV === */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible}
+.nav-links{display:flex;align-items:center;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
+.nav-spacer{width:160px}
+
+.nav-a{padding:8px 14px;color:var(--text2);text-decoration:none;font-size:14px;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent)}
+.nav-drop{position:relative}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
+.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* === BACK TO TOP === */
+.back-top{position:fixed;bottom:80px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#0b1a1e;border:none;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .3s}
+.back-top.show{display:flex}
+.back-top:hover{transform:scale(1.1)}
+/* === READING PROGRESS === */
+.read-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:9999;transition:width .1s;width:0;border-radius:0 2px 2px 0}
+/* === MOBILE BOTTOM NAV === */
+.mob-bottom-nav{display:none;position:fixed;bottom:10px;left:12px;right:12px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:20px;z-index:200;padding:6px 0 env(safe-area-inset-bottom,6px);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+.mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center}
+.mob-bn-item{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--text3);font-size:10px;padding:4px 8px;border-radius:8px;transition:all .2s}
+.mob-bn-item:hover,.mob-bn-item.active{color:var(--accent)}
+
+button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font-family:'DM Sans',sans-serif}
+.mob-bn-item svg{width:20px;height:20px}
+
+/* === MORE DRAWER === */
+.more-drawer{position:fixed;inset:0;z-index:9999;display:none}
+.more-drawer.open{display:block}
+.more-drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);animation:mdFadeIn .2s}
+.more-drawer-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--card);border-radius:20px 20px 0 0;padding:8px 16px 24px;max-height:70vh;overflow-y:auto;transform:translateY(100%);animation:mdSlideUp .25s ease-out forwards;border-top:0.5px solid var(--border)}
+.more-drawer.open .more-drawer-sheet{transform:translateY(0)}
+@keyframes mdSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes mdFadeIn{from{opacity:0}to{opacity:1}}
+.more-drawer-handle{display:flex;justify-content:center;padding:8px 0 12px;cursor:pointer}
+.more-drawer-handle span{width:36px;height:4px;border-radius:2px;background:var(--text3);opacity:0.4}
+.more-drawer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.md-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 4px;border-radius:12px;text-decoration:none;color:var(--text2);font-size:11px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.md-item:hover,.md-item:active{background:rgba(255,255,255,0.05);color:var(--accent)}
+.md-item svg{stroke:var(--text3);transition:stroke .15s}
+.md-item:hover svg,.md-item:active svg{stroke:var(--accent)}
 
 @media(max-width:900px){
   .nav-links{display:none!important}
@@ -261,7 +327,6 @@ table{width:100%;border-collapse:collapse}
   .nav-cta{display:none!important}
   .content{overflow-x:hidden}
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:calc(100vw - 32px);font-size:13px}
-  .hamburger{display:none!important}
   .nav-cta-btn{display:none!important}
   .levels-grid,.modules-grid,.quick-grid,.bot-grid{grid-template-columns:1fr!important}
   .ielts-banner{padding:16px!important;flex-direction:column!important}
@@ -282,68 +347,10 @@ table{width:100%;border-collapse:collapse}
   img{max-width:100%;height:auto}
   h1{font-size:clamp(22px,5vw,36px)!important}
   h2{font-size:clamp(18px,4vw,28px)!important}
+  .nav-spacer{display:none}
+  .mob-bottom-nav{display:block}.back-top{bottom:70px;right:14px}.content{padding-bottom:80px!important}
+  #themeToggleBtn{position:fixed!important;top:-9999px!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}
 }
-
-.rm-band{padding:12px 0 4px;font-size:12px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;border-top:0.5px solid var(--border);margin-top:8px}
-.rm-band:first-child{border-top:none;margin-top:0}
-.rm-band-tag{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;background:rgba(100,216,165,0.12);color:var(--accent);letter-spacing:0.5px}
-.rm-band-tag.b6{background:rgba(108,140,255,0.12);color:#6c8cff}
-.rm-band-tag.b7{background:rgba(167,139,250,0.12);color:var(--accent2)}
-.rm-band-tag.b8{background:rgba(240,194,122,0.12);color:var(--accent3)}
-.rm-band-tag.b9{background:rgba(255,138,128,0.12);color:var(--coral)}
-
-/* === UNIFIED NAV === */
-nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible}
-.nav-links{display:flex;align-items:center;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
-.nav-spacer{width:160px}
-@media(max-width:900px){.nav-spacer{display:none}}
-.nav-a{padding:8px 14px;color:var(--text2);text-decoration:none;font-size:14px;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap}
-.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
-.nav-a.active{color:var(--accent)}
-.nav-drop{position:relative}
-.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
-.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
-.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
-.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
-.hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-/* === BACK TO TOP === */
-.back-top{position:fixed;bottom:80px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#0b1a1e;border:none;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .3s}
-.back-top.show{display:flex}
-.back-top:hover{transform:scale(1.1)}
-/* === READING PROGRESS === */
-.read-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:9999;transition:width .1s;width:0;border-radius:0 2px 2px 0}
-/* === MOBILE BOTTOM NAV === */
-.mob-bottom-nav{display:none;position:fixed;bottom:10px;left:12px;right:12px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:20px;z-index:200;padding:6px 0 env(safe-area-inset-bottom,6px);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
-.mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center}
-.mob-bn-item{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--text3);font-size:10px;padding:4px 8px;border-radius:8px;transition:all .2s}
-.mob-bn-item:hover,.mob-bn-item.active{color:var(--accent)}
-
-button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font-family:'DM Sans',sans-serif}
-.mob-bn-item svg{width:20px;height:20px}
-@media(max-width:900px){.mob-bottom-nav{display:block}.back-top{bottom:70px;right:14px}.content{padding-bottom:80px!important}}
-
-/* === MORE DRAWER === */
-.more-drawer{position:fixed;inset:0;z-index:9999;display:none}
-.more-drawer.open{display:block}
-.more-drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);animation:mdFadeIn .2s}
-.more-drawer-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--card);border-radius:20px 20px 0 0;padding:8px 16px 24px;max-height:70vh;overflow-y:auto;transform:translateY(100%);animation:mdSlideUp .25s ease-out forwards;border-top:0.5px solid var(--border)}
-.more-drawer.open .more-drawer-sheet{transform:translateY(0)}
-@keyframes mdSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-@keyframes mdFadeIn{from{opacity:0}to{opacity:1}}
-.more-drawer-handle{display:flex;justify-content:center;padding:8px 0 12px;cursor:pointer}
-.more-drawer-handle span{width:36px;height:4px;border-radius:2px;background:var(--text3);opacity:0.4}
-.more-drawer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.md-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 4px;border-radius:12px;text-decoration:none;color:var(--text2);font-size:11px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
-.md-item:hover,.md-item:active{background:rgba(255,255,255,0.05);color:var(--accent)}
-.md-item svg{stroke:var(--text3);transition:stroke .15s}
-.md-item:hover svg,.md-item:active svg{stroke:var(--accent)}
-
-
-@media(max-width:900px){#themeToggleBtn{position:fixed!important;top:-9999px!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}}
 </style>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
@@ -427,168 +434,130 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <!-- HERO -->
 <div class="hero">
   <div>
-    <div class="hero-badge"><span class="badge-dot"></span>14 modules · Miễn phí · Offline · Mục tiêu IELTS 9.0</div>
-    <h1>Học tiếng Anh <em>từ con số 0</em> <span class="l2">lên IELTS 9.0</span></h1>
-    <p class="hero-desc">Lộ trình học bài bản từ A–Z dành cho người Việt. Ngữ pháp, từ vựng, phát âm, IELTS — tất cả giải thích chi tiết bằng tiếng Việt, có ví dụ thực tế và bài tập tương tác.</p>
+    <div class="hero-badge"><span class="badge-dot"></span>14 modules · Miễn phí · Offline</div>
+    <h1>Học tiếng Anh <em>dễ dàng</em> <span class="l2">cho mọi mục tiêu</span></h1>
+    <p class="hero-desc">Từ con số 0 đến giao tiếp tự tin. Ngữ pháp, từ vựng, phát âm — tất cả giải thích bằng tiếng Việt, có bài tập tương tác.</p>
     <div class="hero-btns">
-      <a href="grammar.html" class="btn-gold">Bắt đầu học ngay</a>
-      <a href="ielts.html" class="btn-out">IELTS Guide →</a>
+      <a href="#goals" class="btn-gold">Bắt đầu ngay</a>
       <a href="progress.html" class="btn-out"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Tiến độ</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">14</div><div class="stat-label">Modules</div></div>
-      <div class="stat"><div class="stat-num">570</div><div class="stat-label">AWL words</div></div>
-      <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Phrasal Verbs</div></div>
-      <div class="stat"><div class="stat-num">9.0</div><div class="stat-label">Band mục tiêu</div></div>
+      <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Từ vựng</div></div>
+      <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Bài tập</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Miễn phí</div></div>
     </div>
   </div>
 </div>
 
-  <div class="roadmap-card">
-    <div class="rc-label"><i data-lucide="map" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Lộ trình từ 0 → IELTS 9.0</div>
-    <div class="rm-list">
-      <!-- BAND 5.0 -->
-      <div class="rm-band"><span class="rm-band-tag">Band 5.0</span> Nền tảng</div>
-      <a href="pronunciation.html" class="rm-item done"><div class="rm-num">1</div><div class="rm-text"><div class="rm-title">Phát âm & Bảng chữ cái</div><div class="rm-sub">IPA · 44 âm · Trọng âm</div></div><span><i data-lucide="check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span></a>
-      <a href="vocabulary.html" class="rm-item active"><div class="rm-num">2</div><div class="rm-text"><div class="rm-title">Từ vựng nền tảng</div><div class="rm-sub">1000+ từ · Flashcard · 20 chủ đề</div></div><span>→</span></a>
-      <a href="grammar.html" class="rm-item"><div class="rm-num">3</div><div class="rm-text"><div class="rm-title">Ngữ pháp cơ bản (A1–A2)</div><div class="rm-sub">12 thì · Từ loại · Mạo từ</div></div><span>→</span></a>
-      <!-- BAND 6.0 -->
-      <div class="rm-band"><span class="rm-band-tag b6">Band 6.0</span> Trung cấp</div>
-      <a href="grammar.html#conditionals" class="rm-item"><div class="rm-num">4</div><div class="rm-text"><div class="rm-title">Ngữ pháp B1–B2</div><div class="rm-sub">Câu điều kiện · Bị động · So sánh</div></div><span>→</span></a>
-      <a href="skills.html" class="rm-item"><div class="rm-num">5</div><div class="rm-text"><div class="rm-title">4 Kỹ năng cốt lõi</div><div class="rm-sub">Đọc · Nghe · Nói · Viết</div></div><span>→</span></a>
-      <a href="synonyms.html" class="rm-item"><div class="rm-num">6</div><div class="rm-text"><div class="rm-title">Đồng nghĩa & Trái nghĩa</div><div class="rm-sub">Mở rộng vốn từ · Paraphrase</div></div><span>→</span></a>
-      <!-- BAND 7.0 -->
-      <div class="rm-band"><span class="rm-band-tag b7">Band 7.0</span> Nâng cao</div>
-      <a href="collocations.html" class="rm-item"><div class="rm-num">7</div><div class="rm-text"><div class="rm-title">Collocations & Phrasal Verbs</div><div class="rm-sub">200+ cụm từ · 70+ phrasal verbs</div></div><span>→</span></a>
-      <a href="grammar-advanced.html" class="rm-item"><div class="rm-num">8</div><div class="rm-text"><div class="rm-title">Ngữ pháp nâng cao</div><div class="rm-sub">Inversion · Cleft · Participle</div></div><span>→</span></a>
-      <a href="ielts.html" class="rm-item"><div class="rm-num">9</div><div class="rm-text"><div class="rm-title">IELTS chiến lược</div><div class="rm-sub">4 kỹ năng · Tips · Bài mẫu</div></div><span>→</span></a>
-      <!-- BAND 8.0 -->
-      <div class="rm-band"><span class="rm-band-tag b8">Band 8.0</span> Chuyên sâu</div>
-      <a href="academic-words.html" class="rm-item"><div class="rm-num">10</div><div class="rm-text"><div class="rm-title">AWL 570 từ học thuật</div><div class="rm-sub">Sublist 1–10 · Quiz · Flashcard</div></div><span>→</span></a>
-      <a href="grammar-advanced.html#hedging" class="rm-item"><div class="rm-num">11</div><div class="rm-text"><div class="rm-title">Hedging & Cohesion</div><div class="rm-sub">Ngôn ngữ học thuật · Liên kết văn bản</div></div><span>→</span></a>
-      <a href="writing-checker.html" class="rm-item"><div class="rm-num">12</div><div class="rm-text"><div class="rm-title">Writing Checker</div><div class="rm-sub">Kiểm tra & chấm bài viết</div></div><span>→</span></a>
-      <!-- BAND 9.0 -->
-      <div class="rm-band"><span class="rm-band-tag b9">Band 9.0</span> Hoàn hảo</div>
-      <a href="listening.html" class="rm-item"><div class="rm-num">13</div><div class="rm-text"><div class="rm-title">Listening nâng cao</div><div class="rm-sub">Dictation · Note-taking · Accents</div></div><span>→</span></a>
-      <a href="spaced-repetition.html" class="rm-item"><div class="rm-num">14</div><div class="rm-text"><div class="rm-title">Spaced Repetition</div><div class="rm-sub">Ôn tập thông minh · Không quên từ</div></div><span>→</span></a>
-    </div>
-  </div>
-</div>
+<!-- BẠN MUỐN HỌC GÌ? -->
+<div class="section" id="goals">
+  <div class="sec-title" style="text-align:center;margin-bottom:8px">Bạn muốn học gì?</div>
+  <p style="text-align:center;color:var(--text3);font-size:14px;margin-bottom:24px">Chọn mục tiêu phù hợp — chúng tôi gợi ý lộ trình cho bạn</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
 
-<div class="divider"></div>
-
-<!-- QUICK ACCESS -->
-<div class="section">
-  <div class="sec-label">Học ngay</div>
-  <div class="sec-title">Truy cập nhanh</div>
-  <div class="sec-desc" style="margin-bottom:18px">Chủ đề phổ biến nhất — bấm vào học luôn</div>
-  <div class="quick-grid">
-    <a href="vocabulary.html#alphabet" class="qi"><span class="qi-icon"><i data-lucide="type" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><span class="qi-label">Bảng chữ cái</span></a>
-    <a href="vocabulary.html#numbers" class="qi"><span class="qi-icon"><i data-lucide="hash" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Số đếm</span></a>
-    <a href="vocabulary.html#colors" class="qi"><span class="qi-icon"><i data-lucide="palette" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Màu sắc</span></a>
-    <a href="vocabulary.html#family" class="qi"><span class="qi-icon"><i data-lucide="users" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Gia đình</span></a>
-    <a href="vocabulary.html#food" class="qi"><span class="qi-icon"><i data-lucide="utensils" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Thức ăn</span></a>
-    <a href="vocabulary.html#greetings" class="qi"><span class="qi-icon"><i data-lucide="hand" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Chào hỏi</span></a>
-    <a href="grammar.html#present-simple" class="qi"><span class="qi-icon"><i data-lucide="calendar" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Hiện tại đơn</span></a>
-    <a href="grammar.html#past-simple" class="qi"><span class="qi-icon"><i data-lucide="rewind" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Quá khứ đơn</span></a>
-    <a href="grammar-advanced.html#inversion" class="qi"><span class="qi-icon"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><span class="qi-label">Câu đảo ngữ</span></a>
-    <a href="pronunciation.html#vowels" class="qi"><span class="qi-icon"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><span class="qi-label">Nguyên âm IPA</span></a>
-    <a href="ielts.html#task2" class="qi"><span class="qi-icon"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><span class="qi-label">IELTS Writing</span></a>
-    <a href="collocations.html#make-do" class="qi"><span class="qi-icon"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><span class="qi-label">Make vs Do</span></a>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- IELTS BANNER -->
-<div class="section">
-  <div class="ielts-banner">
-    <div style="font-size:48px;flex-shrink:0"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
-    <div class="ib-text">
-      <h2>Mục tiêu IELTS 9.0 — Bắt đầu từ hôm nay</h2>
-      <p>Lộ trình từ Band 5 → 9 với đầy đủ chiến lược, bài mẫu, AWL 570 từ, collocations, ngữ pháp nâng cao và hedging. Mọi thứ bạn cần đều có sẵn.</p>
-    </div>
-    <div class="ib-btns">
-      <a href="ielts.html" class="ib-btn">IELTS Guide →</a>
-      <a href="academic-words.html" class="ib-btn2">AWL 570 từ</a>
-      <a href="grammar-advanced.html" class="ib-btn2">Ngữ pháp Band 8+</a>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ALL MODULES -->
-<div class="section">
-  <div class="sec-label">14 Modules học tập</div>
-  <div class="sec-title">Đầy đủ mọi thứ từ A–Z</div>
-  <div class="sec-desc">Từ bảng chữ cái đến IELTS Band 9.0 — tất cả trong một website chạy offline</div>
-  <div class="modules-grid">
-    <a href="grammar.html" class="mod-card ft"><span class="mod-emoji"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Ngữ pháp cơ bản</div><div class="mod-desc">16 thì, từ loại, câu điều kiện, bị động — công thức + ví dụ + quiz</div><span class="mod-tag tag-hot">Phổ biến nhất</span></a>
-    <a href="grammar-advanced.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji"><i data-lucide="rocket" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Ngữ pháp nâng cao</div><div class="mod-desc">Câu đảo ngữ, Cleft, Subjunctive, Modal Perfect — Band 7.5–8</div><span class="mod-tag tag-ielts">Band 8</span></a>
-    <a href="vocabulary.html" class="mod-card"><span class="mod-emoji"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Từ vựng theo chủ đề</div><div class="mod-desc">1000+ từ · Flashcard · Bảng chữ cái · Số · Màu sắc · Gia đình</div><span class="mod-tag tag-new">Flashcard</span></a>
-    <a href="pronunciation.html" class="mod-card"><span class="mod-emoji"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Phát âm IPA</div><div class="mod-desc">12 nguyên âm + 24 phụ âm · Trọng âm · Ngữ điệu · Nối âm</div></a>
-    <a href="skills.html" class="mod-card"><span class="mod-emoji"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">4 Kỹ năng</div><div class="mod-desc">Đọc · Nghe · Nói · Viết — chiến thuật, hội thoại, mẫu bài thực tế</div><span class="mod-tag tag-hot">Hot</span></a>
-    <a href="collocations.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><div class="mod-title">Collocations & Phrasal Verbs</div><div class="mod-desc">200+ collocations · 70+ phrasal verbs · Idioms · Make vs Do</div><span class="mod-tag tag-ielts">Nói tự nhiên</span></a>
-    <a href="ielts.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">IELTS Guide</div><div class="mod-desc">Writing Task 1&2 · Reading 13 dạng · Listening · Speaking · Band calculator</div><span class="mod-tag tag-ielts">Band 7–8</span></a>
-    <a href="academic-words.html" class="mod-card"><span class="mod-emoji"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">AWL 570 từ</div><div class="mod-desc">Academic Word List · Flashcard · Quiz · Sublist 1–10 · Tiến độ</div><span class="mod-tag tag-ielts">IELTS Essential</span></a>
-    <a href="dictionary-everyday.html" class="mod-card"><span class="mod-emoji"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><div class="mod-title">Từ điển đời thường</div><div class="mod-desc">200+ từ A1–B2 · Phiên âm · Ví dụ · Đồng nghĩa · Mức độ thông dụng</div><span class="mod-tag tag-new">A1–B2</span></a>
-    <a href="dictionary-ielts.html" class="mod-card"><span class="mod-emoji"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><div class="mod-title">Từ điển IELTS</div><div class="mod-desc">200+ từ học thuật · Band 6–8 · Collocations · Ghi chú thi</div><span class="mod-tag tag-ielts">Band 6–8+</span></a>
-    <a href="quiz.html" class="mod-card"><span class="mod-emoji"><i data-lucide="gamepad-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Quiz & Bài tập</div><div class="mod-desc">Grammar · Vocabulary · Pronunciation · Điền từ · Sắp xếp câu</div><span class="mod-tag tag-hot">Interactive</span></a>
-    <a href="dictionary.html" class="mod-card"><span class="mod-emoji"><i data-lucide="search" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span><div class="mod-title">Tra cứu từ điển</div><div class="mod-desc">Tra từ nhanh · Lưu từ yêu thích · Lịch sử tra cứu · Từ của ngày</div></a>
-    <a href="skills.html#writing" class="mod-card"><span class="mod-emoji"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Kỹ năng viết</div><div class="mod-desc">Email · Đoạn văn · Từ nối · Cấu trúc PIE · Luyện viết tại chỗ</div></a>
-    <a href="progress.html" class="mod-card"><div class="nb">NEW</div><span class="mod-emoji"><i data-lucide="bar-chart-3" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span><div class="mod-title">Progress Dashboard</div><div class="mod-desc">Streak · XP Level · 16 Thành tích · Mục tiêu IELTS · Ghi chú</div><span class="mod-tag tag-new">Theo dõi</span></a>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- LEVELS -->
-<div class="section">
-  <div class="sec-label">Trình độ</div>
-  <div class="sec-title">Bạn đang ở đâu?</div>
-  <div class="sec-desc">Chọn cấp độ phù hợp để bắt đầu hiệu quả nhất</div>
-  <div class="levels-grid">
-    <a href="grammar.html" class="lv-card lv-b">
-      <div class="lv-pill">Cơ bản · A1–A2</div>
-      <h3>Người mới hoàn toàn</h3>
-      <ul class="lv-list">
-        <li><span class="li-dot"></span>Bảng chữ cái & Phát âm IPA</li>
-        <li><span class="li-dot"></span>300 từ đầu tiên theo chủ đề</li>
-        <li><span class="li-dot"></span>Hiện tại đơn & Tiếp diễn</li>
-        <li><span class="li-dot"></span>Câu chào hỏi & Giao tiếp cơ bản</li>
-        <li><span class="li-dot"></span>Số, màu sắc, gia đình, thức ăn</li>
-      </ul>
-      <button class="lv-btn">Bắt đầu từ đây →</button>
+    <!-- 1. Bắt đầu từ 0 -->
+    <a href="pronunciation.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">🌱</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Bắt đầu từ zero</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Chưa biết gì? Bắt đầu từ bảng chữ cái, phát âm, từ vựng cơ bản.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(100,216,165,0.1);color:var(--accent)">Phát âm</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(100,216,165,0.1);color:var(--accent)">Từ vựng</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(100,216,165,0.1);color:var(--accent)">Ngữ pháp A1</span>
+      </div>
     </a>
-    <a href="grammar-advanced.html" class="lv-card lv-i">
-      <div class="lv-pill">Trung cấp · B1–B2</div>
-      <h3>Đã biết cơ bản</h3>
-      <ul class="lv-list">
-        <li><span class="li-dot"></span>16 thì + cấu trúc phức tạp</li>
-        <li><span class="li-dot"></span>AWL 570 từ học thuật</li>
-        <li><span class="li-dot"></span>Collocations & Phrasal Verbs</li>
-        <li><span class="li-dot"></span>Đọc hiểu bài báo tiếng Anh</li>
-        <li><span class="li-dot"></span>Viết email & đoạn văn chuẩn</li>
-      </ul>
-      <button class="lv-btn">Học cấp này →</button>
+
+    <!-- 2. Giao tiếp hằng ngày -->
+    <a href="skills.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">💬</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Giao tiếp hằng ngày</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Nói chuyện tự tin trong cuộc sống, du lịch, mua sắm, nhà hàng.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.1);color:var(--accent2)">Kỹ năng nói</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.1);color:var(--accent2)">Idioms</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.1);color:var(--accent2)">Từ đời thường</span>
+      </div>
     </a>
-    <a href="ielts.html" class="lv-card lv-a">
-      <div class="lv-pill">Nâng cao · C1+ · IELTS 7–8</div>
-      <h3>Hướng tới IELTS 8.0</h3>
-      <ul class="lv-list">
-        <li><span class="li-dot"></span>Ngữ pháp nâng cao Band 8</li>
-        <li><span class="li-dot"></span>IELTS Writing Task 1 & 2</li>
-        <li><span class="li-dot"></span>Speaking Part 1, 2, 3</li>
-        <li><span class="li-dot"></span>Reading & Listening strategies</li>
-        <li><span class="li-dot"></span>Từ vựng học thuật chuyên sâu</li>
-      </ul>
-      <button class="lv-btn">Nâng trình ngay →</button>
+
+    <!-- 3. Luyện thi IELTS -->
+    <a href="ielts.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">🎯</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Luyện thi IELTS</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Chiến lược thi, bài mẫu Writing, Speaking topics, AWL 570 từ.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(240,194,122,0.1);color:var(--accent3)">IELTS Guide</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(240,194,122,0.1);color:var(--accent3)">Bài mẫu</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(240,194,122,0.1);color:var(--accent3)">AWL</span>
+      </div>
     </a>
+
+    <!-- 4. Nâng cao ngữ pháp -->
+    <a href="grammar.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">📐</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Ngữ pháp vững chắc</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">16 thì, câu điều kiện, bị động, đảo ngữ — từ cơ bản đến nâng cao.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(100,216,165,0.1);color:var(--accent)">Cơ bản</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(100,216,165,0.1);color:var(--accent)">Nâng cao</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(100,216,165,0.1);color:var(--accent)">Quiz</span>
+      </div>
+    </a>
+
+    <!-- 5. Mở rộng vốn từ -->
+    <a href="vocabulary.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">📚</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Mở rộng vốn từ</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Flashcard, đồng/trái nghĩa, collocations, thành ngữ — nói tự nhiên hơn.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.1);color:var(--accent2)">Flashcard</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.1);color:var(--accent2)">Synonyms</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.1);color:var(--accent2)">Collocations</span>
+      </div>
+    </a>
+
+    <!-- 6. Tra cứu & Từ điển -->
+    <a href="dictionary.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">🔍</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Tra cứu & Từ điển</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Tra từ nhanh, từ điển đời thường, từ điển IELTS — lưu từ yêu thích.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(240,194,122,0.1);color:var(--accent3)">Anh-Việt</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(240,194,122,0.1);color:var(--accent3)">Đời thường</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(240,194,122,0.1);color:var(--accent3)">IELTS</span>
+      </div>
+    </a>
+
+    <!-- 7. Luyện đề & Quiz -->
+    <a href="quiz.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">🧩</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Luyện đề & Quiz</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Bài tập tương tác, thi thử IELTS, ôn tập lặp lại — kiểm tra kiến thức.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(255,138,128,0.1);color:var(--coral)">Quiz</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(255,138,128,0.1);color:var(--coral)">Mock Test</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(255,138,128,0.1);color:var(--coral)">Ôn tập</span>
+      </div>
+    </a>
+
+    <!-- 8. Luyện viết -->
+    <a href="writing-checker.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;transition:all .2s;display:block">
+      <div style="font-size:32px;margin-bottom:12px">✍️</div>
+      <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px">Luyện viết tiếng Anh</div>
+      <div style="font-size:13px;color:var(--text3);line-height:1.6">Viết email, đoạn văn, bài IELTS — kiểm tra ngữ pháp & paraphrase.</div>
+      <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(255,138,128,0.1);color:var(--coral)">Writing</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(255,138,128,0.1);color:var(--coral)">Paraphrase</span>
+        <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(255,138,128,0.1);color:var(--coral)">Checker</span>
+      </div>
+    </a>
+
   </div>
 </div>
 
+
 <div class="divider"></div>
+
 
 <!-- STREAK & TIP -->
 <div class="section">
@@ -674,6 +643,32 @@ initStreak();
 
 
 <script>
+// Collapsible roadmap
+(function(){
+  var bands=document.querySelectorAll('.rm-band');
+  bands.forEach(function(band){
+    var items=[];
+    var next=band.nextElementSibling;
+    while(next && !next.classList.contains('rm-band')){
+      items.push(next);
+      next=next.nextElementSibling;
+    }
+    if(items.length>0){
+      var wrap=document.createElement('div');
+      wrap.className='rm-band-items';
+      band.parentNode.insertBefore(wrap,items[0]);
+      items.forEach(function(it){wrap.appendChild(it);});
+      var hasActive=wrap.querySelector('.rm-item.active,.rm-item.done');
+      if(!hasActive){wrap.classList.add('hidden');band.classList.add('collapsed');}
+    }
+    band.addEventListener('click',function(){
+      var w=this.nextElementSibling;
+      if(!w||!w.classList.contains('rm-band-items'))return;
+      if(w.classList.contains('hidden')){w.classList.remove('hidden');this.classList.remove('collapsed');}
+      else{w.classList.add('hidden');this.classList.add('collapsed');}
+    });
+  });
+})();
 function toggleDrop(el){
   var drop=el.closest('.nav-drop');
   var wasOpen=drop.classList.contains('open');
