@@ -7,9 +7,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
-<meta name="description" content="Ôn tập lặp lại thông minh — hệ thống flashcard giúp ghi nhớ từ vựng tiếng Anh lâu dài, không quên.">
+<meta name="description" content="Bảng 150+ động từ bất quy tắc tiếng Anh phổ biến nhất với V1, V2, V3 và nghĩa tiếng Việt.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spaced Repetition — EasyEnglish</title>
+<title>Động từ bất quy tắc — EasyEnglish</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,34 +19,48 @@ body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-heig
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
 .orb1{width:500px;height:500px;background:rgba(100,216,165,0.12);top:-150px;right:-100px}
 .orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
-.content{max-width:700px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.nav-cta{padding:8px 18px;background:var(--accent);color:#0b1a1e;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;margin-left:6px}
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
 .page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
 .page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:10px}
 .page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.75;margin-bottom:24px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
-.s-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-.s-num{font-family:'Fraunces',serif;font-size:24px;color:var(--accent)}
-.s-label{font-size:10px;color:var(--text3);margin-top:4px}
-.card-box{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:40px;text-align:center;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;perspective:1000px}
-.card-box:hover{border-color:rgba(100,216,165,0.2)}
-.card-word{font-family:'Fraunces',serif;font-size:36px;margin-bottom:8px}
-.card-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:8px}
-.card-hint{font-size:14px;color:var(--text3)}
-.card-vi{font-size:20px;color:var(--accent2);margin-bottom:8px}
-.card-ex{font-size:16px;color:var(--text3);font-style:italic}
-.rate-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}
-.rate-btn{padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text2);transition:all .15s}
-.rate-btn:hover{transform:translateY(-2px)}
-.rate-btn.r1{border-color:rgba(255,138,128,0.3)}.rate-btn.r1:hover{background:rgba(255,138,128,0.1);color:var(--coral)}
-.rate-btn.r2{border-color:rgba(240,194,122,0.3)}.rate-btn.r2:hover{background:rgba(240,194,122,0.1);color:var(--accent3)}
-.rate-btn.r3{border-color:rgba(100,216,165,0.3)}.rate-btn.r3:hover{background:rgba(100,216,165,0.1);color:var(--accent)}
-.rate-btn.r4{border-color:rgba(107,203,119,0.3)}.rate-btn.r4:hover{background:rgba(107,203,119,0.1);color:var(--green)}
-.add-section{margin-top:30px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px}
-.add-row{display:flex;gap:8px;margin-top:10px}
-.add-input{flex:1;padding:10px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
-.add-input:focus{border-color:rgba(100,216,165,0.3)}
-.add-btn{padding:10px 18px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500}
-.empty-state{text-align:center;padding:40px;color:var(--text3)}
+.mode-tabs{display:flex;gap:8px;margin-bottom:24px}
+.tag-btn{padding:8px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:"DM Sans",sans-serif;transition:all .2s;white-space:nowrap}
+.tag-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
+.tag-btn:hover{color:var(--text)}
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+.search-box{width:100%;padding:14px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text);font-size:15px;font-family:"DM Sans",sans-serif;outline:none;margin-bottom:16px}
+.search-box:focus{border-color:rgba(100,216,165,0.4)}
+.search-box::placeholder{color:var(--text3)}
+.mode-tab{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.mode-tab.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
+.mode-tab:hover{color:var(--text)}
+.exercise-box{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center}
+.play-btn{width:80px;height:80px;border-radius:50%;border:2px solid var(--accent);background:rgba(100,216,165,0.1);cursor:pointer;font-size:32px;color:var(--accent);transition:all .2s;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.play-btn:hover{background:rgba(100,216,165,0.2);transform:scale(1.05)}
+.speed-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+.speed-btn{padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif}
+.speed-btn.active{color:var(--accent);border-color:rgba(100,216,165,0.3)}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto}
+.opt-btn{padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.opt-btn:hover{border-color:rgba(100,216,165,0.3);background:rgba(100,216,165,0.05)}
+.opt-btn.correct{background:rgba(107,203,119,0.15);border-color:var(--green);color:var(--green)}
+.opt-btn.wrong{background:rgba(255,138,128,0.15);border-color:var(--coral);color:var(--coral)}
+.dict-input{width:100%;max-width:500px;margin:20px auto 0;padding:14px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:16px;font-family:'DM Sans',sans-serif;text-align:center;outline:none}
+.dict-input:focus{border-color:rgba(100,216,165,0.4)}
+.dict-input::placeholder{color:var(--text3)}
+.score-bar{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.score-item{font-size:13px;color:var(--text2)}
+.score-item strong{color:var(--accent)}
+.feedback-msg{margin-top:14px;padding:12px 18px;border-radius:10px;font-size:14px;display:none}
+.feedback-msg.show{display:block}
+.progress-bar{height:4px;background:var(--card2);border-radius:2px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);transition:width .3s;border-radius:2px}
 
 /* === MOBILE MASTER FIX === */
 
@@ -132,7 +146,6 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 
 @media(max-width:900px){
   .nav-spacer{display:none}
-  .sm2-grid{grid-template-columns:1fr 1fr!important}
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
@@ -191,6 +204,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
+
 <body>
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
@@ -280,385 +294,87 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <!-- MOBILE MENU -->
 </nav>
 <div class="content">
-  <div class="breadcrumb">
-  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
-  <span class="bc-sep">›</span>
-  <span>Luyện tập</span>
-  <span class="bc-sep">›</span>
-  <span class="bc-current">Spaced Repetition</span>
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><span>Ngữ pháp</span><span class="bc-sep">›</span><span class="bc-current">Động từ bất quy tắc</span></div>
+<div class="page-label">Irregular Verbs</div>
+<h1 class="page-title">150+ Động từ bất quy tắc</h1>
+<p class="page-desc">Bảng động từ bất quy tắc phổ biến nhất. Bấm <i data-lucide="volume-2" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i> để nghe phát âm. Tìm kiếm nhanh bên dưới.</p>
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm động từ..." oninput="filterVerbs()">
+<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+<button class="tag-btn active" onclick="setGroup('all',this)">Tất cả</button>
+<button class="tag-btn" onclick="setGroup('common',this)">Hay dùng nhất</button>
+<button class="tag-btn" onclick="setGroup('ielts',this)">IELTS</button>
 </div>
-
-  <div class="page-label">Ôn tập thông minh</div>
-  <h1 class="page-title">Spaced Repetition <i data-lucide="brain" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></h1>
-  <p class="page-desc">Thuật toán SM-2 giúp bạn ôn từ vào thời điểm sắp quên. Bấm vào thẻ để xem nghĩa, rồi đánh giá mức độ nhớ.</p>
-
-  <div class="stats-grid">
-    <div class="s-card"><div class="s-num" id="sDue">0</div><div class="s-label">Cần ôn hôm nay</div></div>
-    <div class="s-card"><div class="s-num" id="sTotal">0</div><div class="s-label">Tổng từ</div></div>
-    <div class="s-card"><div class="s-num" id="sMastered">0</div><div class="s-label">Đã thuộc</div></div>
-    <div class="s-card"><div class="s-num" id="sReviewed">0</div><div class="s-label">Ôn hôm nay</div></div>
-  </div>
-
-  <div class="card-box" id="cardBox" onclick="flipCard()">
-    <div id="cardFront">
-      <div class="card-word" id="cWord">—</div>
-      <div class="card-pron" id="cPron"></div>
-      <div class="card-hint"><i data-lucide="pointer" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Bấm để xem nghĩa</div>
-    </div>
-    <div id="cardBack" style="display:none">
-      <div class="card-vi" id="cVi"></div>
-      <div class="card-ex" id="cEx"></div>
-    </div>
-  </div>
-
-  <div class="rate-btns" id="rateBtns" style="display:none">
-    <button class="rate-btn r1" onclick="rate(1)"><i data-lucide="frown" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Quên</button>
-    <button class="rate-btn r2" onclick="rate(2)"><i data-lucide="meh" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Khó</button>
-    <button class="rate-btn r3" onclick="rate(3)"><i data-lucide="smile" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Nhớ</button>
-    <button class="rate-btn r4" onclick="rate(4)"><i data-lucide="sunglasses" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Dễ</button>
-  </div>
-
-  <div class="add-section">
-    <div style="font-size:16px;font-weight:500;margin-bottom:4px"><i data-lucide="plus" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Thêm từ mới</div>
-    <div style="font-size:14px;color:var(--text3)">Hoặc bấm "Nạp từ mẫu" để bắt đầu nhanh</div>
-    <div class="add-row">
-      <input class="add-input" id="addWord" placeholder="Từ tiếng Anh">
-      <input class="add-input" id="addVi" placeholder="Nghĩa tiếng Việt">
-      <button class="add-btn" onclick="addWord()">Thêm</button>
-    </div>
-    <div style="margin-top:8px;display:flex;gap:8px">
-      <button class="rate-btn" onclick="loadSample()" style="font-size:11px"><i data-lucide="download" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Nạp 30 từ mẫu</button>
-      <button class="rate-btn" onclick="if(confirm('Xóa tất cả?')){localStorage.removeItem('sr_cards');cards=[];idx=0;reviewed=0;updateStats();showCard()}" style="font-size:11px;color:var(--coral)"><i data-lucide="trash-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Xóa tất cả</button>
-    </div>
-  </div>
-
-<div style="margin-top:40px">
-  <h2 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);margin-bottom:8px">Thuật toán SM-2</h2>
-  <p style="color:var(--text2);font-size:14px;margin-bottom:24px">Hệ thống tự động tính toán thời điểm tối ưu để ôn lại mỗi từ. Đánh giá độ nhớ sau mỗi lần ôn để điều chỉnh khoảng cách.</p>
-
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px" class="sm2-grid">
-    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
-      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--accent)" id="smDue">0</div>
-      <div style="font-size:12px;color:var(--text3)">Cần ôn hôm nay</div>
-    </div>
-    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
-      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--accent2)" id="smTotal">0</div>
-      <div style="font-size:12px;color:var(--text3)">Tổng từ đã thêm</div>
-    </div>
-    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
-      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--green)" id="smMastered">0</div>
-      <div style="font-size:12px;color:var(--text3)">Đã thuộc</div>
-    </div>
-    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
-      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--coral)" id="smStreak">0</div>
-      <div style="font-size:12px;color:var(--text3)">Streak ngày</div>
-    </div>
-  </div>
-
-  <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
-    <button onclick="showAddWord()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500"><i data-lucide="plus" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Thêm từ mới</button>
-    <button onclick="startReview()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif"><i data-lucide="play" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Bắt đầu ôn tập</button>
-    <button onclick="importSample()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif"><i data-lucide="download" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Nhập 50 từ mẫu IELTS</button>
-  </div>
-
-  <div id="addWordForm" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <input id="newEn" placeholder="English word" style="padding:12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none">
-      <input id="newVi" placeholder="Nghĩa tiếng Việt" style="padding:12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none">
-    </div>
-    <button onclick="addWord()" style="margin-top:10px;padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif">Thêm</button>
-  </div>
-
-  <div id="reviewArea" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin-bottom:20px">
-    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Từ <span id="rvCur">1</span>/<span id="rvTot">0</span></div>
-    <div id="rvWord" style="font-family:'Fraunces',serif;font-size:36px;color:var(--text);margin-bottom:4px"></div>
-    <div id="rvHint" style="font-size:14px;color:var(--text3);margin-bottom:20px;cursor:pointer" onclick="document.getElementById('rvAnswer').style.display='block'">Bấm để xem đáp án</div>
-    <div id="rvAnswer" style="display:none;font-size:20px;color:var(--accent);margin-bottom:20px"></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" class="rate-btns" id="rateButtons">
-      <button onclick="rateWord(1)" style="padding:12px;border-radius:8px;border:0.5px solid var(--coral);background:rgba(255,138,128,0.1);color:var(--coral);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Quên<br><span style="font-size:10px">1 phút</span></button>
-      <button onclick="rateWord(3)" style="padding:12px;border-radius:8px;border:0.5px solid var(--accent3);background:rgba(240,194,122,0.1);color:var(--accent3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Khó<br><span style="font-size:10px">10 phút</span></button>
-      <button onclick="rateWord(4)" style="padding:12px;border-radius:8px;border:0.5px solid var(--accent);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Nhớ<br><span style="font-size:10px">1 ngày</span></button>
-      <button onclick="rateWord(5)" style="padding:12px;border-radius:8px;border:0.5px solid var(--green);background:rgba(107,203,119,0.1);color:var(--green);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Dễ<br><span style="font-size:10px">4 ngày</span></button>
-    </div>
-  </div>
-
-  <div id="wordList" style="margin-top:20px"></div>
+<div style="overflow-x:auto">
+<table id="verbTable" style="width:100%;border-collapse:collapse">
+<thead><tr style="background:var(--card2);position:sticky;top:0">
+<th style="padding:10px 12px;text-align:left;color:var(--accent);font-size:13px;border-bottom:1px solid var(--border)">V1 (Base)</th>
+<th style="padding:10px 12px;text-align:left;color:var(--accent2);font-size:13px;border-bottom:1px solid var(--border)">V2 (Past)</th>
+<th style="padding:10px 12px;text-align:left;color:var(--accent3);font-size:13px;border-bottom:1px solid var(--border)">V3 (P.P.)</th>
+<th style="padding:10px 12px;text-align:left;color:var(--text2);font-size:13px;border-bottom:1px solid var(--border)">Nghĩa</th>
+<th style="padding:10px 6px;width:30px;border-bottom:1px solid var(--border)"></th>
+</tr></thead>
+<tbody id="verbBody"></tbody>
+</table>
+</div>
+<div style="margin-top:32px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">
+<div style="font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text)"><i data-lucide="zap" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Quiz nhanh</div>
+<div id="quizArea" style="text-align:center">
+<div id="qWord" style="font-family:Fraunces,serif;font-size:32px;color:var(--text);margin:16px 0"></div>
+<div id="qPrompt" style="font-size:14px;color:var(--text3);margin-bottom:12px"></div>
+<input type="text" id="qInput" class="search-box" style="max-width:300px;text-align:center;margin:0 auto" placeholder="Nhập đáp án..." onkeydown="if(event.key==='Enter')checkQuizAnswer()">
+<div id="qFeedback" style="margin-top:10px;font-size:14px"></div>
+<div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
+<button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif">Bắt đầu Quiz</button>
+<span id="qScore" style="font-size:13px;color:var(--text3);padding:8px"></span>
 </div>
 </div>
-
+</div>
+</div>
 <script>
-let cards=JSON.parse(localStorage.getItem('sr_cards')||'[]');
-let idx=0,flipped=false,reviewed=0;
-
-const SAMPLE=[
-  {w:'abandon',vi:'từ bỏ',ex:'They abandoned the project.'},
-  {w:'benefit',vi:'lợi ích',ex:'Education benefits everyone.'},
-  {w:'comprehensive',vi:'toàn diện',ex:'A comprehensive review.'},
-  {w:'demonstrate',vi:'chứng minh',ex:'The data demonstrates growth.'},
-  {w:'enhance',vi:'nâng cao',ex:'Technology enhances learning.'},
-  {w:'facilitate',vi:'tạo điều kiện',ex:'Teachers facilitate learning.'},
-  {w:'generate',vi:'tạo ra',ex:'Solar panels generate electricity.'},
-  {w:'hypothesis',vi:'giả thuyết',ex:'Test the hypothesis.'},
-  {w:'implement',vi:'triển khai',ex:'Implement the new policy.'},
-  {w:'justify',vi:'biện minh',ex:'Justify your answer.'},
-  {w:'significant',vi:'quan trọng',ex:'A significant improvement.'},
-  {w:'substantial',vi:'đáng kể',ex:'Substantial evidence supports this.'},
-  {w:'prevalent',vi:'phổ biến',ex:'Obesity is prevalent in cities.'},
-  {w:'mitigate',vi:'giảm nhẹ',ex:'Mitigate the effects of climate change.'},
-  {w:'exacerbate',vi:'làm trầm trọng',ex:'Pollution exacerbates health issues.'},
-  {w:'undermine',vi:'phá hoại',ex:'This undermines public trust.'},
-  {w:'advocate',vi:'ủng hộ',ex:'She advocates for equality.'},
-  {w:'allocate',vi:'phân bổ',ex:'Allocate more funds to education.'},
-  {w:'controversy',vi:'tranh cãi',ex:'This topic causes controversy.'},
-  {w:'deteriorate',vi:'xấu đi',ex:'Air quality has deteriorated.'},
-  {w:'elaborate',vi:'chi tiết',ex:'Please elaborate on your point.'},
-  {w:'fluctuate',vi:'dao động',ex:'Prices fluctuate daily.'},
-  {w:'inevitable',vi:'không tránh khỏi',ex:'Change is inevitable.'},
-  {w:'phenomenon',vi:'hiện tượng',ex:'A global phenomenon.'},
-  {w:'perspective',vi:'quan điểm',ex:'From my perspective...'},
-  {w:'sustainable',vi:'bền vững',ex:'Sustainable development.'},
-  {w:'unprecedented',vi:'chưa từng có',ex:'An unprecedented crisis.'},
-  {w:'vulnerable',vi:'dễ tổn thương',ex:'Vulnerable communities need support.'},
-  {w:'paradox',vi:'nghịch lý',ex:'The paradox of choice.'},
-  {w:'resilience',vi:'sức chống chịu',ex:'Build community resilience.'},
+const VERBS=[
+{v1:"be",v2:"was/were",v3:"been",vi:"thì, là, ở",g:"common"},{v1:"become",v2:"became",v3:"become",vi:"trở thành",g:"common"},{v1:"begin",v2:"began",v3:"begun",vi:"bắt đầu",g:"common"},{v1:"break",v2:"broke",v3:"broken",vi:"vỡ, phá",g:"common"},{v1:"bring",v2:"brought",v3:"brought",vi:"mang đến",g:"common"},{v1:"build",v2:"built",v3:"built",vi:"xây dựng",g:"common"},{v1:"buy",v2:"bought",v3:"bought",vi:"mua",g:"common"},{v1:"catch",v2:"caught",v3:"caught",vi:"bắt",g:"common"},{v1:"choose",v2:"chose",v3:"chosen",vi:"chọn",g:"common"},{v1:"come",v2:"came",v3:"come",vi:"đến",g:"common"},{v1:"cost",v2:"cost",v3:"cost",vi:"tốn, có giá",g:"common"},{v1:"cut",v2:"cut",v3:"cut",vi:"cắt",g:"common"},{v1:"do",v2:"did",v3:"done",vi:"làm",g:"common"},{v1:"draw",v2:"drew",v3:"drawn",vi:"vẽ",g:"common"},{v1:"drink",v2:"drank",v3:"drunk",vi:"uống",g:"common"},{v1:"drive",v2:"drove",v3:"driven",vi:"lái xe",g:"common"},{v1:"eat",v2:"ate",v3:"eaten",vi:"ăn",g:"common"},{v1:"fall",v2:"fell",v3:"fallen",vi:"ngã, rơi",g:"common"},{v1:"feel",v2:"felt",v3:"felt",vi:"cảm thấy",g:"common"},{v1:"find",v2:"found",v3:"found",vi:"tìm thấy",g:"common"},{v1:"fly",v2:"flew",v3:"flown",vi:"bay",g:"common"},{v1:"forget",v2:"forgot",v3:"forgotten",vi:"quên",g:"common"},{v1:"get",v2:"got",v3:"got/gotten",vi:"được, lấy",g:"common"},{v1:"give",v2:"gave",v3:"given",vi:"cho",g:"common"},{v1:"go",v2:"went",v3:"gone",vi:"đi",g:"common"},{v1:"grow",v2:"grew",v3:"grown",vi:"lớn lên, trồng",g:"common"},{v1:"have",v2:"had",v3:"had",vi:"có",g:"common"},{v1:"hear",v2:"heard",v3:"heard",vi:"nghe",g:"common"},{v1:"hide",v2:"hid",v3:"hidden",vi:"giấu, trốn",g:"common"},{v1:"hit",v2:"hit",v3:"hit",vi:"đánh, đập",g:"common"},{v1:"hold",v2:"held",v3:"held",vi:"giữ, cầm",g:"common"},{v1:"hurt",v2:"hurt",v3:"hurt",vi:"làm đau",g:"common"},{v1:"keep",v2:"kept",v3:"kept",vi:"giữ",g:"common"},{v1:"know",v2:"knew",v3:"known",vi:"biết",g:"common"},{v1:"lead",v2:"led",v3:"led",vi:"dẫn dắt",g:"ielts"},{v1:"learn",v2:"learnt/learned",v3:"learnt/learned",vi:"học",g:"common"},{v1:"leave",v2:"left",v3:"left",vi:"rời đi, để lại",g:"common"},{v1:"lend",v2:"lent",v3:"lent",vi:"cho mượn",g:"common"},{v1:"let",v2:"let",v3:"let",vi:"để cho",g:"common"},{v1:"lie",v2:"lay",v3:"lain",vi:"nằm",g:"common"},{v1:"lose",v2:"lost",v3:"lost",vi:"mất, thua",g:"common"},{v1:"make",v2:"made",v3:"made",vi:"làm, tạo",g:"common"},{v1:"mean",v2:"meant",v3:"meant",vi:"có nghĩa",g:"common"},{v1:"meet",v2:"met",v3:"met",vi:"gặp",g:"common"},{v1:"pay",v2:"paid",v3:"paid",vi:"trả tiền",g:"common"},{v1:"put",v2:"put",v3:"put",vi:"đặt, để",g:"common"},{v1:"read",v2:"read",v3:"read",vi:"đọc",g:"common"},{v1:"ride",v2:"rode",v3:"ridden",vi:"cưỡi, đi xe",g:"common"},{v1:"ring",v2:"rang",v3:"rung",vi:"reo, gọi điện",g:"common"},{v1:"rise",v2:"rose",v3:"risen",vi:"tăng, mọc",g:"ielts"},{v1:"run",v2:"ran",v3:"run",vi:"chạy",g:"common"},{v1:"say",v2:"said",v3:"said",vi:"nói",g:"common"},{v1:"see",v2:"saw",v3:"seen",vi:"thấy, nhìn",g:"common"},{v1:"sell",v2:"sold",v3:"sold",vi:"bán",g:"common"},{v1:"send",v2:"sent",v3:"sent",vi:"gửi",g:"common"},{v1:"set",v2:"set",v3:"set",vi:"đặt, thiết lập",g:"common"},{v1:"show",v2:"showed",v3:"shown",vi:"cho xem",g:"common"},{v1:"shut",v2:"shut",v3:"shut",vi:"đóng",g:"common"},{v1:"sing",v2:"sang",v3:"sung",vi:"hát",g:"common"},{v1:"sit",v2:"sat",v3:"sat",vi:"ngồi",g:"common"},{v1:"sleep",v2:"slept",v3:"slept",vi:"ngủ",g:"common"},{v1:"speak",v2:"spoke",v3:"spoken",vi:"nói",g:"common"},{v1:"spend",v2:"spent",v3:"spent",vi:"tiêu, dành",g:"common"},{v1:"stand",v2:"stood",v3:"stood",vi:"đứng",g:"common"},{v1:"steal",v2:"stole",v3:"stolen",vi:"ăn cắp",g:"common"},{v1:"swim",v2:"swam",v3:"swum",vi:"bơi",g:"common"},{v1:"take",v2:"took",v3:"taken",vi:"lấy, mất (thời gian)",g:"common"},{v1:"teach",v2:"taught",v3:"taught",vi:"dạy",g:"common"},{v1:"tell",v2:"told",v3:"told",vi:"kể, nói",g:"common"},{v1:"think",v2:"thought",v3:"thought",vi:"nghĩ",g:"common"},{v1:"throw",v2:"threw",v3:"thrown",vi:"ném",g:"common"},{v1:"understand",v2:"understood",v3:"understood",vi:"hiểu",g:"common"},{v1:"wake",v2:"woke",v3:"woken",vi:"thức dậy",g:"common"},{v1:"wear",v2:"wore",v3:"worn",vi:"mặc, đội",g:"common"},{v1:"win",v2:"won",v3:"won",vi:"thắng",g:"common"},{v1:"write",v2:"wrote",v3:"written",vi:"viết",g:"common"},{v1:"arise",v2:"arose",v3:"arisen",vi:"phát sinh",g:"ielts"},{v1:"bear",v2:"bore",v3:"borne",vi:"chịu đựng, sinh",g:"ielts"},{v1:"bind",v2:"bound",v3:"bound",vi:"buộc, ràng buộc",g:"ielts"},{v1:"bite",v2:"bit",v3:"bitten",vi:"cắn",g:"common"},{v1:"blow",v2:"blew",v3:"blown",vi:"thổi",g:"common"},{v1:"breed",v2:"bred",v3:"bred",vi:"nuôi, sinh sản",g:"ielts"},{v1:"broadcast",v2:"broadcast",v3:"broadcast",vi:"phát sóng",g:"ielts"},{v1:"burst",v2:"burst",v3:"burst",vi:"nổ, vỡ",g:"common"},{v1:"cast",v2:"cast",v3:"cast",vi:"ném, đúc",g:"ielts"},{v1:"cling",v2:"clung",v3:"clung",vi:"bám, dính",g:"ielts"},{v1:"creep",v2:"crept",v3:"crept",vi:"bò, rón rén",g:"ielts"},{v1:"deal",v2:"dealt",v3:"dealt",vi:"giải quyết",g:"ielts"},{v1:"dig",v2:"dug",v3:"dug",vi:"đào",g:"common"},{v1:"dive",v2:"dove/dived",v3:"dived",vi:"lặn, nhảy",g:"common"},{v1:"feed",v2:"fed",v3:"fed",vi:"cho ăn",g:"common"},{v1:"fight",v2:"fought",v3:"fought",vi:"chiến đấu",g:"common"},{v1:"flee",v2:"fled",v3:"fled",vi:"chạy trốn",g:"ielts"},{v1:"forbid",v2:"forbade",v3:"forbidden",vi:"cấm",g:"ielts"},{v1:"forgive",v2:"forgave",v3:"forgiven",vi:"tha thứ",g:"common"},{v1:"freeze",v2:"froze",v3:"frozen",vi:"đông lạnh",g:"common"},{v1:"grind",v2:"ground",v3:"ground",vi:"xay, nghiền",g:"ielts"},{v1:"hang",v2:"hung",v3:"hung",vi:"treo",g:"common"},{v1:"kneel",v2:"knelt",v3:"knelt",vi:"quỳ",g:"common"},{v1:"lay",v2:"laid",v3:"laid",vi:"đặt, đẻ",g:"common"},{v1:"lean",v2:"leant/leaned",v3:"leant/leaned",vi:"tựa, nghiêng",g:"common"},{v1:"leap",v2:"leapt",v3:"leapt",vi:"nhảy",g:"ielts"},{v1:"light",v2:"lit",v3:"lit",vi:"thắp sáng",g:"common"},{v1:"overcome",v2:"overcame",v3:"overcome",vi:"vượt qua",g:"ielts"},{v1:"overtake",v2:"overtook",v3:"overtaken",vi:"vượt qua",g:"ielts"},{v1:"prove",v2:"proved",v3:"proven",vi:"chứng minh",g:"ielts"},{v1:"quit",v2:"quit",v3:"quit",vi:"bỏ, từ bỏ",g:"common"},{v1:"seek",v2:"sought",v3:"sought",vi:"tìm kiếm",g:"ielts"},{v1:"shake",v2:"shook",v3:"shaken",vi:"lắc, rung",g:"common"},{v1:"shed",v2:"shed",v3:"shed",vi:"đổ (nước mắt)",g:"ielts"},{v1:"shine",v2:"shone",v3:"shone",vi:"chiếu sáng",g:"common"},{v1:"shoot",v2:"shot",v3:"shot",vi:"bắn",g:"common"},{v1:"shrink",v2:"shrank",v3:"shrunk",vi:"co lại",g:"ielts"},{v1:"sink",v2:"sank",v3:"sunk",vi:"chìm",g:"common"},{v1:"slide",v2:"slid",v3:"slid",vi:"trượt",g:"common"},{v1:"sow",v2:"sowed",v3:"sown",vi:"gieo hạt",g:"ielts"},{v1:"spin",v2:"spun",v3:"spun",vi:"quay",g:"common"},{v1:"split",v2:"split",v3:"split",vi:"chia, tách",g:"common"},{v1:"spread",v2:"spread",v3:"spread",vi:"lan truyền",g:"ielts"},{v1:"spring",v2:"sprang",v3:"sprung",vi:"nhảy, bật",g:"ielts"},{v1:"stick",v2:"stuck",v3:"stuck",vi:"dán, dính",g:"common"},{v1:"sting",v2:"stung",v3:"stung",vi:"đốt, chích",g:"common"},{v1:"strike",v2:"struck",v3:"struck",vi:"đánh, đình công",g:"ielts"},{v1:"strive",v2:"strove",v3:"striven",vi:"cố gắng",g:"ielts"},{v1:"swear",v2:"swore",v3:"sworn",vi:"thề",g:"common"},{v1:"sweep",v2:"swept",v3:"swept",vi:"quét",g:"common"},{v1:"swing",v2:"swung",v3:"swung",vi:"đu đưa",g:"common"},{v1:"tear",v2:"tore",v3:"torn",vi:"xé",g:"common"},{v1:"undergo",v2:"underwent",v3:"undergone",vi:"trải qua",g:"ielts"},{v1:"undertake",v2:"undertook",v3:"undertaken",vi:"đảm nhận",g:"ielts"},{v1:"upset",v2:"upset",v3:"upset",vi:"làm buồn",g:"common"},{v1:"weave",v2:"wove",v3:"woven",vi:"dệt",g:"ielts"},{v1:"weep",v2:"wept",v3:"wept",vi:"khóc",g:"ielts"},{v1:"wind",v2:"wound",v3:"wound",vi:"quấn, uốn",g:"ielts"},{v1:"withdraw",v2:"withdrew",v3:"withdrawn",vi:"rút lui",g:"ielts"},{v1:"wring",v2:"wrung",v3:"wrung",vi:"vắt, bóp",g:"ielts"}
 ];
-
-function loadSample(){
-  const existing=new Set(cards.map(c=>c.w));
-  let added=0;
-  SAMPLE.forEach(s=>{
-    if(!existing.has(s.w)){
-      cards.push({w:s.w,vi:s.vi,ex:s.ex||'',ef:2.5,interval:1,rep:0,due:Date.now()});
-      added++;
-    }
+let activeGroup='all';
+function setGroup(g,btn){activeGroup=g;document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderVerbs();}
+function filterVerbs(){renderVerbs();}
+function renderVerbs(){
+  var q=document.getElementById('searchBox').value.toLowerCase();
+  var list=VERBS.filter(function(v){
+    var mg=activeGroup==='all'||v.g===activeGroup;
+    var mq=!q||v.v1.includes(q)||v.v2.includes(q)||v.v3.includes(q)||v.vi.includes(q);
+    return mg&&mq;
   });
-  save();updateStats();showCard();
-  alert(`Đã thêm ${added} từ mới!`);
+  document.getElementById('verbBody').innerHTML=list.map(function(v){
+    return '<tr style="border-bottom:0.5px solid var(--border);transition:background .15s" onmouseover="this.style.background=\'rgba(100,216,165,0.04)\'" onmouseout="this.style.background=\'\'">'+
+    '<td style="padding:10px 12px;font-weight:500;color:var(--accent)">'+v.v1+'</td>'+
+    '<td style="padding:10px 12px;color:var(--accent2)">'+v.v2+'</td>'+
+    '<td style="padding:10px 12px;color:var(--accent3)">'+v.v3+'</td>'+
+    '<td style="padding:10px 12px;color:var(--text2);font-size:14px">'+v.vi+'</td>'+
+    '<td style="padding:10px 6px"><span style="cursor:pointer;font-size:12px" onclick="speakTTS(this.dataset.t)" data-t="'+v.v1+', '+v.v2+', '+v.v3+'" title="Nghe phát âm"><i data-lucide="volume-2" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;color:var(--text3)"></i></span></td></tr>';
+  }).join('');
+  if(typeof lucide!=='undefined')lucide.createIcons();
 }
-
-function addWord(){
-  const w=document.getElementById('addWord').value.trim();
-  const vi=document.getElementById('addVi').value.trim();
-  if(!w||!vi){alert('Nhập đủ từ và nghĩa!');return;}
-  if(cards.find(c=>c.w===w)){alert('Từ đã tồn tại!');return;}
-  cards.push({w,vi,ex:'',ef:2.5,interval:1,rep:0,due:Date.now()});
-  save();updateStats();showCard();
-  document.getElementById('addWord').value='';
-  document.getElementById('addVi').value='';
+function speakTTS(t){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.8;speechSynthesis.speak(u);}
+var quizVerbs=[],quizIdx=0,quizScore=0,quizTotal=0;
+function startQuiz(){quizVerbs=VERBS.slice().sort(function(){return Math.random()-0.5}).slice(0,10);quizIdx=0;quizScore=0;quizTotal=10;nextQuizQ();}
+function nextQuizQ(){
+  if(quizIdx>=quizTotal){document.getElementById('qWord').textContent=quizScore+'/'+quizTotal+' đúng!';document.getElementById('qPrompt').textContent='Bấm Bắt đầu Quiz để thử lại';document.getElementById('qInput').style.display='none';document.getElementById('qScore').textContent='';return;}
+  var v=quizVerbs[quizIdx];var type=Math.random()>0.5?'v2':'v3';
+  document.getElementById('qWord').textContent=v.v1;
+  document.getElementById('qPrompt').textContent='Nhập dạng '+(type==='v2'?'V2 (Past Simple)':'V3 (Past Participle)');
+  document.getElementById('qInput').style.display='block';document.getElementById('qInput').value='';document.getElementById('qInput').focus();
+  document.getElementById('qInput').dataset.answer=v[type];document.getElementById('qInput').dataset.type=type;
+  document.getElementById('qFeedback').textContent='';
+  document.getElementById('qScore').textContent='Điểm: '+quizScore+'/'+quizTotal;
 }
-
-function getDue(){
-  const now=Date.now();
-  return cards.filter(c=>c.due<=now);
+function checkQuizAnswer(){
+  var inp=document.getElementById('qInput');var ans=inp.value.trim().toLowerCase();
+  var correct=inp.dataset.answer.toLowerCase().split('/');
+  if(correct.some(function(c){return c.trim()===ans;})){quizScore++;document.getElementById('qFeedback').innerHTML='<span style="color:var(--green)">Đúng!</span>';}
+  else{document.getElementById('qFeedback').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+inp.dataset.answer+'</strong></span>';}
+  quizIdx++;setTimeout(nextQuizQ,1200);
 }
-
-function updateStats(){
-  const due=getDue();
-  document.getElementById('sDue').textContent=due.length;
-  document.getElementById('sTotal').textContent=cards.length;
-  document.getElementById('sMastered').textContent=cards.filter(c=>c.interval>=7).length;
-  document.getElementById('sReviewed').textContent=reviewed;
-}
-
-function showCard(){
-  const due=getDue();
-  flipped=false;
-  document.getElementById('cardFront').style.display='';
-  document.getElementById('cardBack').style.display='none';
-  document.getElementById('rateBtns').style.display='none';
-
-  if(!due.length){
-    if(!cards.length){
-      document.getElementById('cWord').textContent='Chưa có từ nào';
-      document.getElementById('cPron').textContent='Thêm từ mới hoặc nạp từ mẫu bên dưới';
-    } else {
-      document.getElementById('cWord').textContent='• Hoàn tất!';
-      document.getElementById('cPron').textContent='Không còn từ cần ôn hôm nay';
-    }
-    return;
-  }
-  const c=due[0];idx=cards.indexOf(c);
-  document.getElementById('cWord').textContent=c.w;
-  document.getElementById('cPron').textContent='';
-  document.getElementById('cVi').textContent=c.vi;
-  document.getElementById('cEx').textContent=c.ex?`"${c.ex}"`:'';
-}
-
-function flipCard(){
-  if(!getDue().length)return;
-  if(!flipped){
-    flipped=true;
-    document.getElementById('cardFront').style.display='none';
-    document.getElementById('cardBack').style.display='';
-    document.getElementById('rateBtns').style.display='grid';
-    // TTS
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(cards[idx].w);
-    u.lang='en-US';u.rate=0.85;speechSynthesis.speak(u);
-  }
-}
-
-function rate(q){
-  const c=cards[idx];
-  // SM-2 algorithm simplified
-  if(q<=1){c.rep=0;c.interval=1;c.ef=Math.max(1.3,c.ef-0.3);}
-  else if(q===2){c.interval=1;c.ef=Math.max(1.3,c.ef-0.15);}
-  else if(q===3){
-    if(c.rep===0)c.interval=1;
-    else if(c.rep===1)c.interval=3;
-    else c.interval=Math.round(c.interval*c.ef);
-    c.rep++;
-  } else {
-    if(c.rep===0)c.interval=2;
-    else if(c.rep===1)c.interval=4;
-    else c.interval=Math.round(c.interval*c.ef*1.1);
-    c.rep++;c.ef=Math.min(3.0,c.ef+0.1);
-  }
-  c.due=Date.now()+c.interval*86400000;
-  reviewed++;
-  save();updateStats();showCard();
-}
-
-function save(){localStorage.setItem('sr_cards',JSON.stringify(cards));}
-
-updateStats();showCard();
-
-function toggleDrop(el){const d=el.closest('.nav-drop');const o=d.classList.contains('open');document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));if(!o)d.classList.add('open');}
-document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
-
-// SM-2 Spaced Repetition
-const SR_KEY = 'ee_sr_words';
-function getWords(){ return JSON.parse(localStorage.getItem(SR_KEY)||'[]'); }
-function saveWords(w){ localStorage.setItem(SR_KEY, JSON.stringify(w)); }
-
-function showAddWord(){
-  const f=document.getElementById('addWordForm');
-  f.style.display=f.style.display==='none'?'block':'none';
-}
-
-function addWord(){
-  const en=document.getElementById('newEn').value.trim();
-  const vi=document.getElementById('newVi').value.trim();
-  if(!en||!vi) return;
-  const words=getWords();
-  words.push({en,vi,interval:0,repetition:0,easeFactor:2.5,nextReview:Date.now()});
-  saveWords(words);
-  document.getElementById('newEn').value='';
-  document.getElementById('newVi').value='';
-  updateSRStats();renderWordList();
-}
-
-function importSample(){
-  const sample=[
-    {en:'phenomenon',vi:'hiện tượng'},{en:'deteriorate',vi:'xấu đi'},{en:'unprecedented',vi:'chưa từng có'},
-    {en:'infrastructure',vi:'cơ sở hạ tầng'},{en:'nevertheless',vi:'tuy nhiên'},{en:'approximately',vi:'xấp xỉ'},
-    {en:'consequence',vi:'hậu quả'},{en:'contemporary',vi:'đương đại'},{en:'comprehensive',vi:'toàn diện'},
-    {en:'accumulate',vi:'tích lũy'},{en:'substantial',vi:'đáng kể'},{en:'controversy',vi:'tranh cãi'},
-    {en:'predominant',vi:'chiếm ưu thế'},{en:'significance',vi:'ý nghĩa'},{en:'inevitable',vi:'không thể tránh'},
-    {en:'fluctuate',vi:'dao động'},{en:'implement',vi:'thực hiện'},{en:'preliminary',vi:'sơ bộ'},
-    {en:'sustainable',vi:'bền vững'},{en:'ambiguous',vi:'mơ hồ'},{en:'arbitrary',vi:'tùy tiện'},
-    {en:'diminish',vi:'giảm bớt'},{en:'elaborate',vi:'chi tiết'},{en:'hypothesis',vi:'giả thuyết'},
-    {en:'incentive',vi:'động lực'},{en:'marginalize',vi:'gạt ra ngoài lề'},{en:'negotiate',vi:'đàm phán'},
-    {en:'paradigm',vi:'mô hình'},{en:'reinforce',vi:'củng cố'},{en:'scrutinize',vi:'xem xét kỹ'},
-    {en:'undermine',vi:'làm suy yếu'},{en:'alleviate',vi:'giảm nhẹ'},{en:'bureaucracy',vi:'quan liêu'},
-    {en:'consensus',vi:'đồng thuận'},{en:'demographic',vi:'nhân khẩu học'},{en:'empirical',vi:'thực nghiệm'},
-    {en:'facilitate',vi:'tạo điều kiện'},{en:'hierarchy',vi:'hệ thống cấp bậc'},{en:'ideology',vi:'ý thức hệ'},
-    {en:'jurisdiction',vi:'thẩm quyền'},{en:'legitimate',vi:'hợp pháp'},{en:'methodology',vi:'phương pháp luận'},
-    {en:'negligible',vi:'không đáng kể'},{en:'paradigm',vi:'mô hình'},{en:'rationale',vi:'lý do'},
-    {en:'stipulate',vi:'quy định'},{en:'versatile',vi:'đa năng'},{en:'bureaucratic',vi:'quan liêu'},
-    {en:'pragmatic',vi:'thực dụng'},{en:'paradox',vi:'nghịch lý'},
-  ];
-  const words=getWords();
-  let added=0;
-  sample.forEach(s=>{
-    if(!words.find(w=>w.en===s.en)){
-      words.push({en:s.en,vi:s.vi,interval:0,repetition:0,easeFactor:2.5,nextReview:Date.now()});
-      added++;
-    }
-  });
-  saveWords(words);updateSRStats();renderWordList();
-  alert('Đã thêm '+added+' từ mới!');
-}
-
-function getDueWords(){
-  return getWords().filter(w=>w.nextReview<=Date.now());
-}
-
-let reviewQueue=[], reviewIdx=0;
-function startReview(){
-  reviewQueue=getDueWords();
-  if(reviewQueue.length===0){alert('Không có từ cần ôn! Thêm từ mới hoặc quay lại sau.');return;}
-  reviewIdx=0;
-  document.getElementById('reviewArea').style.display='block';
-  showReviewCard();
-}
-
-function showReviewCard(){
-  if(reviewIdx>=reviewQueue.length){
-    document.getElementById('reviewArea').innerHTML='<div style="padding:20px;text-align:center"><div style="font-family:Fraunces,serif;font-size:36px;color:var(--accent);margin-bottom:8px">Hoàn thành!</div><div style="color:var(--text2);font-size:14px">Đã ôn '+reviewQueue.length+' từ</div><button onclick="document.getElementById(\'reviewArea\').style.display=\'none\';updateSRStats();renderWordList()" style="margin-top:16px;padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:DM Sans,sans-serif">Đóng</button></div>';
-    return;
-  }
-  const w=reviewQueue[reviewIdx];
-  document.getElementById('rvWord').textContent=w.en;
-  document.getElementById('rvAnswer').textContent=w.vi;
-  document.getElementById('rvAnswer').style.display='none';
-  document.getElementById('rvHint').style.display='block';
-  document.getElementById('rvCur').textContent=reviewIdx+1;
-  document.getElementById('rvTot').textContent=reviewQueue.length;
-}
-
-function rateWord(quality){
-  const w=reviewQueue[reviewIdx];
-  const words=getWords();
-  const idx=words.findIndex(x=>x.en===w.en);
-  if(idx===-1) return;
-
-  // SM-2 algorithm
-  if(quality<3){
-    words[idx].repetition=0;
-    words[idx].interval=1;
-  } else {
-    if(words[idx].repetition===0) words[idx].interval=1;
-    else if(words[idx].repetition===1) words[idx].interval=6;
-    else words[idx].interval=Math.round(words[idx].interval*words[idx].easeFactor);
-    words[idx].repetition++;
-  }
-  words[idx].easeFactor=Math.max(1.3, words[idx].easeFactor+0.1-(5-quality)*(0.08+(5-quality)*0.02));
-  words[idx].nextReview=Date.now()+words[idx].interval*86400000;
-
-  saveWords(words);
-  reviewIdx++;
-  showReviewCard();
-}
-
-function updateSRStats(){
-  const words=getWords();
-  const due=words.filter(w=>w.nextReview<=Date.now()).length;
-  const mastered=words.filter(w=>w.interval>=21).length;
-  document.getElementById('smDue').textContent=due;
-  document.getElementById('smTotal').textContent=words.length;
-  document.getElementById('smMastered').textContent=mastered;
-  const srStreak=JSON.parse(localStorage.getItem('ee_sr_streak')||'{"count":0}');
-  document.getElementById('smStreak').textContent=srStreak.count||0;
-}
-
-function renderWordList(){
-  const words=getWords().sort((a,b)=>a.nextReview-b.nextReview);
-  const el=document.getElementById('wordList');
-  if(!words.length){el.innerHTML='<div style="color:var(--text3);text-align:center;padding:20px;font-size:14px">Chưa có từ nào. Thêm từ mới hoặc nhập 50 từ mẫu!</div>';return;}
-  el.innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:10px">'+words.length+' từ</div>'+
-    words.slice(0,30).map(w=>{
-      const isDue=w.nextReview<=Date.now();
-      const days=Math.max(0,Math.round((w.nextReview-Date.now())/86400000));
-      return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--card);border:0.5px solid var(--border);border-radius:8px;margin-bottom:4px">'+
-        '<div><span style="color:var(--text);font-size:14px;font-weight:500">'+w.en+'</span> <span style="color:var(--text3);font-size:12px;margin-left:6px">'+w.vi+'</span></div>'+
-        '<span style="font-size:11px;color:'+(isDue?'var(--coral)':'var(--text3)')+'">'+
-        (isDue?'Cần ôn':'Ôn sau '+days+' ngày')+'</span></div>';
-    }).join('');
-}
-
-updateSRStats();renderWordList();
-
+renderVerbs();
 </script>
 <script src="theme.js"></script>
 
