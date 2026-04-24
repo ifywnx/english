@@ -83,7 +83,18 @@ window.addEventListener('scroll',function(){
 
   // Listen for text selection
   document.addEventListener('mouseup', handleSelection);
-  document.addEventListener('touchend', function(){ setTimeout(handleSelection, 200); });
+  // Mobile: multiple strategies for touch selection
+  document.addEventListener('touchend', function(){ setTimeout(handleSelection, 300); });
+  document.addEventListener('selectionchange', function(){
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(function(){
+      var sel = window.getSelection();
+      var text = sel.toString().trim();
+      if(text && text.length >= 2 && text.length <= 100 && text !== lastText){
+        handleSelection();
+      }
+    }, 600);
+  });
 
   function handleSelection(){
     var sel = window.getSelection();
@@ -92,8 +103,8 @@ window.addEventListener('scroll',function(){
     // Ignore if clicking inside popup
     if(popup.contains(sel.anchorNode)) return;
     
-    // Hide if no selection
-    if(!text || text.length < 1 || text.length > 100){
+    // Hide if no selection or too short
+    if(!text || text.length < 2 || text.length > 100){
       clearTimeout(hideTimeout);
       hideTimeout = setTimeout(hidePopup, 200);
       return;
@@ -111,11 +122,11 @@ window.addEventListener('scroll',function(){
     popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div class="ee-tp-loading"><div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(100,216,165,0.2);border-top-color:#64d8a5;border-radius:50%;animation:spin .6s linear infinite"></div><div style="margin-top:6px">Đang dịch...</div></div></div>';
     showPopup(rect.left, rect.bottom, text);
 
-    // Check if single word → use dictionary API
-    var isSingleWord = text.split(/\s+/).length === 1 && /^[a-zA-Z]+$/.test(text);
+    // Check if single word → use dictionary API + direct translate
+    var isSingleWord = text.split(/\s+/).length === 1 && /^[a-zA-Z'-]+$/.test(text);
     
     if(isSingleWord){
-      lookupAndTranslate(text.toLowerCase(), rect);
+      lookupAndTranslate(text, rect);
     } else {
       translatePhrase(text, rect);
     }
@@ -123,8 +134,10 @@ window.addEventListener('scroll',function(){
 
   // Single word: translate word directly + augment with Dictionary API
   function lookupAndTranslate(word, rect){
+    var wordLower = word.toLowerCase();
     // Run both requests in parallel
-    var dictPromise = fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(word))
+    // Dict API uses lowercase; translation uses original case for proper nouns
+    var dictPromise = fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(wordLower))
       .then(function(r){ return r.ok ? r.json() : Promise.reject('no'); })
       .catch(function(){ return null; });
     
@@ -171,11 +184,6 @@ window.addEventListener('scroll',function(){
         (example ? '<div style="margin-top:6px;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:#d8ede3;font-style:italic">"' + example + '"</div>' : '') +
         '</div>';
     });
-  }
-      .catch(function(){
-        // Fallback: just translate the word
-        translatePhrase(word, rect);
-      });
   }
 
   // Phrase: MyMemory translate
