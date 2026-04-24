@@ -168,13 +168,16 @@ function createThemePicker() {
   btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>';
   btn.title = 'Đổi giao diện';
   btn.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)';
+  // Move up on mobile to avoid bottom nav overlap
+  if (window.innerWidth <= 900) { btn.style.bottom = '80px'; }
   btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
   btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
 
   // Panel
   const panel = document.createElement('div');
   panel.id = 'themePanel';
-  panel.style.cssText = 'position:fixed;bottom:82px;right:24px;z-index:9998;width:280px;border-radius:16px;padding:18px;background:var(--card);border:0.5px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.4);backdrop-filter:blur(20px);display:none;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;max-height:70vh;overflow-y:auto';
+  var panelBottom = window.innerWidth <= 900 ? '138px' : '82px';
+  panel.style.cssText = 'position:fixed;bottom:' + panelBottom + ';right:24px;z-index:9998;width:280px;border-radius:16px;padding:18px;background:var(--card);border:0.5px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.4);backdrop-filter:blur(20px);display:none;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;max-height:70vh;overflow-y:auto';
 
   const currentTheme = localStorage.getItem('ee_theme') || 'aura';
 
