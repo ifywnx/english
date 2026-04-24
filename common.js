@@ -1,5 +1,49 @@
 /* === EasyEnglish Common JS === */
 
+/* === SMOOTH PAGE TRANSITIONS === */
+(function(){
+  // Inject transition CSS
+  var ts = document.createElement('style');
+  ts.textContent = 
+    '@view-transition{navigation:auto}' +
+    '::view-transition-old(root){animation:eeSlideOut .2s ease-in}' +
+    '::view-transition-new(root){animation:eeSlideIn .25s ease-out}' +
+    '@keyframes eeSlideOut{to{opacity:0;transform:translateY(-8px)}}' +
+    '@keyframes eeSlideIn{from{opacity:0;transform:translateY(8px)}}' +
+    'body{opacity:0;animation:eeFadeIn .3s ease-out .05s forwards}' +
+    '@keyframes eeFadeIn{to{opacity:1}}' +
+    '.ee-page-exit{opacity:0!important;transform:translateY(-6px)!important;transition:all .18s ease-in!important}' +
+    '*{-webkit-tap-highlight-color:transparent}' +
+    '.content,.idiom-card,.search-box,table tr,button{will-change:auto}';
+  document.head.appendChild(ts);
+
+  // Smooth navigation: fade out before leaving
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('a[href]');
+    if(!link) return;
+    var href = link.getAttribute('href');
+    // Only handle local .html links
+    if(!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript') || href.startsWith('mailto')) return;
+    if(e.ctrlKey || e.metaKey || e.shiftKey) return; // allow open in new tab
+    
+    // If browser supports View Transitions, let it handle
+    if(document.startViewTransition) return;
+    
+    // Fallback: manual fade out
+    e.preventDefault();
+    document.body.classList.add('ee-page-exit');
+    setTimeout(function(){ window.location.href = href; }, 180);
+  });
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+})();
+
 // Nav dropdown toggle
 function toggleDrop(el){
   var drop=el.closest('.nav-drop');
