@@ -313,6 +313,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
   #themeToggleBtn{position:fixed!important;top:-9999px!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}
 }
 </style>
+<link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -564,6 +565,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 
 @media(max-width:900px){#themeToggleBtn{position:fixed!important;top:-9999px!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}}
 </style>
+<link rel="stylesheet" href="style.css">
   </div>
 
   <div class="s-divider"></div>
@@ -1560,44 +1562,8 @@ document.addEventListener('click',e=>{
   </div>
 </div>
 
-<script>
-// Back to top + reading progress
-window.addEventListener('scroll',function(){
-  var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
-  var btn=document.getElementById('backTop');
-  if(btn){if(st>400)btn.classList.add('show');else btn.classList.remove('show');}
-  var bar=document.getElementById('readProgress');
-  if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
-});
-// Highlight active bottom nav
-(function(){
-  var path=location.pathname.split('/').pop()||'index.html';
-  document.querySelectorAll('.mob-bn-item').forEach(function(a){
-    if(a.getAttribute('href')===path)a.classList.add('active');
-  });
-})();
-</script>
-<script>
-// Robust Lucide icon initialization with retry
-(function initLucideIcons(){
-  function tryInit(){
-    if(typeof lucide!=="undefined"&&lucide.createIcons){
-      lucide.createIcons();
-    } else {
-      setTimeout(tryInit,200);
-    }
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',tryInit);
-  } else {
-    tryInit();
-  }
-  // Re-init after full load (catches lazy-loaded content)
-  window.addEventListener('load',function(){
-    setTimeout(function(){if(typeof lucide!=="undefined")lucide.createIcons();},300);
-  });
-})();
-</script>
+
+
 
 <script>
 // Collapsible sidebar
@@ -1649,5 +1615,7 @@ window.addEventListener('scroll',function(){
   });
 })();
 </script>
+<script src="gamification.js"></script>
+<script src="common.js"></script>
 </body>
 </html>
