@@ -90,7 +90,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
 .nav-drop{position:relative}
 .nav-drop>.nav-a::after{content:" ▾";font-size:10px}
 .nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
-.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
 /* === HAMBURGER === */
@@ -172,7 +172,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
 /* === READING PROGRESS === */
 .read-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:9999;transition:width .1s;width:0;border-radius:0 2px 2px 0}
 /* === MOBILE BOTTOM NAV === */
-.mob-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(11,26,30,0.95);backdrop-filter:blur(20px);border-top:0.5px solid var(--border);z-index:200;padding:6px 0 env(safe-area-inset-bottom,6px)}
+.mob-bottom-nav{display:none;position:fixed;bottom:10px;left:12px;right:12px;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:20px;z-index:200;padding:6px 0 env(safe-area-inset-bottom,6px);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
 .mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center}
 .mob-bn-item{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--text3);font-size:10px;padding:4px 8px;border-radius:8px;transition:all .2s}
 .mob-bn-item:hover,.mob-bn-item.active{color:var(--accent)}
@@ -213,7 +213,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
   <button class="hamburger" onclick="var m=document.getElementById('mobileMenu');if(m.style.display==='flex'){m.style.display='none';this.classList.remove('open')}else{m.style.display='flex';this.classList.add('open')}"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Học cơ bản ▾</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Học cơ bản</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
         <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
@@ -221,37 +221,37 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
       </div></div>
     </div>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Từ vựng ▾</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Từ vựng</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="vocabulary.html" class="nav-a"><i data-lucide="pencil" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ vựng cơ bản</a>
         <a href="synonyms.html" class="nav-a"><i data-lucide="repeat" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Đồng/Trái nghĩa</a>
-        <a href="collocations.html" class="nav-a"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
-        <a href="idioms.html" class="nav-a"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Idioms</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Cụm từ đi cùng</a>
+        <a href="idioms.html" class="nav-a"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Thành ngữ</a>
       </div></div>
     </div>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Kỹ năng ▾</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Kỹ năng</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="skills.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> 4 Kỹ năng</a>
         <a href="listening.html" class="nav-a"><i data-lucide="headphones" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Luyện nghe</a>
-        <a href="writing-checker.html" class="nav-a"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Writing Checker</a>
+        <a href="writing-checker.html" class="nav-a"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Kiểm tra bài viết</a>
         <a href="quiz.html" class="nav-a"><i data-lucide="help-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Bài tập</a>
-        <a href="spaced-repetition.html" class="nav-a"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Spaced Repetition</a>
+        <a href="spaced-repetition.html" class="nav-a"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ôn tập lặp lại</a>
       </div></div>
     </div>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">IELTS ▾</span>
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="ielts.html" class="nav-a"><i data-lucide="trophy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
-        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
-              <a href="ielts-writing-band9.html" class="nav-a"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Writing Band 9</a>
-              <a href="ielts-speaking-topics.html" class="nav-a"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Speaking Topics</a>
-              <a href="paraphrasing.html" class="nav-a"><i data-lucide="repeat" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Paraphrasing</a>
-              <a href="mock-test.html" class="nav-a"><i data-lucide="file-check" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Mock Test</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> 570 từ học thuật</a>
+              <a href="ielts-writing-band9.html" class="nav-a"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Viết IELTS mẫu</a>
+              <a href="ielts-speaking-topics.html" class="nav-a"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Nói IELTS mẫu</a>
+              <a href="paraphrasing.html" class="nav-a"><i data-lucide="repeat" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Diễn đạt lại</a>
+              <a href="mock-test.html" class="nav-a"><i data-lucide="file-check" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Thi thử IELTS</a>
       </div></div>
     </div>
     <div class="nav-drop">
-      <span class="nav-a" onclick="toggleDrop(this)">Từ điển ▾</span>
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển</span>
       <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
         <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
         <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
@@ -276,7 +276,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
   <a href="dictionary-ielts-2.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS 2</a>
   <a href="ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">IELTS Guide</a>
   <a href="academic-words.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">AWL 570 từ</a>
-  <a href="collocations.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Collocations</a>
+  <a href="collocations.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Cụm từ đi cùng</a>
   <a href="progress.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Tiến độ</a>
   <a href="spaced-repetition.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Spaced Repetition</a>
   <a href="listening.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Listening</a>
@@ -590,25 +590,25 @@ renderErrors();renderPhrases();
     <div class="more-drawer-handle" onclick="document.getElementById('moreDrawer').classList.remove('open')"><span></span></div>
     <div class="more-drawer-grid">
       <a href="grammar.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Ngữ pháp</span></a>
-      <a href="grammar-advanced.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Ngữ pháp NC</span></a>
+      <a href="grammar-advanced.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Ngữ pháp nâng cao</span></a>
       <a href="vocabulary.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Từ vựng</span></a>
       <a href="synonyms.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span>Đồng/Trái nghĩa</span></a>
-      <a href="collocations.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>Collocations</span></a>
-      <a href="idioms.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"/></svg><span>Idioms</span></a>
+      <a href="collocations.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>Cụm từ hay đi cùng</span></a>
+      <a href="idioms.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"/></svg><span>Thành ngữ</span></a>
       <a href="pronunciation.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><span>Phát âm</span></a>
-      <a href="skills.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>4 Kỹ năng</span></a>
+      <a href="skills.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>Nghe Nói Đọc Viết</span></a>
       <a href="ielts.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.71 4 7 5.29 7 6.5V8"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18.29 4 17 5.29 17 6.5V8"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><span>IELTS</span></a>
-      <a href="academic-words.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>AWL 570</span></a>
+      <a href="academic-words.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>570 từ học thuật</span></a>
       <a href="dictionary.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Từ điển</span></a>
       <a href="listening.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><span>Luyện nghe</span></a>
-      <a href="writing-checker.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Writing Check</span></a>
-      <a href="spaced-repetition.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg><span>Ôn tập SRS</span></a>
-      <a href="progress.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Tiến độ</span></a>
-      <a href="ielts-writing-band9.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Writing B9</span></a>
-      <a href="ielts-speaking-topics.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg><span>Speaking</span></a>
-      <a href="paraphrasing.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span>Paraphrase</span></a>
-      <a href="mock-test.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Mock Test</span></a>
-      <button class="md-item" id="mdThemeBtn" onclick="document.getElementById('moreDrawer').classList.remove('open');var p=document.getElementById('themePanel');if(p){p.style.display='block';p.style.bottom='80px';p.style.right='16px';p.style.left='16px';p.style.width='auto';setTimeout(function(){p.style.opacity='1';p.style.transform='translateY(0)'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Giao diện</span></button>
+      <a href="writing-checker.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Kiểm tra bài viết</span></a>
+      <a href="spaced-repetition.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg><span>Ôn tập lặp lại</span></a>
+      <a href="progress.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Tiến độ học</span></a>
+      <a href="ielts-writing-band9.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Viết IELTS mẫu</span></a>
+      <a href="ielts-speaking-topics.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg><span>Nói IELTS mẫu</span></a>
+      <a href="paraphrasing.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span>Diễn đạt lại</span></a>
+      <a href="mock-test.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Thi thử IELTS</span></a>
+      <button class="md-item" id="mdThemeBtn" onclick="document.getElementById('moreDrawer').classList.remove('open');var p=document.getElementById('themePanel');if(p){p.style.display='block';p.style.bottom='80px';p.style.right='16px';p.style.left='16px';p.style.width='auto';setTimeout(function(){p.style.opacity='1';p.style.transform='translateY(0)'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Đổi giao diện</span></button>
     </div>
   </div>
 </div>
