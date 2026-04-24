@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Writing Band 9 — EasyEnglish</title>
+<meta name="description" content="Hướng dẫn thi IELTS toàn diện: Writing Task 1 & 2, Reading, Listening, Speaking. Mẹo thi, cấu trúc bài, cách tính điểm Band.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
+  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
+  --coral:#ff8a80;--green:#6bcb77;--pink:#dba4c7;
+  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
+  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:600px;height:600px;background:rgba(232,197,71,0.07);top:-200px;right:-150px}
+.orb2{width:500px;height:500px;background:rgba(123,110,246,0.06);bottom:-100px;left:-150px}
+.orb3{width:300px;height:300px;background:rgba(78,205,196,0.06);top:40%;left:35%}
+
+.nav-cta{padding:8px 18px;border-radius:8px;background:var(--accent);color:#0f0e17;font-size:12px;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif}
+
+.page-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+
+.content{padding:36px 48px;max-width:900px}
+.page-label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,48px);font-weight:300;margin-bottom:12px;line-height:1.2}
+.page-desc{font-size:clamp(14px,1.4vw,18px);color:var(--text2);line-height:1.75;margin-bottom:28px}
+.s-divider{height:0.5px;background:var(--border);margin:36px 0}
+.anchor{scroll-margin-top:80px}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:10px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+
+/* OVERVIEW CARDS */
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.ov-card{border-radius:16px;padding:20px;border:0.5px solid var(--border);text-align:center;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+.ov-card:hover{transform:translateY(-3px)}
+.ov-w{background:rgba(167,139,250,0.08);border-color:rgba(232,197,71,0.2)}
+.ov-r{background:rgba(78,205,196,0.06);border-color:rgba(78,205,196,0.2)}
+.ov-l{background:rgba(123,110,246,0.06);border-color:rgba(123,110,246,0.2)}
+.ov-s{background:rgba(232,121,160,0.06);border-color:rgba(232,121,160,0.2)}
+.ov-icon{font-size:30px;margin-bottom:10px}
+.ov-name{font-size:16px;font-weight:500;margin-bottom:4px}
+.ov-score{font-size:14px;color:var(--text3)}
+.ov-time{font-size:11px;color:var(--text3);margin-top:4px}
+
+/* BAND TABLE */
+.band-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px}
+.band-table th{padding:10px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.band-table td{padding:10px 14px;border:0.5px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.6}
+.band-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-band{font-family:'Fraunces',serif;font-size:20px;font-weight:300}
+.b9{color:#ffd700}.b8{color:var(--coral)}.b7{color:var(--accent)}.b6{color:var(--green)}.b5{color:var(--accent3)}
+
+/* TASK BOX */
+.task-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.task-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.task-badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500}
+.tb-gold{background:rgba(100,216,165,0.15);color:var(--accent)}
+.tb-teal{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.tb-purple{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.tb-pink{background:rgba(232,121,160,0.15);color:var(--pink)}
+.task-title{font-size:16px;font-weight:500}
+.task-time{font-size:14px;color:var(--text3);margin-left:auto}
+
+/* SAMPLE ESSAY */
+.essay-box{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+.essay-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.essay-question{background:rgba(167,139,250,0.08);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+.essay-text{font-size:13px;color:var(--text2);line-height:1.9}
+.essay-text .hi{color:var(--accent);font-weight:500;font-style:normal}
+.essay-text .hi2{color:var(--accent3);font-weight:500;font-style:normal}
+.essay-text .hi3{color:var(--pink);font-weight:500;font-style:normal}
+.essay-text p{margin-bottom:12px}
+.essay-text p:last-child{margin-bottom:0}
+
+/* STRUCTURE BOX */
+.structure{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.str-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px}
+.str-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.str-gold{background:rgba(100,216,165,0.15);color:var(--accent)}
+.str-teal{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.str-purple{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.str-pink{background:rgba(232,121,160,0.15);color:var(--pink)}
+.str-text h4{font-size:13px;font-weight:500;margin-bottom:3px}
+.str-text p{font-size:14px;color:var(--text2);line-height:1.6}
+.str-words{font-size:11px;color:var(--text3);margin-top:3px}
+
+/* TIPS */
+.tip-box{background:rgba(123,110,246,0.07);border:0.5px solid rgba(123,110,246,0.2);border-radius:12px;padding:14px 18px;display:flex;gap:12px;margin-bottom:14px}
+.tip-icon{font-size:18px;flex-shrink:0}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:14px;color:var(--text2);line-height:1.65}
+.warn-box{background:rgba(244,132,95,0.07);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.warn-box strong{color:var(--coral)}
+.ielts-box{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:12px;padding:14px 18px;margin-bottom:14px}
+.ib-label{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.ib-text{font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+
+/* PHRASE TABLE */
+.phrase-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.phrase-table th{padding:8px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.phrase-table td{padding:9px 14px;border:0.5px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.phrase-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-phrase{color:var(--text);font-style:italic}
+.td-use{color:var(--text3);font-size:11px}
+
+/* CRITERIA GRID */
+.criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.crit-card{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px}
+.crit-pct{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);margin-bottom:4px}
+.crit-name{font-size:13px;font-weight:500;margin-bottom:6px}
+.crit-desc{font-size:14px;color:var(--text2);line-height:1.6}
+
+/* READING TYPES */
+.qtype-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.qt-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px}
+.qt-name{font-size:13px;font-weight:500;margin-bottom:4px;color:var(--text)}
+.qt-tip{font-size:14px;color:var(--text2);line-height:1.6}
+.qt-trap{font-size:11px;color:var(--coral);margin-top:5px}
+
+/* SPEAKING PARTS */
+.speaking-parts{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.sp-part{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:18px}
+.sp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sp-num{width:32px;height:32px;border-radius:8px;background:rgba(232,121,160,0.15);color:var(--pink);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;flex-shrink:0}
+.sp-title{font-size:16px;font-weight:500}
+.sp-time{font-size:11px;color:var(--text3);margin-left:auto}
+.sp-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+.sp-samples{display:flex;flex-direction:column;gap:5px}
+.sp-sample{background:var(--card);border-radius:8px;padding:8px 12px}
+.sp-q{font-size:14px;color:var(--text3);font-style:italic;margin-bottom:4px}
+.sp-a{font-size:14px;color:var(--text2);line-height:1.6}
+.sp-a .good{color:var(--green);font-weight:500}
+
+/* CUE CARD */
+.cue-card{background:rgba(232,121,160,0.06);border:1px dashed rgba(232,121,160,0.3);border-radius:12px;padding:20px;margin-bottom:14px}
+.cc-label{font-size:10px;color:var(--pink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.cc-topic{font-size:16px;font-weight:500;margin-bottom:12px}
+.cc-points{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cc-points li{font-size:13px;color:var(--text2);padding-left:16px;position:relative;line-height:1.6}
+.cc-points li::before{content:'•';position:absolute;left:0;color:var(--pink)}
+
+/* QUIZ */
+.quiz-box{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:14px;padding:20px;margin-top:20px}
+.qb-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+.qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
+.qb-hint{font-size:14px;color:var(--text3);margin-bottom:16px;font-style:italic}
+.qb-opts{display:flex;flex-direction:column;gap:8px}
+.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
+.qb-opt:hover:not(:disabled){border-color:rgba(123,110,246,0.4);color:var(--text)}
+.qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
+.qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.qb-fb{margin-top:12px;padding:11px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
+.qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
+.qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
+.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next.show{display:inline-block}
+
+/* SCORE CALCULATOR */
+.calc-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:20px}
+.calc-label{font-size:14px;color:var(--text3);margin-bottom:6px}
+.calc-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.calc-name{font-size:15px;color:var(--text);min-width:80px}
+.calc-slider{flex:1}
+.calc-val{font-size:14px;color:var(--accent);min-width:30px;text-align:right;font-weight:500}
+.calc-result{background:rgba(167,139,250,0.08);border:0.5px solid rgba(100,216,165,0.3);border-radius:10px;padding:14px;text-align:center;margin-top:8px}
+.cr-label{font-size:14px;color:var(--text3);margin-bottom:4px}
+.cr-score{font-family:'Fraunces',serif;font-size:40px;color:var(--accent)}
+.cr-note{font-size:14px;color:var(--text3);margin-top:4px}
+
+/* TASK 1 CHART PHRASES */
+.chart-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.ct-btn{padding:7px 16px;border-radius:20px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.ct-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(232,197,71,0.4);color:var(--accent)}
+.chart-content{display:none}
+.chart-content.show{display:block}
+
+/* NAV DROPDOWN */
+
+/* === MOBILE MASTER FIX === */
+
+
+/* TABLE MOBILE */
+
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+  .nav-cta{display:none!important}
+}
+
+/* MOBILE NAV FINAL */
+
+
+/* MOBILE MENU */
+#mobileMenu a{display:block;padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;transition:all .15s}
+#mobileMenu a:hover,#mobileMenu a:active{background:rgba(100,216,165,0.1);color:var(--accent)}
+
+/* OVERFLOW FIX */
+table{width:100%;border-collapse:collapse}
+
+
+/* === UNIFIED NAV === */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
+.logo-name{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
+.logo-name span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px;flex:1;justify-content:center;flex-wrap:wrap}
+.nav-spacer{width:160px}
+@media(max-width:900px){.nav-spacer{display:none}}
+.nav-a{padding:8px 14px;color:var(--text2);text-decoration:none;font-size:14px;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap}
+.nav-a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-a.active{color:var(--accent)}
+.nav-drop{position:relative}
+.nav-drop>.nav-a::after{content:" ▾";font-size:10px}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s;z-index:300}
+.nav-drop:hover .nav-drop-menu,.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
+/* === HAMBURGER === */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:201}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text2);margin:5px 0;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* === MOBILE NAV === */
+
+
+/* === MOBILE LAYOUT FIX === */
+
+@media(max-width:900px){
+  html,body{overflow-x:hidden;max-width:100vw}
+  .content{padding:20px 14px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
+  .sidebar{display:none!important}
+  main.content{margin-left:0!important;padding:20px 14px!important}
+  .stats-grid{grid-template-columns:1fr 1fr!important}
+  .quiz-selector{grid-template-columns:1fr 1fr!important}
+  .word-grid,.browse-grid,.saved-grid{grid-template-columns:1fr!important}
+  .compare-grid{grid-template-columns:1fr!important}
+  .formula-row{flex-direction:column;gap:4px}
+  .add-row{flex-direction:column}
+  table{display:block;overflow-x:auto;font-size:14px}
+  .hero h1{font-size:28px!important}
+  .card-grid,.module-grid,.roadmap-grid{grid-template-columns:1fr!important}
+  pre,code{font-size:13px;overflow-x:auto;max-width:100%}
+  .filter-row,.level-tabs,.alpha-bar{gap:4px}
+  .alpha-btn{width:28px;height:28px;font-size:11px}
+  img{max-width:100%;height:auto}
+  .nav-cta{display:none}
+  *{max-width:100vw;box-sizing:border-box}
+  .ex-list,.word-row,.rs-words,.search-hint,.history-row{flex-wrap:wrap!important}
+  .formula-row{flex-wrap:wrap!important}
+  .rate-btns{grid-template-columns:1fr 1fr!important}
+  .qs-card{min-width:0!important}
+  textarea,input{max-width:100%!important;box-sizing:border-box!important}
+  html,body{overflow-x:hidden!important;max-width:100vw!important}
+  *{box-sizing:border-box!important}
+  .sidebar,.side-nav{display:none!important}
+  main.content,.content{margin-left:0!important;padding:16px!important;max-width:100vw!important}
+  .page-title{font-size:clamp(26px,4vw,48px)!important}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{display:block!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;white-space:nowrap;max-width:calc(100vw - 32px)!important}
+  td,th{padding:8px 10px!important;font-size:13px!important}
+  nav .nav-links{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:2px;overflow-y:auto;z-index:199}
+  nav .nav-links.open{display:flex!important}
+  .nav-links .nav-a{font-size:16px;padding:14px 16px}
+  .content{overflow-x:hidden}
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:calc(100vw - 32px);font-size:13px}
+  nav{padding:10px 14px}
+  .nav-links{display:none!important}
+  .hamburger{display:none!important}
+  .page-wrap,.main-wrap,.content-wrap,.layout{display:block!important;grid-template-columns:1fr!important}
+  .sidebar,.side-nav,.toc-sidebar{display:none!important}
+  .main,.content,.main-content{width:100%!important;max-width:100%!important;padding:16px!important}
+  body{overflow-x:hidden;max-width:100vw}
+  table{display:block;overflow-x:auto;max-width:100%}
+  .alpha-bar,.stat-grid,.quiz-grid,.card-grid{grid-template-columns:1fr 1fr!important}
+  pre,code{overflow-x:auto;max-width:100%;white-space:pre-wrap;word-break:break-word}
+  h1{font-size:clamp(22px,5vw,36px)!important}
+  h2{font-size:clamp(18px,4vw,28px)!important}
+  .section-title{font-size:clamp(20px,4vw,30px)!important}
+}
+/* === BREADCRUMB === */
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text3);padding:12px 0 0;flex-wrap:wrap}
+.breadcrumb a{color:var(--text3);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb .bc-sep{opacity:0.4;font-size:10px}
+.breadcrumb .bc-current{color:var(--text2)}
+/* === BACK TO TOP === */
+.back-top{position:fixed;bottom:80px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#0b1a1e;border:none;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .3s}
+.back-top.show{display:flex}
+.back-top:hover{transform:scale(1.1)}
+/* === READING PROGRESS === */
+.read-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:9999;transition:width .1s;width:0;border-radius:0 2px 2px 0}
+/* === MOBILE BOTTOM NAV === */
+.mob-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(11,26,30,0.95);backdrop-filter:blur(20px);border-top:0.5px solid var(--border);z-index:200;padding:6px 0 env(safe-area-inset-bottom,6px)}
+.mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center}
+.mob-bn-item{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--text3);font-size:10px;padding:4px 8px;border-radius:8px;transition:all .2s}
+.mob-bn-item:hover,.mob-bn-item.active{color:var(--accent)}
+
+button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;font-family:'DM Sans',sans-serif}
+.mob-bn-item svg{width:20px;height:20px}
+@media(max-width:900px){.mob-bottom-nav{display:block}.back-top{bottom:70px;right:14px}.content{padding-bottom:80px!important}}
+
+/* === SIDEBAR === */
+.sidebar{position:sticky;top:68px;width:230px;max-height:calc(100vh - 80px);overflow-y:auto;padding:16px 0 16px 16px;flex-shrink:0;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sb-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);padding:0 12px;margin-bottom:8px}
+.sb-item{display:block;padding:8px 12px;font-size:13px;color:var(--text2);text-decoration:none;border-radius:8px;transition:all .15s;border-left:2px solid transparent;margin-bottom:2px}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.03)}
+.sb-item.active{color:var(--accent);border-left-color:var(--accent);background:rgba(232,197,71,0.05)}
+
+.page-wrap{display:flex;gap:0;max-width:1400px;margin:0 auto;min-height:calc(100vh - 60px)}
+.page-wrap main,.page-wrap .content{flex:1;min-width:0;padding:24px 32px}
+
+
+/* === MORE DRAWER === */
+.more-drawer{position:fixed;inset:0;z-index:9999;display:none}
+.more-drawer.open{display:block}
+.more-drawer-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);animation:mdFadeIn .2s}
+.more-drawer-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--card);border-radius:20px 20px 0 0;padding:8px 16px 24px;max-height:70vh;overflow-y:auto;transform:translateY(100%);animation:mdSlideUp .25s ease-out forwards;border-top:0.5px solid var(--border)}
+.more-drawer.open .more-drawer-sheet{transform:translateY(0)}
+@keyframes mdSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes mdFadeIn{from{opacity:0}to{opacity:1}}
+.more-drawer-handle{display:flex;justify-content:center;padding:8px 0 12px;cursor:pointer}
+.more-drawer-handle span{width:36px;height:4px;border-radius:2px;background:var(--text3);opacity:0.4}
+.more-drawer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.md-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 4px;border-radius:12px;text-decoration:none;color:var(--text2);font-size:11px;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.md-item:hover,.md-item:active{background:rgba(255,255,255,0.05);color:var(--accent)}
+.md-item svg{stroke:var(--text3);transition:stroke .15s}
+.md-item:hover svg,.md-item:active svg{stroke:var(--accent)}
+
+
+@media(max-width:900px){#themeToggleBtn{position:fixed!important;top:-9999px!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}}
+</style></style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<div class="read-progress" id="readProgress"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">E</div>
+    <span class="logo-name">Easy<span>English</span></span>
+  </a>
+  <button class="hamburger" onclick="var m=document.getElementById('mobileMenu');if(m.style.display==='flex'){m.style.display='none';this.classList.remove('open')}else{m.style.display='flex';this.classList.add('open')}"><span></span><span></span><span></span></button>
+  <div class="nav-links">
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Học cơ bản ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="grammar.html" class="nav-a"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp cơ bản</a>
+        <a href="grammar-advanced.html" class="nav-a"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Ngữ pháp nâng cao</a>
+        <a href="pronunciation.html" class="nav-a"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Phát âm</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ vựng ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="vocabulary.html" class="nav-a"><i data-lucide="pencil" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ vựng cơ bản</a>
+        <a href="synonyms.html" class="nav-a"><i data-lucide="repeat" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Đồng/Trái nghĩa</a>
+        <a href="collocations.html" class="nav-a"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Collocations</a>
+        <a href="idioms.html" class="nav-a"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Idioms</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Kỹ năng ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="skills.html" class="nav-a"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> 4 Kỹ năng</a>
+        <a href="listening.html" class="nav-a"><i data-lucide="headphones" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Luyện nghe</a>
+        <a href="writing-checker.html" class="nav-a"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Writing Checker</a>
+        <a href="quiz.html" class="nav-a"><i data-lucide="help-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Bài tập</a>
+        <a href="spaced-repetition.html" class="nav-a"><i data-lucide="refresh-cw" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Spaced Repetition</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">IELTS ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="ielts.html" class="nav-a"><i data-lucide="trophy" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> IELTS Guide</a>
+        <a href="academic-words.html" class="nav-a"><i data-lucide="library" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> AWL 570 từ</a>
+              <a href="ielts-writing-band9.html" class="nav-a"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Writing Band 9</a>
+              <a href="ielts-speaking-topics.html" class="nav-a"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Speaking Topics</a>
+              <a href="paraphrasing.html" class="nav-a"><i data-lucide="repeat" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Paraphrasing</a>
+              <a href="mock-test.html" class="nav-a"><i data-lucide="file-check" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Mock Test</a>
+      </div></div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-a" onclick="toggleDrop(this)">Từ điển ▾</span>
+      <div class="nav-drop-menu"><div class="nav-drop-menu-inner">
+        <a href="dictionary.html" class="nav-a"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Anh-Việt</a>
+        <a href="dictionary-everyday.html" class="nav-a"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển Đời thường</a>
+        <a href="dictionary-ielts.html" class="nav-a"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px"></i> Từ điển IELTS</a>
+      </div></div>
+    </div>
+    <a href="progress.html" class="nav-a">Tiến độ</a>
+  </div>
+  <div class="nav-spacer"></div>
+<div id="mobileMenu" style="display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,26,30,0.98);backdrop-filter:blur(20px);z-index:9999;padding:20px 16px;overflow-y:auto;flex-direction:column;gap:2px">
+  <a href="index.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Trang chủ</a>
+  <div style="padding:8px 16px 4px;font-size:11px;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-top:8px">Học cơ bản</div>
+  <a href="grammar.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp cơ bản</a>
+  <a href="grammar-advanced.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Ngữ pháp nâng cao</a>
+  <a href="pronunciation.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Phát âm</a>
+  <div style="padding:8px 16px 4px;font-size:11px;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-top:8px">Từ vựng</div>
+  <a href="vocabulary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ vựng cơ bản</a>
+  <a href="synonyms.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Đồng/Trái nghĩa</a>
+  <a href="collocations.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Collocations</a>
+  <a href="idioms.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Idioms</a>
+  <div style="padding:8px 16px 4px;font-size:11px;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-top:8px">Kỹ năng</div>
+  <a href="skills.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">4 Kỹ năng</a>
+  <a href="listening.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Luyện nghe</a>
+  <a href="writing-checker.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Writing Checker</a>
+  <a href="quiz.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Bài tập</a>
+  <a href="spaced-repetition.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Spaced Repetition</a>
+  <div style="padding:8px 16px 4px;font-size:11px;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-top:8px">IELTS</div>
+  <a href="ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">IELTS Guide</a>
+  <a href="academic-words.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">AWL 570 từ</a>
+  <div style="padding:8px 16px 4px;font-size:11px;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-top:8px">Từ điển</div>
+  <a href="dictionary.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Anh-Việt</a>
+  <a href="dictionary-everyday.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển Đời thường</a>
+  <a href="dictionary-ielts.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Từ điển IELTS</a>
+  <div style="padding:8px 16px 4px;font-size:11px;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-top:8px">Công cụ</div>
+  <a href="progress.html" style="padding:14px 16px;color:var(--text2);text-decoration:none;font-size:16px;border-radius:10px;display:block">Tiến độ</a>
+</div>
+</nav>
+
+<div class="page-wrap">
+<aside class="sidebar">
+<p class="sidebar-title">WRITING TASK 1</p>
+<a href="#t1-intro" class="sb-item active"><i data-lucide="bar-chart" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tổng quan Task 1</a>
+<a href="#t1-sample1" class="sb-item"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Mẫu: Line Graph</a>
+<a href="#t1-sample2" class="sb-item"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Mẫu: Bar Chart</a>
+<a href="#t1-sample3" class="sb-item"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Mẫu: Process</a>
+<p class="sidebar-title">WRITING TASK 2</p>
+<a href="#t2-intro" class="sb-item"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tổng quan Task 2</a>
+<a href="#t2-agree" class="sb-item"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Agree/Disagree</a>
+<a href="#t2-discuss" class="sb-item"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Discuss Both</a>
+<a href="#t2-problem" class="sb-item"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Problem/Solution</a>
+<p class="sidebar-title">TỪ VỰNG & MẸO</p>
+<a href="#vocab-band8" class="sb-item"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Vocab Band 8+</a>
+<a href="#linking" class="sb-item"><i data-lucide="link" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Linking Words</a>
+<a href="#checklist" class="sb-item"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Checklist chấm</a>
+</aside>
+<main class="content">
+<nav class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a> › <a href="ielts.html">IELTS</a> › Writing Band 9</nav>
+<p class="page-label">IELTS WRITING — BÀI MẪU BAND 8-9</p>
+<h1 class="page-title">IELTS Writing <em style="color:var(--accent)">Band 9</em></h1>
+<p class="page-desc">Phân tích chi tiết bài mẫu Writing Task 1 & Task 2 đạt Band 8-9. Học cấu trúc, từ vựng nâng cao, và kỹ thuật viết chuyên nghiệp.</p>
+
+<div class="overview-grid">
+<div class="ov-card ov-w"><div class="ov-icon">✍️</div><div class="ov-name">6 bài mẫu</div><div class="ov-score">Band 8-9</div></div>
+<div class="ov-card ov-r"><div class="ov-icon">📊</div><div class="ov-name">Task 1</div><div class="ov-score">3 dạng bài</div></div>
+<div class="ov-card ov-l"><div class="ov-icon">📝</div><div class="ov-name">Task 2</div><div class="ov-score">3 dạng bài</div></div>
+<div class="ov-card ov-s"><div class="ov-icon">⭐</div><div class="ov-name">Vocab 8+</div><div class="ov-score">50+ cụm từ</div></div>
+</div>
+
+<div class="s-divider"></div>
+
+<!-- TASK 1 -->
+<div id="t1-intro" class="anchor"></div>
+<p class="section-label">WRITING TASK 1</p>
+<h2 class="section-title">Task 1 — Mô tả dữ liệu</h2>
+<p class="section-desc">Task 1 yêu cầu mô tả biểu đồ, bảng, hoặc quy trình trong ≥150 từ (20 phút). Band 9 cần: overview rõ ràng, so sánh chính xác, từ vựng đa dạng.</p>
+
+<div class="task-box">
+<div class="task-header"><span class="task-badge tb-gold">Cấu trúc Band 9</span></div>
+<div class="structure">
+<div class="str-item"><strong style="color:var(--accent);min-width:100px">Introduction</strong><span>Paraphrase đề bài (1-2 câu). KHÔNG copy nguyên văn.</span></div>
+<div class="str-item"><strong style="color:var(--accent3);min-width:100px">Overview</strong><span>2-3 xu hướng/đặc điểm nổi bật nhất. ĐÂY LÀ PHẦN QUAN TRỌNG NHẤT.</span></div>
+<div class="str-item"><strong style="color:var(--accent2);min-width:100px">Body 1</strong><span>Chi tiết nhóm dữ liệu 1 với số liệu cụ thể.</span></div>
+<div class="str-item"><strong style="color:var(--pink);min-width:100px">Body 2</strong><span>Chi tiết nhóm dữ liệu 2 + so sánh.</span></div>
+</div>
+</div>
+
+<div id="t1-sample1" class="anchor"></div>
+<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px">📈 Mẫu 1: Line Graph — Band 9</h3>
+<div class="essay-box">
+<div class="essay-label">ĐỀ BÀI</div>
+<div class="essay-question">The graph below shows the proportion of the population aged 65 and over between 1940 and 2040 in three different countries.</div>
+<div class="essay-label">BÀI MẪU BAND 9</div>
+<div class="essay-text">
+<p>The line graph <span class="hi">illustrates</span> the percentage of elderly people (aged 65+) in Japan, Sweden, and the USA <span class="hi">over a 100-year period</span> from 1940 to 2040.</p>
+<p><span class="hi2">Overall, it is evident that</span> the proportion of senior citizens <span class="hi">has increased and is projected to continue rising</span> in all three nations, with Japan expected to experience the most <span class="hi">dramatic surge</span>.</p>
+<p>In 1940, the USA had the highest percentage of elderly residents at <span class="hi">approximately 9%</span>, while Sweden and Japan stood at around 7% and 5% respectively. <span class="hi2">Over the following decades</span>, Sweden <span class="hi">overtook</span> the USA, reaching roughly 15% by 1990, compared to about 13% for the USA. Japan, <span class="hi2">by contrast</span>, <span class="hi">remained relatively stable</span> at around 5% until 1980.</p>
+<p><span class="hi2">Looking ahead</span>, Japan is <span class="hi">forecast to witness a remarkable increase</span>, soaring to approximately 27% by 2040 — <span class="hi">surpassing</span> both Sweden (25%) and the USA (23%). This <span class="hi3">represents a fivefold increase</span> from its 1940 figure.</p>
+</div>
+</div>
+
+<div id="t1-sample2" class="anchor"></div>
+<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px">📊 Mẫu 2: Bar Chart — Band 8.5</h3>
+<div class="essay-box">
+<div class="essay-label">ĐỀ BÀI</div>
+<div class="essay-question">The chart below shows the number of men and women in further education in Britain in three periods.</div>
+<div class="essay-label">BÀI MẪU BAND 8.5</div>
+<div class="essay-text">
+<p>The bar chart <span class="hi">compares</span> the number of males and females <span class="hi">enrolled in</span> further education in Britain <span class="hi2">across three distinct periods</span>: 1970/71, 1980/81, and 1990/91.</p>
+<p><span class="hi2">Overall</span>, female participation <span class="hi">grew substantially</span> over the two decades, eventually <span class="hi">exceeding</span> that of males, while male enrolment showed a more <span class="hi">modest increase</span>.</p>
+<p>In 1970/71, approximately 1,000 thousand men were in further education, <span class="hi2">compared to</span> only around 700 thousand women. <span class="hi2">A decade later</span>, male numbers <span class="hi">rose marginally</span> to about 1,100 thousand, whereas female numbers <span class="hi">climbed more sharply</span> to roughly 950 thousand, <span class="hi3">narrowing the gap considerably</span>.</p>
+<p>By 1990/91, the trend had <span class="hi">reversed entirely</span>: women <span class="hi2">outnumbered</span> men with approximately 1,550 thousand versus 1,200 thousand. This <span class="hi3">represents a doubling</span> of female participation since 1970.</p>
+</div>
+</div>
+
+<div id="t1-sample3" class="anchor"></div>
+<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px">⚙️ Mẫu 3: Process — Band 8.5</h3>
+<div class="essay-box">
+<div class="essay-label">ĐỀ BÀI</div>
+<div class="essay-question">The diagram below shows how chocolate is produced.</div>
+<div class="essay-label">BÀI MẪU BAND 8.5</div>
+<div class="essay-text">
+<p>The diagram <span class="hi">illustrates the process by which</span> chocolate is manufactured, from the <span class="hi">initial harvesting</span> of cacao beans to the <span class="hi">final production</span> of liquid chocolate.</p>
+<p><span class="hi2">Overall</span>, it is clear that chocolate production is a <span class="hi">lengthy process</span>, involving <span class="hi">ten distinct stages</span> that can be broadly divided into <span class="hi2">outdoor cultivation and indoor manufacturing</span>.</p>
+<p><span class="hi2">At the outset</span>, ripe cacao pods are <span class="hi">harvested</span> from trees and the beans are <span class="hi2">subsequently extracted</span>. These beans are then <span class="hi">spread out</span> and <span class="hi">left to dry</span> in the sun for approximately two weeks, <span class="hi2">after which</span> they are <span class="hi">packed into sacks</span> and <span class="hi">transported</span> to the factory by either train or lorry.</p>
+<p><span class="hi2">Upon arrival</span> at the factory, the beans are <span class="hi">roasted</span> at a temperature of 350°C before being <span class="hi">crushed</span> into smaller fragments. The resulting cacao nibs are then <span class="hi">ground</span> into a paste, which is <span class="hi2">ultimately</span> <span class="hi">pressed</span> to produce liquid chocolate.</p>
+</div>
+</div>
+
+<div class="s-divider"></div>
+
+<!-- TASK 2 -->
+<div id="t2-intro" class="anchor"></div>
+<p class="section-label">WRITING TASK 2</p>
+<h2 class="section-title">Task 2 — Nghị luận</h2>
+<p class="section-desc">Task 2 yêu cầu viết bài nghị luận ≥250 từ (40 phút). Chiếm 2/3 điểm Writing. Band 9 = ý tưởng sâu + từ vựng đa dạng + ngữ pháp linh hoạt + liên kết tự nhiên.</p>
+
+<div class="task-box">
+<div class="task-header"><span class="task-badge tb-purple">4 dạng Task 2</span></div>
+<table class="band-table">
+<tr><th>Dạng bài</th><th>Yêu cầu</th><th>Cấu trúc</th></tr>
+<tr><td><strong>Agree/Disagree</strong></td><td>Đồng ý hay không?</td><td>Intro → 2 Body → Conclusion</td></tr>
+<tr><td><strong>Discuss Both Views</strong></td><td>Thảo luận 2 quan điểm</td><td>Intro → View1 → View2 → Opinion</td></tr>
+<tr><td><strong>Problem/Solution</strong></td><td>Nguyên nhân & giải pháp</td><td>Intro → Problems → Solutions → Conclusion</td></tr>
+<tr><td><strong>Advantages/Disadvantages</strong></td><td>Lợi & bất lợi</td><td>Intro → Adv → Disadv → Opinion</td></tr>
+</table>
+</div>
+
+<div id="t2-agree" class="anchor"></div>
+<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px">✅ Mẫu 4: Agree/Disagree — Band 9</h3>
+<div class="essay-box">
+<div class="essay-label">ĐỀ BÀI</div>
+<div class="essay-question">Some people believe that universities should focus on providing academic skills rather than practical training for future careers. To what extent do you agree or disagree?</div>
+<div class="essay-label">BÀI MẪU BAND 9</div>
+<div class="essay-text">
+<p>It is often argued that higher education institutions should <span class="hi">prioritize academic knowledge over vocational preparation</span>. I <span class="hi2">firmly disagree</span> with this viewpoint, as I believe universities should <span class="hi">strike a balance</span> between theoretical understanding and practical competence.</p>
+<p><span class="hi2">Admittedly</span>, academic skills form the <span class="hi">intellectual foundation</span> upon which professional expertise is built. Critical thinking, research methodology, and analytical reasoning are <span class="hi">indispensable tools</span> that enable graduates to <span class="hi3">navigate complex problems</span> throughout their careers. <span class="hi2">Furthermore</span>, a strong theoretical grounding <span class="hi">fosters innovation</span>, as many groundbreaking discoveries have emerged from purely academic pursuits.</p>
+<p><span class="hi2">Nevertheless</span>, the modern job market <span class="hi">demands a workforce equipped with</span> hands-on skills and industry-relevant experience. Employers increasingly report a <span class="hi3">skills gap</span> between what graduates know and what the workplace requires. Universities that incorporate internships, project-based learning, and industry partnerships <span class="hi">produce more employable graduates</span> who can <span class="hi2">contribute meaningfully</span> from day one.</p>
+<p><span class="hi2">In conclusion</span>, while academic rigour remains <span class="hi">the cornerstone of</span> university education, institutions must <span class="hi">evolve to meet the demands</span> of a rapidly changing economy. A <span class="hi3">well-rounded curriculum</span> that integrates both elements will best serve students' long-term interests.</p>
+</div>
+</div>
+
+<div id="t2-discuss" class="anchor"></div>
+<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px">💬 Mẫu 5: Discuss Both Views — Band 8.5</h3>
+<div class="essay-box">
+<div class="essay-label">ĐỀ BÀI</div>
+<div class="essay-question">Some people think that the best way to reduce crime is to give longer prison sentences. Others believe there are better alternative ways of reducing crime. Discuss both views and give your opinion.</div>
+<div class="essay-label">BÀI MẪU BAND 8.5</div>
+<div class="essay-text">
+<p>The question of how to <span class="hi">most effectively combat crime</span> remains a <span class="hi">contentious issue</span>. While some advocate for <span class="hi2">harsher punitive measures</span>, others contend that <span class="hi2">preventative approaches</span> yield superior results. This essay will examine both perspectives before presenting my own view.</p>
+<p><span class="hi2">Proponents of longer sentences</span> argue that <span class="hi">severe penalties serve as a powerful deterrent</span>. The logic is straightforward: potential offenders are less likely to commit crimes if they face <span class="hi3">substantial prison terms</span>. Moreover, incarceration <span class="hi">removes dangerous individuals</span> from society, thereby protecting the public during the sentence period.</p>
+<p><span class="hi2">On the other hand</span>, critics point to evidence suggesting that <span class="hi">recidivism rates remain stubbornly high</span> regardless of sentence length. They advocate for investment in education, rehabilitation programmes, and <span class="hi">addressing the root causes</span> of criminal behaviour, such as poverty, substance abuse, and lack of opportunity. Countries like Norway, which <span class="hi2">prioritize rehabilitation</span>, boast significantly <span class="hi3">lower reoffending rates</span> than nations with punitive systems.</p>
+<p><span class="hi2">In my view</span>, a <span class="hi">multifaceted approach</span> combining proportionate sentencing with robust rehabilitation programmes represents the <span class="hi3">most effective strategy</span> for reducing crime sustainably.</p>
+</div>
+</div>
+
+<div id="t2-problem" class="anchor"></div>
+<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px">🔧 Mẫu 6: Problem/Solution — Band 8.5</h3>
+<div class="essay-box">
+<div class="essay-label">ĐỀ BÀI</div>
+<div class="essay-question">In many cities, the increasing number of cars is causing serious problems. What are the problems? What solutions can you suggest?</div>
+<div class="essay-label">BÀI MẪU BAND 8.5</div>
+<div class="essay-text">
+<p>The <span class="hi">proliferation of private vehicles</span> in urban areas has <span class="hi2">given rise to</span> a number of pressing concerns. This essay will outline the key problems and propose <span class="hi">viable solutions</span>.</p>
+<p><span class="hi2">The most significant issue</span> is <span class="hi3">traffic congestion</span>, which leads to longer commute times, increased stress levels, and reduced productivity. <span class="hi2">Equally concerning</span> is the <span class="hi">environmental impact</span>: vehicle emissions contribute substantially to air pollution and climate change, with transportation accounting for <span class="hi3">approximately 27%</span> of global greenhouse gas emissions.</p>
+<p><span class="hi2">To address these challenges</span>, governments should <span class="hi">invest heavily in public transport infrastructure</span>. Cities like Tokyo and Singapore demonstrate that efficient, affordable public transit can <span class="hi2">dramatically reduce</span> car dependency. <span class="hi2">Additionally</span>, implementing congestion charges — as London has done — can <span class="hi">discourage unnecessary car use</span>. Finally, <span class="hi">promoting remote work</span> and developing cycling infrastructure offer <span class="hi3">cost-effective complementary measures</span>.</p>
+<p><span class="hi2">In conclusion</span>, while the challenges posed by increasing car numbers are <span class="hi">formidable</span>, a combination of infrastructure investment, financial incentives, and lifestyle changes can <span class="hi3">significantly mitigate</span> the impact.</p>
+</div>
+</div>
+
+<div class="s-divider"></div>
+
+<!-- VOCAB -->
+<div id="vocab-band8" class="anchor"></div>
+<p class="section-label">TỪ VỰNG NÂNG CAO</p>
+<h2 class="section-title">Vocabulary Band 8+</h2>
+<table class="band-table">
+<tr><th>Cụm từ</th><th>Nghĩa</th><th>Dùng khi</th></tr>
+<tr><td><span class="hi">a dramatic surge</span></td><td>tăng mạnh đột ngột</td><td>Task 1: mô tả tăng</td></tr>
+<tr><td><span class="hi">to remain relatively stable</span></td><td>duy trì ổn định</td><td>Task 1: không đổi</td></tr>
+<tr><td><span class="hi">to witness a remarkable increase</span></td><td>chứng kiến tăng đáng kể</td><td>Task 1: dự đoán</td></tr>
+<tr><td><span class="hi">a contentious issue</span></td><td>vấn đề gây tranh cãi</td><td>Task 2: mở bài</td></tr>
+<tr><td><span class="hi">to strike a balance</span></td><td>cân bằng giữa hai thứ</td><td>Task 2: kết luận</td></tr>
+<tr><td><span class="hi">the cornerstone of</span></td><td>nền tảng cốt lõi</td><td>Task 2: nhấn mạnh</td></tr>
+<tr><td><span class="hi">a multifaceted approach</span></td><td>cách tiếp cận đa chiều</td><td>Task 2: giải pháp</td></tr>
+<tr><td><span class="hi">to give rise to</span></td><td>dẫn đến, gây ra</td><td>Task 2: nguyên nhân</td></tr>
+<tr><td><span class="hi">recidivism rates</span></td><td>tỷ lệ tái phạm</td><td>Task 2: crime topic</td></tr>
+<tr><td><span class="hi">the proliferation of</span></td><td>sự phát triển nhanh</td><td>Task 2: technology</td></tr>
+</table>
+
+<div id="linking" class="anchor"></div>
+<h2 class="section-title" style="margin-top:32px">Linking Words nâng cao</h2>
+<table class="band-table">
+<tr><th>Chức năng</th><th>Band 6-7</th><th>Band 8-9</th></tr>
+<tr><td>Thêm ý</td><td>Moreover, Furthermore</td><td><span class="hi">Equally importantly, Coupled with this</span></td></tr>
+<tr><td>Tương phản</td><td>However, On the other hand</td><td><span class="hi">Nevertheless, Conversely, By contrast</span></td></tr>
+<tr><td>Nguyên nhân</td><td>Because, Due to</td><td><span class="hi">Owing to, On account of, Stemming from</span></td></tr>
+<tr><td>Kết quả</td><td>Therefore, As a result</td><td><span class="hi">Consequently, This culminates in</span></td></tr>
+<tr><td>Ví dụ</td><td>For example</td><td><span class="hi">To illustrate, A case in point is</span></td></tr>
+<tr><td>Kết luận</td><td>In conclusion</td><td><span class="hi">In light of the above, Taking all factors into account</span></td></tr>
+</table>
+
+<div id="checklist" class="anchor"></div>
+<h2 class="section-title" style="margin-top:32px">Checklist tự chấm Band</h2>
+<div class="task-box">
+<table class="band-table">
+<tr><th>Tiêu chí</th><th>Band 7</th><th>Band 8-9</th></tr>
+<tr><td><strong>Task Achievement</strong></td><td>Trả lời đúng, có position</td><td><span class="hi">Fully developed, relevant, well-supported ideas</span></td></tr>
+<tr><td><strong>Coherence & Cohesion</strong></td><td>Logical, clear paragraphs</td><td><span class="hi">Effortless progression, skillful referencing</span></td></tr>
+<tr><td><strong>Lexical Resource</strong></td><td>Good range, some errors</td><td><span class="hi">Wide range, sophisticated, natural collocations</span></td></tr>
+<tr><td><strong>Grammar Range</strong></td><td>Mix of structures</td><td><span class="hi">Wide range with full flexibility & accuracy</span></td></tr>
+</table>
+</div>
+
+</main>
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mob-bottom-nav">
+  <div class="mob-bottom-nav-inner">
+    <a href="index.html" class="mob-bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Trang chủ</span></a>
+    <a href="grammar.html" class="mob-bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Ngữ pháp</span></a>
+    <a href="vocabulary.html" class="mob-bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Từ vựng</span></a>
+    <a href="quiz.html" class="mob-bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Bài tập</span></a>
+    <button class="mob-bn-item" id="moreNavBtn" onclick="document.getElementById('moreDrawer').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg><span>Thêm</span></button>
+  </div>
+</div>
+
+<!-- MORE DRAWER -->
+<div class="more-drawer" id="moreDrawer">
+  <div class="more-drawer-overlay" onclick="document.getElementById('moreDrawer').classList.remove('open')"></div>
+  <div class="more-drawer-sheet">
+    <div class="more-drawer-handle" onclick="document.getElementById('moreDrawer').classList.remove('open')"><span></span></div>
+    <div class="more-drawer-grid">
+      <a href="grammar.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Ngữ pháp</span></a>
+      <a href="grammar-advanced.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Ngữ pháp NC</span></a>
+      <a href="vocabulary.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Từ vựng</span></a>
+      <a href="synonyms.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span>Đồng/Trái nghĩa</span></a>
+      <a href="collocations.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>Collocations</span></a>
+      <a href="idioms.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"/></svg><span>Idioms</span></a>
+      <a href="pronunciation.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><span>Phát âm</span></a>
+      <a href="skills.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>4 Kỹ năng</span></a>
+      <a href="ielts.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.71 4 7 5.29 7 6.5V8"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18.29 4 17 5.29 17 6.5V8"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><span>IELTS</span></a>
+      <a href="academic-words.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>AWL 570</span></a>
+      <a href="dictionary.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Từ điển</span></a>
+      <a href="listening.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><span>Luyện nghe</span></a>
+      <a href="writing-checker.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Writing Check</span></a>
+      <a href="spaced-repetition.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg><span>Ôn tập SRS</span></a>
+      <a href="progress.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Tiến độ</span></a>
+      <a href="ielts-writing-band9.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Writing B9</span></a>
+      <a href="ielts-speaking-topics.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg><span>Speaking</span></a>
+      <a href="paraphrasing.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span>Paraphrase</span></a>
+      <a href="mock-test.html" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Mock Test</span></a>
+      <button class="md-item" id="mdThemeBtn" onclick="document.getElementById('moreDrawer').classList.remove('open');var p=document.getElementById('themePanel');if(p){p.style.display='block';p.style.bottom='80px';p.style.right='16px';p.style.left='16px';p.style.width='auto';setTimeout(function(){p.style.opacity='1';p.style.transform='translateY(0)'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Giao diện</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Back to top + reading progress
+window.addEventListener('scroll',function(){
+  var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+  var btn=document.getElementById('backTop');
+  if(btn){if(st>400)btn.classList.add('show');else btn.classList.remove('show');}
+  var bar=document.getElementById('readProgress');
+  if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
+});
+// Highlight active bottom nav
+(function(){
+  var path=location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.mob-bn-item').forEach(function(a){
+    if(a.getAttribute('href')===path)a.classList.add('active');
+  });
+})();
+
+// Sidebar scroll highlight
+window.addEventListener('scroll',function(){
+  var cur='';
+  document.querySelectorAll('[id]').forEach(function(s){
+    if(s.getBoundingClientRect().top < 150) cur=s.id;
+  });
+  if(cur){
+    document.querySelectorAll('.sb-item').forEach(function(i){
+      i.classList.toggle('active', i.getAttribute('href')==='#'+cur);
+    });
+  }
+});
+</script>
+<script>
+// Robust Lucide icon initialization with retry
+(function initLucideIcons(){
+  function tryInit(){
+    if(typeof lucide!=="undefined"&&lucide.createIcons){
+      lucide.createIcons();
+    } else {
+      setTimeout(tryInit,200);
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',tryInit);
+  } else {
+    tryInit();
+  }
+  // Re-init after full load (catches lazy-loaded content)
+  window.addEventListener('load',function(){
+    setTimeout(function(){if(typeof lucide!=="undefined")lucide.createIcons();},300);
+  });
+})();
+</script>
+<script>
+// Scroll spy for sidebar
+const sbLinks=document.querySelectorAll('.sidebar .sb-item');
+const sections=[];
+sbLinks.forEach(l=>{const h=l.getAttribute('href');if(h&&h.startsWith('#')){const el=document.getElementById(h.slice(1));if(el)sections.push({el,link:l})}});
+window.addEventListener('scroll',()=>{let cur=sections[0];sections.forEach(s=>{if(s.el.getBoundingClientRect().top<=120)cur=s});sbLinks.forEach(l=>l.classList.remove('active'));if(cur)cur.link.classList.add('active')});
+// Reading progress
+window.addEventListener('scroll',()=>{const p=document.getElementById('readProgress');if(p){const h=document.documentElement.scrollHeight-window.innerHeight;p.style.width=(window.scrollY/h*100)+'%'}});
+// Back to top
+const bt=document.getElementById('backTop');if(bt){window.addEventListener('scroll',()=>{bt.style.display=window.scrollY>400?'flex':'none'})}
+</script>
+</body>
+
+</html>
