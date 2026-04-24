@@ -103,6 +103,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
 /* === MOBILE LAYOUT FIX === */
 
 @media(max-width:900px){
+  .checklist-grid{grid-template-columns:1fr!important}
+
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
@@ -271,6 +273,60 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
       <div class="lr-card"><div class="lr-title">Kết luận</div><div class="lr-words">In conclusion, To sum up,<br>All in all, Overall,<br>Taking everything into consideration</div></div>
     </div>
   </div>
+
+<div style="margin-top:40px">
+  <div class="page-label">IELTS Writing</div>
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,32px);margin-bottom:20px">Band 9 Checklist</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px" class="checklist-grid">
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--accent);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Task Achievement</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>☐ Trả lời đầy đủ tất cả phần của đề bài</li>
+        <li>☐ Có thesis statement rõ ràng</li>
+        <li>☐ Mỗi body paragraph có main idea + support</li>
+        <li>☐ Examples cụ thể, không chung chung</li>
+        <li>☐ Conclusion tóm tắt + không có ý mới</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--accent2);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="list" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Coherence & Cohesion</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>☐ Paragraphing logic (intro-body-conclusion)</li>
+        <li>☐ Linking words đa dạng (However, Nevertheless...)</li>
+        <li>☐ Referencing: this, such, these thay vì lặp từ</li>
+        <li>☐ Mỗi paragraph = 1 central topic</li>
+        <li>☐ Flow tự nhiên, không nhảy ý</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--accent3);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Lexical Resource</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>☐ Paraphrase — không lặp từ đề bài</li>
+        <li>☐ Collocations chính xác (make a decision)</li>
+        <li>☐ Academic vocabulary (significant, substantial)</li>
+        <li>☐ Không dùng informal (gonna, wanna, lots of)</li>
+        <li>☐ Spelling chính xác 100%</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--coral);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Grammar Range & Accuracy</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>☐ Mix câu đơn + phức + compound-complex</li>
+        <li>☐ Relative clauses, participle clauses</li>
+        <li>☐ Passive voice khi phù hợp</li>
+        <li>☐ Conditionals (If, Were + S + to V)</li>
+        <li>☐ Không lỗi subject-verb agreement</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);margin-bottom:16px">50 Lỗi phổ biến Band 5→7</h2>
+  <div id="errorBank" style="display:grid;gap:10px;margin-bottom:32px"></div>
+
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);margin-bottom:16px">Mẫu câu Band 8-9</h2>
+  <div id="modelPhrases" style="display:grid;gap:10px;margin-bottom:32px"></div>
+</div>
 </div>
 
 <script>
@@ -384,6 +440,68 @@ function toggleDrop(el){
   if(!o)d.classList.add('open');
 }
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+
+const ERRORS = [
+  {wrong:"The number of students are increasing.",right:"The number of students is increasing.",rule:"Subject-verb agreement: 'the number of' + singular verb"},
+  {wrong:"I am agree with this opinion.",right:"I agree with this opinion.",rule:"'Agree' không dùng be + agree"},
+  {wrong:"Nowadays, technology is very important in today's society.",right:"In contemporary society, technology plays a pivotal role.",rule:"Tránh lặp 'nowadays' + 'today'"},
+  {wrong:"There are many advantages and disadvantages.",right:"This development brings both significant benefits and notable drawbacks.",rule:"Cụ thể hóa, tránh câu chung chung"},
+  {wrong:"More and more people are using internet.",right:"An increasing number of people are using the internet.",rule:"'more and more' = informal, cần article trước internet"},
+  {wrong:"In my opinion, I think that...",right:"In my opinion,... / I believe that...",rule:"Không dùng cả 'in my opinion' + 'I think' cùng lúc"},
+  {wrong:"This problem effects many people.",right:"This problem affects many people.",rule:"affect (v) = ảnh hưởng, effect (n) = tác động"},
+  {wrong:"People should take care about environment.",right:"People should take care of the environment.",rule:"take care OF + the environment (cần article)"},
+  {wrong:"Although it is expensive, but many people buy it.",right:"Although it is expensive, many people buy it.",rule:"Although/But: chỉ dùng 1, không dùng cả 2"},
+  {wrong:"The chart shows the informations about...",right:"The chart illustrates the information about...",rule:"Information = uncountable. Dùng 'illustrates' thay 'shows'"},
+  {wrong:"I was very boring at the party.",right:"I was very bored at the party.",rule:"-ed = cảm xúc người, -ing = tính chất sự vật"},
+  {wrong:"He suggested me to go.",right:"He suggested that I go. / He suggested going.",rule:"suggest + V-ing hoặc suggest that + S + V"},
+  {wrong:"Despite of the rain, we went out.",right:"Despite the rain, we went out.",rule:"Despite + N (không có 'of'). In spite of + N"},
+  {wrong:"The rate of crime has raised.",right:"The rate of crime has risen.",rule:"rise (tự tăng) vs raise (làm tăng)"},
+  {wrong:"Less people are smoking now.",right:"Fewer people are smoking now.",rule:"fewer + countable, less + uncountable"},
+];
+
+const PHRASES = [
+  {cat:"Mở bài",phrase:"It is widely acknowledged that...",vi:"Nhiều người thừa nhận rằng..."},
+  {cat:"Mở bài",phrase:"In recent years, there has been a growing concern about...",vi:"Gần đây, ngày càng nhiều lo ngại về..."},
+  {cat:"Thân bài",phrase:"One compelling argument in favour of this is that...",vi:"Một lập luận thuyết phục ủng hộ điều này là..."},
+  {cat:"Thân bài",phrase:"A case in point is...",vi:"Một ví dụ điển hình là..."},
+  {cat:"Thân bài",phrase:"This phenomenon can be attributed to several factors.",vi:"Hiện tượng này có thể quy cho nhiều yếu tố."},
+  {cat:"Thân bài",phrase:"From an economic standpoint,...",vi:"Từ góc độ kinh tế,..."},
+  {cat:"Thân bài",phrase:"It is worth noting that...",vi:"Đáng chú ý là..."},
+  {cat:"Thân bài",phrase:"Conversely, opponents of this view argue that...",vi:"Ngược lại, người phản đối cho rằng..."},
+  {cat:"Liên kết",phrase:"Having said that, it should be noted that...",vi:"Tuy nhiên, cần lưu ý rằng..."},
+  {cat:"Liên kết",phrase:"Not only does this..., but it also...",vi:"Không chỉ... mà còn..."},
+  {cat:"Kết bài",phrase:"In conclusion, while there are valid arguments on both sides, I am firmly convinced that...",vi:"Tóm lại, dù có lập luận đúng ở cả hai phía, tôi tin chắc rằng..."},
+  {cat:"Kết bài",phrase:"To summarise, the evidence overwhelmingly suggests that...",vi:"Tóm lại, bằng chứng cho thấy rõ ràng rằng..."},
+  {cat:"Task 1",phrase:"The graph illustrates the proportion of...",vi:"Biểu đồ minh họa tỷ lệ..."},
+  {cat:"Task 1",phrase:"There was a dramatic surge in... between... and...",vi:"Có sự tăng vọt ở... trong khoảng... đến..."},
+  {cat:"Task 1",phrase:"The figures for... remained relatively stable at approximately...",vi:"Số liệu... duy trì tương đối ổn định ở khoảng..."},
+];
+
+function renderErrors(){
+  document.getElementById("errorBank").innerHTML = ERRORS.map((e,i) =>
+    '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px;cursor:pointer" onclick="this.querySelector(\'.er-detail\').style.display=this.querySelector(\'.er-detail\').style.display===\'none\'?\'block\':\'none\'">' +
+    '<div style="display:flex;gap:8px;align-items:flex-start">' +
+    '<span style="color:var(--coral);font-size:12px;flex-shrink:0">❌</span>' +
+    '<span style="font-size:13px;color:var(--coral);text-decoration:line-through">' + e.wrong + '</span></div>' +
+    '<div class="er-detail" style="display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border)">' +
+    '<div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--green);font-size:12px;flex-shrink:0">✅</span><span style="font-size:13px;color:var(--green)">' + e.right + '</span></div>' +
+    '<div style="font-size:12px;color:var(--accent2);margin-top:4px">💡 ' + e.rule + '</div></div></div>'
+  ).join("");
+}
+
+function renderPhrases(){
+  const cats = [...new Set(PHRASES.map(p=>p.cat))];
+  document.getElementById("modelPhrases").innerHTML = cats.map(cat =>
+    '<div style="margin-bottom:8px"><div style="font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">' + cat + '</div>' +
+    PHRASES.filter(p=>p.cat===cat).map(p =>
+      '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:6px">' +
+      '<div style="font-size:14px;color:var(--text);font-weight:500">' + p.phrase + '</div>' +
+      '<div style="font-size:12px;color:var(--text3);margin-top:4px">→ ' + p.vi + '</div></div>'
+    ).join("") + '</div>'
+  ).join("");
+}
+renderErrors();renderPhrases();
+
 </script>
 <script src="theme.js"></script>
 <script>if(typeof lucide!=="undefined")lucide.createIcons();</script>

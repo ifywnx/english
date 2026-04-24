@@ -90,6 +90,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
 /* === MOBILE LAYOUT FIX === */
 
 @media(max-width:900px){
+  .sm2-grid{grid-template-columns:1fr 1fr!important}
+
   html,body{overflow-x:hidden;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important}
   .page-title{font-size:clamp(26px,4vw,48px)!important;word-wrap:break-word}
@@ -259,6 +261,59 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
       <button class="rate-btn" onclick="if(confirm('Xóa tất cả?')){localStorage.removeItem('sr_cards');cards=[];idx=0;reviewed=0;updateStats();showCard()}" style="font-size:11px;color:var(--coral)"><i data-lucide="trash-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Xóa tất cả</button>
     </div>
   </div>
+
+<div style="margin-top:40px">
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);margin-bottom:8px">Thuật toán SM-2</h2>
+  <p style="color:var(--text2);font-size:14px;margin-bottom:24px">Hệ thống tự động tính toán thời điểm tối ưu để ôn lại mỗi từ. Đánh giá độ nhớ sau mỗi lần ôn để điều chỉnh khoảng cách.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px" class="sm2-grid">
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--accent)" id="smDue">0</div>
+      <div style="font-size:12px;color:var(--text3)">Cần ôn hôm nay</div>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--accent2)" id="smTotal">0</div>
+      <div style="font-size:12px;color:var(--text3)">Tổng từ đã thêm</div>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--green)" id="smMastered">0</div>
+      <div style="font-size:12px;color:var(--text3)">Đã thuộc</div>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;text-align:center">
+      <div style="font-family:'Fraunces',serif;font-size:32px;color:var(--coral)" id="smStreak">0</div>
+      <div style="font-size:12px;color:var(--text3)">Streak ngày</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+    <button onclick="showAddWord()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500"><i data-lucide="plus" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Thêm từ mới</button>
+    <button onclick="startReview()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif"><i data-lucide="play" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Bắt đầu ôn tập</button>
+    <button onclick="importSample()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif"><i data-lucide="download" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Nhập 50 từ mẫu IELTS</button>
+  </div>
+
+  <div id="addWordForm" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <input id="newEn" placeholder="English word" style="padding:12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none">
+      <input id="newVi" placeholder="Nghĩa tiếng Việt" style="padding:12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none">
+    </div>
+    <button onclick="addWord()" style="margin-top:10px;padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif">Thêm</button>
+  </div>
+
+  <div id="reviewArea" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin-bottom:20px">
+    <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Từ <span id="rvCur">1</span>/<span id="rvTot">0</span></div>
+    <div id="rvWord" style="font-family:'Fraunces',serif;font-size:36px;color:var(--text);margin-bottom:4px"></div>
+    <div id="rvHint" style="font-size:14px;color:var(--text3);margin-bottom:20px;cursor:pointer" onclick="document.getElementById('rvAnswer').style.display='block'">Bấm để xem đáp án</div>
+    <div id="rvAnswer" style="display:none;font-size:20px;color:var(--accent);margin-bottom:20px"></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" class="rate-btns" id="rateButtons">
+      <button onclick="rateWord(1)" style="padding:12px;border-radius:8px;border:0.5px solid var(--coral);background:rgba(255,138,128,0.1);color:var(--coral);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Quên<br><span style="font-size:10px">1 phút</span></button>
+      <button onclick="rateWord(3)" style="padding:12px;border-radius:8px;border:0.5px solid var(--accent3);background:rgba(240,194,122,0.1);color:var(--accent3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Khó<br><span style="font-size:10px">10 phút</span></button>
+      <button onclick="rateWord(4)" style="padding:12px;border-radius:8px;border:0.5px solid var(--accent);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Nhớ<br><span style="font-size:10px">1 ngày</span></button>
+      <button onclick="rateWord(5)" style="padding:12px;border-radius:8px;border:0.5px solid var(--green);background:rgba(107,203,119,0.1);color:var(--green);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif">Dễ<br><span style="font-size:10px">4 ngày</span></button>
+    </div>
+  </div>
+
+  <div id="wordList" style="margin-top:20px"></div>
+</div>
 </div>
 
 <script>
@@ -400,6 +455,140 @@ updateStats();showCard();
 
 function toggleDrop(el){const d=el.closest('.nav-drop');const o=d.classList.contains('open');document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));if(!o)d.classList.add('open');}
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+
+// SM-2 Spaced Repetition
+const SR_KEY = 'ee_sr_words';
+function getWords(){ return JSON.parse(localStorage.getItem(SR_KEY)||'[]'); }
+function saveWords(w){ localStorage.setItem(SR_KEY, JSON.stringify(w)); }
+
+function showAddWord(){
+  const f=document.getElementById('addWordForm');
+  f.style.display=f.style.display==='none'?'block':'none';
+}
+
+function addWord(){
+  const en=document.getElementById('newEn').value.trim();
+  const vi=document.getElementById('newVi').value.trim();
+  if(!en||!vi) return;
+  const words=getWords();
+  words.push({en,vi,interval:0,repetition:0,easeFactor:2.5,nextReview:Date.now()});
+  saveWords(words);
+  document.getElementById('newEn').value='';
+  document.getElementById('newVi').value='';
+  updateSRStats();renderWordList();
+}
+
+function importSample(){
+  const sample=[
+    {en:'phenomenon',vi:'hiện tượng'},{en:'deteriorate',vi:'xấu đi'},{en:'unprecedented',vi:'chưa từng có'},
+    {en:'infrastructure',vi:'cơ sở hạ tầng'},{en:'nevertheless',vi:'tuy nhiên'},{en:'approximately',vi:'xấp xỉ'},
+    {en:'consequence',vi:'hậu quả'},{en:'contemporary',vi:'đương đại'},{en:'comprehensive',vi:'toàn diện'},
+    {en:'accumulate',vi:'tích lũy'},{en:'substantial',vi:'đáng kể'},{en:'controversy',vi:'tranh cãi'},
+    {en:'predominant',vi:'chiếm ưu thế'},{en:'significance',vi:'ý nghĩa'},{en:'inevitable',vi:'không thể tránh'},
+    {en:'fluctuate',vi:'dao động'},{en:'implement',vi:'thực hiện'},{en:'preliminary',vi:'sơ bộ'},
+    {en:'sustainable',vi:'bền vững'},{en:'ambiguous',vi:'mơ hồ'},{en:'arbitrary',vi:'tùy tiện'},
+    {en:'diminish',vi:'giảm bớt'},{en:'elaborate',vi:'chi tiết'},{en:'hypothesis',vi:'giả thuyết'},
+    {en:'incentive',vi:'động lực'},{en:'marginalize',vi:'gạt ra ngoài lề'},{en:'negotiate',vi:'đàm phán'},
+    {en:'paradigm',vi:'mô hình'},{en:'reinforce',vi:'củng cố'},{en:'scrutinize',vi:'xem xét kỹ'},
+    {en:'undermine',vi:'làm suy yếu'},{en:'alleviate',vi:'giảm nhẹ'},{en:'bureaucracy',vi:'quan liêu'},
+    {en:'consensus',vi:'đồng thuận'},{en:'demographic',vi:'nhân khẩu học'},{en:'empirical',vi:'thực nghiệm'},
+    {en:'facilitate',vi:'tạo điều kiện'},{en:'hierarchy',vi:'hệ thống cấp bậc'},{en:'ideology',vi:'ý thức hệ'},
+    {en:'jurisdiction',vi:'thẩm quyền'},{en:'legitimate',vi:'hợp pháp'},{en:'methodology',vi:'phương pháp luận'},
+    {en:'negligible',vi:'không đáng kể'},{en:'paradigm',vi:'mô hình'},{en:'rationale',vi:'lý do'},
+    {en:'stipulate',vi:'quy định'},{en:'versatile',vi:'đa năng'},{en:'bureaucratic',vi:'quan liêu'},
+    {en:'pragmatic',vi:'thực dụng'},{en:'paradox',vi:'nghịch lý'},
+  ];
+  const words=getWords();
+  let added=0;
+  sample.forEach(s=>{
+    if(!words.find(w=>w.en===s.en)){
+      words.push({en:s.en,vi:s.vi,interval:0,repetition:0,easeFactor:2.5,nextReview:Date.now()});
+      added++;
+    }
+  });
+  saveWords(words);updateSRStats();renderWordList();
+  alert('Đã thêm '+added+' từ mới!');
+}
+
+function getDueWords(){
+  return getWords().filter(w=>w.nextReview<=Date.now());
+}
+
+let reviewQueue=[], reviewIdx=0;
+function startReview(){
+  reviewQueue=getDueWords();
+  if(reviewQueue.length===0){alert('Không có từ cần ôn! Thêm từ mới hoặc quay lại sau.');return;}
+  reviewIdx=0;
+  document.getElementById('reviewArea').style.display='block';
+  showReviewCard();
+}
+
+function showReviewCard(){
+  if(reviewIdx>=reviewQueue.length){
+    document.getElementById('reviewArea').innerHTML='<div style="padding:20px;text-align:center"><div style="font-family:Fraunces,serif;font-size:36px;color:var(--accent);margin-bottom:8px">Hoàn thành!</div><div style="color:var(--text2);font-size:14px">Đã ôn '+reviewQueue.length+' từ</div><button onclick="document.getElementById(\'reviewArea\').style.display=\'none\';updateSRStats();renderWordList()" style="margin-top:16px;padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:DM Sans,sans-serif">Đóng</button></div>';
+    return;
+  }
+  const w=reviewQueue[reviewIdx];
+  document.getElementById('rvWord').textContent=w.en;
+  document.getElementById('rvAnswer').textContent=w.vi;
+  document.getElementById('rvAnswer').style.display='none';
+  document.getElementById('rvHint').style.display='block';
+  document.getElementById('rvCur').textContent=reviewIdx+1;
+  document.getElementById('rvTot').textContent=reviewQueue.length;
+}
+
+function rateWord(quality){
+  const w=reviewQueue[reviewIdx];
+  const words=getWords();
+  const idx=words.findIndex(x=>x.en===w.en);
+  if(idx===-1) return;
+
+  // SM-2 algorithm
+  if(quality<3){
+    words[idx].repetition=0;
+    words[idx].interval=1;
+  } else {
+    if(words[idx].repetition===0) words[idx].interval=1;
+    else if(words[idx].repetition===1) words[idx].interval=6;
+    else words[idx].interval=Math.round(words[idx].interval*words[idx].easeFactor);
+    words[idx].repetition++;
+  }
+  words[idx].easeFactor=Math.max(1.3, words[idx].easeFactor+0.1-(5-quality)*(0.08+(5-quality)*0.02));
+  words[idx].nextReview=Date.now()+words[idx].interval*86400000;
+
+  saveWords(words);
+  reviewIdx++;
+  showReviewCard();
+}
+
+function updateSRStats(){
+  const words=getWords();
+  const due=words.filter(w=>w.nextReview<=Date.now()).length;
+  const mastered=words.filter(w=>w.interval>=21).length;
+  document.getElementById('smDue').textContent=due;
+  document.getElementById('smTotal').textContent=words.length;
+  document.getElementById('smMastered').textContent=mastered;
+  const srStreak=JSON.parse(localStorage.getItem('ee_sr_streak')||'{"count":0}');
+  document.getElementById('smStreak').textContent=srStreak.count||0;
+}
+
+function renderWordList(){
+  const words=getWords().sort((a,b)=>a.nextReview-b.nextReview);
+  const el=document.getElementById('wordList');
+  if(!words.length){el.innerHTML='<div style="color:var(--text3);text-align:center;padding:20px;font-size:14px">Chưa có từ nào. Thêm từ mới hoặc nhập 50 từ mẫu!</div>';return;}
+  el.innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:10px">'+words.length+' từ</div>'+
+    words.slice(0,30).map(w=>{
+      const isDue=w.nextReview<=Date.now();
+      const days=Math.max(0,Math.round((w.nextReview-Date.now())/86400000));
+      return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--card);border:0.5px solid var(--border);border-radius:8px;margin-bottom:4px">'+
+        '<div><span style="color:var(--text);font-size:14px;font-weight:500">'+w.en+'</span> <span style="color:var(--text3);font-size:12px;margin-left:6px">'+w.vi+'</span></div>'+
+        '<span style="font-size:11px;color:'+(isDue?'var(--coral)':'var(--text3)')+'">'+
+        (isDue?'Cần ôn':'Ôn sau '+days+' ngày')+'</span></div>';
+    }).join('');
+}
+
+updateSRStats();renderWordList();
+
 </script>
 <script src="theme.js"></script>
 <script>if(typeof lucide!=="undefined")lucide.createIcons();</script>
