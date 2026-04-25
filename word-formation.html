@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn với giải thích chi tiết, ví dụ và quiz tương tác.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Cấu tạo từ — EasyEnglish">
+<meta property="og:description" content="Prefix, suffix, root words — hiểu cấu tạo từ để đoán nghĩa từ mới.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cấu tạo từ — EasyEnglish">
+<meta name="twitter:description" content="Prefix, suffix, root words — hiểu cấu tạo từ để đoán nghĩa từ mới.">
+<title>Cấu tạo từ — Word Formation — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+}
+/* === MOBILE NAV === */
+</style>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Từ vựng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Cấu tạo từ</span></div>
+<div class="page-label">Vocabulary</div>
+<h1 class="page-title">Cấu tạo từ tiếng Anh</h1>
+<p class="page-desc">Hiểu cách cấu tạo từ giúp bạn đoán nghĩa từ mới mà không cần tra từ điển. Học prefix (tiền tố), suffix (hậu tố) và root words (gốc từ).</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="showTab('prefix')" class="wf-tab active" id="tab-prefix">Tiền tố (Prefix)</button>
+<button onclick="showTab('suffix')" class="wf-tab" id="tab-suffix">Hậu tố (Suffix)</button>
+<button onclick="showTab('root')" class="wf-tab" id="tab-root">Gốc từ (Root)</button>
+<button onclick="showTab('quiz')" class="wf-tab" id="tab-quiz">Bài tập</button>
+</div>
+<div id="wfContent"></div>
+</div>
+
+<script>
+var PREFIXES=[
+{p:"un-",vi:"không, ngược lại",exs:[{w:"unhappy",m:"không vui"},{w:"unfair",m:"không công bằng"},{w:"unlock",m:"mở khóa"},{w:"unusual",m:"bất thường"}]},
+{p:"re-",vi:"làm lại",exs:[{w:"rewrite",m:"viết lại"},{w:"replay",m:"phát lại"},{w:"rebuild",m:"xây lại"},{w:"reconsider",m:"cân nhắc lại"}]},
+{p:"pre-",vi:"trước",exs:[{w:"preview",m:"xem trước"},{w:"predict",m:"dự đoán"},{w:"prepare",m:"chuẩn bị"},{w:"prehistoric",m:"tiền sử"}]},
+{p:"mis-",vi:"sai, nhầm",exs:[{w:"misunderstand",m:"hiểu nhầm"},{w:"misspell",m:"viết sai chính tả"},{w:"mislead",m:"dẫn dắt sai"},{w:"misuse",m:"dùng sai"}]},
+{p:"dis-",vi:"không, phủ định",exs:[{w:"disagree",m:"không đồng ý"},{w:"disappear",m:"biến mất"},{w:"disconnect",m:"ngắt kết nối"},{w:"dislike",m:"không thích"}]},
+{p:"over-",vi:"quá mức",exs:[{w:"overwork",m:"làm việc quá sức"},{w:"overcome",m:"vượt qua"},{w:"overlook",m:"bỏ sót"},{w:"overestimate",m:"đánh giá quá cao"}]},
+{p:"under-",vi:"dưới, thiếu",exs:[{w:"underestimate",m:"đánh giá thấp"},{w:"underground",m:"ngầm"},{w:"understand",m:"hiểu"},{w:"underpaid",m:"trả lương thấp"}]},
+{p:"inter-",vi:"giữa, lẫn nhau",exs:[{w:"international",m:"quốc tế"},{w:"interact",m:"tương tác"},{w:"interview",m:"phỏng vấn"},{w:"internet",m:"mạng internet"}]},
+{p:"sub-",vi:"dưới, phụ",exs:[{w:"subway",m:"tàu điện ngầm"},{w:"subtitle",m:"phụ đề"},{w:"submarine",m:"tàu ngầm"},{w:"subconscious",m:"tiềm thức"}]},
+{p:"anti-",vi:"chống lại",exs:[{w:"antibiotic",m:"kháng sinh"},{w:"antisocial",m:"chống đối xã hội"},{w:"antivirus",m:"chống virus"},{w:"antiwar",m:"phản chiến"}]}
+];
+var SUFFIXES=[
+{s:"-tion/-sion",vi:"danh từ (hành động/trạng thái)",exs:[{w:"education",m:"giáo dục"},{w:"decision",m:"quyết định"},{w:"information",m:"thông tin"},{w:"suggestion",m:"gợi ý"}]},
+{s:"-ness",vi:"danh từ (tính chất)",exs:[{w:"happiness",m:"hạnh phúc"},{w:"darkness",m:"bóng tối"},{w:"kindness",m:"lòng tốt"},{w:"weakness",m:"điểm yếu"}]},
+{s:"-ment",vi:"danh từ (kết quả)",exs:[{w:"development",m:"phát triển"},{w:"agreement",m:"thỏa thuận"},{w:"achievement",m:"thành tựu"},{w:"improvement",m:"cải thiện"}]},
+{s:"-able/-ible",vi:"tính từ (có thể)",exs:[{w:"comfortable",m:"thoải mái"},{w:"possible",m:"có thể"},{w:"readable",m:"dễ đọc"},{w:"flexible",m:"linh hoạt"}]},
+{s:"-ful",vi:"tính từ (đầy)",exs:[{w:"beautiful",m:"đẹp"},{w:"helpful",m:"hữu ích"},{w:"powerful",m:"mạnh mẽ"},{w:"grateful",m:"biết ơn"}]},
+{s:"-less",vi:"tính từ (không có)",exs:[{w:"homeless",m:"vô gia cư"},{w:"careless",m:"bất cẩn"},{w:"hopeless",m:"vô vọng"},{w:"endless",m:"vô tận"}]},
+{s:"-ly",vi:"trạng từ",exs:[{w:"quickly",m:"nhanh chóng"},{w:"carefully",m:"cẩn thận"},{w:"honestly",m:"thành thật"},{w:"frequently",m:"thường xuyên"}]},
+{s:"-ous/-ious",vi:"tính từ (có tính chất)",exs:[{w:"dangerous",m:"nguy hiểm"},{w:"famous",m:"nổi tiếng"},{w:"serious",m:"nghiêm túc"},{w:"curious",m:"tò mò"}]},
+{s:"-ize/-ise",vi:"động từ (làm cho)",exs:[{w:"organize",m:"tổ chức"},{w:"realize",m:"nhận ra"},{w:"modernize",m:"hiện đại hóa"},{w:"apologize",m:"xin lỗi"}]},
+{s:"-er/-or",vi:"danh từ (người làm)",exs:[{w:"teacher",m:"giáo viên"},{w:"actor",m:"diễn viên"},{w:"driver",m:"tài xế"},{w:"inventor",m:"nhà phát minh"}]}
+];
+var ROOTS=[
+{r:"aud",vi:"nghe",exs:[{w:"audience",m:"khán giả"},{w:"audio",m:"âm thanh"},{w:"auditorium",m:"hội trường"}]},
+{r:"dict",vi:"nói",exs:[{w:"dictionary",m:"từ điển"},{w:"predict",m:"dự đoán"},{w:"contradict",m:"mâu thuẫn"}]},
+{r:"port",vi:"mang, chuyển",exs:[{w:"transport",m:"vận chuyển"},{w:"export",m:"xuất khẩu"},{w:"import",m:"nhập khẩu"}]},
+{r:"scrib/script",vi:"viết",exs:[{w:"describe",m:"mô tả"},{w:"manuscript",m:"bản thảo"},{w:"subscribe",m:"đăng ký"}]},
+{r:"vis/vid",vi:"nhìn, thấy",exs:[{w:"visible",m:"nhìn thấy được"},{w:"video",m:"video"},{w:"vision",m:"tầm nhìn"}]},
+{r:"rupt",vi:"vỡ, gãy",exs:[{w:"interrupt",m:"ngắt lời"},{w:"corrupt",m:"tham nhũng"},{w:"erupt",m:"phun trào"}]},
+{r:"struct",vi:"xây dựng",exs:[{w:"construct",m:"xây dựng"},{w:"destroy",m:"phá hủy"},{w:"structure",m:"cấu trúc"}]},
+{r:"graph/gram",vi:"viết, vẽ",exs:[{w:"photograph",m:"ảnh chụp"},{w:"telegram",m:"điện tín"},{w:"grammar",m:"ngữ pháp"}]}
+];
+
+var QUIZ_DATA=[
+{q:"happy → không vui = ?",ans:"unhappy",opts:["dishappy","unhappy","inhappy","nothappy"]},
+{q:"write → viết lại = ?",ans:"rewrite",opts:["unwrite","diswrite","rewrite","miswrite"]},
+{q:"care + ___ = bất cẩn",ans:"-less",opts:["-ful","-less","-ness","-ly"]},
+{q:"teach + ___ = giáo viên",ans:"-er",opts:["-or","-er","-ist","-ment"]},
+{q:"develop + ___ = sự phát triển",ans:"-ment",opts:["-tion","-ness","-ment","-able"]},
+{q:"danger + ___ = nguy hiểm",ans:"-ous",opts:["-ful","-ous","-ive","-al"]},
+{q:"___ + understand = hiểu nhầm",ans:"mis-",opts:["un-","dis-","mis-","re-"]},
+{q:"___ + national = quốc tế",ans:"inter-",opts:["sub-","over-","anti-","inter-"]},
+{q:"beauty + ___ = đẹp",ans:"-ful",opts:["-ful","-less","-ness","-ly"]},
+{q:"quick + ___ = nhanh chóng (trạng từ)",ans:"-ly",opts:["-ness","-ful","-ly","-ize"]},
+{q:"agree → không đồng ý = ?",ans:"disagree",opts:["unagree","disagree","misagree","reagree"]},
+{q:"___ + view = xem trước",ans:"pre-",opts:["re-","pre-","over-","sub-"]},
+{q:"inform + ___ = thông tin",ans:"-ation",opts:["-ment","-ness","-ation","-ful"]},
+{q:"hope + ___ = vô vọng",ans:"-less",opts:["-ful","-less","-ness","-able"]},
+{q:"modern + ___ = hiện đại hóa",ans:"-ize",opts:["-ful","-ment","-ize","-ly"]}
+];
+
+var currentTab='prefix';
+function showTab(tab){
+  currentTab=tab;
+  document.querySelectorAll('.wf-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+tab).classList.add('active');
+  render();
+}
+
+function renderItems(items, keyField, color){
+  return items.map(function(item){
+    var key = item[keyField];
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s">'+
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">'+
+        '<span style="font-size:22px;font-weight:700;color:'+color+'">'+key+'</span>'+
+        '<span style="font-size:14px;color:var(--text3);padding:4px 10px;background:rgba(255,255,255,0.03);border-radius:6px">'+item.vi+'</span>'+
+      '</div>'+
+      '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px">'+
+        item.exs.map(function(e){
+          return '<div style="padding:10px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid '+color+'">'+
+            '<div style="font-weight:600;color:var(--text);font-size:14px">'+e.w+'</div>'+
+            '<div style="font-size:12px;color:var(--text3);margin-top:2px">'+e.m+'</div>'+
+          '</div>';
+        }).join('')+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+var qIdx=0,qOk=0,qItems=[];
+function render(){
+  var html='';
+  if(currentTab==='prefix'){
+    html='<div style="display:grid;gap:14px">'+renderItems(PREFIXES,'p','var(--accent)')+'</div>';
+  } else if(currentTab==='suffix'){
+    html='<div style="display:grid;gap:14px">'+renderItems(SUFFIXES,'s','var(--accent2)')+'</div>';
+  } else if(currentTab==='root'){
+    html='<div style="display:grid;gap:14px">'+renderItems(ROOTS,'r','var(--accent3)')+'</div>';
+  } else {
+    html='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">'+
+      '<div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="zap" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Bài tập: Chọn đáp án đúng</div>'+
+      '<div id="quizBox" style="text-align:center">'+
+        '<button onclick="startWFQuiz()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu bài tập</button>'+
+      '</div>'+
+    '</div>';
+  }
+  document.getElementById('wfContent').innerHTML=html;
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+function startWFQuiz(){
+  qItems=QUIZ_DATA.slice().sort(function(){return Math.random()-0.5;});
+  qIdx=0;qOk=0;nextWFQ();
+}
+function nextWFQ(){
+  if(qIdx>=qItems.length){
+    var pct=Math.round(qOk/qItems.length*100);
+    var msg=pct>=80?'Xuất sắc!':pct>=60?'Khá tốt!':'Cần ôn tập thêm!';
+    document.getElementById('quizBox').innerHTML='<div style="font-size:24px;font-weight:600;margin:20px 0">'+qOk+'/'+qItems.length+' ('+pct+'%)</div><div style="color:var(--text3);margin-bottom:16px">'+msg+'</div><button onclick="startWFQuiz()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';
+    return;
+  }
+  var q=qItems[qIdx];
+  document.getElementById('quizBox').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(qIdx+1)+'/'+qItems.length+'</div><div style="font-size:18px;color:var(--text);margin:16px 0;font-weight:500">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:400px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="checkWF('+i+',\''+q.ans.replace(/'/g,"\\'")+'\')" style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif;transition:all .15s" id="wfo-'+i+'">'+o+'</button>';}).join('')+'</div><div id="wfFb" style="margin-top:10px;font-size:13px"></div>';
+}
+function checkWF(i,ans){
+  var q=qItems[qIdx];var chosen=q.opts[i];
+  document.querySelectorAll('#quizBox button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  var correctIdx=q.opts.indexOf(q.ans);
+  document.getElementById('wfo-'+correctIdx).style.background='rgba(107,203,119,0.15)';
+  document.getElementById('wfo-'+correctIdx).style.color='var(--green)';
+  document.getElementById('wfo-'+correctIdx).style.opacity='1';
+  if(chosen===ans){qOk++;document.getElementById('wfFb').innerHTML='<span style="color:var(--green)">Chính xác!</span>';}
+  else{document.getElementById('wfo-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('wfo-'+i).style.color='var(--coral)';document.getElementById('wfo-'+i).style.opacity='1';document.getElementById('wfFb').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+ans+'</strong></span>';}
+  qIdx++;setTimeout(nextWFQ,1200);
+}
+render();
+</script>
+<style>
+.wf-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.wf-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.wf-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<script src="theme.js?v=3"></script>
+<script src="gamification.js?v=3"></script>
+<script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+</body>
+</html>

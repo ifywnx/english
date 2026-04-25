@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <meta name="description" content="EasyEnglish — Trang web tự học tiếng Anh miễn phí từ A-Z cho người Việt. Ngữ pháp, từ vựng, phát âm, IELTS, bài tập tương tác.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="EasyEnglish — Tự học tiếng Anh từ A-Z">
+<meta property="og:description" content="Nền tảng tự học tiếng Anh miễn phí, toàn diện từ cơ bản đến nâng cao. Ngữ pháp, từ vựng, phát âm, IELTS, đọc hiểu và hơn thế nữa.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EasyEnglish — Tự học tiếng Anh từ A-Z">
+<meta name="twitter:description" content="Nền tảng tự học tiếng Anh miễn phí, toàn diện từ cơ bản đến nâng cao. Ngữ pháp, từ vựng, phát âm, IELTS, đọc hiểu và hơn thế nữa.">
 <title>EasyEnglish — Tự học tiếng Anh từ A-Z</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -203,6 +210,13 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 </style>
 <link rel="stylesheet" href="style.css?v=3">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -215,8 +229,8 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <!-- ===== HERO ===== -->
 <div class="hero-section">
   <div class="hero-greeting">
-    <span id="greetText">Chào bạn! 👋</span>
-    <span class="streak-badge" id="heroStreak">🔥 0 ngày</span>
+    <span id="greetText">Chào bạn! </span>
+    <span class="streak-badge" id="heroStreak"> 0 ngày</span>
   </div>
   <h1 class="hero-title">Hôm nay bạn muốn <em>học gì</em>?</h1>
   <p class="hero-sub">30+ bài học · Ngữ pháp · Từ vựng · IELTS · Giao tiếp — tất cả miễn phí</p>
@@ -345,7 +359,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
     <a href="conversation.html">Giao tiếp</a>
     <a href="progress.html">Tiến độ</a>
   </div>
-  <div class="footer-heart">Made with ❤️ for Vietnamese English learners</div>
+  <div class="footer-heart">Made with  for Vietnamese English learners</div>
 </footer>
 
 <script>
@@ -450,9 +464,9 @@ function initStreak(){
     localStorage.setItem('ee_streak',JSON.stringify(data));
   }
   document.getElementById('streakNum').textContent=data.count;
-  document.getElementById('heroStreak').textContent='🔥 '+data.count+' ngày';
-  var ns=document.getElementById('navStreak');if(ns)ns.textContent='🔥 '+data.count+' ngày';
-  if(data.count>=7){document.getElementById('streakMsg').textContent='🔥 '+data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Tuyệt vời! Tiếp tục duy trì nhé!';}
+  document.getElementById('heroStreak').textContent=' '+data.count+' ngày';
+  var ns=document.getElementById('navStreak');if(ns)ns.textContent=' '+data.count+' ngày';
+  if(data.count>=7){document.getElementById('streakMsg').textContent=' '+data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Tuyệt vời! Tiếp tục duy trì nhé!';}
   else if(data.count>1){document.getElementById('streakMsg').textContent=data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Học thêm '+(7-data.count)+' ngày để đạt chuỗi 7 ngày!';}
   var dayNames=['T2','T3','T4','T5','T6','T7','CN'];
   var dow=new Date().getDay();
@@ -488,5 +502,19 @@ document.addEventListener('click',function(e){
 <script src="theme.js?v=3"></script>
 <script src="gamification.js?v=3"></script>
 <script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
 </body>
 </html>

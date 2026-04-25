@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <meta name="description" content="Ôn tập lặp lại thông minh — hệ thống flashcard giúp ghi nhớ từ vựng tiếng Anh lâu dài, không quên.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Ôn tập lặp lại — EasyEnglish">
+<meta property="og:description" content="Phương pháp Spaced Repetition giúp nhớ từ vựng lâu dài.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ôn tập lặp lại — EasyEnglish">
+<meta name="twitter:description" content="Phương pháp Spaced Repetition giúp nhớ từ vựng lâu dài.">
 <title>Spaced Repetition — EasyEnglish</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -43,6 +50,13 @@
 </style>
 <link rel="stylesheet" href="style.css?v=3">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -439,5 +453,19 @@ updateSRStats();renderWordList();
 <!-- MORE DRAWER -->
 <script src="gamification.js?v=3"></script>
 <script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
 </body>
 </html>

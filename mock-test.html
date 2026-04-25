@@ -8,6 +8,13 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Mock Test — EasyEnglish">
+<meta property="og:description" content="Tự học tiếng Anh miễn phí từ cơ bản đến nâng cao — EasyEnglish.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mock Test — EasyEnglish">
+<meta name="twitter:description" content="Tự học tiếng Anh miễn phí từ cơ bản đến nâng cao — EasyEnglish.">
 <title>Mock Test — EasyEnglish</title>
 <meta name="description" content="Hướng dẫn thi IELTS toàn diện: Writing Task 1 & 2, Reading, Listening, Speaking. Mẹo thi, cấu trúc bài, cách tính điểm Band.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -200,6 +207,13 @@
 </style>
 <link rel="stylesheet" href="style.css?v=3"></style>
 <link rel="stylesheet" href="style.css?v=3"><script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head><body>
 <div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
 <nav></nav>
@@ -212,17 +226,17 @@
 <p class="page-desc">Làm bài thi thử IELTS mini: 10 câu Reading + 10 câu Listening + 1 bài Writing Task 2. Có timer đếm ngược và tự chấm điểm.</p>
 
 <div class="overview-grid">
-<div class="ov-card ov-r"><div class="ov-icon">📖</div><div class="ov-name">Reading</div><div class="ov-score">10 câu · 15 phút</div></div>
-<div class="ov-card ov-l"><div class="ov-icon">🎧</div><div class="ov-name">Listening</div><div class="ov-score">10 câu · 10 phút</div></div>
-<div class="ov-card ov-w"><div class="ov-icon">✍️</div><div class="ov-name">Writing</div><div class="ov-score">1 bài · 40 phút</div></div>
-<div class="ov-card ov-s"><div class="ov-icon">📊</div><div class="ov-name">Kết quả</div><div class="ov-score">Band ước tính</div></div>
+<div class="ov-card ov-r"><div class="ov-icon"></div><div class="ov-name">Reading</div><div class="ov-score">10 câu · 15 phút</div></div>
+<div class="ov-card ov-l"><div class="ov-icon"></div><div class="ov-name">Listening</div><div class="ov-score">10 câu · 10 phút</div></div>
+<div class="ov-card ov-w"><div class="ov-icon"></div><div class="ov-name">Writing</div><div class="ov-score">1 bài · 40 phút</div></div>
+<div class="ov-card ov-s"><div class="ov-icon"></div><div class="ov-name">Kết quả</div><div class="ov-score">Band ước tính</div></div>
 </div>
 
 <!-- TIMER -->
 <div class="timer-bar" id="timerBar">
 <div class="timer-display" id="timerDisplay">00:00</div>
 <div><div class="timer-label">Thời gian đã dùng</div></div>
-<button class="timer-btn btn-start" id="timerBtn" onclick="toggleTimer()" style="margin-left:auto">▶ Bắt đầu</button>
+<button class="timer-btn btn-start" id="timerBtn" onclick="toggleTimer()" style="margin-left:auto"> Bắt đầu</button>
 </div>
 
 <div class="s-divider"></div>
@@ -270,7 +284,7 @@
 
 <!-- SUBMIT -->
 <div style="text-align:center;padding:20px 0">
-<button class="timer-btn btn-start" style="padding:14px 36px;font-size:16px;border-radius:12px" onclick="submitTest()">📊 Nộp bài & Xem kết quả</button>
+<button class="timer-btn btn-start" style="padding:14px 36px;font-size:16px;border-radius:12px" onclick="submitTest()"> Nộp bài & Xem kết quả</button>
 </div>
 
 <div class="result-box" id="resultBox">
@@ -285,7 +299,7 @@
 <script>
 // Timer
 let timerInterval=null,seconds=0;
-function toggleTimer(){const b=document.getElementById('timerBtn');if(timerInterval){clearInterval(timerInterval);b.textContent='▶ Tiếp tục';b.className='timer-btn btn-start'}else{timerInterval=setInterval(()=>{seconds++;const m=Math.floor(seconds/60).toString().padStart(2,'0');const s=(seconds%60).toString().padStart(2,'0');document.getElementById('timerDisplay').textContent=m+':'+s},1000);b.textContent='⏸ Tạm dừng';b.className='timer-btn btn-stop'}}
+function toggleTimer(){const b=document.getElementById('timerBtn');if(timerInterval){clearInterval(timerInterval);b.textContent=' Tiếp tục';b.className='timer-btn btn-start'}else{timerInterval=setInterval(()=>{seconds++;const m=Math.floor(seconds/60).toString().padStart(2,'0');const s=(seconds%60).toString().padStart(2,'0');document.getElementById('timerDisplay').textContent=m+':'+s},1000);b.textContent='⏸ Tạm dừng';b.className='timer-btn btn-stop'}}
 
 // Answer key
 const ANSWERS={r1:'b',r2:'b',r3:'c',r4:'c',r5:'b',r6:'b',r7:'b',r8:'c',r9:'c',r10:'c'};
@@ -309,7 +323,7 @@ function submitTest(){
   document.getElementById('resultScore').textContent=score+'/'+total;
   document.getElementById('resultBand').textContent='Band ước tính: '+bands[score];
   const wc=document.getElementById('writingArea').value.trim().split(/\s+/).filter(w=>w).length;
-  document.getElementById('resultDetail').textContent='Writing: '+wc+' từ '+(wc>=250?'✅ Đủ':'❌ Chưa đủ 250 từ')+' · Thời gian: '+document.getElementById('timerDisplay').textContent;
+  document.getElementById('resultDetail').textContent='Writing: '+wc+' từ '+(wc>=250?' Đủ':' Chưa đủ 250 từ')+' · Thời gian: '+document.getElementById('timerDisplay').textContent;
   box.scrollIntoView({behavior:'smooth'});
   // Save to localStorage
   const hist=JSON.parse(localStorage.getItem('ee_mock_history')||'[]');
@@ -325,6 +339,20 @@ const bt=document.getElementById('backTop');if(bt){window.addEventListener('scro
 <script src="theme.js?v=3"></script>
 <script src="gamification.js?v=3"></script>
 <script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
 </body>
 
 </html>

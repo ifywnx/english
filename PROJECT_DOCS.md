@@ -430,17 +430,17 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 ### Phase 2: Web Polish (Đang làm)
 | # | Feature | Mô tả | Trạng thái |
 |---|---------|-------|-----------|
-| 1 | Reading Comprehension | Bài đọc hiểu có câu hỏi tương tác | Chưa |
-| 2 | Word Formation | Cấu tạo từ (prefix, suffix, root) | Chưa |
+| 1 | Reading Comprehension | Bài đọc hiểu có câu hỏi tương tác | ✅ Xong |
+| 2 | Word Formation | Cấu tạo từ (prefix, suffix, root) | ✅ Xong |
 | 3 | Daily Challenge Page | Quiz hàng ngày, streak reward | Chưa |
 | 4 | Gerund vs Infinitive | Module riêng biệt | ✅ Xong |
 | 5 | Pronunciation Recording | Ghi âm + so sánh phát âm | Chưa |
-| 6 | Loại bỏ mọi Emoji | Thay toàn bộ bằng Lucide Icons | Chưa |
+| 6 | Loại bỏ mọi Emoji | Thay toàn bộ bằng Lucide Icons | ✅ Xong (88→0) |
 | 7 | Thêm themes mới | Liên tục mở rộng theme collection | Chưa |
-| 8 | Smooth transitions | Page transitions mượt như native iOS | Chưa |
+| 8 | Smooth transitions | Page transitions mượt như native iOS | ✅ Xong (34 files) |
 | 9 | PWA hoàn chỉnh | Service Worker, offline, installable | Chưa |
-| 10 | SEO / OpenGraph | Meta tags, Schema.org | Chưa |
-| 11 | Preposition Combinations | depend on, interested in, good at... | Chưa |
+| 10 | SEO / OpenGraph | Meta tags, Schema.org | ✅ Xong (34/34 files) |
+| 11 | Preposition Combinations | depend on, interested in, good at... | ✅ Xong |
 | 12 | TOEIC Module | Riêng cho luyện thi TOEIC | Chưa |
 
 ### Phase 3: Tiếng Anh chuyên ngành

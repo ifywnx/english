@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="Đọc hiểu tiếng Anh - Bài đọc từ cơ bản đến nâng cao với câu hỏi tương tác
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Đọc hiểu tiếng Anh — EasyEnglish">
+<meta property="og:description" content="Bài đọc hiểu từ A1-B2 với câu hỏi tương tác và chấm điểm tự động.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Đọc hiểu tiếng Anh — EasyEnglish">
+<meta name="twitter:description" content="Bài đọc hiểu từ A1-B2 với câu hỏi tương tác và chấm điểm tự động.">
+<title>Đọc hiểu — Reading Comprehension — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+}
+/* === MOBILE NAV === */
+</style>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Kỹ năng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Đọc hiểu</span></div>
+<div class="page-label">Reading</div>
+<h1 class="page-title">Đọc hiểu tiếng Anh</h1>
+<p class="page-desc">Luyện đọc hiểu từ cơ bản đến nâng cao. Mỗi bài có câu hỏi tương tác, chấm điểm tự động.</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="filterLevel('all')" class="rc-tab active" id="tab-all">Tất cả</button>
+<button onclick="filterLevel('A1')" class="rc-tab" id="tab-A1">A1 Cơ bản</button>
+<button onclick="filterLevel('A2')" class="rc-tab" id="tab-A2">A2 Sơ cấp</button>
+<button onclick="filterLevel('B1')" class="rc-tab" id="tab-B1">B1 Trung cấp</button>
+<button onclick="filterLevel('B2')" class="rc-tab" id="tab-B2">B2 Cao cấp</button>
+</div>
+<div id="passageList" style="display:grid;gap:16px"></div>
+</div>
+
+<script>
+var PASSAGES = [
+{id:1, level:"A1", title:"My Daily Routine", text:"I wake up at 7 AM every day. First, I brush my teeth and wash my face. Then, I have breakfast. I usually eat bread and drink milk. After breakfast, I go to school by bus. School starts at 8 AM. I study many subjects like Math, English, and Science. I have lunch at 12 PM. After school, I go home and do my homework. In the evening, I watch TV and read books. I go to bed at 10 PM.",
+questions:[
+{q:"What time does the writer wake up?", opts:["6 AM","7 AM","8 AM","9 AM"], ans:1},
+{q:"How does the writer go to school?", opts:["By car","By bike","By bus","On foot"], ans:2},
+{q:"What does the writer eat for breakfast?", opts:["Rice and soup","Bread and milk","Eggs and juice","Noodles"], ans:1},
+{q:"What time does the writer go to bed?", opts:["9 PM","10 PM","11 PM","8 PM"], ans:1}
+]},
+{id:2, level:"A1", title:"My Family", text:"My name is Lan. I am 15 years old. I live in Hanoi with my family. There are four people in my family: my father, my mother, my younger brother, and me. My father is a doctor. He works at a hospital. My mother is a teacher. She teaches English at a high school. My brother is 10 years old. He is a student. We love each other very much. On weekends, we often go to the park together.",
+questions:[
+{q:"How many people are in Lan's family?", opts:["3","4","5","6"], ans:1},
+{q:"What does Lan's father do?", opts:["Teacher","Engineer","Doctor","Driver"], ans:2},
+{q:"What subject does Lan's mother teach?", opts:["Math","English","Science","History"], ans:1},
+{q:"What do they do on weekends?", opts:["Go shopping","Go to the park","Stay home","Visit grandparents"], ans:1}
+]},
+{id:3, level:"A2", title:"A Trip to Da Lat", text:"Last summer, my family went to Da Lat for a vacation. We traveled by plane from Ho Chi Minh City. The flight took about one hour. Da Lat is a beautiful city in the Central Highlands of Vietnam. The weather there was cool and pleasant, about 18-25 degrees Celsius. We stayed at a hotel near the city center. During our trip, we visited many famous places like Xuan Huong Lake, the Flower Garden, and the Valley of Love. We also tried local food such as banh can and strawberry jam. I really enjoyed the trip and I want to go back again someday.",
+questions:[
+{q:"How did the family travel to Da Lat?", opts:["By bus","By train","By plane","By car"], ans:2},
+{q:"What was the weather like in Da Lat?", opts:["Hot and humid","Cold and snowy","Cool and pleasant","Rainy"], ans:2},
+{q:"Which place did they NOT visit?", opts:["Xuan Huong Lake","Flower Garden","Beach","Valley of Love"], ans:2},
+{q:"What local food did they try?", opts:["Pho","Banh mi","Banh can","Bun cha"], ans:2}
+]},
+{id:4, level:"A2", title:"The Internet", text:"The Internet has changed our lives in many ways. Today, most people use the Internet every day. We can use it to search for information, send emails, and watch videos. Students use the Internet to study and do research for their homework. Many people also use social media like Facebook and Instagram to connect with friends. Online shopping is becoming more and more popular. People can buy clothes, food, and electronics from their phones. However, the Internet also has some disadvantages. Some people spend too much time online and forget to exercise. It is important to use the Internet wisely.",
+questions:[
+{q:"What can people do with the Internet?", opts:["Only watch videos","Search information and send emails","Only play games","Only read news"], ans:1},
+{q:"Why do students use the Internet?", opts:["To play games","To study and do research","To shop","To sleep"], ans:1},
+{q:"What is becoming more popular?", opts:["Going to stores","Online shopping","Reading newspapers","Writing letters"], ans:1},
+{q:"What is one disadvantage of the Internet?", opts:["It is too cheap","People spend too much time online","It is too fast","People read too much"], ans:1}
+]},
+{id:5, level:"B1", title:"The Benefits of Learning a Second Language", text:"Learning a second language offers numerous benefits that extend far beyond the ability to communicate with more people. Research has shown that bilingual individuals tend to have better problem-solving skills and are more creative than those who speak only one language. This is because learning a new language requires the brain to recognize and negotiate different linguistic systems, which strengthens cognitive abilities.\n\nMoreover, speaking a second language can significantly enhance career opportunities. In today's globalized economy, companies value employees who can communicate with international clients and partners. Studies indicate that bilingual employees often earn 5-20% more than their monolingual counterparts.\n\nAdditionally, learning a foreign language helps people understand different cultures and perspectives. When you learn a language, you also learn about the customs, traditions, and history of the people who speak it. This cultural awareness promotes tolerance and empathy, making individuals more open-minded global citizens.",
+questions:[
+{q:"According to the passage, what happens to the brain when learning a new language?", opts:["It gets tired","It strengthens cognitive abilities","It becomes smaller","Nothing changes"], ans:1},
+{q:"How much more can bilingual employees earn?", opts:["1-5%","5-20%","30-50%","100%"], ans:1},
+{q:"What does learning a language help people understand?", opts:["Only grammar","Different cultures and perspectives","Only vocabulary","Mathematics"], ans:1},
+{q:"The passage suggests that bilingual people are more:", opts:["Lazy","Creative","Forgetful","Boring"], ans:1}
+]},
+{id:6, level:"B2", title:"The Impact of Social Media on Mental Health", text:"In recent years, researchers have increasingly focused on the relationship between social media use and mental health, particularly among young people. While social media platforms offer undeniable benefits — including the ability to maintain relationships across distances and access to diverse communities — growing evidence suggests that excessive use may contribute to anxiety, depression, and decreased self-esteem.\n\nA landmark study conducted by the Royal Society for Public Health in the United Kingdom surveyed 1,500 young people aged 14-24 and found that Instagram was rated as the most detrimental social media platform for mental health. Participants reported that the platform negatively affected their body image, sleep quality, and overall well-being. The constant exposure to carefully curated images of others' seemingly perfect lives created unrealistic expectations and feelings of inadequacy.\n\nHowever, it would be overly simplistic to characterize social media as entirely harmful. Many users report that these platforms provide valuable emotional support, especially for marginalized communities who may struggle to find acceptance in their immediate environment. The key, experts suggest, lies in mindful consumption — being intentional about how much time one spends online and critically evaluating the content one consumes.\n\nPractical strategies for healthier social media use include setting daily time limits, unfollowing accounts that trigger negative emotions, and regularly taking breaks from digital devices. Mental health professionals also recommend balancing online interactions with face-to-face connections, which research consistently shows are more beneficial for psychological well-being.",
+questions:[
+{q:"According to the UK study, which platform was rated most harmful?", opts:["Facebook","Twitter","Instagram","TikTok"], ans:2},
+{q:"What age group was surveyed in the study?", opts:["10-18","14-24","18-30","25-40"], ans:1},
+{q:"The passage argues that social media is:", opts:["Completely harmful","Completely beneficial","Both beneficial and harmful","Irrelevant to health"], ans:2},
+{q:"What do experts recommend for healthier social media use?", opts:["Delete all accounts","Never use phones","Mindful consumption with time limits","Only use Facebook"], ans:2},
+{q:"For marginalized communities, social media can provide:", opts:["Nothing useful","Emotional support","Only entertainment","Financial help"], ans:1}
+]}
+];
+
+var currentLevel = 'all';
+function filterLevel(level){
+  currentLevel = level;
+  document.querySelectorAll('.rc-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+level).classList.add('active');
+  renderPassages();
+}
+
+function renderPassages(){
+  var filtered = currentLevel === 'all' ? PASSAGES : PASSAGES.filter(function(p){return p.level === currentLevel;});
+  document.getElementById('passageList').innerHTML = filtered.map(function(p){
+    var levelColor = p.level==='A1'?'var(--green)':p.level==='A2'?'var(--accent)':p.level==='B1'?'var(--accent2)':'var(--accent3)';
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px;transition:all .2s" id="passage-'+p.id+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">'+
+        '<div style="font-size:20px;font-weight:600;color:var(--text)">'+p.title+'</div>'+
+        '<span style="font-size:12px;padding:4px 10px;border-radius:6px;background:rgba(100,216,165,0.08);color:'+levelColor+';font-weight:500">'+p.level+'</span>'+
+      '</div>'+
+      '<div style="font-size:14px;color:var(--text2);line-height:1.8;padding:16px;background:rgba(255,255,255,0.02);border-radius:10px;border-left:3px solid '+levelColor+';white-space:pre-line;margin-bottom:16px">'+p.text+'</div>'+
+      '<div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px"><i data-lucide="help-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>Câu hỏi ('+p.questions.length+')</div>'+
+      '<div id="quiz-'+p.id+'" style="display:grid;gap:10px">'+
+        p.questions.map(function(q,qi){
+          return '<div style="padding:14px;background:rgba(100,216,165,0.03);border-radius:10px;border:0.5px solid var(--border)" id="q-'+p.id+'-'+qi+'">'+
+            '<div style="font-size:14px;color:var(--text);margin-bottom:8px;font-weight:500">'+(qi+1)+'. '+q.q+'</div>'+
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'+
+              q.opts.map(function(o,oi){
+                return '<button onclick="checkRC('+p.id+','+qi+','+oi+','+q.ans+')" style="text-align:left;padding:10px 12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s" id="opt-'+p.id+'-'+qi+'-'+oi+'">'+String.fromCharCode(65+oi)+'. '+o+'</button>';
+              }).join('')+
+            '</div>'+
+            '<div id="fb-'+p.id+'-'+qi+'" style="margin-top:6px;font-size:12px"></div>'+
+          '</div>';
+        }).join('')+
+      '</div>'+
+      '<div id="score-'+p.id+'" style="margin-top:12px;font-size:14px;font-weight:500;text-align:center"></div>'+
+    '</div>';
+  }).join('');
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+
+var scores = {};
+function checkRC(pid, qi, oi, ans){
+  if(!scores[pid]) scores[pid] = {total:0, correct:0, answered:{}};
+  if(scores[pid].answered[qi]) return;
+  scores[pid].answered[qi] = true;
+  scores[pid].total++;
+  var btns = document.querySelectorAll('#q-'+pid+'-'+qi+' button');
+  btns.forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  if(oi === ans){
+    scores[pid].correct++;
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.background='rgba(107,203,119,0.15)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.color='var(--green)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.borderColor='var(--green)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.opacity='1';
+    document.getElementById('fb-'+pid+'-'+qi).innerHTML='<span style="color:var(--green)">Chính xác!</span>';
+  } else {
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.background='rgba(255,138,128,0.15)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.color='var(--coral)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.borderColor='var(--coral)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+oi).style.opacity='1';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+ans).style.background='rgba(107,203,119,0.15)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+ans).style.color='var(--green)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+ans).style.borderColor='var(--green)';
+    document.getElementById('opt-'+pid+'-'+qi+'-'+ans).style.opacity='1';
+    document.getElementById('fb-'+pid+'-'+qi).innerHTML='<span style="color:var(--coral)">Sai! Đáp án đúng: <strong>'+String.fromCharCode(65+ans)+'</strong></span>';
+  }
+  var passage = PASSAGES.find(function(p){return p.id===pid;});
+  if(scores[pid].total === passage.questions.length){
+    var pct = Math.round(scores[pid].correct / scores[pid].total * 100);
+    var msg = pct >= 80 ? 'Xuất sắc!' : pct >= 60 ? 'Khá tốt!' : 'Cần ôn tập thêm!';
+    document.getElementById('score-'+pid).innerHTML = '<div style="padding:12px;background:rgba(100,216,165,0.08);border-radius:10px;margin-top:8px"><span style="font-size:20px;font-weight:600">'+scores[pid].correct+'/'+scores[pid].total+'</span> ('+pct+'%) — '+msg+'</div>';
+  }
+}
+renderPassages();
+</script>
+
+<style>
+.rc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.rc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.rc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+
+<script src="theme.js?v=3"></script>
+<script src="gamification.js?v=3"></script>
+<script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+</body>
+</html>

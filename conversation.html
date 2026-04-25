@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <meta name="description" content="Mẫu câu giao tiếp tiếng Anh hằng ngày theo 20+ tình huống thực tế với audio và bài tập.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Giao tiếp hằng ngày — EasyEnglish">
+<meta property="og:description" content="Mẫu câu giao tiếp tiếng Anh thông dụng theo tình huống thực tế.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Giao tiếp hằng ngày — EasyEnglish">
+<meta name="twitter:description" content="Mẫu câu giao tiếp tiếng Anh thông dụng theo tình huống thực tế.">
 <title>Giao tiếp hằng ngày — Daily Conversation — EasyEnglish</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -25,6 +32,13 @@
 </style>
 <link rel="stylesheet" href="style.css?v=3">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -35,14 +49,14 @@
 <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Kỹ năng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Giao tiếp</span></div>
 <div class="page-label">Daily Conversation</div>
 <h1 class="page-title">Giao tiếp hằng ngày</h1>
-<p class="page-desc">Mẫu câu tiếng Anh theo tình huống thực tế. Bấm 🔊 để nghe phát âm.</p>
+<p class="page-desc">Mẫu câu tiếng Anh theo tình huống thực tế. Bấm <i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i> để nghe phát âm.</p>
 <input type="text" class="search-box" id="searchBox" placeholder="Tìm tình huống hoặc câu..." oninput="filterConv()">
 <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="tagBar"></div>
 <div id="convList" style="display:grid;gap:16px"></div>
 </div>
 <script>
 const CONV=[
-{topic:"Chào hỏi (Greetings)",icon:"👋",phrases:[
+{topic:"Chào hỏi (Greetings)",icon:"",phrases:[
 {en:"Hi! How are you?",vi:"Xin chào! Bạn khỏe không?"},
 {en:"I\'m fine, thanks. And you?",vi:"Tôi khỏe, cảm ơn. Còn bạn?"},
 {en:"Nice to meet you!",vi:"Rất vui được gặp bạn!"},
@@ -52,7 +66,7 @@ const CONV=[
 {en:"How have you been?",vi:"Dạo này bạn thế nào?"},
 {en:"Good morning / afternoon / evening!",vi:"Chào buổi sáng / chiều / tối!"}
 ]},
-{topic:"Giới thiệu (Introduction)",icon:"🤝",phrases:[
+{topic:"Giới thiệu (Introduction)",icon:"",phrases:[
 {en:"My name is... / I'm...",vi:"Tên tôi là..."},
 {en:"Where are you from?",vi:"Bạn đến từ đâu?"},
 {en:"I\'m from Vietnam.",vi:"Tôi đến từ Việt Nam."},
@@ -62,7 +76,7 @@ const CONV=[
 {en:"Let me introduce myself.",vi:"Để tôi giới thiệu bản thân."},
 {en:"This is my friend, Tom.",vi:"Đây là bạn tôi, Tom."}
 ]},
-{topic:"Mua sắm (Shopping)",icon:"🛒",phrases:[
+{topic:"Mua sắm (Shopping)",icon:"",phrases:[
 {en:"How much is this?",vi:"Cái này bao nhiêu tiền?"},
 {en:"Can I try this on?",vi:"Tôi có thể thử cái này không?"},
 {en:"Do you have a smaller/larger size?",vi:"Bạn có cỡ nhỏ/lớn hơn không?"},
@@ -72,7 +86,7 @@ const CONV=[
 {en:"Is there a discount?",vi:"Có giảm giá không?"},
 {en:"I\'d like to return this.",vi:"Tôi muốn trả lại cái này."}
 ]},
-{topic:"Nhà hàng (Restaurant)",icon:"🍽️",phrases:[
+{topic:"Nhà hàng (Restaurant)",icon:"",phrases:[
 {en:"A table for two, please.",vi:"Cho tôi bàn hai người."},
 {en:"Can I see the menu?",vi:"Cho tôi xem thực đơn?"},
 {en:"I\'d like to order...",vi:"Tôi muốn gọi..."},
@@ -82,7 +96,7 @@ const CONV=[
 {en:"I\'m allergic to nuts.",vi:"Tôi bị dị ứng hạt."},
 {en:"The food was delicious!",vi:"Đồ ăn rất ngon!"}
 ]},
-{topic:"Du lịch (Travel)",icon:"✈️",phrases:[
+{topic:"Du lịch (Travel)",icon:"",phrases:[
 {en:"Where is the nearest station?",vi:"Trạm gần nhất ở đâu?"},
 {en:"How do I get to...?",vi:"Làm sao để đi đến...?"},
 {en:"I\'d like to book a room.",vi:"Tôi muốn đặt phòng."},
@@ -92,7 +106,7 @@ const CONV=[
 {en:"I have a reservation under...",vi:"Tôi đã đặt dưới tên..."},
 {en:"Could you call me a taxi?",vi:"Bạn gọi taxi giúp tôi được không?"}
 ]},
-{topic:"Công việc (Work)",icon:"💼",phrases:[
+{topic:"Công việc (Work)",icon:"",phrases:[
 {en:"I have a meeting at 3.",vi:"Tôi có cuộc họp lúc 3 giờ."},
 {en:"Could you send me the report?",vi:"Bạn gửi báo cáo cho tôi được không?"},
 {en:"I\'ll get back to you on that.",vi:"Tôi sẽ phản hồi bạn sau."},
@@ -102,7 +116,7 @@ const CONV=[
 {en:"Can we reschedule?",vi:"Mình dời lịch được không?"},
 {en:"I\'ll be on leave tomorrow.",vi:"Ngày mai tôi nghỉ phép."}
 ]},
-{topic:"Sức khỏe (Health)",icon:"🏥",phrases:[
+{topic:"Sức khỏe (Health)",icon:"",phrases:[
 {en:"I don\'t feel well.",vi:"Tôi không khỏe."},
 {en:"I have a headache / stomachache.",vi:"Tôi bị đau đầu / đau bụng."},
 {en:"I need to see a doctor.",vi:"Tôi cần gặp bác sĩ."},
@@ -112,7 +126,7 @@ const CONV=[
 {en:"I\'d like to make an appointment.",vi:"Tôi muốn đặt lịch hẹn."},
 {en:"Get well soon!",vi:"Chúc bạn mau khỏe!"}
 ]},
-{topic:"Điện thoại (Phone)",icon:"📱",phrases:[
+{topic:"Điện thoại (Phone)",icon:"",phrases:[
 {en:"Hello, may I speak to...?",vi:"Xin chào, tôi có thể nói chuyện với...?"},
 {en:"Hold on, please.",vi:"Xin chờ một chút."},
 {en:"Sorry, wrong number.",vi:"Xin lỗi, nhầm số."},
@@ -122,7 +136,7 @@ const CONV=[
 {en:"Can you hear me?",vi:"Bạn nghe tôi không?"},
 {en:"Sorry, I missed your call.",vi:"Xin lỗi, tôi lỡ cuộc gọi."}
 ]},
-{topic:"Xin lỗi & Cảm ơn",icon:"🙏",phrases:[
+{topic:"Xin lỗi & Cảm ơn",icon:"",phrases:[
 {en:"Thank you so much!",vi:"Cảm ơn rất nhiều!"},
 {en:"I really appreciate it.",vi:"Tôi thực sự trân trọng."},
 {en:"You\'re welcome.",vi:"Không có gì."},
@@ -132,7 +146,7 @@ const CONV=[
 {en:"I apologize for the inconvenience.",vi:"Tôi xin lỗi vì sự bất tiện."},
 {en:"That\'s very kind of you.",vi:"Bạn thật tốt bụng."}
 ]},
-{topic:"Ý kiến & Đồng ý",icon:"💬",phrases:[
+{topic:"Ý kiến & Đồng ý",icon:"",phrases:[
 {en:"I think / I believe that...",vi:"Tôi nghĩ / Tôi tin rằng..."},
 {en:"I agree with you.",vi:"Tôi đồng ý với bạn."},
 {en:"I disagree.",vi:"Tôi không đồng ý."},
@@ -160,7 +174,7 @@ function renderConv(){
       return '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg3);border-radius:10px;transition:all .15s" onmouseover="this.style.borderLeft=\'3px solid var(--accent)\'" onmouseout="this.style.borderLeft=\'\'">'+
       '<div style="flex:1"><div style="font-weight:500;color:var(--text);font-size:15px">'+p.en+'</div>'+
       '<div style="font-size:13px;color:var(--accent);margin-top:2px">'+p.vi+'</div></div>'+
-      '<span style="cursor:pointer;font-size:14px;color:var(--text3);padding:4px" onclick="speakEn(\''+p.en.replace(/'/g,"\\'")+'\')" title="Nghe phát âm">🔊</span></div>';
+      '<span style="cursor:pointer;font-size:14px;color:var(--text3);padding:4px" onclick="speakEn(\''+p.en.replace(/'/g,"\\'")+'\')" title="Nghe phát âm"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i></span></div>';
     }).join("")+'</div></div>';
   }).join("");
 }

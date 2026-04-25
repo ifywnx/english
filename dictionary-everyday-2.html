@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <meta name="description" content="Từ điển tiếng Anh đời thường phần 2 — 200+ từ A1-B2 với phiên âm, ví dụ và đồng nghĩa.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Từ điển Đời thường 2 — EasyEnglish">
+<meta property="og:description" content="Tự học tiếng Anh miễn phí từ cơ bản đến nâng cao — EasyEnglish.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Từ điển Đời thường 2 — EasyEnglish">
+<meta name="twitter:description" content="Tự học tiếng Anh miễn phí từ cơ bản đến nâng cao — EasyEnglish.">
 <title>Từ điển Đời thường 2 — EasyEnglish</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -28,6 +35,13 @@
 </style>
 <link rel="stylesheet" href="style.css?v=3">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -97,7 +111,7 @@
     <div class="leg-item"><i data-lucide="circle-check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Rất thường dùng</div>
     <div class="leg-item"><i data-lucide="circle-dot" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Thường dùng</div>
     <div class="leg-item"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Trang trọng</div>
-    <div class="leg-item">🩷 Thông tục</div>
+    <div class="leg-item"> Thông tục</div>
   </div>
 
   <div class="filter-bar">
@@ -219,7 +233,7 @@ let currentTopic='all', currentBand='all';
 let expandedWord=null;
 
 const BAND_CLASSES={A1:'tag-a1',A2:'tag-a2',B1:'tag-b1',B2:'tag-b2'};
-const USAGE_ICONS={daily:'•',formal:'•',slang:'🩷',medium:'•'};
+const USAGE_ICONS={daily:'•',formal:'•',slang:'',medium:'•'};
 const USAGE_LABELS={daily:'Rất thường dùng',formal:'Trang trọng',slang:'Thông tục',medium:'Thường dùng'};
 const TYPE_CLASSES={'n':'tag-n','v':'tag-v','adj':'tag-adj','adv':'tag-adv','phr.v':'tag-v','n/v':'tag-n','v/n':'tag-n','adj/n':'tag-adj','conj':'tag-n'};
 const TOPIC_LABELS={describe:'• Mô tả & Tính từ',think:'• Suy nghĩ & Ý kiến',change:'• Thay đổi & Phát triển',problem:'• Vấn đề & Giải quyết',relate:'• Quan hệ & Giao tiếp',quantity:'• Số lượng & Mức độ',move:'• Di chuyển & Vị trí',cause:'• Nguyên nhân & Kết quả',daily2:'• Sinh hoạt & Thói quen',opinion:'• Diễn đạt ý kiến',academic2:'• Học thuật nhẹ',personality:'• Tính cách & Thái độ',modern:'• Cuộc sống hiện đại'};
@@ -384,5 +398,19 @@ document.addEventListener('click',e=>{
 </script>
 <script src="gamification.js?v=3"></script>
 <script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
 </body>
 </html>

@@ -187,7 +187,7 @@ function updateXPBar(){
       <div style="width:${pct}%;height:100%;background:var(--accent);border-radius:2px;transition:width .5s"></div>
     </div>
     <span style="color:var(--accent);font-weight:500">${s.totalXP} XP</span>
-    <span style="color:var(--text3);font-size:10px">🔥 ${s.streak} ngày</span>
+    <span style="color:var(--text3);font-size:10px"> ${s.streak} ngày</span>
   `;
   if(typeof lucide!=='undefined'&&lucide.createIcons)setTimeout(()=>lucide.createIcons(),100);
 }

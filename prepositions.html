@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn với giải thích chi tiết, ví dụ và quiz tương tác.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Cụm giới từ — EasyEnglish">
+<meta property="og:description" content="70+ cụm giới từ quan trọng: interested in, depend on, good at... với quiz.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cụm giới từ — EasyEnglish">
+<meta name="twitter:description" content="70+ cụm giới từ quan trọng: interested in, depend on, good at... với quiz.">
+<title>Từ hay nhầm — Confusing Words — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+}
+/* === MOBILE NAV === */
+</style>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Ngữ pháp</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Cụm giới từ</span></div>
+<div class="page-label">Grammar</div>
+<h1 class="page-title">Cụm giới từ tiếng Anh</h1>
+<p class="page-desc">Tổng hợp các cụm Adjective + Preposition, Verb + Preposition, Noun + Preposition thường gặp nhất. Đây là phần rất hay sai trong IELTS và giao tiếp.</p>
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="showPTab('adj')" class="pt-tab active" id="pt-adj">Tính từ + Giới từ</button>
+<button onclick="showPTab('verb')" class="pt-tab" id="pt-verb">Động từ + Giới từ</button>
+<button onclick="showPTab('noun')" class="pt-tab" id="pt-noun">Danh từ + Giới từ</button>
+<button onclick="showPTab('quiz')" class="pt-tab" id="pt-quiz">Bài tập</button>
+</div>
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm cụm từ..." oninput="renderList()" style="margin-bottom:16px">
+<div id="prepList" style="display:grid;gap:12px"></div>
+</div>
+<script>
+var ADJ_PREP=[
+{combo:"afraid of",vi:"sợ",ex:"She is afraid of spiders."},
+{combo:"angry about/with",vi:"tức giận về/với",ex:"He is angry about the decision."},
+{combo:"aware of",vi:"nhận thức được",ex:"Are you aware of the risks?"},
+{combo:"bad at",vi:"kém về",ex:"I'm bad at cooking."},
+{combo:"bored with",vi:"chán",ex:"She's bored with her job."},
+{combo:"capable of",vi:"có khả năng",ex:"He is capable of doing it."},
+{combo:"careful about",vi:"cẩn thận về",ex:"Be careful about what you say."},
+{combo:"crazy about",vi:"mê, cuồng",ex:"She's crazy about K-pop."},
+{combo:"curious about",vi:"tò mò về",ex:"I'm curious about the result."},
+{combo:"different from",vi:"khác với",ex:"This is different from what I expected."},
+{combo:"disappointed with",vi:"thất vọng với",ex:"I'm disappointed with the service."},
+{combo:"excited about",vi:"hào hứng về",ex:"We're excited about the trip."},
+{combo:"famous for",vi:"nổi tiếng vì",ex:"Paris is famous for the Eiffel Tower."},
+{combo:"fond of",vi:"thích, yêu thích",ex:"She's fond of animals."},
+{combo:"good at",vi:"giỏi về",ex:"He's good at math."},
+{combo:"interested in",vi:"quan tâm đến",ex:"I'm interested in history."},
+{combo:"jealous of",vi:"ghen tị với",ex:"Don't be jealous of others."},
+{combo:"keen on",vi:"thích, say mê",ex:"She's keen on photography."},
+{combo:"married to",vi:"kết hôn với",ex:"She is married to a doctor."},
+{combo:"pleased with",vi:"hài lòng với",ex:"I'm pleased with the results."},
+{combo:"proud of",vi:"tự hào về",ex:"We are proud of you."},
+{combo:"ready for",vi:"sẵn sàng cho",ex:"Are you ready for the exam?"},
+{combo:"responsible for",vi:"chịu trách nhiệm về",ex:"Who is responsible for this?"},
+{combo:"satisfied with",vi:"hài lòng với",ex:"She is satisfied with her work."},
+{combo:"scared of",vi:"sợ hãi",ex:"He's scared of the dark."},
+{combo:"similar to",vi:"tương tự với",ex:"This is similar to mine."},
+{combo:"sorry about/for",vi:"xin lỗi về",ex:"I'm sorry about the mistake."},
+{combo:"surprised at/by",vi:"ngạc nhiên bởi",ex:"I was surprised by the news."},
+{combo:"tired of",vi:"mệt mỏi vì, chán",ex:"I'm tired of waiting."},
+{combo:"worried about",vi:"lo lắng về",ex:"She's worried about her exam."}
+];
+var VERB_PREP=[
+{combo:"agree with",vi:"đồng ý với",ex:"I agree with you."},
+{combo:"apologize for",vi:"xin lỗi vì",ex:"He apologized for being late."},
+{combo:"apply for",vi:"ứng tuyển",ex:"She applied for the job."},
+{combo:"believe in",vi:"tin vào",ex:"I believe in you."},
+{combo:"belong to",vi:"thuộc về",ex:"This book belongs to me."},
+{combo:"care about",vi:"quan tâm đến",ex:"She cares about the environment."},
+{combo:"complain about",vi:"phàn nàn về",ex:"He complained about the noise."},
+{combo:"concentrate on",vi:"tập trung vào",ex:"Concentrate on your work."},
+{combo:"consist of",vi:"bao gồm",ex:"The team consists of 5 members."},
+{combo:"deal with",vi:"giải quyết",ex:"How do you deal with stress?"},
+{combo:"depend on",vi:"phụ thuộc vào",ex:"It depends on the weather."},
+{combo:"dream about/of",vi:"mơ về",ex:"I dream of traveling the world."},
+{combo:"focus on",vi:"tập trung vào",ex:"Focus on the main idea."},
+{combo:"insist on",vi:"khăng khăng",ex:"She insisted on paying."},
+{combo:"laugh at",vi:"cười nhạo",ex:"Don't laugh at others."},
+{combo:"listen to",vi:"lắng nghe",ex:"Listen to the teacher."},
+{combo:"look after",vi:"chăm sóc",ex:"She looks after her grandmother."},
+{combo:"look for",vi:"tìm kiếm",ex:"I'm looking for my keys."},
+{combo:"pay for",vi:"trả tiền cho",ex:"Who will pay for dinner?"},
+{combo:"rely on",vi:"dựa vào",ex:"You can rely on me."},
+{combo:"succeed in",vi:"thành công trong",ex:"She succeeded in passing the exam."},
+{combo:"suffer from",vi:"chịu đựng",ex:"He suffers from headaches."},
+{combo:"think about/of",vi:"nghĩ về",ex:"What do you think about this?"},
+{combo:"wait for",vi:"chờ đợi",ex:"I'm waiting for the bus."},
+{combo:"worry about",vi:"lo lắng về",ex:"Don't worry about it."}
+];
+var NOUN_PREP=[
+{combo:"advantage of",vi:"lợi thế của",ex:"The advantage of this method is speed."},
+{combo:"cause of",vi:"nguyên nhân của",ex:"The cause of the accident was speed."},
+{combo:"damage to",vi:"thiệt hại cho",ex:"The storm caused damage to the building."},
+{combo:"decrease in",vi:"sự giảm trong",ex:"There was a decrease in sales."},
+{combo:"demand for",vi:"nhu cầu về",ex:"The demand for English is growing."},
+{combo:"difference between",vi:"sự khác biệt giữa",ex:"What's the difference between these two?"},
+{combo:"effect on",vi:"ảnh hưởng lên",ex:"Pollution has an effect on health."},
+{combo:"example of",vi:"ví dụ về",ex:"This is an example of good design."},
+{combo:"increase in",vi:"sự tăng trong",ex:"There was an increase in temperature."},
+{combo:"influence on",vi:"ảnh hưởng lên",ex:"Parents have a big influence on children."},
+{combo:"interest in",vi:"sự quan tâm đến",ex:"She has an interest in art."},
+{combo:"need for",vi:"nhu cầu về",ex:"There is a need for change."},
+{combo:"reason for",vi:"lý do cho",ex:"What is the reason for the delay?"},
+{combo:"relationship between",vi:"mối quan hệ giữa",ex:"The relationship between diet and health."},
+{combo:"solution to",vi:"giải pháp cho",ex:"We need a solution to this problem."}
+];
+
+var QUIZ=[
+{q:"I'm interested ___ history.",ans:"in",opts:["in","on","at","for"]},
+{q:"She is afraid ___ spiders.",ans:"of",opts:["of","from","about","with"]},
+{q:"He's good ___ playing guitar.",ans:"at",opts:["in","at","on","for"]},
+{q:"It depends ___ the situation.",ans:"on",opts:["on","in","at","of"]},
+{q:"I'm looking ___ my phone.",ans:"for",opts:["at","for","after","on"]},
+{q:"She apologized ___ being late.",ans:"for",opts:["about","for","of","with"]},
+{q:"This is different ___ what I thought.",ans:"from",opts:["with","to","from","of"]},
+{q:"He complained ___ the food.",ans:"about",opts:["for","about","of","on"]},
+{q:"We are proud ___ our team.",ans:"of",opts:["of","about","for","with"]},
+{q:"Listen ___ the instructions carefully.",ans:"to",opts:["at","for","to","on"]},
+{q:"She's married ___ an engineer.",ans:"to",opts:["with","to","by","for"]},
+{q:"The solution ___ the problem is simple.",ans:"to",opts:["of","for","to","about"]},
+{q:"He succeeded ___ getting the job.",ans:"in",opts:["at","in","on","for"]},
+{q:"I'm tired ___ doing the same thing.",ans:"of",opts:["of","with","from","about"]},
+{q:"She dreams ___ becoming a doctor.",ans:"of",opts:["about","for","of","in"]}
+];
+
+var curTab='adj';
+function showPTab(t){curTab=t;document.querySelectorAll('.pt-tab').forEach(function(b){b.classList.remove('active');});document.getElementById('pt-'+t).classList.add('active');document.getElementById('searchBox').style.display=t==='quiz'?'none':'block';renderList();}
+function renderList(){
+  var q=(document.getElementById('searchBox').value||'').toLowerCase();
+  if(curTab==='quiz'){renderQuiz();return;}
+  var data=curTab==='adj'?ADJ_PREP:curTab==='verb'?VERB_PREP:NOUN_PREP;
+  var color=curTab==='adj'?'var(--accent)':curTab==='verb'?'var(--accent2)':'var(--accent3)';
+  var filtered=data.filter(function(d){return !q||d.combo.includes(q)||d.vi.includes(q);});
+  document.getElementById('prepList').innerHTML=filtered.map(function(d){
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px;transition:all .2s">'+
+      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'+
+        '<span style="font-size:18px;font-weight:600;color:'+color+'">'+d.combo+'</span>'+
+        '<span style="font-size:13px;color:var(--text3)">'+d.vi+'</span>'+
+      '</div>'+
+      '<div style="margin-top:8px;font-size:13px;color:var(--text2);font-style:italic;padding:8px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid '+color+'">'+d.ex+'</div>'+
+    '</div>';
+  }).join('')||'<div style="text-align:center;color:var(--text3);padding:40px">Không tìm thấy kết quả</div>';
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+var pqIdx=0,pqOk=0,pqItems=[];
+function renderQuiz(){
+  document.getElementById('prepList').innerHTML='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"><div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="zap" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Điền giới từ đúng</div><div id="pqBox" style="text-align:center"><button onclick="startPQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu bài tập</button></div></div>';
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+function startPQ(){pqItems=QUIZ.slice().sort(function(){return Math.random()-0.5;});pqIdx=0;pqOk=0;nextPQ();}
+function nextPQ(){
+  if(pqIdx>=pqItems.length){var pct=Math.round(pqOk/pqItems.length*100);var msg=pct>=80?'Xuất sắc!':pct>=60?'Khá tốt!':'Cần ôn tập thêm!';document.getElementById('pqBox').innerHTML='<div style="font-size:24px;font-weight:600;margin:20px 0">'+pqOk+'/'+pqItems.length+' ('+pct+'%)</div><div style="color:var(--text3);margin-bottom:16px">'+msg+'</div><button onclick="startPQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';return;}
+  var q=pqItems[pqIdx];
+  document.getElementById('pqBox').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(pqIdx+1)+'/'+pqItems.length+'</div><div style="font-size:20px;color:var(--text);margin:16px 0;font-weight:500">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:300px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="checkPQ('+i+')" style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:15px;font-weight:500;font-family:DM Sans,sans-serif;transition:all .15s" id="pqo-'+i+'">'+o+'</button>';}).join('')+'</div><div id="pqFb" style="margin-top:10px;font-size:13px"></div>';
+}
+function checkPQ(i){
+  var q=pqItems[pqIdx];var chosen=q.opts[i];
+  document.querySelectorAll('#pqBox button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  var ci=q.opts.indexOf(q.ans);
+  document.getElementById('pqo-'+ci).style.background='rgba(107,203,119,0.15)';document.getElementById('pqo-'+ci).style.color='var(--green)';document.getElementById('pqo-'+ci).style.opacity='1';
+  if(chosen===q.ans){pqOk++;document.getElementById('pqFb').innerHTML='<span style="color:var(--green)">Chính xác!</span>';}
+  else{document.getElementById('pqo-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('pqo-'+i).style.color='var(--coral)';document.getElementById('pqo-'+i).style.opacity='1';document.getElementById('pqFb').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+q.ans+'</strong></span>';}
+  pqIdx++;setTimeout(nextPQ,1200);
+}
+renderList();
+</script>
+<style>
+.pt-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.pt-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.pt-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<script src="theme.js?v=3"></script>
+<script src="gamification.js?v=3"></script>
+<script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+</body>
+</html>

@@ -8,6 +8,13 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Từ điển Đời thường — EasyEnglish">
+<meta property="og:description" content="Từ vựng tiếng Anh giao tiếp hằng ngày theo chủ đề thực tế.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Từ điển Đời thường — EasyEnglish">
+<meta name="twitter:description" content="Từ vựng tiếng Anh giao tiếp hằng ngày theo chủ đề thực tế.">
 <title>Từ điển Đời thường — EasyEnglish</title>
 <meta name="description" content="Từ điển tiếng Anh đời thường: cảm xúc, hành động, giao tiếp, công việc, sức khỏe, ăn uống. Có phiên âm IPA và ví dụ câu.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -126,6 +133,13 @@
 </style>
 <link rel="stylesheet" href="style.css?v=3">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -196,7 +210,7 @@
     <div class="leg-item"><i data-lucide="circle-check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Rất thường dùng hàng ngày</div>
     <div class="leg-item"><i data-lucide="circle-dot" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Thường dùng</div>
     <div class="leg-item"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Trang trọng</div>
-    <div class="leg-item">🩷 Thông tục</div>
+    <div class="leg-item"> Thông tục</div>
   </div>
 
   <div class="filter-bar">
@@ -332,7 +346,7 @@ function getFiltered(){
 }
 
 const BAND_CLASSES={A1:'tag-a1',A2:'tag-a2',B1:'tag-b1',B2:'tag-b2',C1:'tag-c1'};
-const USAGE_ICONS={daily:'•',medium:'•',formal:'•',slang:'🩷',business:'•'};
+const USAGE_ICONS={daily:'•',medium:'•',formal:'•',slang:'',business:'•'};
 const USAGE_LABELS={daily:'Rất thường dùng',medium:'Thường dùng',formal:'Trang trọng',slang:'Thông tục',business:'Kinh doanh'};
 const TYPE_CLASSES={'n':'tag-n','v':'tag-v','adj':'tag-adj','adv':'tag-adv','phr.v':'tag-v','n/v':'tag-n','v/n':'tag-n','adj/n':'tag-adj','adj/v':'tag-v'};
 
@@ -536,5 +550,19 @@ document.addEventListener('click',e=>{
 </script>
 <script src="gamification.js?v=3"></script>
 <script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
 </body>
 </html>

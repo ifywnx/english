@@ -9,7 +9,8 @@
       {href:'grammar-advanced.html', icon:'flame', text:'Ngữ pháp nâng cao'},
       {href:'gerund-infinitive.html', icon:'git-branch', text:'Gerund vs Infinitive'},
       {href:'pronunciation.html', icon:'mic', text:'Phát âm'},
-      {href:'irregular-verbs.html', icon:'list', text:'Động từ bất quy tắc'}
+      {href:'irregular-verbs.html', icon:'list', text:'Động từ bất quy tắc'},
+      {href:'prepositions.html', icon:'map-pin', text:'Cụm giới từ'}
     ],
     'Từ vựng': [
       {href:'vocabulary.html', icon:'pencil', text:'Từ vựng cơ bản'},
@@ -17,10 +18,12 @@
       {href:'collocations.html', icon:'link', text:'Cụm từ đi cùng'},
       {href:'idioms.html', icon:'sparkles', text:'Thành ngữ'},
       {href:'phrasal-verbs.html', icon:'git-merge', text:'Cụm động từ'},
-      {href:'confusing-words.html', icon:'shuffle', text:'Từ hay nhầm'}
+      {href:'confusing-words.html', icon:'shuffle', text:'Từ hay nhầm'},
+      {href:'word-formation.html', icon:'puzzle', text:'Cấu tạo từ'}
     ],
     'Kỹ năng': [
       {href:'skills.html', icon:'layers', text:'4 Kỹ năng'},
+      {href:'reading-comprehension.html', icon:'book-open-check', text:'Đọc hiểu'},
       {href:'listening.html', icon:'headphones', text:'Luyện nghe'},
       {href:'writing-checker.html', icon:'check-circle', text:'Kiểm tra bài viết'},
       {href:'linking-words.html', icon:'link-2', text:'Từ nối'},

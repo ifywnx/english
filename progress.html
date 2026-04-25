@@ -8,6 +8,13 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Tiến độ học — EasyEnglish">
+<meta property="og:description" content="Theo dõi tiến độ học tiếng Anh, streak, XP và thành tựu.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tiến độ học — EasyEnglish">
+<meta name="twitter:description" content="Theo dõi tiến độ học tiếng Anh, streak, XP và thành tựu.">
 <title>Tiến độ học tập — EasyEnglish</title>
 <meta name="description" content="Theo dõi tiến độ học tiếng Anh: streak hàng ngày, từ vựng đã học, điểm quiz, mục tiêu IELTS và thành tích.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -158,6 +165,13 @@
 </style>
 <link rel="stylesheet" href="style.css?v=3">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
 </head>
 <body>
 <div class="bg-orb orb1"></div>
@@ -351,7 +365,7 @@ function calcXP(data) {
 // ===== ACHIEVEMENTS =====
 const ACHIEVEMENTS = [
   {icon:'•', name:'Bắt đầu', desc:'Mở website lần đầu', check: d => true},
-  {icon:'🔥', name:'3 ngày streak', desc:'Học 3 ngày liên tiếp', check: d => d.streak.count >= 3},
+  {icon:'', name:'3 ngày streak', desc:'Học 3 ngày liên tiếp', check: d => d.streak.count >= 3},
   {icon:'•', name:'7 ngày streak', desc:'Học 7 ngày liên tiếp', check: d => d.streak.count >= 7},
   {icon:'•', name:'30 ngày streak', desc:'Học 30 ngày liên tiếp', check: d => d.streak.count >= 30},
   {icon:'•', name:'Từ vựng đầu tiên', desc:'Lưu từ vựng đầu tiên', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 1},
@@ -371,7 +385,7 @@ const ACHIEVEMENTS = [
 // ===== MODULES =====
 const MODULES = [
   {icon:'•', name:'Ngữ pháp cơ bản', link:'grammar.html', key:'grammar', max:100, getVal: d => Math.min(d.quizCorrect * 2, 100)},
-  {icon:'🔥', name:'Ngữ pháp nâng cao', link:'grammar-advanced.html', key:'grammar-adv', max:100, getVal: d => Math.min(d.streak.count * 5, 100)},
+  {icon:'', name:'Ngữ pháp nâng cao', link:'grammar-advanced.html', key:'grammar-adv', max:100, getVal: d => Math.min(d.streak.count * 5, 100)},
   {icon:'•', name:'Từ vựng đời thường', link:'vocabulary.html', key:'vocab', max:100, getVal: d => Math.min((d.vocabLearned.length / 2), 100)},
   {icon:'•', name:'Phát âm IPA', link:'pronunciation.html', key:'pron', max:100, getVal: d => Math.min(d.streak.count * 3, 100)},
   {icon:'•', name:'AWL — 570 từ', link:'academic-words.html', key:'awl', max:570, getVal: d => d.awlLearned.length},
@@ -397,7 +411,7 @@ function renderHeroStats(data) {
   document.getElementById('quiz-acc').textContent = acc + '% chính xác';
   document.getElementById('hs-days').textContent = (data.streak.days || []).length;
 
-  if(data.streak.count >= 7) document.getElementById('streak-msg').textContent = '🔥 Tuyệt vời!';
+  if(data.streak.count >= 7) document.getElementById('streak-msg').textContent = ' Tuyệt vời!';
   else if(data.streak.count >= 3) document.getElementById('streak-msg').textContent = '• Đang tốt!';
   if(totalSaved > 0) document.getElementById('vocab-msg').textContent = `+${totalSaved} từ trong túi`;
 }
@@ -416,7 +430,7 @@ function renderXP(data) {
 
   const badgesEl = document.getElementById('xpBadges');
   const badges = [];
-  if(data.streak.count >= 7) badges.push({text:'🔥 Week Warrior', bg:'rgba(232,197,71,0.2)', color:'var(--accent)'});
+  if(data.streak.count >= 7) badges.push({text:' Week Warrior', bg:'rgba(232,197,71,0.2)', color:'var(--accent)'});
   if(data.awlLearned.length >= 100) badges.push({text:'• AWL 100', bg:'rgba(123,110,246,0.2)', color:'var(--accent2)'});
   if(data.quizCorrect >= 50) badges.push({text:'• Quiz Pro', bg:'rgba(244,132,95,0.2)', color:'var(--coral)'});
   if(data.awlLearned.length >= 300) badges.push({text:'• AWL 300', bg:'rgba(232,121,160,0.2)', color:'var(--pink)'});
@@ -448,7 +462,7 @@ function renderCalendar(data) {
     grid.appendChild(cell);
   }
 
-  document.getElementById('cal-streak-text').textContent = `🔥 ${data.streak.count} ngày liên tiếp`;
+  document.getElementById('cal-streak-text').textContent = ` ${data.streak.count} ngày liên tiếp`;
 }
 
 function renderModules(data) {
@@ -705,5 +719,19 @@ document.addEventListener('click',e=>{
 <!-- MORE DRAWER -->
 <script src="gamification.js?v=3"></script>
 <script src="common.js?v=12"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
 </body>
 </html>
