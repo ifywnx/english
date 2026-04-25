@@ -1,0 +1,567 @@
+# 📚 EasyEnglish — Project Documentation
+
+> **Cập nhật lần cuối:** 2026-04-25  
+> **Tổng số files:** 46 files (31 HTML + 5 JS + 1 CSS + 9 assets/config)  
+> **Tổng dung lượng:** ~1.6MB  
+> **Mục đích file này:** Ghi chi tiết toàn bộ project để bất kỳ ai (hoặc AI mới) đọc file này là hiểu hết plan, kiến trúc, tính năng, API, và cách hoạt động.
+
+---
+
+## 🎯 1. Tầm nhìn & Triết lý
+
+### Tầm nhìn lớn
+**Xây dựng nền tảng học ngôn ngữ hoàn hảo, toàn năng, ăn đứt mọi app/web trên thị trường.**
+
+- Không chỉ tiếng Anh — đây là **nền tảng đa ngôn ngữ** (Anh → Trung → Hàn → Nhật → ...)
+- Phù hợp **mọi đối tượng**: từ cơ bản đến nâng cao max level
+- Bao gồm cả **tiếng Anh chuyên ngành** (IT, Y tế, Kinh doanh, Luật, ...)
+- Chất lượng **peak, wow** — mỗi trang phải khiến user "WOW" ngay lần đầu
+- Phong cách **Gen Z**, hiện đại, thú vị, dễ dùng — phá vỡ rào cản "học tiếng Anh = khó" với người Việt
+
+### Lộ trình triển khai
+1. ✅ **Phase 1: Web tĩnh** (HTML/CSS/JS thuần) — Đang hoàn thiện
+2. **Phase 2: Deploy + Polish** — GitHub Pages, tối ưu SEO, fix bugs thực tế
+3. **Phase 3: React Native Expo** — Chuyển sang app, mượt như iOS native
+4. **Phase 4: Backend** — Auth, Cloud Sync, AI chatbot, Leaderboard
+5. **Phase 5: Multi-language** — Dựa form tiếng Anh → build tiếng Trung, Hàn, Nhật
+
+### Triết lý thiết kế
+- **Mượt như iOS** — transitions, animations, interactions phải silky smooth
+- **KHÔNG dùng emoji** trong code/UI — chỉ dùng Lucide SVG Icons (professional)
+- **Mobile-first** — test trên điện thoại thật, không chỉ browser dev tools
+- **Bảo mật** — khi có backend, security là ưu tiên hàng đầu
+- **Offline-first** — data lưu `localStorage`, hoạt động không cần mạng
+- **Không placeholder** — mọi nội dung phải thật, đầy đủ, chất lượng cao
+- **Premium** — không phải MVP, mà là sản phẩm hoàn chỉnh
+
+### Đối thủ cần vượt qua
+- Duolingo, Elsa Speak, Cake, IELTS Prep apps
+- Khác biệt: **toàn diện** (grammar + vocab + skills + IELTS + dictionary + practice), **miễn phí**, **offline**, **đa ngôn ngữ**
+
+---
+
+## 📁 2. Cấu trúc File
+
+### Core Files (files nền tảng — mọi trang đều dùng)
+
+| File | Vai trò | Kích thước | Version hiện tại |
+|------|---------|------------|------------------|
+| `style.css` | CSS chung: nav, bottom nav, more drawer, back-to-top, reading progress, responsive | 14,199 B | `?v=3` |
+| `common.js` | JS injection: bottom nav, more drawer, back-to-top, reading progress, select-to-translate, page transitions | 29,027 B | `?v=7` |
+| `theme.js` | Theme engine: 12 themes, theme picker panel, CSS variables | 17,544 B | `?v=3` |
+| `gamification.js` | XP system, streak, badges, daily challenge, confetti, sound effects, XP bar | 13,534 B | `?v=3` |
+| `dict-data.js` | Dữ liệu từ điển offline (~2000+ từ) cho autocomplete | 14,213 B | — |
+
+### SEO & PWA Files
+
+| File | Vai trò | Kích thước |
+|------|---------|------------|
+| `manifest.json` | PWA manifest (installable app config) | 992 B |
+| `robots.txt` | Search engine crawl rules | 44 B |
+| `sitemap.xml` | 25 URLs cho search engines | 2,934 B |
+| `favicon.svg` | SVG favicon | 238 B |
+| `apple-touch-icon.png` | iOS home screen icon | 1,649 B |
+| `icon-192.png` | PWA icon 192x192 | 2,100 B |
+| `icon-512.png` | PWA icon 512x512 | 6,465 B |
+
+### Utility Files
+
+| File | Vai trò |
+|------|----------|
+| `.tmp_check.js` | Script tạm (CSS orphan checker) — có thể xóa |
+| `index.html.bak` | Backup trang chủ cũ — có thể xóa |
+
+### HTML Pages (30+ trang)
+
+#### 📗 Grammar (Ngữ pháp)
+| File | Nội dung |
+|------|----------|
+| `grammar.html` | 12 thì, Câu điều kiện, Passive, Reported Speech, Relative Clause, Parts of Speech |
+| `grammar-advanced.html` | Inversion, Cleft Sentence, Subjunctive, Emphasis |
+
+#### 📘 Vocabulary (Từ vựng)
+| File | Nội dung |
+|------|----------|
+| `vocabulary.html` | 20 chủ đề, 430+ từ, Flashcard, Quiz |
+| `synonyms.html` | 8 nhóm Đồng/Trái nghĩa, Filter, IELTS tips |
+| `collocations.html` | Make/Do, Phrasal Verbs, Idioms |
+| `idioms.html` | 77+ idioms, Quiz, Filter 9 chủ đề |
+| `confusing-words.html` | Các cặp từ hay nhầm (affect/effect, ...) |
+| `phrasal-verbs.html` | Phrasal verbs thông dụng |
+| `academic-words.html` | AWL 570 từ academic, Flashcard, Quiz |
+| `irregular-verbs.html` | 100+ động từ bất quy tắc |
+| `linking-words.html` | Từ nối / Liên từ |
+
+#### 🎯 IELTS
+| File | Nội dung | Kích thước |
+|------|----------|------------|
+| `ielts.html` | IELTS Guide tổng hợp: Writing Task 1/2, Reading, Listening, Speaking | 72,113 B |
+| `ielts-writing-band9.html` | Band 9 Writing samples | 49,965 B |
+| `ielts-speaking-topics.html` | Speaking topics + sample answers | 48,551 B |
+| `mock-test.html` | Mock test thi thử (có chấm điểm tự động) | 40,470 B |
+| `paraphrasing.html` | Kỹ thuật Paraphrasing (IELTS) | 45,121 B |
+
+#### 📖 Từ điển
+| File | Nội dung |
+|------|----------|
+| `dictionary.html` | Từ điển Anh-Việt online (dùng API) |
+| `dictionary-everyday.html` | Từ điển đời thường (tập 1) |
+| `dictionary-everyday-2.html` | Từ điển đời thường (tập 2) |
+| `dictionary-ielts.html` | Từ điển IELTS (tập 1) |
+| `dictionary-ielts-2.html` | Từ điển IELTS (tập 2) |
+
+#### 🎤 Skills (Kỹ năng)
+| File | Nội dung | Kích thước |
+|------|----------|------------|
+| `skills.html` | Tổng hợp 4 kỹ năng: Reading, Listening, Speaking, Writing | 63,694 B |
+| `pronunciation.html` | IPA, Ngữ điệu, Nối âm, Minimal Pairs | 64,322 B |
+| `listening.html` | Luyện nghe: Audio, Transcript, Dictation | 36,490 B |
+| `conversation.html` | Giao tiếp hàng ngày / Daily Conversation | 21,889 B |
+
+#### 🛠️ Practice (Luyện tập)
+| File | Nội dung |
+|------|----------|
+| `quiz.html` | Multiple choice, Fill-in-the-blank, Điểm |
+| `spaced-repetition.html` | SRS Flashcard, Intervals (Leitner system) |
+| `writing-checker.html` | Grammar check, Word count |
+| `progress.html` | Streak dashboard, Stats, Module progress |
+
+#### 🏠 Khác
+| File | Nội dung |
+|------|----------|
+| `index.html` | Trang chủ: Hero section, Streak badge, Module grid, Roadmap 0→9.0 |
+
+---
+
+## 🎨 3. Hệ thống Theme
+
+### Engine: `theme.js`
+
+12 themes, chia 2 nhóm Dark/Light, dùng CSS Variables:
+
+#### 🌙 Dark Themes (6)
+| Theme | Tên hiển thị | Màu chính | Đặc điểm |
+|-------|-------------|-----------|-----------|
+| `aura` | Aura Night | `#64d8a5` (xanh lá mint) | Default theme, tối sang trọng |
+| `midnight` | Midnight | `#7b6ef6` (tím) | Deep blue-purple |
+| `sunset` | Sunset | `#f4845f` (cam) | Warm orange tones |
+| `forest` | Forest | `#6bcb77` (xanh lá) | Nature green |
+| `y2k-dark` | Y2K Dark | `#ff6ff2` (hồng neon) | Retro 2000s, neon pink |
+| `genz-dark` | Gen Z Dark | `#7c3aed` (tím đậm) | Modern purple vibe |
+
+#### ☀️ Light Themes (6)
+| Theme | Tên hiển thị | Màu chính | Đặc điểm |
+|-------|-------------|-----------|-----------|
+| `cream` | Cream Light | `#d4a574` (nâu kem) | Warm, cozy |
+| `ocean` | Ocean Light | `#0ea5e9` (xanh biển) | Fresh, clean |
+| `oldmoney` | Old Money | `#8B7355` (nâu vàng) | Classic, luxury |
+| `kid` | Kid | `#FF6B6B` (đỏ hồng) | Colorful, playful |
+| `y2k-light` | Y2K Light | `#ff1493` (hồng đậm) | Retro pastel |
+| `genz-light` | Gen Z Light | `#7c3aed` (tím) | Clean modern |
+
+### CSS Variables mỗi theme define
+```css
+--bg          /* Nền chính */
+--bg2         /* Nền phụ (card, section) */
+--bg3         /* Nền hover */
+--text        /* Chữ chính */
+--text2       /* Chữ phụ */
+--text3       /* Chữ mờ */
+--accent      /* Màu nhấn chính */
+--accent2     /* Màu nhấn phụ */
+--accent3     /* Màu nhấn 3 */
+--border      /* Viền */
+--shadow      /* Đổ bóng */
+--card-bg     /* Nền card */
+--card-border /* Viền card */
+--code-bg     /* Nền code block */
+```
+
+### Theme Picker UI
+- Panel glassmorphism floating
+- Grid 2 cột, chia nhóm Dark/Light
+- Mỗi theme: color swatch + tên + checkmark khi active
+- Mở từ: Top nav button (desktop) hoặc More Drawer (mobile)
+- Lưu vào `localStorage('ee_theme')`
+
+---
+
+## 🧩 4. UI Components (Injection System)
+
+Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** copy-paste HTML vào mỗi file.
+
+### Bottom Navigation (Mobile only, ≤900px)
+- **Vị trí:** Fixed bottom, glassmorphism
+- **Items:** Home, Grammar, Vocab, Dictionary, More (☰)
+- **Config:** Object `bnItems` trong `common.js`
+- **Style:** Trong `style.css` (không dùng `!important`)
+- **Animation:** Show/hide khi scroll (scrollY tracking)
+
+### More Drawer (Mobile only)
+- **Mở từ:** Nút "More" trên Bottom Nav
+- **Items:** Skills, IELTS, Quiz, Phrasal Verbs, Idioms, Progress, Đổi giao diện
+- **Config:** Object `drawerItems` trong `common.js`
+- **Style:** Slide-up overlay, glassmorphism
+
+### Back-to-Top Button
+- **Hiện khi:** scrollY > 300px
+- **Style:** Floating circle, bottom-right
+- **Animation:** Fade in/out
+
+### Reading Progress Bar
+- **Vị trí:** Fixed top, full-width
+- **Style:** Thin gradient bar, z-index: 9998
+
+### XP Bar (below nav)
+- **Vị trí:** Fixed, ngay dưới top nav bar
+- **Desktop:** Luôn hiện
+- **Mobile:** Hiện 4s rồi tự ẩn
+- **Nội dung:** Level icon + Level name + Progress bar + Total XP + Streak
+- **Click:** → progress.html
+
+---
+
+## 🌐 5. APIs & External Services
+
+### Dịch thuật (Select-to-Translate)
+| Service | URL | Mục đích | Giới hạn |
+|---------|-----|----------|----------|
+| **MyMemory Translation** | `api.mymemory.translated.net/get?q=...&langpair=en|vi` | Dịch Anh → Việt | 1000 req/ngày (free) |
+| **Free Dictionary API** | `api.dictionaryapi.dev/api/v2/entries/en/{word}` | IPA, definition, examples, part of speech | Unlimited, free |
+
+#### Cơ chế fallback khi dịch:
+1. **Local dictionary** (120+ từ phổ biến) → Dịch ngay, không cần mạng
+2. **MyMemory API** → Dịch online
+3. **Matches array** → Nếu API trả lại từ gốc, thử `matches[]`
+4. **Dictionary API** → Lấy IPA, definition, examples
+5. **Thông báo lỗi** → "Không tìm thấy nghĩa cho..."
+
+### Tra từ điển (`dictionary.html`)
+| Service | URL | Mục đích |
+|---------|-----|----------|
+| **Free Dictionary API** | `api.dictionaryapi.dev/api/v2/entries/en/{word}` | Tra từ điển chính |
+
+### Text-to-Speech (TTS)
+- **API:** `Web Speech API` (built-in browser)
+- **Cách dùng:** `SpeechSynthesisUtterance` với `lang='en-US'`, `rate=0.85`
+- **Nơi dùng:** Nút phát âm trong translate popup, từ điển, pronunciation page
+
+---
+
+## 🎨 6. Icons & Fonts
+
+### Icons: Lucide Icons
+- **CDN:** `https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js`
+- **Phiên bản:** Pin `0.460.0` (không dùng `@latest`)
+- **Cách dùng:** `<i data-lucide="icon-name"></i>` + gọi `lucide.createIcons()`
+- **Icons được dùng:**
+  - Navigation: `home`, `book-open`, `languages`, `search`, `menu`, `more-horizontal`
+  - Grammar: `pen-tool`, `git-branch`
+  - Vocabulary: `library`, `book`, `brain`
+  - Skills: `headphones`, `mic`, `pen`, `eye`
+  - IELTS: `trophy`, `target`, `award`
+  - Practice: `zap`, `repeat`, `bar-chart`
+  - Gamification: `sprout`, `flame`, `crown`, `shield`, `star`, `check-circle`
+
+### Module Card Icons (6 nhóm màu gradient)
+| Category | Màu gradient | Ví dụ modules |
+|----------|-------------|---------------|
+| Grammar | `#64d8a5 → #4ac7a0` (xanh lá) | Grammar, Grammar Advanced |
+| Vocabulary | `#a78bfa → #8b6ef6` (tím) | Vocabulary, Synonyms, AWL |
+| Skills | `#f4845f → #e66b4a` (cam) | Skills, Pronunciation, Listening |
+| IELTS | `#f0c27a → #e0b06a` (vàng) | IELTS Guide, Writing Band 9 |
+| Dictionary | `#6bcb77 → #5ab868` (xanh) | Dictionary, Everyday, IELTS Dict |
+| Practice | `#ff8a80 → #f07070` (đỏ nhạt) | Quiz, Spaced Repetition, Progress |
+
+### Fonts: Google Fonts
+| Font | Dùng cho | Đặc điểm |
+|------|----------|----------|
+| **Fraunces** | Headings, tiêu đề, tên từ | Serif, elegant, variable |
+| **DM Sans** | Body text, UI, buttons | Sans-serif, clean, modern |
+
+### Cách load fonts
+```html
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+```
+
+---
+
+## 🎮 7. Gamification System (`gamification.js`)
+
+### XP & Levels
+| Level | Tên | XP cần | Icon |
+|-------|-----|--------|------|
+| 0 | Người mới | 0 | `sprout` |
+| 1 | Học viên | 100 | `book-open` |
+| 2 | Trung cấp | 500 | `flame` |
+| 3 | Nâng cao | 1500 | `award` |
+| 4 | Chuyên gia | 3000 | `crown` |
+| 5 | Bậc thầy | 6000 | `trophy` |
+
+### Badges (Huy chương)
+| ID | Tên | Điều kiện |
+|----|-----|-----------|
+| `first_lesson` | Bài đầu tiên | 1 lesson completed |
+| `streak_3` | 3 ngày liên tiếp | Streak ≥ 3 |
+| `streak_7` | Tuần lễ vàng | Streak ≥ 7 |
+| `streak_30` | Tháng kiên trì | Streak ≥ 30 |
+| `vocab_50` | 50 từ vựng | 50 words learned |
+| `vocab_200` | 200 từ vựng | 200 words learned |
+| `quiz_10` | 10 quiz | 10 quizzes done |
+| `quiz_50` | 50 quiz | 50 quizzes done |
+| `xp_1000` | 1000 XP | Total XP ≥ 1000 |
+| `xp_5000` | 5000 XP | Total XP ≥ 5000 |
+
+### Daily Challenge
+- 30 từ vựng IELTS luân phiên theo ngày
+- Mỗi từ có: English, Vietnamese, Example sentence
+
+### Sound Effects
+- Dùng `AudioContext` (Web Audio API) — không cần file âm thanh
+- 4 sounds: `correct`, `wrong`, `levelup`, `badge`
+
+### Confetti Animation
+- Canvas-based, 80 particles
+- Trigger khi: Level up, Badge mới
+
+### localStorage keys
+- `ee_game` — JSON object chứa:
+  - `totalXP`, `todayXP`, `dailyGoal`, `streak`, `lastDate`
+  - `lessonsCompleted`, `wordsLearned`, `quizCompleted`
+  - `badges[]`, `todayChallengeDone`
+
+---
+
+## 📱 8. Responsive Design
+
+### Breakpoints
+| Breakpoint | Thiết bị | Thay đổi chính |
+|------------|----------|----------------|
+| `≤ 900px` | Mobile/Tablet | Show bottom nav, hide desktop nav items, stack layouts |
+| `≤ 600px` | Small mobile | Smaller fonts, compact cards |
+| `> 900px` | Desktop | Show full nav, sidebar, multi-column layouts |
+
+### Mobile-specific features
+- Bottom Navigation (floating, glassmorphism)
+- More Drawer (slide-up)
+- Hamburger menu
+- Touch-optimized spacing (44px min touch targets)
+- XP bar auto-hide after 4s
+
+### Desktop-specific features
+- Multi-column layouts (2-3 columns)
+- Sidebar navigation (on content-heavy pages)
+- Hover effects
+- XP bar always visible below nav
+
+---
+
+## ✨ 9. Tính năng đặc biệt
+
+### Select-to-Translate (Boi den dich)
+- **Desktop:** `mouseup` event -> 150ms debounce
+- **Mobile:** `touchend` + `selectionchange` -> 400-700ms debounce
+- **Max length:** 500 ky tu (ho tro doan van dai)
+- **Single word:** Dictionary API + MyMemory (parallel) -> IPA + word type + Vietnamese ONLY (khong hien English definition/example)
+- **Phrase/Paragraph:** MyMemory only -> Vietnamese translation
+- **Popup:** Glassmorphism, animated, scrollable (max-height 60vh), max-width 420px, co nut TTS
+- **Vietnamese text filter:** Tu skip text tieng Viet (detect dau)
+- **Local fallback dictionary:** 120+ tu pho bien (grammar terms, common words) -> dich NGAY khong can mang
+- **Fallback chain:** Local dict -> MyMemory API -> matches array -> error message
+
+### View Transitions (Page Transitions)
+- **API:** CSS View Transitions (native browser)
+- **Cách hoạt động:** Intercept click → add exit class → navigate after animation
+- **Fallback:** Direct navigate nếu browser không support
+
+### Autocomplete (Dictionary page)
+- **Data:** `dict-data.js` (~2000+ từ)
+- **Cách hoạt động:** Filter on keyup → show dropdown suggestions
+
+### Theme Persistence
+- Lưu `localStorage('ee_theme')` 
+- Apply ngay khi load (trước DOMContentLoaded để tránh flash)
+
+---
+
+## 🐛 10. Known Issues & Lưu ý quan trọng
+
+### 7 Lỗi phải tránh (đã từng gặp)
+1. **`overflow-x: clip/hidden` trên `<html>`** → Phá vỡ dropdown navigation
+2. **Duplicate nav HTML** → Khi inject + copy paste → double nav bars
+3. **CSS rules ngoài `@media`** → Bottom nav styles leak ra desktop
+4. **`transform` trên `body`** → Phá vỡ `position:fixed` (animation issue)
+5. **Quote escaping trong template literals** → JS crash khi có nested quotes
+6. **Thiếu closing `</div>`** → Layout vỡ
+7. **Thiếu `lucide.createIcons()`** → Icons không render
+
+### Performance notes
+- Lucide pinned `0.460.0` → stable CDN cache
+- Cache-busting `?v=N` trên CSS/JS references
+- Tránh `!important` — hiện chỉ còn 1 instance trong common.js
+
+---
+
+## 📊 11. localStorage Data Map
+
+| Key | Dùng bởi | Nội dung |
+|-----|----------|----------|
+| `ee_theme` | `theme.js` | Theme ID string (e.g. 'aura', 'midnight') |
+| `ee_game` | `gamification.js` | JSON: XP, streak, badges, daily challenge |
+| `ee_sr_*` | `spaced-repetition.html` | Spaced repetition card data |
+| `ee_progress_*` | `progress.html` | Module completion data |
+| `ee_vocab_*` | `vocabulary.html` | Saved vocabulary lists |
+
+
+## 🗺️ 12. Roadmap (5 Phases)
+
+### Phase 2: Web Polish (Dang lam)
+| # | Feature | Mo ta |
+|---|---------|-------|
+| 1 | Reading Comprehension | Bai doc hieu co cau hoi |
+| 2 | Word Formation | Cau tao tu (prefix, suffix, root) |
+| 3 | Daily Challenge Page | Quiz hang ngay, streak reward |
+| 4 | Gerund vs Infinitive | Module rieng biet |
+| 5 | Pronunciation Recording | Ghi am + so sanh phat am |
+| 6 | Loai bo moi Emoji | Thay toan bo bang Lucide Icons |
+| 7 | Them themes moi | Lien tuc mo rong theme collection |
+| 8 | Smooth transitions | Page transitions muot nhu native iOS |
+| 9 | PWA hoan chinh | Service Worker, offline, installable |
+| 10 | SEO / OpenGraph | Meta tags, Schema.org |
+
+### Phase 3: Tieng Anh chuyen nganh
+| # | Feature | Mo ta |
+|---|---------|-------|
+| 11 | Business English | Tu vung & hoi thoai doanh nghiep |
+| 12 | IT English | Thuat ngu lap trinh, cong nghe |
+| 13 | Medical English | Thuat ngu y te, benh vien |
+| 14 | Legal English | Thuat ngu phap ly, hop dong |
+| 15 | TOEIC Module | Rieng cho luyen thi TOEIC |
+| 16 | Global Search | Tim kiem toan site |
+
+### Phase 4: React Native Expo + Backend
+| # | Feature | Mo ta |
+|---|---------|-------|
+| 17 | Chuyen sang React Native Expo | Build app iOS/Android muot nhu native |
+| 18 | Auth (Dang nhap) | Firebase/Supabase Auth |
+| 19 | Cloud Sync | Luu tien do online |
+| 20 | AI Chatbot | GPT API hoi dap tieng Anh |
+| 21 | Push Notifications | Nhac nho hoc hang ngay |
+| 22 | Leaderboard | Bang xep hang cong dong |
+| 23 | Bao mat | Encryption, rate limiting, auth guards |
+
+### Phase 5: Multi-language Empire
+| # | Feature | Mo ta |
+|---|---------|-------|
+| 24 | Tieng Trung (Mandarin) | Dua form tieng Anh -> adapt |
+| 25 | Tieng Han (Korean) | Hangul, grammar, vocab, TOPIK |
+| 26 | Tieng Nhat (Japanese) | Hiragana/Katakana, Kanji, JLPT |
+| 27 | He thong chung da ngon ngu | Shared UI framework, language switcher |
+
+---
+
+
+## 🔧 13. Hướng dẫn thêm trang mới
+
+### Bước 1: Tạo file HTML mới
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tên trang — EasyEnglish</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Theme (PHẢI load trước CSS để tránh flash) -->
+  <script src="theme.js?v=N"></script>
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="style.css?v=N">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- NAV (copy nav structure) -->
+  <nav>...</nav>
+  
+  <!-- CONTENT -->
+  <main>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Trang chủ</a> / <span>Tên trang</span>
+    </div>
+    
+    <!-- Your content here -->
+  </main>
+  
+  <!-- Scripts (cuối body) -->
+  <script src="common.js?v=N"></script>
+  <script src="gamification.js?v=N"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
+```
+
+### Bước 2: Thêm vào navigation
+- **Bottom Nav:** Sửa `bnItems` object trong `common.js` (nếu cần)
+- **More Drawer:** Sửa `drawerItems` object trong `common.js`
+- **Top Nav:** Sửa `<nav>` trong file HTML
+- **Homepage:** Thêm card vào `index.html` module grid
+
+### Bước 3: Cache-bust
+```bash
+# Bump version number khi sửa CSS/JS chung
+sed -i '' 's/common.js?v=7/common.js?v=8/g' *.html
+```
+
+---
+
+## 📝 14. Conventions & Coding Style
+
+### HTML
+- Semantic tags: `<main>`, `<section>`, `<article>`, `<nav>`
+- Mỗi trang có 1 `<h1>` duy nhất
+- IDs unique, descriptive (cho testing)
+- Mobile-first media queries
+
+### CSS
+- CSS Variables cho theming (define trong `theme.js`)
+- Shared styles trong `style.css`
+- Page-specific styles trong `<style>` block của mỗi file
+- **TRÁNH `!important`** — dùng specificity thay thế
+- z-index scale:
+  - `100-199`: Bottom nav, XP bar
+  - `200-999`: Dropdowns, drawers
+  - `1000-9999`: Modals, overlays
+  - `99998-99999`: Toast, confetti, translate popup
+
+### JavaScript
+- Vanilla JS thuần, không framework
+- IIFE `(function(){...})()` cho encapsulation
+- `var` thay vì `let/const` (IE11 compat — tùy chọn)
+- Event delegation khi possible
+- `localStorage` cho persistence
+- `setTimeout` với named functions cho readability
+
+---
+
+## 🔗 15. External Dependencies
+
+| Dependency | Version | CDN URL | Mục đích |
+|------------|---------|---------|----------|
+| Lucide Icons | 0.460.0 | `unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js` | SVG Icons |
+| Google Fonts | - | `fonts.googleapis.com/css2?family=Fraunces...&family=DM+Sans...` | Typography |
+| MyMemory API | - | `api.mymemory.translated.net` | Dịch EN→VI |
+| Dictionary API | - | `api.dictionaryapi.dev` | Tra từ điển |
+| Web Speech API | Browser built-in | - | Text-to-Speech |
+| Web Audio API | Browser built-in | - | Sound effects |
+
+> **Lưu ý:** Ngoài Lucide CDN và Google Fonts, toàn bộ site hoạt động offline (Dictionary API và Translation cần internet).
+
+---
+
+*Đây là tài liệu sống — cập nhật mỗi khi có thay đổi lớn.*

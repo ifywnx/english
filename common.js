@@ -200,7 +200,7 @@ window.addEventListener('scroll',function(){
 (function(){
   var popup = document.createElement('div');
   popup.id = 'ee-translate-popup';
-  popup.style.cssText = 'position:fixed;z-index:99999;display:none;background:rgba(11,26,30,0.97);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:14px;padding:0;max-width:340px;min-width:200px;box-shadow:0 16px 48px rgba(0,0,0,0.5);font-family:"DM Sans",sans-serif;animation:eePopIn .2s ease-out;overflow:hidden';
+  popup.style.cssText = 'position:fixed;z-index:99999;display:none;background:rgba(11,26,30,0.97);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:14px;padding:0;max-width:420px;min-width:200px;box-shadow:0 16px 48px rgba(0,0,0,0.5);font-family:"DM Sans",sans-serif;animation:eePopIn .2s ease-out;overflow:hidden;max-height:60vh;overflow-y:auto';
   document.body.appendChild(popup);
 
   var style = document.createElement('style');
@@ -236,7 +236,7 @@ window.addEventListener('scroll',function(){
     try{ if(popup.contains(sel.anchorNode)) return; }catch(e){}
 
     // Hide if no/short selection
-    if(!text || text.length < 2 || text.length > 200){
+    if(!text || text.length < 2 || text.length > 500){
       if(!isTranslating) hidePopup();
       return;
     }
@@ -279,7 +279,7 @@ window.addEventListener('scroll',function(){
     debounceTimer = setTimeout(function(){
       var sel = window.getSelection();
       var text = sel ? sel.toString().trim() : '';
-      if(text && text.length >= 2 && text.length <= 200){
+      if(text && text.length >= 2 && text.length <= 500){
         processSelection();
       }
     }, 700);
@@ -322,8 +322,8 @@ window.addEventListener('scroll',function(){
         }
       }
 
-      // Dictionary extras
-      var ipa = '', types = [], firstDef = '', example = '';
+      // Dictionary extras — only IPA and word types (no English def/example)
+      var ipa = '', types = [];
       if(dictData && dictData[0]){
         var d = dictData[0];
         var phonetics = d.phonetics || [];
@@ -332,13 +332,11 @@ window.addEventListener('scroll',function(){
         types = meanings.map(function(m){
           return {noun:'n',verb:'v',adjective:'adj',adverb:'adv'}[m.partOfSpeech] || m.partOfSpeech;
         });
-        firstDef = meanings[0] && meanings[0].definitions[0] ? meanings[0].definitions[0].definition : '';
-        example = meanings[0] && meanings[0].definitions[0] && meanings[0].definitions[0].example ? meanings[0].definitions[0].example : '';
       }
 
-      // If no translation AND no dict data, show error
-      if(!viWord && !firstDef){
-        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không tìm thấy nghĩa cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
+      // If no translation at all, show error
+      if(!viWord && !ipa){
+        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Khong tim thay nghia cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
         isTranslating = false;
         return;
       }
@@ -348,7 +346,7 @@ window.addEventListener('scroll',function(){
         return '<span class="ee-tp-type ' + (typeMap[t]||'ee-tp-type-n') + '">' + t + '</span>';
       }).join('');
 
-      var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
+      var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phat am">&#9654;</button>';
 
       popup.innerHTML = '<div class="ee-tp-body">' +
         '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
@@ -357,8 +355,6 @@ window.addEventListener('scroll',function(){
         (typeHtml ? '<div style="margin-top:4px">' + typeHtml + '</div>' : '') +
         '</div>' + speakBtn + '</div>' +
         (viWord ? '<div class="ee-tp-vi">' + viWord + '</div>' : '') +
-        (firstDef ? '<div class="ee-tp-en-def">' + firstDef + '</div>' : '') +
-        (example ? '<div style="margin-top:6px;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:#d8ede3;font-style:italic">"' + example + '"</div>' : '') +
         '</div>';
       isTranslating = false;
     }).catch(function(){
@@ -387,7 +383,7 @@ window.addEventListener('scroll',function(){
         var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ') + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
         popup.innerHTML = '<div class="ee-tp-body">' +
           '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
-          '<div class="ee-tp-header"><div class="ee-tp-word" style="font-size:15px">' + (text.length > 40 ? text.substring(0,40)+'...' : text) + '</div>' + speakBtn + '</div>' +
+          '<div class="ee-tp-header"><div class="ee-tp-word" style="font-size:14px;line-height:1.4;word-break:break-word">' + (text.length > 80 ? text.substring(0,80)+'...' : text) + '</div>' + speakBtn + '</div>' +
           '<div class="ee-tp-vi">' + vi + '</div>' +
           '</div>';
         isTranslating = false;
