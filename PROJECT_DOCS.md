@@ -358,16 +358,17 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ## ✨ 9. Tính năng đặc biệt
 
-### Select-to-Translate (Boi den dich)
-- **Desktop:** `mouseup` event -> 150ms debounce
-- **Mobile:** `touchend` + `selectionchange` -> 400-700ms debounce
-- **Max length:** 500 ky tu (ho tro doan van dai)
-- **Single word:** Dictionary API + MyMemory (parallel) -> IPA + word type + Vietnamese ONLY (khong hien English definition/example)
-- **Phrase/Paragraph:** MyMemory only -> Vietnamese translation
-- **Popup:** Glassmorphism, animated, scrollable (max-height 60vh), max-width 420px, co nut TTS
-- **Vietnamese text filter:** Tu skip text tieng Viet (detect dau)
-- **Local fallback dictionary:** 120+ tu pho bien (grammar terms, common words) -> dich NGAY khong can mang
-- **Fallback chain:** Local dict -> MyMemory API -> matches array -> error message
+### Select-to-Translate (Bôi đen dịch)
+- **Desktop:** `mouseup` event → 150ms debounce
+- **Mobile:** `touchend` + `selectionchange` → 400-700ms debounce
+- **Max length:** 5000 ký tự (hỗ trợ cả bài essay IELTS dài)
+- **Chunk translation:** Đoạn dài >500 chars tự chia nhỏ theo câu, dịch song song, ghép kết quả
+- **Single word:** Dictionary API + MyMemory (parallel) → IPA + word type + Vietnamese ONLY
+- **Phrase/Paragraph:** MyMemory only → Vietnamese translation, hiện số câu + số ký tự
+- **Popup:** Glassmorphism, scrollable (max-height 60vh), max-width 420px, nút TTS (≤300 chars)
+- **Vietnamese text filter:** Tự skip text tiếng Việt (detect dấu)
+- **Local fallback dictionary:** 120+ từ phổ biến → dịch NGAY không cần mạng
+- **Fallback chain:** Local dict → MyMemory API (viChars check) → matches array → error
 
 ### View Transitions (Page Transitions)
 - **API:** CSS View Transitions (native browser)

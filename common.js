@@ -236,7 +236,7 @@ window.addEventListener('scroll',function(){
     try{ if(popup.contains(sel.anchorNode)) return; }catch(e){}
 
     // Hide if no/short selection
-    if(!text || text.length < 2 || text.length > 500){
+    if(!text || text.length < 2 || text.length > 5000){
       if(!isTranslating) hidePopup();
       return;
     }
@@ -279,7 +279,7 @@ window.addEventListener('scroll',function(){
     debounceTimer = setTimeout(function(){
       var sel = window.getSelection();
       var text = sel ? sel.toString().trim() : '';
-      if(text && text.length >= 2 && text.length <= 500){
+      if(text && text.length >= 2 && text.length <= 5000){
         processSelection();
       }
     }, 700);
@@ -306,17 +306,21 @@ window.addEventListener('scroll',function(){
       // Start with local dictionary (instant, reliable)
       var viWord = LOCAL_VI[wordLower] || '';
 
-      // Try API translation — only use if it's actually Vietnamese (not same as input)
+      // Try API translation — only use if it actually contains Vietnamese characters
+      var viChars = /[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴĐ]/;
       if(trData && trData.responseData && trData.responseData.translatedText){
         var apiVi = trData.responseData.translatedText;
-        if(apiVi.toLowerCase() !== wordLower){
-          viWord = apiVi; // API gave a real translation, prefer it
-        } else if(!viWord && trData.matches && trData.matches.length > 0){
-          // API returned same word, try matches
-          for(var i = 0; i < trData.matches.length; i++){
-            var m = trData.matches[i];
-            if(m.translation && m.translation.toLowerCase() !== wordLower && !/^[a-zA-Z'-]+$/.test(m.translation)){
-              viWord = m.translation; break;
+        // Only accept if: different from input AND contains Vietnamese diacritics
+        if(apiVi.toLowerCase() !== wordLower && viChars.test(apiVi)){
+          viWord = apiVi; // Real Vietnamese translation from API
+        } else if(!viWord){
+          // API failed — try matches for Vietnamese results
+          if(trData.matches && trData.matches.length > 0){
+            for(var i = 0; i < trData.matches.length; i++){
+              var m = trData.matches[i];
+              if(m.translation && m.translation.toLowerCase() !== wordLower && viChars.test(m.translation)){
+                viWord = m.translation; break;
+              }
             }
           }
         }
@@ -363,35 +367,63 @@ window.addEventListener('scroll',function(){
     });
   }
 
-  // Phrase translate
+  // Phrase translate — supports long text by splitting into chunks
   function translatePhrase(text){
-    fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|vi')
-      .then(function(r){return r.json();})
-      .then(function(data){
-        var vi = 'Không dịch được';
-        if(data.responseData && data.responseData.translatedText){
-          vi = data.responseData.translatedText;
-          // If same as input, try matches array
-          if(vi.toLowerCase() === text.toLowerCase() && data.matches && data.matches.length > 0){
-            for(var i = 0; i < data.matches.length; i++){
-              if(data.matches[i].translation && data.matches[i].translation.toLowerCase() !== text.toLowerCase()){
-                vi = data.matches[i].translation; break;
+    // MyMemory API limit is ~500 chars, split at sentence boundaries
+    var chunks = [];
+    if(text.length <= 500){
+      chunks = [text];
+    } else {
+      var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      var current = '';
+      for(var i = 0; i < sentences.length; i++){
+        if((current + sentences[i]).length > 480 && current){
+          chunks.push(current.trim());
+          current = sentences[i];
+        } else {
+          current += sentences[i];
+        }
+      }
+      if(current.trim()) chunks.push(current.trim());
+    }
+
+    // Translate all chunks in parallel
+    var promises = chunks.map(function(chunk){
+      return fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(chunk) + '&langpair=en|vi')
+        .then(function(r){return r.json();})
+        .then(function(data){
+          if(data.responseData && data.responseData.translatedText){
+            var vi = data.responseData.translatedText;
+            if(vi.toLowerCase() === chunk.toLowerCase() && data.matches && data.matches.length > 0){
+              for(var j = 0; j < data.matches.length; j++){
+                if(data.matches[j].translation && data.matches[j].translation.toLowerCase() !== chunk.toLowerCase()){
+                  return data.matches[j].translation;
+                }
               }
             }
+            return vi;
           }
-        }
-        var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ') + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
-        popup.innerHTML = '<div class="ee-tp-body">' +
-          '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
-          '<div class="ee-tp-header"><div class="ee-tp-word" style="font-size:14px;line-height:1.4;word-break:break-word">' + (text.length > 80 ? text.substring(0,80)+'...' : text) + '</div>' + speakBtn + '</div>' +
-          '<div class="ee-tp-vi">' + vi + '</div>' +
-          '</div>';
-        isTranslating = false;
-      })
-      .catch(function(){
-        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không thể dịch. Kiểm tra kết nối mạng.</div></div>';
-        isTranslating = false;
-      });
+          return chunk;
+        })
+        .catch(function(){ return chunk; });
+    });
+
+    Promise.all(promises).then(function(results){
+      var vi = results.join(' ');
+      var preview = text.length > 120 ? text.substring(0,120) + '...' : text;
+      var speakBtn = text.length <= 300 ? '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ').substring(0,300) + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe">&9654;</button>' : '';
+      popup.innerHTML = '<div class="ee-tp-body">' +
+        '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
+        '<div style="font-size:12px;color:#64d8a5;margin-bottom:6px">' + chunks.length + ' c\u00e2u \u00b7 ' + text.length + ' k\u00fd t\u1ef1</div>' +
+        '<div class="ee-tp-word" style="font-size:13px;line-height:1.5;word-break:break-word;color:#d8ede3;max-height:100px;overflow-y:auto;margin-bottom:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px">' + preview + '</div>' +
+        speakBtn +
+        '<div class="ee-tp-vi" style="line-height:1.6">' + vi + '</div>' +
+        '</div>';
+      isTranslating = false;
+    }).catch(function(){
+      popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Kh\u00f4ng th\u1ec3 d\u1ecbch. Ki\u1ec3m tra k\u1ebft n\u1ed1i m\u1ea1ng.</div></div>';
+      isTranslating = false;
+    });
   }
 
   // Hide on click outside
