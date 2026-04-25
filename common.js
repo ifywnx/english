@@ -198,28 +198,25 @@ window.addEventListener('scroll',function(){
 
 // ==================== SELECT TO TRANSLATE ====================
 (function(){
-  // Create popup element
   var popup = document.createElement('div');
   popup.id = 'ee-translate-popup';
   popup.style.cssText = 'position:fixed;z-index:99999;display:none;background:rgba(11,26,30,0.97);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:14px;padding:0;max-width:340px;min-width:200px;box-shadow:0 16px 48px rgba(0,0,0,0.5);font-family:"DM Sans",sans-serif;animation:eePopIn .2s ease-out;overflow:hidden';
   document.body.appendChild(popup);
 
-  // Add CSS animation
   var style = document.createElement('style');
-  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);color:#a78bfa;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(167,139,250,0.3);transform:scale(1.1)}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
+  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);color:#a78bfa;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(167,139,250,0.3);transform:scale(1.1)}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
   document.head.appendChild(style);
 
-  var hideTimeout;
-  var lastText = '';
+  var debounceTimer;
+  var isTranslating = false;
 
   function hidePopup(){
     popup.style.display = 'none';
-    lastText = '';
+    isTranslating = false;
   }
 
-  function showPopup(x, y, text){
+  function showPopup(x, y){
     popup.style.display = 'block';
-    // Position
     var pw = 320, ph = 200;
     var left = Math.min(x, window.innerWidth - pw - 12);
     var top = y + 10;
@@ -230,66 +227,74 @@ window.addEventListener('scroll',function(){
     popup.style.top = top + 'px';
   }
 
-  // Listen for text selection
-  document.addEventListener('mouseup', handleSelection);
-  // Mobile: multiple strategies for touch selection
-  document.addEventListener('touchend', function(){ setTimeout(handleSelection, 300); });
-  document.addEventListener('selectionchange', function(){
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(function(){
-      var sel = window.getSelection();
-      var text = sel.toString().trim();
-      if(text && text.length >= 2 && text.length <= 100 && text !== lastText){
-        handleSelection();
-      }
-    }, 600);
-  });
-
-  function handleSelection(){
+  function processSelection(){
     var sel = window.getSelection();
+    if(!sel || sel.rangeCount === 0) return;
     var text = sel.toString().trim();
-    
-    // Ignore if clicking inside popup
-    if(popup.contains(sel.anchorNode)) return;
-    
-    // Hide if no selection or too short
-    if(!text || text.length < 2 || text.length > 100){
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(hidePopup, 200);
+
+    // Ignore clicks inside popup
+    try{ if(popup.contains(sel.anchorNode)) return; }catch(e){}
+
+    // Hide if no/short selection
+    if(!text || text.length < 2 || text.length > 200){
+      if(!isTranslating) hidePopup();
       return;
     }
 
-    // Don't re-translate same text
-    if(text === lastText) return;
-    lastText = text;
+    // Avoid translating Vietnamese text (common chars)
+    if(/[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ]/i.test(text)) return;
 
-    // Get position
+    isTranslating = true;
+
     var range = sel.getRangeAt(0);
     var rect = range.getBoundingClientRect();
-    
+
     // Show loading
     popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div class="ee-tp-loading"><div style="display:inline-block;width:16px;height:16px;border:2px solid rgba(100,216,165,0.2);border-top-color:#64d8a5;border-radius:50%;animation:spin .6s linear infinite"></div><div style="margin-top:6px">Đang dịch...</div></div></div>';
-    showPopup(rect.left, rect.bottom, text);
+    showPopup(rect.left, rect.bottom);
 
-    // Check if single word → use dictionary API + direct translate
     var isSingleWord = text.split(/\s+/).length === 1 && /^[a-zA-Z'-]+$/.test(text);
-    
     if(isSingleWord){
-      lookupAndTranslate(text, rect);
+      lookupAndTranslate(text);
     } else {
-      translatePhrase(text, rect);
+      translatePhrase(text);
     }
   }
 
-  // Single word: translate word directly + augment with Dictionary API
-  function lookupAndTranslate(word, rect){
+  // Desktop: mouseup
+  document.addEventListener('mouseup', function(e){
+    if(popup.contains(e.target)) return;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(processSelection, 150);
+  });
+
+  // Mobile: touchend + selectionchange
+  document.addEventListener('touchend', function(e){
+    if(popup.contains(e.target)) return;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(processSelection, 400);
+  });
+  document.addEventListener('selectionchange', function(){
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function(){
+      var sel = window.getSelection();
+      var text = sel ? sel.toString().trim() : '';
+      if(text && text.length >= 2 && text.length <= 200){
+        processSelection();
+      }
+    }, 700);
+  });
+
+  // Local fallback dictionary for common words
+  var LOCAL_VI = {pronoun:'đại từ',noun:'danh từ',verb:'động từ',adjective:'tính từ',adverb:'trạng từ',preposition:'giới từ',conjunction:'liên từ',interjection:'thán từ',article:'mạo từ',determiner:'từ hạn định',grammar:'ngữ pháp',vocabulary:'từ vựng',sentence:'câu',paragraph:'đoạn văn',essay:'bài luận',tense:'thì',subject:'chủ ngữ',object:'tân ngữ',predicate:'vị ngữ',clause:'mệnh đề',phrase:'cụm từ',prefix:'tiền tố',suffix:'hậu tố',synonym:'từ đồng nghĩa',antonym:'từ trái nghĩa',homophone:'từ đồng âm',idiom:'thành ngữ',collocation:'cụm từ đi kèm',pronunciation:'phát âm',consonant:'phụ âm',vowel:'nguyên âm',syllable:'âm tiết',stress:'trọng âm',intonation:'ngữ điệu',fluency:'sự lưu loát',comprehension:'sự hiểu',listening:'nghe',speaking:'nói',reading:'đọc',writing:'viết',translate:'dịch',dictionary:'từ điển',example:'ví dụ',definition:'định nghĩa',meaning:'nghĩa',word:'từ',letter:'chữ cái',alphabet:'bảng chữ cái',capital:'viết hoa',lowercase:'viết thường',plural:'số nhiều',singular:'số ít',countable:'đếm được',uncountable:'không đếm được',regular:'có quy tắc',irregular:'bất quy tắc',active:'chủ động',passive:'bị động',positive:'khẳng định',negative:'phủ định',question:'câu hỏi',answer:'câu trả lời',correct:'đúng',incorrect:'sai',difficult:'khó',easy:'dễ',important:'quan trọng',necessary:'cần thiết',possible:'có thể',impossible:'không thể',beautiful:'đẹp',interesting:'thú vị',boring:'nhàm chán',expensive:'đắt',cheap:'rẻ',modern:'hiện đại',traditional:'truyền thống',popular:'phổ biến',common:'phổ thông',rare:'hiếm',similar:'tương tự',different:'khác biệt',specific:'cụ thể',general:'chung',basic:'cơ bản',advanced:'nâng cao',practice:'luyện tập',exercise:'bài tập',test:'bài kiểm tra',exam:'kỳ thi',score:'điểm',level:'cấp độ',beginner:'người mới bắt đầu',intermediate:'trung cấp',expert:'chuyên gia',student:'học sinh',teacher:'giáo viên',lesson:'bài học',course:'khóa học',skill:'kỹ năng',knowledge:'kiến thức',experience:'kinh nghiệm',success:'thành công',failure:'thất bại',mistake:'lỗi',improve:'cải thiện',develop:'phát triển',understand:'hiểu',remember:'nhớ',forget:'quên',learn:'học',teach:'dạy',study:'học tập',review:'ôn tập',repeat:'lặp lại',compare:'so sánh',describe:'mô tả',explain:'giải thích',suggest:'gợi ý',recommend:'đề xuất',agree:'đồng ý',disagree:'không đồng ý',opinion:'ý kiến',fact:'sự thật',reason:'lý do',result:'kết quả',cause:'nguyên nhân',effect:'tác động',advantage:'lợi thế',disadvantage:'bất lợi',solution:'giải pháp',problem:'vấn đề',challenge:'thử thách',opportunity:'cơ hội',environment:'môi trường',society:'xã hội',culture:'văn hóa',education:'giáo dục',technology:'công nghệ',communication:'giao tiếp',relationship:'mối quan hệ',community:'cộng đồng',government:'chính phủ',economy:'kinh tế',health:'sức khỏe',research:'nghiên cứu',information:'thông tin',evidence:'bằng chứng',data:'dữ liệu',analysis:'phân tích',conclusion:'kết luận',introduction:'giới thiệu',summary:'tóm tắt',topic:'chủ đề',theme:'chủ đề',argument:'luận điểm',perspective:'quan điểm',approach:'cách tiếp cận',method:'phương pháp',strategy:'chiến lược',process:'quy trình',system:'hệ thống',structure:'cấu trúc',pattern:'mẫu',function:'chức năng',purpose:'mục đích',goal:'mục tiêu',objective:'mục tiêu',progress:'tiến bộ',achievement:'thành tựu'};
+
+  // Single word lookup
+  function lookupAndTranslate(word){
     var wordLower = word.toLowerCase();
-    // Run both requests in parallel
-    // Dict API uses lowercase; translation uses original case for proper nouns
     var dictPromise = fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(wordLower))
-      .then(function(r){ return r.ok ? r.json() : Promise.reject('no'); })
+      .then(function(r){ return r.ok ? r.json() : null; })
       .catch(function(){ return null; });
-    
+
     var translatePromise = fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(word) + '&langpair=en|vi')
       .then(function(r){ return r.json(); })
       .catch(function(){ return null; });
@@ -297,10 +302,26 @@ window.addEventListener('scroll',function(){
     Promise.all([dictPromise, translatePromise]).then(function(results){
       var dictData = results[0];
       var trData = results[1];
-      
-      // Direct word translation (most reliable)
-      var viWord = trData && trData.responseData && trData.responseData.translatedText ? trData.responseData.translatedText : '';
-      
+
+      // Start with local dictionary (instant, reliable)
+      var viWord = LOCAL_VI[wordLower] || '';
+
+      // Try API translation — only use if it's actually Vietnamese (not same as input)
+      if(trData && trData.responseData && trData.responseData.translatedText){
+        var apiVi = trData.responseData.translatedText;
+        if(apiVi.toLowerCase() !== wordLower){
+          viWord = apiVi; // API gave a real translation, prefer it
+        } else if(!viWord && trData.matches && trData.matches.length > 0){
+          // API returned same word, try matches
+          for(var i = 0; i < trData.matches.length; i++){
+            var m = trData.matches[i];
+            if(m.translation && m.translation.toLowerCase() !== wordLower && !/^[a-zA-Z'-]+$/.test(m.translation)){
+              viWord = m.translation; break;
+            }
+          }
+        }
+      }
+
       // Dictionary extras
       var ipa = '', types = [], firstDef = '', example = '';
       if(dictData && dictData[0]){
@@ -315,13 +336,20 @@ window.addEventListener('scroll',function(){
         example = meanings[0] && meanings[0].definitions[0] && meanings[0].definitions[0].example ? meanings[0].definitions[0].example : '';
       }
 
+      // If no translation AND no dict data, show error
+      if(!viWord && !firstDef){
+        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không tìm thấy nghĩa cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
+        isTranslating = false;
+        return;
+      }
+
       var typeMap = {n:'ee-tp-type-n',v:'ee-tp-type-v',adj:'ee-tp-type-adj',adv:'ee-tp-type-adv'};
       var typeHtml = types.slice(0,3).map(function(t){
         return '<span class="ee-tp-type ' + (typeMap[t]||'ee-tp-type-n') + '">' + t + '</span>';
       }).join('');
 
       var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
-      
+
       popup.innerHTML = '<div class="ee-tp-body">' +
         '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
         '<div class="ee-tp-header"><div><div class="ee-tp-word">' + word + '</div>' +
@@ -332,26 +360,41 @@ window.addEventListener('scroll',function(){
         (firstDef ? '<div class="ee-tp-en-def">' + firstDef + '</div>' : '') +
         (example ? '<div style="margin-top:6px;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:6px;font-size:12px;color:#d8ede3;font-style:italic">"' + example + '"</div>' : '') +
         '</div>';
+      isTranslating = false;
+    }).catch(function(){
+      popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không thể dịch. Kiểm tra kết nối mạng.</div></div>';
+      isTranslating = false;
     });
   }
 
-  // Phrase: MyMemory translate
-  function translatePhrase(text, rect){
+  // Phrase translate
+  function translatePhrase(text){
     fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|vi')
       .then(function(r){return r.json();})
       .then(function(data){
-        var vi = data.responseData && data.responseData.translatedText ? data.responseData.translatedText : 'Không dịch được';
-        
+        var vi = 'Không dịch được';
+        if(data.responseData && data.responseData.translatedText){
+          vi = data.responseData.translatedText;
+          // If same as input, try matches array
+          if(vi.toLowerCase() === text.toLowerCase() && data.matches && data.matches.length > 0){
+            for(var i = 0; i < data.matches.length; i++){
+              if(data.matches[i].translation && data.matches[i].translation.toLowerCase() !== text.toLowerCase()){
+                vi = data.matches[i].translation; break;
+              }
+            }
+          }
+        }
         var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ') + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
-        
         popup.innerHTML = '<div class="ee-tp-body">' +
           '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
           '<div class="ee-tp-header"><div class="ee-tp-word" style="font-size:15px">' + (text.length > 40 ? text.substring(0,40)+'...' : text) + '</div>' + speakBtn + '</div>' +
           '<div class="ee-tp-vi">' + vi + '</div>' +
           '</div>';
+        isTranslating = false;
       })
       .catch(function(){
         popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không thể dịch. Kiểm tra kết nối mạng.</div></div>';
+        isTranslating = false;
       });
   }
 
