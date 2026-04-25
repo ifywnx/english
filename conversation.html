@@ -7,9 +7,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
-<meta name="description" content="Bảng 150+ động từ bất quy tắc tiếng Anh phổ biến nhất với V1, V2, V3 và nghĩa tiếng Việt.">
+<meta name="description" content="Mẫu câu giao tiếp tiếng Anh hằng ngày theo 20+ tình huống thực tế với audio và bài tập.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Động từ bất quy tắc — EasyEnglish</title>
+<title>Giao tiếp hằng ngày — Daily Conversation — EasyEnglish</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -204,7 +204,6 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
-
 <body>
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
@@ -298,87 +297,142 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <!-- MOBILE MENU -->
 </nav>
 <div class="content">
-<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><span>Ngữ pháp</span><span class="bc-sep">›</span><span class="bc-current">Động từ bất quy tắc</span></div>
-<div class="page-label">Irregular Verbs</div>
-<h1 class="page-title">150+ Động từ bất quy tắc</h1>
-<p class="page-desc">Bảng động từ bất quy tắc phổ biến nhất. Bấm <i data-lucide="volume-2" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i> để nghe phát âm. Tìm kiếm nhanh bên dưới.</p>
-<input type="text" class="search-box" id="searchBox" placeholder="Tìm động từ..." oninput="filterVerbs()">
-<div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
-<button class="tag-btn active" onclick="setGroup('all',this)">Tất cả</button>
-<button class="tag-btn" onclick="setGroup('common',this)">Hay dùng nhất</button>
-<button class="tag-btn" onclick="setGroup('ielts',this)">IELTS</button>
-</div>
-<div style="overflow-x:auto">
-<table id="verbTable" style="width:100%;border-collapse:collapse">
-<thead><tr style="background:var(--card2);position:sticky;top:0">
-<th style="padding:10px 12px;text-align:left;color:var(--accent);font-size:13px;border-bottom:1px solid var(--border)">V1 (Base)</th>
-<th style="padding:10px 12px;text-align:left;color:var(--accent2);font-size:13px;border-bottom:1px solid var(--border)">V2 (Past)</th>
-<th style="padding:10px 12px;text-align:left;color:var(--accent3);font-size:13px;border-bottom:1px solid var(--border)">V3 (P.P.)</th>
-<th style="padding:10px 12px;text-align:left;color:var(--text2);font-size:13px;border-bottom:1px solid var(--border)">Nghĩa</th>
-<th style="padding:10px 6px;width:30px;border-bottom:1px solid var(--border)"></th>
-</tr></thead>
-<tbody id="verbBody"></tbody>
-</table>
-</div>
-<div style="margin-top:32px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">
-<div style="font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text)"><i data-lucide="zap" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Quiz nhanh</div>
-<div id="quizArea" style="text-align:center">
-<div id="qWord" style="font-family:Fraunces,serif;font-size:32px;color:var(--text);margin:16px 0"></div>
-<div id="qPrompt" style="font-size:14px;color:var(--text3);margin-bottom:12px"></div>
-<input type="text" id="qInput" class="search-box" style="max-width:300px;text-align:center;margin:0 auto" placeholder="Nhập đáp án..." onkeydown="if(event.key==='Enter')checkQuizAnswer()">
-<div id="qFeedback" style="margin-top:10px;font-size:14px"></div>
-<div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
-<button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif">Bắt đầu Quiz</button>
-<span id="qScore" style="font-size:13px;color:var(--text3);padding:8px"></span>
-</div>
-</div>
-</div>
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Kỹ năng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Giao tiếp</span></div>
+<div class="page-label">Daily Conversation</div>
+<h1 class="page-title">Giao tiếp hằng ngày</h1>
+<p class="page-desc">Mẫu câu tiếng Anh theo tình huống thực tế. Bấm 🔊 để nghe phát âm.</p>
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm tình huống hoặc câu..." oninput="filterConv()">
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="tagBar"></div>
+<div id="convList" style="display:grid;gap:16px"></div>
 </div>
 <script>
-const VERBS=[
-{v1:"be",v2:"was/were",v3:"been",vi:"thì, là, ở",g:"common"},{v1:"become",v2:"became",v3:"become",vi:"trở thành",g:"common"},{v1:"begin",v2:"began",v3:"begun",vi:"bắt đầu",g:"common"},{v1:"break",v2:"broke",v3:"broken",vi:"vỡ, phá",g:"common"},{v1:"bring",v2:"brought",v3:"brought",vi:"mang đến",g:"common"},{v1:"build",v2:"built",v3:"built",vi:"xây dựng",g:"common"},{v1:"buy",v2:"bought",v3:"bought",vi:"mua",g:"common"},{v1:"catch",v2:"caught",v3:"caught",vi:"bắt",g:"common"},{v1:"choose",v2:"chose",v3:"chosen",vi:"chọn",g:"common"},{v1:"come",v2:"came",v3:"come",vi:"đến",g:"common"},{v1:"cost",v2:"cost",v3:"cost",vi:"tốn, có giá",g:"common"},{v1:"cut",v2:"cut",v3:"cut",vi:"cắt",g:"common"},{v1:"do",v2:"did",v3:"done",vi:"làm",g:"common"},{v1:"draw",v2:"drew",v3:"drawn",vi:"vẽ",g:"common"},{v1:"drink",v2:"drank",v3:"drunk",vi:"uống",g:"common"},{v1:"drive",v2:"drove",v3:"driven",vi:"lái xe",g:"common"},{v1:"eat",v2:"ate",v3:"eaten",vi:"ăn",g:"common"},{v1:"fall",v2:"fell",v3:"fallen",vi:"ngã, rơi",g:"common"},{v1:"feel",v2:"felt",v3:"felt",vi:"cảm thấy",g:"common"},{v1:"find",v2:"found",v3:"found",vi:"tìm thấy",g:"common"},{v1:"fly",v2:"flew",v3:"flown",vi:"bay",g:"common"},{v1:"forget",v2:"forgot",v3:"forgotten",vi:"quên",g:"common"},{v1:"get",v2:"got",v3:"got/gotten",vi:"được, lấy",g:"common"},{v1:"give",v2:"gave",v3:"given",vi:"cho",g:"common"},{v1:"go",v2:"went",v3:"gone",vi:"đi",g:"common"},{v1:"grow",v2:"grew",v3:"grown",vi:"lớn lên, trồng",g:"common"},{v1:"have",v2:"had",v3:"had",vi:"có",g:"common"},{v1:"hear",v2:"heard",v3:"heard",vi:"nghe",g:"common"},{v1:"hide",v2:"hid",v3:"hidden",vi:"giấu, trốn",g:"common"},{v1:"hit",v2:"hit",v3:"hit",vi:"đánh, đập",g:"common"},{v1:"hold",v2:"held",v3:"held",vi:"giữ, cầm",g:"common"},{v1:"hurt",v2:"hurt",v3:"hurt",vi:"làm đau",g:"common"},{v1:"keep",v2:"kept",v3:"kept",vi:"giữ",g:"common"},{v1:"know",v2:"knew",v3:"known",vi:"biết",g:"common"},{v1:"lead",v2:"led",v3:"led",vi:"dẫn dắt",g:"ielts"},{v1:"learn",v2:"learnt/learned",v3:"learnt/learned",vi:"học",g:"common"},{v1:"leave",v2:"left",v3:"left",vi:"rời đi, để lại",g:"common"},{v1:"lend",v2:"lent",v3:"lent",vi:"cho mượn",g:"common"},{v1:"let",v2:"let",v3:"let",vi:"để cho",g:"common"},{v1:"lie",v2:"lay",v3:"lain",vi:"nằm",g:"common"},{v1:"lose",v2:"lost",v3:"lost",vi:"mất, thua",g:"common"},{v1:"make",v2:"made",v3:"made",vi:"làm, tạo",g:"common"},{v1:"mean",v2:"meant",v3:"meant",vi:"có nghĩa",g:"common"},{v1:"meet",v2:"met",v3:"met",vi:"gặp",g:"common"},{v1:"pay",v2:"paid",v3:"paid",vi:"trả tiền",g:"common"},{v1:"put",v2:"put",v3:"put",vi:"đặt, để",g:"common"},{v1:"read",v2:"read",v3:"read",vi:"đọc",g:"common"},{v1:"ride",v2:"rode",v3:"ridden",vi:"cưỡi, đi xe",g:"common"},{v1:"ring",v2:"rang",v3:"rung",vi:"reo, gọi điện",g:"common"},{v1:"rise",v2:"rose",v3:"risen",vi:"tăng, mọc",g:"ielts"},{v1:"run",v2:"ran",v3:"run",vi:"chạy",g:"common"},{v1:"say",v2:"said",v3:"said",vi:"nói",g:"common"},{v1:"see",v2:"saw",v3:"seen",vi:"thấy, nhìn",g:"common"},{v1:"sell",v2:"sold",v3:"sold",vi:"bán",g:"common"},{v1:"send",v2:"sent",v3:"sent",vi:"gửi",g:"common"},{v1:"set",v2:"set",v3:"set",vi:"đặt, thiết lập",g:"common"},{v1:"show",v2:"showed",v3:"shown",vi:"cho xem",g:"common"},{v1:"shut",v2:"shut",v3:"shut",vi:"đóng",g:"common"},{v1:"sing",v2:"sang",v3:"sung",vi:"hát",g:"common"},{v1:"sit",v2:"sat",v3:"sat",vi:"ngồi",g:"common"},{v1:"sleep",v2:"slept",v3:"slept",vi:"ngủ",g:"common"},{v1:"speak",v2:"spoke",v3:"spoken",vi:"nói",g:"common"},{v1:"spend",v2:"spent",v3:"spent",vi:"tiêu, dành",g:"common"},{v1:"stand",v2:"stood",v3:"stood",vi:"đứng",g:"common"},{v1:"steal",v2:"stole",v3:"stolen",vi:"ăn cắp",g:"common"},{v1:"swim",v2:"swam",v3:"swum",vi:"bơi",g:"common"},{v1:"take",v2:"took",v3:"taken",vi:"lấy, mất (thời gian)",g:"common"},{v1:"teach",v2:"taught",v3:"taught",vi:"dạy",g:"common"},{v1:"tell",v2:"told",v3:"told",vi:"kể, nói",g:"common"},{v1:"think",v2:"thought",v3:"thought",vi:"nghĩ",g:"common"},{v1:"throw",v2:"threw",v3:"thrown",vi:"ném",g:"common"},{v1:"understand",v2:"understood",v3:"understood",vi:"hiểu",g:"common"},{v1:"wake",v2:"woke",v3:"woken",vi:"thức dậy",g:"common"},{v1:"wear",v2:"wore",v3:"worn",vi:"mặc, đội",g:"common"},{v1:"win",v2:"won",v3:"won",vi:"thắng",g:"common"},{v1:"write",v2:"wrote",v3:"written",vi:"viết",g:"common"},{v1:"arise",v2:"arose",v3:"arisen",vi:"phát sinh",g:"ielts"},{v1:"bear",v2:"bore",v3:"borne",vi:"chịu đựng, sinh",g:"ielts"},{v1:"bind",v2:"bound",v3:"bound",vi:"buộc, ràng buộc",g:"ielts"},{v1:"bite",v2:"bit",v3:"bitten",vi:"cắn",g:"common"},{v1:"blow",v2:"blew",v3:"blown",vi:"thổi",g:"common"},{v1:"breed",v2:"bred",v3:"bred",vi:"nuôi, sinh sản",g:"ielts"},{v1:"broadcast",v2:"broadcast",v3:"broadcast",vi:"phát sóng",g:"ielts"},{v1:"burst",v2:"burst",v3:"burst",vi:"nổ, vỡ",g:"common"},{v1:"cast",v2:"cast",v3:"cast",vi:"ném, đúc",g:"ielts"},{v1:"cling",v2:"clung",v3:"clung",vi:"bám, dính",g:"ielts"},{v1:"creep",v2:"crept",v3:"crept",vi:"bò, rón rén",g:"ielts"},{v1:"deal",v2:"dealt",v3:"dealt",vi:"giải quyết",g:"ielts"},{v1:"dig",v2:"dug",v3:"dug",vi:"đào",g:"common"},{v1:"dive",v2:"dove/dived",v3:"dived",vi:"lặn, nhảy",g:"common"},{v1:"feed",v2:"fed",v3:"fed",vi:"cho ăn",g:"common"},{v1:"fight",v2:"fought",v3:"fought",vi:"chiến đấu",g:"common"},{v1:"flee",v2:"fled",v3:"fled",vi:"chạy trốn",g:"ielts"},{v1:"forbid",v2:"forbade",v3:"forbidden",vi:"cấm",g:"ielts"},{v1:"forgive",v2:"forgave",v3:"forgiven",vi:"tha thứ",g:"common"},{v1:"freeze",v2:"froze",v3:"frozen",vi:"đông lạnh",g:"common"},{v1:"grind",v2:"ground",v3:"ground",vi:"xay, nghiền",g:"ielts"},{v1:"hang",v2:"hung",v3:"hung",vi:"treo",g:"common"},{v1:"kneel",v2:"knelt",v3:"knelt",vi:"quỳ",g:"common"},{v1:"lay",v2:"laid",v3:"laid",vi:"đặt, đẻ",g:"common"},{v1:"lean",v2:"leant/leaned",v3:"leant/leaned",vi:"tựa, nghiêng",g:"common"},{v1:"leap",v2:"leapt",v3:"leapt",vi:"nhảy",g:"ielts"},{v1:"light",v2:"lit",v3:"lit",vi:"thắp sáng",g:"common"},{v1:"overcome",v2:"overcame",v3:"overcome",vi:"vượt qua",g:"ielts"},{v1:"overtake",v2:"overtook",v3:"overtaken",vi:"vượt qua",g:"ielts"},{v1:"prove",v2:"proved",v3:"proven",vi:"chứng minh",g:"ielts"},{v1:"quit",v2:"quit",v3:"quit",vi:"bỏ, từ bỏ",g:"common"},{v1:"seek",v2:"sought",v3:"sought",vi:"tìm kiếm",g:"ielts"},{v1:"shake",v2:"shook",v3:"shaken",vi:"lắc, rung",g:"common"},{v1:"shed",v2:"shed",v3:"shed",vi:"đổ (nước mắt)",g:"ielts"},{v1:"shine",v2:"shone",v3:"shone",vi:"chiếu sáng",g:"common"},{v1:"shoot",v2:"shot",v3:"shot",vi:"bắn",g:"common"},{v1:"shrink",v2:"shrank",v3:"shrunk",vi:"co lại",g:"ielts"},{v1:"sink",v2:"sank",v3:"sunk",vi:"chìm",g:"common"},{v1:"slide",v2:"slid",v3:"slid",vi:"trượt",g:"common"},{v1:"sow",v2:"sowed",v3:"sown",vi:"gieo hạt",g:"ielts"},{v1:"spin",v2:"spun",v3:"spun",vi:"quay",g:"common"},{v1:"split",v2:"split",v3:"split",vi:"chia, tách",g:"common"},{v1:"spread",v2:"spread",v3:"spread",vi:"lan truyền",g:"ielts"},{v1:"spring",v2:"sprang",v3:"sprung",vi:"nhảy, bật",g:"ielts"},{v1:"stick",v2:"stuck",v3:"stuck",vi:"dán, dính",g:"common"},{v1:"sting",v2:"stung",v3:"stung",vi:"đốt, chích",g:"common"},{v1:"strike",v2:"struck",v3:"struck",vi:"đánh, đình công",g:"ielts"},{v1:"strive",v2:"strove",v3:"striven",vi:"cố gắng",g:"ielts"},{v1:"swear",v2:"swore",v3:"sworn",vi:"thề",g:"common"},{v1:"sweep",v2:"swept",v3:"swept",vi:"quét",g:"common"},{v1:"swing",v2:"swung",v3:"swung",vi:"đu đưa",g:"common"},{v1:"tear",v2:"tore",v3:"torn",vi:"xé",g:"common"},{v1:"undergo",v2:"underwent",v3:"undergone",vi:"trải qua",g:"ielts"},{v1:"undertake",v2:"undertook",v3:"undertaken",vi:"đảm nhận",g:"ielts"},{v1:"upset",v2:"upset",v3:"upset",vi:"làm buồn",g:"common"},{v1:"weave",v2:"wove",v3:"woven",vi:"dệt",g:"ielts"},{v1:"weep",v2:"wept",v3:"wept",vi:"khóc",g:"ielts"},{v1:"wind",v2:"wound",v3:"wound",vi:"quấn, uốn",g:"ielts"},{v1:"withdraw",v2:"withdrew",v3:"withdrawn",vi:"rút lui",g:"ielts"},{v1:"wring",v2:"wrung",v3:"wrung",vi:"vắt, bóp",g:"ielts"}
+const CONV=[
+{topic:"Chào hỏi (Greetings)",icon:"👋",phrases:[
+{en:"Hi! How are you?",vi:"Xin chào! Bạn khỏe không?"},
+{en:"I\'m fine, thanks. And you?",vi:"Tôi khỏe, cảm ơn. Còn bạn?"},
+{en:"Nice to meet you!",vi:"Rất vui được gặp bạn!"},
+{en:"Long time no see!",vi:"Lâu rồi không gặp!"},
+{en:"How\'s it going?",vi:"Dạo này thế nào?"},
+{en:"What\'s up?",vi:"Có gì mới không?"},
+{en:"How have you been?",vi:"Dạo này bạn thế nào?"},
+{en:"Good morning / afternoon / evening!",vi:"Chào buổi sáng / chiều / tối!"}
+]},
+{topic:"Giới thiệu (Introduction)",icon:"🤝",phrases:[
+{en:"My name is... / I'm...",vi:"Tên tôi là..."},
+{en:"Where are you from?",vi:"Bạn đến từ đâu?"},
+{en:"I\'m from Vietnam.",vi:"Tôi đến từ Việt Nam."},
+{en:"What do you do?",vi:"Bạn làm nghề gì?"},
+{en:"I\'m a student / teacher / engineer.",vi:"Tôi là sinh viên / giáo viên / kỹ sư."},
+{en:"How old are you?",vi:"Bạn bao nhiêu tuổi?"},
+{en:"Let me introduce myself.",vi:"Để tôi giới thiệu bản thân."},
+{en:"This is my friend, Tom.",vi:"Đây là bạn tôi, Tom."}
+]},
+{topic:"Mua sắm (Shopping)",icon:"🛒",phrases:[
+{en:"How much is this?",vi:"Cái này bao nhiêu tiền?"},
+{en:"Can I try this on?",vi:"Tôi có thể thử cái này không?"},
+{en:"Do you have a smaller/larger size?",vi:"Bạn có cỡ nhỏ/lớn hơn không?"},
+{en:"I\'ll take it.",vi:"Tôi lấy cái này."},
+{en:"Can I pay by card?",vi:"Tôi có thể trả bằng thẻ không?"},
+{en:"Do you have this in a different color?",vi:"Bạn có màu khác không?"},
+{en:"Is there a discount?",vi:"Có giảm giá không?"},
+{en:"I\'d like to return this.",vi:"Tôi muốn trả lại cái này."}
+]},
+{topic:"Nhà hàng (Restaurant)",icon:"🍽️",phrases:[
+{en:"A table for two, please.",vi:"Cho tôi bàn hai người."},
+{en:"Can I see the menu?",vi:"Cho tôi xem thực đơn?"},
+{en:"I\'d like to order...",vi:"Tôi muốn gọi..."},
+{en:"What do you recommend?",vi:"Bạn gợi ý món gì?"},
+{en:"Can I have the bill, please?",vi:"Cho tôi hóa đơn."},
+{en:"Is this dish spicy?",vi:"Món này có cay không?"},
+{en:"I\'m allergic to nuts.",vi:"Tôi bị dị ứng hạt."},
+{en:"The food was delicious!",vi:"Đồ ăn rất ngon!"}
+]},
+{topic:"Du lịch (Travel)",icon:"✈️",phrases:[
+{en:"Where is the nearest station?",vi:"Trạm gần nhất ở đâu?"},
+{en:"How do I get to...?",vi:"Làm sao để đi đến...?"},
+{en:"I\'d like to book a room.",vi:"Tôi muốn đặt phòng."},
+{en:"What time does the train leave?",vi:"Tàu khởi hành lúc mấy giờ?"},
+{en:"Can you show me on the map?",vi:"Bạn chỉ trên bản đồ được không?"},
+{en:"Is breakfast included?",vi:"Có bao gồm bữa sáng không?"},
+{en:"I have a reservation under...",vi:"Tôi đã đặt dưới tên..."},
+{en:"Could you call me a taxi?",vi:"Bạn gọi taxi giúp tôi được không?"}
+]},
+{topic:"Công việc (Work)",icon:"💼",phrases:[
+{en:"I have a meeting at 3.",vi:"Tôi có cuộc họp lúc 3 giờ."},
+{en:"Could you send me the report?",vi:"Bạn gửi báo cáo cho tôi được không?"},
+{en:"I\'ll get back to you on that.",vi:"Tôi sẽ phản hồi bạn sau."},
+{en:"Let\'s schedule a call.",vi:"Mình lên lịch gọi nhé."},
+{en:"What\'s the deadline?",vi:"Hạn chót là khi nào?"},
+{en:"I\'m working on it.",vi:"Tôi đang làm rồi."},
+{en:"Can we reschedule?",vi:"Mình dời lịch được không?"},
+{en:"I\'ll be on leave tomorrow.",vi:"Ngày mai tôi nghỉ phép."}
+]},
+{topic:"Sức khỏe (Health)",icon:"🏥",phrases:[
+{en:"I don\'t feel well.",vi:"Tôi không khỏe."},
+{en:"I have a headache / stomachache.",vi:"Tôi bị đau đầu / đau bụng."},
+{en:"I need to see a doctor.",vi:"Tôi cần gặp bác sĩ."},
+{en:"I\'m allergic to...",vi:"Tôi bị dị ứng với..."},
+{en:"Take this medicine twice a day.",vi:"Uống thuốc này ngày 2 lần."},
+{en:"How long have you had these symptoms?",vi:"Bạn bị triệu chứng này bao lâu rồi?"},
+{en:"I\'d like to make an appointment.",vi:"Tôi muốn đặt lịch hẹn."},
+{en:"Get well soon!",vi:"Chúc bạn mau khỏe!"}
+]},
+{topic:"Điện thoại (Phone)",icon:"📱",phrases:[
+{en:"Hello, may I speak to...?",vi:"Xin chào, tôi có thể nói chuyện với...?"},
+{en:"Hold on, please.",vi:"Xin chờ một chút."},
+{en:"Sorry, wrong number.",vi:"Xin lỗi, nhầm số."},
+{en:"Can I leave a message?",vi:"Tôi có thể để lại lời nhắn không?"},
+{en:"I\'ll call you back.",vi:"Tôi sẽ gọi lại."},
+{en:"The line is busy.",vi:"Đường dây bận."},
+{en:"Can you hear me?",vi:"Bạn nghe tôi không?"},
+{en:"Sorry, I missed your call.",vi:"Xin lỗi, tôi lỡ cuộc gọi."}
+]},
+{topic:"Xin lỗi & Cảm ơn",icon:"🙏",phrases:[
+{en:"Thank you so much!",vi:"Cảm ơn rất nhiều!"},
+{en:"I really appreciate it.",vi:"Tôi thực sự trân trọng."},
+{en:"You\'re welcome.",vi:"Không có gì."},
+{en:"I\'m sorry for...",vi:"Tôi xin lỗi vì..."},
+{en:"No worries! / No problem!",vi:"Không sao đâu!"},
+{en:"Excuse me.",vi:"Xin lỗi (xin phép)."},
+{en:"I apologize for the inconvenience.",vi:"Tôi xin lỗi vì sự bất tiện."},
+{en:"That\'s very kind of you.",vi:"Bạn thật tốt bụng."}
+]},
+{topic:"Ý kiến & Đồng ý",icon:"💬",phrases:[
+{en:"I think / I believe that...",vi:"Tôi nghĩ / Tôi tin rằng..."},
+{en:"I agree with you.",vi:"Tôi đồng ý với bạn."},
+{en:"I disagree.",vi:"Tôi không đồng ý."},
+{en:"That\'s a good point.",vi:"Ý hay đấy."},
+{en:"I see what you mean.",vi:"Tôi hiểu ý bạn."},
+{en:"In my opinion...",vi:"Theo ý kiến tôi..."},
+{en:"That makes sense.",vi:"Có lý đấy."},
+{en:"I\'m not sure about that.",vi:"Tôi không chắc lắm."}
+]}
 ];
-let activeGroup='all';
-function setGroup(g,btn){activeGroup=g;document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderVerbs();}
-function filterVerbs(){renderVerbs();}
-function renderVerbs(){
-  var q=document.getElementById('searchBox').value.toLowerCase();
-  var list=VERBS.filter(function(v){
-    var mg=activeGroup==='all'||v.g===activeGroup;
-    var mq=!q||v.v1.includes(q)||v.v2.includes(q)||v.v3.includes(q)||v.vi.includes(q);
-    return mg&&mq;
-  });
-  document.getElementById('verbBody').innerHTML=list.map(function(v){
-    return '<tr style="border-bottom:0.5px solid var(--border);transition:background .15s" onmouseover="this.style.background=\'rgba(100,216,165,0.04)\'" onmouseout="this.style.background=\'\'">'+
-    '<td style="padding:10px 12px;font-weight:500;color:var(--accent)">'+v.v1+'</td>'+
-    '<td style="padding:10px 12px;color:var(--accent2)">'+v.v2+'</td>'+
-    '<td style="padding:10px 12px;color:var(--accent3)">'+v.v3+'</td>'+
-    '<td style="padding:10px 12px;color:var(--text2);font-size:14px">'+v.vi+'</td>'+
-    '<td style="padding:10px 6px"><span style="cursor:pointer;font-size:12px" onclick="speakTTS(this.dataset.t)" data-t="'+v.v1+', '+v.v2+', '+v.v3+'" title="Nghe phát âm"><i data-lucide="volume-2" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;color:var(--text3)"></i></span></td></tr>';
-  }).join('');
-  if(typeof lucide!=='undefined')lucide.createIcons();
+const TOPICS=CONV.map(function(c){return c.topic;});
+let activeTopic="all";
+document.getElementById("tagBar").innerHTML='<button class="tag-btn active" onclick="setTopic(\'all\',this)">Tất cả</button>'+TOPICS.map(function(t){return '<button class="tag-btn" onclick="setTopic(\''+t.replace(/'/g,"\\'")+'\',this)">'+t.split(" (")[0]+'</button>';}).join("");
+function setTopic(t,btn){activeTopic=t;document.querySelectorAll(".tag-btn").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");renderConv();}
+function filterConv(){renderConv();}
+function renderConv(){
+  var q=document.getElementById("searchBox").value.toLowerCase();
+  var groups=CONV.filter(function(g){return activeTopic==="all"||g.topic===activeTopic;});
+  document.getElementById("convList").innerHTML=groups.map(function(g){
+    var items=g.phrases.filter(function(p){return !q||p.en.toLowerCase().includes(q)||p.vi.includes(q);});
+    if(items.length===0)return "";
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">'+
+    '<div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:14px">'+g.icon+' '+g.topic+'</div>'+
+    '<div style="display:grid;gap:8px">'+items.map(function(p){
+      return '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg3);border-radius:10px;transition:all .15s" onmouseover="this.style.borderLeft=\'3px solid var(--accent)\'" onmouseout="this.style.borderLeft=\'\'">'+
+      '<div style="flex:1"><div style="font-weight:500;color:var(--text);font-size:15px">'+p.en+'</div>'+
+      '<div style="font-size:13px;color:var(--accent);margin-top:2px">'+p.vi+'</div></div>'+
+      '<span style="cursor:pointer;font-size:14px;color:var(--text3);padding:4px" onclick="speakEn(\''+p.en.replace(/'/g,"\\'")+'\')" title="Nghe phát âm">🔊</span></div>';
+    }).join("")+'</div></div>';
+  }).join("");
 }
-function speakTTS(t){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.8;speechSynthesis.speak(u);}
-var quizVerbs=[],quizIdx=0,quizScore=0,quizTotal=0;
-function startQuiz(){quizVerbs=VERBS.slice().sort(function(){return Math.random()-0.5}).slice(0,10);quizIdx=0;quizScore=0;quizTotal=10;nextQuizQ();}
-function nextQuizQ(){
-  if(quizIdx>=quizTotal){document.getElementById('qWord').textContent=quizScore+'/'+quizTotal+' đúng!';document.getElementById('qPrompt').textContent='Bấm Bắt đầu Quiz để thử lại';document.getElementById('qInput').style.display='none';document.getElementById('qScore').textContent='';return;}
-  var v=quizVerbs[quizIdx];var type=Math.random()>0.5?'v2':'v3';
-  document.getElementById('qWord').textContent=v.v1;
-  document.getElementById('qPrompt').textContent='Nhập dạng '+(type==='v2'?'V2 (Past Simple)':'V3 (Past Participle)');
-  document.getElementById('qInput').style.display='block';document.getElementById('qInput').value='';document.getElementById('qInput').focus();
-  document.getElementById('qInput').dataset.answer=v[type];document.getElementById('qInput').dataset.type=type;
-  document.getElementById('qFeedback').textContent='';
-  document.getElementById('qScore').textContent='Điểm: '+quizScore+'/'+quizTotal;
-}
-function checkQuizAnswer(){
-  var inp=document.getElementById('qInput');var ans=inp.value.trim().toLowerCase();
-  var correct=inp.dataset.answer.toLowerCase().split('/');
-  if(correct.some(function(c){return c.trim()===ans;})){quizScore++;document.getElementById('qFeedback').innerHTML='<span style="color:var(--green)">Đúng!</span>';}
-  else{document.getElementById('qFeedback').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+inp.dataset.answer+'</strong></span>';}
-  quizIdx++;setTimeout(nextQuizQ,1200);
-}
-renderVerbs();
+function speakEn(t){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.85;speechSynthesis.speak(u);}
+renderConv();
+function toggleDrop(el){var d=el.closest(".nav-drop");var o=d.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(x){x.classList.remove("open");});if(!o)d.classList.add("open");}
+document.addEventListener("click",function(e){if(!e.target.closest(".nav-drop"))document.querySelectorAll(".nav-drop.open").forEach(function(d){d.classList.remove("open");});});
 </script>
 <script src="theme.js"></script>
 
@@ -433,9 +487,3 @@ renderVerbs();
   </div>
 </div>
 
-
-
-<script src="gamification.js"></script>
-<script src="common.js"></script>
-</body>
-</html>

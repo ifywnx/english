@@ -10,12 +10,32 @@
     '::view-transition-new(root){animation:eeSlideIn .25s ease-out}' +
     '@keyframes eeSlideOut{to{opacity:0;transform:translateY(-8px)}}' +
     '@keyframes eeSlideIn{from{opacity:0;transform:translateY(8px)}}' +
-    'body{opacity:0;animation:eeFadeIn .3s ease-out .05s forwards}' +
-    '@keyframes eeFadeIn{to{opacity:1}}' +
+    '@keyframes eeFadeIn{from{opacity:.7}to{opacity:1}}' +
     '.ee-page-exit{opacity:0!important;transform:translateY(-6px)!important;transition:all .18s ease-in!important}' +
     '*{-webkit-tap-highlight-color:transparent}' +
-    '.content,.idiom-card,.search-box,table tr,button{will-change:auto}';
+    /* === GEN-Z FLOATING BOTTOM NAV === */
+    '@media(max-width:900px){' +
+      '.mob-bottom-nav{display:block!important;position:fixed!important;bottom:12px!important;left:14px!important;right:14px!important;border-radius:22px!important;background:rgba(11,26,30,0.92)!important;backdrop-filter:blur(28px) saturate(180%)!important;-webkit-backdrop-filter:blur(28px) saturate(180%)!important;border:1px solid rgba(100,216,165,0.12)!important;padding:0!important;padding-bottom:env(safe-area-inset-bottom,0)!important;z-index:9999!important;box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(100,216,165,0.06),inset 0 1px 0 rgba(255,255,255,0.04)!important;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease!important}' +
+      '.mob-bottom-nav.ee-hidden{transform:translateY(calc(100% + 20px))!important;opacity:0!important}' +
+      '.mob-bottom-nav-inner{display:flex!important;justify-content:space-around!important;align-items:center!important;height:72px!important;max-width:480px!important;margin:0 auto!important;padding:0 4px!important}' +
+      '.mob-bn-item{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;text-decoration:none!important;color:rgba(158,192,178,0.5)!important;font-size:11px!important;font-weight:500!important;padding:10px 16px!important;border-radius:16px!important;transition:all .25s cubic-bezier(.4,0,.2,1)!important;position:relative!important;min-width:56px!important;-webkit-tap-highlight-color:transparent!important;letter-spacing:.02em!important}' +
+      '.mob-bn-item svg{width:26px!important;height:26px!important;stroke-width:1.8!important;transition:all .25s cubic-bezier(.4,0,.2,1)!important}' +
+      '.mob-bn-item span{transition:all .25s ease!important;font-size:11px!important}' +
+      '.mob-bn-item.active{color:var(--accent)!important;background:rgba(100,216,165,0.08)!important}' +
+      '.mob-bn-item.active svg{stroke-width:2.2!important;transform:scale(1.08)!important;filter:drop-shadow(0 0 6px rgba(100,216,165,0.3))!important}' +
+      '.mob-bn-item:active{transform:scale(0.88)!important}' +
+      'button.mob-bn-item{background:none!important;border:none!important;cursor:pointer!important;font-family:"DM Sans",sans-serif!important}' +
+      '.content{padding-bottom:100px!important}' +
+      '.back-top{bottom:100px!important;right:16px!important}' +
+      'nav{position:sticky!important;top:0!important;z-index:200!important}' +
+    '}';
   document.head.appendChild(ts);
+  // Trigger fade-in on body (runs after paint)
+  requestAnimationFrame(function(){
+    document.body.style.animation = 'eeFadeIn .25s ease-out forwards';
+    // Clean up after animation to avoid breaking position:fixed on children
+    setTimeout(function(){ document.body.style.animation=''; document.body.style.transform='none'; document.body.style.opacity='1'; }, 300);
+  });
 
   // Smooth navigation: fade out before leaving
   document.addEventListener('click', function(e){
@@ -64,12 +84,49 @@ window.addEventListener('scroll',function(){
   if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
 });
 
-// Highlight active bottom nav
+// Highlight active bottom nav + force show on mobile (JS fallback)
 (function(){
   var path=location.pathname.split('/').pop()||'index.html';
   document.querySelectorAll('.mob-bn-item').forEach(function(a){
     if(a.getAttribute('href')===path)a.classList.add('active');
   });
+
+  var nav=document.querySelector('.mob-bottom-nav');
+  if(!nav) return;
+
+  // JS fallback: force-show bottom nav on mobile with ALL styles
+  function ensureNavVisible(){
+    if(window.innerWidth<=900){
+      nav.style.cssText='display:block;position:fixed;bottom:12px;left:14px;right:14px;z-index:9999;border-radius:22px;background:rgba(11,26,30,0.92);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(100,216,165,0.12);padding:0;padding-bottom:env(safe-area-inset-bottom,0);box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(100,216,165,0.06),inset 0 1px 0 rgba(255,255,255,0.04);transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease';
+      var inner=nav.querySelector('.mob-bottom-nav-inner');
+      if(inner) inner.style.cssText='display:flex;justify-content:space-around;align-items:center;height:72px;max-width:480px;margin:0 auto;padding:0 4px';
+      nav.querySelectorAll('.mob-bn-item').forEach(function(item){
+        item.style.cssText='display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:rgba(158,192,178,0.5);font-size:11px;font-weight:500;padding:10px 16px;border-radius:16px;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;min-width:56px;-webkit-tap-highlight-color:transparent;letter-spacing:.02em;background:none;border:none;cursor:pointer;font-family:"DM Sans",sans-serif';
+        if(item.classList.contains('active')) item.style.color='var(--accent,#64d8a5)';
+        var svg=item.querySelector('svg');
+        if(svg){svg.style.width='26px';svg.style.height='26px';svg.style.strokeWidth='1.8';}
+      });
+    } else {
+      nav.style.display='none';
+    }
+  }
+  ensureNavVisible();
+  window.addEventListener('resize', ensureNavVisible);
+
+  // Instagram-style: hide nav on scroll down, show on scroll up
+  var lastY=0, ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var y=window.scrollY;
+        if(y>lastY && y>100) nav.classList.add('ee-hidden');
+        else nav.classList.remove('ee-hidden');
+        lastY=y;
+        ticking=false;
+      });
+      ticking=true;
+    }
+  },{passive:true});
 })();
 
 // Robust Lucide icon initialization with retry
