@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="Gerund vs Infinitive - Phân biệt V-ing và to V
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerund vs Infinitive — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+  .nav-links .nav-a{font-size:16px;padding:12px 16px}
+}
+/* === MOBILE NAV === */
+</style>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Ngữ pháp</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Gerund vs Infinitive</span></div>
+<div class="page-label">Grammar</div>
+<h1 class="page-title">Gerund vs Infinitive</h1>
+<p class="page-desc">Khi nào dùng V-ing, khi nào dùng to V? Đây là một trong những chủ đề gây nhiều nhầm lẫn nhất trong tiếng Anh.</p>
+
+<div style="display:grid;gap:16px;margin:24px 0">
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+<div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:12px"><i data-lucide="book-open" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Gerund (V-ing) là gì?</div>
+<p style="color:var(--text2);font-size:14px;line-height:1.7;margin:0">Gerund là động từ thêm <strong>-ing</strong> và được dùng như <strong>danh từ</strong>. Nó có thể làm chủ ngữ, tân ngữ, hoặc bổ ngữ.</p>
+<div style="margin-top:12px;padding:12px;background:rgba(100,216,165,0.05);border-radius:8px;border-left:3px solid var(--accent)">
+<div style="font-size:13px;color:var(--text);line-height:1.8">
+<strong>Swimming</strong> is good for health. <span style="color:var(--text3)">(Chủ ngữ)</span><br>
+I enjoy <strong>reading</strong> books. <span style="color:var(--text3)">(Tân ngữ)</span><br>
+My hobby is <strong>cooking</strong>. <span style="color:var(--text3)">(Bổ ngữ)</span>
+</div></div></div>
+
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+<div style="font-size:18px;font-weight:600;color:var(--accent2);margin-bottom:12px"><i data-lucide="arrow-right" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Infinitive (to V) là gì?</div>
+<p style="color:var(--text2);font-size:14px;line-height:1.7;margin:0">Infinitive là dạng <strong>to + động từ nguyên mẫu</strong>. Dùng để chỉ mục đích, ý định, hoặc sau một số động từ nhất định.</p>
+<div style="margin-top:12px;padding:12px;background:rgba(167,139,250,0.05);border-radius:8px;border-left:3px solid var(--accent2)">
+<div style="font-size:13px;color:var(--text);line-height:1.8">
+I want <strong>to learn</strong> English. <span style="color:var(--text3)">(Sau động từ "want")</span><br>
+She came <strong>to help</strong> me. <span style="color:var(--text3)">(Chỉ mục đích)</span><br>
+It is important <strong>to study</strong> hard. <span style="color:var(--text3)">(Sau tính từ)</span>
+</div></div></div>
+</div>
+
+<div id="verbLists" style="display:grid;gap:16px;margin:24px 0"></div>
+
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px;margin:24px 0">
+<div style="font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text)"><i data-lucide="zap" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Quiz: Chọn Gerund hay Infinitive</div>
+<div id="quizArea" style="text-align:center">
+<div id="qSentence" style="font-size:18px;color:var(--text);margin:16px 0;line-height:1.6"></div>
+<div id="qOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+<div id="qFb" style="margin-top:12px;font-size:14px"></div>
+<div style="margin-top:12px"><button onclick="startQuiz()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu Quiz</button><span id="qScore" style="font-size:13px;color:var(--text3);padding:8px;margin-left:8px"></span></div>
+</div></div>
+
+</div>
+<script>
+const GERUND_VERBS=[
+{v:"enjoy",vi:"thưởng thức",ex:"I enjoy swimming."},
+{v:"avoid",vi:"tránh",ex:"Avoid eating too much sugar."},
+{v:"consider",vi:"cân nhắc",ex:"She considered moving abroad."},
+{v:"finish",vi:"hoàn thành",ex:"He finished writing the essay."},
+{v:"keep",vi:"tiếp tục",ex:"Keep practicing every day."},
+{v:"mind",vi:"phiền",ex:"Do you mind waiting here?"},
+{v:"suggest",vi:"gợi ý",ex:"I suggest going by train."},
+{v:"practice",vi:"luyện tập",ex:"Practice speaking English daily."},
+{v:"deny",vi:"phủ nhận",ex:"He denied stealing the money."},
+{v:"imagine",vi:"tưởng tượng",ex:"Imagine living in Paris!"},
+{v:"miss",vi:"nhớ, bỏ lỡ",ex:"I miss playing with my friends."},
+{v:"delay",vi:"trì hoãn",ex:"They delayed making a decision."},
+{v:"risk",vi:"mạo hiểm",ex:"Don't risk losing your job."},
+{v:"give up",vi:"từ bỏ",ex:"She gave up smoking last year."},
+{v:"can't help",vi:"không thể không",ex:"I can't help laughing."},
+{v:"admit",vi:"thừa nhận",ex:"He admitted cheating on the test."},
+{v:"appreciate",vi:"trân trọng",ex:"I appreciate your helping me."},
+{v:"dislike",vi:"không thích",ex:"She dislikes waking up early."},
+{v:"feel like",vi:"muốn",ex:"I feel like eating pizza."},
+{v:"look forward to",vi:"mong đợi",ex:"I look forward to meeting you."}
+];
+const INFINITIVE_VERBS=[
+{v:"want",vi:"muốn",ex:"I want to learn Japanese."},
+{v:"need",vi:"cần",ex:"You need to study harder."},
+{v:"decide",vi:"quyết định",ex:"She decided to quit her job."},
+{v:"plan",vi:"lên kế hoạch",ex:"We plan to travel next month."},
+{v:"hope",vi:"hy vọng",ex:"I hope to see you again."},
+{v:"expect",vi:"kỳ vọng",ex:"They expect to arrive by 5 PM."},
+{v:"promise",vi:"hứa",ex:"He promised to call me."},
+{v:"agree",vi:"đồng ý",ex:"She agreed to help us."},
+{v:"refuse",vi:"từ chối",ex:"He refused to answer."},
+{v:"learn",vi:"học",ex:"I'm learning to drive."},
+{v:"offer",vi:"đề nghị",ex:"She offered to pay for dinner."},
+{v:"pretend",vi:"giả vờ",ex:"He pretended to be sick."},
+{v:"seem",vi:"có vẻ",ex:"She seems to be happy."},
+{v:"afford",vi:"đủ khả năng",ex:"I can't afford to buy a car."},
+{v:"manage",vi:"xoay xở",ex:"He managed to finish on time."},
+{v:"fail",vi:"thất bại",ex:"She failed to pass the exam."},
+{v:"tend",vi:"có xu hướng",ex:"He tends to forget things."},
+{v:"appear",vi:"có vẻ",ex:"They appear to be lost."},
+{v:"choose",vi:"chọn",ex:"She chose to stay home."},
+{v:"wish",vi:"ước",ex:"I wish to speak with the manager."}
+];
+const BOTH_VERBS=[
+{v:"remember",ger:"Nhớ đã làm (quá khứ)",inf:"Nhớ phải làm (tương lai)",ger_ex:"I remember locking the door. (Tôi nhớ là đã khóa cửa)",inf_ex:"Remember to lock the door. (Nhớ khóa cửa nhé)"},
+{v:"forget",ger:"Quên đã làm",inf:"Quên phải làm",ger_ex:"I'll never forget meeting her.",inf_ex:"Don't forget to call me."},
+{v:"stop",ger:"Dừng làm gì",inf:"Dừng lại để làm gì",ger_ex:"Stop smoking! (Ngừng hút thuốc)",inf_ex:"I stopped to smoke. (Tôi dừng lại để hút thuốc)"},
+{v:"try",ger:"Thử làm (xem sao)",inf:"Cố gắng làm",ger_ex:"Try eating less sugar.",inf_ex:"Try to finish the homework."},
+{v:"regret",ger:"Hối hận đã làm",inf:"Tiếc phải thông báo",ger_ex:"I regret telling her the truth.",inf_ex:"I regret to inform you that..."},
+{v:"go on",ger:"Tiếp tục làm (cùng việc)",inf:"Chuyển sang làm (việc khác)",ger_ex:"He went on talking for hours.",inf_ex:"He went on to become a doctor."},
+{v:"mean",ger:"Có nghĩa là",inf:"Có ý định",ger_ex:"Being a doctor means working long hours.",inf_ex:"I didn't mean to hurt you."},
+{v:"like",ger:"Thích (nói chung)",inf:"Thích (cụ thể)",ger_ex:"I like swimming. (nói chung)",inf_ex:"I like to swim in the morning. (cụ thể)"},
+{v:"begin/start",ger:"Bắt đầu (giống nhau)",inf:"Bắt đầu (giống nhau)",ger_ex:"It began raining.",inf_ex:"It began to rain."},
+{v:"need",ger:"Cần được làm (bị động)",inf:"Cần làm (chủ động)",ger_ex:"The car needs washing. (= needs to be washed)",inf_ex:"I need to wash the car."}
+];
+
+function renderLists(){
+var html='';
+html+='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:16px"><i data-lucide="check-circle" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>20 Động từ + Gerund (V-ing)</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px">'+
+GERUND_VERBS.map(function(v){return '<div style="padding:10px 12px;background:rgba(100,216,165,0.04);border-radius:8px;border-left:3px solid var(--accent)"><div style="font-weight:600;color:var(--accent);font-size:14px">'+v.v+' + V-ing <span style="font-weight:400;color:var(--text3);font-size:12px">('+v.vi+')</span></div><div style="font-size:12px;color:var(--text2);margin-top:4px;font-style:italic">'+v.ex+'</div></div>';}).join('')+'</div></div>';
+
+html+='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:var(--accent2);margin-bottom:16px"><i data-lucide="arrow-right-circle" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>20 Động từ + Infinitive (to V)</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px">'+
+INFINITIVE_VERBS.map(function(v){return '<div style="padding:10px 12px;background:rgba(167,139,250,0.04);border-radius:8px;border-left:3px solid var(--accent2)"><div style="font-weight:600;color:var(--accent2);font-size:14px">'+v.v+' + to V <span style="font-weight:400;color:var(--text3);font-size:12px">('+v.vi+')</span></div><div style="font-size:12px;color:var(--text2);margin-top:4px;font-style:italic">'+v.ex+'</div></div>';}).join('')+'</div></div>';
+
+html+='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:var(--accent3);margin-bottom:16px"><i data-lucide="alert-triangle" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>10 Động từ dùng CẢ HAI (nghĩa khác nhau!)</div>'+
+BOTH_VERBS.map(function(v){return '<div style="margin-bottom:12px;padding:14px;background:rgba(240,194,122,0.05);border-radius:10px;border:0.5px solid rgba(240,194,122,0.15)"><div style="font-size:16px;font-weight:600;color:var(--accent3);margin-bottom:8px">'+v.v+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="padding:8px;background:rgba(100,216,165,0.05);border-radius:6px"><div style="font-size:12px;font-weight:500;color:var(--accent)">+ V-ing: '+v.ger+'</div><div style="font-size:11px;color:var(--text3);margin-top:4px;font-style:italic">'+v.ger_ex+'</div></div><div style="padding:8px;background:rgba(167,139,250,0.05);border-radius:6px"><div style="font-size:12px;font-weight:500;color:var(--accent2)">+ to V: '+v.inf+'</div><div style="font-size:11px;color:var(--text3);margin-top:4px;font-style:italic">'+v.inf_ex+'</div></div></div></div>';}).join('')+'</div>';
+document.getElementById("verbLists").innerHTML=html;
+if(typeof lucide!=="undefined")lucide.createIcons();
+}
+
+var QUIZ=[
+{s:"I enjoy ___ English.",a:"learning",b:"to learn",correct:"learning"},
+{s:"She decided ___ abroad.",a:"studying",b:"to study",correct:"to study"},
+{s:"He avoids ___ fast food.",a:"eating",b:"to eat",correct:"eating"},
+{s:"They want ___ a new car.",a:"buying",b:"to buy",correct:"to buy"},
+{s:"Do you mind ___ the window?",a:"opening",b:"to open",correct:"opening"},
+{s:"I hope ___ you again soon.",a:"seeing",b:"to see",correct:"to see"},
+{s:"She suggested ___ to the park.",a:"going",b:"to go",correct:"going"},
+{s:"He promised ___ me back.",a:"calling",b:"to call",correct:"to call"},
+{s:"Keep ___ until you succeed!",a:"trying",b:"to try",correct:"trying"},
+{s:"I can't afford ___ that house.",a:"buying",b:"to buy",correct:"to buy"},
+{s:"She finished ___ the report.",a:"writing",b:"to write",correct:"writing"},
+{s:"We plan ___ next summer.",a:"traveling",b:"to travel",correct:"to travel"},
+{s:"He refused ___ the question.",a:"answering",b:"to answer",correct:"to answer"},
+{s:"I miss ___ with my old friends.",a:"hanging out",b:"to hang out",correct:"hanging out"},
+{s:"Remember ___ the door! (nhớ khóa cửa nhé)",a:"locking",b:"to lock",correct:"to lock"},
+{s:"I remember ___ the door. (tôi nhớ là đã khóa)",a:"locking",b:"to lock",correct:"locking"},
+{s:"She stopped ___ a break.",a:"taking",b:"to take",correct:"to take"},
+{s:"He stopped ___ last year.",a:"smoking",b:"to smoke",correct:"smoking"},
+{s:"Try ___ less sugar. (thử đi)",a:"eating",b:"to eat",correct:"eating"},
+{s:"I need ___ harder.",a:"studying",b:"to study",correct:"to study"}
+];
+var qIdx=0,qOk=0,qTot=10,qItems=[];
+function startQuiz(){qItems=QUIZ.slice().sort(function(){return Math.random()-0.5}).slice(0,10);qIdx=0;qOk=0;qTot=10;nextQ();}
+function nextQ(){
+if(qIdx>=qTot){document.getElementById("qSentence").innerHTML='<span style="font-size:24px;font-weight:600">'+qOk+'/'+qTot+'</span><br><span style="color:var(--text3)">'+( qOk>=8?'Xuất sắc!':qOk>=6?'Khá tốt!':'Cần ôn tập thêm!')+'</span>';document.getElementById("qOpts").innerHTML="";document.getElementById("qFb").textContent="";return;}
+var q=qItems[qIdx];
+document.getElementById("qSentence").innerHTML=q.s;
+document.getElementById("qFb").textContent="";
+var opts=[q.a,q.b];
+document.getElementById("qOpts").innerHTML=opts.map(function(o){return '<button onclick="checkQ(this,\''+o+'\',\''+q.correct+'\')" style="padding:12px 24px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:15px;font-weight:500;font-family:DM Sans,sans-serif;min-width:140px;transition:all .15s">'+o+'</button>';}).join("");
+document.getElementById("qScore").textContent=(qIdx+1)+"/"+qTot;}
+function checkQ(btn,ans,correct){
+document.querySelectorAll("#qOpts button").forEach(function(b){b.disabled=true;});
+if(ans===correct){btn.style.background="rgba(107,203,119,0.15)";btn.style.color="var(--green)";btn.style.borderColor="var(--green)";qOk++;document.getElementById("qFb").innerHTML='<span style="color:var(--green)">Đúng rồi!</span>';}
+else{btn.style.background="rgba(255,138,128,0.15)";btn.style.color="var(--coral)";btn.style.borderColor="var(--coral)";document.getElementById("qFb").innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+correct+'</strong></span>';}
+qIdx++;setTimeout(nextQ,1200);}
+renderLists();
+</script>
+<script src="theme.js?v=3"></script>
+<script src="gamification.js?v=3"></script>
+<script src="common.js?v=12"></script>
+</body>
+</html>

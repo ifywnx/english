@@ -416,48 +416,60 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ## 🗺️ 12. Roadmap (5 Phases)
 
-### Phase 2: Web Polish (Dang lam)
-| # | Feature | Mo ta |
-|---|---------|-------|
-| 1 | Reading Comprehension | Bai doc hieu co cau hoi |
-| 2 | Word Formation | Cau tao tu (prefix, suffix, root) |
-| 3 | Daily Challenge Page | Quiz hang ngay, streak reward |
-| 4 | Gerund vs Infinitive | Module rieng biet |
-| 5 | Pronunciation Recording | Ghi am + so sanh phat am |
-| 6 | Loai bo moi Emoji | Thay toan bo bang Lucide Icons |
-| 7 | Them themes moi | Lien tuc mo rong theme collection |
-| 8 | Smooth transitions | Page transitions muot nhu native iOS |
-| 9 | PWA hoan chinh | Service Worker, offline, installable |
-| 10 | SEO / OpenGraph | Meta tags, Schema.org |
+### Phase 1.5: Nợ kỹ thuật
 
-### Phase 3: Tieng Anh chuyen nganh
-| # | Feature | Mo ta |
+| # | Vấn đề | Mức độ | Trạng thái |
+|---|--------|--------|-----------|
+| 1 | **CSS trùng lặp 31 file** | Nghiêm trọng | ✅ Fix bằng `nav.js` — tiết kiệm 349KB |
+| 2 | **Nav copy-paste 31 file** | Nghiêm trọng | ✅ Fix bằng `nav.js` — thêm trang mới chỉ sửa 1 file |
+| 3 | **!important wars** — 40+ lần `!important` | Trung bình | Chưa — ưu tiên thấp |
+| 4 | **Inline `<style>` quá lớn** | Nhẹ | Chưa — ưu tiên thấp |
+
+> **`nav.js?v=1`** — Single Source of Truth cho navigation. Thêm trang mới: chỉ thêm 1 dòng vào `NAV_ITEMS` trong `nav.js`.
+
+### Phase 2: Web Polish (Đang làm)
+| # | Feature | Mô tả | Trạng thái |
+|---|---------|-------|-----------|
+| 1 | Reading Comprehension | Bài đọc hiểu có câu hỏi tương tác | Chưa |
+| 2 | Word Formation | Cấu tạo từ (prefix, suffix, root) | Chưa |
+| 3 | Daily Challenge Page | Quiz hàng ngày, streak reward | Chưa |
+| 4 | Gerund vs Infinitive | Module riêng biệt | ✅ Xong |
+| 5 | Pronunciation Recording | Ghi âm + so sánh phát âm | Chưa |
+| 6 | Loại bỏ mọi Emoji | Thay toàn bộ bằng Lucide Icons | Chưa |
+| 7 | Thêm themes mới | Liên tục mở rộng theme collection | Chưa |
+| 8 | Smooth transitions | Page transitions mượt như native iOS | Chưa |
+| 9 | PWA hoàn chỉnh | Service Worker, offline, installable | Chưa |
+| 10 | SEO / OpenGraph | Meta tags, Schema.org | Chưa |
+| 11 | Preposition Combinations | depend on, interested in, good at... | Chưa |
+| 12 | TOEIC Module | Riêng cho luyện thi TOEIC | Chưa |
+
+### Phase 3: Tiếng Anh chuyên ngành
+| # | Feature | Mô tả |
 |---|---------|-------|
-| 11 | Business English | Tu vung & hoi thoai doanh nghiep |
-| 12 | IT English | Thuat ngu lap trinh, cong nghe |
-| 13 | Medical English | Thuat ngu y te, benh vien |
-| 14 | Legal English | Thuat ngu phap ly, hop dong |
-| 15 | TOEIC Module | Rieng cho luyen thi TOEIC |
-| 16 | Global Search | Tim kiem toan site |
+| 13 | Business English | Từ vựng & hội thoại doanh nghiệp |
+| 14 | IT English | Thuật ngữ lập trình, công nghệ |
+| 15 | Medical English | Thuật ngữ y tế, bệnh viện |
+| 16 | Legal English | Thuật ngữ pháp lý, hợp đồng |
+| 17 | Global Search | Tìm kiếm toàn site |
 
 ### Phase 4: React Native Expo + Backend
-| # | Feature | Mo ta |
+| # | Feature | Mô tả |
 |---|---------|-------|
-| 17 | Chuyen sang React Native Expo | Build app iOS/Android muot nhu native |
-| 18 | Auth (Dang nhap) | Firebase/Supabase Auth |
-| 19 | Cloud Sync | Luu tien do online |
-| 20 | AI Chatbot | GPT API hoi dap tieng Anh |
-| 21 | Push Notifications | Nhac nho hoc hang ngay |
-| 22 | Leaderboard | Bang xep hang cong dong |
-| 23 | Bao mat | Encryption, rate limiting, auth guards |
+| 18 | Chuyển sang React Native Expo | Build app iOS/Android mượt như native |
+| 19 | Auth (Đăng nhập) | Firebase/Supabase Auth |
+| 20 | Cloud Sync | Lưu tiến độ online |
+| 21 | AI Chatbot | GPT API hỏi đáp tiếng Anh |
+| 22 | Push Notifications | Nhắc nhở học hàng ngày |
+| 23 | Leaderboard | Bảng xếp hạng cộng đồng |
+| 24 | Bảo mật | Encryption, rate limiting, auth guards |
 
 ### Phase 5: Multi-language Empire
-| # | Feature | Mo ta |
+| # | Feature | Mô tả |
 |---|---------|-------|
-| 24 | Tieng Trung (Mandarin) | Dua form tieng Anh -> adapt |
-| 25 | Tieng Han (Korean) | Hangul, grammar, vocab, TOPIK |
-| 26 | Tieng Nhat (Japanese) | Hiragana/Katakana, Kanji, JLPT |
-| 27 | He thong chung da ngon ngu | Shared UI framework, language switcher |
+| 25 | Tiếng Trung (Mandarin) | Dùng form tiếng Anh → adapt |
+| 26 | Tiếng Hàn (Korean) | Hangul, grammar, vocab, TOPIK |
+| 27 | Tiếng Nhật (Japanese) | Hiragana/Katakana, Kanji, JLPT |
+| 28 | Hệ thống chung đa ngôn ngữ | Shared UI framework, language switcher |
 
 ---
 
@@ -562,6 +574,31 @@ sed -i '' 's/common.js?v=7/common.js?v=8/g' *.html
 | Web Audio API | Browser built-in | - | Sound effects |
 
 > **Lưu ý:** Ngoài Lucide CDN và Google Fonts, toàn bộ site hoạt động offline (Dictionary API và Translation cần internet).
+
+---
+
+## QUY TẮC BẮT BUỘC CHO AI
+
+1. **PHẢI VIẾT CÓ DẤU TIẾNG VIỆT** trong mọi nội dung hiển thị cho user (HTML, UI text, button, heading, mô tả). Ví dụ: "Bắt đầu Quiz" KHÔNG PHẢI "Bat dau Quiz". Đây là web cho người Việt, viết không dấu = KHÔNG CHẤP NHẬN.
+2. **KHÔNG dùng emoji** — chỉ dùng Lucide SVG Icons.
+3. **Mọi trang mới** phải có nội dung thật, đầy đủ, chất lượng cao — không placeholder.
+4. **Mỗi module phải TƯƠNG TÁC** — không chỉ để đọc. Phải có ít nhất 1 trong: Quiz, Flashcard, Fill-in-the-blank, Drag & Drop, Matching, hoặc bài tập thực hành. User phải thực sự HỌC được, không chỉ đọc lý thuyết.
+5. **Version hiện tại:** `common.js?v=12`, `style.css?v=3`, `theme.js?v=3`, `gamification.js?v=3`
+6. **Mỗi khi thay đổi** common.js/theme.js/style.css → PHẢI bump version trong TẤT CẢ files HTML.
+7. **Khi thêm file mới** → PHẢI đồng bộ TẤT CẢ file theo checklist dưới:
+
+### Checklist khi thêm trang mới
+
+Mỗi khi thêm 1 trang HTML mới, PHẢI làm TẤT CẢ các bước sau:
+
+- [ ] Thêm link vào **desktop nav dropdown** (trong `<nav>` section) của TẤT CẢ 30+ files HTML
+- [ ] Thêm link vào **mobile menu** (`#mobileMenu` section) của TẤT CẢ 30+ files HTML
+- [ ] Thêm vào **sitemap.xml**
+- [ ] Thêm vào **PROJECT_DOCS.md** (danh sách files + roadmap)
+- [ ] Thêm vào **index.html** module grid (nếu là module chính)
+- [ ] Đảm bảo nav HTML **giống hệt nhau** trên mọi file (dùng sed/grep để đồng bộ)
+
+> **QUAN TRỌNG:** Nav desktop và mobile menu phải luôn giống nhau trên TẤT CẢ files. Nếu 1 file thiếu link → user không thể navigate đến trang mới. Dùng `grep` để verify sau khi update.
 
 ---
 
