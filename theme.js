@@ -1,9 +1,10 @@
 /* ═══════════════════════════════════════════
    EasyEnglish Theme System
-   8 themes · localStorage · auto-apply
+   12 themes · localStorage · auto-apply
    ═══════════════════════════════════════════ */
 
 const THEMES = {
+  /* ── DARK THEMES ─────────────────────────── */
   aura: {
     name: 'Aura', icon: 'leaf', type: 'dark',
     colors: ['#1a3338','#64d8a5','#a78bfa','#f0c27a'],
@@ -74,6 +75,22 @@ const THEMES = {
       '--logo-text':'#0e1a0e'
     }
   },
+  y2k: {
+    name: 'Y2K', icon: 'zap', type: 'dark',
+    colors: ['#1a0a2e','#ff2d95','#00f0ff','#c0c0c0'],
+    vars: {
+      '--bg':'#0a0618','--bg2':'#140e28','--bg3':'#1a0a2e',
+      '--accent':'#ff2d95','--accent2':'#00f0ff','--accent3':'#c0c0c0',
+      '--coral':'#ff2d95','--green':'#00ff88','--pink':'#ff6ec7',
+      '--text':'#f0e8ff','--text2':'#c8b8e8','--text3':'#8a78b0',
+      '--border':'rgba(255,45,149,0.1)','--card':'#140e28','--card2':'#1e1438',
+      '--nav-bg':'rgba(10,6,24,0.94)','--drop-bg':'rgba(14,10,32,0.98)',
+      '--orb1':'rgba(255,45,149,0.12)','--orb2':'rgba(0,240,255,0.08)',
+      '--logo-text':'#0a0618'
+    }
+  },
+
+  /* ── LIGHT THEMES ────────────────────────── */
   aero: {
     name: 'Aero', icon: 'cloud', type: 'light',
     colors: ['#e8f4f0','#0d9488','#6366f1','#f59e0b'],
@@ -114,6 +131,48 @@ const THEMES = {
       '--nav-bg':'rgba(245,240,250,0.95)','--drop-bg':'rgba(240,232,248,0.98)',
       '--orb1':'rgba(124,77,255,0.06)','--orb2':'rgba(224,64,251,0.05)',
       '--logo-text':'#f5f0fa'
+    }
+  },
+  oldmoney: {
+    name: 'Old Money', icon: 'landmark', type: 'light',
+    colors: ['#f0ebe3','#5c6b4f','#8b7355','#c4a35a'],
+    vars: {
+      '--bg':'#f6f2ec','--bg2':'#ede8df','--bg3':'#e2ddd4',
+      '--accent':'#5c6b4f','--accent2':'#8b7355','--accent3':'#c4a35a',
+      '--coral':'#b85450','--green':'#5c6b4f','--pink':'#a07882',
+      '--text':'#2c2a26','--text2':'#5a5650','--text3':'#8a8680',
+      '--border':'rgba(92,107,79,0.12)','--card':'#ede8df','--card2':'#e2ddd4',
+      '--nav-bg':'rgba(246,242,236,0.96)','--drop-bg':'rgba(240,235,227,0.98)',
+      '--orb1':'rgba(92,107,79,0.07)','--orb2':'rgba(196,163,90,0.05)',
+      '--logo-text':'#f6f2ec'
+    }
+  },
+  kid: {
+    name: 'Kid', icon: 'smile', type: 'light',
+    colors: ['#fff3e0','#ff6d00','#2979ff','#00c853'],
+    vars: {
+      '--bg':'#fffbf5','--bg2':'#fff3e0','--bg3':'#ffe8cc',
+      '--accent':'#ff6d00','--accent2':'#2979ff','--accent3':'#00c853',
+      '--coral':'#ff1744','--green':'#00c853','--pink':'#ff4081',
+      '--text':'#2e1f0e','--text2':'#6a5540','--text3':'#9a8570',
+      '--border':'rgba(255,109,0,0.12)','--card':'#fff3e0','--card2':'#ffe8cc',
+      '--nav-bg':'rgba(255,251,245,0.96)','--drop-bg':'rgba(255,243,224,0.98)',
+      '--orb1':'rgba(255,109,0,0.08)','--orb2':'rgba(41,121,255,0.06)',
+      '--logo-text':'#fffbf5'
+    }
+  },
+  genz: {
+    name: 'Gen Z', icon: 'sparkles', type: 'light',
+    colors: ['#f0f5e8','#84cc16','#a78bfa','#f472b6'],
+    vars: {
+      '--bg':'#f5f8ef','--bg2':'#ecf2e0','--bg3':'#e0ebd0',
+      '--accent':'#84cc16','--accent2':'#a78bfa','--accent3':'#f472b6',
+      '--coral':'#fb7185','--green':'#84cc16','--pink':'#f472b6',
+      '--text':'#1a2410','--text2':'#4a5a3a','--text3':'#7a8a6a',
+      '--border':'rgba(132,204,22,0.12)','--card':'#ecf2e0','--card2':'#e0ebd0',
+      '--nav-bg':'rgba(245,248,239,0.96)','--drop-bg':'rgba(236,242,224,0.98)',
+      '--orb1':'rgba(132,204,22,0.08)','--orb2':'rgba(167,139,250,0.06)',
+      '--logo-text':'#f5f8ef'
     }
   }
 };
@@ -167,41 +226,72 @@ function createThemePicker() {
   btn.id = 'themeToggleBtn';
   btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>';
   btn.title = 'Đổi giao diện';
-  btn.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)';
-  // Move up on mobile to avoid bottom nav overlap
-  if (window.innerWidth <= 900) { btn.style.bottom = '80px'; }
-  btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
-  btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+  var isMobile = window.innerWidth <= 900;
+  var btnBottom = isMobile ? '100px' : '24px';
+  btn.style.cssText = 'position:fixed;bottom:' + btnBottom + ';right:' + (isMobile ? '16px' : '24px') + ';z-index:10000;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-tap-highlight-color:transparent';
+  if (!isMobile) {
+    btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
+    btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+  }
 
   // Panel
   const panel = document.createElement('div');
   panel.id = 'themePanel';
-  var panelBottom = window.innerWidth <= 900 ? '138px' : '82px';
-  panel.style.cssText = 'position:fixed;bottom:' + panelBottom + ';right:24px;z-index:9998;width:280px;border-radius:16px;padding:18px;background:var(--card);border:0.5px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.4);backdrop-filter:blur(20px);display:none;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;max-height:70vh;overflow-y:auto';
+  var panelBottom = isMobile ? '160px' : '82px';
+  var panelW = isMobile ? 'calc(100vw - 28px)' : '340px';
+  var panelR = isMobile ? '14px' : '24px';
+  panel.style.cssText = 'position:fixed;bottom:' + panelBottom + ';right:' + panelR + ';z-index:10001;width:' + panelW + ';border-radius:16px;padding:18px;background:var(--card);border:0.5px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.4);backdrop-filter:blur(20px);display:none;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch';
 
   const currentTheme = localStorage.getItem('ee_theme') || 'aura';
 
+  /* ── Render a single theme button ──────── */
+  function renderThemeBtn(id, t, activeTheme) {
+    var isActive = id === activeTheme;
+    var s = '<button class="tp-option' + (isActive ? ' active' : '') + '" data-theme="' + id + '" style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;border:1.5px solid ' + (isActive ? 'var(--accent)' : 'var(--border)') + ';background:' + (isActive ? 'rgba(100,216,165,0.08)' : 'var(--card2)') + ';cursor:pointer;transition:all .15s;font-family:\'DM Sans\',sans-serif;color:var(--text);font-size:12px;text-align:left;position:relative">';
+    // Color dots
+    s += '<div style="display:flex;gap:2px;flex-shrink:0">';
+    t.colors.forEach(function(c) {
+      s += '<span style="width:7px;height:7px;border-radius:50%;background:' + c + ';display:inline-block;border:0.5px solid rgba(0,0,0,0.15)"></span>';
+    });
+    s += '</div>';
+    // Name
+    s += '<span style="font-weight:500;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + t.name + '</span>';
+    // Checkmark
+    if (isActive) {
+      s += '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>';
+    }
+    s += '</button>';
+    return s;
+  }
+
+  /* ── Section label style ───────────────── */
+  var labelStyle = 'font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);margin:0 0 6px 2px;font-family:\'DM Sans\',sans-serif';
+
   function renderPanel() {
     const activeTheme = localStorage.getItem('ee_theme') || 'aura';
-    let html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-family:\'Fraunces\',serif;font-size:16px;color:var(--text)">Giao diện</span><button id="tpClose" style="background:none;border:none;cursor:pointer;color:var(--text3);padding:4px;display:flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>';
-    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
 
-    Object.entries(THEMES).forEach(([id, t]) => {
-      const isActive = id === activeTheme;
-      html += '<button class="tp-option' + (isActive ? ' active' : '') + '" data-theme="' + id + '" style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1.5px solid ' + (isActive ? 'var(--accent)' : 'var(--border)') + ';background:' + (isActive ? 'rgba(100,216,165,0.08)' : 'var(--card2)') + ';cursor:pointer;transition:all .15s;font-family:\'DM Sans\',sans-serif;color:var(--text);font-size:12px;text-align:left;position:relative">';
-      html += '<div style="display:flex;gap:3px;flex-shrink:0">';
-      t.colors.forEach(function(c) {
-        html += '<span style="width:8px;height:8px;border-radius:50%;background:' + c + ';display:inline-block;border:0.5px solid rgba(0,0,0,0.15)"></span>';
-      });
-      html += '</div>';
-      html += '<span style="font-weight:500;font-size:11px;white-space:nowrap">' + t.name + '</span>';
-      if (isActive) {
-        html += '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>';
-      }
-      html += '</button>';
-    });
-
+    // Header
+    var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">';
+    html += '<span style="font-family:\'Fraunces\',serif;font-size:16px;color:var(--text)">Giao diện</span>';
+    html += '<button id="tpClose" style="background:none;border:none;cursor:pointer;color:var(--text3);padding:4px;display:flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
     html += '</div>';
+
+    // Dark section
+    html += '<div style="' + labelStyle + '">Dark</div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px">';
+    Object.entries(THEMES).forEach(function(entry) {
+      if (entry[1].type === 'dark') html += renderThemeBtn(entry[0], entry[1], activeTheme);
+    });
+    html += '</div>';
+
+    // Light section
+    html += '<div style="' + labelStyle + '">Light</div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">';
+    Object.entries(THEMES).forEach(function(entry) {
+      if (entry[1].type === 'light') html += renderThemeBtn(entry[0], entry[1], activeTheme);
+    });
+    html += '</div>';
+
     panel.innerHTML = html;
 
     // Re-bind close button
@@ -211,8 +301,7 @@ function createThemePicker() {
     panel.querySelectorAll('.tp-option').forEach(opt => {
       opt.addEventListener('click', () => {
         applyTheme(opt.dataset.theme);
-        renderPanel(); // Re-render entire panel to avoid checkmark accumulation
-        // Update panel bg
+        renderPanel();
         setTimeout(() => {
           panel.style.background = getComputedStyle(document.documentElement).getPropertyValue('--card');
           panel.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border');
@@ -231,7 +320,7 @@ function createThemePicker() {
     e.stopPropagation();
     isOpen = !isOpen;
     if (isOpen) {
-      renderPanel(); // Fresh render each time
+      renderPanel();
       panel.style.display = 'block';
       panel.style.background = getComputedStyle(document.documentElement).getPropertyValue('--card');
       requestAnimationFrame(() => {

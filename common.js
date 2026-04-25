@@ -13,21 +13,11 @@
     '@keyframes eeFadeIn{from{opacity:.7}to{opacity:1}}' +
     '.ee-page-exit{opacity:0!important;transform:translateY(-6px)!important;transition:all .18s ease-in!important}' +
     '*{-webkit-tap-highlight-color:transparent}' +
-    /* === GEN-Z FLOATING BOTTOM NAV === */
+    /* === MOBILE OVERRIDES (only essentials) === */
     '@media(max-width:900px){' +
-      '.mob-bottom-nav{display:block!important;position:fixed!important;bottom:12px!important;left:14px!important;right:14px!important;border-radius:22px!important;background:rgba(11,26,30,0.92)!important;backdrop-filter:blur(28px) saturate(180%)!important;-webkit-backdrop-filter:blur(28px) saturate(180%)!important;border:1px solid rgba(100,216,165,0.12)!important;padding:0!important;padding-bottom:env(safe-area-inset-bottom,0)!important;z-index:9999!important;box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(100,216,165,0.06),inset 0 1px 0 rgba(255,255,255,0.04)!important;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease!important}' +
-      '.mob-bottom-nav.ee-hidden{transform:translateY(calc(100% + 20px))!important;opacity:0!important}' +
-      '.mob-bottom-nav-inner{display:flex!important;justify-content:space-around!important;align-items:center!important;height:72px!important;max-width:480px!important;margin:0 auto!important;padding:0 4px!important}' +
-      '.mob-bn-item{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;text-decoration:none!important;color:rgba(158,192,178,0.5)!important;font-size:11px!important;font-weight:500!important;padding:10px 16px!important;border-radius:16px!important;transition:all .25s cubic-bezier(.4,0,.2,1)!important;position:relative!important;min-width:56px!important;-webkit-tap-highlight-color:transparent!important;letter-spacing:.02em!important}' +
-      '.mob-bn-item svg{width:26px!important;height:26px!important;stroke-width:1.8!important;transition:all .25s cubic-bezier(.4,0,.2,1)!important}' +
-      '.mob-bn-item span{transition:all .25s ease!important;font-size:11px!important}' +
-      '.mob-bn-item.active{color:var(--accent)!important;background:rgba(100,216,165,0.08)!important}' +
-      '.mob-bn-item.active svg{stroke-width:2.2!important;transform:scale(1.08)!important;filter:drop-shadow(0 0 6px rgba(100,216,165,0.3))!important}' +
-      '.mob-bn-item:active{transform:scale(0.88)!important}' +
-      'button.mob-bn-item{background:none!important;border:none!important;cursor:pointer!important;font-family:"DM Sans",sans-serif!important}' +
-      '.content{padding-bottom:100px!important}' +
-      '.back-top{bottom:100px!important;right:16px!important}' +
-      'nav{position:sticky!important;top:0!important;z-index:200!important}' +
+      '.content{padding-bottom:100px}' +
+      '.back-top{bottom:160px;right:16px}' +
+      'nav{position:sticky;top:0;z-index:200}' +
     '}';
   document.head.appendChild(ts);
   // Trigger fade-in on body (runs after paint)
@@ -84,50 +74,108 @@ window.addEventListener('scroll',function(){
   if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
 });
 
-// Highlight active bottom nav + force show on mobile (JS fallback)
+// ==================== INJECT SHARED UI ELEMENTS ====================
 (function(){
-  var path=location.pathname.split('/').pop()||'index.html';
-  document.querySelectorAll('.mob-bn-item').forEach(function(a){
-    if(a.getAttribute('href')===path)a.classList.add('active');
-  });
+  var path = location.pathname.split('/').pop() || 'index.html';
 
-  var nav=document.querySelector('.mob-bottom-nav');
-  if(!nav) return;
-
-  // JS fallback: force-show bottom nav on mobile with ALL styles
-  function ensureNavVisible(){
-    if(window.innerWidth<=900){
-      nav.style.cssText='display:block;position:fixed;bottom:12px;left:14px;right:14px;z-index:9999;border-radius:22px;background:rgba(11,26,30,0.92);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(100,216,165,0.12);padding:0;padding-bottom:env(safe-area-inset-bottom,0);box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(100,216,165,0.06),inset 0 1px 0 rgba(255,255,255,0.04);transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease';
-      var inner=nav.querySelector('.mob-bottom-nav-inner');
-      if(inner) inner.style.cssText='display:flex;justify-content:space-around;align-items:center;height:72px;max-width:480px;margin:0 auto;padding:0 4px';
-      nav.querySelectorAll('.mob-bn-item').forEach(function(item){
-        item.style.cssText='display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:rgba(158,192,178,0.5);font-size:11px;font-weight:500;padding:10px 16px;border-radius:16px;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;min-width:56px;-webkit-tap-highlight-color:transparent;letter-spacing:.02em;background:none;border:none;cursor:pointer;font-family:"DM Sans",sans-serif';
-        if(item.classList.contains('active')) item.style.color='var(--accent,#64d8a5)';
-        var svg=item.querySelector('svg');
-        if(svg){svg.style.width='26px';svg.style.height='26px';svg.style.strokeWidth='1.8';}
-      });
-    } else {
-      nav.style.display='none';
-    }
+  // --- Back to Top ---
+  if (!document.getElementById('backTop')) {
+    var bt = document.createElement('button');
+    bt.className = 'back-top';
+    bt.id = 'backTop';
+    bt.onclick = function(){ window.scrollTo({top:0,behavior:'smooth'}); };
+    bt.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><polyline points="18 15 12 9 6 15"/></svg>';
+    document.body.appendChild(bt);
   }
-  ensureNavVisible();
-  window.addEventListener('resize', ensureNavVisible);
 
-  // Instagram-style: hide nav on scroll down, show on scroll up
-  var lastY=0, ticking=false;
-  window.addEventListener('scroll',function(){
-    if(!ticking){
+  // --- Reading Progress ---
+  if (!document.getElementById('readProgress')) {
+    var rp = document.createElement('div');
+    rp.className = 'read-progress';
+    rp.id = 'readProgress';
+    document.body.appendChild(rp);
+  }
+
+  // --- Bottom Nav (mobile only) ---
+  if (!document.querySelector('.mob-bottom-nav')) {
+    var bnItems = [
+      {href:'index.html', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>', label:'Trang chủ'},
+      {href:'grammar.html', icon:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>', label:'Ngữ pháp'},
+      {href:'vocabulary.html', icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>', label:'Từ vựng'},
+      {href:'quiz.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>', label:'Bài tập'}
+    ];
+    var bnHtml = '<div class="mob-bottom-nav"><div class="mob-bottom-nav-inner">';
+    bnItems.forEach(function(item){
+      var isActive = path === item.href ? ' active' : '';
+      bnHtml += '<a href="' + item.href + '" class="mob-bn-item' + isActive + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' + item.icon + '</svg><span>' + item.label + '</span></a>';
+    });
+    // More button
+    bnHtml += '<button class="mob-bn-item" id="moreNavBtn" onclick="document.getElementById(\'moreDrawer\').classList.toggle(\'open\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg><span>Thêm</span></button>';
+    bnHtml += '</div></div>';
+
+    var bnDiv = document.createElement('div');
+    bnDiv.innerHTML = bnHtml;
+    document.body.appendChild(bnDiv.firstElementChild);
+  }
+
+  // --- More Drawer ---
+  if (!document.getElementById('moreDrawer')) {
+    var drawerItems = [
+      {href:'collocations.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/>', label:'Cụm từ hay đi cùng'},
+      {href:'idioms.html', icon:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>', label:'Thành ngữ'},
+      {href:'phrasal-verbs.html', icon:'<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>', label:'Cụm động từ'},
+      {href:'confusing-words.html', icon:'<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/>', label:'Từ hay nhầm'},
+      {href:'irregular-verbs.html', icon:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>', label:'Động từ BQT'},
+      {href:'pronunciation.html', icon:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>', label:'Phát âm'},
+      {href:'skills.html', icon:'<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>', label:'Nghe Nói Đọc Viết'},
+      {href:'ielts.html', icon:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.71 4 7 5.29 7 6.5V8"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18.29 4 17 5.29 17 6.5V8"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>', label:'IELTS'},
+      {href:'academic-words.html', icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>', label:'570 từ học thuật'},
+      {href:'dictionary.html', icon:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>', label:'Từ điển'},
+      {href:'listening.html', icon:'<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>', label:'Luyện nghe'},
+      {href:'writing-checker.html', icon:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>', label:'Kiểm tra bài viết'},
+      {href:'linking-words.html', icon:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>', label:'Từ nối'},
+      {href:'conversation.html', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', label:'Giao tiếp'},
+      {href:'spaced-repetition.html', icon:'<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>', label:'Ôn tập lặp lại'},
+      {href:'progress.html', icon:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>', label:'Tiến độ học'},
+      {href:'ielts-writing-band9.html', icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>', label:'Viết IELTS mẫu'},
+      {href:'ielts-speaking-topics.html', icon:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/>', label:'Nói IELTS mẫu'},
+      {href:'paraphrasing.html', icon:'<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>', label:'Diễn đạt lại'},
+      {href:'mock-test.html', icon:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>', label:'Thi thử IELTS'}
+    ];
+    var dHtml = '<div class="more-drawer" id="moreDrawer">';
+    dHtml += '<div class="more-drawer-overlay" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"></div>';
+    dHtml += '<div class="more-drawer-sheet"><div class="more-drawer-handle" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"><span></span></div>';
+    dHtml += '<div class="more-drawer-grid">';
+    drawerItems.forEach(function(item){
+      dHtml += '<a href="' + item.href + '" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px">' + item.icon + '</svg><span>' + item.label + '</span></a>';
+    });
+    // Theme button in drawer
+    dHtml += '<button class="md-item" id="mdThemeBtn" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\');var p=document.getElementById(\'themePanel\');if(p){p.style.display=\'block\';p.style.bottom=\'80px\';p.style.right=\'16px\';p.style.left=\'16px\';p.style.width=\'auto\';setTimeout(function(){p.style.opacity=\'1\';p.style.transform=\'translateY(0)\'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Đổi giao diện</span></button>';
+    dHtml += '</div></div></div>';
+
+    var dDiv = document.createElement('div');
+    dDiv.innerHTML = dHtml;
+    document.body.appendChild(dDiv.firstElementChild);
+  }
+
+  // --- Scroll: hide/show bottom nav ---
+  var nav = document.querySelector('.mob-bottom-nav');
+  if (!nav) return;
+  var lastY = 0, ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking) {
       requestAnimationFrame(function(){
-        var y=window.scrollY;
-        if(y>lastY && y>100) nav.classList.add('ee-hidden');
+        var y = window.scrollY;
+        if (y > lastY && y > 100) nav.classList.add('ee-hidden');
         else nav.classList.remove('ee-hidden');
-        lastY=y;
-        ticking=false;
+        lastY = y;
+        ticking = false;
       });
-      ticking=true;
+      ticking = true;
     }
-  },{passive:true});
+  }, {passive: true});
 })();
+
 
 // Robust Lucide icon initialization with retry
 (function initLucideIcons(){

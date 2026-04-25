@@ -141,7 +141,7 @@ function showConfetti(){
   animate();
 }
 
-// ==================== XP BAR (floating) ====================
+// ==================== XP BAR (below nav) ====================
 function updateXPBar(){
   const s=getGameState();
   const lv=getLevel(s.totalXP);
@@ -151,41 +151,47 @@ function updateXPBar(){
   let bar=document.getElementById('ee-xp-bar');
   if(!bar){
     bar=document.createElement('div');bar.id='ee-xp-bar';
-    bar.style.cssText='position:fixed;bottom:76px;left:50%;transform:translateX(-50%) translateY(80px);z-index:199;background:rgba(11,26,30,0.95);backdrop-filter:blur(12px);border:0.5px solid var(--border);border-radius:20px;padding:4px 12px;font-size:10px;color:var(--text2);display:none;align-items:center;gap:6px;cursor:pointer;transition:all .3s;font-family:"DM Sans",sans-serif;white-space:nowrap;opacity:0';
+    bar.style.cssText='position:fixed;top:0;left:0;right:0;z-index:199;display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 16px;font-size:11px;color:var(--text2);font-family:"DM Sans",sans-serif;white-space:nowrap;cursor:pointer;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease;background:rgba(11,26,30,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)';
     bar.onclick=()=>{window.location.href='progress.html';};
     document.body.appendChild(bar);
-    // Only show on mobile
-    var mq=window.matchMedia('(max-width:900px)');
-    function toggleBar(e){bar.style.display=e.matches?'flex':'none';}
-    mq.addEventListener('change',toggleBar);
-    toggleBar(mq);
-    // Auto-show briefly then hide
-    var hideTimer;
-    function showBarBriefly(){
-      bar.style.opacity='1';bar.style.transform='translateX(-50%) translateY(0)';
-      clearTimeout(hideTimer);
-      hideTimer=setTimeout(function(){bar.style.opacity='0';bar.style.transform='translateX(-50%) translateY(80px)';},3000);
+
+    // Position below nav
+    function positionBar(){
+      var nav=document.querySelector('nav');
+      if(nav){bar.style.top=nav.offsetHeight+'px';}
+      else{bar.style.top='0';}
     }
-    showBarBriefly();
-    // Show on scroll stop
-    var scrollTimer;
-    window.addEventListener('scroll',function(){
-      clearTimeout(scrollTimer);
-      scrollTimer=setTimeout(showBarBriefly,500);
-    });
+    positionBar();
+    window.addEventListener('resize',positionBar);
+
+    // Auto-hide on mobile after 4s
+    var hideTimer;
+    function autoHideMobile(){
+      if(window.innerWidth<=900){
+        clearTimeout(hideTimer);
+        bar.style.opacity='1';bar.style.transform='translateY(0)';
+        hideTimer=setTimeout(function(){
+          bar.style.opacity='0';bar.style.transform='translateY(-100%)';
+        },4000);
+      } else {
+        bar.style.opacity='1';bar.style.transform='translateY(0)';
+      }
+    }
+    autoHideMobile();
+    window.addEventListener('resize',autoHideMobile);
   }
   bar.innerHTML=`
-    <i data-lucide="${lv.icon}" style="width:16px;height:16px;color:var(--accent)"></i>
-    <div>
-      <div style="font-weight:500;color:var(--text)">${lv.name}</div>
-      <div style="width:80px;height:3px;background:var(--border);border-radius:2px;margin-top:3px">
-        <div style="width:${pct}%;height:100%;background:var(--accent);border-radius:2px;transition:width .5s"></div>
-      </div>
+    <i data-lucide="${lv.icon}" style="width:14px;height:14px;color:var(--accent)"></i>
+    <span style="font-weight:500;color:var(--text)">${lv.name}</span>
+    <div style="width:80px;height:3px;background:var(--border);border-radius:2px">
+      <div style="width:${pct}%;height:100%;background:var(--accent);border-radius:2px;transition:width .5s"></div>
     </div>
-    <div style="color:var(--accent);font-weight:500">${s.totalXP} XP</div>
+    <span style="color:var(--accent);font-weight:500">${s.totalXP} XP</span>
+    <span style="color:var(--text3);font-size:10px">🔥 ${s.streak} ngày</span>
   `;
   if(typeof lucide!=='undefined'&&lucide.createIcons)setTimeout(()=>lucide.createIcons(),100);
 }
+
 
 // ==================== DAILY CHALLENGE ====================
 const DAILY_WORDS=[
