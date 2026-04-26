@@ -1,6 +1,6 @@
 # 📚 EasyEnglish — Project Documentation
 
-> **Cập nhật lần cuối:** 2026-04-25  
+> **Cập nhật lần cuối:** 2026-04-26  
 > **Tổng số files:** 46 files (31 HTML + 5 JS + 1 CSS + 9 assets/config)  
 > **Tổng dung lượng:** ~1.6MB  
 > **Mục đích file này:** Ghi chi tiết toàn bộ project để bất kỳ ai (hoặc AI mới) đọc file này là hiểu hết plan, kiến trúc, tính năng, API, và cách hoạt động.
@@ -47,7 +47,7 @@
 | File | Vai trò | Kích thước | Version hiện tại |
 |------|---------|------------|------------------|
 | `style.css` | CSS chung: nav, bottom nav, more drawer, back-to-top, reading progress, responsive | 14,199 B | `?v=3` |
-| `common.js` | JS injection: bottom nav, more drawer, back-to-top, reading progress, select-to-translate, page transitions | 29,027 B | `?v=7` |
+| `common.js` | JS injection: bottom nav, more drawer (36 items đồng bộ nav.js), back-to-top, reading progress, select-to-translate, page transitions, global search | 41,000 B | `?v=13` |
 | `theme.js` | Theme engine: 12 themes, theme picker panel, CSS variables | 17,544 B | `?v=3` |
 | `gamification.js` | XP system, streak, badges, daily challenge, confetti, sound effects, XP bar | 13,534 B | `?v=3` |
 | `dict-data.js` | Dữ liệu từ điển offline (~2000+ từ) cho autocomplete | 14,213 B | — |
@@ -199,9 +199,10 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ### More Drawer (Mobile only)
 - **Mở từ:** Nút "More" trên Bottom Nav
-- **Items:** Skills, IELTS, Quiz, Phrasal Verbs, Idioms, Progress, Đổi giao diện
+- **Tổng:** 36 items + nút Đổi giao diện — **đồng bộ với `nav.js`**
+- **Nhóm:** Học cơ bản (4) → Từ vựng (7) → Kỹ năng (7) → IELTS (7) → Từ điển (5) → Chuyên ngành (4) → Tiện ích (2)
 - **Config:** Object `drawerItems` trong `common.js`
-- **Style:** Slide-up overlay, glassmorphism
+- **Style:** Slide-up overlay, glassmorphism, grid 4 cột
 
 ### Back-to-Top Button
 - **Hiện khi:** scrollY > 300px
@@ -611,7 +612,7 @@ sed -i '' 's/common.js?v=7/common.js?v=8/g' *.html
 2. **KHÔNG dùng emoji** — chỉ dùng Lucide SVG Icons.
 3. **Mọi trang mới** phải có nội dung thật, đầy đủ, chất lượng cao — không placeholder.
 4. **Mỗi module phải TƯƠNG TÁC** — không chỉ để đọc. Phải có ít nhất 1 trong: Quiz, Flashcard, Fill-in-the-blank, Drag & Drop, Matching, hoặc bài tập thực hành. User phải thực sự HỌC được, không chỉ đọc lý thuyết.
-5. **Version hiện tại:** `common.js?v=12`, `style.css?v=3`, `theme.js?v=3`, `gamification.js?v=3`
+5. **Version hiện tại:** `common.js?v=13`, `style.css?v=3`, `theme.js?v=3`, `gamification.js?v=3`
 6. **Mỗi khi thay đổi** common.js/theme.js/style.css → PHẢI bump version trong TẤT CẢ files HTML.
 7. **Khi thêm file mới** → PHẢI đồng bộ TẤT CẢ file theo checklist dưới:
 
