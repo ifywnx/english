@@ -57,6 +57,7 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link rel="canonical" href="https://easyenglish.vn/phrasal-verbs.html">
 </head>
 <body>
 
@@ -231,8 +232,7 @@ function showQuizQ(){
 }
 function checkQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;if(ans===correct){btn.style.background="rgba(107,203,119,0.15)";btn.style.borderColor="var(--green)";btn.style.color="var(--green)";quizScore++;}else{btn.style.background="rgba(255,138,128,0.15)";btn.style.borderColor="var(--coral)";btn.style.color="var(--coral)";document.querySelectorAll("#qOpts button").forEach(function(b){if(b.dataset.a===correct){b.style.background="rgba(107,203,119,0.15)";b.style.borderColor="var(--green)";b.style.color="var(--green)";}});}setTimeout(function(){quizIdx++;showQuizQ();},1200);}
 renderPV();
-function toggleDrop(el){var d=el.closest(".nav-drop");var o=d.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(x){x.classList.remove("open");});if(!o)d.classList.add("open");}
-document.addEventListener("click",function(e){if(!e.target.closest(".nav-drop"))document.querySelectorAll(".nav-drop.open").forEach(function(d){d.classList.remove("open");});});
+
 </script>
 <script defer src="theme.js?v=3"></script>
 

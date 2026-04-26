@@ -51,6 +51,7 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link rel="canonical" href="https://easyenglish.vn/listening.html">
 </head>
 <body>
 
@@ -311,8 +312,7 @@ function showComplete(){
 
 updateUI();
 
-function toggleDrop(el){const d=el.closest('.nav-drop');const o=d.classList.contains('open');document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));if(!o)d.classList.add('open');}
-document.addEventListener('click',e=>{if(!e.target.closest('.nav-drop'))document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));});
+
 </script>
 <script defer src="theme.js?v=3"></script>
 

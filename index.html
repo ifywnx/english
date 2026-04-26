@@ -234,6 +234,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link rel="canonical" href="https://easyenglish.vn/index.html">
 </head>
 <body>
 
@@ -599,12 +600,6 @@ document.getElementById('dailyTip').textContent=TIPS[doy%TIPS.length];
 initStreak();
 
 /* === NAV DROPDOWN === */
-function toggleDrop(el){
-  var drop=el.closest('.nav-drop');
-  var wasOpen=drop.classList.contains('open');
-  document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
-  if(!wasOpen) drop.classList.add('open');
-}
 document.addEventListener('click',function(e){
   if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
 });

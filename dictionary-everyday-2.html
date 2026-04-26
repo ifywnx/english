@@ -60,6 +60,7 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link rel="canonical" href="https://easyenglish.vn/dictionary-everyday-2.html">
 </head>
 <body>
 
@@ -356,14 +357,6 @@ function filterBand(band,el){currentBand=band;renderWords();}
 
 renderWords();
 
-// Nav dropdown toggle
-function toggleDrop(el){
-  const drop = el.closest('.nav-drop');
-  const wasOpen = drop.classList.contains('open');
-  document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-  if(!wasOpen) drop.classList.add('open');
-}
-document.addEventListener('click',e=>{
   if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
 });
 </script>
