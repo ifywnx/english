@@ -426,6 +426,19 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 | 4 | **Inline `<style>` quá lớn** | Nhẹ | Chưa — ưu tiên thấp |
 
 > **`nav.js?v=1`** — Single Source of Truth cho navigation. Thêm trang mới: chỉ thêm 1 dòng vào `NAV_ITEMS` trong `nav.js`.
+>
+> ⚠️ **LƯU Ý:** Sửa thanh nav trên máy tính (desktop) = sửa luôn thanh nav trên điện thoại (mobile). Cả hai đều được generate từ cùng 1 file `nav.js`. Desktop dùng `buildDesktopNav()` (dropdown), mobile dùng `buildMobileMenu()` (full-screen overlay). Nếu thêm/xóa/sửa link trong `NAV_ITEMS` → cả desktop lẫn mobile đều thay đổi.
+>
+> ⚠️ **QUAN TRỌNG:** Mọi file HTML mới **BẮT BUỘC** phải có `<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>` trong `<head>`, nếu không icon nav + breadcrumb sẽ không hiển thị.
+
+#### ✨ Smart Nav Features (v2 — 26/04/2026)
+| # | Tính năng | Mô tả |
+|---|-----------|-------|
+| 1 | **Active page highlight** | Tự nhận biết trang hiện tại → highlight link + group header bằng accent color, thêm dot indicator |
+| 2 | **Mobile accordion** | Menu mobile phân nhóm với accordion (mở/đóng nhóm), group chứa trang hiện tại tự mở sẵn |
+| 3 | **Auto-hide on scroll** | Cuộn xuống → nav tự ẩn (tiết kiệm màn hình), cuộn lên → nav hiện lại, smooth cubic-bezier transition |
+| 4 | **Close on outside click** | Click bên ngoài dropdown → tự đóng dropdown |
+| 5 | **Body scroll lock** | Khi mở mobile menu → khóa cuộn body, đóng → mở lại |
 
 ### Phase 2: Web Polish (✅ HOÀN THÀNH)
 | # | Feature | Mô tả | Trạng thái |
