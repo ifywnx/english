@@ -427,30 +427,45 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 > **`nav.js?v=1`** — Single Source of Truth cho navigation. Thêm trang mới: chỉ thêm 1 dòng vào `NAV_ITEMS` trong `nav.js`.
 
-### Phase 2: Web Polish (Đang làm)
+### Phase 2: Web Polish (✅ HOÀN THÀNH)
 | # | Feature | Mô tả | Trạng thái |
 |---|---------|-------|-----------|
 | 1 | Reading Comprehension | Bài đọc hiểu có câu hỏi tương tác | ✅ Xong |
 | 2 | Word Formation | Cấu tạo từ (prefix, suffix, root) | ✅ Xong |
-| 3 | Daily Challenge Page | Quiz hàng ngày, streak reward | Chưa |
+| 3 | Daily Challenge Page | Quiz hàng ngày, streak reward | ✅ Xong |
 | 4 | Gerund vs Infinitive | Module riêng biệt | ✅ Xong |
-| 5 | Pronunciation Recording | Ghi âm + so sánh phát âm | Chưa |
+| 5 | Pronunciation Recording | Ghi âm + so sánh phát âm | ✅ Đã có trong pronunciation.html |
 | 6 | Loại bỏ mọi Emoji | Thay toàn bộ bằng Lucide Icons | ✅ Xong (88→0) |
-| 7 | Thêm themes mới | Liên tục mở rộng theme collection | Chưa |
+| 7 | Thêm themes mới | Mở rộng từ 12 → 16 themes | ✅ Xong (16 themes) |
 | 8 | Smooth transitions | Page transitions mượt như native iOS | ✅ Xong (34 files) |
-| 9 | PWA hoàn chỉnh | Service Worker, offline, installable | Chưa |
+| 9 | PWA (installable + offline) | manifest.json + sw.js + icons | ✅ Xong |
 | 10 | SEO / OpenGraph | Meta tags, Schema.org | ✅ Xong (34/34 files) |
 | 11 | Preposition Combinations | depend on, interested in, good at... | ✅ Xong |
-| 12 | TOEIC Module | Riêng cho luyện thi TOEIC | Chưa |
+| 12 | TOEIC Module | Riêng cho luyện thi TOEIC | ✅ Xong |
+| 13 | Deploy cập nhật GitHub Pages | User tự commit & push | ✅ User quản lý |
+| 14 | Google Analytics | GA4 tag đã thêm 36 files — cần thay `G-XXXXXXXXXX` bằng ID thật | ✅ Xong (cần GA ID) |
+| 15 | Loading states / Skeleton | Hiển thị khi mạng chậm thay vì trắng | ✅ Xong (36 files) |
+| 16 | 404 page | Trang lỗi thân thiện khi vào sai URL | ✅ Xong |
+| 17 | Favicon + Web Manifest | Icon bookmark, share link đẹp | ✅ Xong |
+| 18 | Performance (lazy load, minify) | Tối ưu tốc độ tải trang | ✅ Xong (37 files) |
 
-### Phase 3: Tiếng Anh chuyên ngành
-| # | Feature | Mô tả |
-|---|---------|-------|
-| 13 | Business English | Từ vựng & hội thoại doanh nghiệp |
-| 14 | IT English | Thuật ngữ lập trình, công nghệ |
-| 15 | Medical English | Thuật ngữ y tế, bệnh viện |
-| 16 | Legal English | Thuật ngữ pháp lý, hợp đồng |
-| 17 | Global Search | Tìm kiếm toàn site |
+> **LƯU Ý:** Web hỗ trợ cả ONLINE lẫn OFFLINE (qua PWA). Khi có mạng → sync data. Khi mất mạng → vẫn dùng được nội dung đã tải.
+
+> **CHIẾN LƯỢC SẢN PHẨM:**
+> - Build cả **WEB** lẫn **APP** — chạy song song, cùng nội dung
+> - **Web** = truy cập nhanh trên browser, SEO, chia sẻ link, thu hút user
+> - **App (React Native Expo)** = trải nghiệm native mượt mà, push notification, in-app purchase, thu nhập chính
+> - Web hoàn thiện trước → dùng làm blueprint chuyển sang app
+> - Cùng data/logic, khác UI layer — giống mô hình Duolingo, Cake, Elsa
+
+### Phase 3: Tiếng Anh chuyên ngành (✅ HOÀN THÀNH)
+| # | Feature | Mô tả | Trạng thái |
+|---|---------|-------|-----------|
+| 13 | Business English | Từ vựng, email mẫu, hội thoại, quiz | ✅ Xong |
+| 14 | IT English | Thuật ngữ lập trình, DevOps, phỏng vấn tech, quiz | ✅ Xong |
+| 15 | Medical English | Cơ thể, bệnh viện, triệu chứng, hội thoại, quiz | ✅ Xong |
+| 16 | Legal English | Hợp đồng, tòa án, sở hữu trí tuệ, cụm từ pháp lý, quiz | ✅ Xong |
+| 17 | Global Search | Tìm kiếm toàn site (Ctrl+K), 35 trang, keyboard nav | ✅ Xong |
 
 ### Phase 4: React Native Expo + Backend
 | # | Feature | Mô tả |

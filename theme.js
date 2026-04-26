@@ -174,6 +174,63 @@ const THEMES = {
       '--orb1':'rgba(132,204,22,0.08)','--orb2':'rgba(167,139,250,0.06)',
       '--logo-text':'#f5f8ef'
     }
+  },
+  /* ── NEW THEMES ─────────────────────────── */
+  ocean: {
+    name: 'Ocean Deep', icon: 'waves', type: 'dark',
+    colors: ['#0a2540','#00d4aa','#38bdf8','#fbbf24'],
+    vars: {
+      '--bg':'#0a1628','--bg2':'#0f2035','--bg3':'#142a42',
+      '--accent':'#00d4aa','--accent2':'#38bdf8','--accent3':'#fbbf24',
+      '--coral':'#f87171','--green':'#34d399','--pink':'#c084fc',
+      '--text':'#e8f4f8','--text2':'#94b8d0','--text3':'#5a8aaa',
+      '--border':'rgba(0,212,170,0.08)','--card':'#0f2035','--card2':'#142a42',
+      '--nav-bg':'rgba(10,22,40,0.94)','--drop-bg':'rgba(15,32,53,0.98)',
+      '--orb1':'rgba(0,212,170,0.1)','--orb2':'rgba(56,189,248,0.06)',
+      '--logo-text':'#0a1628'
+    }
+  },
+  neon: {
+    name: 'Neon City', icon: 'tv', type: 'dark',
+    colors: ['#1a0a2e','#ff00ff','#00ffcc','#ffff00'],
+    vars: {
+      '--bg':'#0d0618','--bg2':'#150a28','--bg3':'#1e1038',
+      '--accent':'#ff00ff','--accent2':'#00ffcc','--accent3':'#ffff00',
+      '--coral':'#ff4466','--green':'#00ff88','--pink':'#ff66cc',
+      '--text':'#f5e6ff','--text2':'#c8a0e8','--text3':'#8a60b0',
+      '--border':'rgba(255,0,255,0.1)','--card':'#150a28','--card2':'#1e1038',
+      '--nav-bg':'rgba(13,6,24,0.94)','--drop-bg':'rgba(21,10,40,0.98)',
+      '--orb1':'rgba(255,0,255,0.08)','--orb2':'rgba(0,255,204,0.06)',
+      '--logo-text':'#0d0618'
+    }
+  },
+  lavender: {
+    name: 'Lavender', icon: 'flower', type: 'light',
+    colors: ['#f0e6ff','#8b5cf6','#ec4899','#f59e0b'],
+    vars: {
+      '--bg':'#f8f4ff','--bg2':'#f0e6ff','--bg3':'#e6d8f8',
+      '--accent':'#8b5cf6','--accent2':'#ec4899','--accent3':'#f59e0b',
+      '--coral':'#f87171','--green':'#34d399','--pink':'#ec4899',
+      '--text':'#1e0a3a','--text2':'#4a2a6e','--text3':'#7a5a9e',
+      '--border':'rgba(139,92,246,0.1)','--card':'#f0e6ff','--card2':'#e6d8f8',
+      '--nav-bg':'rgba(248,244,255,0.96)','--drop-bg':'rgba(240,230,255,0.98)',
+      '--orb1':'rgba(139,92,246,0.08)','--orb2':'rgba(236,72,153,0.06)',
+      '--logo-text':'#f8f4ff'
+    }
+  },
+  matcha: {
+    name: 'Matcha', icon: 'coffee', type: 'light',
+    colors: ['#e8f0e0','#4a7c59','#8fbc8f','#d4a574'],
+    vars: {
+      '--bg':'#f4f8f0','--bg2':'#e8f0e0','--bg3':'#dce8d0',
+      '--accent':'#4a7c59','--accent2':'#8fbc8f','--accent3':'#d4a574',
+      '--coral':'#c97c6b','--green':'#4a7c59','--pink':'#c8a0a0',
+      '--text':'#1a2818','--text2':'#3a5038','--text3':'#6a806a',
+      '--border':'rgba(74,124,89,0.1)','--card':'#e8f0e0','--card2':'#dce8d0',
+      '--nav-bg':'rgba(244,248,240,0.96)','--drop-bg':'rgba(232,240,224,0.98)',
+      '--orb1':'rgba(74,124,89,0.06)','--orb2':'rgba(143,188,143,0.04)',
+      '--logo-text':'#f4f8f0'
+    }
   }
 };
 

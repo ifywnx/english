@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Từ vựng, mẫu email, hội thoại và bài tập cho môi trường doanh nghiệp.">
+<meta property="og:title" content="Tiếng Anh thương mại — EasyEnglish">
+<meta property="og:description" content="Từ vựng, mẫu email, hội thoại và bài tập cho môi trường doanh nghiệp.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tiếng Anh thương mại — EasyEnglish">
+<meta name="twitter:description" content="Từ vựng, mẫu email, hội thoại và bài tập cho môi trường doanh nghiệp.">
+<title>Tiếng Anh thương mại — EasyEnglish</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<div class="skeleton-loader" id="skeletonLoader"><div class="sk-bar sk-nav"></div><div class="sk-bar sk-title"></div><div class="sk-bar sk-desc"></div><div class="sk-bar sk-card"></div></div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">Business English</span></div>
+<div class="page-label">Chuyên ngành</div>
+<h1 class="page-title">Tiếng Anh thương mại</h1>
+<p class="page-desc">Từ vựng, mẫu email, hội thoại và bài tập cho môi trường doanh nghiệp.</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="showBizTab('vocab')" class="tc-tab active" id="bz-vocab">Từ vựng</button>
+<button onclick="showBizTab('email')" class="tc-tab" id="bz-email">Email mẫu</button>
+<button onclick="showBizTab('dialog')" class="tc-tab" id="bz-dialog">Hội thoại</button>
+<button onclick="showBizTab('quiz')" class="tc-tab" id="bz-quiz">Quiz</button>
+</div>
+<div id="bizContent"></div>
+</div>
+
+<script>
+var BIZ_VOCAB=[
+{cat:"Họp & Thuyết trình",words:[
+{en:"agenda",vi:"chương trình nghị sự",ex:"Let's move to the next item on the agenda."},
+{en:"minutes",vi:"biên bản họp",ex:"Could you take the minutes today?"},
+{en:"stakeholder",vi:"bên liên quan",ex:"We need to consult all stakeholders."},
+{en:"deadline",vi:"hạn chót",ex:"The deadline is next Friday."},
+{en:"milestone",vi:"cột mốc",ex:"We've reached an important milestone."},
+{en:"KPI",vi:"chỉ số hiệu suất",ex:"Our KPIs show strong growth this quarter."},
+{en:"brainstorm",vi:"động não",ex:"Let's brainstorm some new ideas."},
+{en:"follow up",vi:"theo dõi tiếp",ex:"I'll follow up with you on Monday."}
+]},
+{cat:"Nhân sự (HR)",words:[
+{en:"onboarding",vi:"quy trình nhập việc",ex:"The onboarding process takes two weeks."},
+{en:"probation",vi:"thử việc",ex:"He's still on probation for 3 months."},
+{en:"turnover",vi:"tỷ lệ nghỉ việc",ex:"High turnover affects team morale."},
+{en:"appraisal",vi:"đánh giá hiệu suất",ex:"Annual appraisals are in December."},
+{en:"severance",vi:"trợ cấp thôi việc",ex:"She received a generous severance package."},
+{en:"headcount",vi:"số lượng nhân sự",ex:"We need to increase headcount by 10%."},
+{en:"outsource",vi:"thuê ngoài",ex:"We outsource our IT support."},
+{en:"retention",vi:"giữ chân nhân viên",ex:"Employee retention is a top priority."}
+]},
+{cat:"Tài chính & Kế toán",words:[
+{en:"revenue",vi:"doanh thu",ex:"Revenue exceeded expectations this quarter."},
+{en:"ROI",vi:"lợi nhuận đầu tư",ex:"What's the expected ROI on this project?"},
+{en:"overhead",vi:"chi phí vận hành",ex:"We need to reduce overhead costs."},
+{en:"cash flow",vi:"dòng tiền",ex:"Cash flow is critical for small businesses."},
+{en:"break even",vi:"hòa vốn",ex:"We expect to break even within 6 months."},
+{en:"fiscal year",vi:"năm tài chính",ex:"The fiscal year ends in March."},
+{en:"liability",vi:"nợ phải trả",ex:"Total liabilities have decreased."},
+{en:"equity",vi:"vốn chủ sở hữu",ex:"The company raised equity through IPO."}
+]}
+];
+
+var BIZ_EMAILS=[
+{title:"Xin nghỉ phép",subject:"Leave Request — [Date]",body:"Dear [Manager],\n\nI am writing to request leave from [start date] to [end date] due to [reason].\n\nI have ensured that all my current tasks are up to date, and [colleague name] has kindly agreed to cover my responsibilities during my absence.\n\nPlease let me know if you need any further information.\n\nBest regards,\n[Your name]"},
+{title:"Xác nhận cuộc họp",subject:"Meeting Confirmation — [Topic]",body:"Dear [Name],\n\nThank you for scheduling the meeting. I would like to confirm my attendance at:\n\nDate: [Date]\nTime: [Time]\nLocation: [Room/Link]\n\nI look forward to discussing [topic]. Please find the agenda attached.\n\nBest regards,\n[Your name]"},
+{title:"Theo dõi sau họp",subject:"Follow-Up: [Meeting Topic]",body:"Dear Team,\n\nThank you for attending today's meeting. Below is a summary of key action items:\n\n1. [Task 1] — [Person] — Due: [Date]\n2. [Task 2] — [Person] — Due: [Date]\n3. [Task 3] — [Person] — Due: [Date]\n\nPlease don't hesitate to reach out if you have any questions.\n\nBest regards,\n[Your name]"},
+{title:"Phản hồi khiếu nại",subject:"Re: [Complaint Topic]",body:"Dear [Customer Name],\n\nThank you for bringing this matter to our attention. We sincerely apologize for the inconvenience caused.\n\nWe have investigated the issue and [explain resolution]. To prevent this from happening again, we have [describe action taken].\n\nPlease feel free to contact us if you need further assistance.\n\nSincerely,\n[Your name]"}
+];
+
+var BIZ_DIALOGS=[
+{title:"Phỏng vấn xin việc",lines:[
+{who:"Interviewer",text:"Tell me about yourself and your experience."},
+{who:"Candidate",text:"I have 3 years of experience in digital marketing, specializing in social media campaigns."},
+{who:"Interviewer",text:"What would you say is your greatest strength?"},
+{who:"Candidate",text:"I'm very detail-oriented and I work well under pressure."},
+{who:"Interviewer",text:"Where do you see yourself in five years?"},
+{who:"Candidate",text:"I see myself in a leadership role, helping to drive the company's growth strategy."}
+]},
+{title:"Đàm phán hợp đồng",lines:[
+{who:"Seller",text:"Our standard price for this package is $50,000 per year."},
+{who:"Buyer",text:"That's slightly above our budget. Would you consider a 15% discount for a 2-year commitment?"},
+{who:"Seller",text:"We can offer 10% for a 2-year contract, with additional support included."},
+{who:"Buyer",text:"That sounds reasonable. Could you also include quarterly review meetings?"},
+{who:"Seller",text:"Absolutely. I'll have the revised contract ready by Friday."}
+]},
+{title:"Thuyết trình dự án",lines:[
+{who:"Presenter",text:"Good morning everyone. Today I'd like to present our Q3 results."},
+{who:"Presenter",text:"As you can see from this chart, revenue grew by 25% compared to last quarter."},
+{who:"Audience",text:"What drove the increase in the Asia-Pacific region?"},
+{who:"Presenter",text:"Great question. The growth was primarily driven by our new partnership with local distributors."},
+{who:"Presenter",text:"Moving on to our Q4 targets, we're aiming for 30% growth."}
+]}
+];
+
+var BIZ_QUIZ=[
+{q:"'Break even' nghĩa là gì?",opts:["Phá sản","Hòa vốn","Lãi lớn","Giảm giá"],ans:1},
+{q:"Từ nào đúng: 'Please find the report ___'",opts:["attach","attached","attaching","attachment"],ans:1},
+{q:"'Stakeholder' nghĩa là gì?",opts:["Cổ đông","Bên liên quan","Nhân viên","Khách hàng"],ans:1},
+{q:"Email kết thúc lịch sự nhất?",opts:["Thanks","Best regards","Bye","See ya"],ans:1},
+{q:"'ROI' viết tắt của gì?",opts:["Rate of Income","Return on Investment","Risk of Inflation","Revenue on Interest"],ans:1},
+{q:"'Onboarding' là gì?",opts:["Sa thải","Quy trình nhập việc","Đào tạo","Nghỉ phép"],ans:1},
+{q:"'I'll follow ___ with you next week.'",opts:["on","in","up","out"],ans:2},
+{q:"'The project is ___ schedule.' (đúng tiến độ)",opts:["in","at","on","by"],ans:2},
+{q:"'Overhead costs' là gì?",opts:["Chi phí nguyên liệu","Chi phí vận hành","Lương nhân viên","Thuế"],ans:1},
+{q:"'Could you take the ___?' (ghi biên bản họp)",opts:["notes","minutes","hours","records"],ans:1}
+];
+
+var curBiz='vocab';
+function showBizTab(t){curBiz=t;document.querySelectorAll('.tc-tab').forEach(function(b){b.classList.remove('active');});document.getElementById('bz-'+t).classList.add('active');renderBiz();}
+
+function renderBiz(){
+  var h='';
+  if(curBiz==='vocab'){
+    h=BIZ_VOCAB.map(function(c){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
+        '<div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:12px"><i data-lucide="briefcase" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+c.cat+'</div>'+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px">'+
+          c.words.map(function(w){
+            return '<div style="padding:10px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent)">'+
+              '<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:var(--accent)">'+w.vi+'</span></div>'+
+              '<div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div></div>';
+          }).join('')+'</div></div>';
+    }).join('');
+  } else if(curBiz==='email'){
+    h=BIZ_EMAILS.map(function(e){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
+        '<div style="font-size:16px;font-weight:600;color:var(--accent2);margin-bottom:8px"><i data-lucide="mail" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+e.title+'</div>'+
+        '<div style="font-size:13px;color:var(--text3);margin-bottom:8px">Subject: <strong>'+e.subject+'</strong></div>'+
+        '<pre style="font-size:13px;color:var(--text);background:var(--card2);padding:14px;border-radius:8px;white-space:pre-wrap;font-family:DM Sans,sans-serif;line-height:1.7;border:0.5px solid var(--border)">'+e.body+'</pre></div>';
+    }).join('');
+  } else if(curBiz==='dialog'){
+    h=BIZ_DIALOGS.map(function(d){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
+        '<div style="font-size:16px;font-weight:600;color:var(--accent3);margin-bottom:12px"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+d.title+'</div>'+
+        d.lines.map(function(l){
+          var isLeft=l.who.indexOf('nterviewer')>-1||l.who.indexOf('eller')>-1||l.who.indexOf('udience')>-1;
+          var bg=isLeft?'rgba(100,216,165,0.05)':'rgba(167,139,250,0.05)';
+          var bc=isLeft?'var(--accent)':'var(--accent2)';
+          return '<div style="padding:10px 14px;background:'+bg+';border-radius:10px;margin-bottom:6px;border-left:3px solid '+bc+'"><span style="font-size:12px;font-weight:600;color:'+bc+'">'+l.who+'</span><div style="font-size:14px;color:var(--text);margin-top:4px;line-height:1.5">'+l.text+'</div></div>';
+        }).join('')+'</div>';
+    }).join('');
+  } else {
+    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"><div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>Business Quiz ('+BIZ_QUIZ.length+' câu)</div><div id="bqBox"><button onclick="startBQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu</button></div></div>';
+  }
+  document.getElementById('bizContent').innerHTML=h;
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+
+var bqI=0,bqOk=0;
+function startBQ(){bqI=0;bqOk=0;nextBQ();}
+function nextBQ(){
+  if(bqI>=BIZ_QUIZ.length){var p=Math.round(bqOk/BIZ_QUIZ.length*100);document.getElementById('bqBox').innerHTML='<div style="font-size:28px;font-weight:600;color:var(--accent);margin:16px 0">'+bqOk+'/'+BIZ_QUIZ.length+' ('+p+'%)</div><button onclick="startBQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';return;}
+  var q=BIZ_QUIZ[bqI];
+  document.getElementById('bqBox').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(bqI+1)+'/'+BIZ_QUIZ.length+'</div><div style="font-size:16px;color:var(--text);margin:12px 0;font-weight:500;line-height:1.5">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:400px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="chkBQ('+i+')" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif" id="bqo-'+i+'">'+o+'</button>';}).join('')+'</div><div id="bqFb" style="margin-top:8px;font-size:13px"></div>';
+}
+function chkBQ(i){
+  var q=BIZ_QUIZ[bqI];
+  document.querySelectorAll('#bqBox button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  document.getElementById('bqo-'+q.ans).style.background='rgba(107,203,119,0.15)';document.getElementById('bqo-'+q.ans).style.opacity='1';
+  if(i===q.ans){bqOk++;document.getElementById('bqFb').innerHTML='<span style="color:var(--green)">Đúng!</span>';}
+  else{document.getElementById('bqo-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('bqo-'+i).style.opacity='1';document.getElementById('bqFb').innerHTML='<span style="color:var(--coral)">Sai!</span>';}
+  bqI++;setTimeout(nextBQ,1000);
+}
+renderBiz();
+</script>
+<style>
+.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.tc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.tc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<script defer src="theme.js?v=3"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=12"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

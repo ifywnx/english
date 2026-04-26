@@ -29,6 +29,7 @@
       {href:'linking-words.html', icon:'link-2', text:'Từ nối'},
       {href:'conversation.html', icon:'message-square', text:'Giao tiếp'},
       {href:'quiz.html', icon:'help-circle', text:'Bài tập'},
+      {href:'daily-challenge.html', icon:'calendar-check', text:'Thử thách hàng ngày'},
       {href:'spaced-repetition.html', icon:'refresh-cw', text:'Ôn tập lặp lại'}
     ],
     'IELTS': [
@@ -37,12 +38,19 @@
       {href:'ielts-writing-band9.html', icon:'pen-tool', text:'Viết IELTS mẫu'},
       {href:'ielts-speaking-topics.html', icon:'mic', text:'Nói IELTS mẫu'},
       {href:'paraphrasing.html', icon:'repeat', text:'Diễn đạt lại'},
-      {href:'mock-test.html', icon:'file-check', text:'Thi thử IELTS'}
+      {href:'mock-test.html', icon:'file-check', text:'Thi thử IELTS'},
+      {href:'toeic.html', icon:'award', text:'Luyện thi TOEIC'}
     ],
     'Từ điển': [
       {href:'dictionary.html', icon:'book', text:'Từ điển Anh-Việt'},
       {href:'dictionary-everyday.html', icon:'message-circle', text:'Từ điển Đời thường'},
       {href:'dictionary-ielts.html', icon:'target', text:'Từ điển IELTS'}
+    ],
+    'Chuyên ngành': [
+      {href:'business-english.html', icon:'briefcase', text:'Tiếng Anh thương mại'},
+      {href:'it-english.html', icon:'code-2', text:'Tiếng Anh IT'},
+      {href:'medical-english.html', icon:'heart-pulse', text:'Tiếng Anh y tế'},
+      {href:'legal-english.html', icon:'scale', text:'Tiếng Anh pháp lý'}
     ]
   };
 

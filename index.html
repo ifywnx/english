@@ -217,8 +217,36 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
 .page-exit{animation:pageOut .2s ease-in forwards}
 @keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
 </style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#64D8A5">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
 <div class="bg-orb orb3"></div>
@@ -248,6 +276,93 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;-webkit-tap-highli
   <div class="stat-item"><div class="num">500+</div><div class="label">Bài tập</div></div>
   <div class="stat-item"><div class="num">100%</div><div class="label">Miễn phí</div></div>
 </div>
+<!-- ===== WORD OF THE DAY ===== -->
+<div id="wotdSection" style="max-width:600px;margin:20px auto;padding:0 16px">
+  <div style="background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(100,216,165,0.06)"></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="width:28px;height:28px;border-radius:8px;background:rgba(100,216,165,0.1);display:flex;align-items:center;justify-content:center">
+        <i data-lucide="sparkles" style="width:14px;height:14px;color:var(--accent)"></i>
+      </div>
+      <span style="font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px">Từ của ngày</span>
+      <span style="font-size:11px;color:var(--text3);margin-left:auto" id="wotdDate"></span>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+      <span style="font-size:28px;font-weight:600;color:var(--text);font-family:'Fraunces',serif" id="wotdWord"></span>
+      <span style="font-size:13px;color:var(--accent2);font-style:italic" id="wotdIpa"></span>
+      <button onclick="speakWOTD()" style="width:28px;height:28px;border-radius:50%;border:0.5px solid var(--border);background:rgba(100,216,165,0.08);cursor:pointer;display:flex;align-items:center;justify-content:center" title="Phát âm"><i data-lucide="volume-2" style="width:13px;height:13px;color:var(--accent)"></i></button>
+    </div>
+    <div style="font-size:13px;color:var(--text3);margin:4px 0 8px" id="wotdPos"></div>
+    <div style="font-size:15px;color:var(--text);margin-bottom:6px" id="wotdMeaning"></div>
+    <div style="font-size:13px;color:var(--text3);font-style:italic;padding:8px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent)" id="wotdExample"></div>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button onclick="saveWOTD()" id="wotdSaveBtn" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;cursor:pointer;display:flex;align-items:center;gap:4px"><i data-lucide="bookmark" style="width:12px;height:12px"></i> Lưu từ</button>
+      <a href="vocabulary.html" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;text-decoration:none;display:flex;align-items:center;gap:4px"><i data-lucide="book-open" style="width:12px;height:12px"></i> Học thêm</a>
+    </div>
+  </div>
+</div>
+<script>
+var WOTD_POOL=[
+{w:"resilient",ipa:"/rɪˈzɪl.i.ənt/",pos:"adj",vi:"kiên cường, bền bỉ",ex:"She remained resilient despite all the challenges."},
+{w:"eloquent",ipa:"/ˈel.ə.kwənt/",pos:"adj",vi:"hùng biện, lưu loát",ex:"He gave an eloquent speech at the ceremony."},
+{w:"pragmatic",ipa:"/præɡˈmæt.ɪk/",pos:"adj",vi:"thực dụng",ex:"We need a pragmatic approach to solve this problem."},
+{w:"ubiquitous",ipa:"/juːˈbɪk.wɪ.təs/",pos:"adj",vi:"có mặt khắp nơi",ex:"Smartphones have become ubiquitous in modern life."},
+{w:"meticulous",ipa:"/məˈtɪk.jə.ləs/",pos:"adj",vi:"tỉ mỉ, kỹ lưỡng",ex:"She is meticulous about every detail in her work."},
+{w:"ambiguous",ipa:"/æmˈbɪɡ.ju.əs/",pos:"adj",vi:"mơ hồ, không rõ ràng",ex:"The instructions were ambiguous and confusing."},
+{w:"benevolent",ipa:"/bəˈnev.əl.ənt/",pos:"adj",vi:"nhân từ, rộng lượng",ex:"The benevolent leader helped many families."},
+{w:"contemplate",ipa:"/ˈkɒn.tem.pleɪt/",pos:"v",vi:"suy ngẫm, chiêm nghiệm",ex:"I need time to contemplate this decision."},
+{w:"diligent",ipa:"/ˈdɪl.ɪ.dʒənt/",pos:"adj",vi:"cần cù, siêng năng",ex:"Diligent students always achieve their goals."},
+{w:"ephemeral",ipa:"/ɪˈfem.ər.əl/",pos:"adj",vi:"ngắn ngủi, phù du",ex:"Fame is often ephemeral in the entertainment industry."},
+{w:"fluctuate",ipa:"/ˈflʌk.tʃu.eɪt/",pos:"v",vi:"dao động, biến đổi",ex:"Stock prices fluctuate throughout the day."},
+{w:"gregarious",ipa:"/ɡrɪˈɡeə.ri.əs/",pos:"adj",vi:"hòa đồng, thích giao tiếp",ex:"He is a gregarious person who loves parties."},
+{w:"hypothetical",ipa:"/ˌhaɪ.pəˈθet.ɪ.kəl/",pos:"adj",vi:"giả định, giả thuyết",ex:"Let's consider a hypothetical scenario."},
+{w:"inevitable",ipa:"/ɪˈnev.ɪ.tə.bəl/",pos:"adj",vi:"không thể tránh khỏi",ex:"Change is inevitable in any organization."},
+{w:"juxtapose",ipa:"/ˌdʒʌk.stə.ˈpəʊz/",pos:"v",vi:"đặt cạnh nhau để so sánh",ex:"The artist juxtaposed light and dark in the painting."},
+{w:"keen",ipa:"/kiːn/",pos:"adj",vi:"nhiệt tình, sắc bén",ex:"She has a keen eye for design details."},
+{w:"lucrative",ipa:"/ˈluː.krə.tɪv/",pos:"adj",vi:"có lợi nhuận cao",ex:"The tech industry offers lucrative career opportunities."},
+{w:"mundane",ipa:"/mʌnˈdeɪn/",pos:"adj",vi:"tầm thường, nhàm chán",ex:"She wanted to escape the mundane routine of daily life."},
+{w:"nuance",ipa:"/ˈnjuː.ɑːns/",pos:"n",vi:"sắc thái, nét tinh tế",ex:"There are many nuances in the English language."},
+{w:"obsolete",ipa:"/ˈɒb.sə.liːt/",pos:"adj",vi:"lỗi thời, không dùng nữa",ex:"VHS tapes are now completely obsolete."},
+{w:"persevere",ipa:"/ˌpɜː.sɪˈvɪər/",pos:"v",vi:"kiên trì, bền chí",ex:"You must persevere through difficult times."},
+{w:"quintessential",ipa:"/ˌkwɪn.tɪˈsen.ʃəl/",pos:"adj",vi:"tinh túy nhất, điển hình",ex:"She is the quintessential modern leader."},
+{w:"reciprocal",ipa:"/rɪˈsɪp.rə.kəl/",pos:"adj",vi:"có qua có lại",ex:"Their relationship was based on reciprocal respect."},
+{w:"scrutinize",ipa:"/ˈskruː.tɪ.naɪz/",pos:"v",vi:"xem xét kỹ lưỡng",ex:"The auditors will scrutinize every transaction."},
+{w:"tangible",ipa:"/ˈtæn.dʒɪ.bəl/",pos:"adj",vi:"hữu hình, cụ thể",ex:"We need tangible evidence to support the claim."},
+{w:"unprecedented",ipa:"/ʌnˈpres.ɪ.den.tɪd/",pos:"adj",vi:"chưa từng có tiền lệ",ex:"The pandemic caused unprecedented disruption worldwide."},
+{w:"versatile",ipa:"/ˈvɜː.sə.taɪl/",pos:"adj",vi:"đa năng, linh hoạt",ex:"She is a versatile actress who can play any role."},
+{w:"whimsical",ipa:"/ˈwɪm.zɪ.kəl/",pos:"adj",vi:"kỳ quặc, dí dỏm",ex:"The garden had a whimsical charm with fairy lights."},
+{w:"yield",ipa:"/jiːld/",pos:"v",vi:"mang lại, nhường",ex:"This investment will yield high returns."},
+{w:"zealous",ipa:"/ˈzel.əs/",pos:"adj",vi:"nhiệt tình, hăng hái",ex:"She is a zealous advocate for education reform."}
+];
+
+(function(){
+  var d=new Date();var idx=Math.floor((d.getFullYear()*1000+d.getMonth()*31+d.getDate()))%WOTD_POOL.length;
+  var w=WOTD_POOL[idx];
+  document.getElementById('wotdWord').textContent=w.w;
+  document.getElementById('wotdIpa').textContent=w.ipa;
+  document.getElementById('wotdPos').textContent=w.pos==='adj'?'adjective':w.pos==='v'?'verb':w.pos==='n'?'noun':w.pos;
+  document.getElementById('wotdMeaning').textContent=w.vi;
+  document.getElementById('wotdExample').textContent='"'+w.ex+'"';
+  document.getElementById('wotdDate').textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+  var nb=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(nb.some(function(e){return e.word===w.w;})){
+    document.getElementById('wotdSaveBtn').innerHTML='<i data-lucide="bookmark-check" style="width:12px;height:12px"></i> Đã lưu';
+    document.getElementById('wotdSaveBtn').style.color='var(--accent)';
+  }
+})();
+function speakWOTD(){var u=new SpeechSynthesisUtterance(document.getElementById('wotdWord').textContent);u.lang='en-US';u.rate=0.8;speechSynthesis.speak(u);}
+function saveWOTD(){
+  var d=new Date();var idx=Math.floor((d.getFullYear()*1000+d.getMonth()*31+d.getDate()))%WOTD_POOL.length;
+  var w=WOTD_POOL[idx];var nb=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(!nb.some(function(e){return e.word===w.w;})){
+    nb.push({word:w.w,meaning:w.vi,example:w.ex,date:new Date().toISOString()});
+    localStorage.setItem('ee_notebook',JSON.stringify(nb));
+    document.getElementById('wotdSaveBtn').innerHTML='<i data-lucide="bookmark-check" style="width:12px;height:12px"></i> Đã lưu';
+    document.getElementById('wotdSaveBtn').style.color='var(--accent)';
+    if(typeof lucide!=='undefined')lucide.createIcons();
+  }
+}
+</script>
 
 <div class="divider"></div>
 
@@ -499,9 +614,9 @@ document.addEventListener('click',function(e){
 <!-- BACK TO TOP -->
 <!-- MOBILE BOTTOM NAV -->
 <!-- MORE DRAWER -->
-<script src="theme.js?v=3"></script>
-<script src="gamification.js?v=3"></script>
-<script src="common.js?v=12"></script>
+<script defer src="theme.js?v=3"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=12"></script>
 
 <script id="page-transition-js">
 (function(){
@@ -516,5 +631,6 @@ document.addEventListener('click',function(e){
   });
 })();
 </script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

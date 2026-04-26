@@ -204,7 +204,7 @@ window.addEventListener('scroll',function(){
   document.body.appendChild(popup);
 
   var style = document.createElement('style');
-  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);color:#a78bfa;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(167,139,250,0.3);transform:scale(1.1)}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
+  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(100,216,165,0.12);border:1px solid rgba(100,216,165,0.25);color:#64d8a5;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(100,216,165,0.25);transform:scale(1.1)}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
   document.head.appendChild(style);
 
   var debounceTimer;
@@ -411,7 +411,7 @@ window.addEventListener('scroll',function(){
     Promise.all(promises).then(function(results){
       var vi = results.join(' ');
       var preview = text.length > 120 ? text.substring(0,120) + '...' : text;
-      var speakBtn = text.length <= 300 ? '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ').substring(0,300) + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe">&9654;</button>' : '';
+      var speakBtn = text.length <= 300 ? '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ').substring(0,300) + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe">&#9654;</button>' : '';
       popup.innerHTML = '<div class="ee-tp-body">' +
         '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
         '<div style="font-size:12px;color:#64d8a5;margin-bottom:6px">' + chunks.length + ' c\u00e2u \u00b7 ' + text.length + ' k\u00fd t\u1ef1</div>' +
@@ -439,4 +439,118 @@ window.addEventListener('scroll',function(){
     clearTimeout(scrollHideTimer);
     scrollHideTimer = setTimeout(hidePopup, 100);
   });
+})();
+
+/* === GLOBAL SEARCH (Ctrl+K) === */
+(function(){
+  var PAGES=[
+    {title:'Trang chủ',desc:'EasyEnglish — Tự học tiếng Anh từ A-Z',url:'index.html',tags:'home trang chu'},
+    {title:'Ngữ pháp',desc:'12 thì, câu điều kiện, bị động, mệnh đề quan hệ',url:'grammar.html',tags:'grammar ngu phap thi tense'},
+    {title:'Từ vựng',desc:'3000+ từ vựng theo chủ đề với flashcard',url:'vocabulary.html',tags:'vocabulary tu vung flashcard'},
+    {title:'4 Kỹ năng',desc:'Nghe Nói Đọc Viết',url:'skills.html',tags:'skills ky nang nghe noi doc viet'},
+    {title:'Đọc hiểu',desc:'Bài đọc hiểu có câu hỏi tương tác',url:'reading-comprehension.html',tags:'reading doc hieu'},
+    {title:'Luyện nghe',desc:'Nghe audio và trả lời câu hỏi',url:'listening.html',tags:'listening luyen nghe'},
+    {title:'Kiểm tra bài viết',desc:'AI kiểm tra lỗi ngữ pháp, chính tả',url:'writing-checker.html',tags:'writing viet kiem tra'},
+    {title:'Từ nối',desc:'Linking words: however, therefore, moreover...',url:'linking-words.html',tags:'linking words tu noi'},
+    {title:'Giao tiếp',desc:'Hội thoại hằng ngày',url:'conversation.html',tags:'conversation giao tiep hoi thoai'},
+    {title:'Bài tập',desc:'Quiz ngữ pháp, từ vựng',url:'quiz.html',tags:'quiz bai tap'},
+    {title:'Thử thách hàng ngày',desc:'10 câu mỗi ngày, streak tracking',url:'daily-challenge.html',tags:'daily challenge thu thach hang ngay'},
+    {title:'Ôn tập lặp lại',desc:'Spaced repetition flashcard',url:'spaced-repetition.html',tags:'spaced repetition on tap'},
+    {title:'IELTS Guide',desc:'Hướng dẫn luyện thi IELTS',url:'ielts.html',tags:'ielts guide huong dan'},
+    {title:'570 từ học thuật',desc:'Academic Word List',url:'academic-words.html',tags:'academic words hoc thuat'},
+    {title:'Viết IELTS mẫu',desc:'Band 9 writing samples',url:'ielts-writing-band9.html',tags:'ielts writing viet mau'},
+    {title:'Nói IELTS mẫu',desc:'Speaking topics & samples',url:'ielts-speaking-topics.html',tags:'ielts speaking noi'},
+    {title:'Paraphrasing',desc:'Diễn đạt lại câu',url:'paraphrasing.html',tags:'paraphrasing dien dat lai'},
+    {title:'Thi thử IELTS',desc:'Mock test IELTS',url:'mock-test.html',tags:'mock test thi thu ielts'},
+    {title:'Luyện thi TOEIC',desc:'Từ vựng, ngữ pháp, Part 5',url:'toeic.html',tags:'toeic luyen thi'},
+    {title:'Từ điển Anh-Việt',desc:'Tra từ nhanh',url:'dictionary.html',tags:'dictionary tu dien anh viet'},
+    {title:'Từ điển Đời thường',desc:'Slang, informal English',url:'dictionary-everyday.html',tags:'everyday dictionary doi thuong slang'},
+    {title:'Từ điển IELTS',desc:'Từ vựng IELTS band 7+',url:'dictionary-ielts.html',tags:'ielts dictionary tu dien'},
+    {title:'Từ hay nhầm',desc:'affect/effect, advice/advise...',url:'confusing-words.html',tags:'confusing words tu nham lan'},
+    {title:'Idioms',desc:'200+ thành ngữ tiếng Anh',url:'idioms.html',tags:'idioms thanh ngu'},
+    {title:'Collocations',desc:'Phrasal verbs & collocations',url:'collocations.html',tags:'collocations phrasal verbs'},
+    {title:'Đồng nghĩa / Trái nghĩa',desc:'Synonyms & Antonyms',url:'synonyms.html',tags:'synonyms antonyms dong nghia trai nghia'},
+    {title:'Động từ bất quy tắc',desc:'Irregular verbs',url:'irregular-verbs.html',tags:'irregular verbs dong tu bat quy tac'},
+    {title:'Giới từ',desc:'Preposition combinations',url:'preposition-combinations.html',tags:'prepositions gioi tu'},
+    {title:'Cấu tạo từ',desc:'Word formation: prefix, suffix, root',url:'word-formation.html',tags:'word formation cau tao tu prefix suffix'},
+    {title:'Gerund vs Infinitive',desc:'V-ing vs to V',url:'gerund-infinitive.html',tags:'gerund infinitive ving to v'},
+    {title:'Phát âm',desc:'Pronunciation guide',url:'pronunciation.html',tags:'pronunciation phat am'},
+    {title:'Tiếng Anh thương mại',desc:'Business English: email, hội thoại',url:'business-english.html',tags:'business english thuong mai doanh nghiep'},
+    {title:'Tiếng Anh IT',desc:'Thuật ngữ lập trình, DevOps',url:'it-english.html',tags:'it english lap trinh devops'},
+    {title:'Tiếng Anh y tế',desc:'Medical English: bệnh viện, thuốc',url:'medical-english.html',tags:'medical english y te benh vien'},
+    {title:'Tiếng Anh pháp lý',desc:'Legal English: hợp đồng, tòa án',url:'legal-english.html',tags:'legal english phap ly hop dong'}
+  ];
+
+  // Inject search CSS
+  var ss=document.createElement('style');
+  ss.textContent=
+    '#gsOverlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);z-index:99998;display:none;align-items:flex-start;justify-content:center;padding-top:min(20vh,120px)}'+
+    '#gsOverlay.show{display:flex}'+
+    '#gsBox{background:var(--card,#12282e);border:0.5px solid var(--border);border-radius:16px;width:min(560px,92vw);max-height:70vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);animation:gsIn .2s ease-out}'+
+    '@keyframes gsIn{from{opacity:0;transform:translateY(-12px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}'+
+    '#gsInput{width:100%;padding:16px 20px 16px 44px;border:none;background:transparent;color:var(--text,#f5faf7);font-size:16px;font-family:DM Sans,sans-serif;outline:none}'+
+    '#gsInput::placeholder{color:var(--text3,#84a99a)}'+
+    '#gsInputWrap{position:relative;border-bottom:0.5px solid var(--border)}'+
+    '#gsInputWrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text3)}'+
+    '#gsResults{max-height:calc(70vh - 60px);overflow-y:auto;padding:8px}'+
+    '.gs-item{padding:12px 16px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .1s}'+
+    '.gs-item:hover,.gs-item.active{background:rgba(100,216,165,0.08)}'+
+    '.gs-item-title{font-size:14px;font-weight:500;color:var(--text)}'+
+    '.gs-item-desc{font-size:12px;color:var(--text3);margin-top:2px}'+
+    '.gs-item-icon{width:32px;height:32px;border-radius:8px;background:rgba(100,216,165,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}'+
+    '.gs-empty{padding:24px;text-align:center;color:var(--text3);font-size:14px}'+
+    '#gsHint{display:flex;gap:12px;padding:8px 16px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3)}'+
+    '#gsHint kbd{padding:2px 6px;border-radius:4px;background:var(--card2);border:0.5px solid var(--border);font-size:11px;font-family:monospace}';
+  document.head.appendChild(ss);
+
+  // Build overlay
+  var ov=document.createElement('div');ov.id='gsOverlay';
+  ov.innerHTML=
+    '<div id="gsBox">'+
+      '<div id="gsInputWrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="gsInput" type="text" placeholder="Tìm trang, bài học... (Ctrl+K)" autocomplete="off"></div>'+
+      '<div id="gsResults"></div>'+
+      '<div id="gsHint"><span><kbd>↑↓</kbd> chọn</span><span><kbd>Enter</kbd> mở</span><span><kbd>Esc</kbd> đóng</span></div>'+
+    '</div>';
+  document.body.appendChild(ov);
+
+  var inp=document.getElementById('gsInput');
+  var res=document.getElementById('gsResults');
+  var activeIdx=-1;
+
+  function openSearch(){ov.classList.add('show');inp.value='';inp.focus();renderResults('');activeIdx=-1;}
+  function closeSearch(){ov.classList.remove('show');}
+
+  function renderResults(q){
+    q=q.toLowerCase().trim();
+    var items=q?PAGES.filter(function(p){
+      return p.title.toLowerCase().indexOf(q)>-1||p.desc.toLowerCase().indexOf(q)>-1||p.tags.indexOf(q)>-1;
+    }):PAGES;
+    if(!items.length){res.innerHTML='<div class="gs-empty">Không tìm thấy kết quả</div>';return;}
+    res.innerHTML=items.map(function(p,i){
+      return '<a href="'+p.url+'" class="gs-item'+(i===activeIdx?' active':'')+'" data-idx="'+i+'">'+
+        '<div class="gs-item-icon"><i data-lucide="file-text" style="width:16px;height:16px;color:var(--accent)"></i></div>'+
+        '<div><div class="gs-item-title">'+p.title+'</div><div class="gs-item-desc">'+p.desc+'</div></div></a>';
+    }).join('');
+    if(typeof lucide!=='undefined')lucide.createIcons();
+  }
+
+  inp.addEventListener('input',function(){activeIdx=-1;renderResults(this.value);});
+  
+  inp.addEventListener('keydown',function(e){
+    var items=res.querySelectorAll('.gs-item');
+    if(e.key==='ArrowDown'){e.preventDefault();activeIdx=Math.min(activeIdx+1,items.length-1);items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});if(items[activeIdx])items[activeIdx].scrollIntoView({block:'nearest'});}
+    else if(e.key==='ArrowUp'){e.preventDefault();activeIdx=Math.max(activeIdx-1,0);items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});if(items[activeIdx])items[activeIdx].scrollIntoView({block:'nearest'});}
+    else if(e.key==='Enter'&&items[activeIdx]){e.preventDefault();items[activeIdx].click();}
+    else if(e.key==='Escape'){closeSearch();}
+  });
+
+  ov.addEventListener('click',function(e){if(e.target===ov)closeSearch();});
+
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();ov.classList.contains('show')?closeSearch():openSearch();}
+    if(e.key==='Escape'&&ov.classList.contains('show'))closeSearch();
+  });
+
+  // Expose for nav search button
+  window.openGlobalSearch=openSearch;
 })();

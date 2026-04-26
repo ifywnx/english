@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn với giải thích chi tiết, ví dụ và quiz tương tác.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Từ hay nhầm — EasyEnglish">
+<meta property="og:description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn: affect/effect, advice/advise, borrow/lend...">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Từ hay nhầm — EasyEnglish">
+<meta name="twitter:description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn: affect/effect, advice/advise, borrow/lend...">
+<title>Thử thách hàng ngày — Daily Challenge — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+</style>
+<link rel="stylesheet" href="style.css?v=3">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">Thử thách hàng ngày</span></div>
+<div class="page-label">Daily Challenge</div>
+<h1 class="page-title">Thử thách hàng ngày</h1>
+<p class="page-desc">Mỗi ngày 10 câu hỏi ngẫu nhiên. Giữ streak liên tục để nâng level!</p>
+
+<div style="display:flex;gap:16px;margin:20px 0;flex-wrap:wrap;justify-content:center">
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px 24px;text-align:center;min-width:100px">
+<div style="font-size:28px;font-weight:700;color:var(--accent)" id="streakNum">0</div>
+<div style="font-size:12px;color:var(--text3)">Ngày streak</div>
+</div>
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px 24px;text-align:center;min-width:100px">
+<div style="font-size:28px;font-weight:700;color:var(--accent2)" id="bestStreak">0</div>
+<div style="font-size:12px;color:var(--text3)">Kỷ lục</div>
+</div>
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px 24px;text-align:center;min-width:100px">
+<div style="font-size:28px;font-weight:700;color:var(--accent3)" id="totalDays">0</div>
+<div style="font-size:12px;color:var(--text3)">Tổng ngày</div>
+</div>
+</div>
+
+<div id="challengeArea" style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"></div>
+</div>
+
+<script>
+var POOL=[
+{cat:"Ngữ pháp",q:"She ___ to the gym every morning.",opts:["go","goes","going","gone"],ans:1},
+{cat:"Ngữ pháp",q:"If I ___ rich, I would travel the world.",opts:["am","was","were","be"],ans:2},
+{cat:"Ngữ pháp",q:"The book ___ by millions of people.",opts:["has read","has been read","have read","reading"],ans:1},
+{cat:"Ngữ pháp",q:"She asked me where I ___.",opts:["live","lived","living","lives"],ans:1},
+{cat:"Ngữ pháp",q:"I wish I ___ speak French.",opts:["can","could","will","would"],ans:1},
+{cat:"Ngữ pháp",q:"By next year, I ___ graduated.",opts:["will","will have","will be","would"],ans:1},
+{cat:"Ngữ pháp",q:"Neither Tom nor his friends ___ coming.",opts:["is","are","was","am"],ans:1},
+{cat:"Ngữ pháp",q:"___ you ever been to Japan?",opts:["Do","Did","Have","Are"],ans:2},
+{cat:"Từ vựng",q:"'Abundant' nghĩa là gì?",opts:["Thiếu","Dồi dào","Nhỏ bé","Chậm chạp"],ans:1},
+{cat:"Từ vựng",q:"'Reluctant' nghĩa là gì?",opts:["Háo hức","Miễn cưỡng","Vui vẻ","Tức giận"],ans:1},
+{cat:"Từ vựng",q:"Từ trái nghĩa của 'generous'?",opts:["Kind","Stingy","Wealthy","Brave"],ans:1},
+{cat:"Từ vựng",q:"'Comprehensive' nghĩa là gì?",opts:["Ngắn gọn","Toàn diện","Đơn giản","Phức tạp"],ans:1},
+{cat:"Từ vựng",q:"'Inevitable' nghĩa là gì?",opts:["Có thể tránh","Không thể tránh","Không chắc","Hiếm khi"],ans:1},
+{cat:"Giới từ",q:"She is interested ___ learning English.",opts:["on","at","in","for"],ans:2},
+{cat:"Giới từ",q:"He is good ___ playing chess.",opts:["in","on","at","for"],ans:2},
+{cat:"Giới từ",q:"I'm looking forward ___ meeting you.",opts:["for","at","in","to"],ans:3},
+{cat:"Giới từ",q:"The decision depends ___ many factors.",opts:["in","on","at","for"],ans:1},
+{cat:"Phrasal Verb",q:"'Give up' nghĩa là gì?",opts:["Cho đi","Từ bỏ","Trả lại","Tặng quà"],ans:1},
+{cat:"Phrasal Verb",q:"'Look after' nghĩa là gì?",opts:["Tìm kiếm","Nhìn lại","Chăm sóc","Bỏ qua"],ans:2},
+{cat:"Phrasal Verb",q:"'Turn down' nghĩa là gì?",opts:["Bật lên","Từ chối","Quay lại","Tắt đi"],ans:1},
+{cat:"Confusing",q:"I need your ___ (advice/advise).",opts:["advice","advise"],ans:0},
+{cat:"Confusing",q:"The weather will ___ (affect/effect) our plans.",opts:["affect","effect"],ans:0},
+{cat:"Confusing",q:"Can I ___ (borrow/lend) your pen?",opts:["borrow","lend"],ans:0},
+{cat:"Confusing",q:"She gave me a ___ (complement/compliment).",opts:["complement","compliment"],ans:1},
+{cat:"Word Form",q:"happy → noun = ?",opts:["happily","happiness","happier","unhappy"],ans:1},
+{cat:"Word Form",q:"decide → noun = ?",opts:["decisive","decidedly","decision","decided"],ans:2},
+{cat:"Word Form",q:"danger → adjective = ?",opts:["endanger","dangerously","dangerous","danger"],ans:2},
+{cat:"Word Form",q:"economy → adjective = ?",opts:["economize","economical","economics","economy"],ans:1},
+{cat:"Idiom",q:"'Break the ice' nghĩa là gì?",opts:["Làm vỡ đá","Phá vỡ sự im lặng","Lạnh lẽo","Đóng băng"],ans:1},
+{cat:"Idiom",q:"'Hit the nail on the head' nghĩa là?",opts:["Đánh đinh","Nói đúng trọng tâm","Đau đầu","Làm hỏng"],ans:1}
+];
+
+var dc=JSON.parse(localStorage.getItem('ee_daily')||'{}');
+var today=new Date().toISOString().slice(0,10);
+
+function initDC(){
+  if(!dc.streak) dc={streak:0,best:0,total:0,lastDate:null,todayDone:false,todayScore:0,todayQs:null};
+  if(dc.lastDate===today && dc.todayDone){showResult();return;}
+  if(dc.lastDate && dc.lastDate!==today){
+    var last=new Date(dc.lastDate);var now=new Date(today);
+    var diff=Math.round((now-last)/(1000*60*60*24));
+    if(diff>1) dc.streak=0;
+  }
+  if(!dc.todayQs||dc.lastDate!==today){
+    var shuffled=POOL.slice().sort(function(){return Math.random()-0.5;});
+    dc.todayQs=shuffled.slice(0,10);dc.todayIdx=0;dc.todayScore=0;dc.todayDone=false;dc.lastDate=today;
+    saveDC();
+  }
+  updateStats();showQuestion();
+}
+function saveDC(){localStorage.setItem('ee_daily',JSON.stringify(dc));}
+function updateStats(){
+  document.getElementById('streakNum').textContent=dc.streak;
+  document.getElementById('bestStreak').textContent=dc.best;
+  document.getElementById('totalDays').textContent=dc.total;
+}
+function showQuestion(){
+  if(dc.todayIdx>=dc.todayQs.length){finishChallenge();return;}
+  var q=dc.todayQs[dc.todayIdx];
+  document.getElementById('challengeArea').innerHTML=
+    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">'+
+      '<span style="font-size:12px;color:var(--text3);padding:4px 10px;background:rgba(100,216,165,0.06);border-radius:6px">'+q.cat+'</span>'+
+      '<span style="font-size:13px;color:var(--text3)">'+(dc.todayIdx+1)+'/10</span>'+
+    '</div>'+
+    '<div style="width:100%;height:4px;background:var(--card2);border-radius:2px;margin-bottom:20px"><div style="width:'+(dc.todayIdx*10)+'%;height:100%;background:var(--accent);border-radius:2px;transition:width .3s"></div></div>'+
+    '<div style="font-size:18px;color:var(--text);font-weight:500;margin-bottom:20px;line-height:1.6">'+q.q+'</div>'+
+    '<div style="display:grid;gap:8px">'+
+      q.opts.map(function(o,i){
+        return '<button onclick="checkDC('+i+')" style="text-align:left;padding:14px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:15px;font-family:DM Sans,sans-serif;transition:all .15s" id="dco-'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>';
+      }).join('')+
+    '</div>'+
+    '<div id="dcFb" style="margin-top:12px;font-size:14px;text-align:center"></div>';
+}
+function checkDC(i){
+  var q=dc.todayQs[dc.todayIdx];
+  document.querySelectorAll('#challengeArea button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  document.getElementById('dco-'+q.ans).style.background='rgba(107,203,119,0.15)';
+  document.getElementById('dco-'+q.ans).style.color='var(--green)';
+  document.getElementById('dco-'+q.ans).style.opacity='1';
+  if(i===q.ans){
+    dc.todayScore++;
+    document.getElementById('dcFb').innerHTML='<span style="color:var(--green)">Chính xác!</span>';
+  } else {
+    document.getElementById('dco-'+i).style.background='rgba(255,138,128,0.15)';
+    document.getElementById('dco-'+i).style.color='var(--coral)';
+    document.getElementById('dco-'+i).style.opacity='1';
+    document.getElementById('dcFb').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: '+String.fromCharCode(65+q.ans)+'</span>';
+  }
+  dc.todayIdx++;saveDC();
+  setTimeout(showQuestion,1000);
+}
+function finishChallenge(){
+  dc.todayDone=true;dc.total++;dc.streak++;
+  if(dc.streak>dc.best)dc.best=dc.streak;
+  saveDC();updateStats();showResult();
+}
+function showResult(){
+  var pct=Math.round(dc.todayScore/10*100);
+  var msg=pct>=80?'Xuất sắc!':pct>=60?'Khá tốt!':'Cần cố gắng hơn!';
+  var stars=pct>=80?'<i data-lucide="star" style="width:24px;height:24px;color:var(--accent)"></i><i data-lucide="star" style="width:24px;height:24px;color:var(--accent)"></i><i data-lucide="star" style="width:24px;height:24px;color:var(--accent)"></i>':pct>=60?'<i data-lucide="star" style="width:24px;height:24px;color:var(--accent)"></i><i data-lucide="star" style="width:24px;height:24px;color:var(--accent)"></i>':'<i data-lucide="star" style="width:24px;height:24px;color:var(--accent)"></i>';
+  document.getElementById('challengeArea').innerHTML=
+    '<div style="text-align:center;padding:20px 0">'+
+      '<div style="margin-bottom:12px">'+stars+'</div>'+
+      '<div style="font-size:48px;font-weight:700;color:var(--accent)">'+dc.todayScore+'/10</div>'+
+      '<div style="font-size:16px;color:var(--text3);margin:8px 0">'+pct+'% — '+msg+'</div>'+
+      '<div style="font-size:14px;color:var(--text3);margin-top:16px">Quay lại vào ngày mai để tiếp tục streak!</div>'+
+      '<div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">'+
+        '<a href="index.html" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);text-decoration:none;font-size:14px">Về trang chủ</a>'+
+        '<a href="quiz.html" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);color:var(--text2);text-decoration:none;font-size:14px">Làm thêm bài tập</a>'+
+      '</div>'+
+    '</div>';
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+initDC();
+</script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+<script defer src="theme.js?v=3"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=12"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

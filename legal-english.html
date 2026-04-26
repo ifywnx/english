@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Thuật ngữ hợp đồng, tòa án, sở hữu trí tuệ và giao tiếp pháp lý.">
+<meta property="og:title" content="Tiếng Anh pháp lý — EasyEnglish">
+<meta property="og:description" content="Thuật ngữ hợp đồng, tòa án, sở hữu trí tuệ và giao tiếp pháp lý.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tiếng Anh pháp lý — EasyEnglish">
+<meta name="twitter:description" content="Thuật ngữ hợp đồng, tòa án, sở hữu trí tuệ và giao tiếp pháp lý.">
+<title>Tiếng Anh pháp lý — EasyEnglish</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<div class="skeleton-loader" id="skeletonLoader"><div class="sk-bar sk-nav"></div><div class="sk-bar sk-title"></div><div class="sk-bar sk-desc"></div><div class="sk-bar sk-card"></div></div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">Legal English</span></div>
+<div class="page-label">Chuyên ngành</div>
+<h1 class="page-title">Tiếng Anh pháp lý</h1>
+<p class="page-desc">Thuật ngữ hợp đồng, tòa án, sở hữu trí tuệ và giao tiếp trong môi trường pháp lý.</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="showLTab('contract')" class="tc-tab active" id="lg-contract">Hợp đồng</button>
+<button onclick="showLTab('court')" class="tc-tab" id="lg-court">Tòa án</button>
+<button onclick="showLTab('ip')" class="tc-tab" id="lg-ip">Sở hữu trí tuệ</button>
+<button onclick="showLTab('phrases')" class="tc-tab" id="lg-phrases">Cụm từ pháp lý</button>
+<button onclick="showLTab('quiz')" class="tc-tab" id="lg-quiz">Quiz</button>
+</div>
+<div id="legContent"></div>
+</div>
+
+<script>
+var LEG={
+contract:[
+{en:"agreement",vi:"thỏa thuận",ex:"Both parties signed the agreement."},
+{en:"clause",vi:"điều khoản",ex:"Please review clause 5 of the contract."},
+{en:"breach",vi:"vi phạm",ex:"The supplier was in breach of contract."},
+{en:"terminate",vi:"chấm dứt",ex:"Either party may terminate the agreement with 30 days' notice."},
+{en:"liability",vi:"trách nhiệm pháp lý",ex:"The company accepts no liability for damages."},
+{en:"indemnify",vi:"bồi thường",ex:"The seller shall indemnify the buyer against all losses."},
+{en:"confidentiality",vi:"bảo mật",ex:"All information is subject to a confidentiality clause."},
+{en:"amendment",vi:"sửa đổi",ex:"Any amendment must be made in writing."},
+{en:"binding",vi:"ràng buộc",ex:"This agreement is legally binding."},
+{en:"arbitration",vi:"trọng tài",ex:"Disputes shall be resolved through arbitration."},
+{en:"warranty",vi:"bảo đảm",ex:"The product comes with a 12-month warranty."},
+{en:"force majeure",vi:"bất khả kháng",ex:"Force majeure events include natural disasters and wars."}
+],
+court:[
+{en:"plaintiff",vi:"nguyên đơn",ex:"The plaintiff filed a lawsuit against the company."},
+{en:"defendant",vi:"bị đơn",ex:"The defendant denied all charges."},
+{en:"verdict",vi:"phán quyết",ex:"The jury reached a unanimous verdict."},
+{en:"testimony",vi:"lời khai",ex:"The witness gave testimony under oath."},
+{en:"evidence",vi:"bằng chứng",ex:"The evidence was presented to the court."},
+{en:"appeal",vi:"kháng cáo",ex:"The defendant plans to appeal the decision."},
+{en:"sentence",vi:"bản án",ex:"He received a 5-year prison sentence."},
+{en:"bail",vi:"bảo lãnh tại ngoại",ex:"Bail was set at $50,000."},
+{en:"prosecute",vi:"truy tố",ex:"The government decided to prosecute the case."},
+{en:"acquit",vi:"tha bổng",ex:"The jury voted to acquit the defendant."}
+],
+ip:[
+{en:"patent",vi:"bằng sáng chế",ex:"They filed a patent for the new technology."},
+{en:"trademark",vi:"nhãn hiệu",ex:"The logo is a registered trademark."},
+{en:"copyright",vi:"bản quyền",ex:"Copyright protects original creative works."},
+{en:"infringement",vi:"vi phạm (bản quyền)",ex:"The company was sued for patent infringement."},
+{en:"intellectual property",vi:"sở hữu trí tuệ",ex:"IP rights are protected by international law."},
+{en:"royalty",vi:"phí bản quyền",ex:"The author receives royalties from book sales."},
+{en:"license",vi:"giấy phép",ex:"You need a license to use this software commercially."},
+{en:"trade secret",vi:"bí mật thương mại",ex:"The formula is protected as a trade secret."}
+],
+phrases:[
+{en:"pursuant to",vi:"căn cứ theo",ex:"Pursuant to Article 5, the contract is terminated."},
+{en:"hereinafter",vi:"sau đây gọi là",ex:'The Company, hereinafter referred to as "the Seller".'},
+{en:"notwithstanding",vi:"bất chấp, mặc dù",ex:"Notwithstanding the above, the buyer retains the right to cancel."},
+{en:"whereas",vi:"xét rằng",ex:"Whereas the parties wish to enter into this agreement..."},
+{en:"in lieu of",vi:"thay cho",ex:"Payment in lieu of notice was offered."},
+{en:"duly",vi:"đúng quy trình",ex:"The contract was duly signed by both parties."},
+{en:"null and void",vi:"vô hiệu",ex:"The agreement was declared null and void."},
+{en:"without prejudice",vi:"không ảnh hưởng quyền",ex:"This offer is made without prejudice to our legal rights."}
+],
+quiz:[
+{q:"'Breach of contract' nghĩa là gì?",opts:["Ký hợp đồng","Vi phạm hợp đồng","Gia hạn","Sửa đổi"],ans:1},
+{q:"'Plaintiff' là ai?",opts:["Bị đơn","Nguyên đơn","Thẩm phán","Luật sư"],ans:1},
+{q:"'Verdict' nghĩa là gì?",opts:["Bằng chứng","Phán quyết","Kháng cáo","Lời khai"],ans:1},
+{q:"'Patent' nghĩa là gì?",opts:["Bản quyền","Nhãn hiệu","Bằng sáng chế","Giấy phép"],ans:2},
+{q:"'Null and void' nghĩa là gì?",opts:["Có hiệu lực","Vô hiệu","Gia hạn","Tạm hoãn"],ans:1},
+{q:"'Indemnify' nghĩa là gì?",opts:["Truy tố","Bồi thường","Chấm dứt","Ký kết"],ans:1},
+{q:"'Force majeure' nghĩa là gì?",opts:["Bất khả kháng","Trách nhiệm","Bảo đảm","Vi phạm"],ans:0},
+{q:"'Acquit' nghĩa là gì?",opts:["Kết tội","Tha bổng","Truy tố","Bắt giữ"],ans:1}
+]
+};
+
+var curL='contract';
+function showLTab(t){curL=t;document.querySelectorAll('.tc-tab').forEach(function(b){b.classList.remove('active');});document.getElementById('lg-'+t).classList.add('active');renderLeg();}
+
+function renderLeg(){
+  var h='',data=LEG[curL];
+  if(curL==='quiz'){
+    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"><div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="scale" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>Legal Quiz ('+LEG.quiz.length+' câu)</div><div id="lqBox"><button onclick="startLQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu</button></div></div>';
+  } else {
+    var titles={contract:'Hợp đồng & Thương mại',court:'Tòa án & Tố tụng',ip:'Sở hữu trí tuệ',phrases:'Cụm từ pháp lý thường gặp'};
+    var icons={contract:'file-signature',court:'gavel',ip:'shield-check',phrases:'book-open'};
+    var colors={contract:'var(--accent)',court:'var(--accent2)',ip:'var(--accent3)',phrases:'var(--coral)'};
+    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:'+colors[curL]+';margin-bottom:14px"><i data-lucide="'+(icons[curL]||'book')+'" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+(titles[curL]||curL)+'</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px">'+data.map(function(w){return '<div style="padding:10px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid '+colors[curL]+'"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:'+colors[curL]+'">'+w.vi+'</span></div>'+(w.ex?'<div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div>':'')+'</div>';}).join('')+'</div></div>';
+  }
+  document.getElementById('legContent').innerHTML=h;
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+var lqI=0,lqOk=0;
+function startLQ(){lqI=0;lqOk=0;nextLQ();}
+function nextLQ(){if(lqI>=LEG.quiz.length){var p=Math.round(lqOk/LEG.quiz.length*100);document.getElementById('lqBox').innerHTML='<div style="font-size:28px;font-weight:600;color:var(--accent);margin:16px 0">'+lqOk+'/'+LEG.quiz.length+' ('+p+'%)</div><button onclick="startLQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';return;}var q=LEG.quiz[lqI];document.getElementById('lqBox').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(lqI+1)+'/'+LEG.quiz.length+'</div><div style="font-size:16px;color:var(--text);margin:12px 0;font-weight:500">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:400px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="chkLQ('+i+')" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif" id="lqo-'+i+'">'+o+'</button>';}).join('')+'</div><div id="lqFb" style="margin-top:8px;font-size:13px"></div>';}
+function chkLQ(i){var q=LEG.quiz[lqI];document.querySelectorAll('#lqBox button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});document.getElementById('lqo-'+q.ans).style.background='rgba(107,203,119,0.15)';document.getElementById('lqo-'+q.ans).style.opacity='1';if(i===q.ans){lqOk++;document.getElementById('lqFb').innerHTML='<span style="color:var(--green)">Đúng!</span>';}else{document.getElementById('lqo-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('lqo-'+i).style.opacity='1';document.getElementById('lqFb').innerHTML='<span style="color:var(--coral)">Sai!</span>';}lqI++;setTimeout(nextLQ,1000);}
+renderLeg();
+</script>
+<style>.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}.tc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}.tc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}</style>
+<style id="page-transition">.page-enter{animation:pageIn .3s ease-out}@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}</style>
+<script defer src="theme.js?v=3"></script><script defer src="gamification.js?v=3"></script><script defer src="common.js?v=12"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body></html>

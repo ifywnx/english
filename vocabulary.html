@@ -154,8 +154,36 @@
 .page-exit{animation:pageOut .2s ease-in forwards}
 @keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
 </style>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#64D8A5">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
 
@@ -1276,7 +1304,7 @@ document.addEventListener('click',e=>{
   if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
 });
 </script>
-<script src="theme.js?v=3"></script>
+<script defer src="theme.js?v=3"></script>
 
 
 <!-- BACK TO TOP -->
@@ -1333,8 +1361,8 @@ document.addEventListener('click',e=>{
   });
 })();
 </script>
-<script src="gamification.js?v=3"></script>
-<script src="common.js?v=12"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=12"></script>
 
 <script id="page-transition-js">
 (function(){
@@ -1349,5 +1377,6 @@ document.addEventListener('click',e=>{
   });
 })();
 </script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

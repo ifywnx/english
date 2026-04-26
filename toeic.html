@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<meta property="og:description" content="Bài đọc hiểu từ A1-B2 với câu hỏi tương tác và chấm điểm tự động.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<meta name="twitter:description" content="Bài đọc hiểu từ A1-B2 với câu hỏi tương tác và chấm điểm tự động.">
+<title>Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="manifest" href="manifest.json">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">TOEIC</span></div>
+<div class="page-label">TOEIC</div>
+<h1 class="page-title">Luyện thi TOEIC</h1>
+<p class="page-desc">Từ vựng theo chủ đề TOEIC, ngữ pháp thường gặp và bài tập mô phỏng Part 5 (Incomplete Sentences).</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="showTTab('vocab')" class="tc-tab active" id="tc-vocab">Từ vựng TOEIC</button>
+<button onclick="showTTab('grammar')" class="tc-tab" id="tc-grammar">Ngữ pháp TOEIC</button>
+<button onclick="showTTab('part5')" class="tc-tab" id="tc-part5">Part 5 Practice</button>
+</div>
+<div id="toeicContent"></div>
+</div>
+
+<script>
+var TVOCAB=[
+{topic:"Công sở (Office)",words:[
+{en:"deadline",vi:"hạn chót",ex:"The deadline for the report is Friday."},
+{en:"colleague",vi:"đồng nghiệp",ex:"She discussed the project with her colleagues."},
+{en:"supervisor",vi:"người giám sát",ex:"Please submit the form to your supervisor."},
+{en:"conference",vi:"hội nghị",ex:"The annual conference will be held in May."},
+{en:"agenda",vi:"chương trình nghị sự",ex:"What is on today's agenda?"},
+{en:"promote",vi:"thăng chức",ex:"He was promoted to manager last month."},
+{en:"resign",vi:"từ chức",ex:"She decided to resign from her position."},
+{en:"applicant",vi:"ứng viên",ex:"There were many applicants for the job."}
+]},
+{topic:"Tài chính (Finance)",words:[
+{en:"revenue",vi:"doanh thu",ex:"The company's revenue increased by 20%."},
+{en:"budget",vi:"ngân sách",ex:"We need to stay within the budget."},
+{en:"invoice",vi:"hóa đơn",ex:"Please send the invoice by email."},
+{en:"refund",vi:"hoàn tiền",ex:"You can request a refund within 30 days."},
+{en:"deposit",vi:"tiền đặt cọc",ex:"A deposit of $500 is required."},
+{en:"audit",vi:"kiểm toán",ex:"The company passed the annual audit."},
+{en:"profit",vi:"lợi nhuận",ex:"Profits have doubled this quarter."},
+{en:"negotiate",vi:"đàm phán",ex:"They are negotiating a new contract."}
+]},
+{topic:"Marketing & Bán hàng",words:[
+{en:"launch",vi:"ra mắt",ex:"The product will be launched next week."},
+{en:"campaign",vi:"chiến dịch",ex:"The marketing campaign was very successful."},
+{en:"target",vi:"mục tiêu",ex:"Our target audience is young professionals."},
+{en:"brand",vi:"thương hiệu",ex:"Building a strong brand takes time."},
+{en:"survey",vi:"khảo sát",ex:"We conducted a customer satisfaction survey."},
+{en:"warranty",vi:"bảo hành",ex:"The product comes with a 2-year warranty."},
+{en:"discount",vi:"giảm giá",ex:"Members get a 15% discount."},
+{en:"subscribe",vi:"đăng ký",ex:"Subscribe to our newsletter for updates."}
+]},
+{topic:"Vận chuyển & Du lịch",words:[
+{en:"itinerary",vi:"lịch trình",ex:"Please check the travel itinerary."},
+{en:"departure",vi:"khởi hành",ex:"The departure time is 8:00 AM."},
+{en:"boarding pass",vi:"thẻ lên máy bay",ex:"Show your boarding pass at the gate."},
+{en:"accommodate",vi:"sắp xếp chỗ ở",ex:"The hotel can accommodate 200 guests."},
+{en:"reimburse",vi:"hoàn trả chi phí",ex:"Travel expenses will be reimbursed."},
+{en:"destination",vi:"điểm đến",ex:"What is your final destination?"},
+{en:"delay",vi:"trì hoãn",ex:"The flight was delayed by 2 hours."},
+{en:"reservation",vi:"đặt chỗ",ex:"I'd like to make a reservation for two."}
+]}
+];
+
+var TGRAMMAR=[
+{rule:"Subject-Verb Agreement",vi:"Sự hòa hợp chủ ngữ-động từ",ex:"The number of employees <strong>has</strong> increased. (NOT have)",tip:"'The number of' + singular verb; 'A number of' + plural verb"},
+{rule:"Relative Pronouns",vi:"Đại từ quan hệ",ex:"The manager <strong>who</strong> approved the budget is on leave.",tip:"who = người; which = vật; whose = sở hữu; where = nơi"},
+{rule:"Causative Verbs",vi:"Động từ sai khiến",ex:"She <strong>had</strong> her assistant <strong>send</strong> the email.",tip:"have + someone + V; get + someone + to V; make + someone + V"},
+{rule:"Conditional Sentences",vi:"Câu điều kiện",ex:"If the order <strong>is placed</strong> before 5 PM, it <strong>will be delivered</strong> tomorrow.",tip:"If + present simple, will + V (Type 1 — có thể xảy ra)"},
+{rule:"Passive Voice",vi:"Câu bị động",ex:"The report <strong>was submitted</strong> by the deadline.",tip:"be + V3 (past participle). Dùng khi muốn nhấn mạnh hành động, không phải người làm"},
+{rule:"Gerund vs Infinitive",vi:"V-ing vs to V",ex:"She enjoys <strong>working</strong> in teams. / He decided <strong>to accept</strong> the offer.",tip:"enjoy/consider/avoid + V-ing; decide/plan/want + to V"},
+{rule:"Adverb Placement",vi:"Vị trí trạng từ",ex:"The project was <strong>successfully</strong> completed.",tip:"Trạng từ thường đứng trước tính từ, sau động từ, hoặc cuối câu"},
+{rule:"Preposition + Gerund",vi:"Giới từ + V-ing",ex:"She is responsible <strong>for managing</strong> the team.",tip:"Sau giới từ luôn dùng V-ing: interested in learning, good at speaking"}
+];
+
+var PART5=[
+{q:"All employees must submit their reports ___ Friday.",opts:["by","until","since","for"],ans:0},
+{q:"The new policy will go into ___ next month.",opts:["affect","effect","effective","effecting"],ans:1},
+{q:"Ms. Tanaka is ___ for the marketing department.",opts:["response","responsible","responsibility","responsive"],ans:1},
+{q:"The meeting has been ___ to next Monday.",opts:["postpone","postponed","postponing","postponement"],ans:1},
+{q:"Customers who ___ before March 31 will receive a discount.",opts:["register","registers","registered","registering"],ans:0},
+{q:"The company plans to ___ its operations to Asia.",opts:["expand","expansion","expanded","expanding"],ans:0},
+{q:"The contract must be signed by ___ parties.",opts:["either","both","neither","each"],ans:1},
+{q:"Due to the ___ weather, the event was canceled.",opts:["severe","severely","severity","severing"],ans:0},
+{q:"Please ensure that all documents are ___ before submission.",opts:["complete","completed","completely","completing"],ans:1},
+{q:"The CEO ___ addressed the concerns raised by shareholders.",opts:["direct","direction","directly","directed"],ans:2},
+{q:"___ the training program, employees gained new skills.",opts:["While","During","For","Since"],ans:1},
+{q:"The report should be submitted ___ than Friday.",opts:["no later","not later","no latest","not latest"],ans:0},
+{q:"She was ___ promoted to vice president.",opts:["recent","recently","recentness","recency"],ans:1},
+{q:"The budget was approved ___ the board of directors.",opts:["of","by","to","for"],ans:1},
+{q:"All staff members are ___ to attend the safety briefing.",opts:["require","required","requiring","requirement"],ans:1}
+];
+
+var curTTab='vocab';
+function showTTab(t){curTTab=t;document.querySelectorAll('.tc-tab').forEach(function(b){b.classList.remove('active');});document.getElementById('tc-'+t).classList.add('active');renderToeic();}
+
+function renderToeic(){
+  var html='';
+  if(curTTab==='vocab'){
+    html=TVOCAB.map(function(t){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
+        '<div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:12px"><i data-lucide="briefcase" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+t.topic+'</div>'+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px">'+
+          t.words.map(function(w){
+            return '<div style="padding:10px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent)">'+
+              '<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:var(--accent)">'+w.vi+'</span></div>'+
+              '<div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div>'+
+            '</div>';
+          }).join('')+
+        '</div></div>';
+    }).join('');
+  } else if(curTTab==='grammar'){
+    html=TGRAMMAR.map(function(g){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px">'+
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span style="font-size:17px;font-weight:600;color:var(--accent2)">'+g.rule+'</span><span style="font-size:13px;color:var(--text3)">'+g.vi+'</span></div>'+
+        '<div style="font-size:14px;color:var(--text);padding:10px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent2);margin-bottom:8px;line-height:1.6">'+g.ex+'</div>'+
+        '<div style="font-size:13px;color:var(--text3)"><i data-lucide="lightbulb" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>'+g.tip+'</div>'+
+      '</div>';
+    }).join('');
+  } else {
+    html='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">'+
+      '<div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px"><i data-lucide="file-text" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Part 5: Incomplete Sentences</div>'+
+      '<div style="font-size:13px;color:var(--text3);margin-bottom:16px">Chọn từ đúng để hoàn thành câu — giống thật trong đề TOEIC.</div>'+
+      '<div id="p5Box" style="text-align:center"><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu (15 câu)</button></div></div>';
+  }
+  document.getElementById('toeicContent').innerHTML=html;
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+
+var p5Idx=0,p5Ok=0,p5Items=[];
+function startP5(){p5Items=PART5.slice().sort(function(){return Math.random()-0.5;});p5Idx=0;p5Ok=0;nextP5();}
+function nextP5(){
+  if(p5Idx>=p5Items.length){var pct=Math.round(p5Ok/p5Items.length*100);var msg=pct>=80?'Xuất sắc! Sẵn sàng cho TOEIC!':pct>=60?'Khá tốt! Ôn thêm nhé!':'Cần luyện thêm nhiều!';document.getElementById('p5Box').innerHTML='<div style="font-size:28px;font-weight:600;margin:20px 0;color:var(--accent)">'+p5Ok+'/'+p5Items.length+' ('+pct+'%)</div><div style="color:var(--text3);margin-bottom:16px">'+msg+'</div><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';return;}
+  var q=p5Items[p5Idx];
+  document.getElementById('p5Box').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(p5Idx+1)+'/'+p5Items.length+'</div><div style="font-size:18px;color:var(--text);margin:16px 0;font-weight:500;line-height:1.6">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:400px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="checkP5('+i+')" style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif;transition:all .15s" id="p5o-'+i+'">'+o+'</button>';}).join('')+'</div><div id="p5Fb" style="margin-top:10px;font-size:13px"></div>';
+}
+function checkP5(i){
+  var q=p5Items[p5Idx];
+  document.querySelectorAll('#p5Box button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  document.getElementById('p5o-'+q.ans).style.background='rgba(107,203,119,0.15)';document.getElementById('p5o-'+q.ans).style.color='var(--green)';document.getElementById('p5o-'+q.ans).style.opacity='1';
+  if(i===q.ans){p5Ok++;document.getElementById('p5Fb').innerHTML='<span style="color:var(--green)">Chính xác!</span>';}
+  else{document.getElementById('p5o-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('p5o-'+i).style.color='var(--coral)';document.getElementById('p5o-'+i).style.opacity='1';document.getElementById('p5Fb').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+q.opts[q.ans]+'</strong></span>';}
+  p5Idx++;setTimeout(nextP5,1200);
+}
+renderToeic();
+</script>
+<style>
+.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.tc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.tc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+<script defer src="theme.js?v=3"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=12"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

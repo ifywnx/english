@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Thuật ngữ lập trình, DevOps, phỏng vấn tech và giao tiếp trong team IT.">
+<meta property="og:title" content="Tiếng Anh IT — EasyEnglish">
+<meta property="og:description" content="Thuật ngữ lập trình, DevOps, phỏng vấn tech và giao tiếp trong team IT.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tiếng Anh IT — EasyEnglish">
+<meta name="twitter:description" content="Thuật ngữ lập trình, DevOps, phỏng vấn tech và giao tiếp trong team IT.">
+<title>Tiếng Anh IT — EasyEnglish</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<div class="skeleton-loader" id="skeletonLoader"><div class="sk-bar sk-nav"></div><div class="sk-bar sk-title"></div><div class="sk-bar sk-desc"></div><div class="sk-bar sk-card"></div></div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">IT English</span></div>
+<div class="page-label">Chuyên ngành</div>
+<h1 class="page-title">Tiếng Anh IT</h1>
+<p class="page-desc">Thuật ngữ lập trình, DevOps, phỏng vấn tech, và giao tiếp trong team IT.</p>
+
+<div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
+<button onclick="showITTab('dev')" class="tc-tab active" id="it-dev">Lập trình</button>
+<button onclick="showITTab('devops')" class="tc-tab" id="it-devops">DevOps & Cloud</button>
+<button onclick="showITTab('interview')" class="tc-tab" id="it-interview">Phỏng vấn Tech</button>
+<button onclick="showITTab('quiz')" class="tc-tab" id="it-quiz">Quiz</button>
+</div>
+<div id="itContent"></div>
+</div>
+
+<script>
+var IT_DEV=[
+{cat:"Lập trình cơ bản",words:[
+{en:"variable",vi:"biến",ex:"Declare a variable to store the user's name."},
+{en:"function",vi:"hàm",ex:"This function returns the sum of two numbers."},
+{en:"array",vi:"mảng",ex:"Store the list of users in an array."},
+{en:"loop",vi:"vòng lặp",ex:"Use a for loop to iterate through the array."},
+{en:"debug",vi:"gỡ lỗi",ex:"I spent 2 hours debugging this code."},
+{en:"compile",vi:"biên dịch",ex:"The code won't compile due to a syntax error."},
+{en:"refactor",vi:"tái cấu trúc code",ex:"We need to refactor this module for better performance."},
+{en:"deploy",vi:"triển khai",ex:"We'll deploy the new version on Friday."}
+]},
+{cat:"Web Development",words:[
+{en:"frontend",vi:"giao diện người dùng",ex:"She's a frontend developer specializing in React."},
+{en:"backend",vi:"phía máy chủ",ex:"The backend handles database queries."},
+{en:"API",vi:"giao diện lập trình",ex:"We use REST APIs to communicate between services."},
+{en:"responsive",vi:"tương thích nhiều màn hình",ex:"Make sure the design is responsive on mobile."},
+{en:"framework",vi:"khung phát triển",ex:"Next.js is a popular React framework."},
+{en:"authentication",vi:"xác thực",ex:"Implement JWT authentication for the API."},
+{en:"middleware",vi:"phần mềm trung gian",ex:"Add a logging middleware to the server."},
+{en:"endpoint",vi:"điểm cuối API",ex:"Create a new endpoint for user registration."}
+]},
+{cat:"Database & Data",words:[
+{en:"query",vi:"truy vấn",ex:"Write a SQL query to fetch all active users."},
+{en:"schema",vi:"cấu trúc dữ liệu",ex:"Define the database schema before writing code."},
+{en:"migration",vi:"di chuyển dữ liệu",ex:"Run the database migration to update the schema."},
+{en:"index",vi:"chỉ mục",ex:"Add an index on the email column for faster lookups."},
+{en:"normalize",vi:"chuẩn hóa",ex:"Normalize the data to reduce redundancy."},
+{en:"cache",vi:"bộ nhớ đệm",ex:"Use Redis for caching frequently accessed data."},
+{en:"backup",vi:"sao lưu",ex:"Schedule daily database backups."},
+{en:"transaction",vi:"giao dịch",ex:"Wrap the operations in a transaction for data integrity."}
+]}
+];
+
+var IT_DEVOPS=[
+{cat:"DevOps & CI/CD",words:[
+{en:"container",vi:"bộ chứa ảo hóa",ex:"Run the app in a Docker container."},
+{en:"pipeline",vi:"quy trình tự động",ex:"Set up a CI/CD pipeline for automatic deployments."},
+{en:"orchestration",vi:"điều phối",ex:"Kubernetes handles container orchestration."},
+{en:"scalability",vi:"khả năng mở rộng",ex:"Design the system with scalability in mind."},
+{en:"load balancer",vi:"cân bằng tải",ex:"Use a load balancer to distribute traffic."},
+{en:"monitoring",vi:"giám sát",ex:"Set up monitoring alerts for server health."},
+{en:"rollback",vi:"quay lại phiên bản cũ",ex:"We need to rollback to the previous version."},
+{en:"uptime",vi:"thời gian hoạt động",ex:"Our SLA guarantees 99.9% uptime."}
+]}
+];
+
+var IT_INTERVIEW=[
+{q:"Tell me about a challenging project you've worked on.",tip:"Mô tả dự án, vai trò, thử thách, cách giải quyết, kết quả. Dùng STAR method (Situation, Task, Action, Result)."},
+{q:"How do you handle tight deadlines?",tip:"Chia nhỏ task, ưu tiên theo impact, communicate với team, không compromise quality."},
+{q:"Explain the difference between SQL and NoSQL databases.",tip:"SQL: structured, relational, ACID. NoSQL: flexible schema, horizontal scaling, eventual consistency."},
+{q:"What is your experience with version control?",tip:"Git workflow: branching (feature/develop/main), pull requests, code review, merge conflicts."},
+{q:"How do you ensure code quality?",tip:"Code review, unit testing, linting, CI/CD, clean code principles, documentation."},
+{q:"Describe your ideal development workflow.",tip:"Agile/Scrum, sprint planning, daily standup, PR review, automated testing, continuous deployment."}
+];
+
+var IT_QUIZ=[
+{q:"'Deploy' nghĩa là gì?",opts:["Xóa bỏ","Triển khai","Sao chép","Gỡ lỗi"],ans:1},
+{q:"'API' viết tắt của gì?",opts:["Application Programming Interface","Advanced Program Installation","Automated Process Integration","Applied Protocol Interface"],ans:0},
+{q:"'Refactor' nghĩa là gì?",opts:["Xóa code","Tái cấu trúc code","Viết code mới","Copy code"],ans:1},
+{q:"'Cache' dùng để làm gì?",opts:["Xóa dữ liệu","Lưu tạm cho nhanh","Mã hóa","Sao lưu"],ans:1},
+{q:"'Scalability' nghĩa là gì?",opts:["Bảo mật","Tốc độ","Khả năng mở rộng","Ổn định"],ans:2},
+{q:"'Rollback' nghĩa là gì?",opts:["Cập nhật mới","Quay lại version cũ","Xóa database","Restart server"],ans:1},
+{q:"'Frontend' là phần nào?",opts:["Máy chủ","Giao diện người dùng","Database","API"],ans:1},
+{q:"'CI/CD' giúp gì?",opts:["Bảo mật","Tự động build & deploy","Thiết kế UI","Quản lý team"],ans:1}
+];
+
+var curIT='dev';
+function showITTab(t){curIT=t;document.querySelectorAll('.tc-tab').forEach(function(b){b.classList.remove('active');});document.getElementById('it-'+t).classList.add('active');renderIT();}
+
+function renderIT(){
+  var h='';
+  var data=curIT==='dev'?IT_DEV:curIT==='devops'?IT_DEVOPS:null;
+  if(data){
+    h=data.map(function(c){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
+        '<div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:12px"><i data-lucide="code-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+c.cat+'</div>'+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px">'+
+          c.words.map(function(w){
+            return '<div style="padding:10px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent)">'+
+              '<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text);font-family:monospace">'+w.en+'</span><span style="font-size:12px;color:var(--accent)">'+w.vi+'</span></div>'+
+              '<div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div></div>';
+          }).join('')+'</div></div>';
+    }).join('');
+  } else if(curIT==='interview'){
+    h=IT_INTERVIEW.map(function(q,i){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px">'+
+        '<div style="font-size:15px;font-weight:600;color:var(--accent2);margin-bottom:8px"><i data-lucide="message-square" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+(i+1)+'. '+q.q+'</div>'+
+        '<div style="font-size:13px;color:var(--text3);background:rgba(167,139,250,0.04);padding:10px 12px;border-radius:8px;border-left:3px solid var(--accent2);line-height:1.5"><i data-lucide="lightbulb" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>'+q.tip+'</div></div>';
+    }).join('');
+  } else {
+    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"><div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="terminal" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>IT Quiz ('+IT_QUIZ.length+' câu)</div><div id="iqBox"><button onclick="startIQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu</button></div></div>';
+  }
+  document.getElementById('itContent').innerHTML=h;
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+
+var iqI=0,iqOk=0;
+function startIQ(){iqI=0;iqOk=0;nextIQ();}
+function nextIQ(){
+  if(iqI>=IT_QUIZ.length){var p=Math.round(iqOk/IT_QUIZ.length*100);document.getElementById('iqBox').innerHTML='<div style="font-size:28px;font-weight:600;color:var(--accent);margin:16px 0">'+iqOk+'/'+IT_QUIZ.length+' ('+p+'%)</div><button onclick="startIQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';return;}
+  var q=IT_QUIZ[iqI];
+  document.getElementById('iqBox').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(iqI+1)+'/'+IT_QUIZ.length+'</div><div style="font-size:16px;color:var(--text);margin:12px 0;font-weight:500">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:500px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="chkIQ('+i+')" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:12px;font-family:DM Sans,sans-serif;text-align:left" id="iqo-'+i+'">'+o+'</button>';}).join('')+'</div><div id="iqFb" style="margin-top:8px;font-size:13px"></div>';
+}
+function chkIQ(i){
+  var q=IT_QUIZ[iqI];
+  document.querySelectorAll('#iqBox button').forEach(function(b){b.disabled=true;b.style.opacity='0.6';});
+  document.getElementById('iqo-'+q.ans).style.background='rgba(107,203,119,0.15)';document.getElementById('iqo-'+q.ans).style.opacity='1';
+  if(i===q.ans){iqOk++;document.getElementById('iqFb').innerHTML='<span style="color:var(--green)">Đúng!</span>';}
+  else{document.getElementById('iqo-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('iqo-'+i).style.opacity='1';document.getElementById('iqFb').innerHTML='<span style="color:var(--coral)">Sai!</span>';}
+  iqI++;setTimeout(nextIQ,1000);
+}
+renderIT();
+</script>
+<style>
+.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.tc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.tc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<script defer src="theme.js?v=3"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=12"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>
