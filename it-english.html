@@ -18,7 +18,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -32,19 +32,24 @@
 <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">IT English</span></div>
 <div class="page-label">Chuyên ngành</div>
 <h1 class="page-title">Tiếng Anh IT</h1>
-<p class="page-desc">Thuật ngữ lập trình, DevOps, phỏng vấn tech, và giao tiếp trong team IT.</p>
+<p class="page-desc">Thuật ngữ lập trình, DevOps, bảo mật, Agile, cloud, phỏng vấn tech, và giao tiếp trong team IT.</p>
 
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
 <button onclick="showITTab('dev')" class="tc-tab active" id="it-dev">Lập trình</button>
-<button onclick="showITTab('devops')" class="tc-tab" id="it-devops">DevOps & Cloud</button>
-<button onclick="showITTab('interview')" class="tc-tab" id="it-interview">Phỏng vấn Tech</button>
+<button onclick="showITTab('devops')" class="tc-tab" id="it-devops">DevOps</button>
+<button onclick="showITTab('security')" class="tc-tab" id="it-security">Bảo mật</button>
+<button onclick="showITTab('agile')" class="tc-tab" id="it-agile">Agile</button>
+<button onclick="showITTab('cloud')" class="tc-tab" id="it-cloud">Cloud</button>
+<button onclick="showITTab('dialog')" class="tc-tab" id="it-dialog">Hội thoại</button>
+<button onclick="showITTab('interview')" class="tc-tab" id="it-interview">Phỏng vấn</button>
 <button onclick="showITTab('quiz')" class="tc-tab" id="it-quiz">Quiz</button>
 </div>
 <div id="itContent"></div>
 </div>
 
 <script>
-var IT_DEV=[
+var IT_DATA={
+dev:[
 {cat:"Lập trình cơ bản",words:[
 {en:"variable",vi:"biến",ex:"Declare a variable to store the user's name."},
 {en:"function",vi:"hàm",ex:"This function returns the sum of two numbers."},
@@ -75,9 +80,8 @@ var IT_DEV=[
 {en:"backup",vi:"sao lưu",ex:"Schedule daily database backups."},
 {en:"transaction",vi:"giao dịch",ex:"Wrap the operations in a transaction for data integrity."}
 ]}
-];
-
-var IT_DEVOPS=[
+],
+devops:[
 {cat:"DevOps & CI/CD",words:[
 {en:"container",vi:"bộ chứa ảo hóa",ex:"Run the app in a Docker container."},
 {en:"pipeline",vi:"quy trình tự động",ex:"Set up a CI/CD pipeline for automatic deployments."},
@@ -88,7 +92,44 @@ var IT_DEVOPS=[
 {en:"rollback",vi:"quay lại phiên bản cũ",ex:"We need to rollback to the previous version."},
 {en:"uptime",vi:"thời gian hoạt động",ex:"Our SLA guarantees 99.9% uptime."}
 ]}
-];
+],
+security:[
+{cat:"Security & Bảo mật",words:[
+{en:"firewall",vi:"tường lửa",ex:"The firewall blocked the suspicious traffic."},
+{en:"encryption",vi:"mã hóa",ex:"All data is protected with AES-256 encryption."},
+{en:"vulnerability",vi:"lỗ hổng bảo mật",ex:"The scan found three critical vulnerabilities."},
+{en:"penetration testing",vi:"kiểm thử xâm nhập",ex:"We run penetration testing quarterly."},
+{en:"two-factor auth (2FA)",vi:"xác thực hai lớp",ex:"Enable 2FA for all admin accounts."},
+{en:"authorization",vi:"phân quyền",ex:"Only admins have authorization to delete records."},
+{en:"malware",vi:"phần mềm độc hại",ex:"The antivirus detected malware on the server."},
+{en:"phishing",vi:"lừa đảo qua email",ex:"Train employees to recognize phishing emails."}
+]}
+],
+agile:[
+{cat:"Agile & Scrum",words:[
+{en:"sprint",vi:"chu kỳ phát triển",ex:"Each sprint lasts two weeks."},
+{en:"standup",vi:"họp nhanh hàng ngày",ex:"We have a 15-minute standup every morning."},
+{en:"retrospective",vi:"họp rút kinh nghiệm",ex:"The retrospective helped us improve our process."},
+{en:"user story",vi:"câu chuyện người dùng",ex:"Write a user story for the login feature."},
+{en:"epic",vi:"nhóm tính năng lớn",ex:"The payment epic includes 12 user stories."},
+{en:"velocity",vi:"tốc độ hoàn thành",ex:"Our team velocity is 40 story points per sprint."},
+{en:"burndown chart",vi:"biểu đồ tiến độ",ex:"The burndown chart shows we're ahead of schedule."},
+{en:"product owner",vi:"chủ sản phẩm",ex:"The product owner prioritizes the backlog."}
+]}
+],
+cloud:[
+{cat:"Cloud & Networking",words:[
+{en:"serverless",vi:"không máy chủ",ex:"We migrated to a serverless architecture on AWS Lambda."},
+{en:"microservices",vi:"kiến trúc vi dịch vụ",ex:"Each microservice handles a specific business function."},
+{en:"CDN",vi:"mạng phân phối nội dung",ex:"Use a CDN to serve static assets faster globally."},
+{en:"latency",vi:"độ trễ",ex:"The API response latency is under 100ms."},
+{en:"bandwidth",vi:"băng thông",ex:"We need more bandwidth to handle peak traffic."},
+{en:"DNS",vi:"hệ thống tên miền",ex:"Update the DNS records to point to the new server."},
+{en:"VPN",vi:"mạng riêng ảo",ex:"Connect to the company VPN before accessing internal tools."},
+{en:"TCP/IP",vi:"giao thức truyền thông",ex:"TCP/IP is the foundation of internet communication."}
+]}
+]
+};
 
 var IT_INTERVIEW=[
 {q:"Tell me about a challenging project you've worked on.",tip:"Mô tả dự án, vai trò, thử thách, cách giải quyết, kết quả. Dùng STAR method (Situation, Task, Action, Result)."},
@@ -96,7 +137,35 @@ var IT_INTERVIEW=[
 {q:"Explain the difference between SQL and NoSQL databases.",tip:"SQL: structured, relational, ACID. NoSQL: flexible schema, horizontal scaling, eventual consistency."},
 {q:"What is your experience with version control?",tip:"Git workflow: branching (feature/develop/main), pull requests, code review, merge conflicts."},
 {q:"How do you ensure code quality?",tip:"Code review, unit testing, linting, CI/CD, clean code principles, documentation."},
-{q:"Describe your ideal development workflow.",tip:"Agile/Scrum, sprint planning, daily standup, PR review, automated testing, continuous deployment."}
+{q:"Describe your ideal development workflow.",tip:"Agile/Scrum, sprint planning, daily standup, PR review, automated testing, continuous deployment."},
+{q:"How would you design a scalable system?",tip:"Load balancing, caching (Redis), database sharding, microservices, CDN, horizontal scaling, message queues."},
+{q:"What is your experience with CI/CD?",tip:"Jenkins/GitHub Actions, automated testing, staging environments, blue-green deployment, rollback strategies."},
+{q:"How do you handle technical debt?",tip:"Prioritize by impact, allocate sprint time for refactoring, document debt, balance new features vs cleanup."},
+{q:"Describe a time you resolved a production incident.",tip:"Incident timeline, root cause analysis, immediate fix, post-mortem, preventive measures implemented."}
+];
+
+var IT_DIALOGS=[
+{title:"Daily Standup Meeting",lines:[
+{who:"Scrum Master",text:"Good morning, team. Let's keep it brief. What did you work on yesterday?"},
+{who:"Dev A",text:"I finished the authentication module and pushed it to staging."},
+{who:"Scrum Master",text:"Great. Any blockers?"},
+{who:"Dev A",text:"Yes, I need the updated API docs from the backend team."},
+{who:"Dev B",text:"I'll send those by noon. Yesterday I fixed the database migration issue."},
+{who:"Scrum Master",text:"Perfect. What's the plan for today?"},
+{who:"Dev B",text:"I'm starting on the payment integration. Should take about two days."},
+{who:"Dev A",text:"I'll work on unit tests for the auth module once I get the API docs."},
+{who:"Scrum Master",text:"Sounds good. Let's sync again tomorrow. Keep the Jira board updated."}
+]},
+{title:"Code Review Discussion",lines:[
+{who:"Reviewer",text:"Hey, I left some comments on your pull request. Can we go through them?"},
+{who:"Author",text:"Sure. What did you find?"},
+{who:"Reviewer",text:"The error handling in the API controller — you're catching all exceptions with a generic handler."},
+{who:"Author",text:"Good point. I'll add separate catch blocks for validation, auth, and server errors."},
+{who:"Reviewer",text:"Also, this function is over 80 lines. Can we break it into smaller helpers?"},
+{who:"Author",text:"Yeah, I'll split the data transformation into a separate utility."},
+{who:"Reviewer",text:"One more thing — 'temp' and 'data2' aren't very descriptive variable names."},
+{who:"Author",text:"Agreed. I'll rename them to 'transformedPayload' and 'validatedResponse'. Pushing updates this afternoon."}
+]}
 ];
 
 var IT_QUIZ=[
@@ -107,7 +176,19 @@ var IT_QUIZ=[
 {q:"'Scalability' nghĩa là gì?",opts:["Bảo mật","Tốc độ","Khả năng mở rộng","Ổn định"],ans:2},
 {q:"'Rollback' nghĩa là gì?",opts:["Cập nhật mới","Quay lại version cũ","Xóa database","Restart server"],ans:1},
 {q:"'Frontend' là phần nào?",opts:["Máy chủ","Giao diện người dùng","Database","API"],ans:1},
-{q:"'CI/CD' giúp gì?",opts:["Bảo mật","Tự động build & deploy","Thiết kế UI","Quản lý team"],ans:1}
+{q:"'CI/CD' giúp gì?",opts:["Bảo mật","Tự động build & deploy","Thiết kế UI","Quản lý team"],ans:1},
+{q:"'Firewall' nghĩa là gì?",opts:["Phần mềm diệt virus","Tường lửa","Mã hóa","Sao lưu"],ans:1},
+{q:"'Phishing' là gì?",opts:["Câu cá","Lừa đảo qua email","Hack database","Virus"],ans:1},
+{q:"'Sprint' trong Agile là gì?",opts:["Chạy nước rút","Chu kỳ phát triển","Cuộc họp","Bản release"],ans:1},
+{q:"'Microservices' nghĩa là gì?",opts:["Dịch vụ nhỏ","Kiến trúc vi dịch vụ","API gateway","Mini server"],ans:1},
+{q:"'Standup' meeting là gì?",opts:["Họp đứng","Họp nhanh hàng ngày","Họp tuần","Retrospective"],ans:1},
+{q:"'Encryption' nghĩa là gì?",opts:["Giải mã","Mã hóa","Nén file","Sao lưu"],ans:1},
+{q:"'Latency' nghĩa là gì?",opts:["Băng thông","Độ trễ","Tốc độ","Dung lượng"],ans:1},
+{q:"'VPN' viết tắt của gì?",opts:["Virtual Private Network","Very Protected Network","Visual Processing Node","Verified Public Network"],ans:0},
+{q:"'User story' trong Agile là gì?",opts:["Tài liệu kỹ thuật","Câu chuyện người dùng","Bug report","Test case"],ans:1},
+{q:"'Vulnerability' nghĩa là gì?",opts:["Tính năng","Lỗ hổng bảo mật","Bản cập nhật","Cấu hình"],ans:1},
+{q:"'DNS' nghĩa là gì?",opts:["Data Network System","Domain Name System","Digital Network Service","Direct Node Server"],ans:1},
+{q:"'Product Owner' trong Scrum làm gì?",opts:["Viết code","Ưu tiên backlog","Test phần mềm","Quản lý server"],ans:1}
 ];
 
 var curIT='dev';
@@ -115,8 +196,9 @@ function showITTab(t){curIT=t;document.querySelectorAll('.tc-tab').forEach(funct
 
 function renderIT(){
   var h='';
-  var data=curIT==='dev'?IT_DEV:curIT==='devops'?IT_DEVOPS:null;
-  if(data){
+  var vocabTabs=['dev','devops','security','agile','cloud'];
+  if(vocabTabs.indexOf(curIT)>-1){
+    var data=IT_DATA[curIT];
     h=data.map(function(c){
       return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
         '<div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:12px"><i data-lucide="code-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+c.cat+'</div>'+
@@ -132,6 +214,17 @@ function renderIT(){
       return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px">'+
         '<div style="font-size:15px;font-weight:600;color:var(--accent2);margin-bottom:8px"><i data-lucide="message-square" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+(i+1)+'. '+q.q+'</div>'+
         '<div style="font-size:13px;color:var(--text3);background:rgba(167,139,250,0.04);padding:10px 12px;border-radius:8px;border-left:3px solid var(--accent2);line-height:1.5"><i data-lucide="lightbulb" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>'+q.tip+'</div></div>';
+    }).join('');
+  } else if(curIT==='dialog'){
+    h=IT_DIALOGS.map(function(d){
+      return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px">'+
+        '<div style="font-size:16px;font-weight:600;color:var(--accent3);margin-bottom:12px"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+d.title+'</div>'+
+        d.lines.map(function(l){
+          var isLeft=l.who.indexOf('Master')>-1||l.who.indexOf('Reviewer')>-1;
+          var bg=isLeft?'rgba(100,216,165,0.05)':'rgba(167,139,250,0.05)';
+          var bc=isLeft?'var(--accent)':'var(--accent2)';
+          return '<div style="padding:10px 14px;background:'+bg+';border-radius:10px;margin-bottom:6px;border-left:3px solid '+bc+'"><span style="font-size:12px;font-weight:600;color:'+bc+'">'+l.who+'</span><div style="font-size:14px;color:var(--text);margin-top:4px;line-height:1.5">'+l.text+'</div></div>';
+        }).join('')+'</div>';
     }).join('');
   } else {
     h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"><div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="terminal" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>IT Quiz ('+IT_QUIZ.length+' câu)</div><div id="iqBox"><button onclick="startIQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu</button></div></div>';
@@ -168,7 +261,7 @@ renderIT();
 </style>
 <script defer src="theme.js?v=3"></script>
 <script defer src="gamification.js?v=3"></script>
-<script defer src="common.js?v=13"></script>
+<script defer src="common.js?v=14"></script>
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

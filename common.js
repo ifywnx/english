@@ -65,14 +65,21 @@ document.addEventListener('click',function(e){
   if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
 });
 
-// Back to top + reading progress
+// Back to top + reading progress (merged, rAF-throttled)
+var _scrollTicking = false;
 window.addEventListener('scroll',function(){
-  var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
-  var btn=document.getElementById('backTop');
-  if(btn){if(st>400)btn.classList.add('show');else btn.classList.remove('show');}
-  var bar=document.getElementById('readProgress');
-  if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
-});
+  if(!_scrollTicking){
+    requestAnimationFrame(function(){
+      var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+      var btn=document.getElementById('backTop');
+      if(btn){if(st>400)btn.classList.add('show');else btn.classList.remove('show');}
+      var bar=document.getElementById('readProgress');
+      if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
+      _scrollTicking=false;
+    });
+    _scrollTicking=true;
+  }
+},{passive:true});
 
 // ==================== INJECT SHARED UI ELEMENTS ====================
 (function(){
@@ -124,7 +131,7 @@ window.addEventListener('scroll',function(){
       // --- Học cơ bản ---
       {href:'pronunciation.html', icon:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>', label:'Phát âm'},
       {href:'irregular-verbs.html', icon:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>', label:'Động từ BQT'},
-      {href:'gerund-infinitive.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>', label:'Gerund vs Infinitive'},
+      {href:'gerund-infinitive.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>', label:'V-ing hay To V?'},
       {href:'prepositions.html', icon:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>', label:'Cụm giới từ'},
       // --- Từ vựng ---
       {href:'synonyms.html', icon:'<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>', label:'Đồng/Trái nghĩa'},
@@ -460,7 +467,7 @@ window.addEventListener('scroll',function(){
   window.addEventListener('scroll', function(){
     clearTimeout(scrollHideTimer);
     scrollHideTimer = setTimeout(hidePopup, 100);
-  });
+  },{passive:true});
 })();
 
 /* === GLOBAL SEARCH (Ctrl+K) === */
@@ -495,7 +502,7 @@ window.addEventListener('scroll',function(){
     {title:'Động từ bất quy tắc',desc:'Irregular verbs',url:'irregular-verbs.html',tags:'irregular verbs dong tu bat quy tac'},
     {title:'Giới từ',desc:'Preposition combinations',url:'preposition-combinations.html',tags:'prepositions gioi tu'},
     {title:'Cấu tạo từ',desc:'Word formation: prefix, suffix, root',url:'word-formation.html',tags:'word formation cau tao tu prefix suffix'},
-    {title:'Gerund vs Infinitive',desc:'V-ing vs to V',url:'gerund-infinitive.html',tags:'gerund infinitive ving to v'},
+    {title:'V-ing hay To V?',desc:'Gerund vs Infinitive — Khi nào dùng V-ing, khi nào dùng To V',url:'gerund-infinitive.html',tags:'gerund infinitive ving to v danh động từ'},
     {title:'Phát âm',desc:'Pronunciation guide',url:'pronunciation.html',tags:'pronunciation phat am'},
     {title:'Tiếng Anh thương mại',desc:'Business English: email, hội thoại',url:'business-english.html',tags:'business english thuong mai doanh nghiep'},
     {title:'Tiếng Anh IT',desc:'Thuật ngữ lập trình, DevOps',url:'it-english.html',tags:'it english lap trinh devops'},

@@ -285,7 +285,7 @@ function createThemePicker() {
   btn.title = 'Đổi giao diện';
   var isMobile = window.innerWidth <= 900;
   var btnBottom = isMobile ? '100px' : '24px';
-  btn.style.cssText = 'position:fixed;bottom:' + btnBottom + ';right:' + (isMobile ? '16px' : '24px') + ';z-index:10000;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-tap-highlight-color:transparent';
+  btn.style.cssText = 'position:fixed;bottom:' + btnBottom + ';right:' + (isMobile ? '16px' : '24px') + ';z-index:10000;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:' + (isMobile ? 'none' : 'flex') + ';align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-tap-highlight-color:transparent';
   if (!isMobile) {
     btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
     btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');

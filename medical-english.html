@@ -18,7 +18,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -30,12 +30,15 @@
 <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">Medical English</span></div>
 <div class="page-label">Chuyên ngành</div>
 <h1 class="page-title">Tiếng Anh y tế</h1>
-<p class="page-desc">Thuật ngữ bệnh viện, khám bệnh, bộ phận cơ thể, đọc toa thuốc và hội thoại bác sĩ - bệnh nhân.</p>
+<p class="page-desc">Thuật ngữ bệnh viện, khám bệnh, bộ phận cơ thể, xét nghiệm, chuyên khoa, đọc toa thuốc và hội thoại bác sĩ - bệnh nhân.</p>
 
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
 <button onclick="showMTab('body')" class="tc-tab active" id="md-body">Cơ thể</button>
 <button onclick="showMTab('hospital')" class="tc-tab" id="md-hospital">Bệnh viện</button>
-<button onclick="showMTab('symptoms')" class="tc-tab" id="md-symptoms">Triệu chứng & Bệnh</button>
+<button onclick="showMTab('symptoms')" class="tc-tab" id="md-symptoms">Triệu chứng</button>
+<button onclick="showMTab('treatment')" class="tc-tab" id="md-treatment">Thuốc & Điều trị</button>
+<button onclick="showMTab('tests')" class="tc-tab" id="md-tests">Xét nghiệm</button>
+<button onclick="showMTab('specialists')" class="tc-tab" id="md-specialists">Chuyên khoa</button>
 <button onclick="showMTab('dialog')" class="tc-tab" id="md-dialog">Hội thoại</button>
 <button onclick="showMTab('quiz')" class="tc-tab" id="md-quiz">Quiz</button>
 </div>
@@ -45,12 +48,24 @@
 <script>
 var MED={
 body:[
-{en:"skull",vi:"hộp sọ"},{en:"spine",vi:"cột sống"},{en:"rib",vi:"xương sườn"},
-{en:"lung",vi:"phổi"},{en:"heart",vi:"tim"},{en:"liver",vi:"gan"},
-{en:"kidney",vi:"thận"},{en:"stomach",vi:"dạ dày"},{en:"intestine",vi:"ruột"},
-{en:"artery",vi:"động mạch"},{en:"vein",vi:"tĩnh mạch"},{en:"muscle",vi:"cơ"},
-{en:"tendon",vi:"gân"},{en:"joint",vi:"khớp"},{en:"bone marrow",vi:"tủy xương"},
-{en:"thyroid",vi:"tuyến giáp"},{en:"pancreas",vi:"tuyến tụy"},{en:"bladder",vi:"bàng quang"}
+{en:"skull",vi:"hộp sọ",ex:"The skull protects the brain from injury."},
+{en:"spine",vi:"cột sống",ex:"She injured her spine in the accident."},
+{en:"rib",vi:"xương sườn",ex:"He fractured two ribs during the fall."},
+{en:"lung",vi:"phổi",ex:"Smoking damages the lungs over time."},
+{en:"heart",vi:"tim",ex:"The heart pumps blood throughout the body."},
+{en:"liver",vi:"gan",ex:"The liver filters toxins from the blood."},
+{en:"kidney",vi:"thận",ex:"Each person has two kidneys."},
+{en:"stomach",vi:"dạ dày",ex:"Spicy food can irritate the stomach lining."},
+{en:"intestine",vi:"ruột",ex:"Nutrients are absorbed in the small intestine."},
+{en:"artery",vi:"động mạch",ex:"Blocked arteries can lead to a heart attack."},
+{en:"vein",vi:"tĩnh mạch",ex:"The nurse drew blood from a vein in his arm."},
+{en:"muscle",vi:"cơ",ex:"Stretching prevents muscle injuries."},
+{en:"tendon",vi:"gân",ex:"The Achilles tendon connects the calf to the heel."},
+{en:"joint",vi:"khớp",ex:"Arthritis causes inflammation in the joints."},
+{en:"bone marrow",vi:"tủy xương",ex:"Bone marrow produces blood cells."},
+{en:"thyroid",vi:"tuyến giáp",ex:"The thyroid gland regulates metabolism."},
+{en:"pancreas",vi:"tuyến tụy",ex:"The pancreas produces insulin."},
+{en:"bladder",vi:"bàng quang",ex:"A full bladder signals the need to urinate."}
 ],
 hospital:[
 {en:"emergency room (ER)",vi:"phòng cấp cứu",ex:"Take the patient to the ER immediately."},
@@ -59,7 +74,7 @@ hospital:[
 {en:"outpatient",vi:"bệnh nhân ngoại trú",ex:"He's an outpatient — no overnight stay needed."},
 {en:"inpatient",vi:"bệnh nhân nội trú",ex:"Inpatients stay in the hospital for treatment."},
 {en:"prescription",vi:"đơn thuốc",ex:"The doctor wrote a prescription for antibiotics."},
-{en:"diagnosis",vi:"chẩn đoán",ex:"The diagnosis confirmed it was a viral infection."},
+{en:"diagnosis",vi:"chẩn đoán",ex:"The diagnosis confirmed a viral infection."},
 {en:"prognosis",vi:"tiên lượng bệnh",ex:"The prognosis is good — full recovery expected."},
 {en:"referral",vi:"giới thiệu chuyển viện",ex:"I'll give you a referral to a specialist."},
 {en:"dosage",vi:"liều lượng",ex:"Take the correct dosage as prescribed."},
@@ -67,12 +82,54 @@ hospital:[
 {en:"anesthesia",vi:"gây mê",ex:"The surgery requires general anesthesia."}
 ],
 symptoms:[
-{en:"fever",vi:"sốt"},{en:"cough",vi:"ho"},{en:"headache",vi:"đau đầu"},
-{en:"nausea",vi:"buồn nôn"},{en:"dizziness",vi:"chóng mặt"},{en:"fatigue",vi:"mệt mỏi"},
-{en:"swelling",vi:"sưng"},{en:"rash",vi:"phát ban"},{en:"shortness of breath",vi:"khó thở"},
-{en:"chest pain",vi:"đau ngực"},{en:"sore throat",vi:"đau họng"},{en:"insomnia",vi:"mất ngủ"},
-{en:"hypertension",vi:"cao huyết áp"},{en:"diabetes",vi:"tiểu đường"},{en:"allergy",vi:"dị ứng"},
-{en:"fracture",vi:"gãy xương"},{en:"infection",vi:"nhiễm trùng"},{en:"inflammation",vi:"viêm"}
+{en:"fever",vi:"sốt",ex:"She has a high fever of 39°C."},
+{en:"cough",vi:"ho",ex:"A persistent cough can be a sign of bronchitis."},
+{en:"headache",vi:"đau đầu",ex:"I've had a terrible headache since this morning."},
+{en:"nausea",vi:"buồn nôn",ex:"The medication may cause nausea."},
+{en:"dizziness",vi:"chóng mặt",ex:"Stand up slowly to avoid dizziness."},
+{en:"fatigue",vi:"mệt mỏi",ex:"Chronic fatigue can affect your daily life."},
+{en:"swelling",vi:"sưng",ex:"Apply ice to reduce the swelling."},
+{en:"rash",vi:"phát ban",ex:"The rash appeared after taking the new medication."},
+{en:"shortness of breath",vi:"khó thở",ex:"Shortness of breath requires immediate medical attention."},
+{en:"chest pain",vi:"đau ngực",ex:"Chest pain can be a symptom of a heart attack."},
+{en:"sore throat",vi:"đau họng",ex:"A sore throat is common with a cold."},
+{en:"insomnia",vi:"mất ngủ",ex:"Stress can cause insomnia."},
+{en:"hypertension",vi:"cao huyết áp",ex:"Hypertension increases the risk of stroke."},
+{en:"diabetes",vi:"tiểu đường",ex:"Type 2 diabetes can be managed with diet and exercise."},
+{en:"allergy",vi:"dị ứng",ex:"She has a severe allergy to peanuts."},
+{en:"fracture",vi:"gãy xương",ex:"The X-ray confirmed a fracture in the wrist."},
+{en:"infection",vi:"nhiễm trùng",ex:"The wound became infected and required antibiotics."},
+{en:"inflammation",vi:"viêm",ex:"Anti-inflammatory drugs help reduce inflammation."}
+],
+treatment:[
+{en:"antibiotic",vi:"kháng sinh",ex:"The doctor prescribed antibiotics for the infection."},
+{en:"painkiller",vi:"thuốc giảm đau",ex:"Take a painkiller if the headache persists."},
+{en:"vaccine",vi:"vắc-xin",ex:"The flu vaccine is recommended annually."},
+{en:"chemotherapy",vi:"hóa trị",ex:"She's undergoing chemotherapy for breast cancer."},
+{en:"physical therapy",vi:"vật lý trị liệu",ex:"Physical therapy helped him recover from knee surgery."},
+{en:"blood transfusion",vi:"truyền máu",ex:"The patient needed a blood transfusion after surgery."},
+{en:"supplement",vi:"thực phẩm bổ sung",ex:"Vitamin D supplements are recommended in winter."},
+{en:"ointment",vi:"thuốc mỡ bôi ngoài",ex:"Apply the ointment to the affected area twice daily."}
+],
+tests:[
+{en:"X-ray",vi:"chụp X-quang",ex:"The X-ray showed no broken bones."},
+{en:"MRI",vi:"chụp cộng hưởng từ",ex:"An MRI provides detailed images of soft tissue."},
+{en:"ultrasound",vi:"siêu âm",ex:"The ultrasound confirmed the pregnancy."},
+{en:"blood test",vi:"xét nghiệm máu",ex:"A blood test can detect many conditions early."},
+{en:"biopsy",vi:"sinh thiết",ex:"The biopsy results will be ready in a week."},
+{en:"CT scan",vi:"chụp cắt lớp",ex:"A CT scan was ordered to check for internal injuries."},
+{en:"ECG",vi:"điện tâm đồ",ex:"The ECG showed an irregular heartbeat."},
+{en:"urinalysis",vi:"xét nghiệm nước tiểu",ex:"A urinalysis can detect kidney problems."}
+],
+specialists:[
+{en:"cardiologist",vi:"bác sĩ tim mạch",ex:"The cardiologist recommended a stress test."},
+{en:"dermatologist",vi:"bác sĩ da liễu",ex:"See a dermatologist for persistent skin issues."},
+{en:"neurologist",vi:"bác sĩ thần kinh",ex:"The neurologist specializes in brain disorders."},
+{en:"pediatrician",vi:"bác sĩ nhi khoa",ex:"Take the child to a pediatrician for the checkup."},
+{en:"orthopedist",vi:"bác sĩ chỉnh hình",ex:"The orthopedist treated his broken ankle."},
+{en:"ophthalmologist",vi:"bác sĩ nhãn khoa",ex:"Visit an ophthalmologist for an eye exam."},
+{en:"psychiatrist",vi:"bác sĩ tâm thần",ex:"A psychiatrist can prescribe medication for anxiety."},
+{en:"oncologist",vi:"bác sĩ ung bướu",ex:"The oncologist discussed treatment options for the tumor."}
 ],
 dialogs:[
 {title:"Khám bệnh",lines:[
@@ -90,6 +147,26 @@ dialogs:[
 {who:"Pharmacist",text:"Take one tablet every 8 hours with food. Don't exceed 3 tablets per day."},
 {who:"Patient",text:"Are there any side effects I should know about?"},
 {who:"Pharmacist",text:"It may cause stomach upset. If symptoms persist, consult your doctor."}
+]},
+{title:"Gọi cấp cứu",lines:[
+{who:"Operator",text:"911, what is your emergency?"},
+{who:"Caller",text:"My father just collapsed. He's not responding and I think he's not breathing."},
+{who:"Operator",text:"Stay calm. What is your address?"},
+{who:"Caller",text:"123 Main Street, Apartment 4B."},
+{who:"Operator",text:"An ambulance is on the way. Is he lying on his back?"},
+{who:"Caller",text:"Yes."},
+{who:"Operator",text:"Do you know CPR? Place your hands on the center of his chest and push hard and fast."},
+{who:"Caller",text:"Okay, I'm doing it now."},
+{who:"Operator",text:"Keep going until the paramedics arrive. They should be there in 5 minutes."}
+]},
+{title:"Khám trực tuyến (Telemedicine)",lines:[
+{who:"Doctor",text:"Good morning. How can I help you today?"},
+{who:"Patient",text:"I've had a sore throat and runny nose for three days."},
+{who:"Doctor",text:"Do you have a fever or difficulty swallowing?"},
+{who:"Patient",text:"A mild fever, around 37.5°C. Swallowing is a bit painful."},
+{who:"Doctor",text:"It sounds like a common cold. I'll prescribe some medication. Can you show me your throat on camera?"},
+{who:"Patient",text:"Sure, let me turn on the flashlight... can you see?"},
+{who:"Doctor",text:"Yes, there's some redness but no signs of infection. Rest, drink warm fluids, and take the prescribed medicine. If it doesn't improve in 5 days, come in for an in-person visit."}
 ]}
 ],
 quiz:[
@@ -100,7 +177,14 @@ quiz:[
 {q:"'Side effect' nghĩa là gì?",opts:["Hiệu quả chính","Tác dụng phụ","Liều lượng","Triệu chứng"],ans:1},
 {q:"'Outpatient' nghĩa là gì?",opts:["Bệnh nhân nội trú","Bệnh nhân ngoại trú","Bác sĩ","Y tá"],ans:1},
 {q:"'Liver' là bộ phận nào?",opts:["Phổi","Tim","Gan","Thận"],ans:2},
-{q:"'Hypertension' nghĩa là gì?",opts:["Tiểu đường","Cao huyết áp","Dị ứng","Viêm"],ans:1}
+{q:"'Hypertension' nghĩa là gì?",opts:["Tiểu đường","Cao huyết áp","Dị ứng","Viêm"],ans:1},
+{q:"'MRI' dùng để làm gì?",opts:["Đo huyết áp","Chụp hình chi tiết mô mềm","Xét nghiệm máu","Đo nhịp tim"],ans:1},
+{q:"'Cardiologist' là bác sĩ chuyên khoa gì?",opts:["Da liễu","Tim mạch","Thần kinh","Nhi khoa"],ans:1},
+{q:"'Antibiotic' nghĩa là gì?",opts:["Thuốc giảm đau","Kháng sinh","Vắc-xin","Vitamin"],ans:1},
+{q:"'Biopsy' nghĩa là gì?",opts:["Chụp X-quang","Sinh thiết","Siêu âm","Xét nghiệm máu"],ans:1},
+{q:"'ECG' đo cái gì?",opts:["Huyết áp","Hoạt động điện tim","Lượng đường máu","Chức năng phổi"],ans:1},
+{q:"'Pediatrician' khám cho ai?",opts:["Người già","Trẻ em","Phụ nữ mang thai","Bệnh nhân ung thư"],ans:1},
+{q:"'Physical therapy' nghĩa là gì?",opts:["Phẫu thuật","Vật lý trị liệu","Hóa trị","Tâm lý trị liệu"],ans:1}
 ]
 };
 
@@ -108,15 +192,21 @@ var curM='body';
 function showMTab(t){curM=t;document.querySelectorAll('.tc-tab').forEach(function(b){b.classList.remove('active');});document.getElementById('md-'+t).classList.add('active');renderMed();}
 
 function renderMed(){
-  var h='';
-  if(curM==='body'){
-    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:14px"><i data-lucide="heart-pulse" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>Bộ phận cơ thể</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px">'+MED.body.map(function(w){return '<div style="padding:10px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent);display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:var(--accent)">'+w.vi+'</span></div>';}).join('')+'</div></div>';
-  } else if(curM==='hospital'){
-    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:var(--accent2);margin-bottom:14px"><i data-lucide="building-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>Thuật ngữ bệnh viện</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px">'+MED.hospital.map(function(w){return '<div style="padding:10px 12px;background:rgba(167,139,250,0.03);border-radius:8px;border-left:3px solid var(--accent2)"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:var(--accent2)">'+w.vi+'</span></div><div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div></div>';}).join('')+'</div></div>';
-  } else if(curM==='symptoms'){
-    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:var(--coral);margin-bottom:14px"><i data-lucide="thermometer" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>Triệu chứng & Bệnh</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px">'+MED.symptoms.map(function(w){return '<div style="padding:10px;background:rgba(255,138,128,0.03);border-radius:8px;border-left:3px solid var(--coral);display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:var(--coral)">'+w.vi+'</span></div>';}).join('')+'</div></div>';
+  var h='',data=MED[curM];
+  if(curM==='body'||curM==='symptoms'){
+    var title=curM==='body'?'Bộ phận cơ thể':'Triệu chứng & Bệnh';
+    var icon=curM==='body'?'heart-pulse':'thermometer';
+    var color=curM==='body'?'var(--accent)':'var(--coral)';
+    var bgTint=curM==='body'?'rgba(100,216,165,0.03)':'rgba(255,138,128,0.03)';
+    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:'+color+';margin-bottom:14px"><i data-lucide="'+icon+'" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+title+'</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px">'+data.map(function(w){return '<div style="padding:10px 12px;background:'+bgTint+';border-radius:8px;border-left:3px solid '+color+'"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:'+color+'">'+w.vi+'</span></div>'+(w.ex?'<div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div>':'')+'</div>';}).join('')+'</div></div>';
+  } else if(curM==='hospital'||curM==='treatment'||curM==='tests'||curM==='specialists'){
+    var titles={hospital:'Thuật ngữ bệnh viện',treatment:'Thuốc & Điều trị',tests:'Xét nghiệm & Chẩn đoán',specialists:'Bác sĩ chuyên khoa'};
+    var icons={hospital:'building-2',treatment:'pill',tests:'scan',specialists:'stethoscope'};
+    var colors={hospital:'var(--accent2)',treatment:'var(--accent3)',tests:'var(--accent)',specialists:'var(--coral)'};
+    var c=colors[curM];
+    h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px"><div style="font-size:18px;font-weight:600;color:'+c+';margin-bottom:14px"><i data-lucide="'+(icons[curM]||'book')+'" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+titles[curM]+'</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px">'+data.map(function(w){return '<div style="padding:10px 12px;background:rgba(167,139,250,0.03);border-radius:8px;border-left:3px solid '+c+'"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:600;color:var(--text)">'+w.en+'</span><span style="font-size:12px;color:'+c+'">'+w.vi+'</span></div>'+(w.ex?'<div style="font-size:12px;color:var(--text3);margin-top:4px;font-style:italic">'+w.ex+'</div>':'')+'</div>';}).join('')+'</div></div>';
   } else if(curM==='dialog'){
-    h=MED.dialogs.map(function(d){return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px"><div style="font-size:16px;font-weight:600;color:var(--accent3);margin-bottom:12px"><i data-lucide="stethoscope" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+d.title+'</div>'+d.lines.map(function(l){var isDoc=l.who==='Doctor'||l.who==='Pharmacist';var bg=isDoc?'rgba(100,216,165,0.05)':'rgba(167,139,250,0.05)';var bc=isDoc?'var(--accent)':'var(--accent2)';return '<div style="padding:10px 14px;background:'+bg+';border-radius:10px;margin-bottom:6px;border-left:3px solid '+bc+'"><span style="font-size:12px;font-weight:600;color:'+bc+'">'+l.who+'</span><div style="font-size:14px;color:var(--text);margin-top:4px;line-height:1.5">'+l.text+'</div></div>';}).join('')+'</div>';}).join('');
+    h=MED.dialogs.map(function(d){return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:14px"><div style="font-size:16px;font-weight:600;color:var(--accent3);margin-bottom:12px"><i data-lucide="stethoscope" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>'+d.title+'</div>'+d.lines.map(function(l){var isDoc=l.who==='Doctor'||l.who==='Pharmacist'||l.who==='Operator';var bg=isDoc?'rgba(100,216,165,0.05)':'rgba(167,139,250,0.05)';var bc=isDoc?'var(--accent)':'var(--accent2)';return '<div style="padding:10px 14px;background:'+bg+';border-radius:10px;margin-bottom:6px;border-left:3px solid '+bc+'"><span style="font-size:12px;font-weight:600;color:'+bc+'">'+l.who+'</span><div style="font-size:14px;color:var(--text);margin-top:4px;line-height:1.5">'+l.text+'</div></div>';}).join('')+'</div>';}).join('');
   } else {
     h='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px"><div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px"><i data-lucide="clipboard-check" style="width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:6px"></i>Medical Quiz ('+MED.quiz.length+' câu)</div><div id="mqBox"><button onclick="startMQ()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu</button></div></div>';
   }
@@ -131,6 +221,6 @@ renderMed();
 </script>
 <style>.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}.tc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}.tc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}</style>
 <style id="page-transition">.page-enter{animation:pageIn .3s ease-out}@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}</style>
-<script defer src="theme.js?v=3"></script><script defer src="gamification.js?v=3"></script><script defer src="common.js?v=13"></script>
+<script defer src="theme.js?v=3"></script><script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script>
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body></html>

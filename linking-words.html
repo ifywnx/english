@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" href="favicon.png">
 <meta charset="UTF-8">
 <meta name="description" content="100+ Linking Words & Connectors - Từ nối tiếng Anh cho viết essay, IELTS Writing, Speaking.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,23 +26,12 @@
 .idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
 .idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
 .idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
-  .nav-links .nav-a{font-size:16px;padding:12px 16px}
-}
-/* === MOBILE NAV === */
 </style>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 
-<style id="page-transition">
-.page-enter{animation:pageIn .3s ease-out}
-@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.page-exit{animation:pageOut .2s ease-in forwards}
-@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
-</style>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#64D8A5">
-<link rel="apple-touch-icon" href="icon-192.png">
+
+
 
 <style id="skeleton-loader">
 .skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
@@ -54,9 +43,7 @@
 .sk-desc{height:16px;width:80%;margin-bottom:24px}
 .sk-card{height:120px;margin-bottom:12px}
 </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+
 </head>
 <body>
 
@@ -195,13 +182,20 @@ function renderLW(){
   }).join("");
 }
 renderLW();
-function toggleDrop(el){var d=el.closest(".nav-drop");var o=d.classList.contains("open");document.querySelectorAll(".nav-drop.open").forEach(function(x){x.classList.remove("open");});if(!o)d.classList.add("open");}
-document.addEventListener("click",function(e){if(!e.target.closest(".nav-drop"))document.querySelectorAll(".nav-drop.open").forEach(function(d){d.classList.remove("open");});});
 </script>
+<style>
+.tag-btn{padding:6px 12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.tag-btn:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.tag-btn.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
 <script defer src="theme.js?v=3"></script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>
 
-
-<!-- BACK TO TOP -->
-<!-- READING PROGRESS -->
-<!-- MOBILE BOTTOM NAV -->
-<!-- MORE DRAWER -->

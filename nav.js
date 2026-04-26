@@ -8,7 +8,7 @@
     'Học cơ bản': [
       {href:'grammar.html', icon:'book-open', text:'Ngữ pháp cơ bản'},
       {href:'grammar-advanced.html', icon:'flame', text:'Ngữ pháp nâng cao'},
-      {href:'gerund-infinitive.html', icon:'git-branch', text:'Gerund vs Infinitive'},
+      {href:'gerund-infinitive.html', icon:'git-branch', text:'V-ing hay To V?'},
       {href:'pronunciation.html', icon:'mic', text:'Phát âm'},
       {href:'irregular-verbs.html', icon:'list', text:'Động từ bất quy tắc'},
       {href:'prepositions.html', icon:'map-pin', text:'Cụm giới từ'}

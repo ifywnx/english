@@ -1,6 +1,6 @@
 # 📚 EasyEnglish — Project Documentation
 
-> **Cập nhật lần cuối:** 2026-04-26  
+> **Cập nhật lần cuối:** 2026-04-27  
 > **Tổng số files:** 46 files (31 HTML + 5 JS + 1 CSS + 9 assets/config)  
 > **Tổng dung lượng:** ~1.6MB  
 > **Mục đích file này:** Ghi chi tiết toàn bộ project để bất kỳ ai (hoặc AI mới) đọc file này là hiểu hết plan, kiến trúc, tính năng, API, và cách hoạt động.
@@ -46,8 +46,8 @@
 
 | File | Vai trò | Kích thước | Version hiện tại |
 |------|---------|------------|------------------|
-| `style.css` | CSS chung: nav, bottom nav, more drawer, back-to-top, reading progress, responsive | 14,199 B | `?v=3` |
-| `common.js` | JS injection: bottom nav, more drawer (36 items đồng bộ nav.js), back-to-top, reading progress, select-to-translate, page transitions, global search | 41,000 B | `?v=13` |
+| `style.css` | CSS chung: nav, bottom nav, more drawer, back-to-top, reading progress, responsive, GPU perf hints | ~16 KB | `?v=4` |
+| `common.js` | JS injection: bottom nav, more drawer (36 items), back-to-top, reading progress, select-to-translate, page transitions, global search. Scroll handlers rAF-throttled + passive | ~43 KB | `?v=14` |
 | `theme.js` | Theme engine: 12 themes, theme picker panel, CSS variables | 17,544 B | `?v=3` |
 | `gamification.js` | XP system, streak, badges, daily challenge, confetti, sound effects, XP bar | 13,534 B | `?v=3` |
 | `dict-data.js` | Dữ liệu từ điển offline (~2000+ từ) cho autocomplete | 14,213 B | — |
@@ -57,8 +57,8 @@
 | File | Vai trò | Kích thước |
 |------|---------|------------|
 | `manifest.json` | PWA manifest (installable app config) | 992 B |
-| `robots.txt` | Search engine crawl rules | 44 B |
-| `sitemap.xml` | 25 URLs cho search engines | 2,934 B |
+| `robots.txt` | Search engine crawl rules, absolute sitemap URL | 80 B |
+| `sitemap.xml` | 40 URLs (absolute, no duplicates) cho search engines | ~5 KB |
 | `favicon.svg` | SVG favicon | 238 B |
 | `apple-touch-icon.png` | iOS home screen icon | 1,649 B |
 | `icon-192.png` | PWA icon 192x192 | 2,100 B |
@@ -196,6 +196,21 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 - **Config:** Object `bnItems` trong `common.js`
 - **Style:** Trong `style.css` (không dùng `!important`)
 - **Animation:** Show/hide khi scroll (scrollY tracking)
+
+### ❗ Quy tắc đặt tên Nav Items (UX)
+> **Nguyên tắc: ĐẶT TÊN TIẾNG VIỆT — người dùng phải hiểu ngay mục đó là gì mà không cần biết thuật ngữ tiếng Anh.**
+
+| ❌ Sai (thuật ngữ Anh) | ✅ Đúng (tiếng Việt dễ hiểu) |
+|------------------------|------------------------------|
+| Gerund vs Infinitive | V-ing hay To V? |
+| Collocations | Cụm từ đi cùng |
+| Phrasal Verbs | Cụm động từ |
+| Paraphrasing | Diễn đạt lại |
+| Spaced Repetition | Ôn tập lặp lại |
+
+- Tên trong `nav.js` → auto sync sang desktop nav, mobile menu, more drawer
+- Tên trong `common.js` → more drawer labels + global search entries
+- Nếu cần giữ thuật ngữ Anh → để trong ngoặc: "V-ing hay To V? (Gerund vs Infinitive)"
 
 ### More Drawer (Mobile only)
 - **Mở từ:** Nút "More" trên Bottom Nav
@@ -447,13 +462,13 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 | 1 | Reading Comprehension | Bài đọc hiểu có câu hỏi tương tác | ✅ Xong |
 | 2 | Word Formation | Cấu tạo từ (prefix, suffix, root) | ✅ Xong |
 | 3 | Daily Challenge Page | Quiz hàng ngày, streak reward | ✅ Xong |
-| 4 | Gerund vs Infinitive | Module riêng biệt | ✅ Xong |
+| 4 | V-ing hay To V? | Gerund vs Infinitive — tên Việt hóa cho dễ tìm | ✅ Xong |
 | 5 | Pronunciation Recording | Ghi âm + so sánh phát âm | ✅ Đã có trong pronunciation.html |
 | 6 | Loại bỏ mọi Emoji | Thay toàn bộ bằng Lucide Icons | ✅ Xong (88→0) |
 | 7 | Thêm themes mới | Mở rộng từ 12 → 16 themes | ✅ Xong (16 themes) |
 | 8 | Smooth transitions | Page transitions mượt như native iOS | ✅ Xong (34 files) |
 | 9 | PWA (installable + offline) | manifest.json + sw.js + icons | ✅ Xong |
-| 10 | SEO / OpenGraph | Meta tags, Schema.org | ✅ Xong (34/34 files) |
+| 10 | SEO / OpenGraph | Meta tags, OG, Twitter Cards, canonical, sitemap absolute URLs | ✅ Xong (42/42 files) |
 | 11 | Preposition Combinations | depend on, interested in, good at... | ✅ Xong |
 | 12 | TOEIC Module | Riêng cho luyện thi TOEIC | ✅ Xong |
 | 13 | Deploy cập nhật GitHub Pages | User tự commit & push | ✅ User quản lý |
@@ -476,8 +491,8 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 | # | Feature | Mô tả | Trạng thái |
 |---|---------|-------|-----------|
 | 13 | Business English | Từ vựng, email mẫu, hội thoại, quiz | ✅ Xong |
-| 14 | IT English | Thuật ngữ lập trình, DevOps, phỏng vấn tech, quiz | ✅ Xong |
-| 15 | Medical English | Cơ thể, bệnh viện, triệu chứng, hội thoại, quiz | ✅ Xong |
+| 14 | IT English | 56 từ (Lập trình, Web, DB, DevOps, Bảo mật, Agile, Cloud), 10 phỏng vấn, 2 hội thoại, 20 quiz | ✅ Mở rộng |
+| 15 | Medical English | 72 từ (Cơ thể, Bệnh viện, Triệu chứng, Thuốc, Xét nghiệm, Chuyên khoa), 4 hội thoại, 15 quiz | ✅ Mở rộng |
 | 16 | Legal English | Hợp đồng, tòa án, sở hữu trí tuệ, cụm từ pháp lý, quiz | ✅ Xong |
 | 17 | Global Search | Tìm kiếm toàn site (Ctrl+K), 35 trang, keyboard nav | ✅ Xong |
 
