@@ -169,6 +169,7 @@ window.addEventListener('scroll',function(){
       {href:'medical-english.html', icon:'<path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/>', label:'Tiếng Anh y tế'},
       {href:'legal-english.html', icon:'<line x1="12" y1="3" x2="12" y2="21"/><path d="M17.5 6.5l-11 11"/><path d="M6.5 6.5l11 11"/><circle cx="12" cy="12" r="2"/>', label:'Tiếng Anh pháp lý'},
       // --- Tiện ích ---
+      {href:'notebook.html', icon:'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>', label:'Sổ tay từ'},
       {href:'progress.html', icon:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>', label:'Tiến độ học'}
     ];
     var dHtml = '<div class="more-drawer" id="moreDrawer">';
@@ -233,11 +234,50 @@ window.addEventListener('scroll',function(){
   document.body.appendChild(popup);
 
   var style = document.createElement('style');
-  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(100,216,165,0.12);border:1px solid rgba(100,216,165,0.25);color:#64d8a5;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(100,216,165,0.25);transform:scale(1.1)}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
+  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-actions{display:flex;align-items:center;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(100,216,165,0.12);border:1px solid rgba(100,216,165,0.25);color:#64d8a5;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(100,216,165,0.25);transform:scale(1.1)}#ee-translate-popup .ee-tp-save{height:32px;border-radius:999px;background:rgba(123,110,246,0.14);border:1px solid rgba(123,110,246,0.28);color:#d8ede3;cursor:pointer;font-size:12px;padding:0 12px;display:flex;align-items:center;justify-content:center;transition:all .2s;white-space:nowrap}#ee-translate-popup .ee-tp-save:hover{background:rgba(123,110,246,0.24)}#ee-translate-popup .ee-tp-save.saved{background:rgba(100,216,165,0.16);border-color:rgba(100,216,165,0.3);color:#64d8a5}#ee-translate-popup .ee-tp-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}#ee-translate-popup .ee-tp-link{font-size:11px;color:#a78bfa;text-decoration:none}#ee-translate-popup .ee-tp-link:hover{text-decoration:underline}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
   document.head.appendChild(style);
 
   var debounceTimer;
   var isTranslating = false;
+  var NOTEBOOK_KEY = 'ee_notebook';
+
+  function getNotebook(){
+    try{return JSON.parse(localStorage.getItem(NOTEBOOK_KEY) || '[]');}
+    catch(e){return [];}
+  }
+
+  function setNotebook(items){
+    localStorage.setItem(NOTEBOOK_KEY, JSON.stringify(items));
+  }
+
+  function isNotebookSaved(word){
+    var target = (word || '').toLowerCase();
+    return getNotebook().some(function(item){ return (item.word || '').toLowerCase() === target; });
+  }
+
+  function saveNotebookWord(payload){
+    if(!payload || !payload.word) return false;
+    var items = getNotebook();
+    var key = payload.word.toLowerCase();
+    var existingIdx = -1;
+    for(var i = 0; i < items.length; i++){
+      if((items[i].word || '').toLowerCase() === key){ existingIdx = i; break; }
+    }
+    var existing = existingIdx > -1 ? items[existingIdx] : null;
+    var item = {
+      word: payload.word,
+      vi: payload.vi || (existing && existing.vi) || '',
+      ipa: payload.ipa || (existing && existing.ipa) || '',
+      types: (payload.types && payload.types.length ? payload.types : (existing && existing.types) || []),
+      sourcePage: window.location.pathname.split('/').pop() || 'index.html',
+      sourceTitle: document.title || '',
+      savedAt: new Date().toISOString()
+    };
+    if(existingIdx > -1) items.splice(existingIdx, 1);
+    items.unshift(item);
+    setNotebook(items);
+    return true;
+  }
 
   function hidePopup(){
     popup.style.display = 'none';
@@ -369,7 +409,7 @@ window.addEventListener('scroll',function(){
 
       // If no translation at all, show error
       if(!viWord && !ipa){
-        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Khong tim thay nghia cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
+        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không tìm thấy nghĩa cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
         isTranslating = false;
         return;
       }
@@ -379,16 +419,37 @@ window.addEventListener('scroll',function(){
         return '<span class="ee-tp-type ' + (typeMap[t]||'ee-tp-type-n') + '">' + t + '</span>';
       }).join('');
 
-      var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phat am">&#9654;</button>';
+      var savedCls = isNotebookSaved(word) ? ' saved' : '';
+      var saveLabel = isNotebookSaved(word) ? 'Đã lưu' : 'Lưu từ';
+      var saveBtn = '<button class="ee-tp-save'+savedCls+'" id="eeTpSaveBtn">' + saveLabel + '</button>';
+      var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
 
       popup.innerHTML = '<div class="ee-tp-body">' +
         '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
         '<div class="ee-tp-header"><div><div class="ee-tp-word">' + word + '</div>' +
         (ipa ? '<div class="ee-tp-ipa">' + ipa + '</div>' : '') +
         (typeHtml ? '<div style="margin-top:4px">' + typeHtml + '</div>' : '') +
-        '</div>' + speakBtn + '</div>' +
+        '</div><div class="ee-tp-actions">' + saveBtn + speakBtn + '</div></div>' +
         (viWord ? '<div class="ee-tp-vi">' + viWord + '</div>' : '') +
+        '<div class="ee-tp-meta"><span style="font-size:11px;color:#9ec0b2">Lưu vào sổ tay để ôn lại sau</span><a class="ee-tp-link" href="notebook.html">Mở sổ tay</a></div>' +
         '</div>';
+      var saveEl = popup.querySelector('#eeTpSaveBtn');
+      if(saveEl){
+        var savePayload = {
+          word: word,
+          vi: viWord || '',
+          ipa: ipa || '',
+          types: types || []
+        };
+        saveEl.addEventListener('click', function(event){
+          event.stopPropagation();
+          var ok = saveNotebookWord(savePayload);
+          if(ok){
+            saveEl.classList.add('saved');
+            saveEl.textContent = 'Đã lưu';
+          }
+        });
+      }
       isTranslating = false;
     }).catch(function(){
       popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không thể dịch. Kiểm tra kết nối mạng.</div></div>';
@@ -440,7 +501,7 @@ window.addEventListener('scroll',function(){
     Promise.all(promises).then(function(results){
       var vi = results.join(' ');
       var preview = text.length > 120 ? text.substring(0,120) + '...' : text;
-      var speakBtn = text.length <= 300 ? '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ').substring(0,300) + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe">&#9654;</button>' : '';
+      var speakBtn = text.length <= 300 ? '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + text.replace(/'/g,"\\'").replace(/\n/g,' ').substring(0,300) + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>' : '';
       popup.innerHTML = '<div class="ee-tp-body">' +
         '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
         '<div style="font-size:12px;color:#64d8a5;margin-bottom:6px">' + chunks.length + ' c\u00e2u \u00b7 ' + text.length + ' k\u00fd t\u1ef1</div>' +
@@ -468,6 +529,7 @@ window.addEventListener('scroll',function(){
     clearTimeout(scrollHideTimer);
     scrollHideTimer = setTimeout(hidePopup, 100);
   },{passive:true});
+
 })();
 
 /* === GLOBAL SEARCH (Ctrl+K) === */
@@ -495,6 +557,7 @@ window.addEventListener('scroll',function(){
     {title:'Từ điển Anh-Việt',desc:'Tra từ nhanh',url:'dictionary.html',tags:'dictionary tu dien anh viet'},
     {title:'Từ điển Đời thường',desc:'Slang, informal English',url:'dictionary-everyday.html',tags:'everyday dictionary doi thuong slang'},
     {title:'Từ điển IELTS',desc:'Từ vựng IELTS band 7+',url:'dictionary-ielts.html',tags:'ielts dictionary tu dien'},
+    {title:'Sổ tay từ vựng',desc:'Lưu các từ đã bôi đen để ôn lại',url:'notebook.html',tags:'notebook so tay tu vung luu tu'},
     {title:'Từ hay nhầm',desc:'affect/effect, advice/advise...',url:'confusing-words.html',tags:'confusing words tu nham lan'},
     {title:'Idioms',desc:'200+ thành ngữ tiếng Anh',url:'idioms.html',tags:'idioms thanh ngu'},
     {title:'Collocations',desc:'Phrasal verbs & collocations',url:'collocations.html',tags:'collocations phrasal verbs'},

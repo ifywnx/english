@@ -163,6 +163,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;font-family:'DM Sa
 /* === RESPONSIVE === */
 @media(max-width:900px){
   .nav-spacer{display:none}
+  body{padding-bottom:100px}
   html,body{overflow-x:hidden!important;max-width:100vw!important}
   *{box-sizing:border-box!important;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important;overflow-x:hidden}

@@ -52,6 +52,9 @@
       {href:'it-english.html', icon:'code-2', text:'Tiếng Anh IT'},
       {href:'medical-english.html', icon:'heart-pulse', text:'Tiếng Anh y tế'},
       {href:'legal-english.html', icon:'scale', text:'Tiếng Anh pháp lý'}
+    ],
+    'Tiện ích': [
+      {href:'notebook.html', icon:'bookmark', text:'Sổ tay từ vựng'}
     ]
   };
 

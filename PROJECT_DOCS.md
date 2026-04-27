@@ -1,7 +1,7 @@
 # 📚 EasyEnglish — Project Documentation
 
 > **Cập nhật lần cuối:** 2026-04-27  
-> **Tổng số files:** 46 files (31 HTML + 5 JS + 1 CSS + 9 assets/config)  
+> **Tổng số files:** 60 files (42 HTML + 6 JS + 1 CSS + 2 MD + 9 assets/config)  
 > **Tổng dung lượng:** ~1.6MB  
 > **Mục đích file này:** Ghi chi tiết toàn bộ project để bất kỳ ai (hoặc AI mới) đọc file này là hiểu hết plan, kiến trúc, tính năng, API, và cách hoạt động.
 
@@ -47,37 +47,43 @@
 | File | Vai trò | Kích thước | Version hiện tại |
 |------|---------|------------|------------------|
 | `style.css` | CSS chung: nav, bottom nav, more drawer, back-to-top, reading progress, responsive, GPU perf hints | ~16 KB | `?v=4` |
-| `common.js` | JS injection: bottom nav, more drawer (36 items), back-to-top, reading progress, select-to-translate, page transitions, global search. Scroll handlers rAF-throttled + passive | ~43 KB | `?v=14` |
-| `theme.js` | Theme engine: 12 themes, theme picker panel, CSS variables | 17,544 B | `?v=3` |
+| `common.js` | JS injection: bottom nav, more drawer (36 links + theme button), back-to-top, reading progress, select-to-translate, word notebook save flow, page transitions, global search. Scroll handlers rAF-throttled + passive | ~43 KB | `?v=14` |
+| `theme.js` | Theme engine: 12 themes, theme picker panel, CSS variables | 20,338 B | `?v=3` |
 | `gamification.js` | XP system, streak, badges, daily challenge, confetti, sound effects, XP bar | 13,534 B | `?v=3` |
 | `dict-data.js` | Dữ liệu từ điển offline (~2000+ từ) cho autocomplete | 14,213 B | — |
+| `nav.js` | Nguồn điều hướng chính cho desktop nav + mobile accordion menu | 9,057 B | — |
 
 ### SEO & PWA Files
 
 | File | Vai trò | Kích thước |
 |------|---------|------------|
-| `manifest.json` | PWA manifest (installable app config) | 992 B |
-| `robots.txt` | Search engine crawl rules, absolute sitemap URL | 80 B |
-| `sitemap.xml` | 40 URLs (absolute, no duplicates) cho search engines | ~5 KB |
+| `manifest.json` | PWA manifest (installable app config) | 552 B |
+| `robots.txt` | Search engine crawl rules, absolute sitemap URL | 85 B |
+| `sitemap.xml` | 41 URLs (absolute, no duplicates) cho search engines | ~5 KB |
 | `favicon.svg` | SVG favicon | 238 B |
 | `apple-touch-icon.png` | iOS home screen icon | 1,649 B |
-| `icon-192.png` | PWA icon 192x192 | 2,100 B |
-| `icon-512.png` | PWA icon 512x512 | 6,465 B |
+| `icon-192.png` | PWA icon 192x192 | 5,443 B |
+| `icon-512.png` | PWA icon 512x512 | 342,814 B |
+| `sw.js` | Service Worker tối giản cho PWA/offline cache cơ bản | 872 B |
 
-### Utility Files
+### Utility & Support Files
 
 | File | Vai trò |
 |------|----------|
-| `.tmp_check.js` | Script tạm (CSS orphan checker) — có thể xóa |
+| `notebook.html` | Sổ tay từ vựng cá nhân: lưu từ từ popup dịch, flashcard review, search, export JSON |
 | `index.html.bak` | Backup trang chủ cũ — có thể xóa |
+| `FEATURE_ADDITIONS.md` | Ghi chú các tính năng đã bổ sung / backlog triển khai |
 
-### HTML Pages (30+ trang)
+### HTML Pages (42 trang)
 
 #### 📗 Grammar (Ngữ pháp)
 | File | Nội dung |
 |------|----------|
 | `grammar.html` | 12 thì, Câu điều kiện, Passive, Reported Speech, Relative Clause, Parts of Speech |
 | `grammar-advanced.html` | Inversion, Cleft Sentence, Subjunctive, Emphasis |
+| `gerund-infinitive.html` | Khi nào dùng V-ing / To V |
+| `prepositions.html` | Cụm giới từ, cách dùng theo ngữ cảnh |
+| `word-formation.html` | Cấu tạo từ, word family, suffix/prefix |
 
 #### 📘 Vocabulary (Từ vựng)
 | File | Nội dung |
@@ -114,6 +120,7 @@
 | File | Nội dung | Kích thước |
 |------|----------|------------|
 | `skills.html` | Tổng hợp 4 kỹ năng: Reading, Listening, Speaking, Writing | 63,694 B |
+| `reading-comprehension.html` | Đọc hiểu, passage + câu hỏi |
 | `pronunciation.html` | IPA, Ngữ điệu, Nối âm, Minimal Pairs | 64,322 B |
 | `listening.html` | Luyện nghe: Audio, Transcript, Dictation | 36,490 B |
 | `conversation.html` | Giao tiếp hàng ngày / Daily Conversation | 21,889 B |
@@ -122,6 +129,7 @@
 | File | Nội dung |
 |------|----------|
 | `quiz.html` | Multiple choice, Fill-in-the-blank, Điểm |
+| `daily-challenge.html` | Bài luyện/ngày, thử thách streak |
 | `spaced-repetition.html` | SRS Flashcard, Intervals (Leitner system) |
 | `writing-checker.html` | Grammar check, Word count |
 | `progress.html` | Streak dashboard, Stats, Module progress |
@@ -130,6 +138,20 @@
 | File | Nội dung |
 |------|----------|
 | `index.html` | Trang chủ: Hero section, Streak badge, Module grid, Roadmap 0→9.0 |
+| `404.html` | Trang lỗi not-found |
+
+#### 💼 Chuyên ngành
+| File | Nội dung |
+|------|----------|
+| `business-english.html` | Tiếng Anh thương mại / kinh doanh |
+| `it-english.html` | Tiếng Anh IT / lập trình |
+| `medical-english.html` | Tiếng Anh y tế |
+| `legal-english.html` | Tiếng Anh pháp lý |
+
+#### 🏆 Exam / Academic
+| File | Nội dung |
+|------|----------|
+| `toeic.html` | Luyện thi TOEIC |
 
 ---
 
@@ -192,7 +214,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ### Bottom Navigation (Mobile only, ≤900px)
 - **Vị trí:** Fixed bottom, glassmorphism
-- **Items:** Home, Grammar, Vocab, Dictionary, More (☰)
+- **Items:** Trang chủ, Ngữ pháp, Từ vựng, Bài tập, Thêm
 - **Config:** Object `bnItems` trong `common.js`
 - **Style:** Trong `style.css` (không dùng `!important`)
 - **Animation:** Show/hide khi scroll (scrollY tracking)
@@ -208,13 +230,14 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 | Paraphrasing | Diễn đạt lại |
 | Spaced Repetition | Ôn tập lặp lại |
 
-- Tên trong `nav.js` → auto sync sang desktop nav, mobile menu, more drawer
-- Tên trong `common.js` → more drawer labels + global search entries
+- `nav.js` hiện là nguồn chính cho desktop nav + mobile accordion menu
+- `common.js` hiện giữ `bnItems`, `drawerItems`, và dữ liệu global search
+- More drawer hiện chưa đọc trực tiếp từ `nav.js`, nên vẫn có duplication cần giữ đồng bộ tay
 - Nếu cần giữ thuật ngữ Anh → để trong ngoặc: "V-ing hay To V? (Gerund vs Infinitive)"
 
 ### More Drawer (Mobile only)
 - **Mở từ:** Nút "More" trên Bottom Nav
-- **Tổng:** 36 items + nút Đổi giao diện — **đồng bộ với `nav.js`**
+- **Tổng:** 36 link items + 1 nút Đổi giao diện
 - **Nhóm:** Học cơ bản (4) → Từ vựng (7) → Kỹ năng (7) → IELTS (7) → Từ điển (5) → Chuyên ngành (4) → Tiện ích (2)
 - **Config:** Object `drawerItems` trong `common.js`
 - **Style:** Slide-up overlay, glassmorphism, grid 4 cột
@@ -235,9 +258,175 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 - **Nội dung:** Level icon + Level name + Progress bar + Total XP + Streak
 - **Click:** → progress.html
 
+### UI Status (thực trạng hiện tại)
+- **Tổng quan:** Giao diện đang ở mức dùng tốt, visual direction khá rõ, nhưng chưa phải trạng thái polish cuối.
+- **Điểm mạnh:** Theme nhất quán, typography đẹp (`Fraunces` + `DM Sans`), card/grid ổn, dark UI có bản sắc riêng, shared components đủ tốt để toàn site nhìn cùng một hệ.
+- **Điểm yếu chính:** CSS còn phân mảnh giữa `style.css` và inline `<style>` ở từng page; một số block nav/mobile bị lặp hoặc override chéo nhau.
+- **Trang chủ (`index.html`):** Có nhiều CSS local riêng cho nav/mobile/home modules, nên dễ lệch với shared system nếu sửa sau này.
+- **Các page nội dung lớn:** `grammar.html`, `vocabulary.html`, `ielts.html`, `skills.html` có layout riêng khá mạnh, nhưng maintain cost cao vì page-specific CSS dài.
+- **Navigation system:** `nav.js` inject desktop nav + mobile accordion menu, nhưng `common.js` vẫn tự giữ bottom nav và more drawer riêng; hiện chưa phải single source of truth hoàn chỉnh.
+- **Responsive:** Đã có nhiều guard cho mobile trong `style.css`, nhưng vẫn cần test tay trên điện thoại thật vì có nguy cơ xung đột giữa shared CSS và inline CSS của từng file.
+- **Technical debt UI:** Head/meta/manifest/favicon/skeleton loader đang lặp ở nhiều file; nếu tiếp tục thêm trang sẽ khó đồng bộ.
+- **Kết luận:** UI direction đúng, không cần redesign từ đầu; việc cần làm là cleanup, chuẩn hóa shared styles, giảm duplication, rồi mới polish spacing/motion/responsive.
+
+### UI Cleanup đã làm (2026-04-27)
+- Chuẩn hóa `index.html` để bớt override nav/mobile/shared components từ `style.css`.
+- Thêm mobile bottom spacing ở `style.css` để shared bottom nav ít đè nội dung hơn trên các page không dùng `.content` chuẩn.
+- Sửa block CSS variables không chuẩn ở một nhóm page lớn bằng cách bọc lại trong `:root{...}`.
+- Gỡ các block CSS lặp cho bottom nav / more drawer / back-to-top / reading progress khỏi `vocabulary.html` và `pronunciation.html`.
+- Sửa lỗi HTML/CSS ở `vocabulary.html` và `pronunciation.html`: có `<style>` body-local bị nuốt thêm CSS dư và lặp `style.css` giữa thân trang.
+- Dọn thêm một nhóm file có `<head>` malformed hoặc asset tags bị lặp/sai cấu trúc: `ielts-writing-band9.html`, `paraphrasing.html`, `mock-test.html`, `ielts-speaking-topics.html`, `synonyms.html`.
+- Sau cleanup này, shared UI ổn hơn trước nhưng project vẫn còn nhiều page-specific CSS dài; chưa thể coi là fully standardized.
+
+### Ưu tiên UI Cleanup nên làm tiếp
+1. Gom tiếp những phần CSS lặp phổ biến từ các page files về `style.css`.
+2. Giảm duplication giữa `nav.js` và `common.js` cho navigation data.
+3. Rà responsive trên các page dài có sidebar và grid lớn.
+4. Dọn các `<style>` body-local còn lại nếu chỉ phục vụ animation nhỏ hoặc override cục bộ.
+5. Sau khi cấu trúc ổn mới polish thêm animation, spacing, hierarchy.
+
 ---
 
-## 🌐 5. APIs & External Services
+## 🚧 5. Nếu Muốn Web Này Gần Hoàn Hảo Thì Còn Thiếu Gì
+
+### 5.1. Đánh giá tổng quan hiện tại
+- **Hiện trạng:** Project đã rộng hơn nhiều web học tiếng Anh thông thường, đủ để user tự học thật, nhưng chưa đạt mức "hoàn hảo" nếu so theo tiêu chí nền tảng học ngôn ngữ đầy đủ, sâu, và có retention mạnh.
+- **Điểm mạnh hiện có:** grammar khá rộng, vocabulary nhiều, IELTS có nền tốt, đã có practice/gamification/theme/PWA/offline tương đối ổn.
+- **Khoảng trống lớn nhất:** chưa đủ chiều sâu ở writing/speaking/listening, chưa có nhiều bài luyện tập dạng thật, chưa có hệ cá nhân hóa học tập đủ mạnh, và còn nợ kỹ thuật UI/structure đáng kể.
+
+### 5.2. Còn thiếu về NỘI DUNG HỌC
+
+#### Grammar còn thiếu hoặc chưa tách module đủ sâu
+- **Modal Verbs** riêng: can/could/may/might/must/should/have to/need to.
+- **Question Forms & Auxiliary Verbs**: do/does/did, yes-no question, wh-question, indirect questions.
+- **Tag Questions**: isn't it, don't you, did they...
+- **Relative Clauses** thành module riêng thay vì nằm rải trong bài tổng.
+- **Articles & Determiners** thành module riêng sâu hơn: a/an/the, some/any, much/many, few/little.
+- **Sentence Structure**: subject-verb-object, clauses, phrase types, parallelism.
+- **Punctuation & Capitalization**: dấu câu trong viết tiếng Anh thực tế.
+
+#### Vocabulary còn thiếu hoặc nên mở rộng
+- **CEFR-based vocabulary tracks**: A1, A2, B1, B2, C1.
+- **Chunks / Sentence Patterns**: cụm câu hay dùng thay vì chỉ từ đơn.
+- **Verb Patterns**: decide to do, enjoy doing, allow someone to do...
+- **Slang / Gen Z / Internet English**: phần hiện đại, dùng thật.
+- **Workplace English thực dụng**: họp, email, feedback, báo cáo, phỏng vấn.
+- **Topic-based advanced vocabulary** sâu hơn cho economy, education, environment, technology, society.
+
+#### Skills còn thiếu chiều sâu
+- **Listening theo level**: A1 → C1 có progression rõ ràng.
+- **Dictation sets** nhiều hơn, không chỉ vài bài nghe mẫu.
+- **Accent training**: US/UK/AU/Indian/Singapore accents.
+- **Speaking drills**: shadowing, repeat-after-me, timed response, roleplay.
+- **Reading skills modules** riêng: skimming, scanning, inference, gist, vocab in context.
+- **Writing foundation modules** riêng: sentence writing, paragraph writing, email writing, essay structure.
+
+#### Exam prep còn thiếu
+- **IELTS Writing Task 1** riêng, đầy đủ charts/maps/process.
+- **IELTS Writing Task 2 theo dạng bài**: agree/disagree, discussion, problem-solution, advantages-disadvantages.
+- **IELTS Reading question types**: T/F/NG, matching headings, summary completion...
+- **IELTS Listening question types**: form completion, map, MCQ...
+- **IELTS Speaking Part 1/2/3 breakdown** và rubric rõ.
+- **TOEIC tách Part 1-7** thay vì một module gộp.
+- **Mock tests theo độ khó/level**, không chỉ một dạng thi thử.
+
+### 5.3. Còn thiếu về LUYỆN TẬP & TƯƠNG TÁC
+- **Error Correction Quiz**: tìm lỗi sai và sửa.
+- **Sentence Builder**: sắp xếp từ thành câu đúng.
+- **Cloze Test / Gap Fill Generator**.
+- **Minimal Pair Trainer** cho phát âm và nghe phân biệt âm.
+- **Reading Timer + WPM Test**.
+- **Speaking timer / response recorder**.
+- **Custom flashcard deck** do user tự tạo.
+- **Weak points tracker** để biết user yếu phần nào.
+- **Word of the Day** và **Daily Writing Prompt**.
+
+### 5.4. Còn thiếu về LỘ TRÌNH HỌC
+- **Onboarding chọn mục tiêu** ngay lần đầu vào web.
+- **Study plans theo mục tiêu**: giao tiếp, IELTS, TOEIC, công việc.
+- **Learning path theo trình độ**: beginner / intermediate / advanced rõ hơn.
+- **Roadmap theo deadline thi**: ví dụ 8 tuần đến IELTS 6.5.
+- **Module recommendations tự động** dựa trên lịch sử làm bài.
+
+### 5.5. Còn thiếu về UX / UI để đạt mức premium thật sự
+- **Head/asset/layout standardization** hoàn chỉnh trên toàn bộ pages.
+- **Mobile QA thật trên điện thoại** chứ không chỉ responsive bằng CSS.
+- **Visual hierarchy đồng bộ hơn** giữa các page cũ và page mới.
+- **Animation/motion có chủ đích hơn**, ít chỗ giật hoặc mỗi trang một kiểu.
+- **Search experience mạnh hơn**: filter theo module/level/exam/topic.
+- **Cross-linking nội dung tốt hơn**: đang học passive thì gợi ý reported speech / conditionals / quiz liên quan.
+- **Progress feedback trực quan hơn**: module completion, mastery heatmap, weak-topic highlights.
+
+### 5.6. Còn thiếu về SẢN PHẨM / PLATFORM
+- **Auth / account sync** giữa nhiều thiết bị.
+- **Cloud save** thay vì chỉ `localStorage`.
+- **Profile public / share card / social layer** nếu muốn retention mạnh.
+- **Leaderboard mở rộng / challenge / streak shield**.
+- **Analytics thật** để biết page nào dùng nhiều, chỗ nào drop-off.
+- **Content management workflow** để thêm module mới không phải edit thủ công quá nhiều file HTML.
+
+### 5.7. Còn thiếu về CHẤT LƯỢNG NỘI DUNG
+- **Coverage audit từng page**: kiểm tra xem mỗi module đã đủ ví dụ, ngoại lệ, bài luyện, feedback chưa.
+- **Consistency audit**: cùng một khái niệm có đang giải thích giống nhau giữa các page không.
+- **Vietnamese learner-specific error coverage**: đây là lợi thế lớn nhưng hiện chưa được đóng gói thành hệ module mạnh.
+- **Level labeling**: nên gắn A1/A2/B1/B2/C1 hoặc beginner/intermediate/advanced cho nhiều page hơn.
+- **Source quality**: với phần exam-oriented, nên giữ chuẩn band descriptors và format đề thật.
+
+### 5.8. Nợ kỹ thuật còn lại
+- **CSS debt:** inline `<style>` còn rất nhiều, nhiều page-specific blocks dài.
+- **Navigation debt:** dữ liệu nav còn tách giữa `nav.js` và `common.js`.
+- **HTML debt:** còn khả năng tồn tại duplicated meta/head/script patterns ở nhiều file.
+- **State/storage debt:** nhiều tính năng đang dựa `localStorage`, chưa có schema/versioning rõ ràng.
+- **Testing debt:** chưa có smoke test/page audit tự động.
+- **Accessibility debt:** chưa có audit đầy đủ về keyboard nav, aria, contrast, focus states.
+- **Performance debt:** một số page dài và nhiều inline asset/script có thể làm khó maintain và tăng cost render.
+
+### 5.9. Các module nên ưu tiên thêm nếu muốn tăng chất lượng mạnh nhất
+1. `Error Correction Quiz`
+2. `Sentence Builder`
+3. `IELTS Writing Task 1`
+4. `IELTS Writing Task 2 theo dạng bài`
+5. `TOEIC Parts 1-7`
+6. `Modal Verbs`
+7. `Question Forms & Tag Questions`
+8. `Reading Skills: skimming / scanning / inference`
+9. `Minimal Pair Trainer`
+10. `Weak Points Tracker`
+
+### 5.10. Phần còn nợ nên theo dõi như backlog chính
+
+#### Nội dung
+- Thiếu chiều sâu ở writing, listening, speaking, exam breakdown.
+- Thiếu một số grammar modules cốt lõi tách riêng.
+- Thiếu learning path theo trình độ và mục tiêu.
+
+#### Sản phẩm
+- Đã có notebook cá nhân ở `notebook.html`, nhưng vẫn chưa có weak points tracker, onboarding, study plan.
+- Chưa có cloud sync / auth / profile / social layer.
+- Chưa có hệ quản lý tiến độ đủ thông minh.
+
+#### UX/UI
+- Chưa standardize hoàn toàn shared layout/head/assets.
+- Chưa audit mobile thủ công toàn site.
+- Chưa đồng bộ hierarchy và interaction trên toàn bộ pages.
+
+#### Kỹ thuật
+- Chưa dọn hết page-specific CSS debt.
+- Chưa hợp nhất navigation source of truth.
+- Chưa có smoke tests, accessibility audit, performance audit.
+
+### 5.11. Kết luận thực tế
+- Nếu mục tiêu là **web học tiếng Anh rất tốt**: project hiện đã ở mức khá mạnh.
+- Nếu mục tiêu là **sản phẩm hoàn hảo, vượt đa số đối thủ free**: vẫn còn thiếu khá nhiều ở chiều sâu luyện tập, cá nhân hóa, exam breakdown, và chất lượng hệ thống.
+- Hướng đúng không phải làm thêm thật nhiều page ngẫu nhiên, mà là:
+1. lấp các module cốt lõi còn trống,
+2. tăng chiều sâu cho writing/listening/speaking,
+3. thêm engine cá nhân hóa học tập,
+4. dọn nợ kỹ thuật để web scale tiếp mà không vỡ structure.
+
+---
+
+## 🌐 6. APIs & External Services
 
 ### Dịch thuật (Select-to-Translate)
 | Service | URL | Mục đích | Giới hạn |
@@ -264,7 +453,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ---
 
-## 🎨 6. Icons & Fonts
+## 🎨 7. Icons & Fonts
 
 ### Icons: Lucide Icons
 - **CDN:** `https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js`
@@ -302,7 +491,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ---
 
-## 🎮 7. Gamification System (`gamification.js`)
+## 🎮 8. Gamification System (`gamification.js`)
 
 ### XP & Levels
 | Level | Tên | XP cần | Icon |
@@ -348,7 +537,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ---
 
-## 📱 8. Responsive Design
+## 📱 9. Responsive Design
 
 ### Breakpoints
 | Breakpoint | Thiết bị | Thay đổi chính |
@@ -372,7 +561,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ---
 
-## ✨ 9. Tính năng đặc biệt
+## ✨ 10. Tính năng đặc biệt
 
 ### Select-to-Translate (Bôi đen dịch)
 - **Desktop:** `mouseup` event → 150ms debounce
@@ -401,7 +590,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ---
 
-## 🐛 10. Known Issues & Lưu ý quan trọng
+## 🐛 11. Known Issues & Lưu ý quan trọng
 
 ### 7 Lỗi phải tránh (đã từng gặp)
 1. **`overflow-x: clip/hidden` trên `<html>`** → Phá vỡ dropdown navigation
@@ -419,7 +608,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ---
 
-## 📊 11. localStorage Data Map
+## 📊 12. localStorage Data Map
 
 | Key | Dùng bởi | Nội dung |
 |-----|----------|----------|
@@ -428,9 +617,10 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 | `ee_sr_*` | `spaced-repetition.html` | Spaced repetition card data |
 | `ee_progress_*` | `progress.html` | Module completion data |
 | `ee_vocab_*` | `vocabulary.html` | Saved vocabulary lists |
+| `ee_notebook` | `common.js`, `notebook.html` | JSON: từ đã lưu, nghĩa Việt, IPA, loại từ, source page, timestamp |
 
 
-## 🗺️ 12. Roadmap (5 Phases)
+## 🗺️ 13. Roadmap (5 Phases)
 
 ### Phase 1.5: Nợ kỹ thuật
 
@@ -518,7 +708,7 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 ---
 
 
-## 🔧 13. Hướng dẫn thêm trang mới
+## 🔧 14. Hướng dẫn thêm trang mới
 
 ### Bước 1: Tạo file HTML mới
 ```html
@@ -577,7 +767,7 @@ sed -i '' 's/common.js?v=7/common.js?v=8/g' *.html
 
 ---
 
-## 📝 14. Conventions & Coding Style
+## 📝 15. Conventions & Coding Style
 
 ### HTML
 - Semantic tags: `<main>`, `<section>`, `<article>`, `<nav>`
@@ -606,7 +796,7 @@ sed -i '' 's/common.js?v=7/common.js?v=8/g' *.html
 
 ---
 
-## 🔗 15. External Dependencies
+## 🔗 16. External Dependencies
 
 | Dependency | Version | CDN URL | Mục đích |
 |------------|---------|---------|----------|
