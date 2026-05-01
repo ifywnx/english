@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="Mẫu câu giao tiếp tiếng Anh hằng ngày theo 20+ tình huống thực tế với audio và bài tập.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Giao tiếp hằng ngày — EasyEnglish">
+<meta property="og:description" content="Mẫu câu giao tiếp tiếng Anh thông dụng theo tình huống thực tế.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Giao tiếp hằng ngày — EasyEnglish">
+<meta name="twitter:description" content="Mẫu câu giao tiếp tiếng Anh thông dụng theo tình huống thực tế.">
+<title>Giao tiếp hằng ngày — Daily Conversation — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+
+<link rel="canonical" href="https://easyenglish.vn/giao-tiep.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Kỹ năng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Giao tiếp</span></div>
+<div class="page-label">Daily Conversation</div>
+<h1 class="page-title">Giao tiếp hằng ngày</h1>
+<p class="page-desc">Mẫu câu tiếng Anh theo tình huống thực tế. Bấm <i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i> để nghe phát âm.</p>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 22px">
+  <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+    <div style="font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Before speaking</div>
+    <div style="font-size:14px;color:var(--text2);line-height:1.7">Nhìn tình huống, chọn 2–3 câu ngắn để dùng ngay thay vì cố nói quá dài.</div>
+  </div>
+  <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+    <div style="font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">During speaking</div>
+    <div style="font-size:14px;color:var(--text2);line-height:1.7">Ưu tiên câu tự nhiên, rõ ý, đúng ngữ cảnh. Không cần phức tạp nhưng phải đúng.</div>
+  </div>
+  <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+    <div style="font-size:12px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">After speaking</div>
+    <div style="font-size:14px;color:var(--text2);line-height:1.7">Nghe lại câu mẫu, chú ý cách nối âm và ghi nhớ 1–2 phrase hay dùng nhất.</div>
+  </div>
+</div>
+
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm tình huống hoặc câu..." oninput="filterConv()">
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="tagBar"></div>
+<div id="convList" style="display:grid;gap:16px"></div>
+
+<div style="margin-top:28px;padding:20px;border:0.5px solid var(--border);border-radius:16px;background:var(--card)">
+  <div style="font-size:12px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Quick roleplay</div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+    <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px"><div style="font-size:14px;color:var(--text);margin-bottom:6px">At a café</div><div style="font-size:13px;color:var(--text3);line-height:1.6">Can I have a latte, please? / Sure, anything else? / That’s all, thank you.</div></div>
+    <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px"><div style="font-size:14px;color:var(--text);margin-bottom:6px">At the airport</div><div style="font-size:13px;color:var(--text3);line-height:1.6">Where is gate 12? / Your flight is delayed / Please have your passport ready.</div></div>
+    <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px"><div style="font-size:14px;color:var(--text);margin-bottom:6px">At work</div><div style="font-size:13px;color:var(--text3);line-height:1.6">Could you send me the file? / I’ll get back to you soon. / Let’s reschedule the meeting.</div></div>
+    <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px"><div style="font-size:14px;color:var(--text);margin-bottom:6px">With friends</div><div style="font-size:13px;color:var(--text3);line-height:1.6">What’s up? / Long time no see! / Do you want to hang out later?</div></div>
+  </div>
+</div>
+</div>
+<script>
+const CONV=[
+{topic:"Chào hỏi (Greetings)",icon:"",phrases:[
+{en:"Hi! How are you?",vi:"Xin chào! Bạn khỏe không?"},
+{en:"I\'m fine, thanks. And you?",vi:"Tôi khỏe, cảm ơn. Còn bạn?"},
+{en:"Nice to meet you!",vi:"Rất vui được gặp bạn!"},
+{en:"Long time no see!",vi:"Lâu rồi không gặp!"},
+{en:"How\'s it going?",vi:"Dạo này thế nào?"},
+{en:"What\'s up?",vi:"Có gì mới không?"},
+{en:"How have you been?",vi:"Dạo này bạn thế nào?"},
+{en:"Good morning / afternoon / evening!",vi:"Chào buổi sáng / chiều / tối!"}
+]},
+{topic:"Giới thiệu (Introduction)",icon:"",phrases:[
+{en:"My name is... / I'm...",vi:"Tên tôi là..."},
+{en:"Where are you from?",vi:"Bạn đến từ đâu?"},
+{en:"I\'m from Vietnam.",vi:"Tôi đến từ Việt Nam."},
+{en:"What do you do?",vi:"Bạn làm nghề gì?"},
+{en:"I\'m a student / teacher / engineer.",vi:"Tôi là sinh viên / giáo viên / kỹ sư."},
+{en:"How old are you?",vi:"Bạn bao nhiêu tuổi?"},
+{en:"Let me introduce myself.",vi:"Để tôi giới thiệu bản thân."},
+{en:"This is my friend, Tom.",vi:"Đây là bạn tôi, Tom."}
+]},
+{topic:"Mua sắm (Shopping)",icon:"",phrases:[
+{en:"How much is this?",vi:"Cái này bao nhiêu tiền?"},
+{en:"Can I try this on?",vi:"Tôi có thể thử cái này không?"},
+{en:"Do you have a smaller/larger size?",vi:"Bạn có cỡ nhỏ/lớn hơn không?"},
+{en:"I\'ll take it.",vi:"Tôi lấy cái này."},
+{en:"Can I pay by card?",vi:"Tôi có thể trả bằng thẻ không?"},
+{en:"Do you have this in a different color?",vi:"Bạn có màu khác không?"},
+{en:"Is there a discount?",vi:"Có giảm giá không?"},
+{en:"I\'d like to return this.",vi:"Tôi muốn trả lại cái này."}
+]},
+{topic:"Nhà hàng (Restaurant)",icon:"",phrases:[
+{en:"A table for two, please.",vi:"Cho tôi bàn hai người."},
+{en:"Can I see the menu?",vi:"Cho tôi xem thực đơn?"},
+{en:"I\'d like to order...",vi:"Tôi muốn gọi..."},
+{en:"What do you recommend?",vi:"Bạn gợi ý món gì?"},
+{en:"Can I have the bill, please?",vi:"Cho tôi hóa đơn."},
+{en:"Is this dish spicy?",vi:"Món này có cay không?"},
+{en:"I\'m allergic to nuts.",vi:"Tôi bị dị ứng hạt."},
+{en:"The food was delicious!",vi:"Đồ ăn rất ngon!"}
+]},
+{topic:"Du lịch (Travel)",icon:"",phrases:[
+{en:"Where is the nearest station?",vi:"Trạm gần nhất ở đâu?"},
+{en:"How do I get to...?",vi:"Làm sao để đi đến...?"},
+{en:"I\'d like to book a room.",vi:"Tôi muốn đặt phòng."},
+{en:"What time does the train leave?",vi:"Tàu khởi hành lúc mấy giờ?"},
+{en:"Can you show me on the map?",vi:"Bạn chỉ trên bản đồ được không?"},
+{en:"Is breakfast included?",vi:"Có bao gồm bữa sáng không?"},
+{en:"I have a reservation under...",vi:"Tôi đã đặt dưới tên..."},
+{en:"Could you call me a taxi?",vi:"Bạn gọi taxi giúp tôi được không?"}
+]},
+{topic:"Công việc (Work)",icon:"",phrases:[
+{en:"I have a meeting at 3.",vi:"Tôi có cuộc họp lúc 3 giờ."},
+{en:"Could you send me the report?",vi:"Bạn gửi báo cáo cho tôi được không?"},
+{en:"I\'ll get back to you on that.",vi:"Tôi sẽ phản hồi bạn sau."},
+{en:"Let\'s schedule a call.",vi:"Mình lên lịch gọi nhé."},
+{en:"What\'s the deadline?",vi:"Hạn chót là khi nào?"},
+{en:"I\'m working on it.",vi:"Tôi đang làm rồi."},
+{en:"Can we reschedule?",vi:"Mình dời lịch được không?"},
+{en:"I\'ll be on leave tomorrow.",vi:"Ngày mai tôi nghỉ phép."}
+]},
+{topic:"Sức khỏe (Health)",icon:"",phrases:[
+{en:"I don\'t feel well.",vi:"Tôi không khỏe."},
+{en:"I have a headache / stomachache.",vi:"Tôi bị đau đầu / đau bụng."},
+{en:"I need to see a doctor.",vi:"Tôi cần gặp bác sĩ."},
+{en:"I\'m allergic to...",vi:"Tôi bị dị ứng với..."},
+{en:"Take this medicine twice a day.",vi:"Uống thuốc này ngày 2 lần."},
+{en:"How long have you had these symptoms?",vi:"Bạn bị triệu chứng này bao lâu rồi?"},
+{en:"I\'d like to make an appointment.",vi:"Tôi muốn đặt lịch hẹn."},
+{en:"Get well soon!",vi:"Chúc bạn mau khỏe!"}
+]},
+{topic:"Điện thoại (Phone)",icon:"",phrases:[
+{en:"Hello, may I speak to...?",vi:"Xin chào, tôi có thể nói chuyện với...?"},
+{en:"Hold on, please.",vi:"Xin chờ một chút."},
+{en:"Sorry, wrong number.",vi:"Xin lỗi, nhầm số."},
+{en:"Can I leave a message?",vi:"Tôi có thể để lại lời nhắn không?"},
+{en:"I\'ll call you back.",vi:"Tôi sẽ gọi lại."},
+{en:"The line is busy.",vi:"Đường dây bận."},
+{en:"Can you hear me?",vi:"Bạn nghe tôi không?"},
+{en:"Sorry, I missed your call.",vi:"Xin lỗi, tôi lỡ cuộc gọi."}
+]},
+{topic:"Xin lỗi & Cảm ơn",icon:"",phrases:[
+{en:"Thank you so much!",vi:"Cảm ơn rất nhiều!"},
+{en:"I really appreciate it.",vi:"Tôi thực sự trân trọng."},
+{en:"You\'re welcome.",vi:"Không có gì."},
+{en:"I\'m sorry for...",vi:"Tôi xin lỗi vì..."},
+{en:"No worries! / No problem!",vi:"Không sao đâu!"},
+{en:"Excuse me.",vi:"Xin lỗi (xin phép)."},
+{en:"I apologize for the inconvenience.",vi:"Tôi xin lỗi vì sự bất tiện."},
+{en:"That\'s very kind of you.",vi:"Bạn thật tốt bụng."}
+]},
+{topic:"Ý kiến & Đồng ý",icon:"",phrases:[
+{en:"I think / I believe that...",vi:"Tôi nghĩ / Tôi tin rằng..."},
+{en:"I agree with you.",vi:"Tôi đồng ý với bạn."},
+{en:"I disagree.",vi:"Tôi không đồng ý."},
+{en:"That\'s a good point.",vi:"Ý hay đấy."},
+{en:"I see what you mean.",vi:"Tôi hiểu ý bạn."},
+{en:"In my opinion...",vi:"Theo ý kiến tôi..."},
+{en:"That makes sense.",vi:"Có lý đấy."},
+{en:"I\'m not sure about that.",vi:"Tôi không chắc lắm."}
+]}
+];
+const TOPICS=CONV.map(function(c){return c.topic;});
+let activeTopic="all";
+document.getElementById("tagBar").innerHTML='<button class="tag-btn active" onclick="setTopic(\'all\',this)">Tất cả</button>'+TOPICS.map(function(t){return '<button class="tag-btn" onclick="setTopic(\''+t.replace(/'/g,"\\'")+'\',this)">'+t.split(" (")[0]+'</button>';}).join("");
+function setTopic(t,btn){activeTopic=t;document.querySelectorAll(".tag-btn").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");renderConv();}
+function filterConv(){renderConv();}
+function renderConv(){
+  var q=document.getElementById("searchBox").value.toLowerCase();
+  var groups=CONV.filter(function(g){return activeTopic==="all"||g.topic===activeTopic;});
+  document.getElementById("convList").innerHTML=groups.map(function(g){
+    var items=g.phrases.filter(function(p){return !q||p.en.toLowerCase().includes(q)||p.vi.includes(q);});
+    if(items.length===0)return "";
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">'+
+    '<div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:14px">'+g.icon+' '+g.topic+'</div>'+
+    '<div style="display:grid;gap:8px">'+items.map(function(p){
+      return '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg3);border-radius:10px;transition:all .15s" onmouseover="this.style.borderLeft=\'3px solid var(--accent)\'" onmouseout="this.style.borderLeft=\'\'">'+
+      '<div style="flex:1"><div style="font-weight:500;color:var(--text);font-size:15px">'+p.en+'</div>'+
+      '<div style="font-size:13px;color:var(--accent);margin-top:2px">'+p.vi+'</div></div>'+
+      '<span style="cursor:pointer;font-size:14px;color:var(--text3);padding:4px" onclick="speakEn(\''+p.en.replace(/'/g,"\\'")+'\')" title="Nghe phát âm"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i></span></div>';
+    }).join("")+'</div></div>';
+  }).join("");
+}
+function speakEn(t){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=0.85;speechSynthesis.speak(u);}
+renderConv();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

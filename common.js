@@ -1,5 +1,15 @@
 /* === EasyEnglish Common JS === */
 
+/* === LORDICON ANIMATED ICONS === */
+(function(){
+  if(!document.querySelector('script[src*="lordicon"]')){
+    var s=document.createElement('script');
+    s.src='https://cdn.lordicon.com/lordicon.js';
+    s.async=true;
+    document.head.appendChild(s);
+  }
+})();
+
 /* === SMOOTH PAGE TRANSITIONS === */
 (function(){
   // Inject transition CSS
@@ -61,9 +71,6 @@ function toggleDrop(el){
   document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
   if(!wasOpen) drop.classList.add('open');
 }
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
-});
 
 // Back to top + reading progress (merged, rAF-throttled)
 var _scrollTicking = false;
@@ -105,19 +112,45 @@ window.addEventListener('scroll',function(){
 
   // --- Bottom Nav (mobile only) ---
   if (!document.querySelector('.mob-bottom-nav')) {
-    var bnItems = [
-      {href:'index.html', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>', label:'Trang chủ'},
-      {href:'grammar.html', icon:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>', label:'Ngữ pháp'},
-      {href:'vocabulary.html', icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>', label:'Từ vựng'},
-      {href:'quiz.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>', label:'Bài tập'}
-    ];
+    var shortNavOrder = ['index.html', 'ngu-phap.html', 'tu-vung.html', 'bai-tap.html'];
+    var lordiconMap = {
+      'home':'https://cdn.lordicon.com/wmwqvixz.json',
+      'book-open':'https://cdn.lordicon.com/wxnxiano.json',
+      'pencil':'https://cdn.lordicon.com/vdjwmfqs.json',
+      'help-circle':'https://cdn.lordicon.com/aycieyht.json'
+    };
+    var bnItems = [{href:'index.html', icon:'home', label:'Trang chủ'}];
+    if (window.EE_NAV_FLAT && window.EE_NAV_FLAT.length) {
+      shortNavOrder.forEach(function(href){
+        if (href === 'index.html') return;
+        for (var i = 0; i < window.EE_NAV_FLAT.length; i++) {
+          if (window.EE_NAV_FLAT[i].href === href) {
+            bnItems.push({href: href, icon: window.EE_NAV_FLAT[i].icon, label: window.EE_NAV_FLAT[i].text});
+            break;
+          }
+        }
+      });
+    }
+    if (!bnItems.length) {
+      bnItems = [
+        {href:'index.html', icon:'home', label:'Trang chủ'},
+        {href:'ngu-phap.html', icon:'book-open', label:'Ngữ pháp'},
+        {href:'tu-vung.html', icon:'pencil', label:'Từ vựng'},
+        {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'}
+      ];
+    }
+    var shortLabels = {'Ngữ pháp nền tảng':'Ngữ pháp', 'Học từ vựng':'Học từ vựng', 'Bài tập trắc nghiệm':'Bài tập'};
     var bnHtml = '<div class="mob-bottom-nav"><div class="mob-bottom-nav-inner">';
     bnItems.forEach(function(item){
       var isActive = path === item.href ? ' active' : '';
-      bnHtml += '<a href="' + item.href + '" class="mob-bn-item' + isActive + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' + item.icon + '</svg><span>' + item.label + '</span></a>';
+      var iconSrc = lordiconMap[item.icon] || lordiconMap['home'];
+      var trig = isActive ? 'loop' : 'hover';
+      var accentColor = isActive ? '#64d8a5' : '#9ec0b2';
+      var lbl = shortLabels[item.label] || item.label;
+      bnHtml += '<a href="' + item.href + '" class="mob-bn-item' + isActive + '"><div class="bn-icon-wrap"><lord-icon src="' + iconSrc + '" trigger="' + trig + '" delay="2000" colors="primary:' + accentColor + '" style="width:26px;height:26px"></lord-icon></div><span>' + lbl + '</span></a>';
     });
     // More button
-    bnHtml += '<button class="mob-bn-item" id="moreNavBtn" onclick="document.getElementById(\'moreDrawer\').classList.toggle(\'open\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg><span>Thêm</span></button>';
+    bnHtml += '<button class="mob-bn-item" id="moreNavBtn" onclick="document.getElementById(\'moreDrawer\').classList.toggle(\'open\')"><div class="bn-icon-wrap"><lord-icon src="https://cdn.lordicon.com/ofwpzftr.json" trigger="hover" colors="primary:#9ec0b2" style="width:26px;height:26px"></lord-icon></div><span>Thêm</span></button>';
     bnHtml += '</div></div>';
 
     var bnDiv = document.createElement('div');
@@ -127,60 +160,30 @@ window.addEventListener('scroll',function(){
 
   // --- More Drawer ---
   if (!document.getElementById('moreDrawer')) {
-    var drawerItems = [
-      // --- Học cơ bản ---
-      {href:'pronunciation.html', icon:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>', label:'Phát âm'},
-      {href:'irregular-verbs.html', icon:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>', label:'Động từ BQT'},
-      {href:'gerund-infinitive.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>', label:'V-ing hay To V?'},
-      {href:'prepositions.html', icon:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>', label:'Cụm giới từ'},
-      // --- Từ vựng ---
-      {href:'synonyms.html', icon:'<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>', label:'Đồng/Trái nghĩa'},
-      {href:'collocations.html', icon:'<circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/>', label:'Cụm từ đi cùng'},
-      {href:'idioms.html', icon:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>', label:'Thành ngữ'},
-      {href:'phrasal-verbs.html', icon:'<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>', label:'Cụm động từ'},
-      {href:'confusing-words.html', icon:'<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/>', label:'Từ hay nhầm'},
-      {href:'word-formation.html', icon:'<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>', label:'Cấu tạo từ'},
-      {href:'linking-words.html', icon:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>', label:'Từ nối'},
-      // --- Kỹ năng ---
-      {href:'skills.html', icon:'<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>', label:'Nghe Nói Đọc Viết'},
-      {href:'reading-comprehension.html', icon:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/><path d="M6 8h2"/><path d="M6 12h2"/><path d="M16 8h2"/>', label:'Đọc hiểu'},
-      {href:'listening.html', icon:'<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>', label:'Luyện nghe'},
-      {href:'writing-checker.html', icon:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>', label:'Kiểm tra bài viết'},
-      {href:'conversation.html', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', label:'Giao tiếp'},
-      {href:'daily-challenge.html', icon:'<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/>', label:'Thử thách hàng ngày'},
-      {href:'spaced-repetition.html', icon:'<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>', label:'Ôn tập lặp lại'},
-      // --- IELTS ---
-      {href:'ielts.html', icon:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.71 4 7 5.29 7 6.5V8"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18.29 4 17 5.29 17 6.5V8"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>', label:'IELTS'},
-      {href:'academic-words.html', icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>', label:'570 từ học thuật'},
-      {href:'ielts-writing-band9.html', icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>', label:'Viết IELTS mẫu'},
-      {href:'ielts-speaking-topics.html', icon:'<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/>', label:'Nói IELTS mẫu'},
-      {href:'paraphrasing.html', icon:'<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>', label:'Diễn đạt lại'},
-      {href:'mock-test.html', icon:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>', label:'Thi thử IELTS'},
-      {href:'toeic.html', icon:'<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>', label:'Luyện thi TOEIC'},
-      // --- Từ điển ---
-      {href:'dictionary.html', icon:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>', label:'Từ điển Anh-Việt'},
-      {href:'dictionary-everyday.html', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', label:'Từ điển Đời thường'},
-      {href:'dictionary-everyday-2.html', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/>', label:'Từ điển Đời thường 2'},
-      {href:'dictionary-ielts.html', icon:'<circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/>', label:'Từ điển IELTS'},
-      {href:'dictionary-ielts-2.html', icon:'<circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><path d="M12 6v6l4 2"/>', label:'Từ điển IELTS 2'},
-      // --- Chuyên ngành ---
-      {href:'business-english.html', icon:'<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>', label:'Tiếng Anh thương mại'},
-      {href:'it-english.html', icon:'<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>', label:'Tiếng Anh IT'},
-      {href:'medical-english.html', icon:'<path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/>', label:'Tiếng Anh y tế'},
-      {href:'legal-english.html', icon:'<line x1="12" y1="3" x2="12" y2="21"/><path d="M17.5 6.5l-11 11"/><path d="M6.5 6.5l11 11"/><circle cx="12" cy="12" r="2"/>', label:'Tiếng Anh pháp lý'},
-      // --- Tiện ích ---
-      {href:'notebook.html', icon:'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>', label:'Sổ tay từ'},
-      {href:'progress.html', icon:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>', label:'Tiến độ học'}
-    ];
+    var drawerItems = [];
+    var sharedNavItems = window.EE_NAV_ITEMS;
+    if (sharedNavItems) {
+      for (var group in sharedNavItems) {
+        if (!sharedNavItems.hasOwnProperty(group)) continue;
+        for (var i = 0; i < sharedNavItems[group].length; i++) {
+          drawerItems.push({
+            href: sharedNavItems[group][i].href,
+            icon: sharedNavItems[group][i].icon,
+            label: sharedNavItems[group][i].text
+          });
+        }
+      }
+      drawerItems.push({ href: 'tien-do.html', icon: 'bar-chart-3', label: 'Tiến độ học' });
+    }
     var dHtml = '<div class="more-drawer" id="moreDrawer">';
     dHtml += '<div class="more-drawer-overlay" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"></div>';
     dHtml += '<div class="more-drawer-sheet"><div class="more-drawer-handle" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"><span></span></div>';
     dHtml += '<div class="more-drawer-grid">';
     drawerItems.forEach(function(item){
-      dHtml += '<a href="' + item.href + '" class="md-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px">' + item.icon + '</svg><span>' + item.label + '</span></a>';
+      dHtml += '<a href="' + item.href + '" class="md-item"><i data-lucide="' + item.icon + '" style="width:22px;height:22px"></i><span>' + item.label + '</span></a>';
     });
     // Theme button in drawer
-    dHtml += '<button class="md-item" id="mdThemeBtn" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\');var p=document.getElementById(\'themePanel\');if(p){p.style.display=\'block\';p.style.bottom=\'80px\';p.style.right=\'16px\';p.style.left=\'16px\';p.style.width=\'auto\';setTimeout(function(){p.style.opacity=\'1\';p.style.transform=\'translateY(0)\'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Đổi giao diện</span></button>';
+    dHtml += '<button class="md-item" id="mdThemeBtn" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\');var p=document.getElementById(\'themePanel\');if(p){p.style.display=\'block\';p.style.bottom=\'100px\';p.style.right=\'16px\';p.style.left=\'16px\';p.style.width=\'auto\';setTimeout(function(){p.style.opacity=\'1\';p.style.transform=\'translateY(0)\'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Đổi giao diện</span></button>';
     dHtml += '</div></div></div>';
 
     var dDiv = document.createElement('div');
@@ -230,11 +233,11 @@ window.addEventListener('scroll',function(){
 (function(){
   var popup = document.createElement('div');
   popup.id = 'ee-translate-popup';
-  popup.style.cssText = 'position:fixed;z-index:99999;display:none;background:rgba(11,26,30,0.97);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:14px;padding:0;max-width:420px;min-width:200px;box-shadow:0 16px 48px rgba(0,0,0,0.5);font-family:"DM Sans",sans-serif;animation:eePopIn .2s ease-out;overflow:hidden;max-height:60vh;overflow-y:auto';
+  popup.style.cssText = 'position:fixed;z-index:99999;display:none;background:rgba(11,26,30,0.97);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:14px;padding:0;max-width:420px;min-width:200px;box-shadow:0 16px 48px rgba(0,0,0,0.5);font-family:"DM Sans",sans-serif;animation:eePopIn .2s ease-out;overflow:hidden;max-height:70vh;overflow-y:auto';
   document.body.appendChild(popup);
 
   var style = document.createElement('style');
-  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:center;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-actions{display:flex;align-items:center;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(100,216,165,0.12);border:1px solid rgba(100,216,165,0.25);color:#64d8a5;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(100,216,165,0.25);transform:scale(1.1)}#ee-translate-popup .ee-tp-save{height:32px;border-radius:999px;background:rgba(123,110,246,0.14);border:1px solid rgba(123,110,246,0.28);color:#d8ede3;cursor:pointer;font-size:12px;padding:0 12px;display:flex;align-items:center;justify-content:center;transition:all .2s;white-space:nowrap}#ee-translate-popup .ee-tp-save:hover{background:rgba(123,110,246,0.24)}#ee-translate-popup .ee-tp-save.saved{background:rgba(100,216,165,0.16);border-color:rgba(100,216,165,0.3);color:#64d8a5}#ee-translate-popup .ee-tp-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}#ee-translate-popup .ee-tp-link{font-size:11px;color:#a78bfa;text-decoration:none}#ee-translate-popup .ee-tp-link:hover{text-decoration:underline}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}';
+  style.textContent = '@keyframes eePopIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin{to{transform:rotate(360deg)}}#ee-translate-popup .ee-tp-word{font-family:"Fraunces",serif;font-size:20px;color:#f5faf7;margin-bottom:2px}#ee-translate-popup .ee-tp-ipa{font-size:12px;color:#64d8a5;font-style:italic}#ee-translate-popup .ee-tp-vi{font-size:15px;color:#f5faf7;margin-top:8px;line-height:1.5}#ee-translate-popup .ee-tp-en-def{font-size:12px;color:#9ec0b2;margin-top:4px;font-style:italic;line-height:1.4}#ee-translate-popup .ee-tp-loading{text-align:center;padding:16px;color:#9ec0b2;font-size:13px}#ee-translate-popup .ee-tp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}#ee-translate-popup .ee-tp-actions{display:flex;align-items:center;gap:8px}#ee-translate-popup .ee-tp-speak{width:32px;height:32px;border-radius:50%;background:rgba(100,216,165,0.12);border:1px solid rgba(100,216,165,0.25);color:#64d8a5;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}#ee-translate-popup .ee-tp-speak:hover{background:rgba(100,216,165,0.25);transform:scale(1.1)}#ee-translate-popup .ee-tp-save{height:32px;border-radius:999px;background:rgba(123,110,246,0.14);border:1px solid rgba(123,110,246,0.28);color:#d8ede3;cursor:pointer;font-size:12px;padding:0 12px;display:flex;align-items:center;justify-content:center;transition:all .2s;white-space:nowrap}#ee-translate-popup .ee-tp-save:hover{background:rgba(123,110,246,0.24)}#ee-translate-popup .ee-tp-save.saved{background:rgba(100,216,165,0.16);border-color:rgba(100,216,165,0.3);color:#64d8a5}#ee-translate-popup .ee-tp-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}#ee-translate-popup .ee-tp-link{font-size:11px;color:#a78bfa;text-decoration:none}#ee-translate-popup .ee-tp-link:hover{text-decoration:underline}#ee-translate-popup .ee-tp-body{padding:14px 16px}#ee-translate-popup .ee-tp-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#9ec0b2;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s}#ee-translate-popup .ee-tp-close:hover{color:#f5faf7}#ee-translate-popup .ee-tp-type{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}#ee-translate-popup .ee-tp-type-n{background:rgba(100,216,165,0.15);color:#64d8a5}#ee-translate-popup .ee-tp-type-v{background:rgba(123,110,246,0.15);color:#a78bfa}#ee-translate-popup .ee-tp-type-adj{background:rgba(244,132,95,0.15);color:#f4845f}#ee-translate-popup .ee-tp-type-adv{background:rgba(107,203,119,0.15);color:#6bcb77}#ee-translate-popup .ee-tp-extra{margin-top:10px;padding-top:10px;border-top:0.5px solid rgba(100,216,165,0.12)}#ee-translate-popup .ee-tp-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9ec0b2;margin-bottom:4px}#ee-translate-popup .ee-tp-text{font-size:12px;color:#d8ede3;line-height:1.55}#ee-translate-popup .ee-tp-chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}#ee-translate-popup .ee-tp-chip{padding:3px 8px;border-radius:999px;background:rgba(255,255,255,0.05);border:0.5px solid rgba(100,216,165,0.12);font-size:10px;color:#d8ede3}';
   document.head.appendChild(style);
 
   var debounceTimer;
@@ -330,6 +333,40 @@ window.addEventListener('scroll',function(){
     }
   }
 
+  function renderTranslatePopup(payload){
+    var word = payload.word || '';
+    var viWord = payload.vi || '';
+    var ipa = payload.ipa || '';
+    var types = payload.types || [];
+    var exampleText = payload.exampleText || '';
+    var preview = payload.preview || '';
+    var savedCls = isNotebookSaved(word) ? ' saved' : '';
+    var saveLabel = isNotebookSaved(word) ? 'Đã lưu' : 'Lưu từ';
+    var saveBtn = '<button class="ee-tp-save'+savedCls+'" id="eeTpSaveBtn">' + saveLabel + '</button>';
+    var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
+    var typeMap = {n:'ee-tp-type-n',v:'ee-tp-type-v',adj:'ee-tp-type-adj',adv:'ee-tp-type-adv'};
+    var typeHtml = types.slice(0,3).map(function(t){ return '<span class="ee-tp-type ' + (typeMap[t]||'ee-tp-type-n') + '">' + t + '</span>'; }).join('');
+    popup.innerHTML = '<div class="ee-tp-body">' +
+      '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
+      '<div class="ee-tp-header"><div><div class="ee-tp-word">' + (word || preview) + '</div>' +
+      (ipa ? '<div class="ee-tp-ipa">' + ipa + '</div>' : '') +
+      (typeHtml ? '<div style="margin-top:4px">' + typeHtml + '</div>' : '') +
+      '</div><div class="ee-tp-actions">' + saveBtn + speakBtn + '</div></div>' +
+      (viWord ? '<div class="ee-tp-vi">' + viWord + '</div>' : '') +
+      (exampleText ? '<div class="ee-tp-extra"><div class="ee-tp-label">Ví dụ tự nhiên</div><div class="ee-tp-text">' + exampleText + '</div></div>' : '') +
+      '<div class="ee-tp-meta"><span style="font-size:11px;color:#9ec0b2">Lưu vào sổ tay để ôn lại sau</span><a class="ee-tp-link" href="so-tay.html">Mở sổ tay</a></div>' +
+      '</div>';
+    var saveEl = popup.querySelector('#eeTpSaveBtn');
+    if(saveEl){
+      var savePayload = { word: word, vi: viWord || '', ipa: ipa || '', types: types || [] };
+      saveEl.addEventListener('click', function(event){
+        event.stopPropagation();
+        var ok = saveNotebookWord(savePayload);
+        if(ok){ saveEl.classList.add('saved'); saveEl.textContent = 'Đã lưu'; }
+      });
+    }
+  }
+
   // Desktop: mouseup
   document.addEventListener('mouseup', function(e){
     if(popup.contains(e.target)) return;
@@ -407,7 +444,13 @@ window.addEventListener('scroll',function(){
         });
       }
 
-      // If no translation at all, show error
+      // Final fallback: if API didn't give a translation, try a local meaning from dictionary data when available.
+      if(!viWord && dictData && dictData[0] && dictData[0].meanings && dictData[0].meanings.length){
+        var firstDef = dictData[0].meanings[0].definitions && dictData[0].meanings[0].definitions[0];
+        if(firstDef && firstDef.definition) viWord = firstDef.definition;
+      }
+
+      // If still no translation at all, show error
       if(!viWord && !ipa){
         popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không tìm thấy nghĩa cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
         isTranslating = false;
@@ -419,40 +462,27 @@ window.addEventListener('scroll',function(){
         return '<span class="ee-tp-type ' + (typeMap[t]||'ee-tp-type-n') + '">' + t + '</span>';
       }).join('');
 
-      var savedCls = isNotebookSaved(word) ? ' saved' : '';
-      var saveLabel = isNotebookSaved(word) ? 'Đã lưu' : 'Lưu từ';
-      var saveBtn = '<button class="ee-tp-save'+savedCls+'" id="eeTpSaveBtn">' + saveLabel + '</button>';
-      var speakBtn = '<button class="ee-tp-speak" onclick="event.stopPropagation();var u=new SpeechSynthesisUtterance(\'' + word.replace(/'/g,"\\'") + '\');u.lang=\'en-US\';u.rate=0.85;speechSynthesis.cancel();speechSynthesis.speak(u)" title="Nghe phát âm">&#9654;</button>';
-
-      popup.innerHTML = '<div class="ee-tp-body">' +
-        '<button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button>' +
-        '<div class="ee-tp-header"><div><div class="ee-tp-word">' + word + '</div>' +
-        (ipa ? '<div class="ee-tp-ipa">' + ipa + '</div>' : '') +
-        (typeHtml ? '<div style="margin-top:4px">' + typeHtml + '</div>' : '') +
-        '</div><div class="ee-tp-actions">' + saveBtn + speakBtn + '</div></div>' +
-        (viWord ? '<div class="ee-tp-vi">' + viWord + '</div>' : '') +
-        '<div class="ee-tp-meta"><span style="font-size:11px;color:#9ec0b2">Lưu vào sổ tay để ôn lại sau</span><a class="ee-tp-link" href="notebook.html">Mở sổ tay</a></div>' +
-        '</div>';
-      var saveEl = popup.querySelector('#eeTpSaveBtn');
-      if(saveEl){
-        var savePayload = {
-          word: word,
-          vi: viWord || '',
-          ipa: ipa || '',
-          types: types || []
-        };
-        saveEl.addEventListener('click', function(event){
-          event.stopPropagation();
-          var ok = saveNotebookWord(savePayload);
-          if(ok){
-            saveEl.classList.add('saved');
-            saveEl.textContent = 'Đã lưu';
-          }
-        });
+      var exampleText = '';
+      if(dictData && dictData[0]){
+        var d0 = dictData[0];
+        if(d0.meanings && d0.meanings[0] && d0.meanings[0].definitions && d0.meanings[0].definitions[0]){
+          exampleText = d0.meanings[0].definitions[0].example || '';
+        }
       }
+
+      renderTranslatePopup({
+        word: word,
+        vi: viWord,
+        ipa: ipa,
+        types: types,
+        exampleText: exampleText,
+        meta: null
+      });
       isTranslating = false;
-    }).catch(function(){
-      popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không thể dịch. Kiểm tra kết nối mạng.</div></div>';
+    }).catch(function(err){
+      var fallbackMsg = 'Không lấy được bản dịch online.';
+      if(err && err.name === 'AbortError') return;
+      popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">' + fallbackMsg + '</div><div style="margin-top:8px;color:#d8ede3;font-size:12px;line-height:1.5">Bạn vẫn có thể tra trực tiếp từ điển hoặc thử lại sau. Nếu từ là một từ đơn, popup sẽ ưu tiên nghĩa cục bộ trước.</div></div>';
       isTranslating = false;
     });
   }
@@ -534,44 +564,26 @@ window.addEventListener('scroll',function(){
 
 /* === GLOBAL SEARCH (Ctrl+K) === */
 (function(){
-  var PAGES=[
-    {title:'Trang chủ',desc:'EasyEnglish — Tự học tiếng Anh từ A-Z',url:'index.html',tags:'home trang chu'},
-    {title:'Ngữ pháp',desc:'12 thì, câu điều kiện, bị động, mệnh đề quan hệ',url:'grammar.html',tags:'grammar ngu phap thi tense'},
-    {title:'Từ vựng',desc:'3000+ từ vựng theo chủ đề với flashcard',url:'vocabulary.html',tags:'vocabulary tu vung flashcard'},
-    {title:'4 Kỹ năng',desc:'Nghe Nói Đọc Viết',url:'skills.html',tags:'skills ky nang nghe noi doc viet'},
-    {title:'Đọc hiểu',desc:'Bài đọc hiểu có câu hỏi tương tác',url:'reading-comprehension.html',tags:'reading doc hieu'},
-    {title:'Luyện nghe',desc:'Nghe audio và trả lời câu hỏi',url:'listening.html',tags:'listening luyen nghe'},
-    {title:'Kiểm tra bài viết',desc:'AI kiểm tra lỗi ngữ pháp, chính tả',url:'writing-checker.html',tags:'writing viet kiem tra'},
-    {title:'Từ nối',desc:'Linking words: however, therefore, moreover...',url:'linking-words.html',tags:'linking words tu noi'},
-    {title:'Giao tiếp',desc:'Hội thoại hằng ngày',url:'conversation.html',tags:'conversation giao tiep hoi thoai'},
-    {title:'Bài tập',desc:'Quiz ngữ pháp, từ vựng',url:'quiz.html',tags:'quiz bai tap'},
-    {title:'Thử thách hàng ngày',desc:'10 câu mỗi ngày, streak tracking',url:'daily-challenge.html',tags:'daily challenge thu thach hang ngay'},
-    {title:'Ôn tập lặp lại',desc:'Spaced repetition flashcard',url:'spaced-repetition.html',tags:'spaced repetition on tap'},
-    {title:'IELTS Guide',desc:'Hướng dẫn luyện thi IELTS',url:'ielts.html',tags:'ielts guide huong dan'},
-    {title:'570 từ học thuật',desc:'Academic Word List',url:'academic-words.html',tags:'academic words hoc thuat'},
-    {title:'Viết IELTS mẫu',desc:'Band 9 writing samples',url:'ielts-writing-band9.html',tags:'ielts writing viet mau'},
-    {title:'Nói IELTS mẫu',desc:'Speaking topics & samples',url:'ielts-speaking-topics.html',tags:'ielts speaking noi'},
-    {title:'Paraphrasing',desc:'Diễn đạt lại câu',url:'paraphrasing.html',tags:'paraphrasing dien dat lai'},
-    {title:'Thi thử IELTS',desc:'Mock test IELTS',url:'mock-test.html',tags:'mock test thi thu ielts'},
-    {title:'Luyện thi TOEIC',desc:'Từ vựng, ngữ pháp, Part 5',url:'toeic.html',tags:'toeic luyen thi'},
-    {title:'Từ điển Anh-Việt',desc:'Tra từ nhanh',url:'dictionary.html',tags:'dictionary tu dien anh viet'},
-    {title:'Từ điển Đời thường',desc:'Slang, informal English',url:'dictionary-everyday.html',tags:'everyday dictionary doi thuong slang'},
-    {title:'Từ điển IELTS',desc:'Từ vựng IELTS band 7+',url:'dictionary-ielts.html',tags:'ielts dictionary tu dien'},
-    {title:'Sổ tay từ vựng',desc:'Lưu các từ đã bôi đen để ôn lại',url:'notebook.html',tags:'notebook so tay tu vung luu tu'},
-    {title:'Từ hay nhầm',desc:'affect/effect, advice/advise...',url:'confusing-words.html',tags:'confusing words tu nham lan'},
-    {title:'Idioms',desc:'200+ thành ngữ tiếng Anh',url:'idioms.html',tags:'idioms thanh ngu'},
-    {title:'Collocations',desc:'Phrasal verbs & collocations',url:'collocations.html',tags:'collocations phrasal verbs'},
-    {title:'Đồng nghĩa / Trái nghĩa',desc:'Synonyms & Antonyms',url:'synonyms.html',tags:'synonyms antonyms dong nghia trai nghia'},
-    {title:'Động từ bất quy tắc',desc:'Irregular verbs',url:'irregular-verbs.html',tags:'irregular verbs dong tu bat quy tac'},
-    {title:'Giới từ',desc:'Preposition combinations',url:'preposition-combinations.html',tags:'prepositions gioi tu'},
-    {title:'Cấu tạo từ',desc:'Word formation: prefix, suffix, root',url:'word-formation.html',tags:'word formation cau tao tu prefix suffix'},
-    {title:'V-ing hay To V?',desc:'Gerund vs Infinitive — Khi nào dùng V-ing, khi nào dùng To V',url:'gerund-infinitive.html',tags:'gerund infinitive ving to v danh động từ'},
-    {title:'Phát âm',desc:'Pronunciation guide',url:'pronunciation.html',tags:'pronunciation phat am'},
-    {title:'Tiếng Anh thương mại',desc:'Business English: email, hội thoại',url:'business-english.html',tags:'business english thuong mai doanh nghiep'},
-    {title:'Tiếng Anh IT',desc:'Thuật ngữ lập trình, DevOps',url:'it-english.html',tags:'it english lap trinh devops'},
-    {title:'Tiếng Anh y tế',desc:'Medical English: bệnh viện, thuốc',url:'medical-english.html',tags:'medical english y te benh vien'},
-    {title:'Tiếng Anh pháp lý',desc:'Legal English: hợp đồng, tòa án',url:'legal-english.html',tags:'legal english phap ly hop dong'}
+  var PAGES = [
+    {title:'Trang chủ',desc:'EasyEnglish — Tự học tiếng Anh từ A-Z',url:'index.html',tags:'home trang chu'}
   ];
+  if (window.EE_NAV_FLAT && window.EE_NAV_FLAT.length) {
+    window.EE_NAV_FLAT.forEach(function(item){
+      PAGES.push({
+        title: item.text,
+        desc: item.group,
+        url: item.href,
+        tags: [item.group, item.text, item.href.replace('.html','')].join(' ').toLowerCase()
+      });
+    });
+  }
+  PAGES.push(
+    {title:'Động từ khuyết thiếu',desc:'Modal verbs: can, must, should...',url:'dong-tu-khuyet-thieu.html',tags:'modal verbs dong tu khuyet thieu'}
+  );
+  PAGES.push(
+    {title:'Tiến độ',desc:'Theo dõi streak, XP, và tiến trình học',url:'tien-do.html',tags:'progress tien do streak xp'},
+    {title:'Sổ tay từ vựng',desc:'Lưu các từ đã bôi đen để ôn lại',url:'so-tay.html',tags:'notebook so tay tu vung luu tu'}
+  );
 
   // Inject search CSS
   var ss=document.createElement('style');

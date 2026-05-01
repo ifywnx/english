@@ -1,6 +1,8 @@
 # 📚 EasyEnglish — Project Documentation
 
-> **Cập nhật lần cuối:** 2026-04-27  
+> **Cập nhật lần cuối:** 2026-04-29  
+> **Cập nhật bởi:** Claude Opus 4.6  
+> **Ghi chú phiên cập nhật:** Đã tăng độ sâu `quiz.html` thành module học tương tác, nâng `pronunciation.html` theo hướng học thật có routine/lỗi thường gặp/luyện tập, làm sâu `collocations.html` thêm hướng dẫn học/routine/ngữ cảnh, mở rộng `idioms.html` theo hướng học theo nhóm chủ đề + quiz, bắt đầu nâng `reading-skills.html` thành module học chiến lược đọc thật sự, tiếp tục làm sâu `speaking-practice.html`, làm mới `writing-task2.html` theo hướng học dàn ý + lập luận + mini practice, và tăng tính học thật cho `daily-challenge.html`.  
 > **Tổng số files:** 60 files (42 HTML + 6 JS + 1 CSS + 2 MD + 9 assets/config)  
 > **Tổng dung lượng:** ~1.6MB  
 > **Mục đích file này:** Ghi chi tiết toàn bộ project để bất kỳ ai (hoặc AI mới) đọc file này là hiểu hết plan, kiến trúc, tính năng, API, và cách hoạt động.
@@ -17,6 +19,8 @@
 - Bao gồm cả **tiếng Anh chuyên ngành** (IT, Y tế, Kinh doanh, Luật, ...)
 - Chất lượng **peak, wow** — mỗi trang phải khiến user "WOW" ngay lần đầu
 - Phong cách **Gen Z**, hiện đại, thú vị, dễ dùng — phá vỡ rào cản "học tiếng Anh = khó" với người Việt
+- Tính năng **bôi đen dịch** cũng phải có phần hiển thị đầy đủ: ngữ cảnh dùng, độ phổ biến, độ trang trọng, lỗi hay gặp, collocations, và ví dụ tự nhiên nhất
+- Từ điển phải trả lời được không chỉ nghĩa, mà còn: **ngữ cảnh dùng**, **độ phổ biến**, **mức độ trang trọng**, **lỗi hay dùng sai**, **collocations**, và **ví dụ tự nhiên nhất** (đặc biệt cho bôi đen dịch)
 
 ### Lộ trình triển khai
 1. ✅ **Phase 1: Web tĩnh** (HTML/CSS/JS thuần) — Đang hoàn thiện
@@ -33,6 +37,14 @@
 - **Offline-first** — data lưu `localStorage`, hoạt động không cần mạng
 - **Không placeholder** — mọi nội dung phải thật, đầy đủ, chất lượng cao
 - **Premium** — không phải MVP, mà là sản phẩm hoàn chỉnh
+- **Từ điển / bôi đen dịch** — sau khi tra phải gợi ý thêm từ đồng nghĩa, trái nghĩa, collocation và ví dụ dùng tự nhiên để biến tra cứu thành học thật.
+- **Dictionary roadmap chuẩn** — mỗi entry nên có: ngữ cảnh dùng, mức độ phổ biến, mức độ trang trọng, lỗi hay gặp, collocation, ví dụ tự nhiên nhất, và khi bôi đen dịch cũng phải hiện cùng lớp thông tin này.
+- **Bôi đen dịch** — không nên báo “lỗi mạng” quá sớm; nếu API online fail thì phải hiện fallback nhẹ nhàng và ưu tiên local/tra từ cục bộ.
+- **Bôi đen dịch: local-first mạnh hơn** — khi API fail, popup vẫn nên dùng nghĩa local từ `dict-data.js`/dictionary data nếu có, thay vì báo lỗi ngay.
+- **Nợ kỹ thuật hiện tại** — tính năng bôi đen dịch và một số luồng từ điển vẫn chưa ổn định sau nhiều lần refactor; cần làm lại và test runtime riêng để khôi phục dịch/tra từ ổn định trước khi nâng cấp metadata học sâu.
+- **Nợ kỹ thuật font chữ** — các trang mới đang được đồng bộ theo font cũ để giữ UI nhất quán. Phần chọn font riêng cho từng theme / page còn để nợ kỹ thuật; sau này cần thêm tính năng đổi font chữ trong settings/theme picker.
+- **Font mặc định hiện tại** — heading dùng `Fraunces`, body/UI dùng `DM Sans`. Khi triển khai font switcher, cần hỗ trợ tối thiểu các preset: `Fraunces`, `DM Sans`, `Inter`, `Poppins`, `Manrope`.
+- **Bôi đen dịch xịn** — popup dịch đã mở rộng để hiển thị meta học thật: ngữ cảnh, độ phổ biến, tone, lỗi thường gặp, ví dụ và collocations.
 
 ### Đối thủ cần vượt qua
 - Duolingo, Elsa Speak, Cake, IELTS Prep apps
@@ -71,6 +83,10 @@
 | File | Vai trò |
 |------|----------|
 | `notebook.html` | Sổ tay từ vựng cá nhân: lưu từ từ popup dịch, flashcard review, search, export JSON |
+| `speaking-practice.html` | Speaking Practice: khung trả lời, topic core, lỗi hay gặp, mini practice |
+| `listening-transcript.html` | Listening Transcript: transcript workflow, shadowing, dictation, keyword spotting |
+| `writing-task1.html` | IELTS Writing Task 1: overview, data description, trend language |
+| `reading-skills.html` | Reading Skills: skim/scan/inference, question types, strategy |
 | `index.html.bak` | Backup trang chủ cũ — có thể xóa |
 | `FEATURE_ADDITIONS.md` | Ghi chú các tính năng đã bổ sung / backlog triển khai |
 
@@ -271,12 +287,17 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 
 ### UI Cleanup đã làm (2026-04-27)
 - Chuẩn hóa `index.html` để bớt override nav/mobile/shared components từ `style.css`.
+- Đã tách phần reset/body base ra khỏi CSS nội tuyến của `index.html` để ưu tiên dùng shared styles trong `style.css`; phần còn lại của homepage chủ yếu là layout/hero/home module riêng.
 - Thêm mobile bottom spacing ở `style.css` để shared bottom nav ít đè nội dung hơn trên các page không dùng `.content` chuẩn.
 - Sửa block CSS variables không chuẩn ở một nhóm page lớn bằng cách bọc lại trong `:root{...}`.
 - Gỡ các block CSS lặp cho bottom nav / more drawer / back-to-top / reading progress khỏi `vocabulary.html` và `pronunciation.html`.
 - Sửa lỗi HTML/CSS ở `vocabulary.html` và `pronunciation.html`: có `<style>` body-local bị nuốt thêm CSS dư và lặp `style.css` giữa thân trang.
 - Dọn thêm một nhóm file có `<head>` malformed hoặc asset tags bị lặp/sai cấu trúc: `ielts-writing-band9.html`, `paraphrasing.html`, `mock-test.html`, `ielts-speaking-topics.html`, `synonyms.html`.
 - Sau cleanup này, shared UI ổn hơn trước nhưng project vẫn còn nhiều page-specific CSS dài; chưa thể coi là fully standardized.
+- Cập nhật `common.js` (2026-04-28): sửa link global search từ `preposition-combinations.html` -> `prepositions.html` để hết lỗi 404; bổ sung index search cho `dictionary-everyday-2.html` và `dictionary-ielts-2.html`.
+- Giảm duplication navigation (2026-04-28): expose `window.EE_NAV_ITEMS` từ `nav.js` để `common.js` dựng More Drawer từ cùng source data; thêm `dictionary-everyday-2.html` và `dictionary-ielts-2.html` vào nhóm `Từ điển` trong `nav.js`.
+- Cleanup shared JS (2026-04-28): gỡ listener đóng dropdown `.nav-drop` bị trùng trong `common.js` vì đã được quản lý ở `nav.js`, giúp giảm xung đột event handler toàn cục.
+- Đồng bộ source navigation hơn nữa (2026-04-28): expose thêm `window.EE_NAV_FLAT` từ `nav.js` để các hệ thống shared khác có thể dùng danh sách nav phẳng thay vì tự khai báo lại từng page.
 
 ### Ưu tiên UI Cleanup nên làm tiếp
 1. Gom tiếp những phần CSS lặp phổ biến từ các page files về `style.css`.
@@ -284,6 +305,23 @@ Tất cả UI chung được inject tự động từ `common.js`, **KHÔNG** co
 3. Rà responsive trên các page dài có sidebar và grid lớn.
 4. Dọn các `<style>` body-local còn lại nếu chỉ phục vụ animation nhỏ hoặc override cục bộ.
 5. Sau khi cấu trúc ổn mới polish thêm animation, spacing, hierarchy.
+6. Trạng thái hiện tại: bottom nav mobile trong `common.js` đã lấy thứ tự/icon từ `window.EE_NAV_FLAT` của `nav.js` khi có sẵn, nên dữ liệu điều hướng chung đang tập trung hơn.
+7. Đã bắt đầu dọn `index.html` bằng cách tách bớt CSS reset/base ra khỏi inline `<style>`, giữ lại phần CSS thật sự riêng cho homepage.
+8. `vocabulary.html` và `grammar.html` đã gỡ block `:root` trùng lặp trong inline CSS để dùng chung biến theme từ `style.css`.
+9. `ielts.html` đã được rà và là ứng viên tiếp theo cho bước dọn CSS/HTML vì vẫn còn nhiều block layout riêng trong inline `<style>`.
+10. Hiện ưu tiên dọn tiếp sẽ là gom thêm các phần layout chung ở các page lớn thay vì đụng vào các thành phần nội dung/lesson riêng của từng trang.
+11. `business-english.html` đã được dọn một phần bằng cách chuyển style của tab giao diện từ inline `<style>` sang `style.css`.
+12. `business-english.html` đã được nâng cấp mạnh thành module học sâu: giữ nguyên kiến thức cũ nhưng bổ sung quy tắc giao tiếp, pattern thực chiến, ví dụ email/hội thoại chi tiết, lỗi hay gặp và bài tập tương tác. Sidebar học nhanh đã được chỉnh để đồng bộ hơn với layout mới.
+13. Đã thêm module mới `modal-verbs.html` cho ngữ pháp cốt lõi (động từ khuyết thiếu), và đã nâng cấp lên dạng module học sâu với bản đồ nhanh, quy tắc nền tảng, bảng so sánh, lỗi hay gặp, ví dụ chi tiết, bài tập thực chiến và link học tiếp.
+14. `it-english.html` cũng đã được nâng lên theo hướng module học sâu: thêm quy tắc IT English, so sánh nhanh, hội thoại, phỏng vấn tech, lỗi hay gặp và practice.
+15. `medical-english.html` đã được nâng cấp theo hướng học sâu: thêm quy tắc y tế, so sánh thuật ngữ, cách hỏi bệnh/đọc toa thuốc, hội thoại thực tế, lỗi hay gặp và practice.
+16. Font hiện dùng ở các module mới đang thiên về `DM Sans` cho nội dung và `Fraunces` cho tiêu đề; đã ghi chú để sau này bổ sung tính năng chọn font chữ cho cả file cũ lẫn mới.
+14. Sửa shared theme để nav dropdown cũng đổi màu theo theme mới bằng `--drop-bg`, đồng thời dùng `--nav-bg` cho thanh nav chính để các page mới cũ đều đồng bộ hơn.
+14. Sửa shared `style.css` để `nav` dùng `--nav-bg`, giúp trang mới như `modal-verbs.html` đổi theme đúng như các module khác.
+14. `modal-verbs.html` đã được đồng bộ thêm `theme.js` để hiện nút đổi giao diện như các page khác.
+15. `nav.js` đã được sửa để không bị lặp mục `modal-verbs.html` trong nhóm Học cơ bản.
+14. `modal-verbs.html` đã được đồng bộ style/theme load với các page khác bằng cách thêm `theme.js?v=3` trước `style.css`.
+11. `pronunciation.html` cũng thuộc nhóm page lớn còn nhiều CSS inline riêng, nhưng sẽ chỉ xử lý các phần chung an toàn trước.
 
 ---
 
@@ -832,8 +870,62 @@ Mỗi khi thêm 1 trang HTML mới, PHẢI làm TẤT CẢ các bước sau:
 - [ ] Thêm vào **index.html** module grid (nếu là module chính)
 - [ ] Đảm bảo nav HTML **giống hệt nhau** trên mọi file (dùng sed/grep để đồng bộ)
 
+Những module đang thiếu hoặc nên bổ sung thêm
+Nghe chuyên sâu
+
+listening-transcript.html
+shadowing.html
+dictation.html
+Nói chuyên sâu
+
+speaking-practice.html
+pronunciation-drills.html
+roleplay.html
+Viết chuyên sâu
+
+writing-task1.html
+writing-task2.html
+sentence-building.html
+error-correction.html
+Đọc hiểu chuyên sâu
+
+reading-skills.html
+skim-scan.html
+true-false-not-given.html
+Ngữ pháp nền tảng còn thiếu chiều sâu
+
+articles.html
+sentence-types.html
+active-passive.html
+conditionals.html
+comparisons.html
+relative-clauses.html
+reported-speech.html
+Từ vựng nền tảng nên có thêm
+
+a1-vocab.html
+a2-vocab.html
+b1-vocab.html
+b2-vocab.html
+collocation-drills.html
+Module học theo mục tiêu
+
+english-for-travel.html
+english-for-work.html
+english-for-interview.html
+english-for-daily-life.html
+Nếu hỏi cái thiếu quan trọng nhất
+Ưu tiên top 5 nên thêm trước là:
+
+speaking-practice.html
+listening-transcript.html
+writing-task1.html
+writing-task2.html
+reading-skills.html
+
+
 > **QUAN TRỌNG:** Nav desktop và mobile menu phải luôn giống nhau trên TẤT CẢ files. Nếu 1 file thiếu link → user không thể navigate đến trang mới. Dùng `grep` để verify sau khi update.
 
 ---
 
-*Đây là tài liệu sống — cập nhật mỗi khi có thay đổi lớn.*
+*Đây là tài liệu sống — cập nhật mỗi khi có thay đổ.*

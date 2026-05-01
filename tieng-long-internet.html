@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiếng lóng & Internet — EasyEnglish</title>
+<meta name="description" content="Học tiếng lóng, viết tắt và ngôn ngữ internet tiếng Anh: LOL, GOAT, slay, vibe check và hơn thế.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.cat-bar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.cat-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.cat-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
+.slang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:20px}
+.slang-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:18px;transition:all .2s}
+.slang-card:hover{transform:translateY(-2px);border-color:rgba(100,216,165,0.3)}
+.sl-word{font-family:'Fraunces',serif;font-weight:300;font-size:20px;color:var(--accent);margin-bottom:4px}
+.sl-type{font-size:11px;padding:3px 8px;border-radius:8px;background:var(--bg3);color:var(--text3);display:inline-block;margin-bottom:8px}
+.sl-mean{font-size:14px;margin-bottom:8px;line-height:1.6}
+.sl-ex{font-size:13px;color:var(--text2);font-style:italic;background:var(--bg3);padding:8px 12px;border-radius:8px;line-height:1.5}
+.sl-warn{font-size:11px;color:var(--coral);margin-top:6px}
+.quiz-box{margin-top:32px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px}
+.quiz-q{font-size:16px;margin-bottom:14px}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quiz-opt{padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.quiz-opt:hover{border-color:rgba(100,216,165,0.4)}
+.quiz-opt.correct{background:rgba(100,216,165,0.2);border-color:var(--accent)}
+.quiz-opt.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral)}
+.quiz-nav{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.quiz-btn{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif}
+@media(max-width:768px){.content{padding:20px 14px 110px}.slang-grid{grid-template-columns:1fr}.quiz-opts{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><a href="tu-vung.html">Từ vựng</a><span class="bc-sep">›</span><span class="bc-current">Tiếng lóng</span></div>
+
+<h1 class="page-title">Tiếng lóng & Ngôn ngữ Internet</h1>
+<p class="page-desc">Những từ lóng phổ biến nhất trên mạng xã hội, chat và đời sống Gen Z. Hiểu để không bị "lạc hậu"!</p>
+
+<div class="cat-bar" id="catBar"></div>
+<div class="slang-grid" id="slangGrid"></div>
+<div class="quiz-box">
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:14px">🧠 Quiz: Bạn hiểu bao nhiêu tiếng lóng?</h2>
+  <div id="quizBox"></div>
+</div>
+
+</div>
+<script>
+const SLANG = [
+  {cat:'gen-z',word:'Slay',mean:'Làm cực tốt, quá xuất sắc.',ex:'"She slayed that presentation!" — Cô ấy trình bày xuất sắc!'},
+  {cat:'gen-z',word:'No cap',mean:'Không nói dối, thật 100%.',ex:'"This pizza is amazing, no cap." — Pizza này ngon thật, không nói đùa.'},
+  {cat:'gen-z',word:'GOAT',mean:'Greatest Of All Time — giỏi nhất mọi thời đại.',ex:'"Messi is the GOAT." — Messi là hay nhất mọi thời đại.'},
+  {cat:'gen-z',word:'Vibe',mean:'Cảm giác, không khí.',ex:'"This cafe has a great vibe." — Quán này có không khí tuyệt vời.'},
+  {cat:'gen-z',word:'Bussin',mean:'Ngon cực, tuyệt vời (thường về đồ ăn).',ex:'"This ramen is bussin!" — Mì ramen này ngon cực!'},
+  {cat:'gen-z',word:'Lowkey',mean:'Hơi, bí mật, không muốn ai biết.',ex:'"I lowkey want to leave early." — Tôi hơi muốn về sớm.'},
+  {cat:'gen-z',word:'Highkey',mean:'Rõ ràng, công khai.',ex:'"I highkey love this song." — Tôi yêu bài này lắm luôn.'},
+  {cat:'gen-z',word:'Flex',mean:'Khoe, phô trương.',ex:'"He is always flexing his new car." — Anh ấy lúc nào cũng khoe xe mới.'},
+  {cat:'gen-z',word:'Sus',mean:'Suspicious — đáng ngờ.',ex:'"That story sounds sus." — Câu chuyện đó nghe đáng ngờ.'},
+  {cat:'gen-z',word:'Ghosting',mean:'Bỗng dưng ngừng liên lạc, biến mất.',ex:'"He ghosted me after 3 dates." — Anh ta biến mất sau 3 buổi hẹn.'},
+  {cat:'text',word:'LOL',mean:'Laughing Out Loud — cười lớn.',ex:'"That meme was so funny LOL"'},
+  {cat:'text',word:'BRB',mean:'Be Right Back — quay lại ngay.',ex:'"BRB, grabbing coffee."'},
+  {cat:'text',word:'IMO / IMHO',mean:'In My (Humble) Opinion — theo ý kiến tôi.',ex:'"IMO, this movie is overrated."'},
+  {cat:'text',word:'TBH',mean:'To Be Honest — nói thật.',ex:'"TBH, I did not enjoy the party."'},
+  {cat:'text',word:'FOMO',mean:'Fear Of Missing Out — sợ bị bỏ lỡ.',ex:'"I have major FOMO seeing their vacation pics."'},
+  {cat:'text',word:'SMH',mean:'Shaking My Head — lắc đầu ngán ngẩm.',ex:'"He forgot his password again. SMH."'},
+  {cat:'text',word:'LMAO',mean:'Laughing My A** Off — cười chết đi được.',ex:'"That video had me LMAO."'},
+  {cat:'text',word:'DM',mean:'Direct Message — nhắn riêng.',ex:'"Just DM me the details."'},
+  {cat:'work',word:'Circle back',mean:'Quay lại thảo luận sau.',ex:'"Let us circle back to this topic tomorrow."',warn:'Thường bị châm biếm vì corporate speak'},
+  {cat:'work',word:'Touch base',mean:'Liên lạc nhanh, check-in.',ex:'"I will touch base with the client this afternoon."'},
+  {cat:'work',word:'Deep dive',mean:'Phân tích sâu.',ex:'"We need to do a deep dive into the data."'},
+  {cat:'work',word:'Leverage',mean:'Tận dụng.',ex:'"We should leverage our existing network."'},
+  {cat:'work',word:'Bandwidth',mean:'Thời gian/năng lực xử lý.',ex:'"I do not have the bandwidth for another project."'},
+  {cat:'work',word:'Synergy',mean:'Sự kết hợp hiệu quả.',ex:'"There is great synergy between our teams."',warn:'Bị dùng quá nhiều, hơi sáo rỗng'},
+];
+
+const CATS={all:'Tất cả','gen-z':'Gen Z 🔥',text:'Viết tắt 💬',work:'Công sở 💼'};
+let currentCat='all';
+
+function renderCats(){
+  document.getElementById('catBar').innerHTML=Object.entries(CATS).map(([k,v])=>
+    `<button class="cat-btn${k===currentCat?' active':''}" onclick="setCat('${k}')">${v}</button>`
+  ).join('');
+}
+
+function setCat(c){currentCat=c;renderCats();renderGrid();}
+
+function renderGrid(){
+  const list=currentCat==='all'?SLANG:SLANG.filter(s=>s.cat===currentCat);
+  document.getElementById('slangGrid').innerHTML=list.map(s=>`
+    <div class="slang-card">
+      <div class="sl-word">${s.word}</div>
+      <span class="sl-type">${{['gen-z']:'Gen Z',text:'Viết tắt',work:'Công sở'}[s.cat]}</span>
+      <div class="sl-mean">${s.mean}</div>
+      <div class="sl-ex">${s.ex}</div>
+      ${s.warn?`<div class="sl-warn">⚠️ ${s.warn}</div>`:''}
+    </div>`).join('');
+}
+
+// Quiz
+let qIdx=0,qScore=0;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const qList=shuffle([...SLANG]);
+
+function renderQuiz(){
+  if(qIdx>=Math.min(10,qList.length)){
+    document.getElementById('quizBox').innerHTML=`<div style="text-align:center;font-size:18px"><b style="font-size:32px;color:var(--accent)">${qScore}/10</b><br>Đúng<br><button class="quiz-btn" onclick="qIdx=0;qScore=0;renderQuiz()" style="margin-top:12px">🔄 Làm lại</button></div>`;
+    return;
+  }
+  const q=qList[qIdx];
+  const wrongs=shuffle(SLANG.filter(s=>s.word!==q.word)).slice(0,3).map(s=>s.mean);
+  const opts=shuffle([q.mean,...wrongs]);
+  document.getElementById('quizBox').innerHTML=`
+    <div class="quiz-q">Câu ${qIdx+1}/10: <strong>"${q.word}"</strong> nghĩa là gì?</div>
+    <div class="quiz-opts">${opts.map(o=>`<div class="quiz-opt" onclick="checkSlang(this,'${q.mean.replace(/'/g,"\\'")}','${o.replace(/'/g,"\\'")}')">${o}</div>`).join('')}</div>
+    <div class="quiz-nav"><span style="font-size:13px;color:var(--text3)">Điểm: ${qScore}/${qIdx}</span></div>`;
+}
+function checkSlang(el,correct,chosen){
+  document.querySelectorAll('.quiz-opt').forEach(b=>{b.style.pointerEvents='none';if(b.textContent===correct)b.classList.add('correct');if(b.textContent===chosen&&chosen!==correct)b.classList.add('wrong');});
+  if(chosen===correct)qScore++;
+  setTimeout(()=>{qIdx++;renderQuiz();},1200);
+}
+
+renderCats();renderGrid();renderQuiz();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

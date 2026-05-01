@@ -151,7 +151,7 @@ function updateXPBar(){
   let bar=document.getElementById('ee-xp-bar');
   if(!bar){
     bar=document.createElement('a');bar.id='ee-xp-bar';
-    bar.href='progress.html';
+    bar.href='tien-do.html';
     bar.style.cssText='display:inline-flex;align-items:center;gap:6px;padding:4px 12px;font-size:11px;color:var(--text2);font-family:"DM Sans",sans-serif;white-space:nowrap;cursor:pointer;text-decoration:none;background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.15);border-radius:20px;transition:all .2s;margin-left:auto';
 
     // Try to inject into nav, fallback to floating pill
@@ -259,4 +259,42 @@ document.addEventListener('DOMContentLoaded',function(){
   if(!location.pathname.endsWith('index.html')&&location.pathname!=='/'){
     setTimeout(updateXPBar,500);
   }
+
+  // ==================== AUTO XP FOR INLINE QUIZZES ====================
+  // Watch for quiz score display changes (works with all renderQz quizzes)
+  var _lastQuizScore='';
+  setInterval(function(){
+    var scoreEl=document.getElementById('quizScore');
+    if(!scoreEl)return;
+    var txt=scoreEl.textContent||'';
+    if(txt&&txt!==_lastQuizScore&&txt.indexOf('/')>-1){
+      _lastQuizScore=txt;
+      // Extract score from "Điểm: X/Y"
+      var m=txt.match(/(\d+)\/(\d+)/);
+      if(m){
+        var got=parseInt(m[1]),total=parseInt(m[2]);
+        if(got>0&&typeof addXP==='function'){
+          // Only award once per correct answer
+          addXP(5,'Trả lời đúng quiz');
+        }
+      }
+    }
+  },600);
+
+  // Also detect quiz completion (score display in quizBox)
+  var _quizDone=false;
+  setInterval(function(){
+    var qb=document.getElementById('quizBox');
+    if(!qb)return;
+    var btn=qb.querySelector('button[onclick*="renderQz"]');
+    if(btn&&!_quizDone){
+      _quizDone=true;
+      var s2=getGameState();
+      s2.quizCompleted=(s2.quizCompleted||0)+1;
+      s2.lessonsCompleted=(s2.lessonsCompleted||0)+1;
+      saveGameState(s2);
+      checkBadges(s2);
+    }
+    if(!btn)_quizDone=false;
+  },800);
 });

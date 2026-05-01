@@ -1,208 +1,544 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/xml/schemas/sitemap/0.9">
   <url>
-    <loc>https://easyenglish.vn/index.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/grammar.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/grammar-advanced.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/404.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/vocabulary.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/quiz.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/pronunciation.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-vung-a1.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/skills.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-vung-a2.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/listening.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-hoc-thuat.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/reading-comprehension.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/chu-dong-bi-dong.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/writing-checker.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/mao-tu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/conversation.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-vung-b1.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/daily-challenge.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/spaced-repetition.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-vung-b2.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/progress.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/notebook.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tieng-anh-thuong-mai.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/irregular-verbs.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-vung-c1.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/gerund-infinitive.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/cum-tu-di-cung.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/prepositions.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/so-sanh.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/synonyms.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/cau-dieu-kien.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/collocations.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-de-nham.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/idioms.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/giao-tiep.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/phrasal-verbs.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/thu-thach-moi-ngay.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/confusing-words.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/chep-chinh-ta.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/word-formation.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-dien-doi-thuong-2.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/linking-words.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-dien-doi-thuong.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/academic-words.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-dien-ielts-2.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/paraphrasing.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-dien-ielts.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/dictionary.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-dien.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/dictionary-everyday.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tieng-anh-phong-van.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/dictionary-everyday-2.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tieng-anh-du-lich.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/dictionary-ielts.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/dictionary-ielts-2.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tim-loi-sai.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tu-giong-khac-nghia.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-dien-form.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ving-hay-to-v.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dat-muc-tieu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ngu-phap-nang-cao.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ngu-phap.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/thanh-ngu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-noi.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-viet-mau.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://easyenglish.vn/ielts.html</loc>
-    <lastmod>2026-04-27</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://easyenglish.vn/ielts-writing-band9.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/ielts-speaking-topics.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/index.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dong-tu-bat-quy-tac.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/mock-test.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tieng-anh-it.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/lo-trinh-hoc.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tieng-anh-phap-ly.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tu-noi.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/luyen-nghe-giong.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/nghe-transcript.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/luyen-nghe.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-gan-nhan-ban-do.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-noi-heading.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tieng-anh-y-te.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/thi-thu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dong-tu-khuyet-thieu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/so-tay.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dien-dat-lai.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/cum-dong-tu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/gioi-tu-nang-cao.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/gioi-tu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tien-do.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/bai-tap-phat-am.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/phat-am.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dau-cau-viet-hoa.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/cau-hoi-tro-dong-tu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/bai-tap.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/doc-hieu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ky-nang-doc.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/menh-de-quan-he.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tuong-thuat.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dong-vai.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ghep-cau.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/cau-truc-cau.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/luyen-phat-am-theo.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ky-nang.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/tieng-long-internet.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/on-tap-lap-lai.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/luyen-noi.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-dien-tom-tat.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/dong-nghia-trai-nghia.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/cau-hoi-duoi.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://easyenglish.vn/toeic.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/business-english.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/ielts-true-false.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/it-english.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/tu-vung.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/medical-english.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/theo-doi-diem-yeu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easyenglish.vn/legal-english.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <loc>https://easyenglish.vn/cau-tao-tu.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/kiem-tra-bai-viet.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-task1-bieu-do.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-task1-ban-do.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-task1-quy-trinh.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-viet-task1.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://easyenglish.vn/ielts-viet-task2.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

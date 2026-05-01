@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dictation — luyện nghe chép chính tả với 10 bài theo cấp độ, chấm điểm tự động và giải thích lỗi.">
+<title>Dictation — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.hero{background:rgba(100,216,165,0.07);border:0.5px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;max-width:700px;margin-top:10px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{padding:5px 10px;border-radius:999px;border:0.5px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2)}
+.note{background:rgba(240,194,122,0.08);border-left:3px solid var(--accent3);padding:14px 16px;border-radius:0 12px 12px 0;margin-top:14px}
+.note strong{color:var(--accent3)}
+
+/* Process */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.process-step{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center}
+.process-num{width:28px;height:28px;border-radius:50%;background:rgba(100,216,165,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin:0 auto 8px}
+.process-step h4{font-size:13px;font-weight:500;margin-bottom:4px}
+.process-step p{font-size:11px;color:var(--text3);line-height:1.4}
+
+/* Level tabs */
+.level-tabs{display:flex;gap:6px;margin:16px 0;flex-wrap:wrap}
+.level-tab{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.level-tab.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
+
+/* Dictation card */
+.dict-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:14px;display:none}
+.dict-card.show{display:block}
+.dict-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dict-num{font-family:'Fraunces',serif;font-size:14px;color:var(--accent)}
+.dict-level{font-size:11px;padding:3px 8px;border-radius:6px;background:rgba(167,139,250,0.12);color:var(--accent2)}
+.play-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;border:0.5px solid rgba(100,216,165,0.3);background:rgba(100,216,165,0.08);color:var(--accent);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s;margin-bottom:14px}
+.play-btn:hover{background:rgba(100,216,165,0.15)}
+.dict-textarea{width:100%;min-height:80px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;resize:vertical;outline:none;box-sizing:border-box}
+.dict-textarea:focus{border-color:rgba(100,216,165,0.4)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{padding:10px 16px;border-radius:10px;border:0.5px solid rgba(100,216,165,0.25);background:rgba(100,216,165,0.12);color:var(--accent);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.btn:hover{background:rgba(100,216,165,0.2)}
+.btn.secondary{background:var(--card2);border-color:var(--border);color:var(--text2)}
+.result-box{margin-top:14px;padding:14px;border-radius:12px;display:none}
+.result-box.correct{display:block;background:rgba(107,203,119,0.08);border:0.5px solid rgba(107,203,119,0.3)}
+.result-box.wrong{display:block;background:rgba(255,138,128,0.08);border:0.5px solid rgba(255,138,128,0.3)}
+.result-box .answer{font-size:14px;line-height:1.7}
+.result-box .score-text{font-size:13px;color:var(--text3);margin-top:8px}
+.word-diff{display:inline}
+.word-ok{color:var(--green)}
+.word-miss{color:var(--coral);text-decoration:line-through}
+.word-extra{color:var(--accent3);text-decoration:underline}
+
+/* Score bar */
+.score-bar{display:flex;gap:16px;justify-content:center;padding:16px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;margin:16px 0}
+.score-item{font-size:13px;color:var(--text2)}.score-item strong{color:var(--accent)}
+
+/* Tips grid */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.tip-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px}
+.tip-card h4{font-family:'Fraunces',serif;font-weight:300;font-size:15px;margin-bottom:6px}
+.tip-card p{font-size:13px;color:var(--text3);line-height:1.6}
+
+@media(max-width:900px){
+  .content{padding:20px 14px 110px}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .tips-grid{grid-template-columns:1fr}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/chep-chinh-ta.html">
+</head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+  <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><span>Skills</span><span class="bc-sep">›</span><span class="bc-current">Dictation</span></div>
+  <div class="hero">
+    <div class="kicker">Listening drill</div>
+    <h1 class="page-title">Nghe chep chinh ta de bat tung am va tung tu</h1>
+    <div class="desc">Dictation buoc ban nghe ky tung chi tiet cua cau: am cuoi, noi am, khoang dung. Day la cach hieu qua nhat de cai thien listening chinh xac va spelling trong thoi gian ngan.</div>
+    <div class="badges"><span class="badge">Listening</span><span class="badge">Spelling</span><span class="badge">Final sounds</span><span class="badge">Chunks</span><span class="badge">10 bai</span></div>
+    <div class="note"><strong>Cach hoc:</strong> Nhan "Nghe" de phat am cau. Viet lai. Nhan "Kiem tra" de so dap an. Lam lai cho den khi dung 100%.</div>
+  </div>
+
+  <!-- Process -->
+  <div class="process-grid">
+    <div class="process-step"><div class="process-num">1</div><h4>Nghe toan cau</h4><p>Bat y chinh, khong viet</p></div>
+    <div class="process-step"><div class="process-num">2</div><h4>Nghe + viet</h4><p>Viet theo cum tu</p></div>
+    <div class="process-step"><div class="process-num">3</div><h4>So dap an</h4><p>Tim phan bo sot</p></div>
+    <div class="process-step"><div class="process-num">4</div><h4>Nghe lai</h4><p>Viet lai hoan chinh</p></div>
+  </div>
+
+  <!-- Level tabs -->
+  <div class="level-tabs">
+    <button class="level-tab active" onclick="filterLevel('all',this)">Tat ca</button>
+    <button class="level-tab" onclick="filterLevel('A2',this)">A2</button>
+    <button class="level-tab" onclick="filterLevel('B1',this)">B1</button>
+    <button class="level-tab" onclick="filterLevel('B2',this)">B2</button>
+  </div>
+
+  <!-- Score -->
+  <div class="score-bar">
+    <div class="score-item">Dung: <strong id="scCorrect">0</strong></div>
+    <div class="score-item">Sai: <strong id="scWrong">0</strong></div>
+    <div class="score-item">Do chinh xac: <strong id="scAcc">0%</strong></div>
+  </div>
+
+  <!-- Dictation cards -->
+  <div id="dictCards"></div>
+
+  <!-- Common mistakes -->
+  <div class="tips-grid">
+    <div class="tip-card">
+      <h4>Loi hay gap khi dictation</h4>
+      <p>1. Nghe nhanh nhung khong chia cum.<br>2. Bo am cuoi (walked nghe thanh walk).<br>3. Nham noi am (an apple nghe thanh a napple).<br>4. Viet theo suy doan, khong bam am thanh.<br>5. Khong so transcript sau khi lam.</p>
+    </div>
+    <div class="tip-card">
+      <h4>Vi sao dictation hieu qua</h4>
+      <p>1. Giup tai nghe "sac" hon rat nhanh.<br>2. Tang kha nang nho cau truc tu nhien.<br>3. Ket hop tot voi shadowing.<br>4. Cai thien spelling va grammar dong thoi.<br>5. Chi can 15 phut/ngay la thay ket qua.</p>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+    <a class="btn" href="nghe-transcript.html">Xem transcript</a>
+    <a class="btn secondary" href="luyen-phat-am-theo.html">Luyen shadowing</a>
+    <a class="btn secondary" href="luyen-nghe.html">Luyen nghe</a>
+  </div>
+</div>
+
+<script>
+var sentences=[
+  {id:1, level:'A2', text:'I usually start the day by checking my emails and planning my tasks.'},
+  {id:2, level:'A2', text:'She takes the bus to work every morning and arrives at nine.'},
+  {id:3, level:'A2', text:'We had a great time at the beach last weekend.'},
+  {id:4, level:'B1', text:'If I had known about the meeting, I would have prepared a presentation.'},
+  {id:5, level:'B1', text:'The report needs to be finished by Friday, so we should start working on it today.'},
+  {id:6, level:'B1', text:'Although the weather was terrible, they decided to go hiking in the mountains.'},
+  {id:7, level:'B1', text:'He has been working at the same company for over fifteen years.'},
+  {id:8, level:'B2', text:'The government has announced new regulations that will significantly affect small businesses.'},
+  {id:9, level:'B2', text:'Despite the challenges they faced, the team managed to deliver the project ahead of schedule.'},
+  {id:10, level:'B2', text:'Research suggests that reading for pleasure can improve both vocabulary and critical thinking skills.'}
+];
+
+var stats={correct:0, wrong:0};
+var currentFilter='all';
+
+function renderCards(){
+  var html='';
+  sentences.forEach(function(s,i){
+    var show=(currentFilter==='all'||s.level===currentFilter)?'show':'';
+    html+='<div class="dict-card '+show+'" data-level="'+s.level+'" id="dict'+s.id+'">';
+    html+='<div class="dict-header"><span class="dict-num">Bai '+(i+1)+'/'+sentences.length+'</span><span class="dict-level">'+s.level+'</span></div>';
+    html+='<button class="play-btn" onclick="speakSentence('+i+')"><i data-lucide="volume-2" style="width:18px;height:18px"></i> Nghe cau</button>';
+    html+='<textarea class="dict-textarea" id="input'+s.id+'" placeholder="Nghe va viet lai cau..."></textarea>';
+    html+='<div class="btn-row"><button class="btn" onclick="checkDict('+i+')">Kiem tra</button><button class="btn secondary" onclick="showAnswer('+i+')">Xem dap an</button><button class="btn secondary" onclick="speakSentence('+i+')">Nghe lai</button></div>';
+    html+='<div class="result-box" id="result'+s.id+'"></div>';
+    html+='</div>';
+  });
+  document.getElementById('dictCards').innerHTML=html;
+  if(window.lucide) lucide.createIcons();
+}
+
+function filterLevel(level,btn){
+  currentFilter=level;
+  document.querySelectorAll('.level-tab').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('.dict-card').forEach(function(card){
+    if(level==='all'||card.dataset.level===level) card.classList.add('show');
+    else card.classList.remove('show');
+  });
+}
+
+function speakSentence(idx){
+  var u=new SpeechSynthesisUtterance(sentences[idx].text);
+  u.lang='en-US';u.rate=0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+function normalize(str){
+  return str.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();
+}
+
+function checkDict(idx){
+  var s=sentences[idx];
+  var input=document.getElementById('input'+s.id).value.trim();
+  if(!input){alert('Vui long viet cau truoc khi kiem tra!');return;}
+
+  var correct=normalize(s.text).split(' ');
+  var user=normalize(input).split(' ');
+  var matches=0;
+  var html='';
+
+  correct.forEach(function(w,i){
+    if(user[i]&&user[i]===w){
+      html+='<span class="word-ok">'+w+' </span>';
+      matches++;
+    } else if(user[i]){
+      html+='<span class="word-miss">'+w+'</span> ';
+    } else {
+      html+='<span class="word-miss">'+w+'</span> ';
+    }
+  });
+
+  var accuracy=Math.round(matches/correct.length*100);
+  var box=document.getElementById('result'+s.id);
+  box.className='result-box '+(accuracy>=80?'correct':'wrong');
+  box.innerHTML='<div class="answer">'+html+'</div><div class="score-text">Do chinh xac: '+accuracy+'% ('+matches+'/'+correct.length+' tu). '+(accuracy>=80?'Tot lam!':'Nghe lai va thu lai nhe.')+'</div><div style="margin-top:8px;font-size:13px;color:var(--text3)"><strong>Dap an day du:</strong> '+s.text+'</div>';
+
+  if(accuracy>=80) stats.correct++; else stats.wrong++;
+  updateScore();
+}
+
+function showAnswer(idx){
+  var s=sentences[idx];
+  var box=document.getElementById('result'+s.id);
+  box.className='result-box correct';
+  box.innerHTML='<div class="answer" style="color:var(--text)">'+s.text+'</div>';
+}
+
+function updateScore(){
+  document.getElementById('scCorrect').textContent=stats.correct;
+  document.getElementById('scWrong').textContent=stats.wrong;
+  var total=stats.correct+stats.wrong;
+  document.getElementById('scAcc').textContent=total?Math.round(stats.correct/total*100)+'%':'0%';
+}
+
+renderCards();
+</script>
+<script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script>
+</body>
+</html>

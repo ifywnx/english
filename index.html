@@ -19,15 +19,33 @@
 <title>EasyEnglish — Tự học tiếng Anh từ A-Z</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-
-/* === AMBIENT ORBS === */
+/* === AMBIENT ORBS + ANIMATION === */
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
-.orb1{width:600px;height:600px;background:rgba(100,216,165,0.10);top:-200px;right:-100px}
-.orb2{width:500px;height:500px;background:rgba(167,139,250,0.06);bottom:-100px;left:-150px}
-.orb3{width:300px;height:300px;background:rgba(240,194,122,0.06);top:50%;left:40%}
+.orb1{width:600px;height:600px;background:rgba(100,216,165,0.10);top:-200px;right:-100px;animation:orbFloat1 20s ease-in-out infinite}
+.orb2{width:500px;height:500px;background:rgba(167,139,250,0.06);bottom:-100px;left:-150px;animation:orbFloat2 25s ease-in-out infinite}
+.orb3{width:300px;height:300px;background:rgba(240,194,122,0.06);top:50%;left:40%;animation:orbFloat3 18s ease-in-out infinite}
+@keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
+@keyframes orbFloat3{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,20px)}}
+
+/* === SCROLL REVEAL === */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* === TYPING CURSOR === */
+.typing-cursor{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:4px;animation:blink 1s step-end infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* === SHIMMER BADGE === */
+.badge-hot,.badge-new{position:relative;overflow:hidden}
+.badge-hot::after,.badge-new::after{content:'';position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+
+/* === COUNTER ANIMATION === */
+.stat-item .num{display:inline-block;min-width:2ch}
+
+/* === FLOATING PARTICLES === */
+#particles-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.4}
 
 /* === HERO === */
 .hero-section{position:relative;z-index:1;padding:48px 24px 32px;max-width:800px;margin:0 auto;text-align:center}
@@ -47,6 +65,35 @@ body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;background:
 .stat-item{text-align:center}
 .stat-item .num{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,32px);color:var(--text);line-height:1}
 .stat-item .label{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* === DASHBOARD === */
+.dashboard-wrap{max-width:900px;margin:18px auto 0;padding:0 24px;position:relative;z-index:1}
+.dashboard-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:stretch}
+.dash-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:20px}
+.dash-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.dash-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.dash-title{font-family:'Fraunces',serif;font-size:24px;font-weight:300;line-height:1.2;color:var(--text)}
+.dash-sub{font-size:13px;color:var(--text3);line-height:1.6;margin-top:6px;max-width:520px}
+.dash-progress{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin:16px 0 10px}
+.dash-bar{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;border:0.5px solid var(--border)}
+.dash-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .6s ease}
+.dash-percent{font-family:'Fraunces',serif;font-size:22px;color:var(--text)}
+.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.dash-metric{background:var(--bg3);border:0.5px solid var(--border);border-radius:14px;padding:12px}
+.dash-metric .k{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.dash-metric .v{font-size:14px;color:var(--text);font-weight:500;line-height:1.35}
+.dash-next{display:flex;flex-direction:column;gap:10px}
+.dash-next-card{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(167,139,250,0.06));border:0.5px solid rgba(100,216,165,0.18);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.dash-next-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.dash-next-title{font-size:16px;font-weight:600;color:var(--text);line-height:1.4}
+.dash-next-desc{font-size:13px;color:var(--text3);line-height:1.6}
+.dash-next-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:10px;background:rgba(100,216,165,0.12);border:0.5px solid rgba(100,216,165,0.25);color:var(--accent);text-decoration:none;font-size:12px;font-weight:500;width:max-content;transition:all .15s}
+.dash-next-cta:hover{transform:translateY(-1px);background:rgba(100,216,165,0.16)}
+.dash-checklist{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+.dash-check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--bg3);border:0.5px solid var(--border);border-radius:12px}
+.dash-check .dot{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:rgba(255,255,255,0.02)}
+.dash-check.done .dot{background:rgba(100,216,165,0.16);border-color:rgba(100,216,165,0.35);color:var(--accent)}
+.dash-check .txt{font-size:13px;color:var(--text2);line-height:1.5}
 
 /* === SECTIONS === */
 .home-section{position:relative;z-index:1;padding:32px 24px;max-width:900px;margin:0 auto}
@@ -105,8 +152,8 @@ body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;background:
 /* === STREAK & TIP === */
 .bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .streak-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;align-items:center;gap:16px}
-.sc-circle{width:60px;height:60px;border-radius:50%;border:2.5px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
-.sc-num{font-family:'Fraunces',serif;font-size:22px;color:var(--accent);line-height:1}
+.sc-circle{width:64px;height:64px;min-width:64px;border-radius:50%;border:2.5px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;text-align:center;padding-top:2px}
+.sc-num{font-family:'Fraunces',serif;font-size:20px;color:var(--accent);line-height:1}
 .sc-txt{font-size:9px;color:var(--text3);text-transform:uppercase}
 .streak-info h4{font-size:14px;margin-bottom:4px}
 .streak-info p{font-size:13px;color:var(--text3)}
@@ -145,7 +192,8 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   .day-dot{width:24px;height:24px;font-size:8px}
 }
 </style>
-<link rel="stylesheet" href="style.css?v=4">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 
 <style id="page-transition">
@@ -154,7 +202,7 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
 .page-exit{animation:pageOut .2s ease-in forwards}
 @keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
 </style>
-<link rel="icon" type="image/png" href="favicon.png">
+
 <meta name="theme-color" content="#64D8A5">
 
 <style id="skeleton-loader">
@@ -191,13 +239,14 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
 <script src="nav.js?v=1"></script>
 
 <!-- ===== HERO ===== -->
+<canvas id="particles-canvas"></canvas>
 <div class="hero-section">
   <div class="hero-greeting">
     <span id="greetText">Chào bạn! </span>
     <span class="streak-badge" id="heroStreak"> 0 ngày</span>
   </div>
-  <h1 class="hero-title">Hôm nay bạn muốn <em>học gì</em>?</h1>
-  <p class="hero-sub">30+ bài học · Ngữ pháp · Từ vựng · IELTS · Giao tiếp — tất cả miễn phí</p>
+  <h1 class="hero-title">Hôm nay bạn muốn <em id="typingTarget">học gì</em>?</h1>
+  <p class="hero-sub">80+ bài học · Ngữ pháp · Từ vựng · IELTS · Giao tiếp — tất cả miễn phí</p>
   <div class="hero-search">
     <i data-lucide="search" class="search-icon"></i>
     <input id="homeSearch" type="text" placeholder="Tìm bài học, từ vựng, ngữ pháp..." oninput="filterHome(this.value)">
@@ -206,12 +255,94 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
 </div>
 
 <!-- ===== STATS ===== -->
-<div class="stats-row">
-  <div class="stat-item"><div class="num">30+</div><div class="label">Bài học</div></div>
-  <div class="stat-item"><div class="num">5000+</div><div class="label">Từ vựng</div></div>
-  <div class="stat-item"><div class="num">500+</div><div class="label">Bài tập</div></div>
-  <div class="stat-item"><div class="num">100%</div><div class="label">Miễn phí</div></div>
+<div class="stats-row reveal">
+  <div class="stat-item"><div class="num" data-count="80">0</div><div class="label">Bài học</div></div>
+  <div class="stat-item"><div class="num" data-count="5000">0</div><div class="label">Từ vựng</div></div>
+  <div class="stat-item"><div class="num" data-count="500">0</div><div class="label">Bài tập</div></div>
+  <div class="stat-item"><div class="num" data-count="100">0</div><div class="label">Miễn phí</div></div>
 </div>
+
+<!-- ===== LEARNER DASHBOARD ===== -->
+<div class="home-section reveal" style="padding-top:18px">
+  <div class="sec-header">
+    <div class="sec-label">Dashboard học tập</div>
+    <div class="sec-title">Tiến độ hôm nay của bạn</div>
+    <div class="sec-desc">Theo dõi streak, bài đã học, bài nên học tiếp và mục tiêu ngắn hạn để học đều hơn.</div>
+  </div>
+  <div class="bottom-grid">
+    <div class="streak-card" style="align-items:flex-start">
+      <div class="sc-circle">
+        <div class="sc-num" id="dashStreak">0</div>
+        <div class="sc-txt">ngày</div>
+      </div>
+      <div class="streak-info" style="flex:1">
+        <h4 id="dashTitle">Bắt đầu streak hôm nay</h4>
+        <p id="dashSub">Học ít nhưng đều để tạo thói quen lâu dài.</p>
+        <div class="streak-days" id="dashDays"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <span class="path-step" id="dashLessons">0 bài đã học</span>
+          <span class="path-step" id="dashSaved">0 từ đã lưu</span>
+          <span class="path-step" id="dashReview">0 mục cần ôn</span>
+        </div>
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon"><i data-lucide="compass" style="width:18px;height:18px"></i></div>
+      <div>
+        <h4>Gợi ý học tiếp</h4>
+        <p id="dashNext">Đang tải...</p>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <a href="tu-vung.html" style="font-size:12px;color:var(--accent);text-decoration:none">Ôn từ vựng</a>
+          <a href="ngu-phap.html" style="font-size:12px;color:var(--accent);text-decoration:none">Học ngữ pháp</a>
+          <a href="tu-dien.html" style="font-size:12px;color:var(--accent);text-decoration:none">Tra từ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REVIEW PLAN ===== -->
+<div class="home-section reveal">
+  <div class="sec-header">
+    <div class="sec-label">Ôn tập thông minh</div>
+    <div class="sec-title">Nhắc lại đúng lúc, nhớ lâu hơn</div>
+    <div class="sec-desc">Phần này chuẩn bị cho spaced repetition: từ đã lưu, bài đã học và nội dung cần ôn theo chu kỳ.</div>
+  </div>
+  <div class="paths-grid">
+    <a href="so-tay.html" class="path-card beginner">
+      <div class="path-pill">Ôn từ đã lưu</div>
+      <h3>Sổ tay cá nhân</h3>
+      <p>Tập trung vào những từ bạn đã tra, đã lưu và cần xem lại thường xuyên.</p>
+      <div class="path-steps">
+        <span class="path-step">Saved words</span>
+        <span class="path-step">Review</span>
+        <span class="path-step">Recall</span>
+      </div>
+      <div class="path-progress"><div class="path-progress-fill" style="width:35%"></div></div>
+    </a>
+    <a href="bai-tap.html" class="path-card intermediate">
+      <div class="path-pill">Ôn qua quiz</div>
+      <h3>Kiểm tra lại kiến thức</h3>
+      <p>Làm quiz ngắn để biết bạn còn nhớ hay đã quên phần đã học.</p>
+      <div class="path-steps">
+        <span class="path-step">Quick quiz</span>
+        <span class="path-step">Weak spots</span>
+      </div>
+      <div class="path-progress"><div class="path-progress-fill" style="width:28%"></div></div>
+    </a>
+    <a href="tien-do.html" class="path-card ielts">
+      <div class="path-pill">Theo dõi tiến độ</div>
+      <h3>Xem bạn đang ở đâu</h3>
+      <p>Sắp tới sẽ có lịch ôn, ngày học tiếp theo và những phần cần nhắc lại.</p>
+      <div class="path-steps">
+        <span class="path-step">Schedule</span>
+        <span class="path-step">Progress</span>
+      </div>
+      <div class="path-progress"><div class="path-progress-fill" style="width:18%"></div></div>
+    </a>
+  </div>
+</div>
+
 <!-- ===== WORD OF THE DAY ===== -->
 <div id="wotdSection" style="max-width:600px;margin:20px auto;padding:0 16px">
   <div style="background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden">
@@ -233,7 +364,7 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
     <div style="font-size:13px;color:var(--text3);font-style:italic;padding:8px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent)" id="wotdExample"></div>
     <div style="display:flex;gap:8px;margin-top:12px">
       <button onclick="saveWOTD()" id="wotdSaveBtn" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;cursor:pointer;display:flex;align-items:center;gap:4px"><i data-lucide="bookmark" style="width:12px;height:12px"></i> Lưu từ</button>
-      <a href="vocabulary.html" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;text-decoration:none;display:flex;align-items:center;gap:4px"><i data-lucide="book-open" style="width:12px;height:12px"></i> Học thêm</a>
+      <a href="tu-vung.html" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;text-decoration:none;display:flex;align-items:center;gap:4px"><i data-lucide="book-open" style="width:12px;height:12px"></i> Học thêm</a>
     </div>
   </div>
 </div>
@@ -303,14 +434,14 @@ function saveWOTD(){
 <div class="divider"></div>
 
 <!-- ===== LEARNING PATHS ===== -->
-<div class="home-section">
+<div class="home-section reveal">
   <div class="sec-header">
     <div class="sec-label">Lộ trình học</div>
     <div class="sec-title">Chọn con đường phù hợp</div>
     <div class="sec-desc">Bắt đầu từ cơ bản hoặc nhảy thẳng vào IELTS — tùy bạn</div>
   </div>
   <div class="paths-grid">
-    <a href="pronunciation.html" class="path-card beginner">
+    <a href="phat-am.html" class="path-card beginner">
       <div class="path-pill"><i data-lucide="sprout" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:3px"></i> Mới bắt đầu</div>
       <h3>Nền tảng vững chắc</h3>
       <p>Phát âm chuẩn → Từ vựng cơ bản → Ngữ pháp → Giao tiếp hằng ngày</p>
@@ -322,7 +453,7 @@ function saveWOTD(){
       </div>
       <div class="path-progress"><div class="path-progress-fill" id="pathBeg" style="width:0%"></div></div>
     </a>
-    <a href="grammar-advanced.html" class="path-card intermediate">
+    <a href="ngu-phap-nang-cao.html" class="path-card intermediate">
       <div class="path-pill"><i data-lucide="flame" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:3px"></i> Nâng cao</div>
       <h3>Mở rộng & tinh chỉnh</h3>
       <p>Ngữ pháp nâng cao → Collocations → Idioms → Phrasal Verbs → Linking Words</p>
@@ -352,7 +483,7 @@ function saveWOTD(){
 <div class="divider"></div>
 
 <!-- ===== MODULES ===== -->
-<div class="home-section">
+<div class="home-section reveal">
   <div class="sec-header">
     <div class="sec-label">Tất cả bài học</div>
     <div class="sec-title">30+ modules đầy đủ</div>
@@ -372,7 +503,7 @@ function saveWOTD(){
 <div class="divider"></div>
 
 <!-- ===== STREAK & TIP ===== -->
-<div class="home-section">
+<div class="home-section reveal">
   <div class="bottom-grid">
     <div class="streak-card">
       <div class="sc-circle">
@@ -400,20 +531,119 @@ function saveWOTD(){
 <footer>
   <p>EasyEnglish — Nền tảng tự học tiếng Anh miễn phí · 30+ modules · Offline</p>
   <div class="footer-links">
-    <a href="grammar.html">Ngữ pháp</a>
-    <a href="vocabulary.html">Từ vựng</a>
-    <a href="pronunciation.html">Phát âm</a>
+    <a href="ngu-phap.html">Ngữ pháp</a>
+    <a href="tu-vung.html">Từ vựng</a>
+    <a href="phat-am.html">Phát âm</a>
     <a href="ielts.html">IELTS</a>
-    <a href="dictionary.html">Từ điển</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="skills.html">Kỹ năng</a>
-    <a href="conversation.html">Giao tiếp</a>
-    <a href="progress.html">Tiến độ</a>
+    <a href="tu-dien.html">Từ điển</a>
+    <a href="bai-tap.html">Quiz</a>
+    <a href="ky-nang.html">Kỹ năng</a>
+    <a href="giao-tiep.html">Giao tiếp</a>
+    <a href="tien-do.html">Tiến độ</a>
   </div>
   <div class="footer-heart">Made with  for Vietnamese English learners</div>
 </footer>
 
 <script>
+/* === FLOATING PARTICLES === */
+(function(){
+  var c=document.getElementById('particles-canvas');
+  if(!c)return;
+  var ctx=c.getContext('2d');
+  c.width=window.innerWidth;c.height=window.innerHeight;
+  window.addEventListener('resize',function(){c.width=window.innerWidth;c.height=window.innerHeight;});
+  var particles=[];
+  for(var i=0;i<40;i++){
+    particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+0.5,dx:(Math.random()-0.5)*0.3,dy:(Math.random()-0.5)*0.3,o:Math.random()*0.5+0.1});
+  }
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    particles.forEach(function(p){
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(100,216,165,'+p.o+')';
+      ctx.fill();
+      p.x+=p.dx;p.y+=p.dy;
+      if(p.x<0||p.x>c.width)p.dx*=-1;
+      if(p.y<0||p.y>c.height)p.dy*=-1;
+    });
+    // Draw connections
+    for(var a=0;a<particles.length;a++){
+      for(var b=a+1;b<particles.length;b++){
+        var dist=Math.hypot(particles[a].x-particles[b].x,particles[a].y-particles[b].y);
+        if(dist<120){
+          ctx.beginPath();ctx.moveTo(particles[a].x,particles[a].y);ctx.lineTo(particles[b].x,particles[b].y);
+          ctx.strokeStyle='rgba(100,216,165,'+(0.06*(1-dist/120))+')';
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* === TYPING ANIMATION === */
+(function(){
+  var words=['học gì','luyện IELTS','nâng vocab','thi TOEIC','giao tiếp','viết essay'];
+  var el=document.getElementById('typingTarget');
+  if(!el)return;
+  var wi=0,ci=0,deleting=false;
+  function type(){
+    var word=words[wi];
+    if(!deleting){
+      el.textContent=word.substring(0,ci+1);
+      ci++;
+      if(ci>=word.length){deleting=true;setTimeout(type,2000);return;}
+      setTimeout(type,100);
+    } else {
+      el.textContent=word.substring(0,ci);
+      ci--;
+      if(ci<0){deleting=false;wi=(wi+1)%words.length;ci=0;setTimeout(type,400);return;}
+      setTimeout(type,50);
+    }
+  }
+  setTimeout(type,1500);
+})();
+
+/* === SCROLL REVEAL === */
+(function(){
+  var reveals=document.querySelectorAll('.reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});
+  },{threshold:0.15});
+  reveals.forEach(function(el){observer.observe(el);});
+})();
+
+/* === COUNTER ANIMATION === */
+(function(){
+  var counters=document.querySelectorAll('[data-count]');
+  var observed=false;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting&&!observed){
+        observed=true;
+        counters.forEach(function(c){
+          var target=parseInt(c.dataset.count);
+          var suffix=target>=100?'%':'+';
+          if(target===100)suffix='%';else suffix='+';
+          var duration=1500;
+          var start=0;
+          var startTime=null;
+          function step(ts){
+            if(!startTime)startTime=ts;
+            var progress=Math.min((ts-startTime)/duration,1);
+            var eased=1-Math.pow(1-progress,3); // easeOutCubic
+            c.textContent=Math.floor(eased*target)+suffix;
+            if(progress<1)requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+    });
+  },{threshold:0.5});
+  if(counters.length)observer.observe(counters[0]);
+})();
+
 /* === GREETING === */
 (function(){
   var h=new Date().getHours();
@@ -421,37 +651,72 @@ function saveWOTD(){
   document.getElementById('greetText').textContent=g;
 })();
 
+/* === DASHBOARD DATA === */
+function getDashboardState(){
+  var streak=Number(localStorage.getItem('ee_streak')||0);
+  var notebook=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  var saved=JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
+  var completed=JSON.parse(localStorage.getItem('ee_completed_modules')||'[]');
+  return {
+    streak: streak,
+    notebookCount: notebook.length,
+    savedCount: saved.length,
+    completedCount: completed.length,
+    reviewCount: Math.max(3, Math.min(12, notebook.length + saved.length))
+  };
+}
+function renderDashboard(){
+  var s=getDashboardState();
+  document.getElementById('dashStreak').textContent=s.streak;
+  document.getElementById('dashLessons').textContent=s.completedCount + ' bài đã học';
+  document.getElementById('dashSaved').textContent=s.savedCount + ' từ đã lưu';
+  document.getElementById('dashReview').textContent=s.reviewCount + ' mục cần ôn';
+  var days=document.getElementById('dashDays');
+  var dayLabels=['M','T','W','T','F','S','S'];
+  var html='';
+  for(var i=0;i<7;i++){
+    var cls='day-dot';
+    if(i < Math.min(7,s.streak)) cls += ' done';
+    if(i===0) cls += ' today';
+    html += '<div class="'+cls+'">'+dayLabels[i]+'</div>';
+  }
+  days.innerHTML=html;
+  document.getElementById('dashTitle').textContent = s.streak > 0 ? 'Bạn đang có streak ' + s.streak + ' ngày' : 'Bắt đầu streak hôm nay';
+  document.getElementById('dashSub').textContent = s.notebookCount > 0 ? 'Bạn đã lưu ' + s.notebookCount + ' mục. Hôm nay nên ôn lại và học tiếp một module mới.' : 'Học ít nhưng đều để tạo thói quen lâu dài.';
+  document.getElementById('dashNext').textContent = s.notebookCount > 0 ? 'Tiếp theo: ôn từ đã lưu + làm một bài ngữ pháp hoặc vocabulary.' : 'Tiếp theo: bắt đầu với Vocabulary hoặc Grammar để xây nền tảng.';
+}
+
 /* === MODULES DATA === */
 var MODULES=[
-  {t:'Ngữ pháp cơ bản',d:'12 thì, câu điều kiện, bị động, mạo từ',u:'grammar.html',cat:'grammar',ic:'book-open',badge:''},
-  {t:'Ngữ pháp nâng cao',d:'Đảo ngữ, câu chẻ, mệnh đề quan hệ',u:'grammar-advanced.html',cat:'grammar',ic:'flame',badge:''},
-  {t:'Động từ bất quy tắc',d:'150+ động từ V1/V2/V3 + quiz',u:'irregular-verbs.html',cat:'grammar',ic:'list-ordered',badge:'new'},
-  {t:'Phát âm IPA',d:'44 âm, trọng âm, ngữ điệu, nối âm',u:'pronunciation.html',cat:'grammar',ic:'mic',badge:'hot'},
-  {t:'Từ vựng theo chủ đề',d:'1000+ từ, 20 chủ đề, flashcard',u:'vocabulary.html',cat:'vocab',ic:'pencil',badge:'hot'},
-  {t:'Đồng/Trái nghĩa',d:'Paraphrase, mở rộng vốn từ',u:'synonyms.html',cat:'vocab',ic:'repeat',badge:''},
-  {t:'Collocations',d:'200+ cụm từ hay đi cùng nhau',u:'collocations.html',cat:'vocab',ic:'link',badge:''},
-  {t:'Thành ngữ — Idioms',d:'77+ idioms theo 9 chủ đề + quiz',u:'idioms.html',cat:'vocab',ic:'sparkles',badge:''},
-  {t:'Cụm động từ',d:'112 phrasal verbs, 9 nhóm + quiz',u:'phrasal-verbs.html',cat:'vocab',ic:'git-merge',badge:'new'},
-  {t:'Từ hay nhầm',d:'30 cặp affect/effect, advice/advise...',u:'confusing-words.html',cat:'vocab',ic:'shuffle',badge:'new'},
-  {t:'Từ nối — Linking Words',d:'80+ từ nối, 9 loại, CEFR level',u:'linking-words.html',cat:'vocab',ic:'link-2',badge:'new'},
-  {t:'Diễn đạt lại',d:'Paraphrasing techniques cho IELTS',u:'paraphrasing.html',cat:'vocab',ic:'refresh-cw',badge:'ielts'},
-  {t:'4 Kỹ năng tổng quan',d:'Nghe, Nói, Đọc, Viết — chiến lược',u:'skills.html',cat:'skill',ic:'layers',badge:''},
-  {t:'Luyện nghe',d:'Dictation, note-taking, shadowing',u:'listening.html',cat:'skill',ic:'headphones',badge:''},
-  {t:'Kiểm tra bài viết',d:'Chấm writing, phân tích lỗi',u:'writing-checker.html',cat:'skill',ic:'check-circle',badge:''},
-  {t:'Giao tiếp hằng ngày',d:'80+ mẫu câu, 10 tình huống',u:'conversation.html',cat:'skill',ic:'message-square',badge:'new'},
+  {t:'Ngữ pháp cơ bản',d:'12 thì, câu điều kiện, bị động, mạo từ',u:'ngu-phap.html',cat:'grammar',ic:'book-open',badge:''},
+  {t:'Ngữ pháp nâng cao',d:'Đảo ngữ, câu chẻ, mệnh đề quan hệ',u:'ngu-phap-nang-cao.html',cat:'grammar',ic:'flame',badge:''},
+  {t:'Động từ bất quy tắc',d:'150+ động từ V1/V2/V3 + quiz',u:'dong-tu-bat-quy-tac.html',cat:'grammar',ic:'list-ordered',badge:'new'},
+  {t:'Phát âm IPA',d:'44 âm, trọng âm, ngữ điệu, nối âm',u:'phat-am.html',cat:'grammar',ic:'mic',badge:'hot'},
+  {t:'Từ vựng theo chủ đề',d:'1000+ từ, 20 chủ đề, flashcard',u:'tu-vung.html',cat:'vocab',ic:'pencil',badge:'hot'},
+  {t:'Đồng/Trái nghĩa',d:'Paraphrase, mở rộng vốn từ',u:'dong-nghia-trai-nghia.html',cat:'vocab',ic:'repeat',badge:''},
+  {t:'Collocations',d:'200+ cụm từ hay đi cùng nhau',u:'cum-tu-di-cung.html',cat:'vocab',ic:'link',badge:''},
+  {t:'Thành ngữ — Idioms',d:'77+ idioms theo 9 chủ đề + quiz',u:'thanh-ngu.html',cat:'vocab',ic:'sparkles',badge:''},
+  {t:'Cụm động từ',d:'112 phrasal verbs, 9 nhóm + quiz',u:'cum-dong-tu.html',cat:'vocab',ic:'git-merge',badge:'new'},
+  {t:'Từ hay nhầm',d:'30 cặp affect/effect, advice/advise...',u:'tu-de-nham.html',cat:'vocab',ic:'shuffle',badge:'new'},
+  {t:'Từ nối — Linking Words',d:'80+ từ nối, 9 loại, CEFR level',u:'tu-noi.html',cat:'vocab',ic:'link-2',badge:'new'},
+  {t:'Diễn đạt lại',d:'Paraphrasing techniques cho IELTS',u:'dien-dat-lai.html',cat:'vocab',ic:'refresh-cw',badge:'ielts'},
+  {t:'4 Kỹ năng tổng quan',d:'Nghe, Nói, Đọc, Viết — chiến lược',u:'ky-nang.html',cat:'skill',ic:'layers',badge:''},
+  {t:'Luyện nghe',d:'Dictation, note-taking, shadowing',u:'luyen-nghe.html',cat:'skill',ic:'headphones',badge:''},
+  {t:'Kiểm tra bài viết',d:'Chấm writing, phân tích lỗi',u:'kiem-tra-bai-viet.html',cat:'skill',ic:'check-circle',badge:''},
+  {t:'Giao tiếp hằng ngày',d:'80+ mẫu câu, 10 tình huống',u:'giao-tiep.html',cat:'skill',ic:'message-square',badge:'new'},
   {t:'IELTS Guide',d:'Chiến lược 4 kỹ năng, tips band 7+',u:'ielts.html',cat:'ielts',ic:'trophy',badge:'hot'},
-  {t:'570 từ học thuật AWL',d:'Academic Word List, flashcard + quiz',u:'academic-words.html',cat:'ielts',ic:'library',badge:'ielts'},
-  {t:'Viết IELTS mẫu Band 9',d:'Task 1 + Task 2 bài mẫu chi tiết',u:'ielts-writing-band9.html',cat:'ielts',ic:'pen-tool',badge:'ielts'},
-  {t:'Nói IELTS mẫu',d:'Part 1/2/3 topics + bài mẫu',u:'ielts-speaking-topics.html',cat:'ielts',ic:'mic',badge:'ielts'},
-  {t:'Thi thử IELTS',d:'Mock test có chấm điểm tự động',u:'mock-test.html',cat:'ielts',ic:'file-check',badge:'ielts'},
-  {t:'Từ điển Anh-Việt',d:'Tra từ nhanh + IPA + phát âm',u:'dictionary.html',cat:'dict',ic:'search',badge:''},
-  {t:'Từ điển Đời thường',d:'Từ A1-B2 thông dụng hằng ngày',u:'dictionary-everyday.html',cat:'dict',ic:'message-circle',badge:''},
-  {t:'Từ điển Đời thường 2',d:'Từ nâng cao đời sống',u:'dictionary-everyday-2.html',cat:'dict',ic:'book',badge:''},
-  {t:'Từ điển IELTS',d:'Từ học thuật band 6-8+',u:'dictionary-ielts.html',cat:'dict',ic:'target',badge:''},
-  {t:'Từ điển IELTS 2',d:'Từ IELTS nâng cao',u:'dictionary-ielts-2.html',cat:'dict',ic:'crosshair',badge:''},
-  {t:'Quiz & Bài tập',d:'Multiple choice, fill-in, chấm điểm',u:'quiz.html',cat:'practice',ic:'help-circle',badge:'hot'},
-  {t:'Ôn tập lặp lại',d:'Spaced repetition flashcard',u:'spaced-repetition.html',cat:'practice',ic:'rotate-cw',badge:''},
-  {t:'Tiến độ học tập',d:'Streak, XP, badges, thống kê',u:'progress.html',cat:'practice',ic:'bar-chart-3',badge:''},
+  {t:'570 từ học thuật AWL',d:'Academic Word List, flashcard + quiz',u:'tu-hoc-thuat.html',cat:'ielts',ic:'library',badge:'ielts'},
+  {t:'Viết IELTS mẫu Band 9',d:'Task 1 + Task 2 bài mẫu chi tiết',u:'ielts-viet-mau.html',cat:'ielts',ic:'pen-tool',badge:'ielts'},
+  {t:'Nói IELTS mẫu',d:'Part 1/2/3 topics + bài mẫu',u:'ielts-noi.html',cat:'ielts',ic:'mic',badge:'ielts'},
+  {t:'Thi thử IELTS',d:'Mock test có chấm điểm tự động',u:'thi-thu.html',cat:'ielts',ic:'file-check',badge:'ielts'},
+  {t:'Từ điển Anh-Việt',d:'Tra từ nhanh + IPA + phát âm',u:'tu-dien.html',cat:'dict',ic:'search',badge:''},
+  {t:'Từ điển Đời thường',d:'Từ A1-B2 thông dụng hằng ngày',u:'tu-dien-doi-thuong.html',cat:'dict',ic:'message-circle',badge:''},
+  {t:'Từ điển Đời thường 2',d:'Từ nâng cao đời sống',u:'tu-dien-doi-thuong-2.html',cat:'dict',ic:'book',badge:''},
+  {t:'Từ điển IELTS',d:'Từ học thuật band 6-8+',u:'tu-dien-ielts.html',cat:'dict',ic:'target',badge:''},
+  {t:'Từ điển IELTS 2',d:'Từ IELTS nâng cao',u:'tu-dien-ielts-2.html',cat:'dict',ic:'crosshair',badge:''},
+  {t:'Quiz & Bài tập',d:'Multiple choice, fill-in, chấm điểm',u:'bai-tap.html',cat:'practice',ic:'help-circle',badge:'hot'},
+  {t:'Ôn tập lặp lại',d:'Spaced repetition flashcard',u:'on-tap-lap-lai.html',cat:'practice',ic:'rotate-cw',badge:''},
+  {t:'Tiến độ học tập',d:'Streak, XP, badges, thống kê',u:'tien-do.html',cat:'practice',ic:'bar-chart-3',badge:''},
 ];
 
 /* === RENDER MODULES === */
@@ -522,18 +787,60 @@ function initStreak(){
   var dayNames=['T2','T3','T4','T5','T6','T7','CN'];
   var dow=new Date().getDay();
   var container=document.getElementById('streakDays');
-  for(var i=0;i<7;i++){
-    var d=document.createElement('div');d.className='day-dot';
-    var dayIdx=(i+1)%7;
-    if(dayIdx===dow){d.className+=' today';d.textContent=dayNames[i];}
-    else if(data.days&&data.days.some(function(dd){var d2=new Date(dd);return d2.getDay()===dayIdx;})){d.className+=' done';d.textContent=dayNames[i];}
-    else{d.textContent=dayNames[i];}
-    container.appendChild(d);
+  if(container){
+    container.innerHTML='';
+    for(var i=0;i<7;i++){
+      var d=document.createElement('div');d.className='day-dot';
+      var dayIdx=(i+1)%7;
+      if(dayIdx===dow){d.className+=' today';d.textContent=dayNames[i];}
+      else if(data.days&&data.days.some(function(dd){var d2=new Date(dd);return d2.getDay()===dayIdx;})){d.className+=' done';d.textContent=dayNames[i];}
+      else{d.textContent=dayNames[i];}
+      container.appendChild(d);
+    }
   }
 }
 var doy=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
 document.getElementById('dailyTip').textContent=TIPS[doy%TIPS.length];
 initStreak();
+renderDashboard();
+function renderDashboard(){
+  var safeJSON=function(key,fallback){ try{return JSON.parse(localStorage.getItem(key)||fallback);}catch(e){return JSON.parse(fallback);} };
+  var notebook=safeJSON('ee_notebook','[]');
+  var srWords=safeJSON('ee_sr_words','[]');
+  var srCards=safeJSON('sr_cards','[]');
+  var streak=safeJSON('ee_streak','{"count":0}').count||0;
+  var now=Date.now();
+  var dueWords=srWords.length ? srWords.filter(function(w){ return (w.nextReview||0)<=now; }).length : 0;
+  var dueCards=srCards.length ? srCards.filter(function(c){ return (c.due||0)<=now; }).length : 0;
+  var due=srWords.length ? dueWords : dueCards;
+  var total=srWords.length ? srWords.length : srCards.length;
+  var reviewed=Math.max(0, total-due);
+  var percent= total ? Math.round(reviewed/total*100) : 0;
+  var doneEl=document.getElementById('dashLessons'); if(doneEl) doneEl.textContent=reviewed+' mục hoàn thành';
+  var savedEl=document.getElementById('dashSaved'); if(savedEl) savedEl.textContent=notebook.length+' từ đã lưu';
+  var reviewEl=document.getElementById('dashReview'); if(reviewEl) reviewEl.textContent=due+' mục cần ôn';
+  var streakEl=document.getElementById('dashStreak'); if(streakEl) streakEl.textContent=streak;
+  var title=document.getElementById('dashTitle'); if(title) title.textContent=streak ? (streak+' ngày liên tiếp — giữ nhịp rất tốt') : 'Bắt đầu streak hôm nay';
+  var sub=document.getElementById('dashSub'); if(sub) sub.textContent=total ? 'Tiến độ được tính từ dữ liệu học thật trong trình duyệt.' : 'Học một bài, lưu một từ, rồi quay lại để thấy tiến độ tăng.';
+  var next=document.getElementById('dashNext'); if(next) next.textContent=due ? ('Bạn có ' + due + ' mục cần ôn hôm nay. Bắt đầu với sổ tay hoặc spaced repetition.') : 'Hôm nay chưa có mục cần ôn. Hãy học một bài mới hoặc lưu thêm từ.';
+  var bar=document.getElementById('dashBarFill'); if(bar) bar.style.width=percent+'%';
+  var pct=document.getElementById('dashPercent'); if(pct) pct.textContent=percent+'%';
+  var dEl=document.getElementById('dashDays');
+  if(dEl){
+    dEl.innerHTML='';
+    var days=['T2','T3','T4','T5','T6','T7','CN'];
+    var dow=(new Date()).getDay();
+    for(var i=0;i<7;i++){
+      var dot=document.createElement('div');
+      dot.className='day-dot';
+      var dayIdx=(i+1)%7;
+      if(dayIdx===dow){dot.className+=' today';}
+      else if(streak>0 && i < Math.min(streak,7)){dot.className+=' done';}
+      dot.textContent=days[i];
+      dEl.appendChild(dot);
+    }
+  }
+}
 
 /* === NAV DROPDOWN === */
 document.addEventListener('click',function(e){
@@ -541,10 +848,6 @@ document.addEventListener('click',function(e){
 });
 </script>
 
-<!-- BACK TO TOP -->
-<!-- MOBILE BOTTOM NAV -->
-<!-- MORE DRAWER -->
-<script defer src="theme.js?v=3"></script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 

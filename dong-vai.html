@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đóng vai giao tiếp — EasyEnglish</title>
+<meta name="description" content="Luyện giao tiếp tiếng Anh qua các tình huống đóng vai thực tế: nhà hàng, phỏng vấn, du lịch và hơn thế.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:24px 0}
+.scenario-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px;cursor:pointer;transition:all .2s}
+.scenario-card:hover{transform:translateY(-3px);border-color:rgba(100,216,165,0.3);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.sc-icon{font-size:32px;margin-bottom:10px}
+.sc-title{font-family:'Fraunces',serif;font-weight:300;font-size:18px;margin-bottom:6px}
+.sc-desc{font-size:13px;color:var(--text2);line-height:1.5}
+.sc-level{font-size:11px;padding:4px 10px;border-radius:20px;background:var(--bg3);color:var(--text3);display:inline-block;margin-top:10px}
+.chat-area{display:none;max-width:600px;margin:0 auto}
+.chat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.chat-back{background:none;border:none;color:var(--accent);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif}
+.chat-box{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:20px;min-height:400px;max-height:500px;overflow-y:auto;margin-bottom:16px}
+.msg{padding:12px 16px;border-radius:14px;max-width:80%;margin-bottom:10px;font-size:14px;line-height:1.6;animation:msgIn .3s}
+.msg-npc{background:var(--card2);border:0.5px solid var(--border);margin-right:auto;border-bottom-left-radius:4px}
+.msg-user{background:rgba(100,216,165,0.12);border:0.5px solid rgba(100,216,165,0.2);margin-left:auto;text-align:right;border-bottom-right-radius:4px}
+.msg-hint{font-size:12px;color:var(--text3);font-style:italic;text-align:center;margin:8px 0}
+.msg-vi{font-size:12px;color:var(--text3);margin-top:4px;font-style:italic}
+.reply-opts{display:flex;flex-direction:column;gap:8px}
+.reply-btn{padding:12px 16px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;text-align:left;transition:all .15s}
+.reply-btn:hover{border-color:rgba(100,216,165,0.4);background:rgba(100,216,165,0.08)}
+.complete-msg{text-align:center;padding:24px;background:rgba(100,216,165,0.08);border-radius:14px;margin-top:12px}
+.complete-msg h3{color:var(--accent);font-family:'Fraunces',serif;font-weight:300;margin-bottom:8px}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.content{padding:20px 14px 110px}.scenario-grid{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+
+<div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span><a href="ky-nang.html">Kỹ năng</a>
+  <span class="bc-sep">›</span><span class="bc-current">Đóng vai</span>
+</div>
+
+<h1 class="page-title">Đóng vai giao tiếp</h1>
+<p class="page-desc">Chọn tình huống và luyện hội thoại thực tế bằng tiếng Anh.</p>
+
+<div id="scenarioList" class="scenario-grid"></div>
+<div id="chatArea" class="chat-area">
+  <div class="chat-header">
+    <button class="chat-back" onclick="backToList()">← Chọn tình huống khác</button>
+    <span id="chatTitle" style="font-size:14px;color:var(--text3)"></span>
+  </div>
+  <div class="chat-box" id="chatBox"></div>
+  <div id="replyArea" class="reply-opts"></div>
+</div>
+
+</div>
+
+<script>
+const SCENARIOS = [
+  {
+    icon:'🍽️', title:'Gọi món ở nhà hàng', desc:'Bạn vào nhà hàng và gọi món ăn.', level:'A1-A2',
+    steps:[
+      {npc:"Good evening! Welcome to The Garden Bistro. Table for how many?", vi:"Chào buổi tối! Chào mừng đến The Garden Bistro. Bàn cho mấy người?",
+       opts:["Table for two, please.", "Just one, thank you.", "We have a reservation under Nguyen."]},
+      {npc:"Right this way. Here is your menu. Can I get you something to drink first?", vi:"Mời đi lối này. Đây là menu. Quý khách muốn uống gì trước?",
+       opts:["Can I have a glass of water, please?", "I will have an iced tea.", "What do you recommend?"]},
+      {npc:"Are you ready to order?", vi:"Quý khách sẵn sàng gọi món chưa?",
+       opts:["Yes, I will have the grilled chicken, please.", "Could I have a few more minutes?", "What is today's special?"]},
+      {npc:"Would you like anything else? Dessert perhaps?", vi:"Quý khách cần gì thêm không? Tráng miệng chẳng hạn?",
+       opts:["No, thank you. Just the bill, please.", "Yes, I will try the chocolate cake.", "Could we see the dessert menu?"]},
+      {npc:"Here is your bill. That will be $42.50.", vi:"Đây là hóa đơn. Tổng là $42.50.",
+       opts:["Can I pay by card?", "Here you go. Keep the change.", "Is the tip included?"]}
+    ]
+  },
+  {
+    icon:'✈️', title:'Check-in sân bay', desc:'Bạn làm thủ tục check-in tại quầy sân bay.', level:'A2-B1',
+    steps:[
+      {npc:"Good morning. May I see your passport and booking confirmation?", vi:"Chào buổi sáng. Cho tôi xem hộ chiếu và mã đặt chỗ?",
+       opts:["Here you go. My booking reference is ABC123.", "Sure, one moment. Let me find it.", "I only have the e-ticket on my phone. Is that okay?"]},
+      {npc:"Would you like a window seat or an aisle seat?", vi:"Bạn muốn ngồi cửa sổ hay lối đi?",
+       opts:["Window seat, please.", "Aisle seat would be great.", "Do you have any exit row seats available?"]},
+      {npc:"How many bags are you checking in?", vi:"Bạn gửi bao nhiêu hành lý?",
+       opts:["Just one suitcase.", "Two bags. Is there an extra charge for the second one?", "None. I only have carry-on."]},
+      {npc:"Your flight departs from Gate B12. Boarding starts at 2:30 PM.", vi:"Chuyến bay của bạn ở cửa B12. Bắt đầu lên máy bay lúc 2:30 chiều.",
+       opts:["Thank you. Where is Gate B12?", "Great, is the flight on time?", "Thanks! Do I have time to visit the duty-free shop?"]}
+    ]
+  },
+  {
+    icon:'💼', title:'Phỏng vấn xin việc', desc:'Bạn tham gia phỏng vấn cho vị trí marketing.', level:'B1-B2',
+    steps:[
+      {npc:"Thanks for coming in today. Could you start by telling me about yourself?", vi:"Cảm ơn bạn đã đến. Bạn có thể giới thiệu về bản thân không?",
+       opts:["Sure. I graduated from university two years ago and have been working in digital marketing since then.", "Of course. I am passionate about marketing and have experience with social media campaigns.", "I am a hard-working person who loves learning new things."]},
+      {npc:"What attracted you to this position?", vi:"Điều gì thu hút bạn đến vị trí này?",
+       opts:["I admire your company's creative approach to branding.", "I believe this role matches my skills in content creation and data analysis.", "The opportunity to work with an international team really excites me."]},
+      {npc:"Can you describe a challenge you faced at work and how you handled it?", vi:"Bạn có thể mô tả một thử thách trong công việc và cách bạn xử lý?",
+       opts:["In my previous role, we had a tight deadline for a campaign. I organized the team and we delivered on time.", "I once had to manage a project with a limited budget. I prioritized tasks and negotiated with vendors.", "There was a conflict between team members. I mediated the discussion and helped find a compromise."]},
+      {npc:"Where do you see yourself in five years?", vi:"Bạn thấy mình ở đâu trong 5 năm nữa?",
+       opts:["I hope to be leading a marketing team and developing strategies.", "I want to specialize in digital analytics and become an expert.", "I see myself growing within this company and taking on more responsibility."]},
+      {npc:"Do you have any questions for us?", vi:"Bạn có câu hỏi nào cho chúng tôi không?",
+       opts:["Yes, what does a typical day look like in this role?", "Could you tell me about the team I would be working with?", "What are the opportunities for professional development?"]}
+    ]
+  },
+  {
+    icon:'🏥', title:'Khám bệnh', desc:'Bạn đến phòng khám mô tả triệu chứng cho bác sĩ.', level:'A2-B1',
+    steps:[
+      {npc:"Hello, what seems to be the problem today?", vi:"Xin chào, hôm nay bạn bị sao?",
+       opts:["I have had a headache and a sore throat for two days.", "I feel dizzy and tired all the time.", "I hurt my back while exercising."]},
+      {npc:"I see. Do you have any other symptoms? Fever, cough?", vi:"Bạn có triệu chứng nào khác không? Sốt, ho?",
+       opts:["Yes, I have a slight fever and a runny nose.", "No fever, but I have been coughing at night.", "Not really, just the pain in my back."]},
+      {npc:"Are you allergic to any medications?", vi:"Bạn có dị ứng thuốc nào không?",
+       opts:["No, I am not allergic to anything.", "Yes, I am allergic to penicillin.", "I am not sure. I have never had a reaction before."]},
+      {npc:"I will prescribe some medicine. Take it twice a day after meals.", vi:"Tôi sẽ kê đơn thuốc. Uống ngày 2 lần sau bữa ăn.",
+       opts:["Thank you, doctor. How long should I take the medicine?", "Should I come back if it doesn't get better?", "Is there anything I should avoid while taking this?"]}
+    ]
+  },
+  {
+    icon:'🛒', title:'Mua sắm', desc:'Bạn đi mua quần áo ở cửa hàng.', level:'A1-A2',
+    steps:[
+      {npc:"Hi there! Can I help you find something?", vi:"Chào! Tôi có thể giúp bạn tìm gì không?",
+       opts:["Yes, I am looking for a jacket.", "Just browsing, thanks.", "Do you have this shirt in a smaller size?"]},
+      {npc:"We have these jackets on sale. What size are you?", vi:"Chúng tôi đang giảm giá áo khoác. Bạn mặc size bao nhiêu?",
+       opts:["I am usually a medium.", "Can I try this one on?", "How much is this one?"]},
+      {npc:"The fitting room is right over there. Let me know if you need a different size.", vi:"Phòng thử đồ ở đằng kia. Cho tôi biết nếu bạn cần size khác.",
+       opts:["Thank you! This one fits perfectly.", "Actually, do you have this in blue?", "It is a bit tight. Could I try a large?"]},
+      {npc:"Would you like to pay by cash or card?", vi:"Bạn muốn thanh toán bằng tiền mặt hay thẻ?",
+       opts:["Card, please.", "Cash. Here you go.", "Do you accept mobile payment?"]}
+    ]
+  },
+  {
+    icon:'🏨', title:'Check-in khách sạn', desc:'Bạn nhận phòng tại khách sạn.', level:'A2',
+    steps:[
+      {npc:"Welcome to Grand Hotel. Do you have a reservation?", vi:"Chào mừng đến Grand Hotel. Bạn có đặt phòng trước không?",
+       opts:["Yes, I booked online. The name is Nguyen.", "No, do you have any rooms available for tonight?", "Yes, I called yesterday to make a reservation."]},
+      {npc:"You are in Room 405 on the fourth floor. Here is your key card.", vi:"Bạn ở phòng 405 tầng 4. Đây là thẻ phòng.",
+       opts:["Thank you. What time is checkout?", "Is breakfast included?", "Does the room have Wi-Fi?"]},
+      {npc:"Checkout is at 11 AM. Breakfast is served from 7 to 10 AM.", vi:"Trả phòng lúc 11h sáng. Bữa sáng phục vụ 7-10h.",
+       opts:["Perfect, thank you.", "Can I get a wake-up call at 7 AM?", "Is there a gym or pool in the hotel?"]}
+    ]
+  }
+];
+
+let currentStep = 0;
+
+function renderList(){
+  document.getElementById('scenarioList').style.display='';
+  document.getElementById('chatArea').style.display='none';
+  document.getElementById('scenarioList').innerHTML=SCENARIOS.map((s,i)=>`
+    <div class="scenario-card" onclick="startScenario(${i})">
+      <div class="sc-icon">${s.icon}</div>
+      <div class="sc-title">${s.title}</div>
+      <div class="sc-desc">${s.desc}</div>
+      <span class="sc-level">${s.level}</span>
+    </div>`).join('');
+}
+
+function startScenario(idx){
+  const s=SCENARIOS[idx];
+  currentStep=0;
+  document.getElementById('scenarioList').style.display='none';
+  document.getElementById('chatArea').style.display='';
+  document.getElementById('chatTitle').textContent=s.icon+' '+s.title;
+  document.getElementById('chatBox').innerHTML='';
+  showStep(s);
+}
+
+function showStep(scenario){
+  if(currentStep>=scenario.steps.length){
+    document.getElementById('replyArea').innerHTML=`
+      <div class="complete-msg">
+        <h3>🎉 Hoàn thành!</h3>
+        <p>Bạn đã hoàn thành tình huống "${scenario.title}"</p>
+        <button class="reply-btn" style="margin-top:12px;text-align:center" onclick="backToList()">Chọn tình huống khác</button>
+      </div>`;
+    return;
+  }
+  const step=scenario.steps[currentStep];
+  const box=document.getElementById('chatBox');
+  box.innerHTML+=`<div class="msg msg-npc">${step.npc}<div class="msg-vi">${step.vi}</div></div>`;
+  box.scrollTop=box.scrollHeight;
+  
+  document.getElementById('replyArea').innerHTML=step.opts.map(o=>`
+    <button class="reply-btn" onclick="pickReply(this,'${o.replace(/'/g,"\\'")}',${SCENARIOS.indexOf(scenario)})">${o}</button>`).join('');
+}
+
+function pickReply(el,text,sIdx){
+  const box=document.getElementById('chatBox');
+  box.innerHTML+=`<div class="msg msg-user">${text}</div>`;
+  box.scrollTop=box.scrollHeight;
+  document.getElementById('replyArea').innerHTML='';
+  currentStep++;
+  setTimeout(()=>showStep(SCENARIOS[sIdx]),800);
+}
+
+function backToList(){renderList();}
+renderList();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

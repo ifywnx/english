@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="Kiểm tra bài viết tiếng Anh — phân tích ngữ pháp, từ vựng, cấu trúc câu cho IELTS Writing.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Kiểm tra bài viết — EasyEnglish">
+<meta property="og:description" content="Công cụ kiểm tra lỗi ngữ pháp, chính tả trong bài viết tiếng Anh.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kiểm tra bài viết — EasyEnglish">
+<meta name="twitter:description" content="Công cụ kiểm tra lỗi ngữ pháp, chính tả trong bài viết tiếng Anh.">
+<title>Writing Checker — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.nav-cta:hover{background:#7de8b5;transform:translateY(-1px)}
+.editor{width:100%;min-height:300px;padding:20px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;line-height:1.8;resize:vertical;outline:none}
+.editor:focus{border-color:rgba(100,216,165,0.3)}
+.editor::placeholder{color:var(--text3)}
+.btn-row{display:flex;gap:10px;margin:16px 0 24px;flex-wrap:wrap}
+.btn{padding:10px 22px;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
+.btn-primary{background:var(--accent);color:#0b1a1e}
+.btn-primary:hover{background:#7de8b5;transform:translateY(-1px)}
+.btn-secondary{background:var(--card2);color:var(--text2);border:0.5px solid var(--border)}
+.btn-secondary:hover{color:var(--text)}
+.results{display:none}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.s-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.s-num{font-family:'Fraunces',serif;font-size:28px;color:var(--accent)}
+.s-num.warn{color:var(--coral)}
+.s-num.good{color:var(--green)}
+.s-label{font-size:11px;color:var(--text3);margin-top:4px}
+.section-title{font-family:'Fraunces',serif;font-size:20px;margin:24px 0 12px}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tag{padding:4px 12px;border-radius:20px;font-size:12px;background:rgba(100,216,165,0.1);color:var(--accent);border:0.5px solid rgba(100,216,165,0.2)}
+.tag.miss{background:rgba(255,138,128,0.1);color:var(--coral);border-color:rgba(255,138,128,0.2)}
+.band-box{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px;text-align:center;margin:20px 0}
+.band-score{font-family:'Fraunces',serif;font-size:60px;font-weight:600}
+.band-label{font-size:13px;color:var(--text3);margin-top:4px}
+.feedback{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px 18px;margin:8px 0;font-size:13px;line-height:1.7;color:var(--text2)}
+.feedback strong{color:var(--text)}
+.linkers-ref{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.lr-card{background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px}
+.lr-title{font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.lr-words{font-size:14px;color:var(--text2);line-height:1.8}
+
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+
+<meta name="theme-color" content="#64D8A5">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<link rel="canonical" href="https://easyenglish.vn/kiem-tra-bai-viet.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+  <div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span>
+  <span>Kỹ năng</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-current">Writing Checker</span>
+</div>
+
+  <div class="page-label">Công cụ luyện viết</div>
+  <h1 class="page-title">Writing Checker <i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></h1>
+  <p class="page-desc">Dán bài viết IELTS Writing Task 2 vào đây. Hệ thống sẽ phân tích số từ, từ nối, từ vựng band cao, cấu trúc bài và ước lượng Band score.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 20px" class="wc-guide-grid">
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+      <div style="font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">1. Paste</div>
+      <div style="font-size:14px;color:var(--text2);line-height:1.7">Dán bài viết vào ô bên dưới, ưu tiên bài Task 2 hoàn chỉnh hoặc ít nhất một dàn ý có body rõ.</div>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+      <div style="font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">2. Check</div>
+      <div style="font-size:14px;color:var(--text2);line-height:1.7">Xem số từ, số đoạn, từ nối, từ band cao, và band ước lượng để biết bài đang ở đâu.</div>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+      <div style="font-size:12px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">3. Improve</div>
+      <div style="font-size:14px;color:var(--text2);line-height:1.7">Sửa theo checklist Band 9, thêm paraphrase, liên kết, và câu phức rõ ràng hơn.</div>
+    </div>
+  </div>
+
+  <div class="tip" style="margin-bottom:18px"><strong>How to use:</strong> Việc kiểm tra này không chỉ để chấm điểm. Mục tiêu là nhận ra lỗi lặp lại, sửa từng nhóm lỗi, rồi viết lại một đoạn tốt hơn thay vì chỉ đọc kết quả.</div>
+
+  <textarea class="editor" id="essay" placeholder="Dán bài viết IELTS Writing Task 2 vào đây... (tối thiểu 250 từ)"></textarea>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="analyze()"><i data-lucide="search" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Phân tích bài viết</button>
+    <button class="btn btn-secondary" onclick="loadSample()"><i data-lucide="file-text" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Bài mẫu</button>
+    <button class="btn btn-secondary" onclick="clearAll()"><i data-lucide="trash-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Xóa</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="stats-grid">
+      <div class="s-card"><div class="s-num" id="rWords">0</div><div class="s-label">Số từ</div></div>
+      <div class="s-card"><div class="s-num" id="rSentences">0</div><div class="s-label">Số câu</div></div>
+      <div class="s-card"><div class="s-num" id="rParagraphs">0</div><div class="s-label">Đoạn văn</div></div>
+      <div class="s-card"><div class="s-num" id="rLinkers">0</div><div class="s-label">Từ nối</div></div>
+    </div>
+
+    <div class="band-box">
+      <div class="band-score" id="rBand" style="color:var(--accent)">0.0</div>
+      <div class="band-label">Band ước lượng (tham khảo)</div>
+    </div>
+
+    <div class="section-title"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ nối tìm thấy</div>
+    <div class="tag-list" id="foundLinkers"></div>
+
+    <div class="section-title"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ vựng Band cao tìm thấy</div>
+    <div class="tag-list" id="foundIELTS"></div>
+
+    <div class="section-title"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Nhận xét & Gợi ý</div>
+    <div id="feedbackList"></div>
+
+    <div class="section-title"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Bảng từ nối tham khảo</div>
+    <div class="linkers-ref">
+      <div class="lr-card"><div class="lr-title">Mở bài</div><div class="lr-words">It is widely believed that...<br>In recent years...<br>There is a growing concern about...<br>This essay will discuss...</div></div>
+      <div class="lr-card"><div class="lr-title">Thêm ý</div><div class="lr-words">Furthermore, Moreover, In addition,<br>Additionally, Besides, Also,<br>What is more, Not only...but also</div></div>
+      <div class="lr-card"><div class="lr-title">Tương phản</div><div class="lr-words">However, Nevertheless, On the other hand,<br>In contrast, Although, Despite,<br>Whereas, While, Yet</div></div>
+      <div class="lr-card"><div class="lr-title">Kết luận</div><div class="lr-words">In conclusion, To sum up,<br>All in all, Overall,<br>Taking everything into consideration</div></div>
+    </div>
+  </div>
+
+<div style="margin-top:40px">
+  <div class="page-label">IELTS Writing</div>
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,32px);margin-bottom:20px">Band 9 Checklist</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px" class="checklist-grid">
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--accent);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Task Achievement</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>[ ] Trả lời đầy đủ tất cả phần của đề bài</li>
+        <li>[ ] Có thesis statement rõ ràng</li>
+        <li>[ ] Mỗi body paragraph có main idea + support</li>
+        <li>[ ] Examples cụ thể, không chung chung</li>
+        <li>[ ] Conclusion tóm tắt + không có ý mới</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--accent2);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="list" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Coherence & Cohesion</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>[ ] Paragraphing logic (intro-body-conclusion)</li>
+        <li>[ ] Linking words đa dạng (However, Nevertheless...)</li>
+        <li>[ ] Referencing: this, such, these thay vì lặp từ</li>
+        <li>[ ] Mỗi paragraph = 1 central topic</li>
+        <li>[ ] Flow tự nhiên, không nhảy ý</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--accent3);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Lexical Resource</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>[ ] Paraphrase — không lặp từ đề bài</li>
+        <li>[ ] Collocations chính xác (make a decision)</li>
+        <li>[ ] Academic vocabulary (significant, substantial)</li>
+        <li>[ ] Không dùng informal (gonna, wanna, lots of)</li>
+        <li>[ ] Spelling chính xác 100%</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="color:var(--coral);font-weight:600;margin-bottom:10px;font-size:14px"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Grammar Range & Accuracy</div>
+      <ul style="font-size:13px;color:var(--text2);line-height:2;list-style:none;padding:0">
+        <li>[ ] Mix câu đơn + phức + compound-complex</li>
+        <li>[ ] Relative clauses, participle clauses</li>
+        <li>[ ] Passive voice khi phù hợp</li>
+        <li>[ ] Conditionals (If, Were + S + to V)</li>
+        <li>[ ] Không lỗi subject-verb agreement</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);margin-bottom:16px">50 Lỗi phổ biến Band 5→7</h2>
+  <div id="errorBank" style="display:grid;gap:10px;margin-bottom:32px"></div>
+
+  <h2 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);margin-bottom:16px">Mẫu câu Band 8-9</h2>
+  <div id="modelPhrases" style="display:grid;gap:10px;margin-bottom:32px"></div>
+</div>
+</div>
+
+<script>
+const LINKERS = [
+  'however','moreover','furthermore','in addition','additionally','nevertheless',
+  'on the other hand','in contrast','although','despite','whereas','while',
+  'therefore','consequently','as a result','thus','hence','accordingly',
+  'for example','for instance','such as','in particular','specifically',
+  'in conclusion','to sum up','all in all','overall','in summary',
+  'firstly','secondly','thirdly','finally','to begin with',
+  'not only','but also','what is more','besides','similarly',
+  'it is widely believed','there is a growing concern','in recent years',
+  'taking everything into consideration','from my perspective','in my opinion'
+];
+
+const IELTS_WORDS = [
+  'unprecedented','catastrophic','resilience','sustainability','autonomous',
+  'infrastructure','disparity','innovation','accountability','governance',
+  'paradigm','holistic','nuanced','substantiate','interdisciplinary',
+  'misinformation','polarisation','cohesion','demographic','empowerment',
+  'exacerbate','mitigate','alleviate','proliferate','undermine',
+  'advocate','scrutinize','facilitate','implement','encompass',
+  'phenomenon','implication','perspective','controversy','consensus',
+  'detrimental','beneficial','prevalent','profound','significant',
+  'substantial','fundamental','comprehensive','elaborate','sophisticated'
+];
+
+function analyze(){
+  const text = document.getElementById('essay').value.trim();
+  if(!text){alert('Vui lòng nhập bài viết!');return;}
+
+  const words = text.split(/\s+/).filter(w=>w.length>0);
+  const wordCount = words.length;
+  const sentences = text.split(/[.!?]+/).filter(s=>s.trim().length>0);
+  const paragraphs = text.split(/\n\s*\n/).filter(p=>p.trim().length>0);
+  const lower = text.toLowerCase();
+
+  // Find linkers
+  const found = LINKERS.filter(l=>lower.includes(l));
+  // Find IELTS words
+  const ieltsFound = IELTS_WORDS.filter(w=>lower.includes(w));
+
+  // Display stats
+  const wEl = document.getElementById('rWords');
+  wEl.textContent = wordCount;
+  wEl.className = 's-num ' + (wordCount>=250?'good':'warn');
+  document.getElementById('rSentences').textContent = sentences.length;
+  document.getElementById('rParagraphs').textContent = paragraphs.length;
+  document.getElementById('rLinkers').textContent = found.length;
+
+  // Band estimation
+  let band = 5.0;
+  if(wordCount>=250) band+=0.5;
+  if(wordCount>=280) band+=0.3;
+  if(found.length>=3) band+=0.3;
+  if(found.length>=6) band+=0.3;
+  if(found.length>=10) band+=0.2;
+  if(ieltsFound.length>=2) band+=0.3;
+  if(ieltsFound.length>=5) band+=0.3;
+  if(paragraphs.length>=4) band+=0.3;
+  if(sentences.length>=10) band+=0.2;
+  const avgLen = wordCount/Math.max(sentences.length,1);
+  if(avgLen>=15&&avgLen<=25) band+=0.3;
+  band = Math.min(band,8.5);
+  band = Math.round(band*2)/2;
+  document.getElementById('rBand').textContent = band.toFixed(1);
+
+  // Linkers tags
+  document.getElementById('foundLinkers').innerHTML = found.length?
+    found.map(l=>`<span class="tag">${l}</span>`).join(''):
+    '<span style="color:var(--text3);font-size:13px">Không tìm thấy từ nối nào •</span>';
+
+  // IELTS words
+  document.getElementById('foundIELTS').innerHTML = ieltsFound.length?
+    ieltsFound.map(w=>`<span class="tag">${w}</span>`).join(''):
+    '<span style="color:var(--text3);font-size:13px">Chưa có từ Band cao</span>';
+
+  // Feedback
+  let fb = [];
+  if(wordCount<250) fb.push({t:'•',m:`Bài viết chỉ có <strong>${wordCount}</strong> từ. IELTS Task 2 yêu cầu tối thiểu <strong>250 từ</strong>. Cần viết thêm ${250-wordCount} từ nữa.`});
+  else fb.push({t:'•',m:`Số từ đạt yêu cầu: <strong>${wordCount}</strong> từ (≥250).`});
+  if(paragraphs.length<4) fb.push({t:'•',m:`Bài chỉ có <strong>${paragraphs.length}</strong> đoạn. Nên chia thành 4-5 đoạn: Mở bài → Body 1 → Body 2 → Kết luận.`});
+  else fb.push({t:'•',m:`Cấu trúc đoạn tốt: <strong>${paragraphs.length}</strong> đoạn.`});
+  if(found.length<3) fb.push({t:'•',m:'Thiếu từ nối! Hãy thêm: <strong>However, Moreover, In conclusion, Furthermore...</strong>'});
+  else fb.push({t:'•',m:`Sử dụng <strong>${found.length}</strong> từ nối — ${found.length>=6?'tuyệt vời!':'khá tốt, có thể thêm nữa.'}`});
+  if(ieltsFound.length<2) fb.push({t:'•',m:'Thêm từ vựng Band cao: <strong>significant, furthermore, consequently, comprehensive, substantial...</strong>'});
+  else fb.push({t:'•',m:`Từ vựng Band cao: <strong>${ieltsFound.length}</strong> từ — ${ieltsFound.length>=5?'xuất sắc!':'tốt!'}`});
+  if(avgLen<10) fb.push({t:'•',m:'Câu quá ngắn. Thử viết câu phức hợp hơn với liên từ: although, while, which...'});
+  if(avgLen>30) fb.push({t:'•',m:'Một số câu quá dài. Nên chia thành câu ngắn hơn để rõ ý hơn.'});
+
+  document.getElementById('feedbackList').innerHTML = fb.map(f=>`<div class="feedback">${f.t} ${f.m}</div>`).join('');
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+
+function loadSample(){
+  document.getElementById('essay').value = `In recent years, the issue of climate change has become increasingly prominent in global discussions. Many people believe that governments should take the lead in addressing this crisis, while others argue that individuals also have a significant role to play.
+
+On the one hand, governments possess the authority and resources to implement large-scale policies that can substantially reduce carbon emissions. For example, they can invest in renewable energy infrastructure, impose stricter regulations on industrial pollution, and provide incentives for sustainable practices. Furthermore, international cooperation between governments is essential for tackling this global phenomenon effectively.
+
+On the other hand, individual actions should not be underestimated. Simple lifestyle changes, such as reducing waste, using public transportation, and consuming organic products, can collectively make a profound impact. Moreover, when citizens demonstrate environmental awareness, they put pressure on corporations and politicians to adopt more responsible policies.
+
+In conclusion, addressing climate change requires a comprehensive approach that encompasses both governmental action and individual responsibility. While governments must take the lead in implementing systemic changes, the role of individuals in driving cultural transformation is equally significant. Only through this collaborative effort can we hope to mitigate the devastating effects of climate change.`;
+}
+
+function clearAll(){document.getElementById('essay').value='';document.getElementById('results').style.display='none';}
+
+const ERRORS = [
+  {wrong:"The number of students are increasing.",right:"The number of students is increasing.",rule:"Subject-verb agreement: 'the number of' + singular verb"},
+  {wrong:"I am agree with this opinion.",right:"I agree with this opinion.",rule:"'Agree' không dùng be + agree"},
+  {wrong:"Nowadays, technology is very important in today's society.",right:"In contemporary society, technology plays a pivotal role.",rule:"Tránh lặp 'nowadays' + 'today'"},
+  {wrong:"There are many advantages and disadvantages.",right:"This development brings both significant benefits and notable drawbacks.",rule:"Cụ thể hóa, tránh câu chung chung"},
+  {wrong:"More and more people are using internet.",right:"An increasing number of people are using the internet.",rule:"'more and more' = informal, cần article trước internet"},
+  {wrong:"In my opinion, I think that...",right:"In my opinion,... / I believe that...",rule:"Không dùng cả 'in my opinion' + 'I think' cùng lúc"},
+  {wrong:"This problem effects many people.",right:"This problem affects many people.",rule:"affect (v) = ảnh hưởng, effect (n) = tác động"},
+  {wrong:"People should take care about environment.",right:"People should take care of the environment.",rule:"take care OF + the environment (cần article)"},
+  {wrong:"Although it is expensive, but many people buy it.",right:"Although it is expensive, many people buy it.",rule:"Although/But: chỉ dùng 1, không dùng cả 2"},
+  {wrong:"The chart shows the informations about...",right:"The chart illustrates the information about...",rule:"Information = uncountable. Dùng 'illustrates' thay 'shows'"},
+  {wrong:"I was very boring at the party.",right:"I was very bored at the party.",rule:"-ed = cảm xúc người, -ing = tính chất sự vật"},
+  {wrong:"He suggested me to go.",right:"He suggested that I go. / He suggested going.",rule:"suggest + V-ing hoặc suggest that + S + V"},
+  {wrong:"Despite of the rain, we went out.",right:"Despite the rain, we went out.",rule:"Despite + N (không có 'of'). In spite of + N"},
+  {wrong:"The rate of crime has raised.",right:"The rate of crime has risen.",rule:"rise (tự tăng) vs raise (làm tăng)"},
+  {wrong:"Less people are smoking now.",right:"Fewer people are smoking now.",rule:"fewer + countable, less + uncountable"},
+];
+
+const PHRASES = [
+  {cat:"Mở bài",phrase:"It is widely acknowledged that...",vi:"Nhiều người thừa nhận rằng..."},
+  {cat:"Mở bài",phrase:"In recent years, there has been a growing concern about...",vi:"Gần đây, ngày càng nhiều lo ngại về..."},
+  {cat:"Thân bài",phrase:"One compelling argument in favour of this is that...",vi:"Một lập luận thuyết phục ủng hộ điều này là..."},
+  {cat:"Thân bài",phrase:"A case in point is...",vi:"Một ví dụ điển hình là..."},
+  {cat:"Thân bài",phrase:"This phenomenon can be attributed to several factors.",vi:"Hiện tượng này có thể quy cho nhiều yếu tố."},
+  {cat:"Thân bài",phrase:"From an economic standpoint,...",vi:"Từ góc độ kinh tế,..."},
+  {cat:"Thân bài",phrase:"It is worth noting that...",vi:"Đáng chú ý là..."},
+  {cat:"Thân bài",phrase:"Conversely, opponents of this view argue that...",vi:"Ngược lại, người phản đối cho rằng..."},
+  {cat:"Liên kết",phrase:"Having said that, it should be noted that...",vi:"Tuy nhiên, cần lưu ý rằng..."},
+  {cat:"Liên kết",phrase:"Not only does this..., but it also...",vi:"Không chỉ... mà còn..."},
+  {cat:"Kết bài",phrase:"In conclusion, while there are valid arguments on both sides, I am firmly convinced that...",vi:"Tóm lại, dù có lập luận đúng ở cả hai phía, tôi tin chắc rằng..."},
+  {cat:"Kết bài",phrase:"To summarise, the evidence overwhelmingly suggests that...",vi:"Tóm lại, bằng chứng cho thấy rõ ràng rằng..."},
+  {cat:"Task 1",phrase:"The graph illustrates the proportion of...",vi:"Biểu đồ minh họa tỷ lệ..."},
+  {cat:"Task 1",phrase:"There was a dramatic surge in... between... and...",vi:"Có sự tăng vọt ở... trong khoảng... đến..."},
+  {cat:"Task 1",phrase:"The figures for... remained relatively stable at approximately...",vi:"Số liệu... duy trì tương đối ổn định ở khoảng..."},
+];
+
+function renderErrors(){
+  document.getElementById("errorBank").innerHTML = ERRORS.map((e,i) =>
+    '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:16px;cursor:pointer" onclick="this.querySelector(\'.er-detail\').style.display=this.querySelector(\'.er-detail\').style.display===\'none\'?\'block\':\'none\'">' +
+    '<div style="display:flex;gap:8px;align-items:flex-start">' +
+    '<span style="color:var(--coral);font-size:12px;flex-shrink:0"></span>' +
+    '<span style="font-size:13px;color:var(--coral);text-decoration:line-through">' + e.wrong + '</span></div>' +
+    '<div class="er-detail" style="display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border)">' +
+    '<div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--green);font-size:12px;flex-shrink:0"></span><span style="font-size:13px;color:var(--green)">' + e.right + '</span></div>' +
+    '<div style="font-size:12px;color:var(--accent2);margin-top:4px"> ' + e.rule + '</div></div></div>'
+  ).join("");
+}
+
+function renderPhrases(){
+  const cats = [...new Set(PHRASES.map(p=>p.cat))];
+  document.getElementById("modelPhrases").innerHTML = cats.map(cat =>
+    '<div style="margin-bottom:8px"><div style="font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">' + cat + '</div>' +
+    PHRASES.filter(p=>p.cat===cat).map(p =>
+      '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:6px">' +
+      '<div style="font-size:14px;color:var(--text);font-weight:500">' + p.phrase + '</div>' +
+      '<div style="font-size:12px;color:var(--text3);margin-top:4px">→ ' + p.vi + '</div></div>'
+    ).join("") + '</div>'
+  ).join("");
+}
+renderErrors();renderPhrases();
+
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

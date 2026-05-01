@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="12 thì tiếng Anh — Bảng tổng hợp cấu trúc, dấu hiệu nhận biết, ví dụ và quiz tương tác.">
+<meta property="og:title" content="12 Thì Tiếng Anh — EasyEnglish">
+<meta property="og:description" content="Tổng hợp 12 thì tiếng Anh với bảng công thức, timeline và quiz kiểm tra.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<title>12 Thì Tiếng Anh — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:1100px;margin:0 auto;padding:40px 48px;position:relative;z-index:1}
+.tense-group{margin-bottom:28px}
+.tense-group-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin-bottom:14px;padding-bottom:8px;border-bottom:0.5px solid var(--border)}
+.tense-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:20px;margin-bottom:12px;transition:all .2s}
+.tense-card:hover{border-color:rgba(100,216,165,0.3)}
+.t-name{font-family:'Fraunces',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:4px}
+.t-en{font-size:13px;color:var(--accent);margin-bottom:10px}
+.t-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+.t-box{background:var(--bg3);border-radius:10px;padding:12px 14px;border:0.5px solid var(--border)}
+.t-box-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:6px}
+.t-box-content{font-size:13px;color:var(--text);line-height:1.6}
+.t-box-content strong{color:var(--accent)}
+.t-signal{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.t-chip{padding:3px 10px;border-radius:20px;font-size:11px;background:rgba(100,216,165,0.08);border:0.5px solid rgba(100,216,165,0.2);color:var(--accent)}
+.t-ex{font-size:13px;color:var(--text2);font-style:italic;line-height:1.6;margin-top:8px;padding:10px 14px;background:rgba(167,139,250,0.05);border-radius:8px;border-left:3px solid var(--accent2)}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter-btn{padding:7px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.filter-btn:hover{color:var(--text);border-color:rgba(100,216,165,0.3)}
+.filter-btn.active{background:rgba(100,216,165,0.12);color:var(--accent);border-color:rgba(100,216,165,0.4)}
+@media(max-width:900px){.content{padding:20px 14px 110px}.t-row{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/12-thi.html">
+</head>
+<body><div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><span>Ngữ pháp</span><span class="bc-sep">›</span><span class="bc-current">12 Thì</span></div>
+<div class="page-label">Grammar Core</div>
+<h1 class="page-title">12 Thì tiếng Anh<br><em style="color:var(--accent)">từ cơ bản đến nâng cao</em></h1>
+<p class="page-desc">Nắm vững 12 thì là nền tảng để nói và viết đúng ngữ pháp. Mỗi thì có công thức (+/-/?), dấu hiệu nhận biết và ví dụ thực tế.</p>
+
+<div class="filter-row">
+<button class="filter-btn active" onclick="filterTense('all',this)">Tất cả 12 thì</button>
+<button class="filter-btn" onclick="filterTense('simple',this)">Simple (Đơn)</button>
+<button class="filter-btn" onclick="filterTense('continuous',this)">Continuous (Tiếp diễn)</button>
+<button class="filter-btn" onclick="filterTense('perfect',this)">Perfect (Hoàn thành)</button>
+<button class="filter-btn" onclick="filterTense('perfect-continuous',this)">Perfect Continuous</button>
+</div>
+
+<div id="tenseContainer"></div>
+
+<div style="margin-top:28px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
+<h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Quiz 12 Thì</h2>
+<div id="quizBox"></div>
+<div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div>
+</div>
+</div>
+
+<script>
+var TENSES=[
+{name:"Hiện tại đơn",en:"Present Simple",group:"simple",time:"present",
+ plus:"S + V(s/es)",minus:"S + do/does + not + V",question:"Do/Does + S + V?",
+ signals:["always","usually","often","every day","sometimes","never"],
+ use:"Diễn tả thói quen, sự thật hiển nhiên, lịch trình cố định",
+ ex:"She <strong>works</strong> from home every day. / Water <strong>boils</strong> at 100°C."},
+
+{name:"Hiện tại tiếp diễn",en:"Present Continuous",group:"continuous",time:"present",
+ plus:"S + am/is/are + V-ing",minus:"S + am/is/are + not + V-ing",question:"Am/Is/Are + S + V-ing?",
+ signals:["now","right now","at the moment","currently","Look!","Listen!"],
+ use:"Hành động đang xảy ra tại thời điểm nói, kế hoạch tương lai gần",
+ ex:"I <strong>am studying</strong> English right now. / They <strong>are leaving</strong> tomorrow."},
+
+{name:"Hiện tại hoàn thành",en:"Present Perfect",group:"perfect",time:"present",
+ plus:"S + have/has + V3",minus:"S + have/has + not + V3",question:"Have/Has + S + V3?",
+ signals:["already","yet","just","ever","never","since","for","so far","recently"],
+ use:"Hành động đã xảy ra nhưng không rõ thời gian, hoặc kéo dài đến hiện tại",
+ ex:"I <strong>have visited</strong> Japan twice. / She <strong>has lived</strong> here since 2010."},
+
+{name:"Hiện tại hoàn thành tiếp diễn",en:"Present Perfect Continuous",group:"perfect-continuous",time:"present",
+ plus:"S + have/has + been + V-ing",minus:"S + have/has + not + been + V-ing",question:"Have/Has + S + been + V-ing?",
+ signals:["for","since","all day","all morning","how long"],
+ use:"Nhấn mạnh hành động kéo dài liên tục từ quá khứ đến hiện tại",
+ ex:"I <strong>have been waiting</strong> for 2 hours. / It <strong>has been raining</strong> all day."},
+
+{name:"Quá khứ đơn",en:"Past Simple",group:"simple",time:"past",
+ plus:"S + V2/V-ed",minus:"S + did + not + V",question:"Did + S + V?",
+ signals:["yesterday","last week/month/year","ago","in 2020","when I was young"],
+ use:"Hành động đã hoàn thành trong quá khứ, có thời gian cụ thể",
+ ex:"She <strong>graduated</strong> in 2019. / I <strong>went</strong> to the cinema yesterday."},
+
+{name:"Quá khứ tiếp diễn",en:"Past Continuous",group:"continuous",time:"past",
+ plus:"S + was/were + V-ing",minus:"S + was/were + not + V-ing",question:"Was/Were + S + V-ing?",
+ signals:["while","when","at that time","at 8 PM last night","all day yesterday"],
+ use:"Hành động đang xảy ra tại một thời điểm trong quá khứ, hoặc 2 hành động song song",
+ ex:"I <strong>was reading</strong> when the phone rang. / They <strong>were playing</strong> while it was raining."},
+
+{name:"Quá khứ hoàn thành",en:"Past Perfect",group:"perfect",time:"past",
+ plus:"S + had + V3",minus:"S + had + not + V3",question:"Had + S + V3?",
+ signals:["before","after","by the time","already","just","never...before"],
+ use:"Hành động xảy ra TRƯỚC một hành động khác trong quá khứ",
+ ex:"She <strong>had left</strong> before I arrived. / By the time he came, we <strong>had finished</strong>."},
+
+{name:"Quá khứ hoàn thành tiếp diễn",en:"Past Perfect Continuous",group:"perfect-continuous",time:"past",
+ plus:"S + had + been + V-ing",minus:"S + had + not + been + V-ing",question:"Had + S + been + V-ing?",
+ signals:["for","since","before","by the time","how long"],
+ use:"Nhấn mạnh hành động kéo dài liên tục trước một mốc quá khứ",
+ ex:"I <strong>had been studying</strong> for 3 hours before the exam started."},
+
+{name:"Tương lai đơn",en:"Future Simple",group:"simple",time:"future",
+ plus:"S + will + V",minus:"S + will + not + V",question:"Will + S + V?",
+ signals:["tomorrow","next week","in the future","I think","probably","promise"],
+ use:"Dự đoán, quyết định tức thì, lời hứa, yêu cầu",
+ ex:"I <strong>will help</strong> you. / It <strong>will rain</strong> tomorrow."},
+
+{name:"Tương lai tiếp diễn",en:"Future Continuous",group:"continuous",time:"future",
+ plus:"S + will + be + V-ing",minus:"S + will + not + be + V-ing",question:"Will + S + be + V-ing?",
+ signals:["at this time tomorrow","at 8 PM tonight","this time next week"],
+ use:"Hành động sẽ đang diễn ra tại một thời điểm trong tương lai",
+ ex:"I <strong>will be working</strong> at 9 PM tonight. / This time next year, she <strong>will be studying</strong> abroad."},
+
+{name:"Tương lai hoàn thành",en:"Future Perfect",group:"perfect",time:"future",
+ plus:"S + will + have + V3",minus:"S + will + not + have + V3",question:"Will + S + have + V3?",
+ signals:["by tomorrow","by next year","by the time","before"],
+ use:"Hành động sẽ hoàn thành trước một mốc thời gian trong tương lai",
+ ex:"By 2030, I <strong>will have graduated</strong>. / She <strong>will have finished</strong> by then."},
+
+{name:"Tương lai hoàn thành tiếp diễn",en:"Future Perfect Continuous",group:"perfect-continuous",time:"future",
+ plus:"S + will + have + been + V-ing",minus:"S + will + not + have + been + V-ing",question:"Will + S + have + been + V-ing?",
+ signals:["by","for","by the time","when"],
+ use:"Nhấn mạnh hành động sẽ kéo dài liên tục đến một mốc tương lai",
+ ex:"By December, I <strong>will have been working</strong> here for 5 years."}
+];
+
+var timeColors={present:'var(--accent)',past:'var(--coral)',future:'var(--accent2)'};
+var timeLabels={present:'Hiện tại',past:'Quá khứ',future:'Tương lai'};
+var curFilter='all';
+
+function filterTense(f,el){
+  curFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+  el.classList.add('active');
+  renderTenses();
+}
+
+function renderTenses(){
+  var data=curFilter==='all'?TENSES:TENSES.filter(function(t){return t.group===curFilter;});
+  var groups={present:[],past:[],future:[]};
+  data.forEach(function(t){groups[t.time].push(t);});
+  var html='';
+  ['present','past','future'].forEach(function(time){
+    if(groups[time].length===0) return;
+    html+='<div class="tense-group"><div class="tense-group-title" style="color:'+timeColors[time]+'"><i data-lucide="clock" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>'+timeLabels[time]+'</div>';
+    groups[time].forEach(function(t){
+      html+='<div class="tense-card" style="border-left:3px solid '+timeColors[t.time]+'">'
+        +'<div class="t-name">'+t.name+'</div>'
+        +'<div class="t-en">'+t.en+'</div>'
+        +'<div class="t-row">'
+          +'<div class="t-box"><div class="t-box-label">(+) Khẳng định</div><div class="t-box-content">'+t.plus+'</div></div>'
+          +'<div class="t-box"><div class="t-box-label">(-) Phủ định</div><div class="t-box-content">'+t.minus+'</div></div>'
+        +'</div>'
+        +'<div class="t-box" style="margin-bottom:10px"><div class="t-box-label">(?) Nghi vấn</div><div class="t-box-content">'+t.question+'</div></div>'
+        +'<div class="t-box"><div class="t-box-label">Cách dùng</div><div class="t-box-content">'+t.use+'</div></div>'
+        +'<div class="t-signal">';
+      t.signals.forEach(function(s){html+='<span class="t-chip">'+s+'</span>';});
+      html+='</div><div class="t-ex">'+t.ex+'</div></div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('tenseContainer').innerHTML=html;
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+renderTenses();
+
+// QUIZ
+var QZ=[
+{q:"'She ___ to school every day.' — Thì nào?",opts:["Present Simple","Present Continuous","Past Simple","Future Simple"],ans:0,exp:"Every day = thói quen → Present Simple: goes"},
+{q:"'I have lived here since 2015.' — Thì nào?",opts:["Past Simple","Present Perfect","Present Continuous","Past Perfect"],ans:1,exp:"since 2015 + kéo dài đến nay → Present Perfect"},
+{q:"'They were sleeping when the alarm rang.' — 'were sleeping' là thì gì?",opts:["Past Simple","Past Perfect","Past Continuous","Present Continuous"],ans:2,exp:"was/were + V-ing = Past Continuous"},
+{q:"Dấu hiệu nhận biết 'by the time' thường đi với thì nào?",opts:["Present Simple","Past Perfect","Present Continuous","Future Simple"],ans:1,exp:"by the time + Past Perfect: 'By the time he came, I had left'"},
+{q:"'I will be working at 9 PM tonight.' — Thì nào?",opts:["Future Simple","Future Perfect","Future Continuous","Present Continuous"],ans:2,exp:"will be + V-ing = Future Continuous — hành động đang diễn ra ở tương lai"},
+{q:"'She has been studying for 3 hours.' — Thì nào?",opts:["Present Perfect","Present Continuous","Present Perfect Continuous","Past Perfect Continuous"],ans:2,exp:"has been + V-ing = Present Perfect Continuous — nhấn mạnh kéo dài"},
+{q:"Signal word 'yesterday' đi với thì nào?",opts:["Present Simple","Past Simple","Present Perfect","Future Simple"],ans:1,exp:"yesterday = quá khứ cụ thể → Past Simple"},
+{q:"'By 2030, I will have graduated.' — Thì nào?",opts:["Future Simple","Future Continuous","Future Perfect","Future Perfect Continuous"],ans:2,exp:"will have + V3 = Future Perfect — hoàn thành trước mốc tương lai"},
+{q:"Câu nào dùng Present Perfect đúng?",opts:["I have went to Paris.","I have gone to Paris.","I has gone to Paris.","I going to Paris."],ans:1,exp:"have + V3 (gone, not went). Has dùng cho he/she/it"},
+{q:"'While I was cooking, he was watching TV.' — Hai hành động này diễn tả?",opts:["Nối tiếp nhau","Song song trong quá khứ","Một trước một sau","Tương lai"],ans:1,exp:"while + Past Continuous + Past Continuous = 2 hành động song song"}
+];
+var qI=0,qS=0;
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
+function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=''+QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
+renderQz();
+</script>
+<script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script></body></html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="200+ Phrasal Verbs phổ biến nhất với nghĩa tiếng Việt, ví dụ và quiz tương tác.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Cụm động từ — EasyEnglish">
+<meta property="og:description" content="150+ phrasal verbs phổ biến nhất: get up, look for, give up... với ví dụ và quiz.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cụm động từ — EasyEnglish">
+<meta name="twitter:description" content="150+ phrasal verbs phổ biến nhất: get up, look for, give up... với ví dụ và quiz.">
+<title>Phrasal Verbs — Cụm động từ — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+
+<meta name="theme-color" content="#64D8A5">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<link rel="canonical" href="https://easyenglish.vn/cum-dong-tu.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Từ vựng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Phrasal Verbs</span></div>
+<div class="page-label">Phrasal Verbs</div>
+<h1 class="page-title">200+ Cụm động từ</h1>
+<p class="page-desc">Cụm động từ (Phrasal Verbs) phổ biến nhất trong tiếng Anh giao tiếp và thi cử.</p>
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm phrasal verb..." oninput="filterPV()">
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px" id="tagBar"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<span style="font-size:13px;color:var(--text3)" id="countLabel"></span>
+<button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif"><i data-lucide="zap" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Quiz</button>
+</div>
+<div id="pvList" style="display:grid;gap:10px"></div>
+<div id="quizArea" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin-top:20px">
+<div style="font-size:12px;color:var(--text3);margin-bottom:8px">Câu <span id="qCur">1</span>/<span id="qTot">10</span></div>
+<div id="qPV" style="font-family:Fraunces,serif;font-size:28px;color:var(--text);margin-bottom:20px"></div>
+<div id="qOpts" style="display:grid;gap:8px;max-width:500px;margin:0 auto"></div>
+<div id="qFb" style="margin-top:14px;padding:12px;border-radius:10px;font-size:14px;display:none"></div>
+</div>
+</div>
+<script>
+const PV=[
+{en:"break down",vi:"hỏng / khóc / phân tích",ex:"My car broke down on the highway.",tag:"Common"},
+{en:"break up",vi:"chia tay / tan vỡ",ex:"They broke up after 3 years.",tag:"Common"},
+{en:"bring up",vi:"nuôi dạy / đề cập",ex:"She was brought up by her grandparents.",tag:"Common"},
+{en:"call off",vi:"hủy bỏ",ex:"They called off the meeting.",tag:"Common"},
+{en:"carry on",vi:"tiếp tục",ex:"Carry on with your work.",tag:"Common"},
+{en:"come across",vi:"tình cờ gặp",ex:"I came across an old photo.",tag:"Common"},
+{en:"come up with",vi:"nghĩ ra",ex:"She came up with a great idea.",tag:"Common"},
+{en:"cut down on",vi:"giảm bớt",ex:"I need to cut down on sugar.",tag:"Health"},
+{en:"do without",vi:"sống thiếu",ex:"I can't do without my phone.",tag:"Common"},
+{en:"drop out",vi:"bỏ học / rút lui",ex:"He dropped out of college.",tag:"Education"},
+{en:"figure out",vi:"tìm ra / hiểu",ex:"I can't figure out this puzzle.",tag:"Common"},
+{en:"find out",vi:"phát hiện",ex:"I found out the truth.",tag:"Common"},
+{en:"get along",vi:"hòa hợp",ex:"They get along really well.",tag:"Relationships"},
+{en:"get away",vi:"thoát / đi nghỉ",ex:"Let's get away for the weekend.",tag:"Travel"},
+{en:"get by",vi:"xoay xở / sống qua ngày",ex:"We get by on a small salary.",tag:"Money"},
+{en:"get over",vi:"vượt qua / hồi phục",ex:"It took weeks to get over the flu.",tag:"Health"},
+{en:"get rid of",vi:"loại bỏ",ex:"Get rid of old clothes.",tag:"Common"},
+{en:"get up",vi:"thức dậy / đứng dậy",ex:"I get up at 6 AM every day.",tag:"Common"},
+{en:"give in",vi:"đầu hàng / nhượng bộ",ex:"Don't give in to pressure.",tag:"Common"},
+{en:"give up",vi:"từ bỏ",ex:"Never give up on your dreams.",tag:"Common"},
+{en:"go on",vi:"tiếp tục / xảy ra",ex:"What's going on here?",tag:"Common"},
+{en:"go through",vi:"trải qua",ex:"She went through a hard time.",tag:"Common"},
+{en:"grow up",vi:"lớn lên",ex:"I grew up in Hanoi.",tag:"Common"},
+{en:"hand in",vi:"nộp",ex:"Hand in your homework by Friday.",tag:"Education"},
+{en:"hang out",vi:"đi chơi",ex:"Let's hang out this weekend.",tag:"Common"},
+{en:"hold on",vi:"chờ / giữ chặt",ex:"Hold on, I'll be right back.",tag:"Common"},
+{en:"keep up with",vi:"theo kịp",ex:"It's hard to keep up with technology.",tag:"Technology"},
+{en:"let down",vi:"làm thất vọng",ex:"Don't let me down.",tag:"Relationships"},
+{en:"look after",vi:"chăm sóc",ex:"She looks after her parents.",tag:"Common"},
+{en:"look for",vi:"tìm kiếm",ex:"I'm looking for my keys.",tag:"Common"},
+{en:"look forward to",vi:"mong chờ",ex:"I look forward to seeing you.",tag:"Common"},
+{en:"look into",vi:"điều tra",ex:"Police are looking into the case.",tag:"Common"},
+{en:"look up",vi:"tra (từ điển)",ex:"Look up the word in the dictionary.",tag:"Education"},
+{en:"make up",vi:"bịa / trang điểm / làm hòa",ex:"They made up after the fight.",tag:"Common"},
+{en:"pass away",vi:"qua đời",ex:"Her grandmother passed away.",tag:"Common"},
+{en:"pick up",vi:"đón / nhặt / học được",ex:"I'll pick you up at 7.",tag:"Common"},
+{en:"point out",vi:"chỉ ra",ex:"She pointed out the mistake.",tag:"Common"},
+{en:"put off",vi:"hoãn lại",ex:"Don't put off your homework.",tag:"Common"},
+{en:"put on",vi:"mặc / bật",ex:"Put on your jacket.",tag:"Common"},
+{en:"put up with",vi:"chịu đựng",ex:"I can't put up with this noise.",tag:"Common"},
+{en:"run into",vi:"tình cờ gặp",ex:"I ran into an old friend.",tag:"Common"},
+{en:"run out of",vi:"hết / cạn",ex:"We've run out of milk.",tag:"Common"},
+{en:"set up",vi:"thiết lập / lắp đặt",ex:"They set up a new company.",tag:"Work"},
+{en:"show off",vi:"khoe khoang",ex:"Stop showing off!",tag:"Common"},
+{en:"show up",vi:"xuất hiện",ex:"He didn't show up for the meeting.",tag:"Common"},
+{en:"sort out",vi:"giải quyết / sắp xếp",ex:"We need to sort out this problem.",tag:"Work"},
+{en:"stand for",vi:"viết tắt của / đại diện",ex:"UN stands for United Nations.",tag:"Education"},
+{en:"take after",vi:"giống (tính cách)",ex:"She takes after her mother.",tag:"Relationships"},
+{en:"take off",vi:"cất cánh / cởi ra",ex:"The plane took off on time.",tag:"Travel"},
+{en:"take on",vi:"đảm nhận",ex:"He took on too many tasks.",tag:"Work"},
+{en:"take over",vi:"tiếp quản",ex:"A new CEO took over the company.",tag:"Work"},
+{en:"take up",vi:"bắt đầu (thói quen)",ex:"I took up yoga last year.",tag:"Common"},
+{en:"think over",vi:"cân nhắc kỹ",ex:"Think it over before deciding.",tag:"Common"},
+{en:"throw away",vi:"vứt đi",ex:"Don't throw away recyclables.",tag:"Environment"},
+{en:"try on",vi:"thử (quần áo)",ex:"Can I try on this shirt?",tag:"Common"},
+{en:"turn down",vi:"từ chối / vặn nhỏ",ex:"She turned down the job offer.",tag:"Work"},
+{en:"turn off",vi:"tắt",ex:"Turn off the lights.",tag:"Common"},
+{en:"turn on",vi:"bật",ex:"Turn on the TV.",tag:"Common"},
+{en:"turn out",vi:"hóa ra",ex:"It turned out to be a mistake.",tag:"Common"},
+{en:"turn up",vi:"xuất hiện / vặn to",ex:"He turned up late.",tag:"Common"},
+{en:"use up",vi:"dùng hết",ex:"We've used up all the paper.",tag:"Common"},
+{en:"wake up",vi:"thức dậy",ex:"I woke up early today.",tag:"Common"},
+{en:"work out",vi:"tập thể dục / giải quyết",ex:"I work out three times a week.",tag:"Health"},
+{en:"write down",vi:"ghi chép",ex:"Write down the important points.",tag:"Education"},
+{en:"back up",vi:"sao lưu / lùi lại",ex:"Back up your files regularly.",tag:"Technology"},
+{en:"blow up",vi:"nổ / phóng to / nổi giận",ex:"The balloon blew up.",tag:"Common"},
+{en:"check in",vi:"đăng ký (khách sạn/sân bay)",ex:"We checked in at the hotel.",tag:"Travel"},
+{en:"check out",vi:"trả phòng / xem thử",ex:"Check out this new restaurant!",tag:"Common"},
+{en:"cheer up",vi:"vui lên",ex:"Cheer up! Things will get better.",tag:"Common"},
+{en:"clean up",vi:"dọn dẹp",ex:"Clean up your room!",tag:"Common"},
+{en:"close down",vi:"đóng cửa (vĩnh viễn)",ex:"The store closed down last month.",tag:"Work"},
+{en:"count on",vi:"tin cậy",ex:"You can count on me.",tag:"Relationships"},
+{en:"deal with",vi:"giải quyết / đối phó",ex:"How do you deal with stress?",tag:"Common"},
+{en:"dress up",vi:"ăn mặc đẹp",ex:"Let's dress up for the party.",tag:"Common"},
+{en:"end up",vi:"kết thúc / rốt cuộc",ex:"We ended up staying home.",tag:"Common"},
+{en:"fall apart",vi:"tan rã / hỏng",ex:"The old book fell apart.",tag:"Common"},
+{en:"fill in",vi:"điền vào",ex:"Fill in the form, please.",tag:"Common"},
+{en:"freak out",vi:"hoảng sợ",ex:"Don't freak out!",tag:"Common"},
+{en:"hang up",vi:"cúp máy / treo",ex:"She hung up the phone.",tag:"Common"},
+{en:"head out",vi:"ra ngoài / khởi hành",ex:"We're heading out at noon.",tag:"Common"},
+{en:"help out",vi:"giúp đỡ",ex:"Can you help me out?",tag:"Common"},
+{en:"kick out",vi:"đuổi ra",ex:"He was kicked out of the club.",tag:"Common"},
+{en:"lay off",vi:"sa thải",ex:"The company laid off 50 workers.",tag:"Work"},
+{en:"leave out",vi:"bỏ sót",ex:"Don't leave out any details.",tag:"Common"},
+{en:"line up",vi:"xếp hàng",ex:"People lined up outside the store.",tag:"Common"},
+{en:"live up to",vi:"sống đúng với (kỳ vọng)",ex:"He lived up to his reputation.",tag:"Common"},
+{en:"lock out",vi:"khóa ngoài",ex:"I locked myself out of the house.",tag:"Common"},
+{en:"mess up",vi:"làm hỏng",ex:"I messed up the presentation.",tag:"Common"},
+{en:"move on",vi:"tiếp tục / bước tiếp",ex:"It's time to move on.",tag:"Common"},
+{en:"opt out",vi:"rút khỏi / không tham gia",ex:"You can opt out of the program.",tag:"Common"},
+{en:"pay back",vi:"trả lại (tiền)",ex:"I'll pay you back tomorrow.",tag:"Money"},
+{en:"pull over",vi:"tấp xe vào lề",ex:"The police pulled me over.",tag:"Travel"},
+{en:"put away",vi:"cất đi",ex:"Put away your toys.",tag:"Common"},
+{en:"rip off",vi:"lừa đảo / chặt chém",ex:"That shop ripped me off!",tag:"Money"},
+{en:"rule out",vi:"loại trừ",ex:"We can't rule out that possibility.",tag:"Common"},
+{en:"sell out",vi:"bán hết / cháy vé",ex:"The concert sold out in minutes.",tag:"Common"},
+{en:"settle down",vi:"ổn định / bình tĩnh",ex:"She settled down in London.",tag:"Common"},
+{en:"sign up",vi:"đăng ký",ex:"Sign up for the newsletter.",tag:"Common"},
+{en:"slow down",vi:"chậm lại",ex:"Slow down! You're driving too fast.",tag:"Common"},
+{en:"speak up",vi:"nói to hơn / lên tiếng",ex:"Speak up, I can't hear you.",tag:"Common"},
+{en:"stand out",vi:"nổi bật",ex:"Her red dress stood out.",tag:"Common"},
+{en:"stick to",vi:"kiên trì / gắn bó",ex:"Stick to your plan.",tag:"Common"},
+{en:"sum up",vi:"tóm tắt",ex:"To sum up, we need more data.",tag:"Education"},
+{en:"switch off",vi:"tắt",ex:"Switch off your phone in class.",tag:"Common"},
+{en:"tear down",vi:"phá hủy",ex:"They tore down the old building.",tag:"Common"},
+{en:"top up",vi:"nạp thêm",ex:"Top up your phone credit.",tag:"Common"},
+{en:"warm up",vi:"khởi động",ex:"Warm up before exercising.",tag:"Health"},
+{en:"wear out",vi:"mòn / kiệt sức",ex:"These shoes are worn out.",tag:"Common"},
+{en:"wind down",vi:"thư giãn",ex:"I like to wind down with music.",tag:"Common"},
+{en:"wipe out",vi:"xóa sạch / kiệt sức",ex:"The storm wiped out the village.",tag:"Environment"},
+{en:"wrap up",vi:"kết thúc / gói lại",ex:"Let's wrap up the meeting.",tag:"Work"},
+{en:"zoom in",vi:"phóng to",ex:"Zoom in on the photo.",tag:"Technology"}
+];
+const TAGS=[...new Set(PV.map(function(p){return p.tag;}))];
+let activeTag="all";
+document.getElementById("tagBar").innerHTML='<button class="tag-btn active" onclick="setTag(\'all\',this)">Tất cả</button>'+TAGS.map(function(t){return '<button class="tag-btn" onclick="setTag(\''+t+'\',this)">'+t+' <span style="font-size:11px;color:var(--text3)">('+PV.filter(function(p){return p.tag===t;}).length+')</span></button>';}).join("");
+function setTag(t,btn){activeTag=t;document.querySelectorAll(".tag-btn").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");renderPV();}
+function filterPV(){renderPV();}
+function getFiltered(){var q=document.getElementById("searchBox").value.toLowerCase();return PV.filter(function(p){var mt=activeTag==="all"||p.tag===activeTag;var mq=!q||p.en.toLowerCase().includes(q)||p.vi.includes(q);return mt&&mq;});}
+function renderPV(){
+  var items=getFiltered();
+  document.getElementById("countLabel").textContent=items.length+" phrasal verbs";
+  document.getElementById("pvList").innerHTML=items.map(function(p){
+    return '<div class="idiom-card"><div class="idiom-en">'+p.en+'</div><div class="idiom-vi" style="font-size:14px;color:var(--accent3);margin:2px 0">→ '+p.vi+'</div><div style="margin-top:8px;padding:10px 14px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--accent2)"><div class="idiom-ex" style="font-size:13px;color:var(--text2)">"'+p.ex+'"</div></div><span style="display:inline-block;margin-top:8px;padding:2px 8px;border-radius:4px;font-size:11px;background:rgba(100,216,165,0.08);color:var(--accent)">'+p.tag+'</span></div>';
+  }).join("");
+}
+var quizItems=[],quizIdx=0,quizScore=0,quizAnswered=false;
+function startQuiz(){var pool=getFiltered();if(pool.length<4){alert("Cần ít nhất 4 PV!");return;}quizItems=pool.sort(function(){return Math.random()-0.5;}).slice(0,Math.min(10,pool.length));quizIdx=0;quizScore=0;document.getElementById("quizArea").style.display="block";document.getElementById("pvList").style.display="none";showQuizQ();}
+function showQuizQ(){
+  if(quizIdx>=quizItems.length){document.getElementById("quizArea").innerHTML='<div style="font-family:Fraunces,serif;font-size:48px;color:var(--accent)">'+Math.round(quizScore/quizItems.length*100)+'%</div><div style="color:var(--text2);font-size:14px;margin:8px 0 16px">Đúng '+quizScore+'/'+quizItems.length+'</div><button onclick="document.getElementById(\'quizArea\').style.display=\'none\';document.getElementById(\'pvList\').style.display=\'grid\'" style="padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:DM Sans,sans-serif">Đóng</button>';return;}
+  var q=quizItems[quizIdx];var allVi=PV.map(function(p){return p.vi;}).filter(function(m){return m!==q.vi;}).sort(function(){return Math.random()-0.5;}).slice(0,3);allVi.push(q.vi);allVi.sort(function(){return Math.random()-0.5;});
+  document.getElementById("qCur").textContent=quizIdx+1;document.getElementById("qTot").textContent=quizItems.length;document.getElementById("qPV").textContent=q.en;
+  document.getElementById("qOpts").innerHTML=allVi.map(function(m){return '<button onclick="checkQuiz(this,this.dataset.a,this.dataset.c)" data-a="'+m.replace(/"/g,"&quot;")+'" data-c="'+q.vi.replace(/"/g,"&quot;")+'" style="padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif;text-align:left">'+m+'</button>';}).join("");
+  quizAnswered=false;
+}
+function checkQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;if(ans===correct){btn.style.background="rgba(107,203,119,0.15)";btn.style.borderColor="var(--green)";btn.style.color="var(--green)";quizScore++;}else{btn.style.background="rgba(255,138,128,0.15)";btn.style.borderColor="var(--coral)";btn.style.color="var(--coral)";document.querySelectorAll("#qOpts button").forEach(function(b){if(b.dataset.a===correct){b.style.background="rgba(107,203,119,0.15)";b.style.borderColor="var(--green)";b.style.color="var(--green)";}});}setTimeout(function(){quizIdx++;showQuizQ();},1200);}
+renderPV();
+
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

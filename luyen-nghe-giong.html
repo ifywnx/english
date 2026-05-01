@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện nghe phân biệt giọng — EasyEnglish</title>
+<meta name="description" content="Phân biệt giọng Anh-Anh, Anh-Mỹ, Anh-Úc qua ví dụ phát âm và bài tập nghe.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.accent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:24px 0}
+.accent-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px}
+.ac-flag{font-size:32px;margin-bottom:8px}
+.ac-name{font-family:'Fraunces',serif;font-weight:300;font-size:18px;margin-bottom:8px}
+.ac-features{font-size:13px;color:var(--text2);line-height:1.7}
+.ac-features li{margin-bottom:4px}
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+.compare-table th{background:rgba(100,216,165,0.1);padding:10px;text-align:left;font-weight:500;border-bottom:0.5px solid var(--border)}
+.compare-table td{padding:10px;border-bottom:0.5px solid var(--border)}
+.compare-table .speak-btn{background:none;border:none;cursor:pointer;font-size:16px;color:var(--accent)}
+.practice-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px;margin-top:24px}
+.listen-btn{padding:14px 28px;border-radius:12px;border:none;background:var(--accent);color:#0b1a1e;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin:8px 4px}
+.opt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.opt-btn{padding:14px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.opt-btn:hover{border-color:rgba(100,216,165,0.4)}
+.opt-btn.correct{background:rgba(100,216,165,0.2);border-color:var(--accent)}
+.opt-btn.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral)}
+.result{text-align:center;font-size:14px;color:var(--text2);margin-top:12px;min-height:20px}
+@media(max-width:768px){.content{padding:20px 14px 110px}.accent-grid{grid-template-columns:1fr}.opt-grid{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><a href="ky-nang.html">Kỹ năng</a><span class="bc-sep">›</span><span class="bc-current">Phân biệt giọng</span></div>
+
+<h1 class="page-title">Phân biệt giọng Anh</h1>
+<p class="page-desc">Nghe và phân biệt 3 giọng chính: British, American và Australian.</p>
+
+<div class="accent-grid">
+  <div class="accent-card">
+    <div class="ac-flag">🇬🇧</div>
+    <div class="ac-name">British English</div>
+    <ul class="ac-features">
+      <li>Không phát âm /r/ cuối từ (non-rhotic): <em>car</em> → /kɑː/</li>
+      <li>"Bath" phát âm /bɑːθ/ (nguyên âm dài)</li>
+      <li>Âm /t/ rõ ràng: <em>water</em> → /ˈwɔːtə/</li>
+      <li>Intonation đi xuống cuối câu hỏi</li>
+    </ul>
+  </div>
+  <div class="accent-card">
+    <div class="ac-flag">🇺🇸</div>
+    <div class="ac-name">American English</div>
+    <ul class="ac-features">
+      <li>Phát âm /r/ rõ (rhotic): <em>car</em> → /kɑːr/</li>
+      <li>"Bath" phát âm /bæθ/ (nguyên âm ngắn)</li>
+      <li>Âm /t/ thành /d/: <em>water</em> → /ˈwɑːdər/</li>
+      <li>Nhấn mạnh content words</li>
+    </ul>
+  </div>
+  <div class="accent-card">
+    <div class="ac-flag">🇦🇺</div>
+    <div class="ac-name">Australian English</div>
+    <ul class="ac-features">
+      <li>Non-rhotic như British nhưng vowels khác</li>
+      <li>"Day" phát âm gần /daɪ/ thành /dæɪ/</li>
+      <li>Rising intonation cuối câu (nghe như hỏi)</li>
+      <li>Nhiều slang: <em>arvo</em> (afternoon), <em>brekkie</em> (breakfast)</li>
+    </ul>
+  </div>
+</div>
+
+<table class="compare-table">
+  <tr><th>Từ</th><th>🇬🇧 British</th><th>🇺🇸 American</th><th>Nghe</th></tr>
+  <tr><td>Schedule</td><td>/ˈʃedjuːl/</td><td>/ˈskedʒuːl/</td><td><button class="speak-btn" onclick="speak('schedule')">🔊</button></td></tr>
+  <tr><td>Tomato</td><td>/təˈmɑːtəʊ/</td><td>/təˈmeɪtoʊ/</td><td><button class="speak-btn" onclick="speak('tomato')">🔊</button></td></tr>
+  <tr><td>Water</td><td>/ˈwɔːtə/</td><td>/ˈwɑːdər/</td><td><button class="speak-btn" onclick="speak('water')">🔊</button></td></tr>
+  <tr><td>Aluminium</td><td>/ˌæljʊˈmɪniəm/</td><td>/əˈluːmɪnəm/</td><td><button class="speak-btn" onclick="speak('aluminum')">🔊</button></td></tr>
+  <tr><td>Either</td><td>/ˈaɪðə/</td><td>/ˈiːðər/</td><td><button class="speak-btn" onclick="speak('either')">🔊</button></td></tr>
+  <tr><td>Garage</td><td>/ˈɡærɑːʒ/</td><td>/ɡəˈrɑːʒ/</td><td><button class="speak-btn" onclick="speak('garage')">🔊</button></td></tr>
+</table>
+
+<div class="practice-card">
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:14px">🎧 Quiz: Đoán giọng nào?</h2>
+  <p style="font-size:14px;color:var(--text2);margin-bottom:16px">Nhấn "Nghe" rồi đoán đó là giọng nước nào.</p>
+  <div style="text-align:center">
+    <button class="listen-btn" onclick="playQuiz()" id="playBtn">🔊 Nghe</button>
+  </div>
+  <div class="opt-grid" id="optGrid">
+    <button class="opt-btn" onclick="guessAccent('British')">🇬🇧 British</button>
+    <button class="opt-btn" onclick="guessAccent('American')">🇺🇸 American</button>
+    <button class="opt-btn" onclick="guessAccent('Australian')">🇦🇺 Australian</button>
+  </div>
+  <div class="result" id="quizResult"></div>
+</div>
+
+</div>
+<script>
+function speak(word){const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.85;speechSynthesis.speak(u);}
+
+const QUIZ_SENTENCES=[
+  {text:"I will have a cup of tea, please.",accent:"British"},
+  {text:"Can I get a glass of water?",accent:"American"},
+  {text:"Let us go to the beach this arvo.",accent:"Australian"},
+  {text:"That is a lovely jumper you have got.",accent:"British"},
+  {text:"I parked the car in the garage.",accent:"American"},
+  {text:"No worries, mate. She will be right.",accent:"Australian"},
+];
+let qz=0,currentAccent='';
+
+function playQuiz(){
+  const q=QUIZ_SENTENCES[qz%QUIZ_SENTENCES.length];
+  currentAccent=q.accent;
+  const u=new SpeechSynthesisUtterance(q.text);
+  u.lang=q.accent==='British'?'en-GB':q.accent==='Australian'?'en-AU':'en-US';
+  u.rate=0.9;
+  speechSynthesis.speak(u);
+  document.getElementById('quizResult').textContent='';
+  document.querySelectorAll('.opt-btn').forEach(b=>{b.classList.remove('correct','wrong');b.style.pointerEvents='';});
+}
+
+function guessAccent(chosen){
+  document.querySelectorAll('.opt-btn').forEach(b=>{
+    b.style.pointerEvents='none';
+    if(b.textContent.includes(currentAccent))b.classList.add('correct');
+    if(b.textContent.includes(chosen)&&chosen!==currentAccent)b.classList.add('wrong');
+  });
+  document.getElementById('quizResult').textContent=chosen===currentAccent?'✅ Đúng rồi!':'❌ Sai! Đó là giọng '+currentAccent;
+  qz++;
+  setTimeout(()=>{document.getElementById('playBtn').textContent='🔊 Câu tiếp';},1000);
+}
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

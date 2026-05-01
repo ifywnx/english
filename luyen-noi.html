@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Module Speaking Practice — luyện nói tiếng Anh theo chủ đề, có khung trả lời, lỗi hay gặp và bài tập thực hành.">
+<meta property="og:title" content="Speaking Practice — EasyEnglish">
+<meta property="og:description" content="Luyện nói tiếng Anh theo chủ đề, có khung câu trả lời, từ nối và mẹo ăn điểm.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Speaking Practice — EasyEnglish">
+<meta name="twitter:description" content="Luyện nói tiếng Anh theo chủ đề, có khung câu trả lời, từ nối và mẹo ăn điểm.">
+<title>Speaking Practice — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:1100px;margin:0 auto;padding:40px 48px;position:relative;z-index:1}
+.hero{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(167,139,250,0.06));border:0.5px solid var(--border);border-radius:24px;padding:28px;margin-bottom:18px}
+.hero-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;max-width:780px;margin-top:10px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.s-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:16px}
+.s-num{font-family:'Fraunces',serif;font-size:30px;color:var(--text);line-height:1}
+.s-label{font-size:11px;color:var(--text3);margin-top:6px;letter-spacing:.08em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:18px}
+.card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px}
+.card h2{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:10px;color:var(--text)}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.75}
+.card ul{margin:0;padding-left:18px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{padding:5px 10px;border-radius:999px;border:0.5px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2)}
+.topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.topic{background:var(--bg3);border:0.5px solid var(--border);border-radius:14px;padding:16px}
+.topic h3{font-size:15px;color:var(--text);margin-bottom:6px}
+.topic p{font-size:13px;color:var(--text3);margin-bottom:10px}
+.topic .prompt{font-size:13px;color:var(--text2);padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);border:0.5px solid var(--border)}
+.tip{background:rgba(240,194,122,0.08);border-left:3px solid var(--accent3);border-radius:0 12px 12px 0;padding:14px 16px;margin-top:14px}
+.tip strong{color:var(--accent3)}
+.qa{display:grid;grid-template-columns:1fr;gap:10px}
+.qa-item{background:var(--bg3);border:0.5px solid var(--border);border-radius:14px;padding:14px 16px}
+.qa-item h4{font-size:13px;margin-bottom:4px;color:var(--accent)}
+.qa-item p{font-size:13px;color:var(--text2);line-height:1.7}
+.sample{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.18);border-radius:14px;padding:16px;margin-top:12px}
+.sample .line{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.sample .num{width:24px;height:24px;border-radius:50%;background:rgba(100,216,165,0.14);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.sample .txt{font-size:13px;color:var(--text2);line-height:1.7}
+.section{margin-top:18px}
+.section h2{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:8px;color:var(--text)}
+.section .sub{font-size:13px;color:var(--text3);margin-bottom:14px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cta{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:rgba(100,216,165,0.12);border:0.5px solid rgba(100,216,165,0.25);color:var(--accent);text-decoration:none;font-size:13px}
+.cta.secondary{background:var(--card2);color:var(--text2)}
+@media(max-width:900px){.content{padding:20px 14px 110px}.grid{grid-template-columns:1fr}.hero-stats{grid-template-columns:1fr 1fr}.topic-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.hero-stats{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/luyen-noi.html">
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content page-enter">
+  <div class="breadcrumb">
+    <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+    <span class="bc-sep">›</span>
+    <span>Kỹ năng</span>
+    <span class="bc-sep">›</span>
+    <span class="bc-current">Speaking Practice</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="kicker">Speaking module</div>
+        <h1 class="page-title">Luyện nói tiếng Anh theo khung trả lời thật, dễ nhớ, dễ áp dụng</h1>
+        <div class="desc">Module này tập trung vào cách trả lời mạch lạc, tự nhiên, có mở bài - phát triển ý - kết câu. Mỗi chủ đề đều có khung nói, từ nối, lỗi hay gặp và câu mẫu để bạn luyện ngay.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px" class="speaking-deep-grid">
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+        <div style="font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">1. Build ideas</div>
+        <div style="font-size:14px;color:var(--text2);line-height:1.7">Biết cách nghĩ ý nhanh theo 3 hướng: experience, reason, example.</div>
+      </div>
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+        <div style="font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">2. Speak clearly</div>
+        <div style="font-size:14px;color:var(--text2);line-height:1.7">Dùng câu đơn rõ ràng trước, rồi mới mở rộng bằng linking words và collocations.</div>
+      </div>
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
+        <div style="font-size:12px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">3. Self-check</div>
+        <div style="font-size:14px;color:var(--text2);line-height:1.7">Tự đánh giá theo độ rõ ý, phát âm, ngữ điệu và khả năng mở rộng câu trả lời.</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="s-card"><div class="s-num">8</div><div class="s-label">Topic core</div></div>
+      <div class="s-card"><div class="s-num">24</div><div class="s-label">Câu mẫu</div></div>
+      <div class="s-card"><div class="s-num">12</div><div class="s-label">Lỗi hay gặp</div></div>
+      <div class="s-card"><div class="s-num">3</div><div class="s-label">Khung trả lời</div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Khung trả lời tốt nhất</h2>
+      <p>Đừng trả lời quá ngắn. Công thức an toàn cho speaking là:</p>
+      <div class="sample">
+        <div class="line"><div class="num">1</div><div class="txt"><strong>Answer directly</strong> — trả lời thẳng câu hỏi trong 1 câu ngắn.</div></div>
+        <div class="line"><div class="num">2</div><div class="txt"><strong>Give one reason</strong> — đưa 1 lý do hoặc ví dụ cụ thể.</div></div>
+        <div class="line"><div class="num">3</div><div class="txt"><strong>Expand naturally</strong> — thêm chi tiết, so sánh hoặc trải nghiệm cá nhân.</div></div>
+      </div>
+      <div class="badges">
+        <span class="badge">Answer + Reason + Example</span>
+        <span class="badge">Natural pace</span>
+        <span class="badge">Linking words</span>
+        <span class="badge">Pronunciation</span>
+      </div>
+      <div class="tip"><strong>Mẹo:</strong> Khi bí ý, hãy nói chậm hơn một chút thay vì im lặng. Speaking tốt là nói rõ, không phải nói nhanh.</div>
+    </div>
+
+    <div class="card">
+      <h2>Điểm cần tránh</h2>
+      <div class="qa">
+        <div class="qa-item"><h4>Trả lời quá ngắn</h4><p>Chỉ nói “Yes” hoặc “No” sẽ làm câu trả lời thiếu điểm. Hãy thêm 1 lý do hoặc 1 ví dụ.</p></div>
+        <div class="qa-item"><h4>Dịch word-by-word</h4><p>Không dịch từng chữ từ tiếng Việt sang tiếng Anh. Hãy học cụm và câu tự nhiên.</p></div>
+        <div class="qa-item"><h4>Dùng từ khó không đúng</h4><p>Đừng cố nhồi từ học thuật nếu chưa chắc nghĩa và cách phát âm.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>8 chủ đề nói cốt lõi</h2>
+    <div class="sub">Mỗi topic đều có prompt để bạn tự luyện trước khi xem câu mẫu.</div>
+    <div class="topic-grid">
+      <div class="topic"><h3>1. Introduce yourself</h3><p>Giới thiệu bản thân, nghề nghiệp, mục tiêu học tiếng Anh.</p><div class="prompt">Prompt: Tell me about yourself in 3 sentences.</div></div>
+      <div class="topic"><h3>2. Family & friends</h3><p>Quan hệ gia đình, bạn bè, người ảnh hưởng đến bạn.</p><div class="prompt">Prompt: Who do you spend most time with?</div></div>
+      <div class="topic"><h3>3. Daily routine</h3><p>Thói quen hằng ngày, lịch sinh hoạt, hoạt động yêu thích.</p><div class="prompt">Prompt: Describe your typical weekday.</div></div>
+      <div class="topic"><h3>4. Study & work</h3><p>Học tập, công việc, mục tiêu ngắn hạn và dài hạn.</p><div class="prompt">Prompt: What do you find most challenging about your studies?</div></div>
+      <div class="topic"><h3>5. Hometown</h3><p>Quê hương, nơi bạn sống, điểm nổi bật của khu vực.</p><div class="prompt">Prompt: What do you like most about your hometown?</div></div>
+      <div class="topic"><h3>6. Hobbies</h3><p>Sở thích, tần suất, lý do bạn thích hoạt động đó.</p><div class="prompt">Prompt: Why do you enjoy this hobby?</div></div>
+      <div class="topic"><h3>7. Technology</h3><p>Ứng dụng công nghệ trong học tập và đời sống.</p><div class="prompt">Prompt: How has technology changed your life?</div></div>
+      <div class="topic"><h3>8. Travel & culture</h3><p>Du lịch, trải nghiệm, sự khác biệt giữa các nền văn hoá.</p><div class="prompt">Prompt: Describe a memorable trip.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Câu mẫu ngắn mà tự nhiên</h2>
+    <div class="sub">Học theo cụm, không học từng từ rời rạc.</div>
+    <div class="card">
+      <div class="topic" style="margin-bottom:12px">
+        <h3>How to answer</h3>
+        <p>1) Trả lời trực tiếp. 2) Nói lý do. 3) Thêm ví dụ hoặc trải nghiệm cá nhân. 4) Kết nhẹ bằng cảm nhận.</p>
+      </div>
+      <ul>
+        <li><strong>I’d say...</strong> — Tôi nghĩ là...</li>
+        <li><strong>What I really enjoy is...</strong> — Điều tôi thật sự thích là...</li>
+        <li><strong>It helps me...</strong> — Nó giúp tôi...</li>
+        <li><strong>To be honest...</strong> — Thành thật mà nói...</li>
+        <li><strong>For example...</strong> — Ví dụ như...</li>
+        <li><strong>That’s why...</strong> — Đó là lý do tại sao...</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Mini practice</h2>
+    <div class="sub">Tự trả lời trước, rồi đối chiếu với khung bên dưới.</div>
+    <div class="card">
+      <div class="topic" style="margin-bottom:12px">
+        <h3>Question</h3>
+        <p>What do you usually do in your free time?</p>
+      </div>
+      <div class="sample">
+        <div class="line"><div class="num">A</div><div class="txt"><strong>Direct:</strong> In my free time, I usually read books or listen to music.</div></div>
+        <div class="line"><div class="num">B</div><div class="txt"><strong>Reason:</strong> I like them because they help me relax after studying.</div></div>
+        <div class="line"><div class="num">C</div><div class="txt"><strong>Expand:</strong> Sometimes I also go for a walk with my friends, especially in the evening.</div></div>
+      </div>
+      <div class="tip" style="margin-top:12px"><strong>Check:</strong> Có trả lời trực tiếp chưa? Có lý do chưa? Có chi tiết tự nhiên chưa?</div>
+      <div class="cta-row">
+        <a class="cta" href="giao-tiep.html">Luyện giao tiếp</a>
+        <a class="cta secondary" href="phat-am.html">Ôn phát âm</a>
+        <a class="cta secondary" href="bai-tap.html">Làm quiz</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body>
+</html>

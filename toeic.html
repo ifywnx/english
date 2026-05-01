@@ -7,20 +7,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta charset="UTF-8">
-<meta name="description" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<meta name="description" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<meta property="og:title" content="Luyện thi TOEIC — EasyEnglish">
 <meta property="og:description" content="Bài đọc hiểu từ A1-B2 với câu hỏi tương tác và chấm điểm tự động.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EasyEnglish">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
+<meta name="twitter:title" content="Luyện thi TOEIC — EasyEnglish">
 <meta name="twitter:description" content="Bài đọc hiểu từ A1-B2 với câu hỏi tương tác và chấm điểm tự động.">
-<title>Luyện thi TOEIC - Từ vựng, ngữ pháp và bài tập TOEIC tương tác
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=4">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="manifest" href="manifest.json">
+<title>Luyện thi TOEIC — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
 
 <style id="skeleton-loader">
 .skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
@@ -61,7 +60,9 @@
 <div style="display:flex;gap:8px;margin:16px 0;flex-wrap:wrap">
 <button onclick="showTTab('vocab')" class="tc-tab active" id="tc-vocab">Từ vựng TOEIC</button>
 <button onclick="showTTab('grammar')" class="tc-tab" id="tc-grammar">Ngữ pháp TOEIC</button>
-<button onclick="showTTab('part5')" class="tc-tab" id="tc-part5">Part 5 Practice</button>
+<button onclick="showTTab('part5')" class="tc-tab" id="tc-part5">Part 5</button>
+<button onclick="showTTab('part6')" class="tc-tab" id="tc-part6">Part 6</button>
+<button onclick="showTTab('part7')" class="tc-tab" id="tc-part7">Part 7</button>
 </div>
 <div id="toeicContent"></div>
 </div>
@@ -107,6 +108,46 @@ var TVOCAB=[
 {en:"destination",vi:"điểm đến",ex:"What is your final destination?"},
 {en:"delay",vi:"trì hoãn",ex:"The flight was delayed by 2 hours."},
 {en:"reservation",vi:"đặt chỗ",ex:"I'd like to make a reservation for two."}
+]},
+{topic:"Công nghệ (Technology)",words:[
+{en:"implement",vi:"triển khai",ex:"The company will implement a new system."},
+{en:"software",vi:"phần mềm",ex:"Please update the software to the latest version."},
+{en:"database",vi:"cơ sở dữ liệu",ex:"All records are stored in the database."},
+{en:"upgrade",vi:"nâng cấp",ex:"We need to upgrade our equipment."},
+{en:"malfunction",vi:"trục trặc",ex:"The printer has been malfunctioning all day."},
+{en:"compatible",vi:"tương thích",ex:"This software is compatible with all devices."},
+{en:"troubleshoot",vi:"khắc phục sự cố",ex:"IT will troubleshoot the network issue."},
+{en:"backup",vi:"sao lưu",ex:"Always backup your files regularly."}
+]},
+{topic:"Nhân sự (HR)",words:[
+{en:"recruit",vi:"tuyển dụng",ex:"We are recruiting new staff members."},
+{en:"orientation",vi:"định hướng",ex:"New employee orientation is on Monday."},
+{en:"benefits",vi:"phúc lợi",ex:"The company offers excellent benefits."},
+{en:"probation",vi:"thời gian thử việc",ex:"The probation period lasts three months."},
+{en:"payroll",vi:"bảng lương",ex:"Payroll is processed on the 25th."},
+{en:"terminate",vi:"chấm dứt hợp đồng",ex:"His contract was terminated early."},
+{en:"evaluate",vi:"đánh giá",ex:"Employees are evaluated annually."},
+{en:"compensation",vi:"thù lao, đền bù",ex:"The compensation package is competitive."}
+]},
+{topic:"Sản xuất (Manufacturing)",words:[
+{en:"assembly",vi:"lắp ráp",ex:"The assembly line runs 24/7."},
+{en:"warehouse",vi:"nhà kho",ex:"Goods are stored in the warehouse."},
+{en:"inventory",vi:"hàng tồn kho",ex:"We need to check the inventory."},
+{en:"defect",vi:"lỗi, khuyết điểm",ex:"The product was returned due to a defect."},
+{en:"specification",vi:"thông số kỹ thuật",ex:"Please review the product specifications."},
+{en:"shipment",vi:"lô hàng",ex:"The shipment will arrive next week."},
+{en:"inspection",vi:"kiểm tra",ex:"A quality inspection is required."},
+{en:"supplier",vi:"nhà cung cấp",ex:"We changed to a new supplier."}
+]},
+{topic:"Y tế & Sức khỏe",words:[
+{en:"prescription",vi:"đơn thuốc",ex:"You need a prescription for this medicine."},
+{en:"symptom",vi:"triệu chứng",ex:"What are your symptoms?"},
+{en:"clinic",vi:"phòng khám",ex:"The clinic opens at 8 AM."},
+{en:"insurance",vi:"bảo hiểm",ex:"Health insurance covers most treatments."},
+{en:"appointment",vi:"cuộc hẹn",ex:"I have a doctor's appointment at 3 PM."},
+{en:"emergency",vi:"cấp cứu",ex:"Call 115 in case of emergency."},
+{en:"diagnose",vi:"chẩn đoán",ex:"The doctor diagnosed him with the flu."},
+{en:"treatment",vi:"điều trị",ex:"The treatment was very effective."}
 ]}
 ];
 
@@ -165,11 +206,15 @@ function renderToeic(){
         '<div style="font-size:13px;color:var(--text3)"><i data-lucide="lightbulb" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>'+g.tip+'</div>'+
       '</div>';
     }).join('');
-  } else {
+  } else if(curTTab==='part5'){
     html='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">'+
       '<div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px"><i data-lucide="file-text" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Part 5: Incomplete Sentences</div>'+
       '<div style="font-size:13px;color:var(--text3);margin-bottom:16px">Chọn từ đúng để hoàn thành câu — giống thật trong đề TOEIC.</div>'+
       '<div id="p5Box" style="text-align:center"><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu (15 câu)</button></div></div>';
+  } else if(curTTab==='part6'){
+    html=renderPart6();
+  } else {
+    html=renderPart7();
   }
   document.getElementById('toeicContent').innerHTML=html;
   if(typeof lucide!=="undefined")lucide.createIcons();
@@ -190,6 +235,71 @@ function checkP5(i){
   else{document.getElementById('p5o-'+i).style.background='rgba(255,138,128,0.15)';document.getElementById('p5o-'+i).style.color='var(--coral)';document.getElementById('p5o-'+i).style.opacity='1';document.getElementById('p5Fb').innerHTML='<span style="color:var(--coral)">Sai! Đáp án: <strong>'+q.opts[q.ans]+'</strong></span>';}
   p5Idx++;setTimeout(nextP5,1200);
 }
+
+// PART 6 — Text Completion
+var P6_PASSAGES=[
+{title:"Office Memo",text:'To: All Staff\nFrom: HR Department\nSubject: Holiday Schedule\n\nPlease be informed that the office will be closed on December 25 and 26. All employees are (1)___ to complete their pending tasks before December 23. Anyone who needs to work during the holidays must obtain (2)___ from their department head. The office will resume normal (3)___ on December 27. We wish everyone a wonderful holiday season.',gaps:[{n:1,opts:["required","requiring","requirement","require"],ans:0},{n:2,opts:["approve","approved","approval","approving"],ans:2},{n:3,opts:["operate","operation","operations","operating"],ans:2}]},
+{title:"Product Announcement",text:'We are excited to (4)___ our newest line of eco-friendly office supplies. These products are made from 100% recycled materials and are (5)___ priced compared to traditional alternatives. Orders placed before January 15 will receive free shipping. For more information, please visit our website or (6)___ our sales team directly.',gaps:[{n:4,opts:["announce","announcement","announcing","announced"],ans:0},{n:5,opts:["compete","competitive","competitively","competition"],ans:2},{n:6,opts:["contact","contacting","contacted","contacts"],ans:0}]}
+];
+function renderPart6(){
+  return P6_PASSAGES.map(function(p,pi){
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px">'+
+    '<div style="font-size:16px;font-weight:600;color:var(--accent2);margin-bottom:12px">📄 '+p.title+'</div>'+
+    '<div style="font-size:14px;color:var(--text2);line-height:1.8;white-space:pre-line;padding:16px;background:var(--bg3);border-radius:12px;margin-bottom:16px">'+p.text+'</div>'+
+    '<div style="display:grid;gap:12px">'+p.gaps.map(function(g,gi){
+      var gid='p6_'+pi+'_'+gi;
+      return '<div id="'+gid+'r" style="padding:12px;background:var(--bg3);border-radius:10px;border:0.5px solid var(--border)">'+
+        '<div style="font-size:13px;color:var(--text3);margin-bottom:6px">Question ('+g.n+')</div>'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'+g.opts.map(function(o,oi){
+          return '<button onclick="chkP6('+pi+','+gi+','+oi+')" id="'+gid+'_'+oi+'" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s">'+o+'</button>';
+        }).join('')+'</div></div>';
+    }).join('')+'</div></div>';
+  }).join('');
+}
+function chkP6(pi,gi,oi){
+  var g=P6_PASSAGES[pi].gaps[gi],gid='p6_'+pi+'_'+gi;
+  for(var i=0;i<4;i++){var b=document.getElementById(gid+'_'+i);b.disabled=true;b.style.opacity='0.6';}
+  document.getElementById(gid+'_'+g.ans).style.background='rgba(107,203,119,0.15)';document.getElementById(gid+'_'+g.ans).style.color='var(--green)';document.getElementById(gid+'_'+g.ans).style.opacity='1';
+  if(oi!==g.ans){document.getElementById(gid+'_'+oi).style.background='rgba(255,138,128,0.15)';document.getElementById(gid+'_'+oi).style.color='var(--coral)';document.getElementById(gid+'_'+oi).style.opacity='1';}
+}
+
+// PART 7 — Reading Comprehension
+var P7_PASSAGES=[
+{title:"Email: Meeting Schedule Change",text:'From: Sarah Chen <s.chen@techcorp.com>\nTo: All Department Heads\nDate: March 15\nSubject: Quarterly Review Meeting\n\nDear colleagues,\n\nDue to a scheduling conflict, the quarterly review meeting originally planned for March 20 has been moved to March 22, same time (2:00 PM) and same location (Conference Room B). Please note that each department head is expected to prepare a brief summary of their Q1 achievements and Q2 goals. The meeting is expected to last approximately 90 minutes. Light refreshments will be provided.\n\nPlease confirm your attendance by replying to this email by March 18.\n\nBest regards,\nSarah Chen\nExecutive Assistant',questions:[
+{q:"What is the purpose of this email?",opts:["To cancel a meeting","To announce a schedule change","To request a report","To introduce a new employee"],ans:1},
+{q:"When will the meeting take place?",opts:["March 15","March 18","March 20","March 22"],ans:3},
+{q:"What are department heads asked to prepare?",opts:["A budget plan","A summary of Q1 results and Q2 goals","A list of new employees","A marketing proposal"],ans:1},
+{q:"How long is the meeting expected to last?",opts:["60 minutes","90 minutes","120 minutes","All day"],ans:1}
+]},
+{title:"Advertisement: Job Opening",text:'POSITION: Marketing Coordinator\nCOMPANY: GreenLeaf Solutions\nLOCATION: Ho Chi Minh City\nSALARY: Competitive, based on experience\n\nGreenLeaf Solutions, a leading environmental consulting firm, is seeking a dynamic Marketing Coordinator to join our growing team. The ideal candidate will have at least 2 years of experience in marketing or communications, excellent written and verbal English skills, and proficiency in social media management.\n\nResponsibilities include managing social media accounts, creating marketing content, coordinating events, and tracking campaign performance.\n\nBenefits: Health insurance, 15 days annual leave, professional development opportunities.\n\nTo apply, send your resume and cover letter to hr@greenleaf.com by April 30.',questions:[
+{q:"What type of company is GreenLeaf Solutions?",opts:["A tech startup","An environmental consulting firm","A marketing agency","A healthcare company"],ans:1},
+{q:"How much experience is required?",opts:["No experience needed","At least 1 year","At least 2 years","At least 5 years"],ans:2},
+{q:"Which is NOT listed as a responsibility?",opts:["Managing social media","Creating content","Designing websites","Coordinating events"],ans:2},
+{q:"What is the application deadline?",opts:["March 30","April 15","April 30","May 1"],ans:2}
+]}
+];
+function renderPart7(){
+  return P7_PASSAGES.map(function(p,pi){
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px">'+
+    '<div style="font-size:16px;font-weight:600;color:var(--accent3);margin-bottom:12px">📰 '+p.title+'</div>'+
+    '<div style="font-size:13px;color:var(--text2);line-height:1.8;white-space:pre-line;padding:16px;background:var(--bg3);border-radius:12px;margin-bottom:16px;border-left:3px solid var(--accent3)">'+p.text+'</div>'+
+    '<div style="display:grid;gap:12px">'+p.questions.map(function(q,qi){
+      var qid='p7_'+pi+'_'+qi;
+      return '<div id="'+qid+'r" style="padding:14px;background:var(--bg3);border-radius:10px;border:0.5px solid var(--border)">'+
+        '<div style="font-size:14px;color:var(--text);margin-bottom:8px;font-weight:500">'+(qi+1)+'. '+q.q+'</div>'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'+q.opts.map(function(o,oi){
+          return '<button onclick="chkP7('+pi+','+qi+','+oi+')" id="'+qid+'_'+oi+'" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s;text-align:left">'+String.fromCharCode(65+oi)+'. '+o+'</button>';
+        }).join('')+'</div></div>';
+    }).join('')+'</div></div>';
+  }).join('');
+}
+function chkP7(pi,qi,oi){
+  var q=P7_PASSAGES[pi].questions[qi],qid='p7_'+pi+'_'+qi;
+  for(var i=0;i<4;i++){var b=document.getElementById(qid+'_'+i);b.disabled=true;b.style.opacity='0.6';}
+  document.getElementById(qid+'_'+q.ans).style.background='rgba(107,203,119,0.15)';document.getElementById(qid+'_'+q.ans).style.color='var(--green)';document.getElementById(qid+'_'+q.ans).style.opacity='1';
+  if(oi!==q.ans){document.getElementById(qid+'_'+oi).style.background='rgba(255,138,128,0.15)';document.getElementById(qid+'_'+oi).style.color='var(--coral)';document.getElementById(qid+'_'+oi).style.opacity='1';}
+}
+
 renderToeic();
 </script>
 <style>
@@ -203,7 +313,6 @@ renderToeic();
 .page-exit{animation:pageOut .2s ease-in forwards}
 @keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
 </style>
-<script defer src="theme.js?v=3"></script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>

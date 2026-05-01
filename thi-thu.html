@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Mock Test — EasyEnglish">
+<meta property="og:description" content="Tự học tiếng Anh miễn phí từ cơ bản đến nâng cao — EasyEnglish.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mock Test — EasyEnglish">
+<meta name="twitter:description" content="Tự học tiếng Anh miễn phí từ cơ bản đến nâng cao — EasyEnglish.">
+<title>Mock Test — EasyEnglish</title>
+<meta name="description" content="Hướng dẫn thi IELTS toàn diện: Writing Task 1 & 2, Reading, Listening, Speaking. Mẹo thi, cấu trúc bài, cách tính điểm Band.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.orb3{width:300px;height:300px;background:rgba(78,205,196,0.06);top:40%;left:35%}
+.page-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.content{padding:36px 48px;max-width:900px}
+.s-divider{height:0.5px;background:var(--border);margin:36px 0}
+.anchor{scroll-margin-top:80px}
+.section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:10px}
+.section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
+/* OVERVIEW CARDS */
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.ov-card{border-radius:16px;padding:20px;border:0.5px solid var(--border);text-align:center;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+.ov-card:hover{transform:translateY(-3px)}
+.ov-w{background:rgba(167,139,250,0.08);border-color:rgba(232,197,71,0.2)}
+.ov-r{background:rgba(78,205,196,0.06);border-color:rgba(78,205,196,0.2)}
+.ov-l{background:rgba(123,110,246,0.06);border-color:rgba(123,110,246,0.2)}
+.ov-s{background:rgba(232,121,160,0.06);border-color:rgba(232,121,160,0.2)}
+.ov-icon{font-size:30px;margin-bottom:10px}
+.ov-name{font-size:16px;font-weight:500;margin-bottom:4px}
+.ov-score{font-size:14px;color:var(--text3)}
+.ov-time{font-size:11px;color:var(--text3);margin-top:4px}
+/* BAND TABLE */
+.band-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px}
+.band-table th{padding:10px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.band-table td{padding:10px 14px;border:0.5px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.6}
+.band-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-band{font-family:'Fraunces',serif;font-size:20px;font-weight:300}
+.b9{color:#ffd700}.b8{color:var(--coral)}.b7{color:var(--accent)}.b6{color:var(--green)}.b5{color:var(--accent3)}
+/* TASK BOX */
+.task-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.task-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.task-badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500}
+.tb-gold{background:rgba(100,216,165,0.15);color:var(--accent)}
+.tb-teal{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.tb-purple{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.tb-pink{background:rgba(232,121,160,0.15);color:var(--pink)}
+.task-title{font-size:16px;font-weight:500}
+.task-time{font-size:14px;color:var(--text3);margin-left:auto}
+/* SAMPLE ESSAY */
+.essay-box{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+.essay-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.essay-question{background:rgba(167,139,250,0.08);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+.essay-text{font-size:13px;color:var(--text2);line-height:1.9}
+.essay-text .hi{color:var(--accent);font-weight:500;font-style:normal}
+.essay-text .hi2{color:var(--accent3);font-weight:500;font-style:normal}
+.essay-text .hi3{color:var(--pink);font-weight:500;font-style:normal}
+.essay-text p{margin-bottom:12px}
+.essay-text p:last-child{margin-bottom:0}
+/* STRUCTURE BOX */
+.structure{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.str-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px}
+.str-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.str-gold{background:rgba(100,216,165,0.15);color:var(--accent)}
+.str-teal{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.str-purple{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.str-pink{background:rgba(232,121,160,0.15);color:var(--pink)}
+.str-text h4{font-size:13px;font-weight:500;margin-bottom:3px}
+.str-text p{font-size:14px;color:var(--text2);line-height:1.6}
+.str-words{font-size:11px;color:var(--text3);margin-top:3px}
+/* TIPS */
+.tip-box{background:rgba(123,110,246,0.07);border:0.5px solid rgba(123,110,246,0.2);border-radius:12px;padding:14px 18px;display:flex;gap:12px;margin-bottom:14px}
+.tip-icon{font-size:18px;flex-shrink:0}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:14px;color:var(--text2);line-height:1.65}
+.warn-box{background:rgba(244,132,95,0.07);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.7}
+.warn-box strong{color:var(--coral)}
+.ielts-box{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:12px;padding:14px 18px;margin-bottom:14px}
+.ib-label{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.ib-text{font-size:13px;color:var(--text2);line-height:1.7;font-style:italic}
+/* PHRASE TABLE */
+.phrase-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.phrase-table th{padding:8px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
+.phrase-table td{padding:9px 14px;border:0.5px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.phrase-table tr:hover td{background:rgba(255,255,255,0.02)}
+.td-phrase{color:var(--text);font-style:italic}
+.td-use{color:var(--text3);font-size:11px}
+/* CRITERIA GRID */
+.criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.crit-card{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px}
+.crit-pct{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);margin-bottom:4px}
+.crit-name{font-size:13px;font-weight:500;margin-bottom:6px}
+.crit-desc{font-size:14px;color:var(--text2);line-height:1.6}
+/* READING TYPES */
+.qtype-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.qt-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px}
+.qt-name{font-size:13px;font-weight:500;margin-bottom:4px;color:var(--text)}
+.qt-tip{font-size:14px;color:var(--text2);line-height:1.6}
+.qt-trap{font-size:11px;color:var(--coral);margin-top:5px}
+/* SPEAKING PARTS */
+.speaking-parts{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.sp-part{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:18px}
+.sp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sp-num{width:32px;height:32px;border-radius:8px;background:rgba(232,121,160,0.15);color:var(--pink);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;flex-shrink:0}
+.sp-title{font-size:16px;font-weight:500}
+.sp-time{font-size:11px;color:var(--text3);margin-left:auto}
+.sp-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+.sp-samples{display:flex;flex-direction:column;gap:5px}
+.sp-sample{background:var(--card);border-radius:8px;padding:8px 12px}
+.sp-q{font-size:14px;color:var(--text3);font-style:italic;margin-bottom:4px}
+.sp-a{font-size:14px;color:var(--text2);line-height:1.6}
+.sp-a .good{color:var(--green);font-weight:500}
+/* CUE CARD */
+.cue-card{background:rgba(232,121,160,0.06);border:1px dashed rgba(232,121,160,0.3);border-radius:12px;padding:20px;margin-bottom:14px}
+.cc-label{font-size:10px;color:var(--pink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.cc-topic{font-size:16px;font-weight:500;margin-bottom:12px}
+.cc-points{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cc-points li{font-size:13px;color:var(--text2);padding-left:16px;position:relative;line-height:1.6}
+.cc-points li::before{content:'•';position:absolute;left:0;color:var(--pink)}
+/* QUIZ */
+.quiz-box{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:14px;padding:20px;margin-top:20px}
+.qb-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
+.qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
+.qb-hint{font-size:14px;color:var(--text3);margin-bottom:16px;font-style:italic}
+.qb-opts{display:flex;flex-direction:column;gap:8px}
+.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
+.qb-opt:hover:not(:disabled){border-color:rgba(123,110,246,0.4);color:var(--text)}
+.qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
+.qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.qb-fb{margin-top:12px;padding:11px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
+.qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
+.qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
+.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next.show{display:inline-block}
+/* SCORE CALCULATOR */
+.calc-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:20px}
+.calc-label{font-size:14px;color:var(--text3);margin-bottom:6px}
+.calc-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.calc-name{font-size:15px;color:var(--text);min-width:80px}
+.calc-slider{flex:1}
+.calc-val{font-size:14px;color:var(--accent);min-width:30px;text-align:right;font-weight:500}
+.calc-result{background:rgba(167,139,250,0.08);border:0.5px solid rgba(100,216,165,0.3);border-radius:10px;padding:14px;text-align:center;margin-top:8px}
+.cr-label{font-size:14px;color:var(--text3);margin-bottom:4px}
+.cr-score{font-family:'Fraunces',serif;font-size:40px;color:var(--accent)}
+.cr-note{font-size:14px;color:var(--text3);margin-top:4px}
+/* TASK 1 CHART PHRASES */
+.chart-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.ct-btn{padding:7px 16px;border-radius:20px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.ct-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(232,197,71,0.4);color:var(--accent)}
+.chart-content{display:none}
+.chart-content.show{display:block}
+
+/* === SIDEBAR === */
+.sidebar{position:sticky;top:68px;width:230px;max-height:calc(100vh - 80px);overflow-y:auto;padding:16px 0 16px 16px;flex-shrink:0;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sb-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);padding:0 12px;margin-bottom:8px}
+.sb-item{display:block;padding:8px 12px;font-size:13px;color:var(--text2);text-decoration:none;border-radius:8px;transition:all .15s;border-left:2px solid transparent;margin-bottom:2px}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.03)}
+.sb-item.active{color:var(--accent);border-left-color:var(--accent);background:rgba(232,197,71,0.05)}
+.page-wrap{display:flex;gap:0;max-width:1400px;margin:0 auto;min-height:calc(100vh - 60px)}
+.page-wrap main,.page-wrap .content{flex:1;min-width:0;padding:24px 32px}
+.timer-bar{display:flex;align-items:center;gap:12px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px 20px;margin-bottom:24px;position:sticky;top:70px;z-index:10}
+.timer-display{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);min-width:80px}
+.timer-label{font-size:13px;color:var(--text3)}
+.timer-btn{padding:8px 18px;border-radius:8px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.btn-start{background:var(--accent);color:#0f0e17}
+.btn-stop{background:var(--coral);color:#fff}
+.q-card{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.q-num{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.q-text{font-size:15px;color:var(--text);margin-bottom:14px;line-height:1.7}
+.q-options label{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:8px;cursor:pointer;transition:all .15s;font-size:14px;color:var(--text2);margin-bottom:6px;border:0.5px solid transparent}
+.q-options label:hover{background:rgba(255,255,255,0.03);border-color:var(--border)}
+.q-options input[type=radio]{accent-color:var(--accent);margin-top:3px}
+.q-options input:checked+span{color:var(--accent);font-weight:500}
+.passage-box{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px;font-size:14px;color:var(--text2);line-height:1.8}
+.result-box{background:rgba(100,216,165,0.08);border:1.5px solid var(--accent);border-radius:16px;padding:28px;text-align:center;margin:24px 0;display:none}
+.result-score{font-family:'Fraunces',serif;font-size:48px;color:var(--accent)}
+.result-band{font-size:18px;color:var(--text2);margin-top:8px}
+.writing-area{width:100%;min-height:200px;padding:16px;border-radius:12px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;line-height:1.7;resize:vertical}
+.wc{font-size:13px;color:var(--text3);margin-top:8px}
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+
+<meta name="theme-color" content="#64D8A5">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<link rel="canonical" href="https://easyenglish.vn/thi-thu.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+
+<div style="max-width:900px;margin:0 auto;padding:36px 24px;position:relative;z-index:1">
+<nav class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a> › <a href="ielts.html">IELTS</a> › Mock Test</nav>
+<p class="page-label">IELTS MINI MOCK TEST</p>
+<h1 class="page-title">Mock Test <em style="color:var(--coral)">IELTS</em></h1>
+<p class="page-desc">Làm bài thi thử IELTS mini: 10 câu Reading + 10 câu Listening + 1 bài Writing Task 2. Có timer đếm ngược và tự chấm điểm.</p>
+
+<div class="overview-grid">
+<div class="ov-card ov-r"><div class="ov-icon"></div><div class="ov-name">Reading</div><div class="ov-score">10 câu · 15 phút</div></div>
+<div class="ov-card ov-l"><div class="ov-icon"></div><div class="ov-name">Listening</div><div class="ov-score">10 câu · 10 phút</div></div>
+<div class="ov-card ov-w"><div class="ov-icon"></div><div class="ov-name">Writing</div><div class="ov-score">1 bài · 40 phút</div></div>
+<div class="ov-card ov-s"><div class="ov-icon"></div><div class="ov-name">Kết quả</div><div class="ov-score">Band ước tính</div></div>
+</div>
+
+<!-- TIMER -->
+<div class="timer-bar" id="timerBar">
+<div class="timer-display" id="timerDisplay">00:00</div>
+<div><div class="timer-label">Thời gian đã dùng</div></div>
+<button class="timer-btn btn-start" id="timerBtn" onclick="toggleTimer()" style="margin-left:auto"> Bắt đầu</button>
+</div>
+
+<div class="s-divider"></div>
+
+<!-- READING -->
+<p class="section-label">PHẦN 1 — READING (10 CÂU)</p>
+<h2 class="section-title">Reading Passage</h2>
+<div class="passage-box">
+<p><strong>The Impact of Urbanization on Wildlife</strong></p>
+<p>As cities continue to expand at an unprecedented rate, the natural habitats of countless species are being destroyed or fragmented. Urbanization has led to a significant decline in biodiversity, with many animals forced to adapt to new environments or face extinction. However, some species have shown remarkable resilience. Urban foxes in London, for instance, have thrived by scavenging human food waste, while peregrine falcons have adapted to nesting on skyscrapers, using the tall buildings as substitutes for cliff faces.</p>
+<p>Research conducted by the University of Sheffield found that urban green spaces — parks, gardens, and tree-lined streets — play a crucial role in supporting wildlife populations. Cities that maintain at least 20% green coverage tend to support significantly higher levels of biodiversity. Singapore, often called a "city in a garden," has demonstrated that urban development and nature conservation can coexist through careful planning and investment in green infrastructure.</p>
+<p>Despite these positive examples, the overall trend remains concerning. The World Wildlife Fund estimates that urban expansion will result in the loss of natural habitat equivalent to the size of France by 2030. Experts argue that incorporating wildlife corridors — strips of natural habitat connecting isolated green spaces — into urban planning could mitigate this loss significantly.</p>
+</div>
+
+<div class="q-card"><div class="q-num">Question 1</div><div class="q-text">What is the main cause of habitat destruction mentioned in the passage?</div><div class="q-options"><label><input type="radio" name="r1" value="a"><span>Climate change</span></label><label><input type="radio" name="r1" value="b"><span>Urbanization and city expansion</span></label><label><input type="radio" name="r1" value="c"><span>Deforestation for agriculture</span></label><label><input type="radio" name="r1" value="d"><span>Industrial pollution</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 2</div><div class="q-text">How have peregrine falcons adapted to urban environments?</div><div class="q-options"><label><input type="radio" name="r2" value="a"><span>By changing their diet</span></label><label><input type="radio" name="r2" value="b"><span>By nesting on skyscrapers</span></label><label><input type="radio" name="r2" value="c"><span>By migrating to rural areas</span></label><label><input type="radio" name="r2" value="d"><span>By becoming nocturnal</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 3</div><div class="q-text">What percentage of green coverage supports higher biodiversity?</div><div class="q-options"><label><input type="radio" name="r3" value="a"><span>At least 10%</span></label><label><input type="radio" name="r3" value="b"><span>At least 15%</span></label><label><input type="radio" name="r3" value="c"><span>At least 20%</span></label><label><input type="radio" name="r3" value="d"><span>At least 30%</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 4</div><div class="q-text">Which city is described as a "city in a garden"?</div><div class="q-options"><label><input type="radio" name="r4" value="a"><span>London</span></label><label><input type="radio" name="r4" value="b"><span>Tokyo</span></label><label><input type="radio" name="r4" value="c"><span>Singapore</span></label><label><input type="radio" name="r4" value="d"><span>Sydney</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 5</div><div class="q-text">What are "wildlife corridors"?</div><div class="q-options"><label><input type="radio" name="r5" value="a"><span>Zoos within cities</span></label><label><input type="radio" name="r5" value="b"><span>Strips of habitat connecting green spaces</span></label><label><input type="radio" name="r5" value="c"><span>Underground tunnels for animals</span></label><label><input type="radio" name="r5" value="d"><span>Fences protecting wildlife</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 6</div><div class="q-text">According to WWF, habitat loss by 2030 will equal the size of:</div><div class="q-options"><label><input type="radio" name="r6" value="a"><span>The UK</span></label><label><input type="radio" name="r6" value="b"><span>France</span></label><label><input type="radio" name="r6" value="c"><span>Germany</span></label><label><input type="radio" name="r6" value="d"><span>Spain</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 7</div><div class="q-text">Urban foxes survive in cities by:</div><div class="q-options"><label><input type="radio" name="r7" value="a"><span>Hunting pigeons</span></label><label><input type="radio" name="r7" value="b"><span>Scavenging human food waste</span></label><label><input type="radio" name="r7" value="c"><span>Living in sewers</span></label><label><input type="radio" name="r7" value="d"><span>Being fed by residents</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 8</div><div class="q-text">The passage suggests urbanization's impact on biodiversity is:</div><div class="q-options"><label><input type="radio" name="r8" value="a"><span>Entirely negative</span></label><label><input type="radio" name="r8" value="b"><span>Mostly positive</span></label><label><input type="radio" name="r8" value="c"><span>Concerning but with some positive examples</span></label><label><input type="radio" name="r8" value="d"><span>Negligible</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 9</div><div class="q-text">Which university conducted the research on urban green spaces?</div><div class="q-options"><label><input type="radio" name="r9" value="a"><span>Oxford</span></label><label><input type="radio" name="r9" value="b"><span>Cambridge</span></label><label><input type="radio" name="r9" value="c"><span>Sheffield</span></label><label><input type="radio" name="r9" value="d"><span>Manchester</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 10</div><div class="q-text">The word "mitigate" in the last paragraph is closest in meaning to:</div><div class="q-options"><label><input type="radio" name="r10" value="a"><span>Eliminate completely</span></label><label><input type="radio" name="r10" value="b"><span>Make worse</span></label><label><input type="radio" name="r10" value="c"><span>Reduce the severity of</span></label><label><input type="radio" name="r10" value="d"><span>Investigate</span></label></div></div>
+
+<div class="s-divider"></div>
+
+<!-- LISTENING -->
+<p class="section-label">PHẦN 2 — LISTENING (10 CÂU)</p>
+<h2 class="section-title">Listening Comprehension</h2>
+<p style="font-size:13px;color:var(--text3);margin-bottom:16px">Đọc transcript bên dưới (giả lập nghe), sau đó trả lời các câu hỏi. Nhấn 🔊 để nghe TTS.</p>
+
+<div class="passage-box" style="border-left:3px solid var(--accent2)">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<strong>Section 1: Hotel Booking (Conversation)</strong>
+<button onclick="var u=new SpeechSynthesisUtterance(document.getElementById('listenText1').textContent);u.lang='en-US';u.rate=0.8;speechSynthesis.cancel();speechSynthesis.speak(u)" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif">🔊 Nghe</button>
+</div>
+<div id="listenText1" style="line-height:1.8">
+<strong>Receptionist:</strong> Good morning, Riverside Hotel. How can I help you?<br>
+<strong>Guest:</strong> Hi, I'd like to book a room for two nights, please. My name is Robert Thompson.<br>
+<strong>Receptionist:</strong> Certainly, Mr. Thompson. When would you like to check in?<br>
+<strong>Guest:</strong> On the 14th of June. And I'd prefer a room with a sea view if possible.<br>
+<strong>Receptionist:</strong> Let me check... Yes, we have a deluxe room available. It's 120 pounds per night, including breakfast.<br>
+<strong>Guest:</strong> That sounds great. Can I pay by credit card when I arrive?<br>
+<strong>Receptionist:</strong> Of course. Could I have your phone number, please?<br>
+<strong>Guest:</strong> It's 07946 552 183.<br>
+<strong>Receptionist:</strong> Perfect. Your booking reference is HRB-4527.
+</div>
+</div>
+
+<div class="q-card"><div class="q-num">Question 11 (Listening)</div><div class="q-text">How many nights does the guest want to stay?</div><div class="q-options"><label><input type="radio" name="l1" value="a"><span>1 night</span></label><label><input type="radio" name="l1" value="b"><span>2 nights</span></label><label><input type="radio" name="l1" value="c"><span>3 nights</span></label><label><input type="radio" name="l1" value="d"><span>4 nights</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 12</div><div class="q-text">What is the guest's surname?</div><div class="q-options"><label><input type="radio" name="l2" value="a"><span>Thomson</span></label><label><input type="radio" name="l2" value="b"><span>Thompson</span></label><label><input type="radio" name="l2" value="c"><span>Tomson</span></label><label><input type="radio" name="l2" value="d"><span>Tompson</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 13</div><div class="q-text">What date will the guest check in?</div><div class="q-options"><label><input type="radio" name="l3" value="a"><span>4th June</span></label><label><input type="radio" name="l3" value="b"><span>14th June</span></label><label><input type="radio" name="l3" value="c"><span>14th July</span></label><label><input type="radio" name="l3" value="d"><span>4th July</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 14</div><div class="q-text">How much does the room cost per night?</div><div class="q-options"><label><input type="radio" name="l4" value="a"><span>£100</span></label><label><input type="radio" name="l4" value="b"><span>£110</span></label><label><input type="radio" name="l4" value="c"><span>£120</span></label><label><input type="radio" name="l4" value="d"><span>£150</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 15</div><div class="q-text">What is included in the room price?</div><div class="q-options"><label><input type="radio" name="l5" value="a"><span>Lunch</span></label><label><input type="radio" name="l5" value="b"><span>Breakfast</span></label><label><input type="radio" name="l5" value="c"><span>Dinner</span></label><label><input type="radio" name="l5" value="d"><span>All meals</span></label></div></div>
+
+<div class="passage-box" style="border-left:3px solid var(--accent2);margin-top:20px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<strong>Section 2: University Lecture (Monologue)</strong>
+<button onclick="var u=new SpeechSynthesisUtterance(document.getElementById('listenText2').textContent);u.lang='en-US';u.rate=0.8;speechSynthesis.cancel();speechSynthesis.speak(u)" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif">🔊 Nghe</button>
+</div>
+<div id="listenText2" style="line-height:1.8">
+Good afternoon, everyone. Today I'd like to talk about the benefits of renewable energy. As you know, fossil fuels like coal and oil have been the primary source of energy for over a century. However, they produce harmful greenhouse gases that contribute to climate change. Renewable sources such as solar, wind, and hydroelectric power offer cleaner alternatives. Solar energy, in particular, has become 90% cheaper over the last decade. Countries like Denmark now generate over 50% of their electricity from wind power alone. The main challenge remains energy storage — we still need better battery technology to store energy for days without sunshine or wind.
+</div>
+</div>
+
+<div class="q-card"><div class="q-num">Question 16</div><div class="q-text">What is the main topic of the lecture?</div><div class="q-options"><label><input type="radio" name="l6" value="a"><span>History of oil industry</span></label><label><input type="radio" name="l6" value="b"><span>Benefits of renewable energy</span></label><label><input type="radio" name="l6" value="c"><span>Nuclear power safety</span></label><label><input type="radio" name="l6" value="d"><span>Electric vehicles</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 17</div><div class="q-text">How much cheaper has solar energy become?</div><div class="q-options"><label><input type="radio" name="l7" value="a"><span>50% cheaper</span></label><label><input type="radio" name="l7" value="b"><span>70% cheaper</span></label><label><input type="radio" name="l7" value="c"><span>80% cheaper</span></label><label><input type="radio" name="l7" value="d"><span>90% cheaper</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 18</div><div class="q-text">Which country generates over 50% electricity from wind?</div><div class="q-options"><label><input type="radio" name="l8" value="a"><span>Germany</span></label><label><input type="radio" name="l8" value="b"><span>Denmark</span></label><label><input type="radio" name="l8" value="c"><span>Norway</span></label><label><input type="radio" name="l8" value="d"><span>Sweden</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 19</div><div class="q-text">What is the main challenge for renewable energy?</div><div class="q-options"><label><input type="radio" name="l9" value="a"><span>Cost of installation</span></label><label><input type="radio" name="l9" value="b"><span>Energy storage / battery technology</span></label><label><input type="radio" name="l9" value="c"><span>Public opposition</span></label><label><input type="radio" name="l9" value="d"><span>Lack of sunlight</span></label></div></div>
+
+<div class="q-card"><div class="q-num">Question 20</div><div class="q-text">Fossil fuels are harmful because they produce:</div><div class="q-options"><label><input type="radio" name="l10" value="a"><span>Noise pollution</span></label><label><input type="radio" name="l10" value="b"><span>Water pollution</span></label><label><input type="radio" name="l10" value="c"><span>Greenhouse gases</span></label><label><input type="radio" name="l10" value="d"><span>Radioactive waste</span></label></div></div>
+
+<div class="s-divider"></div>
+
+<!-- WRITING -->
+<p class="section-label">PHẦN 3 — WRITING TASK 2</p>
+<h2 class="section-title">Writing Task 2</h2>
+<div class="essay-question">Some people believe that technology has made our lives more complicated rather than easier. To what extent do you agree or disagree?<br><br><em>Write at least 250 words.</em></div>
+<textarea class="writing-area" id="writingArea" placeholder="Viết bài luận của bạn ở đây..." oninput="document.getElementById('wordCount').textContent='Số từ: '+this.value.trim().split(/\s+/).filter(w=>w).length+' / 250'"></textarea>
+<p class="wc" id="wordCount">Số từ: 0 / 250</p>
+
+<div class="s-divider"></div>
+
+<!-- SUBMIT -->
+<div style="text-align:center;padding:20px 0">
+<button class="timer-btn btn-start" style="padding:14px 36px;font-size:16px;border-radius:12px" onclick="submitTest()"> Nộp bài & Xem kết quả</button>
+</div>
+
+<div class="result-box" id="resultBox">
+<p style="font-size:14px;color:var(--text3);margin-bottom:8px">KẾT QUẢ (READING + LISTENING)</p>
+<div class="result-score" id="resultScore">0/20</div>
+<div class="result-band" id="resultBand">Band: —</div>
+<div style="margin-top:16px;font-size:13px;color:var(--text3)" id="resultDetail"></div>
+</div>
+
+</div>
+
+<script>
+// Timer
+let timerInterval=null,seconds=0;
+function toggleTimer(){const b=document.getElementById('timerBtn');if(timerInterval){clearInterval(timerInterval);b.textContent=' Tiếp tục';b.className='timer-btn btn-start'}else{timerInterval=setInterval(()=>{seconds++;const m=Math.floor(seconds/60).toString().padStart(2,'0');const s=(seconds%60).toString().padStart(2,'0');document.getElementById('timerDisplay').textContent=m+':'+s},1000);b.textContent='⏸ Tạm dừng';b.className='timer-btn btn-stop'}}
+
+// Answer key
+const ANSWERS={r1:'b',r2:'b',r3:'c',r4:'c',r5:'b',r6:'b',r7:'b',r8:'c',r9:'c',r10:'c',l1:'b',l2:'b',l3:'b',l4:'c',l5:'b',l6:'b',l7:'d',l8:'b',l9:'b',l10:'c'};
+
+function submitTest(){
+  if(timerInterval){clearInterval(timerInterval);document.getElementById('timerBtn').textContent='Đã nộp';document.getElementById('timerBtn').disabled=true}
+  let rScore=0,lScore=0;
+  // Reading
+  for(let i=1;i<=10;i++){
+    const sel=document.querySelector('input[name="r'+i+'"]:checked');
+    const cards=document.querySelectorAll('.q-card');
+    if(sel&&sel.value===ANSWERS['r'+i]){rScore++;cards[i-1].style.borderColor='var(--accent)'}
+    else{cards[i-1].style.borderColor='var(--coral)';cards[i-1].querySelectorAll('input[type=radio]').forEach(o=>{if(o.value===ANSWERS['r'+i])o.parentElement.style.color='var(--accent)';o.parentElement.style.fontWeight=o.value===ANSWERS['r'+i]?'700':'400'})}
+  }
+  // Listening
+  for(let i=1;i<=10;i++){
+    const sel=document.querySelector('input[name="l'+i+'"]:checked');
+    const cards=document.querySelectorAll('.q-card');
+    const idx=10+i-1;
+    if(sel&&sel.value===ANSWERS['l'+i]){lScore++;cards[idx].style.borderColor='var(--accent)'}
+    else{cards[idx].style.borderColor='var(--coral)';cards[idx].querySelectorAll('input[type=radio]').forEach(o=>{if(o.value===ANSWERS['l'+i])o.parentElement.style.color='var(--accent)';o.parentElement.style.fontWeight=o.value===ANSWERS['l'+i]?'700':'400'})}
+  }
+  const total=20,score=rScore+lScore;
+  const bands={20:'9.0',19:'8.5',18:'8.5',17:'8.0',16:'7.5',15:'7.5',14:'7.0',13:'7.0',12:'6.5',11:'6.5',10:'6.0',9:'5.5',8:'5.5',7:'5.0',6:'5.0',5:'4.5',4:'4.5',3:'4.0',2:'4.0',1:'3.5',0:'3.0'};
+  const box=document.getElementById('resultBox');
+  box.style.display='block';
+  document.getElementById('resultScore').textContent=score+'/'+total;
+  document.getElementById('resultBand').textContent='Band ước tính: '+(bands[score]||'4.0');
+  const wc=document.getElementById('writingArea').value.trim().split(/\s+/).filter(w=>w).length;
+  document.getElementById('resultDetail').innerHTML='Reading: <b>'+rScore+'/10</b> · Listening: <b>'+lScore+'/10</b> · Writing: '+wc+' từ '+(wc>=250?' ✅ Đủ':' ⚠️ Chưa đủ 250 từ')+'<br>Thời gian: '+document.getElementById('timerDisplay').textContent;
+  box.scrollIntoView({behavior:'smooth'});
+  // Save to localStorage
+  const hist=JSON.parse(localStorage.getItem('ee_mock_history')||'[]');
+  hist.push({date:new Date().toISOString(),score,band:bands[score],time:document.getElementById('timerDisplay').textContent,words:wc});
+  localStorage.setItem('ee_mock_history',JSON.stringify(hist));
+}
+// Progress bar
+window.addEventListener('scroll',()=>{const p=document.getElementById('readProgress');if(p){const h=document.documentElement.scrollHeight-window.innerHeight;p.style.width=(window.scrollY/h*100)+'%'}});
+const bt=document.getElementById('backTop');if(bt){window.addEventListener('scroll',()=>{bt.style.display=window.scrollY>400?'flex':'none'})}
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đặt mục tiêu — EasyEnglish</title>
+<meta name="description" content="Đặt mục tiêu học tiếng Anh cá nhân theo phương pháp SMART: chọn level, kỹ năng, thời gian và nhận lộ trình phù hợp.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:760px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.hero{background:rgba(100,216,165,0.06);border:0.5px solid var(--border);border-radius:20px;padding:28px;margin-bottom:24px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;margin-top:10px}
+
+/* SMART section */
+.smart-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:20px 0}
+.smart-item{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center}
+.smart-letter{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);line-height:1}
+.smart-word{font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin:4px 0 6px}
+.smart-desc{font-size:11px;color:var(--text3);line-height:1.4}
+
+/* Form */
+.goal-form{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin:20px 0}
+.form-group{margin-bottom:24px}
+.form-label{font-family:'Fraunces',serif;font-weight:300;font-size:17px;margin-bottom:6px;display:block}
+.form-desc{font-size:13px;color:var(--text3);margin-bottom:10px}
+.opt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.opt-btn{padding:12px 10px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.opt-btn:hover{border-color:rgba(100,216,165,0.4)}
+.opt-btn.selected{background:rgba(100,216,165,0.15);border-color:var(--accent);color:var(--accent)}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.skill-btn{padding:10px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-size:12px;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.skill-btn.selected{background:rgba(167,139,250,0.12);border-color:var(--accent2);color:var(--accent2)}
+.save-btn{width:100%;padding:16px;border-radius:14px;border:none;background:var(--accent);color:#0b1a1e;font-size:16px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:12px}
+.save-btn:hover{transform:scale(1.02)}
+
+/* Summary */
+.goal-summary{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.2);border-radius:16px;padding:24px;margin-top:20px;display:none}
+.goal-summary h3{font-family:'Fraunces',serif;font-weight:300;color:var(--accent);margin-bottom:14px;font-size:20px}
+.sum-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid var(--border);font-size:14px}
+.sum-row:last-child{border-bottom:none}
+.sum-label{color:var(--text3)}
+.sum-value{color:var(--text);font-weight:500}
+
+/* Roadmap suggestion */
+.roadmap-box{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:20px;margin-top:16px}
+.roadmap-box h4{font-family:'Fraunces',serif;font-weight:300;font-size:16px;margin-bottom:12px;color:var(--accent2)}
+.step-list{list-style:none;padding:0;margin:0}
+.step-list li{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+.step-list li:last-child{border-bottom:none}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(100,216,165,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+
+/* Tips */
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.tip-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px}
+.tip-card h4{font-family:'Fraunces',serif;font-weight:300;font-size:15px;margin-bottom:8px}
+.tip-card p{font-size:13px;color:var(--text3);line-height:1.6}
+
+/* Progress ring */
+.progress-ring{width:80px;height:80px;margin:0 auto 12px}
+.progress-ring circle{fill:none;stroke-width:6}
+.progress-ring .bg{stroke:var(--bg3)}
+.progress-ring .fill{stroke:var(--accent);stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .6s ease}
+
+@media(max-width:768px){
+  .content{padding:20px 14px 110px}
+  .smart-grid{grid-template-columns:repeat(5,1fr);gap:4px}
+  .smart-item{padding:10px 6px}
+  .smart-letter{font-size:22px}
+  .smart-desc{font-size:10px}
+  .tip-grid{grid-template-columns:1fr}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><a href="lo-trinh-hoc.html">Lộ trình</a><span class="bc-sep">›</span><span class="bc-current">Đặt mục tiêu</span></div>
+
+<div class="hero">
+  <div class="kicker">Goal Setting</div>
+  <h1 class="page-title">Đặt mục tiêu học tập cá nhân</h1>
+  <div class="desc">Mục tiêu rõ ràng giúp bạn biết mình cần làm gì mỗi ngày. Dùng phương pháp SMART để đặt mục tiêu cụ thể, đo lường được, khả thi, phù hợp và có thời hạn.</div>
+</div>
+
+<!-- SMART Framework -->
+<div class="smart-grid">
+  <div class="smart-item"><div class="smart-letter">S</div><div class="smart-word">Specific</div><div class="smart-desc">Cu the, khong chung chung</div></div>
+  <div class="smart-item"><div class="smart-letter">M</div><div class="smart-word">Measurable</div><div class="smart-desc">Do luong duoc tien do</div></div>
+  <div class="smart-item"><div class="smart-letter">A</div><div class="smart-word">Achievable</div><div class="smart-desc">Kha thi voi nang luc hien tai</div></div>
+  <div class="smart-item"><div class="smart-letter">R</div><div class="smart-word">Relevant</div><div class="smart-desc">Phu hop voi nhu cau thuc te</div></div>
+  <div class="smart-item"><div class="smart-letter">T</div><div class="smart-word">Time-bound</div><div class="smart-desc">Co thoi han cu the</div></div>
+</div>
+
+<!-- Goal Form -->
+<div class="goal-form">
+  <div class="form-group">
+    <label class="form-label">1. Trinh do hien tai cua ban</label>
+    <div class="form-desc">Tu danh gia de he thong de xuat lo trinh phu hop.</div>
+    <div class="opt-grid" data-group="level">
+      <div class="opt-btn" onclick="selectOpt(this,'level')">A1 — Moi bat dau</div>
+      <div class="opt-btn" onclick="selectOpt(this,'level')">A2 — Co ban</div>
+      <div class="opt-btn" onclick="selectOpt(this,'level')">B1 — Trung cap</div>
+      <div class="opt-btn" onclick="selectOpt(this,'level')">B2 — Kha</div>
+      <div class="opt-btn" onclick="selectOpt(this,'level')">C1 — Nang cao</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">2. Muc tieu chinh</label>
+    <div class="form-desc">Ban hoc tieng Anh de lam gi? Chon 1 muc tieu chinh.</div>
+    <div class="opt-grid" data-group="goal">
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">IELTS 6.5+</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">TOEIC 700+</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">Giao tiep cong viec</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">Du lich tu tin</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">Noi troi chay</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">Doc hieu tot</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">Viet email chuyen nghiep</div>
+      <div class="opt-btn" onclick="selectOpt(this,'goal')">Phong van tieng Anh</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">3. Ky nang muon uu tien</label>
+    <div class="form-desc">Chon 1-3 ky nang ban muon tap trung nhat.</div>
+    <div class="skill-grid" data-group="skills">
+      <div class="skill-btn" onclick="toggleSkill(this)">Listening</div>
+      <div class="skill-btn" onclick="toggleSkill(this)">Speaking</div>
+      <div class="skill-btn" onclick="toggleSkill(this)">Reading</div>
+      <div class="skill-btn" onclick="toggleSkill(this)">Writing</div>
+      <div class="skill-btn" onclick="toggleSkill(this)">Vocabulary</div>
+      <div class="skill-btn" onclick="toggleSkill(this)">Grammar</div>
+      <div class="skill-btn" onclick="toggleSkill(this)">Pronunciation</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">4. Thoi gian hoc moi ngay</label>
+    <div class="opt-grid" data-group="time">
+      <div class="opt-btn" onclick="selectOpt(this,'time')">15 phut</div>
+      <div class="opt-btn" onclick="selectOpt(this,'time')">30 phut</div>
+      <div class="opt-btn" onclick="selectOpt(this,'time')">1 gio</div>
+      <div class="opt-btn" onclick="selectOpt(this,'time')">2 gio+</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">5. Thoi han dat muc tieu</label>
+    <div class="form-desc">Dat deadline de tao dong luc.</div>
+    <div class="opt-grid" data-group="deadline">
+      <div class="opt-btn" onclick="selectOpt(this,'deadline')">1 thang</div>
+      <div class="opt-btn" onclick="selectOpt(this,'deadline')">3 thang</div>
+      <div class="opt-btn" onclick="selectOpt(this,'deadline')">6 thang</div>
+      <div class="opt-btn" onclick="selectOpt(this,'deadline')">1 nam</div>
+    </div>
+  </div>
+
+  <button class="save-btn" onclick="saveGoal()">Luu muc tieu va xem lo trinh</button>
+</div>
+
+<!-- Summary + Roadmap -->
+<div class="goal-summary" id="goalSummary">
+  <h3>Muc tieu cua ban</h3>
+  <div id="summaryRows"></div>
+
+  <div class="roadmap-box" id="roadmapBox">
+    <h4>Lo trinh de xuat</h4>
+    <ol class="step-list" id="roadmapSteps"></ol>
+    <div style="margin-top:14px;text-align:center">
+      <a href="lo-trinh-hoc.html" style="color:var(--accent);font-size:14px;text-decoration:none">Xem lo trinh day du</a>
+    </div>
+  </div>
+</div>
+
+<!-- Tips -->
+<div class="tip-grid">
+  <div class="tip-card">
+    <h4>Hoc it nhung deu</h4>
+    <p>15 phut moi ngay hieu qua hon 3 gio cuoi tuan. Nao bo ghi nho tot hon khi tiep xuc deu dan.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Theo doi tien do</h4>
+    <p>Dung streak, XP va dashboard tren EasyEnglish de biet minh dang o dau va can lam gi tiep.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Ket hop nhieu ky nang</h4>
+    <p>Nghe + doc giup tang tu vung. Noi + viet giup cung co ngu phap. Dung pha tron cac ky nang.</p>
+  </div>
+  <div class="tip-card">
+    <h4>Danh gia lai moi thang</h4>
+    <p>Moi thang, quay lai trang nay va cap nhat muc tieu. Trinh do ban thay doi thi lo trinh cung can thay doi.</p>
+  </div>
+</div>
+
+</div>
+<script>
+const choices={level:'',goal:'',time:'',deadline:''};
+let selectedSkills=[];
+
+function selectOpt(el,group){
+  el.parentElement.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  choices[group]=el.textContent.trim();
+}
+
+function toggleSkill(el){
+  if(el.classList.contains('selected')){
+    el.classList.remove('selected');
+    selectedSkills=selectedSkills.filter(s=>s!==el.textContent.trim());
+  } else {
+    if(selectedSkills.length>=3){alert('Toi da 3 ky nang!');return;}
+    el.classList.add('selected');
+    selectedSkills.push(el.textContent.trim());
+  }
+}
+
+function saveGoal(){
+  if(!choices.level||!choices.goal||!choices.time||!choices.deadline){
+    alert('Vui long chon day du cac muc!');return;
+  }
+  const data={...choices, skills:selectedSkills, savedAt:new Date().toISOString()};
+  localStorage.setItem('easyGoal',JSON.stringify(data));
+
+  // Show summary
+  const s=document.getElementById('goalSummary');
+  s.style.display='block';
+  document.getElementById('summaryRows').innerHTML=
+    row('Trinh do',choices.level)+
+    row('Muc tieu',choices.goal)+
+    row('Ky nang uu tien',selectedSkills.join(', ')||'Chua chon')+
+    row('Thoi gian/ngay',choices.time)+
+    row('Thoi han',choices.deadline)+
+    '<div style="font-size:12px;color:var(--text3);margin-top:8px;text-align:center">Da luu! Quay lai bat cu luc nao de cap nhat.</div>';
+
+  // Generate roadmap
+  generateRoadmap();
+  s.scrollIntoView({behavior:'smooth'});
+}
+
+function row(label,value){
+  return '<div class="sum-row"><span class="sum-label">'+label+'</span><span class="sum-value">'+value+'</span></div>';
+}
+
+function generateRoadmap(){
+  const steps=[];
+  const level=choices.level;
+  const goal=choices.goal;
+
+  if(level.includes('A1')||level.includes('A2')){
+    steps.push({text:'Hoan thanh ngu phap nen tang: 12 thi, cau truc cau co ban',href:'ngu-phap.html'});
+    steps.push({text:'Hoc 500 tu vung A1-A2 theo chu de',href:'tu-vung-a1.html'});
+    steps.push({text:'Luyen nghe co ban voi transcript',href:'nghe-transcript.html'});
+    steps.push({text:'Tap phat am 44 am IPA',href:'phat-am.html'});
+  }
+  if(level.includes('B1')||level.includes('B2')){
+    steps.push({text:'Ngu phap nang cao: menh de quan he, cau dieu kien, bi dong',href:'ngu-phap-nang-cao.html'});
+    steps.push({text:'Mo rong tu vung B1-B2 + collocations',href:'tu-vung-b1.html'});
+    steps.push({text:'Luyen doc hieu bai dai',href:'doc-hieu.html'});
+    steps.push({text:'Luyen noi theo chu de',href:'luyen-noi.html'});
+  }
+  if(level.includes('C1')){
+    steps.push({text:'Ngu phap nang cao: inversions, cleft sentences',href:'ngu-phap-nang-cao.html'});
+    steps.push({text:'Tu vung C1 + tu hoc thuat',href:'tu-vung-c1.html'});
+  }
+
+  if(goal.includes('IELTS')){
+    steps.push({text:'Lam quen dang bai IELTS Reading + Listening',href:'ielts.html'});
+    steps.push({text:'Luyen Writing Task 1 + Task 2',href:'ielts-viet-task1.html'});
+    steps.push({text:'Luyen Speaking theo chu de IELTS',href:'ielts-noi.html'});
+    steps.push({text:'Thi thu IELTS de danh gia',href:'thi-thu.html'});
+  }
+  if(goal.includes('TOEIC')){
+    steps.push({text:'On TOEIC Listening + Reading',href:'toeic.html'});
+  }
+  if(goal.includes('Giao tiep')||goal.includes('Noi')){
+    steps.push({text:'Luyen giao tiep hang ngay + dong vai',href:'giao-tiep.html'});
+    steps.push({text:'Hoc cum dong tu thuong dung',href:'cum-dong-tu.html'});
+  }
+  if(goal.includes('Du lich')){
+    steps.push({text:'Hoc tieng Anh du lich theo tinh huong',href:'tieng-anh-du-lich.html'});
+  }
+  if(goal.includes('Viet email')){
+    steps.push({text:'Luyen viet email chuyen nghiep',href:'viet-email.html'});
+  }
+  if(goal.includes('Phong van')){
+    steps.push({text:'On luyen tieng Anh phong van',href:'tieng-anh-phong-van.html'});
+  }
+
+  steps.push({text:'Duy tri streak + thu thach moi ngay',href:'thu-thach-moi-ngay.html'});
+  steps.push({text:'On tap lap lai de nho lau',href:'on-tap-lap-lai.html'});
+
+  const container=document.getElementById('roadmapSteps');
+  container.innerHTML=steps.map(function(s,i){
+    return '<li><span class="step-num">'+(i+1)+'</span><span><a href="'+s.href+'" style="color:var(--accent);text-decoration:none">'+s.text+'</a></span></li>';
+  }).join('');
+}
+
+// Load saved goal
+const saved=localStorage.getItem('easyGoal');
+if(saved){
+  try{
+    const d=JSON.parse(saved);
+    Object.assign(choices,d);
+    if(d.skills) selectedSkills=d.skills;
+    document.querySelectorAll('.opt-btn').forEach(b=>{
+      if(b.textContent.trim()===d.level||b.textContent.trim()===d.goal||b.textContent.trim()===d.time||b.textContent.trim()===d.deadline) b.classList.add('selected');
+    });
+    document.querySelectorAll('.skill-btn').forEach(b=>{
+      if(d.skills && d.skills.includes(b.textContent.trim())) b.classList.add('selected');
+    });
+    if(d.level && d.goal && d.time && d.deadline){
+      document.getElementById('goalSummary').style.display='block';
+      document.getElementById('summaryRows').innerHTML=
+        row('Trinh do',d.level)+row('Muc tieu',d.goal)+
+        row('Ky nang uu tien',(d.skills||[]).join(', ')||'Chua chon')+
+        row('Thoi gian/ngay',d.time)+row('Thoi han',d.deadline);
+      generateRoadmap();
+    }
+  }catch(e){}
+}
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Từ điển Anh-Việt — EasyEnglish">
+<meta property="og:description" content="Tra từ điển tiếng Anh với phiên âm IPA, nghĩa tiếng Việt, ví dụ.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Từ điển Anh-Việt — EasyEnglish">
+<meta name="twitter:description" content="Tra từ điển tiếng Anh với phiên âm IPA, nghĩa tiếng Việt, ví dụ.">
+<title>Từ điển tiếng Anh — EasyEnglish</title>
+<meta name="description" content="Từ điển Anh-Việt có phiên âm IPA, nghĩa đầy đủ, ví dụ câu thực tế, từ đồng nghĩa và từ liên quan. Tra cứu nhanh.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.dict-guide-details summary::-webkit-details-marker{display:none}
+.dict-guide-details[open] summary span:first-child{transform:rotate(90deg)}
+.content{padding:40px 48px;max-width:900px;margin:0 auto;position:relative;z-index:1}
+/* SEARCH BAR */
+.search-wrap{position:relative;margin-bottom:24px}
+.search-big{width:100%;padding:16px 60px 16px 20px;background:var(--card2);border:1px solid rgba(100,216,165,0.3);border-radius:14px;color:var(--text);font-size:16px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
+.search-big:focus{border-color:rgba(78,205,196,0.6)}
+.search-big::placeholder{color:var(--text3)}
+.search-icon{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text3)}
+.search-hint{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.hint-chip{padding:5px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:14px;color:var(--text2);cursor:pointer;transition:all .2s}
+.hint-chip:hover{border-color:rgba(100,216,165,0.4);color:var(--accent3)}
+/* RESULT CARD */
+.result-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px;display:none}
+.result-card.show{display:block}
+.rc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.rc-word{font-family:'Fraunces',serif;font-size:40px;color:var(--text);margin-bottom:4px}
+.rc-pron{font-size:15px;color:var(--accent);font-style:italic;margin-bottom:8px}
+.rc-type-row{display:flex;gap:6px;flex-wrap:wrap}
+.type-chip{padding:3px 12px;border-radius:20px;font-size:11px;font-weight:500}
+.chip-n{background:rgba(100,216,165,0.15);color:var(--accent)}
+.chip-v{background:rgba(123,110,246,0.15);color:var(--accent2)}
+.chip-adj{background:rgba(244,132,95,0.15);color:var(--coral)}
+.chip-adv{background:rgba(107,203,119,0.15);color:var(--green)}
+.chip-phrase{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.rc-actions{display:flex;gap:8px}
+.save-btn{padding:8px 16px;background:rgba(100,216,165,0.1);border:0.5px solid rgba(100,216,165,0.3);border-radius:8px;font-size:12px;color:var(--accent);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.save-btn:hover{background:rgba(232,197,71,0.2)}
+.save-btn.saved{background:rgba(240,194,122,0.1);border-color:rgba(100,216,165,0.3);color:var(--accent3)}
+/* SPEAK BUTTON */
+.speak-btn{width:40px;height:40px;border-radius:50%;background:rgba(123,110,246,0.15);border:0.5px solid rgba(123,110,246,0.3);color:var(--accent2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.speak-btn:hover{background:rgba(123,110,246,0.3);transform:scale(1.1)}
+.speak-btn.playing{animation:pulse-speak .8s infinite}
+@keyframes pulse-speak{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.api-badge{display:inline-block;padding:2px 8px;background:rgba(240,194,122,0.1);border:0.5px solid rgba(78,205,196,0.2);border-radius:4px;font-size:9px;color:var(--accent3);margin-left:8px;vertical-align:middle}
+.loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* MEANINGS */
+.meanings{margin-bottom:20px}
+.meaning-item{padding:14px 0;border-bottom:0.5px solid var(--border)}
+.meaning-item:last-child{border-bottom:none}
+.m-num{font-size:11px;color:var(--text3);margin-bottom:4px}
+.m-vi{font-size:18px;color:var(--text);margin-bottom:8px}
+.m-en-def{font-size:13px;color:var(--text2);margin-bottom:10px;font-style:italic}
+.m-examples{display:flex;flex-direction:column;gap:6px}
+.m-ex{background:var(--card2);border:0.5px solid var(--border);border-radius:8px;padding:10px 14px}
+.m-ex-en{font-size:15px;color:var(--text);font-style:italic;margin-bottom:3px}
+.m-ex-vi{font-size:14px;color:var(--text3)}
+.m-tag{display:inline-block;margin-top:6px;padding:2px 8px;background:rgba(255,255,255,0.05);border-radius:4px;font-size:10px;color:var(--text3)}
+/* RELATED */
+.related-section{margin-bottom:16px}
+.rs-title{font-size:14px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.rs-words{display:flex;flex-wrap:wrap;gap:6px}
+.rs-chip{padding:5px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s}
+.rs-chip:hover{border-color:rgba(100,216,165,0.4);color:var(--accent3)}
+/* WORD OF DAY */
+.wod-card{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:18px;padding:24px;margin-bottom:24px}
+.wod-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.wod-word{font-family:'Fraunces',serif;font-size:32px;color:var(--text);margin-bottom:4px;cursor:pointer}
+.wod-word:hover{color:var(--accent)}
+.wod-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:6px}
+.wod-vi{font-size:16px;color:var(--text2);margin-bottom:8px}
+.wod-ex{font-size:16px;color:var(--text3);font-style:italic;border-left:2px solid rgba(100,216,165,0.3);padding-left:12px}
+/* SAVED WORDS */
+.saved-section{margin-top:32px}
+.saved-title{font-size:16px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.clear-btn{font-size:12px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+.saved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.saved-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:all .2s}
+.saved-item:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.si-en{font-size:14px;color:var(--text)}
+.si-pron{font-size:11px;color:var(--accent);font-style:italic}
+.si-vi{font-size:14px;color:var(--text3)}
+/* HISTORY */
+.history-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.hist-item{padding:5px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:14px;color:var(--text2);cursor:pointer;transition:all .2s}
+.hist-item:hover{color:var(--text);border-color:rgba(255,255,255,0.15)}
+.s-divider{height:0.5px;background:var(--border);margin:28px 0}
+.empty-msg{text-align:center;color:var(--text3);font-size:14px;padding:24px}
+/* BROWSE */
+.alpha-bar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.alpha-btn{width:34px;height:34px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.alpha-btn:hover{color:var(--text);border-color:rgba(100,216,165,0.3)}
+.alpha-btn.active{background:rgba(100,216,165,0.15);color:var(--accent);border-color:rgba(100,216,165,0.4)}
+.level-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.lv-btn{padding:6px 14px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lv-btn:hover{color:var(--text)}
+.lv-btn.active{color:var(--text);border-color:rgba(100,216,165,0.3)}
+.lv-btn.active[data-lv='A1']{background:rgba(107,203,119,0.15);color:var(--green)}
+.lv-btn.active[data-lv='A2']{background:rgba(100,216,165,0.15);color:var(--accent)}
+.lv-btn.active[data-lv='B1']{background:rgba(240,194,122,0.15);color:var(--accent3)}
+.lv-btn.active[data-lv='B2']{background:rgba(167,139,250,0.15);color:var(--accent2)}
+.lv-btn.active[data-lv='C1']{background:rgba(244,132,95,0.15);color:var(--coral)}
+.lv-btn.active[data-lv='All']{background:rgba(100,216,165,0.1);color:var(--accent)}
+.browse-count{font-size:14px;color:var(--text3);margin-bottom:12px}
+.browse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px}
+.bw-card{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:all .15s}
+.bw-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.bw-word{font-size:16px;font-weight:500;margin-bottom:2px}
+.bw-ipa{font-size:11px;color:var(--accent);font-style:italic}
+.bw-vi{font-size:14px;color:var(--text3);margin-top:2px}
+.bw-meta{display:flex;gap:4px;margin-top:4px}
+.bw-lv{font-size:9px;padding:2px 6px;border-radius:4px;font-weight:500}
+.lv-A1{background:rgba(107,203,119,0.15);color:var(--green)}
+.lv-A2{background:rgba(100,216,165,0.15);color:var(--accent)}
+.lv-B1{background:rgba(240,194,122,0.15);color:var(--accent3)}
+.lv-B2{background:rgba(167,139,250,0.15);color:var(--accent2)}
+.lv-C1{background:rgba(244,132,95,0.15);color:var(--coral)}
+.bw-type{font-size:9px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.05);color:var(--text3)}
+@media(max-width:500px){
+  .saved-grid{grid-template-columns:1fr}
+  .browse-grid{grid-template-columns:1fr}
+  .rc-header{flex-direction:column}
+}
+
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+
+<meta name="theme-color" content="#64D8A5">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<link rel="canonical" href="https://easyenglish.vn/tu-dien.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+  <div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span>
+  <span>Từ điển</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-current">Từ điển Anh-Việt</span>
+</div>
+
+  <div class="page-label">Module 6</div>
+  <h1 class="page-title">Từ điển Anh–Việt</h1>
+  <p class="page-desc">Tra cứu từ vựng — có phiên âm IPA, nghĩa đầy đủ, ví dụ câu thực tế, từ đồng nghĩa và từ liên quan.</p>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <input class="search-big" id="searchInput" type="text" placeholder="Gõ từ rồi nhấn Enter để tra..." oninput="debounceLocal()" onkeydown="handleSearchKey(event)" autocomplete="off" autofocus>
+    <span class="search-icon"><i data-lucide="search" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span>
+    <div id="suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--card);border:1px solid var(--border);border-radius:12px;max-height:260px;overflow-y:auto;z-index:50;box-shadow:0 12px 40px rgba(0,0,0,0.4)"></div>
+  </div>
+  <div class="search-hint" id="searchHint">
+    <span style="font-size:14px;color:var(--text3);align-self:center">Tra nhanh:</span>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="historySection" style="display:none">
+    <div style="font-size:14px;color:var(--text3);margin-bottom:8px">Đã tra gần đây:</div>
+    <div class="history-row" id="historyRow"></div>
+    <div class="s-divider"></div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card" id="resultCard"></div>
+
+  <!-- NOT FOUND -->
+  <div class="empty-msg" id="notFound" style="display:none">
+    Không tìm thấy từ "<span id="notFoundWord"></span>". Thử lại với từ khác hoặc kiểm tra chính tả.
+  </div>
+
+  <!-- DICTIONARY GUIDE (collapsible) -->
+  <details class="dict-guide-details" style="margin:24px 0">
+    <summary style="cursor:pointer;font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,24px);font-weight:300;color:var(--accent);padding:12px 0;list-style:none;display:flex;align-items:center;gap:8px">
+      <span style="transition:transform .2s;display:inline-block">▶</span> Hướng dẫn tra từ hiệu quả
+    </summary>
+    <div style="padding:8px 0 16px">
+      <div class="section-label">Học sâu</div>
+      <div class="section-desc">Một entry tốt không chỉ có nghĩa. Nó cần ngữ cảnh dùng, độ phổ biến, độ trang trọng, collocation và ví dụ tự nhiên.</div>
+      <div class="note-box"><strong>Hãy đọc theo 4 lớp:</strong> 1) nghĩa cơ bản, 2) cách dùng trong ngữ cảnh, 3) cụm đi cùng, 4) ví dụ thực tế.</div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;margin:16px 0">
+        <div class="card"><h3>Tra từ đơn</h3><p>Xem IPA, loại từ và câu ví dụ đầu tiên.</p></div>
+        <div class="card"><h3>Tra cụm / câu</h3><p>Popup sẽ dịch theo ngữ cảnh thay vì từng từ.</p></div>
+        <div class="card"><h3>Lưu vào notebook</h3><p>Lưu lại để ôn bằng spaced repetition.</p></div>
+        <div class="card"><h3>Học collocation</h3><p>Ví dụ: <strong>make a decision</strong>, <strong>take a break</strong>.</p></div>
+      </div>
+      <div class="s-divider"></div>
+      <div class="section-label" style="margin-top:16px">Mẹo tra cứu</div>
+      <div class="section-desc">Nếu không ra kết quả, thử đổi dạng từ hoặc tra theo gốc từ.</div>
+      <div class="phrase-list">
+        <div class="phrase-item"><div class="p-en">running → run</div><div class="p-vi">Đưa từ về dạng gốc khi tra</div></div>
+        <div class="phrase-item"><div class="p-en">better → good</div><div class="p-vi">So sánh / biến thể bất quy tắc</div></div>
+        <div class="phrase-item"><div class="p-en">take a break</div><div class="p-vi">Tra theo cụm collocation</div></div>
+      </div>
+    </div>
+  </details>
+
+
+  <!-- WORD OF THE DAY -->
+  <div class="wod-card" id="wodCard">
+    <div class="wod-label"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ của ngày hôm nay</div>
+    <div class="wod-word" id="wodWord" onclick="lookupFromWod()"></div>
+    <div class="wod-pron" id="wodPron"></div>
+    <div class="wod-vi" id="wodVi"></div>
+    <div class="wod-ex" id="wodEx"></div>
+  </div>
+
+  <!-- SAVED WORDS -->
+  <div class="saved-section">
+    <div class="saved-title">
+      <span><i data-lucide="pin" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ đã lưu (<span id="savedCount">0</span>)</span>
+      <button class="clear-btn" onclick="clearSaved()">Xóa tất cả</button>
+    </div>
+    <div class="saved-grid" id="savedGrid"><div class="empty-msg">Chưa có từ nào được lưu. Tra từ và bấm "Lưu từ" để thêm vào đây.</div></div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- BROWSE -->
+  <div id="browseSection">
+    <div style="font-size:20px;font-family:'Fraunces',serif;margin-bottom:12px"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Danh sách từ A–Z</div>
+    <div class="alpha-bar" id="alphaBar"></div>
+    <div class="level-tabs" id="levelTabs">
+      <button class="lv-btn active" data-lv="All" onclick="setLevel('All',this)">Tất cả</button>
+      <button class="lv-btn" data-lv="A1" onclick="setLevel('A1',this)"><i data-lucide="circle-check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> A1</button>
+      <button class="lv-btn" data-lv="A2" onclick="setLevel('A2',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> A2</button>
+      <button class="lv-btn" data-lv="B1" onclick="setLevel('B1',this)"><i data-lucide="circle-dot" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> B1</button>
+      <button class="lv-btn" data-lv="B2" onclick="setLevel('B2',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> B2</button>
+      <button class="lv-btn" data-lv="C1" onclick="setLevel('C1',this)"><i data-lucide="circle-alert" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> C1</button>
+    </div>
+    <div class="browse-count" id="browseCount"></div>
+    <div class="browse-grid" id="browseGrid"></div>
+  </div>
+</div>
+
+<script src="dict-data.js"></script>
+<script>
+// ===== DICTIONARY DATA =====
+const DICT = {
+  'beautiful':{
+    pron:'/ˈbjuːtɪfəl/',
+    types:['adj'],
+    meanings:[
+      {vi:'đẹp, xinh đẹp',enDef:'very attractive or pleasing to the senses',examples:[
+        {en:'She has a beautiful smile.',vi:'Cô ấy có nụ cười đẹp.'},
+        {en:'What a beautiful day!',vi:'Thật là một ngày đẹp!'},
+        {en:'The sunset was absolutely beautiful.',vi:'Hoàng hôn thật tuyệt đẹp.'},
+      ],tag:'Tính từ'},
+      {vi:'tuyệt vời, xuất sắc (nghĩa mở rộng)',enDef:'very good or excellent',examples:[
+        {en:'That was a beautiful goal!',vi:'Đó là một bàn thắng tuyệt đẹp!'},
+      ],tag:'Nghĩa mở rộng'},
+    ],
+    synonyms:['gorgeous','lovely','stunning','attractive','pretty'],
+    antonyms:['ugly','hideous','unattractive'],
+    related:['beauty','beautifully','beautify'],
+    phrases:['beauty is in the eye of the beholder','beautiful mind'],
+  },
+  'happy':{
+    pron:'/ˈhæpi/',
+    types:['adj'],
+    meanings:[
+      {vi:'vui vẻ, hạnh phúc',enDef:'feeling or showing pleasure or contentment',examples:[
+        {en:'I am very happy today.',vi:'Hôm nay tôi rất vui.'},
+        {en:'She was happy to hear the news.',vi:'Cô ấy vui mừng khi nghe tin tức.'},
+        {en:"Happy birthday! I hope you're happy today.",vi:'Chúc mừng sinh nhật! Mong bạn vui vẻ hôm nay.'},
+      ],tag:'Tính từ'},
+      {vi:'hài lòng, đồng ý (với điều gì đó)',enDef:'satisfied or willing to do something',examples:[
+        {en:"I'm happy to help you anytime.",vi:'Tôi rất vui được giúp bạn bất cứ lúc nào.'},
+      ],tag:'Nghĩa 2'},
+    ],
+    synonyms:['joyful','glad','pleased','content','delighted'],
+    antonyms:['sad','unhappy','miserable','depressed'],
+    related:['happiness','happily','unhappy','happier','happiest'],
+    phrases:['happy-go-lucky','happy hour','trigger happy'],
+  },
+  'study':{
+    pron:'/ˈstʌdi/',
+    types:['v','n'],
+    meanings:[
+      {vi:'học, nghiên cứu (động từ)',enDef:'to devote time and attention to acquiring knowledge',examples:[
+        {en:'I study English every day.',vi:'Tôi học tiếng Anh mỗi ngày.'},
+        {en:'She studied medicine at university.',vi:'Cô ấy học y khoa ở đại học.'},
+        {en:'He is studying for his exams.',vi:'Anh ấy đang ôn thi.'},
+      ],tag:'Động từ (V)'},
+      {vi:'cuộc nghiên cứu, bài nghiên cứu (danh từ)',enDef:'a detailed investigation and analysis of a subject',examples:[
+        {en:'A recent study shows that coffee is good for health.',vi:'Một nghiên cứu gần đây cho thấy cà phê tốt cho sức khỏe.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'phòng làm việc / đọc sách (danh từ)',enDef:'a room used for reading, writing, or academic work',examples:[
+        {en:'He has a study at home where he reads.',vi:'Anh ấy có một phòng đọc sách ở nhà.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['learn','research','examine','investigate','analyze'],
+    antonyms:['ignore','neglect'],
+    related:['student','studies','studied','studying','studious'],
+    phrases:['study abroad','study group','case study','field of study'],
+  },
+  'important':{
+    pron:'/ɪmˈpɔːrtənt/',
+    types:['adj'],
+    meanings:[
+      {vi:'quan trọng',enDef:'of great significance or value; having a major effect',examples:[
+        {en:'English is very important in today\'s world.',vi:'Tiếng Anh rất quan trọng trong thế giới ngày nay.'},
+        {en:'It is important to eat healthy food.',vi:'Việc ăn thức ăn lành mạnh rất quan trọng.'},
+        {en:'She made an important decision.',vi:'Cô ấy đưa ra một quyết định quan trọng.'},
+      ],tag:'Tính từ'},
+    ],
+    synonyms:['significant','crucial','vital','essential','critical','key'],
+    antonyms:['unimportant','trivial','insignificant','minor'],
+    related:['importance','importantly','unimportant'],
+    phrases:['most importantly','of great importance','self-important'],
+  },
+  'love':{
+    pron:'/lʌv/',
+    types:['n','v'],
+    meanings:[
+      {vi:'tình yêu, tình thương (danh từ)',enDef:'an intense feeling of deep affection',examples:[
+        {en:'Love is the most powerful emotion.',vi:'Tình yêu là cảm xúc mạnh mẽ nhất.'},
+        {en:'She fell in love at first sight.',vi:'Cô ấy yêu từ cái nhìn đầu tiên.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'yêu thích (động từ)',enDef:'to feel a deep romantic or strong affection for someone/something',examples:[
+        {en:'I love learning English.',vi:'Tôi yêu thích việc học tiếng Anh.'},
+        {en:'She loves her family very much.',vi:'Cô ấy yêu thương gia đình mình rất nhiều.'},
+        {en:"I'd love a cup of coffee.",vi:'Tôi rất muốn uống một tách cà phê.'},
+      ],tag:'Động từ (V)'},
+    ],
+    synonyms:['adore','cherish','treasure','affection','devotion'],
+    antonyms:['hate','dislike','loathe'],
+    related:['lovely','lover','loving','lovable','beloved','fall in love'],
+    phrases:['fall in love','love at first sight','head over heels','love affair','tough love'],
+  },
+  'difficult':{
+    pron:'/ˈdɪfɪkəlt/',
+    types:['adj'],
+    meanings:[
+      {vi:'khó, khó khăn',enDef:'needing much effort or skill to accomplish, deal with, or understand',examples:[
+        {en:'English grammar can be difficult at first.',vi:'Ngữ pháp tiếng Anh có thể khó lúc đầu.'},
+        {en:'It was a very difficult exam.',vi:'Đó là một kỳ thi rất khó.'},
+        {en:'She had a difficult childhood.',vi:'Cô ấy có tuổi thơ khó khăn.'},
+      ],tag:'Tính từ'},
+      {vi:'khó tính (về người)',enDef:'(of a person) not easy to please or satisfy',examples:[
+        {en:'He can be very difficult to work with.',vi:'Anh ta có thể rất khó làm việc cùng.'},
+      ],tag:'Nghĩa 2'},
+    ],
+    synonyms:['hard','tough','challenging','demanding','complex','complicated'],
+    antonyms:['easy','simple','straightforward','effortless'],
+    related:['difficulty','difficulties','difficultly'],
+    phrases:['with difficulty','overcome difficulties','face difficulties'],
+  },
+  'work':{
+    pron:'/wɜːrk/',
+    types:['v','n'],
+    meanings:[
+      {vi:'làm việc (động từ)',enDef:'to be engaged in physical or mental activity in order to achieve a result',examples:[
+        {en:'She works at a hospital.',vi:'Cô ấy làm việc ở bệnh viện.'},
+        {en:'I work from 8 AM to 5 PM.',vi:'Tôi làm việc từ 8h sáng đến 5h chiều.'},
+        {en:'He works hard every day.',vi:'Anh ấy làm việc chăm chỉ mỗi ngày.'},
+      ],tag:'Động từ (V)'},
+      {vi:'công việc, việc làm (danh từ)',enDef:'activity involving mental or physical effort done in order to achieve a purpose',examples:[
+        {en:'I have a lot of work to do today.',vi:'Hôm nay tôi có nhiều việc cần làm.'},
+        {en:'She found work as a nurse.',vi:'Cô ấy tìm được việc làm là y tá.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'tác phẩm, công trình (danh từ)',enDef:'a piece of art, literature, or music',examples:[
+        {en:"Shakespeare's works are famous worldwide.",vi:'Các tác phẩm của Shakespeare nổi tiếng toàn thế giới.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['labor','toil','employment','job','occupation','effort'],
+    antonyms:['play','rest','leisure','holiday'],
+    related:['worker','working','worked','workplace','workforce','homework','teamwork','network'],
+    phrases:['work out','work on','teamwork','network','work ethic','framework'],
+  },
+  'understand':{
+    pron:'/ˌʌndərˈstænd/',
+    types:['v'],
+    meanings:[
+      {vi:'hiểu, hiểu được',enDef:'to perceive the intended meaning of words, a language, or a speaker',examples:[
+        {en:'Do you understand the question?',vi:'Bạn có hiểu câu hỏi không?'},
+        {en:'I don\'t understand this grammar rule.',vi:'Tôi không hiểu quy tắc ngữ pháp này.'},
+        {en:'She understands how difficult it is.',vi:'Cô ấy hiểu điều đó khó khăn thế nào.'},
+      ],tag:'Động từ (V)'},
+      {vi:'thông cảm, thấu hiểu',enDef:'to be sympathetically aware of',examples:[
+        {en:'I understand your situation.',vi:'Tôi thông cảm với hoàn cảnh của bạn.'},
+      ],tag:'Nghĩa 2'},
+    ],
+    synonyms:['comprehend','grasp','follow','get','realize','appreciate'],
+    antonyms:['misunderstand','confuse'],
+    related:['understanding','understandable','misunderstand','understood'],
+    phrases:['understand each other','make yourself understood','beyond understanding'],
+  },
+  'help':{
+    pron:'/hɛlp/',
+    types:['v','n'],
+    meanings:[
+      {vi:'giúp đỡ, hỗ trợ (động từ)',enDef:'to make it easier for someone to do something by offering services or resources',examples:[
+        {en:'Can you help me with this problem?',vi:'Bạn có thể giúp tôi với vấn đề này không?'},
+        {en:'She helped him carry the bags.',vi:'Cô ấy giúp anh ấy mang túi.'},
+        {en:'I\'d be happy to help!',vi:'Tôi rất vui được giúp đỡ!'},
+      ],tag:'Động từ (V)'},
+      {vi:'sự giúp đỡ, trợ giúp (danh từ)',enDef:'assistance; aid given to someone',examples:[
+        {en:'Thank you for your help!',vi:'Cảm ơn sự giúp đỡ của bạn!'},
+        {en:'I need some help with my homework.',vi:'Tôi cần giúp đỡ với bài tập về nhà.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['assist','support','aid','facilitate','contribute'],
+    antonyms:['hinder','obstruct','harm'],
+    related:['helpful','helpless','helper','helping hand'],
+    phrases:['help out','help yourself','can\'t help','with a little help','self-help'],
+  },
+  'time':{
+    pron:'/taɪm/',
+    types:['n','v'],
+    meanings:[
+      {vi:'thời gian (danh từ)',enDef:'the indefinite continued progress of existence in the past, present, and future',examples:[
+        {en:'Time flies when you\'re having fun.',vi:'Thời gian trôi nhanh khi bạn vui vẻ.'},
+        {en:'I don\'t have time right now.',vi:'Bây giờ tôi không có thời gian.'},
+      ],tag:'Danh từ (N)'},
+      {vi:'lần, lượt (danh từ)',enDef:'an instance of something happening',examples:[
+        {en:'This is the third time I\'ve visited Hanoi.',vi:'Đây là lần thứ ba tôi đến Hà Nội.'},
+        {en:'How many times have you been there?',vi:'Bạn đã đến đó bao nhiêu lần?'},
+      ],tag:'Danh từ (N) — đếm được'},
+      {vi:'thời điểm, giờ giấc',enDef:'a point of time as measured in hours and minutes',examples:[
+        {en:'What time is it?',vi:'Mấy giờ rồi?'},
+        {en:'The meeting starts at 9 o\'clock.',vi:'Cuộc họp bắt đầu lúc 9 giờ.'},
+      ],tag:'Danh từ (N)'},
+    ],
+    synonyms:['period','moment','duration','era','occasion','instance'],
+    antonyms:[],
+    related:['timetable','timeline','overtime','pastime','timing','timely'],
+    phrases:['in time','on time','at the same time','waste time','save time','take time','time after time','time flies'],
+  },
+};
+
+const QUICK_WORDS = ['beautiful','happy','study','important','love','difficult','work','understand','help','time'];
+const DICT_META = {
+  beautiful:{context:'Từ rất phổ biến trong mô tả ngoại hình, cảnh vật và cả nghĩa mở rộng kiểu "beautiful idea".',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay chỉ nghĩ beautiful = đẹp ngoại hình, trong khi nó còn dùng cho ý tưởng, khoảnh khắc, kết quả.',example:'The sunset was absolutely beautiful.',collocations:['beautiful day','beautiful smile','beautiful idea']},
+  happy:{context:'Từ phổ biến trong giao tiếp hằng ngày, viết email thân thiện và cả mô tả cảm xúc.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay dùng happy như "hạnh phúc" mọi nơi, nhưng trong tiếng Anh còn có nghĩa "sẵn lòng".',example:'I\'m happy to help you.',collocations:['happy to help','happy birthday','happy hour']},
+  study:{context:'Dùng trong học tập, nghiên cứu và cả danh từ chỉ phòng làm việc/phòng đọc.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay nhầm giữa study (học/nghiên cứu) và learn (tiếp thu kiến thức).',example:'She studied medicine at university.',collocations:['study English','study abroad','case study']},
+  important:{context:'Từ cực phổ biến để nhấn mạnh mức độ quan trọng trong học tập, công việc và đời sống.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay lạm dụng important trong mọi chỗ, trong khi có lúc cần crucial / essential / vital.',example:'It is important to arrive on time.',collocations:['important decision','important issue','most importantly']},
+  love:{context:'Dùng trong cảm xúc mạnh, sở thích và cả cách nói lịch sự như "I\'d love to".',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay chỉ nghĩ love là yêu người, trong khi nó còn dùng cho sở thích và phản hồi lịch sự.',example:'I\'d love a cup of coffee.',collocations:['fall in love','love at first sight','love to']},
+  difficult:{context:'Hay gặp khi nói về bài tập, tình huống, người khó tính hoặc vấn đề phức tạp.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay nhầm difficult với hard và tough mà không để ý sắc thái.',example:'The question was more difficult than I expected.',collocations:['difficult question','difficult situation','difficult to understand']},
+  work:{context:'Từ cơ bản dùng cho làm việc, công việc, sự nỗ lực và cả tác phẩm/hiệu quả.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay nhầm work với job, hoặc dùng sai work on / work out.',example:'I work from home three days a week.',collocations:['work from home','work on','work out']},
+  understand:{context:'Dùng khi hiểu nghĩa, hiểu vấn đề, hoặc thấu hiểu tình huống của người khác.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay dùng understand chung chung nhưng thiếu cấu trúc như understand that / understand why.',example:'I understand your concern.',collocations:['understand the problem','understand why','make yourself understood']},
+  help:{context:'Dùng trong xin giúp đỡ, hỗ trợ, và trong môi trường formal thì thường mềm hóa bằng could you / would you.',frequency:'Rất phổ biến',formality:'Lịch sự / semi-formal',mistake:'Hay nói quá trực tiếp như "Help me" mà quên tone lịch sự.',example:'Could you help me with this file?',collocations:['help out','help yourself','help with']},
+  time:{context:'Từ cực cơ bản nhưng nhiều nghĩa: thời gian, lần/lượt, thời điểm, giờ giấc.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay nhầm time và times, hoặc bỏ qua collocations như on time / in time.',example:'Time flies when you are having fun.',collocations:['on time','in time','take your time']}
+};
+
+function inferDictionaryMeta(word, entry) {
+  var normalized = String(word || '').toLowerCase();
+  if (DICT_META[normalized]) return DICT_META[normalized];
+
+  var combinedText = [word, entry.pron || '', (entry.types || []).join(' '), JSON.stringify(entry.meanings || []), (entry.synonyms || []).join(' '), (entry.antonyms || []).join(' '), (entry.related || []).join(' '), (entry.phrases || []).join(' ')].join(' ').toLowerCase();
+  var freq = 'Phổ biến vừa';
+  if (entry.meanings && entry.meanings.length <= 2 && word.length > 8) freq = 'Ít phổ biến hơn';
+  if (word.length > 12 || (entry.phrases || []).length > 3) freq = 'Phổ biến theo ngữ cảnh';
+
+  var formality = 'Trung tính';
+  if (/^(sir|madam|therefore|hence|consequently|approximately)$/.test(normalized)) formality = 'Trang trọng';
+  if (/^(lol|gonna|wanna|kids|hey|awesome)$/.test(normalized)) formality = 'Thân mật';
+  if ((entry.phrases || []).some(function(p){ return /please|could you|would you|i\'d appreciate/i.test(p); })) formality = 'Lịch sự / semi-formal';
+
+  var context = 'Dùng trong giao tiếp thường ngày hoặc học thuật, tùy nghĩa cụ thể.';
+  if (/work|help|time|study|important|love|happy/.test(normalized)) context = 'Dùng rất nhiều trong giao tiếp hằng ngày, viết và nói đều gặp thường xuyên.';
+  if (/deploy|debug|refactor|api|database|server|cloud|pipeline/.test(combinedText)) context = 'Dùng trong bối cảnh chuyên ngành / kỹ thuật.';
+
+  var mistake = 'Dễ bị dùng sai collocation hoặc dịch word-by-word.';
+  if (normalized === 'time') mistake = 'Hay nhầm giữa time không đếm được và times (lần, lượt).';
+  if (normalized === 'work') mistake = 'Hay nhầm work với job, hoặc dùng sai work out / work on.';
+  if (normalized === 'help') mistake = 'Hay nói quá trực tiếp kiểu "help me" mà thiếu lịch sự trong ngữ cảnh formal.';
+
+  return { context: context, frequency: freq, formality: formality, mistake: mistake };
+}
+
+const WOD_LIST = [
+  {word:'persevere',pron:'/ˌpɜːrsɪˈvɪər/',vi:'kiên trì, bền bỉ',ex:'"If you persevere, you will succeed." — Nếu bạn kiên trì, bạn sẽ thành công.'},
+  {word:'eloquent',pron:'/ˈɛləkwənt/',vi:'hùng hồn, diễn đạt giỏi',ex:'"She gave an eloquent speech." — Cô ấy có một bài phát biểu hùng hồn.'},
+  {word:'ambiguous',pron:'/æmˈbɪɡjuəs/',vi:'mơ hồ, không rõ ràng',ex:'"The instructions were ambiguous." — Hướng dẫn rất mơ hồ.'},
+  {word:'resilient',pron:'/rɪˈzɪliənt/',vi:'có khả năng phục hồi, dẻo dai',ex:'"Children are very resilient." — Trẻ em rất dẻo dai.'},
+  {word:'meticulous',pron:'/məˈtɪkjʊləs/',vi:'tỉ mỉ, cẩn thận từng chi tiết',ex:'"She is meticulous about her work." — Cô ấy rất tỉ mỉ trong công việc.'},
+  {word:'benevolent',pron:'/bɪˈnɛvələnt/',vi:'nhân từ, tốt bụng',ex:'"A benevolent leader cares for the people." — Một nhà lãnh đạo nhân từ quan tâm đến người dân.'},
+  {word:'eloquence',pron:'/ˈɛləkwəns/',vi:'sự hùng hồn, tài ăn nói',ex:'"His eloquence impressed everyone." — Tài hùng biện của anh ấy gây ấn tượng với mọi người.'},
+];
+
+let searchHistory = JSON.parse(localStorage.getItem('ee_dict_history')||'[]');
+let savedWords = JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
+let currentWord = '';
+
+// Quick search hints
+document.getElementById('searchHint').innerHTML += QUICK_WORDS.map(w=>`
+  <span class="hint-chip" onclick="lookupWord('${w}')">${w}</span>`).join('');
+
+// Word of the day
+const doy = Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
+const wod = WOD_LIST[doy % WOD_LIST.length];
+document.getElementById('wodWord').textContent = wod.word;
+document.getElementById('wodPron').textContent = wod.pron;
+document.getElementById('wodVi').textContent = wod.vi;
+document.getElementById('wodEx').textContent = wod.ex;
+function lookupFromWod() { lookupWord(wod.word); }
+
+let _debounceTimer=null;
+let _abortCtrl=null;
+let _sugIdx=-1;
+
+// Common English words for suggestions
+const SUGGEST_WORDS=['abandon','ability','able','about','above','abroad','absence','absolute','absorb','abstract','abuse','academic','accept','access','accident','accompany','accomplish','according','account','accurate','accuse','achieve','acknowledge','acquire','across','act','action','active','activity','actual','adapt','add','addition','additional','address','adequate','adjust','administration','admit','adopt','adult','advance','advanced','advantage','advice','affect','afford','afraid','after','afternoon','again','against','age','agency','agent','agree','agreement','ahead','aid','aim','air','allow','almost','alone','along','already','also','alternative','although','always','amazing','ambiguous','amount','analysis','ancient','anger','angle','angry','animal','announce','annual','another','answer','anxiety','anxious','any','apart','apparent','appeal','appear','application','apply','approach','appropriate','approve','area','argue','argument','arise','arm','army','around','arrange','arrive','art','article','as','aside','ask','aspect','assess','assign','assist','associate','assume','atmosphere','attach','attack','attempt','attend','attention','attitude','attract','audience','author','authority','available','average','avoid','award','aware','awful','background','balance','ball','band','bank','bar','barrier','base','basic','basis','battle','bear','beat','beautiful','because','become','bed','before','begin','beginning','behavior','behind','belief','believe','belong','benefit','beside','best','better','between','beyond','big','bill','billion','bind','bit','black','blame','block','blood','blow','blue','board','body','bone','book','border','born','both','bother','bottom','box','boy','brain','branch','brave','bread','break','breath','bridge','brief','bright','bring','broad','brother','brown','budget','build','building','burn','bus','business','busy','but','buy','cabinet','call','camera','camp','campaign','campus','can','candidate','capable','capacity','capital','capture','car','carbon','card','care','career','careful','carefully','carry','case','cast','cat','catch','category','cause','celebrate','cell','center','central','century','certain','certainly','chain','chair','chairman','challenge','champion','chance','change','channel','chapter','character','characteristic','charge','charity','chart','check','cheek','chemical','chest','chicken','chief','child','childhood','chin','choice','choose','church','citizen','city','civil','claim','class','classic','classroom','clean','clear','clearly','client','climate','climb','clinical','clock','close','closely','closer','clothes','club','coach','coalition','coast','code','coffee','cognitive','cold','collapse','colleague','collect','collection','college','colonial','color','column','combination','combine','come','comfortable','command','comment','commercial','commission','commit','committee','common','communicate','communication','community','company','compare','comparison','compete','competition','competitive','complain','complaint','complete','completely','complex','complicated','component','comprehensive','computer','concentrate','concept','concern','concerned','conclude','conclusion','concrete','condition','conduct','conference','confidence','confirm','conflict','confront','confusion','congress','connect','connection','consciousness','consensus','consequence','conservative','consider','considerable','consideration','consist','consistent','constant','constantly','constitute','construct','construction','consultant','consumer','consumption','contact','contain','container','contemporary','content','contest','context','continue','contract','contrast','contribute','contribution','control','controversial','controversy','conversation','convert','conviction','convince','cook','cool','cope','copy','core','corner','corporate','correct','correspond','cost','could','council','count','counter','country','county','couple','courage','course','court','cousin','cover','coverage','crack','craft','crash','crazy','cream','create','creation','creative','creature','credit','crew','crime','criminal','crisis','criteria','critic','critical','criticism','crop','cross','crowd','crucial','cry','cultural','culture','cup','curious','current','currently','curriculum','custom','customer','cut','cycle','dad','daily','damage','dance','danger','dangerous','dare','dark','darkness','data','database','daughter','day','dead','deal','dear','death','debate','debt','decade','decide','decision','deck','declare','decline','deep','deeply','defeat','defend','defendant','defense','defensive','deficit','define','definitely','definition','degree','delay','deliver','delivery','demand','democracy','democratic','demonstrate','department','depend','dependent','depending','depict','depression','deputy','derive','describe','description','desert','deserve','design','designer','desire','desk','desperate','despite','destroy','destruction','detail','detailed','detect','determine','develop','developer','development','device','devote','dialogue','die','diet','differ','difference','different','differently','difficult','difficulty','dig','digital','dimension','dinner','direct','direction','directly','director','dirty','disability','disagree','disappear','disaster','discipline','discourse','discover','discovery','discrimination','discuss','discussion','disease','dish','dismiss','disorder','display','dispute','distance','distinct','distinction','distinguish','distribute','distribution','district','diverse','diversity','divide','division','doctor','document','dog','dollar','domestic','dominant','dominate','door','double','doubt','down','downtown','dozen','draft','drag','drama','dramatic','dramatically','draw','drawing','dream','dress','drink','drive','driver','drop','drug','dry','due','during','dust','duty','each','ear','early','earn','earth','ease','easily','east','eastern','easy','eat','economic','economy','edge','edition','editor','educate','education','educator','effect','effective','effectively','efficiency','efficient','effort','egg','eight','either','elderly','elect','election','electric','element','eliminate','elite','else','elsewhere','embrace','emerge','emergency','emission','emotion','emotional','emphasis','emphasize','empire','employ','employee','employer','employment','empty','enable','encounter','encourage','end','enemy','energy','enforcement','engage','engine','engineer','engineering','enhance','enjoy','enormous','enough','ensure','enter','enterprise','entertainment','entire','entirely','entrance','entry','environment','environmental','episode','equal','equally','equipment','era','error','escape','especially','essay','essential','essentially','establish','establishment','estate','estimate','evaluate','evaluation','even','evening','event','eventually','ever','every','everybody','everyday','everyone','everything','everywhere','evidence','evil','evolution','evolve','exact','exactly','examination','examine','example','exceed','excellent','except','exception','exchange','exciting','executive','exercise','exhibit','exhibition','exist','existence','existing','expand','expansion','expect','expectation','expense','expensive','experience','experiment','expert','explain','explanation','explicit','explicitly','explore','explosion','expose','exposure','extend','extension','extensive','extent','external','extra','extraordinary','extreme','extremely','eye','face','facility','fact','factor','fail','failure','fair','fairly','faith','fall','familiar','family','famous','fan','fantasy','far','farm','farmer','fashion','fast','fat','fate','father','fault','favor','favorite','fear','feature','federal','fee','feed','feel','feeling','fellow','female','fence','few','fewer','fiction','field','fifteen','fifth','fifty','fight','fighter','figure','file','fill','film','final','finally','finance','financial','find','finding','fine','finger','finish','fire','firm','first','fish','fit','five','fix','flag','flame','flat','flavor','flee','flesh','flight','float','floor','flow','flower','fly','focus','folk','follow','following','food','foot','football','for','force','foreign','forest','forever','forget','form','formal','formation','former','formula','forth','fortune','forward','found','foundation','founder','four','fourth','frame','framework','free','freedom','French','frequency','frequently','fresh','friend','friendship','from','front','fruit','fuel','full','fully','function','fund','fundamental','funding','furniture','furthermore','future','gain','galaxy','game','gang','gap','garage','garden','garlic','gas','gate','gather','gaze','gender','gene','general','generally','generate','generation','genetic','genius','genre','gentle','gentleman','gently','genuine','get','ghost','giant','gift','gifted','girl','girlfriend','give','given','glad','glance','glass','global','glove','go','goal','god','gold','golden','golf','gone','good','govern','government','governor','grab','grace','grade','gradually','graduate','grain','grand','grandfather','grandmother','grant','grass','grave','gray','great','greatest','green','grocery','ground','group','grow','growing','growth','guarantee','guard','guess','guest','guide','guilty','guitar','gun','guy','habit','hair','half','hall','hand','handle','hang','happen','happy','hard','hardly','hat','hate','have','he','head','headline','headquarters','health','healthy','hear','hearing','heart','heat','heavy','height','hell','hello','help','helpful','her','here','heritage','hero','herself','hide','high','highlight','highly','hill','him','himself','hip','hire','his','historian','historic','historical','history','hit','hold','hole','holiday','home','homeless','honest','honor','hope','hopefully','horror','horse','hospital','host','hot','hotel','hour','house','household','housing','how','however','huge','human','humor','hundred','hungry','hunt','hurt','husband','idea','ideal','identification','identify','identity','ignore','ill','illegal','illustrate','image','imagination','imagine','immediate','immediately','immigrant','immigration','impact','implement','implication','imply','import','importance','important','impose','impossible','impress','impression','impressive','improve','improvement','in','incident','include','including','income','increase','increasingly','incredible','incredibly','indeed','independence','independent','index','Indian','indicate','individual','industrial','industry','infant','infection','inflation','influence','inform','information','initial','initially','initiative','injury','inner','innocent','innovation','input','inquiry','inside','insist','install','instance','instead','institution','institutional','instruction','instructor','instrument','insurance','intellectual','intelligence','intend','intense','intention','interest','interested','interesting','internal','international','Internet','interpretation','intervention','interview','into','introduce','introduction','invasion','invest','investigate','investigation','investigator','investment','investor','invitation','involve','involved','involvement','iron','Islamic','island','isolation','issue','it','Italian','item','its','itself','jacket','jail','Japanese','jet','Jewish','job','join','joint','joke','journal','journalist','journey','joy','judge','judgment','juice','jump','junior','jury','just','justice','justify','keen','keep','key','kick','kid','kill','killer','kind','king','kiss','kitchen','knee','knife','knock','know','knowledge','label','labor','laboratory','lack','lady','lake','land','landscape','language','lap','large','largely','late','later','Latin','latter','laugh','launch','law','lawn','lawsuit','lawyer','lay','layer','lead','leader','leadership','lean','learn','learning','least','leather','leave','left','leg','legacy','legal','legend','legislation','legitimate','lemon','length','less','lesson','let','letter','level','liberal','library','license','lie','life','lifestyle','lifetime','lift','light','like','likely','limit','limitation','limited','line','link','lip','list','listen','literally','literary','literature','little','live','living','loan','local','locate','location','lock','long','longer','look','loose','lord','lose','loss','lost','lot','lots','loud','love','lovely','lover','low','lower','luck','lunch','lung','machine','mad','magazine','magic','magnificent','maintain','major','majority','make','maker','male','mall','man','manage','management','manager','manner','manufacturer','manufacturing','many','map','margin','mark','market','marketing','marriage','married','marry','mask','mass','massive','master','match','material','math','matter','may','maybe','mayor','me','meal','mean','meaning','meanwhile','measure','measurement','meat','mechanism','media','medical','medication','medicine','medium','meet','meeting','member','membership','memory','mental','mention','mentor','menu','mere','merely','message','metal','method','middle','might','military','milk','million','mind','mine','minister','minor','minority','minute','miracle','mirror','miss','mission','mistake','mix','mixture','model','moderate','modern','modest','modify','mom','moment','money','monitor','month','mood','moon','moral','more','moreover','morning','mortgage','most','mostly','mother','motion','motivation','motor','mount','mountain','mouse','mouth','move','movement','movie','much','multiple','murder','muscle','museum','music','musical','Muslim','must','mutual','my','myself','mystery','myth','naked','name','narrative','narrow','nation','national','natural','naturally','nature','near','nearby','nearly','necessarily','necessary','neck','need','negative','negotiate','negotiation','neighbor','neighborhood','neither','nerve','nervous','net','network','never','nevertheless','new','newly','news','newspaper','next','nice','night','nine','no','nobody','nod','noise','nomination','none','nor','normal','normally','north','northern','nose','not','note','nothing','notice','notion','novel','now','nowhere','nuclear','number','numerous','nurse','nut','object','objection','objective','obligation','observation','observe','observer','obstacle','obtain','obvious','obviously','occasion','occasionally','occupation','occupy','occur','ocean','odd','odds','of','off','offense','offensive','offer','office','officer','official','often','oh','oil','ok','okay','old','Olympic','on','once','one','ongoing','online','only','onto','open','opening','operate','operation','operator','opinion','opponent','opportunity','oppose','opposite','opposition','option','or','orange','order','ordinary','organic','organization','organize','orientation','origin','original','other','otherwise','ought','our','ourselves','out','outcome','outside','over','overall','overcome','overlook','overwhelming','owe','own','owner','pace','pack','package','page','pain','paint','painting','pair','pale','palm','pan','panel','panic','paper','parent','park','parking','part','participant','participate','participation','particular','particularly','partly','partner','partnership','party','pass','passage','passenger','passion','past','path','patient','pattern','pause','pay','payment','peace','peak','peer','penalty','people','per','perceive','percentage','perception','perfect','perfectly','perform','performance','perhaps','period','permanent','permission','permit','person','personal','personality','personally','perspective','phase','phenomenon','philosophy','phone','photo','photograph','photography','phrase','physical','physically','physician','piano','pick','picture','pie','piece','pile','pilot','pine','pink','pipe','pitch','place','plan','plane','planet','planning','plant','plastic','plate','platform','play','player','please','pleasure','plenty','plot','plus','pocket','poem','poet','poetry','point','pole','police','policy','political','politically','politics','poll','pollution','pool','poor','pop','popular','population','porch','port','portion','portrait','portray','pose','position','positive','possibility','possible','possibly','post','potential','potentially','pound','pour','poverty','power','powerful','practical','practice','pray','prayer','precisely','predict','predominantly','prefer','preference','pregnancy','preparation','prepare','prepared','presence','present','presentation','preserve','presidency','president','presidential','press','pressure','pretend','pretty','prevent','previous','previously','price','pride','primarily','primary','prime','prince','princess','principal','principle','print','prior','priority','prison','prisoner','privacy','private','probably','problem','procedure','proceed','process','produce','producer','product','production','profession','professional','professor','profile','profit','program','progress','project','prominent','promise','promote','promotion','proof','proper','properly','property','proportion','proposal','propose','proposed','prospect','protect','protection','protein','protest','prove','provide','provider','province','provision','psychological','psychologist','psychology','public','publication','publicly','publish','pull','punishment','purchase','pure','purpose','pursue','push','put','qualify','quality','quarter','quarterback','queen','question','quick','quickly','quiet','quietly','quit','quite','quote','race','racial','radical','radio','rage','rain','raise','range','rank','rapid','rapidly','rare','rarely','rate','rather','rating','reach','react','reaction','read','reader','reading','ready','real','realistic','reality','realize','really','reason','reasonable','reasoning','recall','receive','recent','recently','recognition','recognize','recommend','recommendation','record','recording','recover','recovery','recruit','red','reduce','reduction','refer','reference','reflect','reflection','reform','refugee','refuse','regard','regarding','regime','region','regional','register','regular','regularly','regulate','regulation','reinforce','reject','relate','relation','relationship','relative','relatively','release','relevant','relief','religion','religious','reluctant','rely','remain','remaining','remark','remarkable','remember','remind','remote','remove','repeat','repeatedly','replace','replacement','reply','report','reporter','represent','representation','representative','Republican','reputation','request','require','requirement','research','researcher','resemble','reservation','resident','resist','resistance','resolution','resolve','resort','resource','respond','response','responsibility','responsible','rest','restaurant','restore','restriction','result','retain','retire','retirement','return','reveal','revenue','review','revolution','rhythm','rice','rich','rid','ride','rifle','right','ring','rise','risk','river','road','rock','role','roll','romantic','roof','room','root','rope','rose','rough','roughly','round','route','row','royal','rule','run','running','rural','rush','Russian','sacred','sad','safe','safety','sake','salad','salary','sale','salt','same','sample','sanction','sand','satellite','satisfaction','satisfy','Saturday','save','say','scale','scandal','scene','schedule','scholar','scholarship','school','science','scientific','scientist','scope','score','screen','sea','search','season','seat','second','secondary','secret','secretary','section','sector','secure','security','seed','seek','seem','segment','seize','select','selection','self','sell','Senate','senator','senior','sense','sensitive','sentence','separate','sequence','series','serious','seriously','serve','service','session','set','setting','settle','settlement','seven','several','severe','sexual','shade','shadow','shake','shall','shape','share','sharp','she','sheet','shelf','shell','shelter','shift','shine','ship','shirt','shock','shoot','shooting','shop','shopping','shore','short','shortage','shortly','shot','should','shoulder','shout','show','shower','shut','sick','side','sight','sign','signal','significance','significant','significantly','silence','silent','silver','similar','similarly','simple','simply','sin','since','sing','singer','single','sir','sister','sit','site','situation','six','size','ski','skill','skin','sky','slave','slavery','sleep','slice','slide','slight','slightly','slip','slow','slowly','small','smart','smell','smile','smoke','smooth','snap','snow','so','so-called','social','society','soft','software','soil','solar','soldier','solid','solution','solve','some','somebody','someday','somehow','someone','something','sometimes','somewhat','somewhere','son','song','soon','sophisticated','sorry','sort','soul','sound','source','south','southern','space','Spanish','speak','speaker','special','specialist','specialized','specific','specifically','speech','speed','spend','spending','sphere','spirit','spiritual','split','spokesman','sport','spot','spread','spring','square','squeeze','stability','stable','staff','stage','stair','stake','stand','standard','standing','star','stare','start','state','statement','station','status','statute','stay','steady','steal','steam','steel','step','stick','still','stock','stomach','stone','stop','store','storm','story','straight','strange','stranger','strategic','strategy','stream','street','strength','strengthen','stress','stretch','strict','strike','string','strip','stroke','strong','strongly','structure','struggle','student','studio','study','stuff','stupid','style','subject','submit','subsequent','substance','substantial','succeed','success','successful','successfully','such','sudden','suddenly','suffer','sufficient','sugar','suggest','suggestion','suit','summer','sun','super','supply','support','supporter','suppose','sure','surely','surface','surgery','surprise','surprised','surprising','surprisingly','surround','surrounding','survey','survival','survive','survivor','suspect','suspend','sustain','swallow','sweet','swim','swing','switch','symbol','symptom','system','table','tactic','tail','take','tale','talent','talk','tall','tank','tap','tape','target','task','taste','tax','taxpayer','tea','teach','teacher','teaching','team','tear','technology','telephone','television','tell','temperature','temporary','ten','tend','tendency','term','terms','terrible','territory','terror','terrorism','terrorist','test','testify','testimony','testing','text','than','thank','that','the','theater','their','them','theme','themselves','then','theory','therapy','there','therefore','thick','thin','thing','think','thinking','third','thirty','this','those','though','thought','thousand','threat','threaten','three','throat','through','throughout','throw','thus','ticket','tie','tight','till','time','tiny','tip','tire','tired','title','to','tobacco','today','toe','together','toll','tomorrow','tone','tonight','too','tool','top','topic','toss','total','totally','touch','tough','tour','tourist','tournament','toward','towards','tower','town','toy','trace','track','trade','tradition','traditional','traffic','tragedy','trail','train','training','trait','transfer','transform','transformation','transition','translate','transmission','transport','transportation','travel','treat','treatment','treaty','tree','tremendous','trend','trial','tribe','trick','trigger','trip','troop','trouble','truck','true','truly','trust','truth','try','tube','tunnel','turn','TV','twelve','twenty','twice','twin','twist','two','type','typical','typically','ugly','ultimate','ultimately','unable','uncle','under','undergo','understand','understanding','unemployment','unfortunately','unhappy','uniform','union','unique','unit','United','universal','universe','university','unknown','unless','unlike','unlikely','until','unusual','up','upon','upper','urban','urge','us','use','used','useful','user','usual','usually','utility','vacation','valley','valuable','value','variation','variety','various','vary','vast','vehicle','venture','version','versus','very','veteran','via','victim','victory','video','view','viewer','village','violation','violence','violent','virtual','virtually','virtue','visible','vision','visit','visitor','visual','vital','voice','volume','voluntary','volunteer','vote','vulnerable','wage','wait','wake','walk','wall','wander','want','war','warm','warn','warning','wash','waste','watch','water','wave','way','we','weak','weakness','wealth','weapon','wear','weather','web','website','wedding','week','weekend','weekly','weigh','weight','welcome','welfare','well','west','western','wet','what','whatever','wheel','when','whenever','where','whereas','wherever','whether','which','while','whisper','white','who','whole','whom','whose','why','wide','widely','widespread','wife','wild','will','willing','win','wind','window','wine','wing','winner','winter','wire','wisdom','wise','wish','with','withdraw','without','witness','woman','wonder','wonderful','wood','wooden','word','work','worker','working','workplace','works','workshop','world','worried','worry','worse','worst','worth','worthy','would','wound','wrap','write','writer','writing','wrong','yard','yeah','year','yell','yellow','yes','yesterday','yet','yield','you','young','youngster','your','yours','yourself','youth','zone'];
+
+function debounceLocal(){
+  clearTimeout(_debounceTimer);
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){hideResult();document.getElementById('notFound').style.display='none';hideSuggestions();return;}
+  _debounceTimer=setTimeout(function(){
+    showSuggestions(q);
+    if(DICT[q]){
+      currentWord=q;addHistory(q);renderResult(q,DICT[q],false);
+      if(typeof addXP==='function'){var gs=getGameState();gs.wordsLearned=(gs.wordsLearned||0)+1;saveGameState(gs);addXP(5,'Tra từ: '+q);}
+    }
+  },200);
+}
+
+async function lookupFromSearch(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q) return;
+  await lookupWord(q);
+}
+
+function showSuggestions(q){
+  const box=document.getElementById('suggestions');
+  if(!q||q.length<1){box.style.display='none';return;}
+  // Match from DICT keys + SUGGEST_WORDS
+  const allWords=[...new Set([...Object.keys(DICT),...SUGGEST_WORDS])];
+  const matches=allWords.filter(w=>w.startsWith(q)).slice(0,8);
+  if(!matches.length){box.style.display='none';return;}
+  _sugIdx=-1;
+  box.innerHTML=matches.map((w,i)=>'<div class="sug-item" data-idx="'+i+'" onmousedown="pickSuggestion(\''+w+'\')" style="padding:10px 16px;cursor:pointer;font-size:14px;color:var(--text2);border-bottom:1px solid var(--border);transition:background .1s">'+(DICT[w]?'<span style="color:var(--text)">'+w+'</span> <span style="color:var(--text3);font-size:12px">'+DICT[w].pron+'</span>':'<span style="color:var(--text)">'+w+'</span>')+'</div>').join('');
+  box.style.display='block';
+}
+function hideSuggestions(){document.getElementById('suggestions').style.display='none';_sugIdx=-1;}
+function pickSuggestion(w){document.getElementById('searchInput').value=w;hideSuggestions();lookupWord(w);}
+
+function handleSearchKey(e){
+  const box=document.getElementById('suggestions');
+  const items=box.querySelectorAll('.sug-item');
+  if(e.key==='ArrowDown'){e.preventDefault();_sugIdx=Math.min(_sugIdx+1,items.length-1);highlightSug(items);}
+  else if(e.key==='ArrowUp'){e.preventDefault();_sugIdx=Math.max(_sugIdx-1,-1);highlightSug(items);}
+  else if(e.key==='Enter'){
+    e.preventDefault();
+    const q=document.getElementById('searchInput').value.trim().toLowerCase();
+    if(_sugIdx>=0&&items[_sugIdx]){pickSuggestion(items[_sugIdx].textContent.split(' ')[0].trim());}
+    else if(q){ lookupWord(q); }
+  }
+  else if(e.key==='Escape'){hideSuggestions();}
+}
+function highlightSug(items){items.forEach((el,i)=>{el.style.background=i===_sugIdx?'rgba(100,216,165,0.1)':'transparent';});}
+
+document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap'))hideSuggestions();});
+
+function searchWord(force=false) {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q) { hideResult(); return; }
+  hideSuggestions();
+  if(force) lookupWord(q);
+}
+
+async function lookupWord(word) {
+  word = word.toLowerCase().trim();
+  if(!word) return;
+  document.getElementById('searchInput').value = word;
+  document.getElementById('notFound').style.display='none';
+  // Cancel previous request
+  if(_abortCtrl) _abortCtrl.abort();
+  _abortCtrl = new AbortController();
+
+  // 1. Thử local DICT trước
+  if(DICT[word]) {
+    currentWord = word;
+    addHistory(word);
+    renderResult(word, DICT[word], false);
+    // Gamification: +5 XP for looking up a word
+    if(typeof addXP==='function'){
+      var gs=getGameState();gs.wordsLearned=(gs.wordsLearned||0)+1;saveGameState(gs);
+      addXP(5,'Tra từ: '+word);
+    }
+    return;
+  }
+
+  // 2. Gọi Dictionary API
+  try {
+    const rc = document.getElementById('resultCard');
+    rc.innerHTML = '<div style="text-align:center;padding:40px"><div class="loading-spinner"></div><div style="margin-top:12px;color:var(--text3);font-size:13px">Đang tra từ...</div></div>';
+    rc.classList.add('show');
+
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,{signal:_abortCtrl.signal});
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+    const entry = parseApiResponse(data);
+    DICT[word] = entry; // cache lại
+    currentWord = word;
+    addHistory(word);
+    renderResult(word, entry, true);
+    
+    // Gamification
+    if(typeof addXP==='function'){
+      var gs=getGameState();gs.wordsLearned=(gs.wordsLearned||0)+1;saveGameState(gs);
+      addXP(5,'Tra từ: '+word);
+    }
+    
+    // Auto-translate meanings to VN
+    for(let i=0; i<Math.min(entry.meanings.length,3); i++){
+      const viText = await translateToVi(entry.meanings[i].enDef);
+      if(viText){
+        entry.meanings[i].vi = viText;
+        const viEl = document.querySelectorAll('.m-vi')[i];
+        if(viEl) viEl.textContent = viText;
+      }
+    }
+  } catch(e) {
+    // Ignore aborted requests
+    if(e.name==='AbortError') return;
+    // 3. Không tìm thấy ở cả 2
+    hideResult();
+    const close = Object.keys(DICT).filter(k=>k.startsWith(word[0])||k.includes(word.slice(0,3)));
+    const nf = document.getElementById('notFound');
+    nf.style.display='block';
+    if(close.length) {
+      nf.innerHTML=`Không tìm thấy "<strong>${word}</strong>". Thử: ${close.slice(0,4).map(w=>`<span class="hist-item" onclick="lookupWord('${w}')" style="cursor:pointer">${w}</span>`).join(' ')}`;
+    } else {
+      nf.innerHTML=`Không tìm thấy "<strong>${word}</strong>". Kiểm tra chính tả hoặc thử từ khác.`;
+    }
+  }
+}
+
+function parseApiResponse(data) {
+  const d = data[0];
+  // Extract all phonetics
+  const phonetics = d.phonetics || [];
+  const ukPhone = phonetics.find(p=>p.text && (p.audio||'').includes('-uk'))?.text || '';
+  const usPhone = phonetics.find(p=>p.text && (p.audio||'').includes('-us'))?.text || '';
+  const fallback = d.phonetic || (phonetics.find(p=>p.text))?.text || '';
+  const phonetic = (ukPhone && usPhone) ? `UK ${ukPhone}  ·  US ${usPhone}` : fallback;
+  
+  // Audio: prefer US, fallback UK
+  const audioUrl = (phonetics.find(p=>p.audio && p.audio.includes('-us')))?.audio 
+    || (phonetics.find(p=>p.audio && p.audio.length>0))?.audio || '';
+  
+  const types = [...new Set(d.meanings.map(m=>({noun:'n',verb:'v',adjective:'adj',adverb:'adv'}[m.partOfSpeech]||m.partOfSpeech)))];
+  const meanings = d.meanings.flatMap(m=>m.definitions.slice(0,3).map(def=>({
+    tag: m.partOfSpeech,
+    vi: def.definition,
+    enDef: def.definition,
+    examples: def.example ? [{en:def.example, vi:''}] : []
+  }))).slice(0,6);
+  const synonyms = d.meanings.flatMap(m=>m.synonyms||[]).slice(0,8);
+  const antonyms = d.meanings.flatMap(m=>m.antonyms||[]).slice(0,6);
+  return { pron:phonetic, types, meanings, synonyms, antonyms, related:[], phrases:[], audioUrl };
+}
+
+// Auto-translate a word/definition to Vietnamese using API directly
+async function translateToVi(text) {
+  try {
+    const res = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|vi');
+    const data = await res.json();
+    if (data.responseStatus === 200 && data.responseData && data.responseData.translatedText) {
+      const out = data.responseData.translatedText.trim();
+      if (out && out.toLowerCase() !== text.toLowerCase()) return out;
+    }
+    if (data.matches && data.matches.length) {
+      for (const m of data.matches) {
+        if (m.translation && m.translation.toLowerCase() !== text.toLowerCase()) return m.translation;
+      }
+    }
+  } catch (e) {}
+  return '';
+}
+
+function buildBlackenMeta(word, entry) {
+  var meta = inferDictionaryMeta(word, entry);
+  var bestExample = (entry.meanings||[]).flatMap(function(m){ return m.examples || []; }).find(function(ex){ return ex && ex.en; }) || {en:'',vi:''};
+  return {
+    word: word,
+    pron: entry.pron || '',
+    types: entry.types || [],
+    context: meta.context,
+    frequency: meta.frequency,
+    formality: meta.formality,
+    mistake: meta.mistake,
+    collocations: entry.phrases || [],
+    example: bestExample.en || '',
+    exampleVi: bestExample.vi || ''
+  };
+}
+
+function hideResult() {
+  document.getElementById('resultCard').classList.remove('show');
+}
+
+// --- TTS + Audio ---
+let currentAudio = null;
+function speak(text, audioUrl) {
+  if(currentAudio) { currentAudio.pause(); currentAudio=null; }
+  speechSynthesis.cancel();
+  if(audioUrl) {
+    currentAudio = new Audio(audioUrl);
+    currentAudio.play().catch(()=>speakTTS(text));
+  } else {
+    speakTTS(text);
+  }
+}
+function speakTTS(text) {
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=0.85;
+  speechSynthesis.speak(u);
+}
+
+function renderResult(word, e, fromApi=false) {
+  const isSaved = savedWords.some(s=>s.word===word);
+  const typeLabels = {n:'Danh từ (N)',v:'Động từ (V)',adj:'Tính từ (Adj)',adv:'Trạng từ (Adv)',phrase:'Cụm từ'};
+  const chipClass = {n:'chip-n',v:'chip-v',adj:'chip-adj',adv:'chip-adv',phrase:'chip-phrase'};
+  const audioUrl = e.audioUrl || '';
+  const meta = e.meta || inferDictionaryMeta(word, e);
+  const bestExample = e.meanings.flatMap(function(m){ return m.examples || []; }).find(function(ex){ return ex && ex.en; });
+
+  const rc = document.getElementById('resultCard');
+  rc.innerHTML = `
+    <div class="rc-header">
+      <div style="display:flex;align-items:flex-start;gap:12px;flex:1">
+        <button class="speak-btn" onclick="speak('${word}','${audioUrl}')" title="Nghe phát âm">• </button>
+        <div style="min-width:0;flex:1">
+          <div class="rc-word">${word}</div>
+          <div class="rc-pron">${e.pron}</div>
+          <div class="rc-type-row">${e.types.map(t=>`<span class="type-chip ${chipClass[t]||'chip-n'}">${typeLabels[t]||t}</span>`).join('')}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+            <span class="type-chip chip-phrase">${meta.frequency}</span>
+            <span class="type-chip chip-adj">${meta.formality}</span>
+          </div>
+        </div>
+      </div>
+      <div class="rc-actions">
+        <button class="save-btn ${isSaved?'saved':''}" id="saveBtn" onclick="toggleSave('${word}')">
+          ${isSaved?'• Đã lưu':'+ Lưu từ'}
+        </button>
+      </div>
+    </div>
+
+    <div class="info-card" style="margin-bottom:16px;background:var(--card2)">
+      <h3 style="margin-bottom:6px;font-family:'Fraunces',serif;font-weight:300">Ngữ cảnh dùng</h3>
+      <p>${meta.context}</p>
+      <div class="word-list" style="margin-top:10px">
+        <span class="word-pill"><strong>Phổ biến:</strong> ${meta.frequency}</span>
+        <span class="word-pill"><strong>Trang trọng:</strong> ${meta.formality}</span>
+      </div>
+      <div class="note-box" style="margin-top:12px"><strong>Hay bị dùng sai:</strong> ${meta.mistake}</div>
+    </div>
+
+    <div class="meanings">
+      ${e.meanings.map((m,i)=>`
+        <div class="meaning-item">
+          <div class="m-num">Nghĩa ${i+1} <span class="m-tag">${m.tag}</span></div>
+          <div class="m-vi">${m.vi}</div>
+          ${m.enDef !== m.vi ? `<div class="m-en-def">${m.enDef}</div>` : ''}
+          <div class="m-examples">${m.examples.map(ex=>`
+            <div class="m-ex">
+              <div class="m-ex-en" style="display:flex;align-items:center;gap:8px">
+                <span style="cursor:pointer" onclick="speakTTS('${ex.en.replace(/'/g,"\\'")}')">• </span>
+                "${ex.en}"
+              </div>
+              ${ex.vi ? `<div class="m-ex-vi">${ex.vi}</div>` : ''}
+            </div>`).join('')}</div>
+        </div>`).join('')}
+    </div>
+
+    ${e.phrases&&e.phrases.length?`
+    <div class="related-section">
+      <div class="rs-title">Collocations / Cụm đi cùng</div>
+      <div class="rs-words">${e.phrases.map(p=>`<span class="rs-chip">${p}</span>`).join('')}</div>
+    </div>`:''}
+
+    ${e.synonyms.length?`
+    <div class="related-section">
+      <div class="rs-title">Từ đồng nghĩa</div>
+      <div class="rs-words">${e.synonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w}')">${w}</span>`).join('')}</div>
+    </div>`:''}
+    ${e.antonyms.length?`
+    <div class="related-section">
+      <div class="rs-title">Từ trái nghĩa</div>
+      <div class="rs-words">${e.antonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w}')">${w}</span>`).join('')}</div>
+    </div>`:''}
+    ${e.related&&e.related.length?`
+    <div class="related-section">
+      <div class="rs-title">Từ liên quan</div>
+      <div class="rs-words">${e.related.map(w=>`<span class="rs-chip" onclick="lookupWord('${w.split(' ')[0]}')">${w}</span>`).join('')}</div>
+    </div>`:''}
+  `;
+  rc.classList.add('show');
+  rc.scrollIntoView({behavior:'smooth',block:'nearest'});
+  document.getElementById('wodCard').style.display='none';
+}
+
+function toggleSave(word) {
+  const entry = DICT[word];
+  const idx = savedWords.findIndex(s=>s.word===word);
+  if(idx>-1) {
+    savedWords.splice(idx,1);
+    document.getElementById('saveBtn').textContent='+ Lưu từ';
+    document.getElementById('saveBtn').classList.remove('saved');
+  } else {
+    if(entry) {
+      const meta = inferDictionaryMeta(word, entry);
+      savedWords.push({
+        word,
+        pron: entry.pron,
+        vi: entry.meanings[0].vi,
+        context: meta.context,
+        frequency: meta.frequency,
+        formality: meta.formality,
+        collocations: entry.phrases || [],
+        types: entry.types || []
+      });
+      document.getElementById('saveBtn').textContent='• Đã lưu';
+      document.getElementById('saveBtn').classList.add('saved');
+    }
+  }
+  localStorage.setItem('ee_saved_words', JSON.stringify(savedWords));
+  renderSaved();
+}
+
+function addHistory(word) {
+  searchHistory = [word, ...searchHistory.filter(h=>h!==word)].slice(0,8);
+  localStorage.setItem('ee_dict_history', JSON.stringify(searchHistory));
+  renderHistory();
+}
+
+function renderHistory() {
+  const hs = document.getElementById('historySection');
+  const hr = document.getElementById('historyRow');
+  if(!searchHistory.length) { hs.style.display='none'; return; }
+  hs.style.display='block';
+  hr.innerHTML = searchHistory.map(h=>`<span class="hist-item" onclick="lookupWord('${h}')">${h}</span>`).join('');
+}
+
+function renderSaved() {
+  const grid = document.getElementById('savedGrid');
+  document.getElementById('savedCount').textContent = savedWords.length;
+  if(!savedWords.length) { grid.innerHTML='<div class="empty-msg">Chưa có từ nào được lưu. Tra từ và bấm "Lưu từ" để thêm vào đây.</div>'; return; }
+  grid.innerHTML = savedWords.map(s=>`
+    <div class="saved-item" onclick="lookupWord('${s.word}')">
+      <div class="si-en">${s.word}</div>
+      <div class="si-pron">${s.pron}</div>
+      <div class="si-vi">${s.vi}</div>
+      <div class="si-vi" style="margin-top:6px;font-size:11px;color:var(--text3)">${s.frequency || ''} · ${s.formality || ''}</div>
+    </div>`).join('');
+}
+
+function clearSaved() {
+  if(confirm('Xóa tất cả từ đã lưu?')) { savedWords=[]; localStorage.removeItem('ee_saved_words'); renderSaved(); }
+}
+
+renderHistory();
+renderSaved();
+
+document.addEventListener('click', function(e) {
+  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
+});
+
+// ===== BROWSE =====
+let curLetter='All',curLevel='All';
+const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+document.getElementById('alphaBar').innerHTML=
+  '<button class="alpha-btn active" onclick="setLetter(\'All\',this)">All</button>'+
+  LETTERS.map(l=>`<button class="alpha-btn" onclick="setLetter('${l}',this)">${l}</button>`).join('');
+
+function setLetter(l,btn){
+  curLetter=l;
+  document.querySelectorAll('.alpha-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBrowse();
+}
+function setLevel(lv,btn){
+  curLevel=lv;
+  document.querySelectorAll('.lv-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBrowse();
+}
+function renderBrowse(){
+  if(typeof BROWSE==='undefined')return;
+  let list=BROWSE;
+  if(curLetter!=='All') list=list.filter(w=>w[0].charAt(0).toUpperCase()===curLetter);
+  if(curLevel!=='All') list=list.filter(w=>w[3]===curLevel);
+  document.getElementById('browseCount').textContent=`Hiển thị ${list.length} từ`;
+  document.getElementById('browseGrid').innerHTML=list.map(w=>`
+    <div class="bw-card" onclick="lookupWord('${w[0]}')">
+      <div class="bw-word">${w[0]}</div>
+      <div class="bw-ipa">${w[1]}</div>
+      <div class="bw-vi">${w[2]}</div>
+      <div class="bw-meta"><span class="bw-lv lv-${w[3]}">${w[3]}</span><span class="bw-type">${w[4]}</span></div>
+    </div>`).join('')||'<div class="empty-msg">Không có từ nào</div>';
+}
+renderBrowse();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

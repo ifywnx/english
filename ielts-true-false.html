@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="True False Not Given — luyện IELTS Reading voi 3 bai mau, chien luoc phan biet va quiz tu dong cham diem.">
+<title>True False Not Given — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.hero{background:rgba(244,132,95,0.08);border:0.5px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent3);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;margin-top:10px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{padding:5px 10px;border-radius:999px;border:0.5px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2)}
+.note{background:rgba(100,216,165,0.06);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 12px 12px 0;margin-top:14px}
+.note strong{color:var(--accent)}
+
+/* Rules */
+.rule-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.rule-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;text-align:center}
+.rule-label{font-family:'Fraunces',serif;font-size:20px;font-weight:300;margin-bottom:8px}
+.rule-label.t{color:#6bcb77}.rule-label.f{color:#ff8a80}.rule-label.ng{color:var(--accent2)}
+.rule-desc{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* Strategy */
+.strat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.strat-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px}
+.strat-card h4{font-size:14px;font-weight:500;margin-bottom:6px;color:var(--accent3)}
+.strat-card p{font-size:13px;color:var(--text3);line-height:1.6}
+
+/* Traps */
+.trap-list{background:rgba(244,132,95,0.06);border:0.5px solid rgba(244,132,95,0.2);border-radius:14px;padding:18px;margin:16px 0}
+.trap-list h3{font-family:'Fraunces',serif;font-weight:300;font-size:17px;margin-bottom:12px;color:var(--accent3)}
+.trap-item{display:flex;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+.trap-item:last-child{border-bottom:none}
+.trap-num{width:22px;height:22px;border-radius:50%;background:rgba(244,132,95,0.15);color:var(--accent3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
+
+/* Practice passages */
+.passage-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px}
+.passage-card h3{font-family:'Fraunces',serif;font-weight:300;font-size:18px;margin-bottom:12px}
+.passage-text{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:16px;font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:16px}
+.q-item{padding:12px 0;border-bottom:0.5px solid var(--border)}
+.q-item:last-child{border-bottom:none}
+.q-text{font-size:14px;color:var(--text);margin-bottom:8px}
+.q-options{display:flex;gap:6px}
+.q-opt{padding:8px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.q-opt:hover{border-color:rgba(244,132,95,0.4)}
+.q-opt.selected{border-color:var(--accent3);color:var(--accent3);background:rgba(244,132,95,0.1)}
+.q-opt.correct{border-color:#6bcb77;color:#6bcb77;background:rgba(107,203,119,0.1)}
+.q-opt.wrong{border-color:#ff8a80;color:#ff8a80;background:rgba(255,138,128,0.1)}
+.q-explain{font-size:12px;color:var(--text3);margin-top:8px;padding:10px;background:var(--bg3);border-radius:8px;display:none;line-height:1.6}
+
+.check-btn{padding:12px 24px;border-radius:12px;border:0.5px solid rgba(244,132,95,0.3);background:rgba(244,132,95,0.12);color:var(--accent3);font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;margin-top:14px}
+.check-btn:hover{background:rgba(244,132,95,0.2)}
+
+.score-box{text-align:center;padding:16px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;margin:16px 0}
+.score-box .big{font-family:'Fraunces',serif;font-size:36px;color:var(--accent)}
+.score-box .sub{font-size:13px;color:var(--text3);margin-top:4px}
+
+.link-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:10px;border:0.5px solid rgba(244,132,95,0.25);background:rgba(244,132,95,0.12);color:var(--accent3);font-size:13px;text-decoration:none;cursor:pointer}
+.btn.secondary{background:var(--card2);border-color:var(--border);color:var(--text2)}
+
+@media(max-width:900px){.content{padding:20px 14px 110px}.rule-grid{grid-template-columns:1fr}.strat-grid{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/ielts-true-false.html">
+</head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+  <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><a href="ielts.html">IELTS</a><span class="bc-sep">›</span><span class="bc-current">True / False / Not Given</span></div>
+
+  <div class="hero">
+    <div class="kicker">IELTS Reading</div>
+    <h1 class="page-title">Phan biet True, False va Not Given that nhanh</h1>
+    <div class="desc">Day la dang bai kho nhat IELTS Reading. Khong chi can hieu nghia, ma con phai biet khi nao thong tin co trong bai, khi nao bi phu dinh, va khi nao hoan toan khong duoc de cap.</div>
+    <div class="badges"><span class="badge">IELTS Reading</span><span class="badge">3 bai mau</span><span class="badge">Cham diem tu dong</span></div>
+    <div class="note"><strong>Nguyen tac vang:</strong> Chi dua vao thong tin trong passage. Khong dung kien thuc ben ngoai de phan doan.</div>
+  </div>
+
+  <!-- Rules -->
+  <div class="rule-grid">
+    <div class="rule-card"><div class="rule-label t">TRUE</div><div class="rule-desc">Passage co thong tin KHOP NGHIA voi cau hoi (co the khac tu nhung cung y)</div></div>
+    <div class="rule-card"><div class="rule-label f">FALSE</div><div class="rule-desc">Passage co thong tin TRAI NGUOC truc tiep voi cau hoi</div></div>
+    <div class="rule-card"><div class="rule-label ng">NOT GIVEN</div><div class="rule-desc">Khong co du thong tin de ket luan dung hay sai</div></div>
+  </div>
+
+  <!-- Strategy -->
+  <div class="strat-grid">
+    <div class="strat-card"><h4>Buoc 1: Doc cau hoi truoc</h4><p>Gach chan tu khoa trong cau hoi. Tim vung passage chua tu khoa do.</p></div>
+    <div class="strat-card"><h4>Buoc 2: Locate trong passage</h4><p>Tim doan van chua thong tin lien quan. Doc ky 2-3 cau xung quanh.</p></div>
+    <div class="strat-card"><h4>Buoc 3: So sanh tung cum tu</h4><p>Doi chieu tung menh de cua cau hoi voi passage. Chu y synonyms va paraphrasing.</p></div>
+    <div class="strat-card"><h4>Buoc 4: Phan biet False vs NG</h4><p>False = co bang chung trai nguoc. NG = khong co bang chung nao ca (ke ca trai nguoc).</p></div>
+  </div>
+
+  <!-- Traps -->
+  <div class="trap-list">
+    <h3>Bay thuong gap</h3>
+    <div class="trap-item"><span class="trap-num">1</span><span>Tu tuyet doi: always, never, all, only, every — thuong lam cau hoi thanh FALSE</span></div>
+    <div class="trap-item"><span class="trap-num">2</span><span>Synonyms: passage dung "essential", cau hoi dung "necessary" — van la TRUE</span></div>
+    <div class="trap-item"><span class="trap-num">3</span><span>Part match: passage chi noi mot phan, cau hoi noi toan bo — thuong la NG</span></div>
+    <div class="trap-item"><span class="trap-num">4</span><span>Comparison: passage noi A > B, cau hoi noi B > A — la FALSE</span></div>
+    <div class="trap-item"><span class="trap-num">5</span><span>Opinion vs Fact: tac gia noi "may" nhung cau hoi noi "definitely" — la FALSE</span></div>
+  </div>
+
+  <!-- Score -->
+  <div class="score-box">
+    <div class="big" id="totalScore">0/0</div>
+    <div class="sub">Lam cac bai ben duoi de kiem tra</div>
+  </div>
+
+  <!-- Practice 1 -->
+  <div class="passage-card" id="p1">
+    <h3>Bai 1: The History of Coffee</h3>
+    <div class="passage-text">Coffee was first discovered in Ethiopia in the 9th century. A goat herder named Kaldi noticed that his goats became more energetic after eating berries from a certain tree. He shared his discovery with monks at a nearby monastery, who made a drink from the berries and found that it helped them stay awake during long evening prayers. By the 15th century, coffee was being cultivated in Yemen, and by the 16th century, it had spread to Egypt, Syria, and Turkey. The first European coffee house opened in Venice in 1645.</div>
+    <div id="q1"></div>
+    <button class="check-btn" onclick="checkPassage(1)">Kiem tra bai 1</button>
+  </div>
+
+  <!-- Practice 2 -->
+  <div class="passage-card" id="p2">
+    <h3>Bai 2: Sleep and Memory</h3>
+    <div class="passage-text">Research conducted at Harvard University has shown that sleep plays a crucial role in memory consolidation. During deep sleep, the brain replays experiences from the day, strengthening neural connections that form memories. Studies have found that people who sleep for at least seven hours after learning new information retain significantly more than those who stay awake. However, the quality of sleep matters more than the quantity. Interrupted sleep can be as harmful as no sleep at all when it comes to memory formation.</div>
+    <div id="q2"></div>
+    <button class="check-btn" onclick="checkPassage(2)">Kiem tra bai 2</button>
+  </div>
+
+  <!-- Practice 3 -->
+  <div class="passage-card" id="p3">
+    <h3>Bai 3: Renewable Energy</h3>
+    <div class="passage-text">Solar energy has become the fastest-growing source of renewable power globally. The cost of solar panels has dropped by approximately 90% since 2010, making it competitive with fossil fuels in many regions. China currently leads the world in solar panel manufacturing, producing over 70% of the global supply. While solar energy is clean and abundant, it faces challenges related to energy storage and intermittency. Wind energy, the second most popular renewable source, complements solar well because wind tends to blow more at night when solar generation is low.</div>
+    <div id="q3"></div>
+    <button class="check-btn" onclick="checkPassage(3)">Kiem tra bai 3</button>
+  </div>
+
+  <!-- Common errors -->
+  <div class="strat-grid">
+    <div class="strat-card"><h4>Loi 1: Doan theo kien thuc</h4><p>Ban biet coffee den tu Ethiopia nhung passage noi khac — phai theo passage, khong theo kien thuc.</p></div>
+    <div class="strat-card"><h4>Loi 2: Nham NG voi False</h4><p>False can bang chung trai nguoc. NG la KHONG co bang chung nao. Neu ban khong tim thay gi — do la NG.</p></div>
+    <div class="strat-card"><h4>Loi 3: Bo qua tu khoa</h4><p>"Most" vs "all", "sometimes" vs "always", "many" vs "every" — nhung tu nho nay thay doi dap an hoan toan.</p></div>
+    <div class="strat-card"><h4>Loi 4: Doc qua nhanh</h4><p>Phai doc ky 2-3 cau quanh tu khoa. Dung chi doc 1 tu roi ket luan.</p></div>
+  </div>
+
+  <div class="link-row">
+    <a class="btn" href="ielts-doc.html">IELTS Reading chi tiet</a>
+    <a class="btn secondary" href="ielts-noi-heading.html">Noi heading</a>
+    <a class="btn secondary" href="ielts.html">Tong quan IELTS</a>
+    <a class="btn secondary" href="bai-tap.html">Lam quiz</a>
+  </div>
+</div>
+
+<script>
+var quizData={
+  1:[
+    {text:'Coffee was first discovered in the 15th century.', answer:'FALSE', explain:'Passage noi "9th century", khong phai 15th century. 15th century la khi coffee duoc trong o Yemen.'},
+    {text:'Kaldi was a farmer who grew coffee plants.', answer:'NOT GIVEN', explain:'Passage chi noi Kaldi la "goat herder" (nguoi chan de). Khong noi gi ve viec ong ay trong cay.'},
+    {text:'Monks used the berries to help them stay awake.', answer:'TRUE', explain:'Passage noi ro: "helped them stay awake during long evening prayers".'},
+    {text:'The first coffee house in Europe was in Paris.', answer:'FALSE', explain:'Passage noi "Venice in 1645", khong phai Paris.'},
+    {text:'Coffee became popular in Turkey before it spread to Europe.', answer:'TRUE', explain:'Passage: "spread to Egypt, Syria, and Turkey" (16th century) truoc khi "Venice in 1645".'}
+  ],
+  2:[
+    {text:'Harvard researchers proved that sleep is important for memory.', answer:'TRUE', explain:'Passage: "Research conducted at Harvard University has shown that sleep plays a crucial role in memory consolidation."'},
+    {text:'People need exactly seven hours of sleep for optimal memory.', answer:'NOT GIVEN', explain:'Passage noi "at least seven hours" nhung khong noi do la so gio toi uu. "At least" khac voi "exactly".'},
+    {text:'The quantity of sleep is more important than its quality.', answer:'FALSE', explain:'Passage noi NGUOC lai: "quality of sleep matters more than the quantity".'},
+    {text:'Interrupted sleep has no effect on memory formation.', answer:'FALSE', explain:'Passage noi "Interrupted sleep can be as harmful as no sleep at all" — co anh huong xau.'},
+    {text:'The brain forms new memories only during deep sleep.', answer:'NOT GIVEN', explain:'Passage noi deep sleep giup "memory consolidation" nhung khong noi "only during deep sleep". Co the con giai doan khac.'}
+  ],
+  3:[
+    {text:'Solar energy is the most rapidly expanding renewable energy source.', answer:'TRUE', explain:'Passage: "fastest-growing source of renewable power globally" = most rapidly expanding.'},
+    {text:'Solar panel costs have decreased by about 90% since 2010.', answer:'TRUE', explain:'Passage noi chinh xac: "dropped by approximately 90% since 2010".'},
+    {text:'The United States is the largest producer of solar panels.', answer:'FALSE', explain:'Passage noi "China currently leads the world", khong phai US.'},
+    {text:'Solar energy will completely replace fossil fuels by 2030.', answer:'NOT GIVEN', explain:'Passage khong noi gi ve viec thay the hoan toan hay moc thoi gian 2030.'},
+    {text:'Wind energy produces more power at night than during the day.', answer:'NOT GIVEN', explain:'Passage noi "wind tends to blow more at night" nhung khong noi san luong dien gio ban dem nhieu hon ban ngay.'}
+  ]
+};
+
+var userAnswers={};
+var totalCorrect=0;var totalQ=0;
+
+function renderQuiz(){
+  for(var p=1;p<=3;p++){
+    var html='';
+    quizData[p].forEach(function(q,i){
+      var qid='p'+p+'q'+i;
+      html+='<div class="q-item" id="'+qid+'">';
+      html+='<div class="q-text">'+(i+1)+'. '+q.text+'</div>';
+      html+='<div class="q-options">';
+      ['TRUE','FALSE','NOT GIVEN'].forEach(function(opt){
+        html+='<button class="q-opt" data-qid="'+qid+'" data-answer="'+opt+'" onclick="selectAnswer(this,\''+qid+'\',\''+opt+'\')">'+opt+'</button>';
+      });
+      html+='</div>';
+      html+='<div class="q-explain" id="exp_'+qid+'">'+q.explain+'</div>';
+      html+='</div>';
+    });
+    document.getElementById('q'+p).innerHTML=html;
+  }
+}
+
+function selectAnswer(btn,qid,answer){
+  document.querySelectorAll('[data-qid="'+qid+'"]').forEach(function(b){b.classList.remove('selected')});
+  btn.classList.add('selected');
+  userAnswers[qid]=answer;
+}
+
+function checkPassage(p){
+  var correct=0;
+  quizData[p].forEach(function(q,i){
+    var qid='p'+p+'q'+i;
+    var userAns=userAnswers[qid];
+    var btns=document.querySelectorAll('[data-qid="'+qid+'"]');
+    btns.forEach(function(b){
+      b.classList.remove('selected','correct','wrong');
+      if(b.dataset.answer===q.answer) b.classList.add('correct');
+      else if(b.dataset.answer===userAns && userAns!==q.answer) b.classList.add('wrong');
+    });
+    document.getElementById('exp_'+qid).style.display='block';
+    if(userAns===q.answer) correct++;
+  });
+
+  totalCorrect+=correct;
+  totalQ+=quizData[p].length;
+  document.getElementById('totalScore').textContent=totalCorrect+'/'+totalQ;
+}
+
+renderQuiz();
+</script>
+<script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script>
+</body>
+</html>

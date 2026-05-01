@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ vựng A1 — EasyEnglish</title>
+<meta name="description" content="100 từ vựng tiếng Anh cơ bản nhất cho người mới bắt đầu (A1) với flashcard, quiz và phát âm.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.mode-bar{display:flex;gap:8px;margin:20px 0;flex-wrap:wrap}
+.mode-btn{padding:10px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.mode-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
+/* FLASHCARD */
+.fc-area{perspective:1000px;margin:24px auto;max-width:500px}
+.fc-card{width:100%;min-height:280px;position:relative;transform-style:preserve-3d;transition:transform .5s;cursor:pointer;border-radius:20px}
+.fc-card.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;border:0.5px solid var(--border)}
+.fc-front{background:linear-gradient(135deg,var(--card),var(--card2))}
+.fc-back{background:linear-gradient(135deg,rgba(100,216,165,0.08),var(--card));transform:rotateY(180deg)}
+.fc-word{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,48px);font-weight:300;margin-bottom:8px}
+.fc-ipa{color:var(--accent2);font-style:italic;font-size:16px;margin-bottom:12px}
+.fc-type{font-size:12px;color:var(--text3);background:var(--bg3);padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.fc-vi{font-size:clamp(20px,3vw,28px);color:var(--accent);margin-bottom:8px}
+.fc-hint{font-size:13px;color:var(--text3);margin-top:auto}
+.fc-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.fc-btn{padding:12px 24px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.fc-btn:hover{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3)}
+.fc-btn.know{background:rgba(100,216,165,0.15);color:var(--accent)}
+.fc-btn.dont{background:rgba(244,132,95,0.15);color:var(--coral)}
+.fc-progress{text-align:center;font-size:13px;color:var(--text3);margin-top:12px}
+.fc-speak{background:none;border:none;color:var(--accent2);cursor:pointer;font-size:20px;margin-top:8px}
+/* QUIZ */
+.quiz-area{max-width:600px;margin:24px auto}
+.q-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:16px}
+.q-label{font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.q-word{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,36px);font-weight:300;margin-bottom:16px}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q-opt{padding:14px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s;text-align:center}
+.q-opt:hover{border-color:rgba(100,216,165,0.4)}
+.q-opt.correct{background:rgba(100,216,165,0.2);border-color:var(--accent);color:var(--accent)}
+.q-opt.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral);color:var(--coral)}
+.q-opt.disabled{pointer-events:none;opacity:.7}
+.q-score{text-align:center;padding:24px;font-size:18px;color:var(--text)}
+.q-score b{color:var(--accent);font-size:36px;display:block;margin-bottom:8px}
+/* BROWSE */
+.browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.browse-item{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:14px;transition:all .15s}
+.browse-item:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-2px)}
+.browse-en{font-weight:600;font-size:15px}
+.browse-ipa{font-size:12px;color:var(--accent2);font-style:italic}
+.browse-vi{font-size:13px;color:var(--text2);margin-top:4px}
+.browse-type{font-size:11px;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:10px;display:inline-block;margin-top:6px}
+@media(max-width:768px){.content{padding:20px 14px 110px}.q-opts{grid-template-columns:1fr}.browse-grid{grid-template-columns:1fr 1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/tu-vung-b1.html">
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+
+<div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span><a href="tu-vung.html">Từ vựng</a>
+  <span class="bc-sep">›</span><span class="bc-current">B1 — Intermediate</span>
+</div>
+
+<h1 class="page-title">Từ vựng B1 — Intermediate</h1>
+<p class="page-desc">120 từ trung cấp giúp bạn diễn đạt ý kiến và tình huống phức tạp hơn.</p>
+
+<div class="mode-bar">
+  <button class="mode-btn active" onclick="setMode('flash')">📇 Flashcard</button>
+  <button class="mode-btn" onclick="setMode('quiz')">📝 Quiz</button>
+  <button class="mode-btn" onclick="setMode('browse')">📖 Danh sách</button>
+</div>
+
+<div id="flashArea" class="fc-area"></div>
+<div id="quizArea" class="quiz-area" style="display:none"></div>
+<div id="browseArea" style="display:none"></div>
+
+</div>
+
+<script src="dict-data.js"></script>
+<script>
+// ===== DATA =====
+const LEVEL = 'B1';
+const WORDS = BROWSE.filter(w => w[3] === LEVEL);
+
+function speak(word) {
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = 'en-US'; u.rate = 0.85;
+  speechSynthesis.speak(u);
+}
+
+// ===== MODE SWITCH =====
+let currentMode = 'flash';
+function setMode(m) {
+  currentMode = m;
+  document.querySelectorAll('.mode-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['flash','quiz','browse'][i] === m);
+  });
+  document.getElementById('flashArea').style.display = m === 'flash' ? '' : 'none';
+  document.getElementById('quizArea').style.display = m === 'quiz' ? '' : 'none';
+  document.getElementById('browseArea').style.display = m === 'browse' ? '' : 'none';
+  if (m === 'flash') initFlash();
+  if (m === 'quiz') initQuiz();
+  if (m === 'browse') renderBrowse();
+}
+
+// ===== FLASHCARD =====
+let fcIdx = 0, fcKnow = 0, fcDeck = [];
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+function initFlash() {
+  fcIdx = 0; fcKnow = 0;
+  fcDeck = shuffle([...WORDS]);
+  renderFlash();
+}
+
+function renderFlash() {
+  if (fcIdx >= fcDeck.length) {
+    document.getElementById('flashArea').innerHTML = `
+      <div class="q-score">
+        <b>${fcKnow}/${fcDeck.length}</b>
+        Từ đã biết
+        <div style="margin-top:16px">
+          <button class="fc-btn" onclick="initFlash()">🔄 Học lại</button>
+        </div>
+      </div>`;
+    return;
+  }
+  const w = fcDeck[fcIdx];
+  document.getElementById('flashArea').innerHTML = `
+    <div class="fc-card" id="fcCard" onclick="this.classList.toggle('flipped')">
+      <div class="fc-face fc-front">
+        <div class="fc-word">${w[0]}</div>
+        <div class="fc-ipa">${w[1]}</div>
+        <div class="fc-type">${w[4]}</div>
+        <button class="fc-speak" onclick="event.stopPropagation();speak('${w[0]}')" title="Nghe">🔊</button>
+        <div class="fc-hint">Nhấn để lật</div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-vi">${w[2]}</div>
+        <div class="fc-type">${w[4]}</div>
+        <div class="fc-hint">Bạn có biết từ này?</div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-btn dont" onclick="fcNext(false)">❌ Chưa biết</button>
+      <button class="fc-btn know" onclick="fcNext(true)">✅ Đã biết</button>
+    </div>
+    <div class="fc-progress">${fcIdx + 1} / ${fcDeck.length}</div>`;
+}
+
+function fcNext(known) {
+  if (known) fcKnow++;
+  fcIdx++;
+  renderFlash();
+}
+
+// ===== QUIZ =====
+let qIdx = 0, qScore = 0, qList = [];
+function initQuiz() {
+  qIdx = 0; qScore = 0;
+  qList = shuffle([...WORDS]).slice(0, 20);
+  renderQuiz();
+}
+
+function renderQuiz() {
+  if (qIdx >= qList.length) {
+    document.getElementById('quizArea').innerHTML = `
+      <div class="q-score">
+        <b>${qScore}/${qList.length}</b>
+        Câu đúng
+        <div style="margin-top:16px">
+          <button class="fc-btn" onclick="initQuiz()">🔄 Làm lại</button>
+        </div>
+      </div>`;
+    return;
+  }
+  const w = qList[qIdx];
+  const correct = w[2];
+  // Get 3 wrong answers
+  const wrongs = shuffle(WORDS.filter(x => x[0] !== w[0])).slice(0, 3).map(x => x[2]);
+  const opts = shuffle([correct, ...wrongs]);
+
+  document.getElementById('quizArea').innerHTML = `
+    <div class="q-card">
+      <div class="q-label">Câu ${qIdx + 1}/${qList.length}</div>
+      <div class="q-word">${w[0]} <span style="font-size:14px;color:var(--accent2);font-style:italic">${w[1]}</span></div>
+      <div class="q-opts">
+        ${opts.map(o => `<button class="q-opt" onclick="checkQ(this,'${correct.replace(/'/g,"\\'")}','${o.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
+      </div>
+    </div>
+    <div class="fc-progress">Điểm: ${qScore}/${qIdx}</div>`;
+}
+
+function checkQ(el, correct, chosen) {
+  document.querySelectorAll('.q-opt').forEach(b => {
+    b.classList.add('disabled');
+    if (b.textContent === correct) b.classList.add('correct');
+    if (b.textContent === chosen && chosen !== correct) b.classList.add('wrong');
+  });
+  if (chosen === correct) qScore++;
+  setTimeout(() => { qIdx++; renderQuiz(); }, 1200);
+}
+
+// ===== BROWSE =====
+function renderBrowse() {
+  document.getElementById('browseArea').innerHTML = `
+    <div class="browse-grid">
+      ${WORDS.map(w => `
+        <div class="browse-item" onclick="speak('${w[0]}')">
+          <div class="browse-en">${w[0]}</div>
+          <div class="browse-ipa">${w[1]}</div>
+          <div class="browse-vi">${w[2]}</div>
+          <span class="browse-type">${w[4]}</span>
+        </div>`).join('')}
+    </div>`;
+}
+
+// Init
+initFlash();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body></html>

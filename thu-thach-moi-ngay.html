@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daily Challenge — thử thách tiếng Anh mỗi ngày với mini quiz, từ mới, ngữ pháp và luyện tập ngắn.">
+<meta property="og:title" content="Daily Challenge — EasyEnglish">
+<meta property="og:description" content="Thử thách tiếng Anh mỗi ngày với mini quiz, từ mới, ngữ pháp và luyện tập ngắn.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Daily Challenge — EasyEnglish">
+<meta name="twitter:description" content="Thử thách tiếng Anh mỗi ngày với mini quiz, từ mới, ngữ pháp và luyện tập ngắn.">
+<title>Daily Challenge — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:1100px;margin:0 auto;padding:40px 48px;position:relative;z-index:1}
+.hero{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(240,194,122,0.06));border:0.5px solid var(--border);border-radius:24px;padding:28px;margin-bottom:18px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;max-width:820px;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px}
+.card h2{font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:10px;color:var(--text)}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.75}
+.card ul{margin:0;padding-left:18px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{padding:5px 10px;border-radius:999px;border:0.5px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2)}
+.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.step .n{width:26px;height:26px;border-radius:50%;background:rgba(100,216,165,0.14);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px}
+.step .t{font-size:13px;color:var(--text2);line-height:1.7}
+.sample{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.18);border-radius:14px;padding:16px}
+.sample .line{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.sample .num{width:24px;height:24px;border-radius:50%;background:rgba(100,216,165,0.14);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.sample .txt{font-size:13px;color:var(--text2);line-height:1.7}
+.section{margin-top:18px}
+.section h2{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:8px;color:var(--text)}
+.section .sub{font-size:13px;color:var(--text3);margin-bottom:14px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.t-item{background:var(--bg3);border:0.5px solid var(--border);border-radius:14px;padding:14px}
+.t-item h3{font-size:14px;color:var(--text);margin-bottom:6px}
+.t-item p{font-size:12px;color:var(--text3);line-height:1.6}
+.tip{background:rgba(240,194,122,0.08);border-left:3px solid var(--accent3);border-radius:0 12px 12px 0;padding:14px 16px;margin-top:14px}
+.tip strong{color:var(--accent3)}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cta{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:rgba(100,216,165,0.12);border:0.5px solid rgba(100,216,165,0.25);color:var(--accent);text-decoration:none;font-size:13px}
+.cta.secondary{background:var(--card2);color:var(--text2)}
+@media(max-width:900px){.content{padding:20px 14px 110px}.grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.timeline{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/thu-thach-moi-ngay.html">
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content page-enter">
+  <div class="breadcrumb">
+    <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+    <span class="bc-sep">›</span>
+    <span>Practice</span>
+    <span class="bc-sep">›</span>
+    <span class="bc-current">Daily Challenge</span>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">Daily practice</div>
+    <lord-icon src="https://cdn.lordicon.com/yqzmiobz.json" trigger="loop" delay="2000" colors="primary:#64d8a5,secondary:#e8c547" style="width:48px;height:48px"></lord-icon>
+    <h1 class="page-title">Thử thách mỗi ngày để không mất nhịp học</h1>
+    <div class="desc">Daily Challenge là nơi bạn quay lại mỗi ngày để làm một bài ngắn: từ vựng, ngữ pháp, reading, listening hoặc speaking. Mục tiêu là duy trì streak và học đều, không bị ngắt quãng.</div>
+    <div class="badges">
+      <span class="badge">1 challenge/day</span>
+      <span class="badge">Streak</span>
+      <span class="badge">Mini quiz</span>
+      <span class="badge">Quick review</span>
+    </div>
+    <div class="tip"><strong>How to use:</strong> Mỗi ngày làm 1 challenge, ghi nhớ 1 lỗi sai hoặc 1 từ mới, rồi sang `spaced-repetition.html` để ôn lại sau.</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Hôm nay làm gì?</h2>
+      <div class="step"><div class="n">1</div><div class="t"><strong>Warm up</strong> — 1 câu hỏi ngắn để khởi động.</div></div>
+      <div class="step"><div class="n">2</div><div class="t"><strong>Challenge</strong> — 1 mini task chính của ngày.</div></div>
+      <div class="step"><div class="n">3</div><div class="t"><strong>Review</strong> — xem đáp án, note lỗi sai và lưu từ mới.</div></div>
+    </div>
+    <div class="card">
+      <h2>3 kiểu challenge</h2>
+      <ul>
+        <li><strong>Word challenge</strong> — chọn nghĩa, đồng nghĩa, collocation.</li>
+        <li><strong>Grammar challenge</strong> — sửa lỗi, chọn đúng thì, chọn giới từ.</li>
+        <li><strong>Skill challenge</strong> — đọc nhanh, nghe ngắn, nói 1 câu.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Điểm mạnh</h2>
+      <div class="sample">
+        <div class="line"><div class="num">A</div><div class="txt"><strong>Small but consistent:</strong> mỗi ngày chỉ 3–5 phút nhưng đều đặn.</div></div>
+        <div class="line"><div class="num">B</div><div class="txt"><strong>Easy to return:</strong> không bị ngợp như bài dài.</div></div>
+      </div>
+      <div class="tip"><strong>Mục tiêu:</strong> tạo thói quen học thật, chứ không chỉ xem cho vui.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>30-second routine</h2>
+    <div class="sub">Quy trình ngắn gọn mỗi ngày.</div>
+    <div class="timeline">
+      <div class="t-item"><h3>01</h3><p>Open the challenge and read the question.</p></div>
+      <div class="t-item"><h3>02</h3><p>Think for 10–15 seconds before looking at the answer.</p></div>
+      <div class="t-item"><h3>03</h3><p>Check the explanation and note one new thing.</p></div>
+      <div class="t-item"><h3>04</h3><p>Save the new word or try one more example.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Mini practice</h2>
+    <div class="sub">Question: Which collocation sounds natural? "make/do a decision"</div>
+    <div class="card">
+      <div class="sample">
+        <div class="line"><div class="num">+</div><div class="txt"><strong>Correct:</strong> make a decision</div></div>
+        <div class="line"><div class="num">x</div><div class="txt"><strong>Wrong:</strong> do a decision</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Thu thach hom nay</h2>
+    <div class="sub">Moi ngay 1 cau hoi moi — quay lai hang ngay de duy tri streak!</div>
+    <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;font-size:14px">Streak: <strong id="streakNum" style="color:var(--accent);font-size:20px">0</strong> ngay</div>
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;font-size:14px">Ngay: <strong id="dayNum" style="color:var(--accent2)">1</strong>/30</div>
+    </div>
+    <div id="challengeBox" style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px"></div>
+  </div>
+
+  <div style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px;margin-top:20px">
+    <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Quiz Daily Challenge</h2>
+    <div id="quizBox"></div>
+    <div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div>
+  </div>
+
+  <div class="cta-row" style="margin-top:14px">
+    <a class="cta" href="bai-tap.html">Lam quiz tong hop</a>
+    <a class="cta secondary" href="on-tap-lap-lai.html">On tap lap lai</a>
+    <a class="cta secondary" href="tu-vung.html">On tu vung</a>
+  </div>
+</div>
+<script>
+var CH=[
+{type:'vocab',q:"'Conduct' nghia la gi?",opts:["Tien hanh","Xay dung","Phan doi","Giam sat"],ans:0,exp:"conduct = tien hanh, thuc hien (conduct research)"},
+{type:'grammar',q:"Chon dap an dung: 'She ___ here since 2020.'",opts:["lives","has lived","lived","is living"],ans:1,exp:"since 2020 -> Present Perfect: has lived"},
+{type:'vocab',q:"'Nevertheless' nghia la?",opts:["Vi vay","Tuy nhien","Ngoai ra","Do do"],ans:1,exp:"Nevertheless = tuy nhien, mac du vay (formal)"},
+{type:'grammar',q:"'If I ___ rich, I would travel.' — dien gi?",opts:["am","was","were","be"],ans:2,exp:"If clause type 2: If + S + were/V2"},
+{type:'vocab',q:"'Approximately' dong nghia voi?",opts:["Exactly","About","Always","Never"],ans:1,exp:"Approximately = khoang, xap xi"},
+{type:'grammar',q:"'The report ___ by the manager.' — passive gi?",opts:["wrote","was written","is write","writing"],ans:1,exp:"Passive: was + V3 (written)"},
+{type:'vocab',q:"'Significant' nghia la?",opts:["Nho be","Quan trong, dang ke","Nhanh chong","Binh thuong"],ans:1,exp:"Significant = quan trong, dang ke"},
+{type:'grammar',q:"'I wish I ___ harder.' — dien gi?",opts:["study","studied","studies","studying"],ans:1,exp:"Wish + past simple = uoc dieu trai thuc tai"},
+{type:'vocab',q:"'Collaborate' nghia la?",opts:["Canh tranh","Hop tac","Tu choi","Phan tich"],ans:1,exp:"Collaborate = hop tac, lam viec cung nhau"},
+{type:'grammar',q:"'She suggested ___ early.' — dien gi?",opts:["leave","to leave","leaving","left"],ans:2,exp:"suggest + V-ing: suggested leaving"},
+{type:'vocab',q:"'Adequate' nghia la?",opts:["Thua thai","Du, thoa dang","Thieu","Xuat sac"],ans:1,exp:"Adequate = du, thoa dang (adequate resources)"},
+{type:'grammar',q:"'By 2030, they ___ the project.' — thi gi?",opts:["finish","will finish","will have finished","finished"],ans:2,exp:"By + moc tuong lai -> Future Perfect"},
+{type:'vocab',q:"'Controversy' nghia la?",opts:["Su dong y","Tranh cai","Hop tac","Thanh cong"],ans:1,exp:"Controversy = su tranh cai, bat dong"},
+{type:'grammar',q:"'He denied ___ the window.' — dien gi?",opts:["break","to break","breaking","broke"],ans:2,exp:"deny + V-ing: denied breaking"},
+{type:'vocab',q:"'Inevitable' nghia la?",opts:["Co the tranh","Khong the tranh khoi","Bat ngo","Tam thoi"],ans:1,exp:"Inevitable = khong the tranh khoi"},
+{type:'grammar',q:"'___ the rain, we went out.' — chon gi?",opts:["Although","Despite","Because","So"],ans:1,exp:"Despite + N/V-ing: Despite the rain"},
+{type:'vocab',q:"'Elaborate' (verb) nghia la?",opts:["Rut gon","Giai thich chi tiet","Xoa bo","Dong y"],ans:1,exp:"Elaborate = trinh bay chi tiet hon"},
+{type:'grammar',q:"'I'm used to ___ early.' — dien gi?",opts:["wake","waking","woke","woken"],ans:1,exp:"be used to + V-ing = quen voi viec gi"},
+{type:'vocab',q:"'Phenomenon' so nhieu la gi?",opts:["Phenomenons","Phenomenas","Phenomena","Phenomeni"],ans:2,exp:"Phenomenon -> phenomena (so nhieu bat quy tac tu goc Greek)"},
+{type:'grammar',q:"'She asked me ___ help her.' — dien gi?",opts:["to","for","that","if"],ans:0,exp:"ask someone to do something"},
+{type:'vocab',q:"'Sustainable' nghia la?",opts:["Tam thoi","Ben vung","Nhanh chong","Dat do"],ans:1,exp:"Sustainable = ben vung (sustainable development)"},
+{type:'grammar',q:"'Not only ___ smart, but also hardworking.'",opts:["she is","is she","she was","does she"],ans:1,exp:"Not only + dao ngu: Not only is she..."},
+{type:'vocab',q:"'Ambiguous' nghia la?",opts:["Ro rang","Mo ho","Chinh xac","Tuyet voi"],ans:1,exp:"Ambiguous = mo ho, nhieu nghia"},
+{type:'grammar',q:"'Had I known, I ___ come.'",opts:["will","would","would have","had"],ans:2,exp:"Dao ngu If type 3: Had I known = If I had known -> would have V3"},
+{type:'vocab',q:"'Prioritize' nghia la?",opts:["Bo qua","Uu tien","Hoan thanh","Phan doi"],ans:1,exp:"Prioritize = uu tien, sap xep thu tu uu tien"},
+{type:'grammar',q:"'It's high time we ___ .' — dien gi?",opts:["leave","left","leaving","to leave"],ans:1,exp:"It's high time + past simple = da den luc phai..."},
+{type:'vocab',q:"'Empirical' nghia la?",opts:["Ly thuyet","Dua tren thuc nghiem","Cam tinh","Ngau nhien"],ans:1,exp:"Empirical = dua tren thuc nghiem, quan sat thuc te"},
+{type:'grammar',q:"'She ___ be at home. Her car is there.'",opts:["can","must","should","might"],ans:1,exp:"Must = chac chan (suy luan logic)"},
+{type:'vocab',q:"'Deteriorate' nghia la?",opts:["Cai thien","Xau di","On dinh","Tang len"],ans:1,exp:"Deteriorate = xau di, suy giam"},
+{type:'grammar',q:"'The more you practice, the ___ you get.'",opts:["good","better","best","well"],ans:1,exp:"The + comparative, the + comparative"}
+];
+
+var dayOfYear=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/86400000);
+var todayIdx=dayOfYear%CH.length;
+document.getElementById('dayNum').textContent=(todayIdx+1);
+
+var streak=parseInt(localStorage.getItem('dc_streak')||'0');
+var lastDay=localStorage.getItem('dc_lastday')||'';
+var today=new Date().toDateString();
+if(lastDay&&lastDay!==today&&lastDay!==new Date(Date.now()-86400000).toDateString()){streak=0;}
+document.getElementById('streakNum').textContent=streak;
+
+function renderChallenge(){
+  var c=CH[todayIdx];
+  var typeLabel=c.type==='vocab'?'Tu vung':'Ngu phap';
+  var h='<div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);margin-bottom:8px">'+typeLabel+'</div>';
+  h+='<div style="font-size:18px;margin-bottom:16px;line-height:1.5">'+c.q+'</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
+  c.opts.forEach(function(o,i){
+    h+='<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="checkCh(this,'+c.ans+','+i+')">'+o+'</div>';
+  });
+  h+='</div><div id="chExp" style="font-size:13px;color:var(--accent);margin-top:10px;display:none"></div>';
+  document.getElementById('challengeBox').innerHTML=h;
+}
+function checkCh(el,c,ch){
+  var os=el.parentElement.children;
+  for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}
+  document.getElementById('chExp').textContent=CH[todayIdx].exp;
+  document.getElementById('chExp').style.display='block';
+  if(localStorage.getItem('dc_lastday')!==today){
+    streak++;localStorage.setItem('dc_streak',streak);localStorage.setItem('dc_lastday',today);
+    document.getElementById('streakNum').textContent=streak;
+  }
+}
+renderChallenge();
+
+var QZ=[
+{q:"'Make a decision' hay 'do a decision'?",opts:["make a decision","do a decision","take a decision","have a decision"],ans:0,exp:"Collocation chuan: make a decision, make a mistake, make progress"},
+{q:"'Despite' di voi gi?",opts:["Menh de","Danh tu / V-ing","Tinh tu","Trang tu"],ans:1,exp:"Despite + N/V-ing. Although + clause"},
+{q:"Streak nghia la gi trong hoc tap?",opts:["Diem so","Chuoi ngay lien tuc","Bai tap","Cap do"],ans:1,exp:"Streak = so ngay hoc lien tuc khong ngat — giup duy tri thoi quen"},
+{q:"'Used to V' khac 'be used to V-ing' nhu nao?",opts:["Giong nhau","used to = thoi quen cu, be used to = quen voi","Nguoc lai","Khong co su khac biet"],ans:1,exp:"I used to smoke (truoc day). I am used to waking early (quen voi)."},
+{q:"Hoc 5 phut moi ngay hay 2 tieng cuoi tuan — cai nao tot hon?",opts:["2 tieng cuoi tuan","5 phut moi ngay","Giong nhau","Khong cai nao"],ans:1,exp:"Consistency > intensity. 5 phut/ngay tao spaced repetition tu nhien"},
+{q:"'Phenomenon' so nhieu la gi?",opts:["Phenomenons","Phenomena","Phenomenas","Phenomenies"],ans:1,exp:"Greek origin: phenomenon -> phenomena (giong criterion -> criteria)"}
+];
+var qI=0,qS=0;
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Cau dung<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Lam lai</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Cau '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Diem: '+qS+'/'+qI;}
+function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
+renderQz();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body>
+</html>

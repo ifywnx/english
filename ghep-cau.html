@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghép câu — EasyEnglish</title>
+<meta name="description" content="Bài tập sắp xếp từ thành câu hoàn chỉnh - rèn cấu trúc câu tiếng Anh.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.q-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px}
+.q-num{font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.q-vi{font-size:16px;color:var(--text2);margin-bottom:20px;font-style:italic}
+.answer-zone{min-height:56px;border:2px dashed var(--border);border-radius:14px;padding:12px;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;transition:all .3s}
+.answer-zone.correct{border-color:var(--accent);background:rgba(100,216,165,0.06)}
+.answer-zone.wrong{border-color:var(--coral);background:rgba(244,132,95,0.06)}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{padding:10px 18px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:15px;font-family:'DM Sans',sans-serif;transition:all .15s;user-select:none}
+.chip:hover{transform:scale(1.05);border-color:rgba(100,216,165,0.4)}
+.chip.used{opacity:.3;pointer-events:none}
+.chip.in-answer{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);cursor:pointer}
+.chip.in-answer:hover{background:rgba(244,132,95,0.12);border-color:var(--coral)}
+.correct-ans{color:var(--accent);font-size:14px;margin-top:8px;display:none}
+.correct-ans.show{display:block;animation:fadeIn .3s}
+.score-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;margin-bottom:20px;position:sticky;top:70px;z-index:5}
+.score-label{font-size:13px;color:var(--text3)}
+.score-val{font-size:20px;font-weight:600;color:var(--accent)}
+.btn-row{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.cta-btn{padding:12px 24px;border-radius:12px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.cta-btn.primary{background:var(--accent);color:#0b1a1e}
+.cta-btn.secondary{background:var(--card2);color:var(--text2);border:0.5px solid var(--border)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.content{padding:20px 14px 110px}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+
+<div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span><a href="bai-tap.html">Bài tập</a>
+  <span class="bc-sep">›</span><span class="bc-current">Ghép câu</span>
+</div>
+
+<h1 class="page-title">Ghép câu</h1>
+<p class="page-desc">Sắp xếp các từ thành câu hoàn chỉnh. Nhấn từ để chọn, nhấn lại để bỏ.</p>
+
+<div class="score-bar">
+  <span class="score-label">Đúng</span>
+  <span class="score-val" id="scoreVal">0/0</span>
+</div>
+
+<div id="quizBox"></div>
+
+</div>
+
+<script>
+const SENTENCES = [
+  {en:"I go to school every morning.", vi:"Tôi đi học mỗi sáng."},
+  {en:"She has been studying English for three years.", vi:"Cô ấy đã học tiếng Anh được ba năm."},
+  {en:"We will meet at the coffee shop tomorrow.", vi:"Chúng ta sẽ gặp nhau ở quán cà phê ngày mai."},
+  {en:"He doesn't like watching TV at night.", vi:"Anh ấy không thích xem TV vào buổi tối."},
+  {en:"Can you help me with this homework?", vi:"Bạn có thể giúp tôi bài tập này không?"},
+  {en:"The children are playing in the garden.", vi:"Bọn trẻ đang chơi trong vườn."},
+  {en:"I would have called you if I had known.", vi:"Tôi đã gọi cho bạn nếu tôi biết."},
+  {en:"She is the most intelligent student in the class.", vi:"Cô ấy là học sinh thông minh nhất lớp."},
+  {en:"They have never been to Japan before.", vi:"Họ chưa bao giờ đến Nhật Bản trước đây."},
+  {en:"If it rains tomorrow, we will stay home.", vi:"Nếu ngày mai mưa, chúng ta sẽ ở nhà."},
+  {en:"He asked me where I had been.", vi:"Anh ấy hỏi tôi đã ở đâu."},
+  {en:"Not only is she smart, but she is also kind.", vi:"Cô ấy không chỉ thông minh mà còn tốt bụng."},
+  {en:"The book that I borrowed was very interesting.", vi:"Cuốn sách tôi mượn rất thú vị."},
+  {en:"I wish I could speak French fluently.", vi:"Tôi ước tôi có thể nói tiếng Pháp trôi chảy."},
+  {en:"By the time we arrived, the show had already started.", vi:"Khi chúng tôi đến, buổi diễn đã bắt đầu rồi."},
+  {en:"She suggested that we go to the beach.", vi:"Cô ấy đề nghị chúng ta đi biển."},
+  {en:"The harder you work, the more successful you become.", vi:"Bạn làm việc càng chăm, bạn càng thành công."},
+  {en:"I am looking forward to meeting you.", vi:"Tôi mong chờ được gặp bạn."},
+  {en:"He must have forgotten about the meeting.", vi:"Anh ấy chắc đã quên cuộc họp."},
+  {en:"Despite being tired, she finished the project.", vi:"Dù mệt, cô ấy vẫn hoàn thành dự án."},
+];
+
+let score=0,total=0,qIdx=0,queue=[];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function init(){
+  score=0;total=0;qIdx=0;
+  queue=shuffle([...SENTENCES]);
+  document.getElementById('scoreVal').textContent='0/0';
+  renderQ();
+}
+
+function renderQ(){
+  if(qIdx>=queue.length){qIdx=0;queue=shuffle([...SENTENCES]);}
+  const q=queue[qIdx];
+  const words=q.en.replace(/[.?!,]/g,'').split(' ');
+  const shuffled=shuffle([...words]);
+  const punct=q.en.match(/[.?!]$/)?.[0]||'.';
+  
+  let html=`<div class="q-card">
+    <div class="q-num">Câu ${total+1}</div>
+    <div class="q-vi">💬 ${q.vi}</div>
+    <div class="answer-zone" id="ansZone"></div>
+    <div class="word-bank" id="wordBank">
+      ${shuffled.map((w,i)=>`<span class="chip" data-word="${w}" data-idx="${i}" onclick="pickWord(this)">${w}</span>`).join('')}
+    </div>
+    <div class="btn-row">
+      <button class="cta-btn primary" onclick="checkAnswer('${q.en.replace(/'/g,"\\'")}','${punct}')">Kiểm tra</button>
+      <button class="cta-btn secondary" onclick="qIdx++;total++;renderQ();document.getElementById('scoreVal').textContent=score+'/'+total">Bỏ qua</button>
+    </div>
+    <div class="correct-ans" id="correctAns">✅ Đáp án: <strong>${q.en}</strong></div>
+  </div>`;
+  
+  document.getElementById('quizBox').innerHTML=html;
+}
+
+function pickWord(el){
+  if(document.querySelector('.answer-zone.correct'))return;
+  if(el.classList.contains('in-answer')){
+    // Remove from answer
+    const bankChip=document.querySelector(`.word-bank .chip[data-idx="${el.dataset.idx}"]`);
+    if(bankChip)bankChip.classList.remove('used');
+    el.remove();
+    return;
+  }
+  el.classList.add('used');
+  const clone=document.createElement('span');
+  clone.className='chip in-answer';
+  clone.dataset.word=el.dataset.word;
+  clone.dataset.idx=el.dataset.idx;
+  clone.textContent=el.dataset.word;
+  clone.onclick=function(){pickWord(this);};
+  document.getElementById('ansZone').appendChild(clone);
+}
+
+function checkAnswer(correct,punct){
+  if(document.querySelector('.answer-zone.correct,.answer-zone.wrong'))return;
+  const zone=document.getElementById('ansZone');
+  const chips=zone.querySelectorAll('.chip');
+  let answer=Array.from(chips).map(c=>c.dataset.word).join(' ');
+  // Capitalize first letter and add punctuation
+  answer=answer.charAt(0).toUpperCase()+answer.slice(1)+punct;
+  
+  total++;
+  if(answer===correct){
+    score++;
+    zone.classList.add('correct');
+  }else{
+    zone.classList.add('wrong');
+    document.getElementById('correctAns').classList.add('show');
+  }
+  document.getElementById('scoreVal').textContent=score+'/'+total;
+  
+  setTimeout(()=>{qIdx++;renderQ();},answer===correct?1000:2500);
+}
+
+init();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

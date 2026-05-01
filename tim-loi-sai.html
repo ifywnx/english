@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tìm lỗi sai — EasyEnglish</title>
+<meta name="description" content="Bài tập tìm lỗi sai trong câu tiếng Anh - rèn ngữ pháp, chính tả và cấu trúc câu.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.q-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px;transition:all .3s}
+.q-num{font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.q-sentence{font-size:clamp(16px,2vw,20px);line-height:1.8;margin-bottom:16px}
+.q-sentence .word{cursor:pointer;padding:2px 6px;border-radius:6px;transition:all .15s;border-bottom:2px solid transparent}
+.q-sentence .word:hover{background:rgba(100,216,165,0.1);border-bottom-color:var(--accent)}
+.q-sentence .word.selected{background:rgba(244,132,95,0.2);border-bottom-color:var(--coral);color:var(--coral)}
+.q-sentence .word.correct-word{background:rgba(100,216,165,0.2);border-bottom-color:var(--accent);color:var(--accent)}
+.q-sentence .word.wrong-pick{background:rgba(244,132,95,0.15);text-decoration:line-through;color:var(--text3)}
+.q-explain{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.2);border-radius:12px;padding:14px;margin-top:12px;font-size:14px;color:var(--text2);display:none}
+.q-explain.show{display:block;animation:fadeIn .3s}
+.q-explain .fix{color:var(--accent);font-weight:600}
+.q-explain .wrong{color:var(--coral);text-decoration:line-through}
+.score-bar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;margin-bottom:24px;position:sticky;top:70px;z-index:5}
+.score-label{font-size:13px;color:var(--text3)}
+.score-val{font-size:20px;font-weight:600;color:var(--accent)}
+.btn-row{display:flex;gap:10px;justify-content:center;margin:24px 0}
+.cta-btn{padding:14px 28px;border-radius:12px;border:none;background:var(--accent);color:#0b1a1e;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.cta-btn:hover{transform:scale(1.03)}
+.cta-btn.secondary{background:var(--card2);color:var(--text2);border:0.5px solid var(--border)}
+.level-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.lv-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lv-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.content{padding:20px 14px 110px}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+
+<div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span><a href="bai-tap.html">Bài tập</a>
+  <span class="bc-sep">›</span><span class="bc-current">Tìm lỗi sai</span>
+</div>
+
+<h1 class="page-title">Tìm lỗi sai</h1>
+<p class="page-desc">Chọn từ/cụm bị sai trong câu. Mỗi câu chỉ có 1 lỗi — hãy đọc kỹ trước khi chọn.</p>
+
+<div class="level-bar">
+  <button class="lv-btn active" onclick="setLevel('easy')">Dễ</button>
+  <button class="lv-btn" onclick="setLevel('medium')">Trung bình</button>
+  <button class="lv-btn" onclick="setLevel('hard')">Khó</button>
+</div>
+
+<div class="score-bar">
+  <span class="score-label">Đúng</span>
+  <span class="score-val" id="scoreVal">0/0</span>
+</div>
+
+<div id="quizBox"></div>
+<div class="btn-row">
+  <button class="cta-btn secondary" onclick="loadQuiz()" id="nextBtn" style="display:none">Câu tiếp →</button>
+</div>
+
+</div>
+
+<script>
+const QUESTIONS = {
+  easy: [
+    {s:"She don't like coffee.", err:"don't", fix:"doesn't", explain:"Chủ ngữ she → dùng doesn't, không dùng don't."},
+    {s:"He go to school every day.", err:"go", fix:"goes", explain:"Chủ ngữ ngôi 3 số ít (he) → động từ thêm -s/-es."},
+    {s:"I am have a cat.", err:"am have", fix:"have", explain:"Không dùng am + have cùng lúc. 'I have a cat' hoặc 'I am having...'"},
+    {s:"They was happy yesterday.", err:"was", fix:"were", explain:"They → were, không dùng was."},
+    {s:"She can sings very well.", err:"sings", fix:"sing", explain:"Sau can dùng V nguyên thể, không thêm -s."},
+    {s:"I have much friends.", err:"much", fix:"many", explain:"Friends là danh từ đếm được → dùng many, không dùng much."},
+    {s:"He is more taller than me.", err:"more taller", fix:"taller", explain:"Taller đã là so sánh hơn, không cần thêm more."},
+    {s:"We goed to the park.", err:"goed", fix:"went", explain:"Go là động từ bất quy tắc: go → went → gone."},
+    {s:"The childrens are playing.", err:"childrens", fix:"children", explain:"Children đã là số nhiều, không thêm -s."},
+    {s:"I am agree with you.", err:"am agree", fix:"agree", explain:"Agree là động từ, không cần tobe: 'I agree with you.'"},
+    {s:"She is more beautiful than her sister.", err:null, fix:null, explain:"Câu này đúng! Không có lỗi sai."},
+    {s:"Do you can swim?", err:"Do you can", fix:"Can you", explain:"Không dùng Do trước modal verb. Can you swim?"},
+  ],
+  medium: [
+    {s:"I have been to Japan last year.", err:"have been", fix:"went", explain:"Last year = thời gian cụ thể → dùng past simple (went), không dùng present perfect."},
+    {s:"She suggested me to go home.", err:"me to go", fix:"that I go", explain:"Suggest + that + S + V (subjunctive), hoặc suggest + V-ing."},
+    {s:"I look forward to hear from you.", err:"hear", fix:"hearing", explain:"Look forward to + V-ing. 'to' ở đây là giới từ."},
+    {s:"Despite of the rain, we went out.", err:"Despite of", fix:"Despite", explain:"Despite KHÔNG đi với of. In spite of the rain HOẶC Despite the rain."},
+    {s:"The number of students are increasing.", err:"are", fix:"is", explain:"'The number of' → số ít → is. (Khác với 'A number of' → số nhiều)"},
+    {s:"He avoided to make mistakes.", err:"to make", fix:"making", explain:"Avoid + V-ing, không dùng to-V."},
+    {s:"I wish I can fly.", err:"can", fix:"could", explain:"Wish + past tense. 'I wish I could fly.'"},
+    {s:"She has less friends than me.", err:"less", fix:"fewer", explain:"Friends đếm được → fewer. Less dùng cho không đếm được."},
+    {s:"The informations are useful.", err:"informations", fix:"information", explain:"Information là danh từ không đếm được, không thêm -s."},
+    {s:"Each students must submit their work.", err:"students", fix:"student", explain:"Each + danh từ số ít: Each student."},
+  ],
+  hard: [
+    {s:"Not only she is smart, but she is also kind.", err:"she is smart", fix:"is she smart", explain:"Not only + trợ động từ + S: Not only is she smart, but (she is) also kind. (Đảo ngữ)"},
+    {s:"Had I known, I will have helped.", err:"will have", fix:"would have", explain:"Câu điều kiện loại 3: Had I known, I would have helped."},
+    {s:"The research paper needs to rewrite.", err:"to rewrite", fix:"to be rewritten", explain:"Bị động: needs to be rewritten (bài cần được viết lại)."},
+    {s:"It is essential that he submits the form.", err:"submits", fix:"submit", explain:"Subjunctive mood: It is essential that he submit (không -s)."},
+    {s:"She is used to live in London.", err:"live", fix:"living", explain:"Be used to + V-ing (quen với). 'Used to + V' = từng (quá khứ)."},
+    {s:"The more you practice, the more better you get.", err:"more better", fix:"better", explain:"Better đã là so sánh hơn. The more...the better."},
+    {s:"Hardly had I left than it started raining.", err:"than", fix:"when", explain:"Hardly...when / No sooner...than. Không dùng hardly...than."},
+    {s:"Neither the students nor the teacher were absent.", err:"were", fix:"was", explain:"Neither...nor → chia theo chủ ngữ gần nhất (teacher = số ít → was)."},
+  ]
+};
+
+let currentLevel = 'easy';
+let score = 0, total = 0, queueIdx = 0, queue = [];
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function setLevel(lv){
+  currentLevel = lv;
+  document.querySelectorAll('.lv-btn').forEach((b,i)=>{
+    b.classList.toggle('active',['easy','medium','hard'][i]===lv);
+  });
+  score=0;total=0;queueIdx=0;
+  queue=shuffle([...QUESTIONS[lv]]);
+  document.getElementById('scoreVal').textContent='0/0';
+  loadQuiz();
+}
+
+function loadQuiz(){
+  if(queueIdx>=queue.length){queueIdx=0;queue=shuffle([...QUESTIONS[currentLevel]]);}
+  const q=queue[queueIdx];queueIdx++;
+  const words=q.s.split(' ');
+  // Group error words
+  const errWords = q.err ? q.err.split(' ') : [];
+  
+  let html=`<div class="q-card"><div class="q-num">Câu ${total+1}</div><div class="q-sentence">`;
+  
+  let i=0;
+  while(i<words.length){
+    // Check if current position starts the error phrase
+    let isErr=false;
+    if(errWords.length>0){
+      const slice=words.slice(i,i+errWords.length).join(' ');
+      if(slice===q.err){isErr=true;}
+    }
+    if(isErr){
+      html+=`<span class="word err-group" data-err="true" onclick="pickWord(this)">${errWords.join(' ')}</span> `;
+      i+=errWords.length;
+    }else{
+      html+=`<span class="word" onclick="pickWord(this)">${words[i]}</span> `;
+      i++;
+    }
+  }
+  
+  if(!q.err){
+    html+=`</div><button class="lv-btn" style="margin-top:12px" onclick="pickCorrect()">✅ Câu này đúng</button>`;
+  }
+  
+  html+=`<div class="q-explain" id="explain"><strong>${q.err?'Sai':'Đúng rồi'}:</strong> ${q.err?`<span class="wrong">${q.err}</span> → <span class="fix">${q.fix}</span><br>`:''} ${q.explain}</div></div>`;
+  
+  document.getElementById('quizBox').innerHTML=html;
+  document.getElementById('nextBtn').style.display='none';
+}
+
+function pickWord(el){
+  if(document.querySelector('.q-explain.show'))return;
+  const isErr=el.dataset.err==='true';
+  total++;
+  
+  document.querySelectorAll('.word').forEach(w=>{
+    if(w.dataset.err==='true')w.classList.add('correct-word');
+  });
+  
+  if(isErr){
+    score++;
+    el.classList.add('selected','correct-word');
+  }else{
+    el.classList.add('wrong-pick');
+  }
+  
+  document.getElementById('explain').classList.add('show');
+  document.getElementById('scoreVal').textContent=score+'/'+total;
+  document.getElementById('nextBtn').style.display='';
+}
+
+function pickCorrect(){
+  if(document.querySelector('.q-explain.show'))return;
+  total++;score++;
+  document.getElementById('explain').classList.add('show');
+  document.getElementById('scoreVal').textContent=score+'/'+total;
+  document.getElementById('nextBtn').style.display='';
+}
+
+// Init
+queue=shuffle([...QUESTIONS[currentLevel]]);
+loadQuiz();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body></html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Thuật ngữ lập trình, DevOps, bảo mật, Agile, cloud, phỏng vấn tech và giao tiếp trong team IT. Học siêu chi tiết theo ngữ cảnh thực tế.">
+<meta property="og:title" content="Tiếng Anh IT — EasyEnglish">
+<meta property="og:description" content="Thuật ngữ lập trình, DevOps, bảo mật, Agile, cloud, phỏng vấn tech và giao tiếp trong team IT. Học siêu chi tiết theo ngữ cảnh thực tế.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tiếng Anh IT — EasyEnglish">
+<meta name="twitter:description" content="Thuật ngữ lập trình, DevOps, bảo mật, Agile, cloud, phỏng vấn tech và giao tiếp trong team IT. Học siêu chi tiết theo ngữ cảnh thực tế.">
+<title>Tiếng Anh IT — EasyEnglish</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<link rel="canonical" href="https://easyenglish.vn/tieng-anh-it.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<style>
+.page-grid{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto;background:var(--card);border-right:0.5px solid var(--border);padding:22px 16px}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:10px;margin-top:4px}
+.sb-item{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;font-size:13px;color:var(--text2);text-decoration:none;border:none;background:transparent;width:100%;text-align:left;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);flex-shrink:0}
+.sb-item:hover .sb-dot{background:var(--accent)}
+.sidebar-note{font-size:12px;color:var(--text3);line-height:1.7;margin-top:14px;padding:10px 8px 0}
+.module-shell{padding:36px 48px;max-width:980px}
+.hero-card{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(123,110,246,0.05));border:0.5px solid var(--border);border-radius:18px;padding:24px;margin-bottom:22px}
+.hero-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-title-2{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,48px);font-weight:300;line-height:1.15;margin-bottom:10px}
+.hero-desc{font-size:15px;color:var(--text2);line-height:1.8;max-width:760px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.hero-chip{padding:5px 10px;border-radius:999px;background:rgba(100,216,165,0.1);border:0.5px solid rgba(100,216,165,0.22);color:var(--accent);font-size:11px}
+.section-block{margin-bottom:28px}
+.section-head{margin-bottom:14px}
+.section-head .label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:5px}
+.section-head h2{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:6px}
+.section-head p{font-size:13px;color:var(--text3);line-height:1.7}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.info-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px}
+.info-card h3{font-size:15px;margin-bottom:8px;color:var(--text)}
+.info-card p{font-size:13px;color:var(--text2);line-height:1.75}
+.word-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.word-pill{padding:4px 10px;border-radius:999px;background:rgba(167,139,250,0.08);border:0.5px solid rgba(167,139,250,0.18);color:var(--text2);font-size:11px}
+.word-pill strong{color:var(--accent)}
+.timeline{display:flex;flex-direction:column;gap:10px}
+.timeline-item{display:grid;grid-template-columns:28px 1fr;gap:12px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:14px}
+.timeline-num{width:28px;height:28px;border-radius:8px;background:rgba(100,216,165,0.14);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:600;font-size:12px}
+.timeline-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.timeline-text{font-size:13px;color:var(--text2);line-height:1.7}
+.example-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+.example-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent3);margin-bottom:8px}
+.example-en{font-size:13px;color:var(--text);line-height:1.7;font-style:italic}
+.example-vi{font-size:13px;color:var(--text3);line-height:1.7;margin-top:4px}
+.practice-box{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:16px;padding:20px}
+.practice-q{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:8px}
+.practice-hint{font-size:13px;color:var(--text3);margin-bottom:12px;font-style:italic}
+.practice-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.practice-opt{padding:11px 14px;border-radius:10px;border:0.5px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;transition:all .2s}
+.practice-opt:hover{border-color:rgba(100,216,165,0.3);background:rgba(100,216,165,0.05)}
+.practice-opt.correct{background:rgba(107,203,119,0.14);border-color:rgba(107,203,119,0.3);color:var(--green)}
+.practice-opt.wrong{background:rgba(255,138,128,0.14);border-color:rgba(255,138,128,0.3);color:var(--coral)}
+.practice-feedback{margin-top:10px;font-size:13px;color:var(--text3)}
+.note-box{background:rgba(244,132,95,0.08);border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:14px 16px;margin-top:12px}
+.note-box strong{color:var(--coral)}
+.table-wrap{overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px}
+.compare-table th,.compare-table td{padding:10px 12px;border:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+.compare-table th{background:var(--card2);color:var(--text3);text-transform:uppercase;letter-spacing:.05em;font-size:10px;font-weight:400;text-align:left}
+.compare-table td{background:var(--card)}
+.compare-table tr:hover td{background:rgba(255,255,255,0.02)}
+.kbd{display:inline-flex;align-items:center;padding:2px 7px;border-radius:7px;border:0.5px solid var(--border);background:var(--card2);font-size:11px;color:var(--text3);font-family:monospace}
+@media(max-width:900px){.page-grid{display:block}.module-shell{padding:24px 16px}.grid-2,.grid-3{grid-template-columns:1fr}.practice-opts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav></nav>
+<div class="page-grid">
+  <aside class="sidebar">
+    <div class="sidebar-title">Mục học nhanh</div>
+    <a class="sb-item" href="#tong-quan"><span class="sb-dot"></span> Tổng quan</a>
+    <a class="sb-item" href="#quy-tac"><span class="sb-dot"></span> Quy tắc IT English</a>
+    <a class="sb-item" href="#tu-vung"><span class="sb-dot"></span> Từ vựng thực chiến</a>
+    <a class="sb-item" href="#so-sanh"><span class="sb-dot"></span> So sánh nhanh</a>
+    <a class="sb-item" href="#hoi-thoai"><span class="sb-dot"></span> Hội thoại mẫu</a>
+    <a class="sb-item" href="#phong-van"><span class="sb-dot"></span> Phỏng vấn tech</a>
+    <a class="sb-item" href="#loi-hay-gap"><span class="sb-dot"></span> Lỗi hay gặp</a>
+    <a class="sb-item" href="#bai-tap"><span class="sb-dot"></span> Bài tập</a>
+    <div class="sidebar-note">Module này giữ data cũ nhưng được mở rộng thành bài học thực chiến: có ngữ cảnh làm việc, quy tắc giao tiếp, so sánh thuật ngữ, phỏng vấn và practice.</div>
+  </aside>
+
+  <main class="module-shell">
+    <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">Tiếng Anh IT</span></div>
+
+    <section class="hero-card" id="tong-quan">
+      <div class="hero-kicker">Chuyên ngành</div>
+      <h1 class="hero-title-2">Tiếng Anh IT</h1>
+      <p class="hero-desc">Học cách dùng tiếng Anh trong môi trường công nghệ thật: lập trình, review code, deploy, incident, security, Agile, cloud, phỏng vấn tech và giao tiếp với team. Mục tiêu là hiểu đúng ngữ cảnh, dùng đúng cụm từ, và nói tự nhiên hơn trong công việc.</p>
+      <div class="hero-chips">
+        <span class="hero-chip">Lập trình</span>
+        <span class="hero-chip">DevOps</span>
+        <span class="hero-chip">Bảo mật</span>
+        <span class="hero-chip">Agile</span>
+        <span class="hero-chip">Phỏng vấn tech</span>
+      </div>
+    </section>
+
+    <section class="section-block" id="quy-tac">
+      <div class="section-head">
+        <div class="label">Nền tảng</div>
+        <h2>Quy tắc dùng tiếng Anh trong team IT</h2>
+        <p>IT English không chỉ là nhớ từ vựng. Quan trọng hơn là hiểu cụm từ nào dùng cho code, cụm nào dùng cho họp, cụm nào dùng khi mô tả sự cố hoặc thảo luận kỹ thuật.</p>
+      </div>
+      <div class="grid-2">
+        <div class="info-card"><h3>1. Code với communication là hai thứ khác nhau</h3><p>Khi nói về code, bạn có thể ngắn và technical. Khi nói với PM, QA hoặc khách hàng, cần rõ ràng, tránh jargon quá sâu và luôn giải thích tác động.</p></div>
+        <div class="info-card"><h3>2. Dùng động từ chính xác</h3><p>Trong IT English, các động từ như <strong>deploy</strong>, <strong>refactor</strong>, <strong>rollback</strong>, <strong>monitor</strong>, <strong>debug</strong>, <strong>prioritize</strong> rất quan trọng vì chúng mô tả hành động cụ thể.</p></div>
+        <div class="info-card"><h3>3. Mỗi tình huống một tone</h3><p>Standup thì ngắn gọn, code review thì góp ý rõ ràng, incident thì ưu tiên mức độ nghiêm trọng, phỏng vấn thì nói có cấu trúc và có kết quả.</p></div>
+        <div class="info-card"><h3>4. Ưu tiên rõ hơn là dài</h3><p>“The API is broken because…” tốt hơn “Something seems wrong”. Hãy mô tả vấn đề, nguyên nhân, cách xử lý và thời gian hoàn tất.</p></div>
+      </div>
+      <div class="note-box"><strong>Lưu ý:</strong> Trong môi trường IT, sự rõ ràng giúp tiết kiệm thời gian. Một câu tốt là câu vừa đúng chuyên môn vừa dễ hiểu với người cùng team.</div>
+    </section>
+
+    <section class="section-block" id="tu-vung">
+      <div class="section-head">
+        <div class="label">Từ vựng thực chiến</div>
+        <h2>Từ vựng theo ngữ cảnh làm việc</h2>
+        <p>Giữ nguyên dữ liệu cũ, nhưng sắp lại theo ngữ cảnh để bạn học dễ hơn và nhớ lâu hơn.</p>
+      </div>
+      <div class="grid-3">
+        <div class="info-card"><h3>Lập trình cơ bản</h3><p>variable, function, array, loop, debug, compile, refactor, deploy là nền tảng bắt buộc khi nói chuyện kỹ thuật.</p><div class="word-list"><span class="word-pill"><strong>debug</strong> · gỡ lỗi</span><span class="word-pill"><strong>compile</strong> · biên dịch</span><span class="word-pill"><strong>refactor</strong> · tái cấu trúc</span></div></div>
+        <div class="info-card"><h3>Web development</h3><p>frontend, backend, API, endpoint, middleware, authentication, responsive là nhóm từ dùng liên tục khi build sản phẩm web.</p><div class="word-list"><span class="word-pill"><strong>frontend</strong></span><span class="word-pill"><strong>backend</strong></span><span class="word-pill"><strong>endpoint</strong></span></div></div>
+        <div class="info-card"><h3>Database & data</h3><p>query, schema, migration, index, cache, transaction, backup giúp bạn mô tả dữ liệu, hiệu năng và độ an toàn hệ thống.</p><div class="word-list"><span class="word-pill"><strong>query</strong></span><span class="word-pill"><strong>schema</strong></span><span class="word-pill"><strong>transaction</strong></span></div></div>
+        <div class="info-card"><h3>DevOps</h3><p>container, pipeline, orchestration, monitoring, rollback, uptime, scalability là ngôn ngữ của hạ tầng và triển khai.</p><div class="word-list"><span class="word-pill"><strong>pipeline</strong></span><span class="word-pill"><strong>rollback</strong></span><span class="word-pill"><strong>scalability</strong></span></div></div>
+        <div class="info-card"><h3>Bảo mật</h3><p>firewall, encryption, vulnerability, 2FA, authorization, malware, phishing là phần cực quan trọng khi nói về security.</p><div class="word-list"><span class="word-pill"><strong>encryption</strong></span><span class="word-pill"><strong>vulnerability</strong></span><span class="word-pill"><strong>phishing</strong></span></div></div>
+        <div class="info-card"><h3>Cloud & networking</h3><p>serverless, microservices, CDN, latency, bandwidth, DNS, VPN, TCP/IP giúp bạn mô tả hệ thống hiện đại.</p><div class="word-list"><span class="word-pill"><strong>CDN</strong></span><span class="word-pill"><strong>latency</strong></span><span class="word-pill"><strong>VPN</strong></span></div></div>
+      </div>
+    </section>
+
+    <section class="section-block" id="so-sanh">
+      <div class="section-head">
+        <div class="label">So sánh nhanh</div>
+        <h2>Những cặp từ dễ nhầm trong IT</h2>
+        <p>Phần này giúp bạn tránh dịch word-by-word và dùng đúng thuật ngữ theo ngữ cảnh.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="compare-table">
+          <thead><tr><th>Khái niệm</th><th>Khác nhau</th><th>Ví dụ dùng thật</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Frontend / Backend</strong></td><td>Frontend là phần người dùng nhìn thấy; backend là logic, server, database phía sau.</td><td>Frontend fetches data from the backend API.</td></tr>
+            <tr><td><strong>SQL / NoSQL</strong></td><td>SQL có schema chặt, quan hệ rõ; NoSQL linh hoạt hơn, phù hợp scale theo chiều ngang.</td><td>We use SQL for transactions and NoSQL for flexible documents.</td></tr>
+            <tr><td><strong>Debug / Fix</strong></td><td>Debug là tìm nguyên nhân; fix là sửa lỗi sau khi đã hiểu vấn đề.</td><td>I’m debugging the login flow, then I’ll fix the token refresh issue.</td></tr>
+            <tr><td><strong>Deploy / Release</strong></td><td>Deploy là đưa code lên môi trường; release là công bố tính năng cho người dùng.</td><td>We’ll deploy on staging today and release tomorrow.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block" id="hoi-thoai">
+      <div class="section-head">
+        <div class="label">Hội thoại mẫu</div>
+        <h2>Hội thoại trong team IT</h2>
+        <p>Giữ phần dialog cũ nhưng mở rộng thành các tình huống rất thật để bạn đọc là hiểu cách nói.</p>
+      </div>
+      <div class="grid-2">
+        <div class="info-card">
+          <h3>Daily standup</h3>
+          <div class="example-box"><div class="example-label">Scrum Master</div><div class="example-en">Good morning, team. Let's keep it brief. What did you work on yesterday?</div><div class="example-vi">Chào cả team, mình giữ ngắn thôi nhé. Hôm qua các bạn làm gì?</div></div>
+          <div class="example-box"><div class="example-label">Developer</div><div class="example-en">I finished the authentication module and pushed it to staging.</div><div class="example-vi">Tôi đã xong module xác thực và đẩy lên staging.</div></div>
+          <p class="sidebar-note">Các cụm rất IT: <span class="kbd">keep it brief</span>, <span class="kbd">pushed it to staging</span>, <span class="kbd">blockers</span>.</p>
+        </div>
+        <div class="info-card">
+          <h3>Code review</h3>
+          <div class="example-box"><div class="example-label">Reviewer</div><div class="example-en">I left some comments on your pull request. Can we go through them?</div><div class="example-vi">Mình đã để lại vài comment trên pull request của bạn. Mình xem qua nhé?</div></div>
+          <div class="example-box"><div class="example-label">Author</div><div class="example-en">Sure. I’ll split the data transformation into a separate utility.</div><div class="example-vi">Được thôi. Tôi sẽ tách phần xử lý dữ liệu thành utility riêng.</div></div>
+          <p class="sidebar-note">Đây là cách nói tự nhiên trong review: góp ý thẳng nhưng lịch sự.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="phong-van">
+      <div class="section-head">
+        <div class="label">Phỏng vấn tech</div>
+        <h2>Hỏi phỏng vấn và cách trả lời</h2>
+        <p>Phần này giữ danh sách câu hỏi cũ, nhưng thêm cách trả lời theo cấu trúc để bạn học được thật.</p>
+      </div>
+      <div class="grid-2">
+        <div class="info-card"><h3>How do you handle tight deadlines?</h3><p>Trả lời theo công thức: chia task, ưu tiên impact, communicate sớm, giữ chất lượng. Có thể nói về việc dùng sprint planning hoặc timeboxing.</p></div>
+        <div class="info-card"><h3>How do you ensure code quality?</h3><p>Nói về code review, unit test, linting, CI/CD, clean code, documentation, và cách bạn cân bằng tốc độ với chất lượng.</p></div>
+        <div class="info-card"><h3>Explain SQL vs NoSQL</h3><p>Nêu quan hệ dữ liệu, ACID, schema linh hoạt, horizontal scaling, eventual consistency và use case thực tế.</p></div>
+        <div class="info-card"><h3>How would you design a scalable system?</h3><p>Mô tả load balancing, caching, microservices, database scaling, CDN, queue, monitoring, và rollback plan.</p></div>
+      </div>
+    </section>
+
+    <section class="section-block" id="loi-hay-gap">
+      <div class="section-head">
+        <div class="label">Lỗi hay gặp</div>
+        <h2>Người Việt hay sai ở đâu?</h2>
+        <p>Đây là phần giúp module thực sự học được, không chỉ là trang glossary.</p>
+      </div>
+      <div class="grid-2">
+        <div class="info-card"><h3>1. Dịch thẳng từng từ</h3><p>“Make code”, “do deploy”, “close bug” nghe không tự nhiên. Hãy học collocation đúng: write code, deploy code, fix a bug.</p></div>
+        <div class="info-card"><h3>2. Không phân biệt tình huống</h3><p>Standup khác code review, khác incident report, khác phỏng vấn. Một câu dùng đúng ngữ cảnh mới là câu tốt.</p></div>
+        <div class="info-card"><h3>3. Nói quá chung chung</h3><p>“There is a problem” chưa đủ. Hãy mô tả cụ thể: where, what happened, impact, current status, next action.</p></div>
+        <div class="info-card"><h3>4. Thiếu động từ hành động</h3><p>Hãy ưu tiên các verb như implement, refactor, monitor, investigate, prioritize, troubleshoot thay vì dùng từ mờ.</p></div>
+      </div>
+    </section>
+
+    <section class="section-block" id="bai-tap">
+      <div class="section-head">
+        <div class="label">Bài tập</div>
+        <h2>Practice thực chiến</h2>
+        <p>Không chỉ đọc, mà phải chọn câu đúng, hiểu bối cảnh, và phản xạ như đang làm việc thật.</p>
+      </div>
+      <div class="practice-box">
+        <div class="practice-q">1. Câu nào tự nhiên nhất khi nói với team về việc bạn đang sửa bug?</div>
+        <div class="practice-hint">Chọn câu thể hiện đúng hành động hiện tại.</div>
+        <div class="practice-opts">
+          <button class="practice-opt" onclick="checkITPractice(this,true,'Đúng. Đây là cách nói tự nhiên, rõ và đúng ngữ cảnh.')">I’m debugging the login flow and checking the token refresh issue.</button>
+          <button class="practice-opt" onclick="checkITPractice(this,false,'Chưa đúng. Câu này quá chung chung, không đủ kỹ thuật.')">I have a problem with code.</button>
+          <button class="practice-opt" onclick="checkITPractice(this,false,'Chưa đúng. "Make bug" không phải cách nói tự nhiên.')">I’m making the bug now.</button>
+          <button class="practice-opt" onclick="checkITPractice(this,false,'Chưa đúng. Câu này không mô tả việc đang làm.')">The bug is big.</button>
+        </div>
+        <div id="itFb" class="practice-feedback"></div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <div class="label">Học tiếp</div>
+        <h2>Kết nối module liên quan</h2>
+        <p>IT English mạnh hơn khi đi cùng grammar, collocations và reading practice.</p>
+      </div>
+      <div class="grid-2">
+        <div class="info-card"><h3>Grammar cần học kèm</h3><p>Modal verbs, passive voice, conditionals, relative clauses và reported speech giúp bạn diễn đạt kỹ thuật mạch lạc hơn.</p></div>
+        <div class="info-card"><h3>Vocabulary cần học kèm</h3><p>Collocations, confusing words, linking words và academic words giúp câu nói nghe chuyên nghiệp hơn.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="nav.js?v=1"></script>
+<script src="common.js?v=14"></script>
+<script>
+function checkITPractice(btn,correct,msg){
+  document.querySelectorAll('.practice-opt').forEach(function(b){b.disabled=true;});
+  btn.classList.add(correct?'correct':'wrong');
+  document.getElementById('itFb').textContent=msg;
+}
+if(window.lucide){lucide.createIcons();}
+</script>
+</body>
+</html>

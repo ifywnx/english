@@ -9,7 +9,7 @@ const THEMES = {
     name: 'Aura', icon: 'leaf', type: 'dark',
     colors: ['#1a3338','#64d8a5','#a78bfa','#f0c27a'],
     vars: {
-      '--bg':'#0b1a1e','--bg2':'#12282e','--bg3':'#1a3338',
+      '--bg':'#0b1a1e','--bg2':'#12282e','--bg3':'#1a3338','--nav-bg':'rgba(11,26,30,0.92)','--drop-bg':'rgba(13,30,36,0.98)',
       '--accent':'#64d8a5','--accent2':'#a78bfa','--accent3':'#f0c27a',
       '--coral':'#ff8a80','--green':'#6bcb77','--pink':'#dba4c7',
       '--text':'#f5faf7','--text2':'#c2d9ce','--text3':'#84a99a',

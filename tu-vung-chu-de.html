@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Từ vựng theo 10 chủ đề phổ biến — Family, Food, Travel, Work, Health, Education, Technology, Environment, Sports, Shopping.">
+<title>Từ vựng theo chủ đề — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script><link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:1100px;margin:0 auto;padding:40px 48px;position:relative;z-index:1}
+.topic-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.t-tab{padding:7px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.t-tab:hover{color:var(--text);border-color:rgba(100,216,165,0.3)}
+.t-tab.active{background:rgba(100,216,165,0.12);color:var(--accent);border-color:rgba(100,216,165,0.4)}
+.word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:14px}
+.w-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px;transition:all .2s;cursor:pointer}
+.w-card:hover{border-color:rgba(100,216,165,0.4);transform:translateY(-1px)}
+.w-en{font-size:16px;font-weight:600;color:var(--text)}
+.w-pron{font-size:12px;color:var(--accent);margin-left:6px}
+.w-vi{font-size:13px;color:var(--accent3);margin-top:4px}
+.w-ex{font-size:12px;color:var(--text3);font-style:italic;margin-top:4px;line-height:1.5}
+.stat-bar{display:flex;gap:14px;margin:14px 0;flex-wrap:wrap}
+.stat-pill{padding:6px 14px;border-radius:20px;background:var(--card);border:0.5px solid var(--border);font-size:12px;color:var(--text2)}
+.stat-pill strong{color:var(--accent)}
+@media(max-width:900px){.content{padding:20px 14px 110px}.word-grid{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body><div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><span>Từ vựng</span><span class="bc-sep">›</span><span class="bc-current">Theo chủ đề</span></div>
+<div class="page-label">Vocabulary</div>
+<h1 class="page-title">Từ vựng theo chủ đề</h1>
+<p class="page-desc">150 từ vựng thiết yếu chia theo 10 chủ đề phổ biến nhất trong giao tiếp và thi cử.</p>
+<div class="stat-bar"><div class="stat-pill"><strong>10</strong> chủ đề</div><div class="stat-pill"><strong>150</strong> từ vựng</div><div class="stat-pill" id="learnedPill"><strong>0</strong> đã học</div></div>
+<div class="topic-tabs" id="topicTabs"></div>
+<div id="wordContainer"></div>
+<div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
+<h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz từ vựng</h2>
+<div id="quizBox"></div>
+<div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div>
+</div>
+</div>
+<script>
+var TOPICS=[
+{id:'family',icon:'',name:'Gia đình',words:[
+{en:'relative',vi:'họ hàng',ex:'We visited our relatives during Tet.'},
+{en:'sibling',vi:'anh chị em ruột',ex:'I have two siblings — a brother and a sister.'},
+{en:'nephew',vi:'cháu trai',ex:'My nephew just started school.'},
+{en:'niece',vi:'cháu gái',ex:'My niece loves drawing.'},
+{en:'ancestor',vi:'tổ tiên',ex:'We honour our ancestors.'},
+{en:'spouse',vi:'vợ/chồng',ex:'Bring your spouse to the party.'},
+{en:'upbringing',vi:'sự nuôi dưỡng',ex:'A good upbringing shapes character.'},
+{en:'bond',vi:'mối gắn kết',ex:'Family bonds are important.'},
+{en:'generation',vi:'thế hệ',ex:'Three generations live together.'},
+{en:'household',vi:'hộ gia đình',ex:'A typical household has 4 members.'},
+{en:'nurture',vi:'nuôi dưỡng',ex:'Parents nurture their children.'},
+{en:'inherit',vi:'thừa kế',ex:'She inherited her mother\'s eyes.'},
+{en:'reunion',vi:'đoàn tụ',ex:'We have a family reunion every year.'},
+{en:'adolescent',vi:'thiếu niên',ex:'Adolescents face many challenges.'},
+{en:'guardian',vi:'người giám hộ',ex:'His guardian signed the form.'}
+]},
+{id:'food',icon:'',name:'Ẩm thực',words:[
+{en:'cuisine',vi:'ẩm thực',ex:'Vietnamese cuisine is world-famous.'},
+{en:'ingredient',vi:'nguyên liệu',ex:'Fresh ingredients make better dishes.'},
+{en:'recipe',vi:'công thức nấu ăn',ex:'Follow the recipe carefully.'},
+{en:'appetizer',vi:'món khai vị',ex:'We ordered appetizers first.'},
+{en:'portion',vi:'khẩu phần',ex:'The portions were generous.'},
+{en:'nutrition',vi:'dinh dưỡng',ex:'Good nutrition is essential.'},
+{en:'organic',vi:'hữu cơ',ex:'Organic food is more expensive.'},
+{en:'dietary',vi:'thuộc chế độ ăn',ex:'Dietary habits affect health.'},
+{en:'seasoning',vi:'gia vị',ex:'Add seasoning to taste.'},
+{en:'beverage',vi:'đồ uống',ex:'What beverage would you like?'},
+{en:'allergic',vi:'dị ứng',ex:'He is allergic to peanuts.'},
+{en:'vegetarian',vi:'ăn chay',ex:'The restaurant has vegetarian options.'},
+{en:'appetizing',vi:'hấp dẫn, ngon mắt',ex:'The dish looks appetizing.'},
+{en:'leftover',vi:'đồ ăn thừa',ex:'We ate leftovers for lunch.'},
+{en:'gourmet',vi:'sành ăn / cao cấp',ex:'A gourmet restaurant opened nearby.'}
+]},
+{id:'travel',icon:'',name:'Du lịch',words:[
+{en:'destination',vi:'điểm đến',ex:'Paris is a popular destination.'},
+{en:'itinerary',vi:'lịch trình',ex:'Check the travel itinerary.'},
+{en:'accommodation',vi:'chỗ ở',ex:'Book accommodation in advance.'},
+{en:'excursion',vi:'chuyến tham quan',ex:'We went on a day excursion.'},
+{en:'souvenir',vi:'quà lưu niệm',ex:'I bought souvenirs for friends.'},
+{en:'sightseeing',vi:'tham quan',ex:'We spent the day sightseeing.'},
+{en:'currency',vi:'tiền tệ',ex:'Exchange currency at the airport.'},
+{en:'customs',vi:'hải quan',ex:'Go through customs after landing.'},
+{en:'departure',vi:'khởi hành',ex:'Departure is at 8 AM.'},
+{en:'boarding',vi:'lên tàu/máy bay',ex:'Boarding starts at Gate 5.'},
+{en:'luggage',vi:'hành lý',ex:'Check your luggage in.'},
+{en:'passport',vi:'hộ chiếu',ex:'Your passport must be valid.'},
+{en:'resort',vi:'khu nghỉ dưỡng',ex:'We stayed at a beach resort.'},
+{en:'backpacker',vi:'du khách ba lô',ex:'Backpackers love hostels.'},
+{en:'landmark',vi:'địa danh nổi tiếng',ex:'The Eiffel Tower is a famous landmark.'}
+]},
+{id:'work',icon:'',name:'Công việc',words:[
+{en:'colleague',vi:'đồng nghiệp',ex:'I discussed it with my colleagues.'},
+{en:'promotion',vi:'thăng chức',ex:'She got a promotion last month.'},
+{en:'salary',vi:'lương',ex:'The salary is competitive.'},
+{en:'deadline',vi:'hạn chót',ex:'Meet the deadline on Friday.'},
+{en:'resign',vi:'từ chức',ex:'He resigned from his position.'},
+{en:'recruit',vi:'tuyển dụng',ex:'We are recruiting new staff.'},
+{en:'overtime',vi:'làm thêm giờ',ex:'She works overtime regularly.'},
+{en:'qualification',vi:'bằng cấp',ex:'List your qualifications on the CV.'},
+{en:'productivity',vi:'năng suất',ex:'Productivity increased by 20%.'},
+{en:'entrepreneur',vi:'doanh nhân',ex:'Young entrepreneurs drive innovation.'},
+{en:'freelance',vi:'làm tự do',ex:'She works as a freelance designer.'},
+{en:'mentor',vi:'người hướng dẫn',ex:'A good mentor is invaluable.'},
+{en:'negotiate',vi:'đàm phán',ex:'Negotiate the contract terms.'},
+{en:'teamwork',vi:'làm việc nhóm',ex:'Teamwork makes the dream work.'},
+{en:'workplace',vi:'nơi làm việc',ex:'A healthy workplace boosts morale.'}
+]},
+{id:'health',icon:'',name:'Sức khỏe',words:[
+{en:'symptom',vi:'triệu chứng',ex:'Common symptoms include fever.'},
+{en:'diagnosis',vi:'chẩn đoán',ex:'The diagnosis was accurate.'},
+{en:'treatment',vi:'điều trị',ex:'Treatment options vary.'},
+{en:'prescription',vi:'đơn thuốc',ex:'The doctor gave a prescription.'},
+{en:'immune',vi:'miễn dịch',ex:'A strong immune system fights disease.'},
+{en:'chronic',vi:'mãn tính',ex:'Chronic pain affects quality of life.'},
+{en:'vaccine',vi:'vắc-xin',ex:'Vaccines save millions of lives.'},
+{en:'obesity',vi:'béo phì',ex:'Obesity is a growing concern.'},
+{en:'mental',vi:'tinh thần',ex:'Mental health matters equally.'},
+{en:'hygiene',vi:'vệ sinh',ex:'Practice good hygiene daily.'},
+{en:'allergy',vi:'dị ứng',ex:'She has a dust allergy.'},
+{en:'surgery',vi:'phẫu thuật',ex:'The surgery was successful.'},
+{en:'therapy',vi:'liệu pháp',ex:'Therapy helped him recover.'},
+{en:'nutrition',vi:'dinh dưỡng',ex:'Balanced nutrition prevents disease.'},
+{en:'epidemic',vi:'dịch bệnh',ex:'The epidemic spread quickly.'}
+]},
+{id:'education',icon:'',name:'Giáo dục',words:[
+{en:'curriculum',vi:'chương trình học',ex:'The curriculum was updated.'},
+{en:'scholarship',vi:'học bổng',ex:'She won a full scholarship.'},
+{en:'lecture',vi:'bài giảng',ex:'The lecture was fascinating.'},
+{en:'semester',vi:'học kỳ',ex:'There are two semesters per year.'},
+{en:'tuition',vi:'học phí',ex:'Tuition fees keep rising.'},
+{en:'assignment',vi:'bài tập',ex:'Submit the assignment on time.'},
+{en:'enrol',vi:'ghi danh',ex:'Students enrol in August.'},
+{en:'diploma',vi:'bằng tốt nghiệp',ex:'He received his diploma.'},
+{en:'literacy',vi:'biết đọc viết',ex:'Literacy rates have improved.'},
+{en:'undergraduate',vi:'sinh viên đại học',ex:'She is an undergraduate student.'},
+{en:'thesis',vi:'luận văn',ex:'His thesis was published.'},
+{en:'extracurricular',vi:'ngoại khóa',ex:'Join extracurricular activities.'},
+{en:'discipline',vi:'kỷ luật / môn học',ex:'Self-discipline is key to success.'},
+{en:'pedagogy',vi:'phương pháp sư phạm',ex:'Modern pedagogy uses technology.'},
+{en:'campus',vi:'khuôn viên trường',ex:'The campus is beautiful.'}
+]},
+{id:'tech',icon:'',name:'Công nghệ',words:[
+{en:'artificial intelligence',vi:'trí tuệ nhân tạo',ex:'AI is transforming industries.'},
+{en:'algorithm',vi:'thuật toán',ex:'The algorithm optimizes results.'},
+{en:'database',vi:'cơ sở dữ liệu',ex:'Data is stored in a database.'},
+{en:'cybersecurity',vi:'an ninh mạng',ex:'Cybersecurity is crucial today.'},
+{en:'innovation',vi:'sự đổi mới',ex:'Innovation drives progress.'},
+{en:'automation',vi:'tự động hóa',ex:'Automation replaces manual labour.'},
+{en:'bandwidth',vi:'băng thông',ex:'High bandwidth enables streaming.'},
+{en:'software',vi:'phần mềm',ex:'Update your software regularly.'},
+{en:'hardware',vi:'phần cứng',ex:'The hardware needs upgrading.'},
+{en:'cloud computing',vi:'điện toán đám mây',ex:'Cloud computing reduces costs.'},
+{en:'digital',vi:'kỹ thuật số',ex:'We live in a digital age.'},
+{en:'startup',vi:'công ty khởi nghiệp',ex:'The startup raised $1 million.'},
+{en:'encryption',vi:'mã hóa',ex:'Encryption protects your data.'},
+{en:'gadget',vi:'thiết bị điện tử',ex:'New gadgets are released every year.'},
+{en:'virtual reality',vi:'thực tế ảo',ex:'VR is used in education.'}
+]},
+{id:'environment',icon:'',name:'Môi trường',words:[
+{en:'pollution',vi:'ô nhiễm',ex:'Air pollution causes health issues.'},
+{en:'renewable',vi:'tái tạo',ex:'Renewable energy is the future.'},
+{en:'deforestation',vi:'phá rừng',ex:'Deforestation destroys habitats.'},
+{en:'ecosystem',vi:'hệ sinh thái',ex:'Coral reefs are fragile ecosystems.'},
+{en:'carbon footprint',vi:'dấu chân carbon',ex:'Reduce your carbon footprint.'},
+{en:'biodiversity',vi:'đa dạng sinh học',ex:'Biodiversity is declining.'},
+{en:'sustainable',vi:'bền vững',ex:'Sustainable development is essential.'},
+{en:'greenhouse',vi:'nhà kính / hiệu ứng',ex:'Greenhouse gases trap heat.'},
+{en:'recycle',vi:'tái chế',ex:'Recycle plastic and paper.'},
+{en:'conservation',vi:'bảo tồn',ex:'Wildlife conservation saves species.'},
+{en:'drought',vi:'hạn hán',ex:'Droughts affect agriculture.'},
+{en:'emission',vi:'khí thải',ex:'Reduce carbon emissions.'},
+{en:'extinct',vi:'tuyệt chủng',ex:'Many species are now extinct.'},
+{en:'habitat',vi:'môi trường sống',ex:'Forests are natural habitats.'},
+{en:'waste',vi:'chất thải',ex:'Reduce waste and reuse items.'}
+]},
+{id:'sports',icon:'',name:'Thể thao',words:[
+{en:'tournament',vi:'giải đấu',ex:'The tournament starts next week.'},
+{en:'athlete',vi:'vận động viên',ex:'Athletes train daily.'},
+{en:'championship',vi:'giải vô địch',ex:'They won the championship.'},
+{en:'opponent',vi:'đối thủ',ex:'The opponent played well.'},
+{en:'referee',vi:'trọng tài',ex:'The referee made a fair call.'},
+{en:'endurance',vi:'sức bền',ex:'Marathon requires endurance.'},
+{en:'spectator',vi:'khán giả',ex:'Thousands of spectators attended.'},
+{en:'defeat',vi:'đánh bại',ex:'They defeated the champion.'},
+{en:'score',vi:'tỷ số / ghi bàn',ex:'The final score was 3-1.'},
+{en:'coach',vi:'huấn luyện viên',ex:'The coach motivated the team.'},
+{en:'medal',vi:'huy chương',ex:'She won a gold medal.'},
+{en:'penalty',vi:'phạt đền',ex:'A penalty was awarded.'},
+{en:'stadium',vi:'sân vận động',ex:'The stadium holds 50,000 fans.'},
+{en:'sportsmanship',vi:'tinh thần thể thao',ex:'Show good sportsmanship.'},
+{en:'fitness',vi:'thể lực',ex:'Fitness improves overall health.'}
+]},
+{id:'shopping',icon:'',name:'Mua sắm',words:[
+{en:'receipt',vi:'hóa đơn',ex:'Keep the receipt for returns.'},
+{en:'bargain',vi:'mặc cả / món hời',ex:'I got a great bargain.'},
+{en:'refund',vi:'hoàn tiền',ex:'Can I get a refund?'},
+{en:'warranty',vi:'bảo hành',ex:'The warranty lasts 2 years.'},
+{en:'discount',vi:'giảm giá',ex:'Students get a 10% discount.'},
+{en:'checkout',vi:'thanh toán',ex:'Proceed to checkout.'},
+{en:'consumer',vi:'người tiêu dùng',ex:'Consumer rights are protected.'},
+{en:'brand',vi:'thương hiệu',ex:'This brand is very popular.'},
+{en:'affordable',vi:'phải chăng',ex:'The prices are affordable.'},
+{en:'exchange',vi:'đổi hàng',ex:'Can I exchange this item?'},
+{en:'retail',vi:'bán lẻ',ex:'The retail industry is growing.'},
+{en:'wholesale',vi:'bán buôn',ex:'Buy wholesale to save money.'},
+{en:'catalogue',vi:'danh mục',ex:'Browse the product catalogue.'},
+{en:'complaint',vi:'khiếu nại',ex:'File a complaint if unsatisfied.'},
+{en:'loyalty',vi:'khách hàng thân thiết',ex:'Join the loyalty programme.'}
+]}
+];
+
+var curTopic='family';
+function renderTabs(){
+  var h='';TOPICS.forEach(function(t){h+='<button class="t-tab'+(t.id===curTopic?' active':'')+'" onclick="switchTopic(\''+t.id+'\',this)">'+t.icon+' '+t.name+'</button>';});
+  document.getElementById('topicTabs').innerHTML=h;
+}
+function switchTopic(id,el){curTopic=id;document.querySelectorAll('.t-tab').forEach(function(b){b.classList.remove('active');});el.classList.add('active');renderWords();}
+function renderWords(){
+  var topic=TOPICS.find(function(t){return t.id===curTopic;});
+  var h='<div class="word-grid">';
+  topic.words.forEach(function(w){
+    h+='<div class="w-card"><div><span class="w-en">'+w.en+'</span></div><div class="w-vi">'+w.vi+'</div><div class="w-ex">'+w.ex+'</div></div>';
+  });
+  h+='</div>';
+  document.getElementById('wordContainer').innerHTML=h;
+}
+renderTabs();renderWords();
+
+// Quiz
+var allWords=[];TOPICS.forEach(function(t){t.words.forEach(function(w){allWords.push({en:w.en,vi:w.vi,topic:t.name});});});
+var QZ=[
+{q:"'Cuisine' nghĩa là?",opts:["Nhà bếp","Ẩm thực","Đầu bếp","Thực đơn"],ans:1,exp:"Cuisine = ẩm thực, nền ẩm thực (Vietnamese cuisine)"},
+{q:"'Renewable energy' nghĩa là?",opts:["Năng lượng hạt nhân","Năng lượng tái tạo","Năng lượng hóa thạch","Điện lưới"],ans:1,exp:"Renewable = tái tạo (solar, wind, hydro)"},
+{q:"'Sibling' là ai?",opts:["Bố mẹ","Ông bà","Anh chị em ruột","Họ hàng xa"],ans:2,exp:"Sibling = anh/chị/em ruột"},
+{q:"'Itinerary' thuộc chủ đề nào?",opts:["Công việc","Du lịch","Sức khỏe","Công nghệ"],ans:1,exp:"Itinerary = lịch trình du lịch"},
+{q:"'Cybersecurity' nghĩa là?",opts:["Mạng xã hội","An ninh mạng","Phần mềm","Internet"],ans:1,exp:"Cybersecurity = an ninh mạng, bảo mật"},
+{q:"'Referee' là ai trong thể thao?",opts:["Cầu thủ","Huấn luyện viên","Trọng tài","Khán giả"],ans:2,exp:"Referee = trọng tài điều khiển trận đấu"}
+];
+var qI=0,qS=0;
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif"> Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
+function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=' '+QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
+renderQz();
+</script>
+<script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script></body></html>

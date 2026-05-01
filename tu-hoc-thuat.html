@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="570 từ học thuật AWL — EasyEnglish">
+<meta property="og:description" content="Academic Word List — 570 từ xuất hiện nhiều nhất trong văn bản IELTS.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="570 từ học thuật AWL — EasyEnglish">
+<meta name="twitter:description" content="Academic Word List — 570 từ xuất hiện nhiều nhất trong văn bản IELTS.">
+<title>Academic Word List — IELTS Vocabulary — EasyEnglish</title>
+<meta name="description" content="570 từ Academic Word List (AWL) cần thiết cho IELTS. Flashcard, quiz kiểm tra, phiên âm IPA. Học và theo dõi tiến độ.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.orb3{width:300px;height:300px;background:rgba(78,205,196,0.07);top:40%;left:30%}
+.page-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:20px 14px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+/* Collapsible sidebar */
+.sidebar-title{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between}
+.sidebar-title::after{content:'▾';font-size:9px;opacity:0.5;transition:transform .2s}
+.sidebar-title.collapsed::after{transform:rotate(-90deg)}
+.sb-group{overflow:hidden;max-height:1000px;transition:max-height .3s ease,opacity .2s;opacity:1}
+.sb-group.hidden{max-height:0;opacity:0;margin:0;padding:0}
+.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent);background:rgba(167,139,250,0.08)}
+.sb-badge{margin-left:auto;padding:2px 8px;border-radius:10px;font-size:10px;background:rgba(100,216,165,0.15);color:var(--accent)}
+.content{padding:36px 48px;max-width:900px}
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px}
+.stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:22px;color:var(--accent)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+/* TABS */
+/* SEARCH */
+.search-row{display:flex;gap:10px;margin-bottom:20px}
+.awl-search{flex:1;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.awl-search:focus{border-color:rgba(232,197,71,0.4)}
+.awl-search::placeholder{color:var(--text3)}
+.filter-select{padding:10px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text2);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer}
+/* WORD LIST VIEW */
+.sublist-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;margin-top:24px}
+.sl-badge{padding:4px 14px;border-radius:20px;font-size:12px;font-weight:500}
+.sl-title{font-family:'Fraunces',serif;font-size:18px;font-weight:300}
+.sl-desc{font-size:14px;color:var(--text3)}
+.sl-progress{margin-left:auto;font-size:12px;color:var(--accent)}
+.word-table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.word-table th{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);font-weight:400;text-align:left}
+.word-table td{padding:9px 14px;border:0.5px solid var(--border);font-size:13px;vertical-align:top}
+.word-table tr:hover td{background:rgba(255,255,255,0.02);cursor:pointer}
+.word-table tr.learned td{background:rgba(78,205,196,0.04)}
+.td-word{color:var(--text);font-weight:500}
+.td-pron{color:var(--accent);font-size:11px;font-style:italic}
+.td-type{font-size:10px;padding:2px 8px;border-radius:10px;display:inline-block}
+.type-n{background:rgba(100,216,165,0.12);color:var(--accent)}
+.type-v{background:rgba(100,216,165,0.12);color:var(--accent2)}
+.type-adj{background:rgba(244,132,95,0.12);color:var(--coral)}
+.type-adv{background:rgba(107,203,119,0.12);color:var(--green)}
+.td-vi{color:var(--text2)}
+.td-ielts{font-size:11px;color:var(--text3);font-style:italic}
+.td-check{text-align:center;cursor:pointer;font-size:16px;user-select:none}
+/* WORD DETAIL PANEL */
+.word-detail{background:rgba(232,197,71,0.05);border:0.5px solid rgba(232,197,71,0.2);border-radius:14px;padding:20px;margin-bottom:14px;display:none}
+.word-detail.show{display:block}
+.wd-word{font-family:'Fraunces',serif;font-size:28px;margin-bottom:4px}
+.wd-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:10px}
+.wd-meanings{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.wd-meaning{background:var(--card2);border-radius:8px;padding:10px 14px;border:0.5px solid var(--border)}
+.wd-m-type{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.wd-m-vi{font-size:14px;color:var(--text);margin-bottom:4px}
+.wd-m-ex{font-size:14px;color:var(--text3);font-style:italic}
+.wd-related{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wd-chip{padding:4px 12px;background:var(--card2);border:0.5px solid var(--border);border-radius:20px;font-size:14px;color:var(--text2)}
+/* FLASHCARD */
+.fc-wrap{margin-bottom:28px}
+.fc-sublist-select{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.fc-sl-btn{padding:6px 14px;border-radius:20px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.fc-sl-btn:hover{color:var(--text)}
+.fc-sl-btn.active{background:rgba(123,110,246,0.15);border-color:rgba(123,110,246,0.4);color:var(--accent2)}
+.fc-container{perspective:1200px;height:220px;margin-bottom:16px;cursor:pointer;position:relative}
+.fc-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.fc-inner.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+.fc-front{background:var(--card2);border:0.5px solid var(--border)}
+.fc-back{background:rgba(100,216,165,0.08);border:0.5px solid rgba(123,110,246,0.3);transform:rotateY(180deg)}
+.fc-sublist-tag{font-size:11px;color:var(--text3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.fc-word{font-family:'Fraunces',serif;font-size:40px;color:var(--text);margin-bottom:6px}
+.fc-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:4px}
+.fc-hint{font-size:14px;color:var(--text3)}
+.fc-vi{font-family:'Fraunces',serif;font-size:28px;color:var(--accent2);margin-bottom:8px}
+.fc-ex{font-size:13px;color:var(--text2);text-align:center;font-style:italic;line-height:1.6;max-width:440px}
+.fc-type-badge{font-size:11px;padding:3px 10px;border-radius:10px;margin-bottom:10px}
+.fc-controls{display:flex;gap:10px;justify-content:center;margin-bottom:12px}
+.fc-btn{padding:10px 22px;border-radius:10px;font-size:13px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.fc-btn:hover{background:var(--card);color:var(--text)}
+.fc-btn.good{border-color:rgba(107,203,119,0.5);color:var(--green)}
+.fc-btn.good:hover{background:rgba(107,203,119,0.1)}
+.fc-btn.bad{border-color:rgba(244,132,95,0.5);color:var(--coral)}
+.fc-btn.bad:hover{background:rgba(244,132,95,0.08)}
+.fc-prog{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.fc-prog-bar{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.fc-prog-fill{height:100%;border-radius:2px;background:var(--accent2);transition:width .4s}
+.fc-prog-text{font-size:14px;color:var(--text3);white-space:nowrap}
+/* QUIZ */
+.quiz-wrap{margin-bottom:28px}
+.qz-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px}
+.qz-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.qz-prog{flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.qz-prog-fill{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
+.qz-count{font-size:14px;color:var(--text3)}
+.qz-score{font-size:12px;color:var(--green)}
+.qz-q{font-size:16px;color:var(--text);margin-bottom:6px;line-height:1.5}
+.qz-hint{font-size:14px;color:var(--text3);margin-bottom:18px;font-style:italic}
+.qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.qz-opt{padding:12px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:left;line-height:1.4}
+.qz-opt:hover:not(:disabled){border-color:rgba(232,197,71,0.4);color:var(--text)}
+.qz-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
+.qz-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
+.qz-fb{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:12px;line-height:1.6;display:none}
+.qz-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
+.qz-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
+.qz-next{padding:10px 22px;background:var(--accent2);color:#fff;border:none;border-radius:10px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qz-next.show{display:inline-block}
+/* RESULT */
+.result-box{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:40px;text-align:center;display:none}
+.result-box.show{display:block}
+.res-emoji{font-size:52px;margin-bottom:14px}
+.res-score{font-family:'Fraunces',serif;font-size:52px;color:var(--accent);margin-bottom:6px}
+.res-label{font-size:16px;color:var(--text2);margin-bottom:16px}
+.res-msg{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+.res-btn{padding:12px 28px;background:var(--accent);color:#0f0e17;border:none;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin:4px}
+.res-btn2{padding:12px 28px;background:transparent;color:var(--text);border:0.5px solid var(--border);border-radius:10px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin:4px}
+/* TIPS BOX */
+.tip-box{background:rgba(100,216,165,0.08);border:0.5px solid rgba(123,110,246,0.2);border-radius:12px;padding:16px 20px;display:flex;gap:12px;margin-bottom:20px}
+.tip-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.tip-box h5{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.tip-box p{font-size:14px;color:var(--text2);line-height:1.65}
+.s-divider{height:0.5px;background:var(--border);margin:32px 0}
+.anchor{scroll-margin-top:80px}
+
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+
+<meta name="theme-color" content="#64D8A5">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<link rel="canonical" href="https://easyenglish.vn/tu-hoc-thuat.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sidebar-title">Chế độ học</div>
+
+  <button class="sb-item active" onclick="setMode('list',this)"><i data-lucide="list" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Danh sách từ</button>
+  <button class="sb-item" onclick="setMode('flashcard',this)"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Flashcard</button>
+  <button class="sb-item" onclick="setMode('quiz',this)"><i data-lucide="help-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Quiz kiểm tra</button>
+
+  <div class="sidebar-title">Sublist (theo mức độ)</div>
+  <button class="sb-item" onclick="filterSublist(0,this)"><i data-lucide="grid" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tất cả <span class="sb-badge" id="sb-all">570</span></button>
+  <button class="sb-item" onclick="filterSublist(1,this)">Sublist 1 — Cơ bản nhất <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(2,this)">Sublist 2 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(3,this)">Sublist 3 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(4,this)">Sublist 4 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(5,this)">Sublist 5 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(6,this)">Sublist 6 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(7,this)">Sublist 7 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(8,this)">Sublist 8 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(9,this)">Sublist 9 <span class="sb-badge">60</span></button>
+  <button class="sb-item" onclick="filterSublist(10,this)">Sublist 10 — Nâng cao nhất <span class="sb-badge">30</span></button>
+
+  <div class="sidebar-title">Lọc theo từ loại</div>
+  <button class="sb-item" onclick="filterType('all',this)">Tất cả từ loại</button>
+  <button class="sb-item" onclick="filterType('n',this)"><i data-lucide="type" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Danh từ (N)</button>
+  <button class="sb-item" onclick="filterType('v',this)"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Động từ (V)</button>
+  <button class="sb-item" onclick="filterType('adj',this)"><i data-lucide="palette" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tính từ (Adj)</button>
+  <button class="sb-item" onclick="filterType('adv',this)"><i data-lucide="rocket" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Trạng từ (Adv)</button>
+
+  <div class="sidebar-title">Tiến độ</div>
+  <button class="sb-item" onclick="filterLearned('learned',this)"><i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Đã học</button>
+  <button class="sb-item" onclick="filterLearned('notlearned',this)"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chưa học</button>
+</aside>
+
+<main class="content">
+  <div class="breadcrumb">
+  <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+  <span class="bc-sep">›</span>
+  <span>IELTS</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-current">AWL 570 từ</span>
+</div>
+  <div class="page-label">IELTS — Academic Word List</div>
+  <h1 class="page-title">570 từ vựng học thuật<br><em style="color:var(--accent)">quan trọng nhất cho IELTS</em></h1>
+  <p class="page-desc">Academic Word List (AWL) do Averil Coxhead biên soạn — danh sách 570 từ xuất hiện nhiều nhất trong văn bản học thuật tiếng Anh. Học thuộc danh sách này giúp bạn hiểu ~10% toàn bộ văn bản học thuật và nâng điểm IELTS Reading/Writing đáng kể.</p>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" id="stat-total">570</div><div class="stat-label">Tổng từ AWL</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-learned">0</div><div class="stat-label">Đã học</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-pct">0%</div><div class="stat-label">Hoàn thành</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">Ngày streak</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-showing">570</div><div class="stat-label">Đang hiển thị</div></div>
+  </div>
+
+  <div class="mode-tabs">
+    <button class="mode-tab active" onclick="setMode('list',null,this)"><i data-lucide="clipboard-list" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Danh sách</button>
+    <button class="mode-tab" onclick="setMode('flashcard',null,this)"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Flashcard</button>
+    <button class="mode-tab" onclick="setMode('quiz',null,this)"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Quiz</button>
+  </div>
+
+  <!-- LIST MODE -->
+  <div id="listMode">
+    <div class="tip-box">
+      <div class="tip-icon"><i data-lucide="lightbulb" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
+      <div>
+        <h5>Cách học AWL hiệu quả nhất</h5>
+        <p>Bắt đầu từ <strong style="color:var(--accent)">Sublist 1</strong> — đây là 60 từ phổ biến nhất. Học 10 từ/ngày, dùng Flashcard để ghi nhớ, rồi làm Quiz để kiểm tra. Bấm vào từ để xem chi tiết. Bấm <i data-lucide="check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> để đánh dấu đã học.</p>
+      </div>
+    </div>
+    <div class="search-row">
+      <input class="awl-search" id="searchInput" placeholder="Tìm từ..." oninput="renderList()">
+      <select class="filter-select" id="sortSelect" onchange="renderList()">
+        <option value="default">Sắp xếp: Mặc định</option>
+        <option value="alpha">A → Z</option>
+        <option value="sublist">Theo Sublist</option>
+        <option value="learned">Chưa học trước</option>
+      </select>
+    </div>
+    <div id="listContainer"></div>
+  </div>
+
+  <!-- FLASHCARD MODE -->
+  <div id="flashcardMode" style="display:none">
+    <div class="tip-box">
+      <div class="tip-icon"><i data-lucide="layers" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
+      <div>
+        <h5>Hướng dẫn dùng Flashcard</h5>
+        <p>Bấm vào thẻ để lật xem nghĩa. Chọn <strong style="color:var(--green)">"Nhớ rồi!"</strong> nếu bạn nhớ, <strong style="color:var(--coral)">"Học lại"</strong> nếu quên — thẻ chưa nhớ sẽ xuất hiện lại. Chọn Sublist để học từng nhóm.</p>
+      </div>
+    </div>
+    <div class="fc-sublist-select" id="fcSublistBtns"></div>
+    <div class="fc-container" onclick="flipFC()">
+      <div class="fc-inner" id="fcInner">
+        <div class="fc-face fc-front">
+          <div class="fc-sublist-tag" id="fcTag">Sublist 1</div>
+          <div class="fc-word" id="fcWord">analyze</div>
+          <div class="fc-pron" id="fcPron">/ˈænəlaɪz/</div>
+          <div class="fc-hint"><i data-lucide="pointer" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Bấm để xem nghĩa</div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-type-badge type-v" id="fcTypeBadge">Động từ (V)</div>
+          <div class="fc-vi" id="fcVi">phân tích</div>
+          <div class="fc-ex" id="fcEx">"Scientists analyze data to find patterns." — Các nhà khoa học phân tích dữ liệu để tìm ra các mẫu.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-prog">
+      <div class="fc-prog-bar"><div class="fc-prog-fill" id="fcProgFill" style="width:0%"></div></div>
+      <div class="fc-prog-text" id="fcProgText">0 / 0</div>
+    </div>
+    <div class="fc-controls">
+      <button class="fc-btn bad" onclick="fcAnswer(false)"><i data-lucide="x" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Học lại</button>
+      <button class="fc-btn" onclick="flipFC()">↩ Lật thẻ</button>
+      <button class="fc-btn good" onclick="fcAnswer(true)"><i data-lucide="check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Nhớ rồi!</button>
+    </div>
+    <div style="text-align:center;font-size:14px;color:var(--text3)" id="fcRemaining"></div>
+  </div>
+
+  <!-- QUIZ MODE -->
+  <div id="quizMode" style="display:none">
+    <div class="tip-box">
+      <div class="tip-icon"><i data-lucide="target" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </div>
+      <div>
+        <h5>Quiz AWL</h5>
+        <p>Mỗi câu hỏi chọn 1 trong 4 đáp án. Quiz sẽ lấy ngẫu nhiên từ sublist bạn chọn. Có giải thích đáp án chi tiết sau mỗi câu.</p>
+      </div>
+    </div>
+    <div class="fc-sublist-select" id="qzSublistBtns"></div>
+    <div class="qz-card" id="qzCard">
+      <div class="qz-header">
+        <span class="qz-score" id="qzScore">Điểm: 0</span>
+        <div class="qz-prog"><div class="qz-prog-fill" id="qzProgFill" style="width:0%"></div></div>
+        <span class="qz-count" id="qzCount">Câu 1/15</span>
+      </div>
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-hint" id="qzHint"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-next" id="qzNext" onclick="qzNext()">Câu tiếp →</button>
+    </div>
+    <div class="result-box" id="qzResult">
+      <div class="res-emoji" id="resEmoji"></div>
+      <div class="res-score" id="resScore"></div>
+      <div class="res-label" id="resLabel"></div>
+      <div class="res-msg" id="resMsg"></div>
+      <button class="res-btn" onclick="startQuiz()">Làm lại</button>
+      <button class="res-btn2" onclick="setMode('list')">Xem danh sách từ</button>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+// ===== AWL DATA (570 words, 10 sublists) =====
+const AWL = [
+  // SUBLIST 1 — 60 most frequent academic words
+  {w:'analyze',sl:1,type:'v',pron:'/ˈænəlaɪz/',vi:'phân tích',ex:'Scientists analyze data carefully.',ielts:'IELTS Writing: "The graph analyzes the trends..."'},
+  {w:'approach',sl:1,type:'n/v',pron:'/əˈproʊtʃ/',vi:'phương pháp / tiếp cận',ex:'A new approach to learning English.',ielts:'A common IELTS colocation: "adopt an approach"'},
+  {w:'area',sl:1,type:'n',pron:'/ˈɛriə/',vi:'lĩnh vực / khu vực',ex:'This area requires further research.',ielts:'Used in all 4 IELTS skills'},
+  {w:'assess',sl:1,type:'v',pron:'/əˈsɛs/',vi:'đánh giá, nhận xét',ex:'Teachers assess students regularly.',ielts:'IELTS Task 2: "assess the impact of..."'},
+  {w:'assume',sl:1,type:'v',pron:'/əˈsjuːm/',vi:'giả định, cho rằng',ex:'We assume the data is accurate.',ielts:'Academic writing: "It is assumed that..."'},
+  {w:'authority',sl:1,type:'n',pron:'/ɔːˈθɒrɪti/',vi:'thẩm quyền / chính quyền',ex:'The authority approved the plan.',ielts:'IELTS Reading: often in government topics'},
+  {w:'available',sl:1,type:'adj',pron:'/əˈveɪləbəl/',vi:'có sẵn, có thể sử dụng',ex:'Resources are available online.',ielts:'Very common in all IELTS tasks'},
+  {w:'benefit',sl:1,type:'n/v',pron:'/ˈbɛnɪfɪt/',vi:'lợi ích / được lợi',ex:'Exercise has many health benefits.',ielts:'IELTS Task 2: "The benefits outweigh..."'},
+  {w:'concept',sl:1,type:'n',pron:'/ˈkɒnsɛpt/',vi:'khái niệm',ex:'The concept of sustainability is key.',ielts:'Academic: "the concept of globalisation"'},
+  {w:'consist',sl:1,type:'v',pron:'/kənˈsɪst/',vi:'bao gồm, cấu thành',ex:'The team consists of 5 members.',ielts:'IELTS Listening: describing structures'},
+  {w:'context',sl:1,type:'n',pron:'/ˈkɒntɛkst/',vi:'bối cảnh, ngữ cảnh',ex:'Understand words in context.',ielts:'Reading & Writing: "in the context of"'},
+  {w:'create',sl:1,type:'v',pron:'/kriˈeɪt/',vi:'tạo ra, sáng tạo',ex:'Technology creates new opportunities.',ielts:'IELTS Task 2: "create employment"'},
+  {w:'data',sl:1,type:'n',pron:'/ˈdeɪtə/',vi:'dữ liệu',ex:'The data shows a clear trend.',ielts:'IELTS Task 1: essential word'},
+  {w:'define',sl:1,type:'v',pron:'/dɪˈfaɪn/',vi:'định nghĩa',ex:'How do you define success?',ielts:'Academic essays: "To define this term..."'},
+  {w:'derive',sl:1,type:'v',pron:'/dɪˈraɪv/',vi:'xuất phát từ, thu được',ex:'Many English words derive from Latin.',ielts:'Academic reading: etymology topics'},
+  {w:'distribute',sl:1,type:'v',pron:'/dɪˈstrɪbjuːt/',vi:'phân phối, phân bổ',ex:'Resources are distributed unevenly.',ielts:'IELTS Task 1: "distributed across"'},
+  {w:'economy',sl:1,type:'n',pron:'/ɪˈkɒnəmi/',vi:'nền kinh tế',ex:'The global economy is changing.',ielts:'Very frequent in IELTS topics'},
+  {w:'environment',sl:1,type:'n',pron:'/ɪnˈvaɪrənmənt/',vi:'môi trường',ex:'We must protect the environment.',ielts:'Top IELTS topic'},
+  {w:'establish',sl:1,type:'v',pron:'/ɪˈstæblɪʃ/',vi:'thành lập, thiết lập',ex:'The company was established in 1990.',ielts:'IELTS Writing: "establish a link"'},
+  {w:'estimate',sl:1,type:'v/n',pron:'/ˈɛstɪmeɪt/',vi:'ước tính / con số ước tính',ex:'We estimate the cost at $500.',ielts:'IELTS Task 1: "it is estimated that"'},
+  {w:'evident',sl:1,type:'adj',pron:'/ˈɛvɪdənt/',vi:'rõ ràng, hiển nhiên',ex:'It is evident that climate change is real.',ielts:'Academic writing: formal alternative to "clear"'},
+  {w:'factor',sl:1,type:'n',pron:'/ˈfæktər/',vi:'yếu tố, nhân tố',ex:'Many factors influence success.',ielts:'IELTS Task 2: "a key factor is..."'},
+  {w:'finance',sl:1,type:'n/v',pron:'/ˈfaɪnæns/',vi:'tài chính / tài trợ',ex:'The government finances education.',ielts:'Business & economics IELTS topics'},
+  {w:'formula',sl:1,type:'n',pron:'/ˈfɔːrmjʊlə/',vi:'công thức',ex:'There is no magic formula for success.',ielts:'Science topics in IELTS Reading'},
+  {w:'function',sl:1,type:'n/v',pron:'/ˈfʌŋkʃən/',vi:'chức năng / hoạt động',ex:'The brain functions like a computer.',ielts:'Describing systems in IELTS'},
+  {w:'identify',sl:1,type:'v',pron:'/aɪˈdɛntɪfaɪ/',vi:'xác định, nhận dạng',ex:'Scientists identified a new virus.',ielts:'IELTS Reading: "identify the main idea"'},
+  {w:'income',sl:1,type:'n',pron:'/ˈɪŋkʌm/',vi:'thu nhập',ex:'Average income has risen by 5%.',ielts:'Economics & social topics'},
+  {w:'indicate',sl:1,type:'v',pron:'/ˈɪndɪkeɪt/',vi:'chỉ ra, cho thấy',ex:'The graph indicates a steady rise.',ielts:'IELTS Task 1: essential describing word'},
+  {w:'individual',sl:1,type:'n/adj',pron:'/ˌɪndɪˈvɪdʒuəl/',vi:'cá nhân / riêng lẻ',ex:'Each individual has unique abilities.',ielts:'Very common in academic writing'},
+  {w:'interpret',sl:1,type:'v',pron:'/ɪnˈtɜːrprɪt/',vi:'giải thích, diễn giải',ex:'How do you interpret this data?',ielts:'IELTS Reading: inferring meaning'},
+  {w:'involve',sl:1,type:'v',pron:'/ɪnˈvɒlv/',vi:'liên quan đến, bao gồm',ex:'The project involves many stakeholders.',ielts:'IELTS Task 2: "involves significant costs"'},
+  {w:'issue',sl:1,type:'n',pron:'/ˈɪʃuː/',vi:'vấn đề, chủ đề',ex:'Climate change is a global issue.',ielts:'Top IELTS Task 2 word'},
+  {w:'labour',sl:1,type:'n',pron:'/ˈleɪbər/',vi:'lao động',ex:'The labour market is changing.',ielts:'Economics topics in IELTS'},
+  {w:'legal',sl:1,type:'adj',pron:'/ˈliːɡəl/',vi:'hợp pháp, thuộc về pháp luật',ex:'Legal advice is sometimes necessary.',ielts:'Law topics in IELTS Reading'},
+  {w:'legislate',sl:1,type:'v',pron:'/ˈlɛdʒɪsleɪt/',vi:'lập pháp, ban hành luật',ex:'Governments legislate to protect people.',ielts:'IELTS civic topics'},
+  {w:'major',sl:1,type:'adj',pron:'/ˈmeɪdʒər/',vi:'chủ yếu, quan trọng',ex:'Pollution is a major concern.',ielts:'IELTS Writing: "a major cause"'},
+  {w:'method',sl:1,type:'n',pron:'/ˈmɛθəd/',vi:'phương pháp',ex:'Scientists use various research methods.',ielts:'Academic writing & Reading'},
+  {w:'occur',sl:1,type:'v',pron:'/əˈkɜːr/',vi:'xảy ra',ex:'Earthquakes occur near fault lines.',ielts:'IELTS natural phenomena topics'},
+  {w:'percent',sl:1,type:'n',pron:'/pərˈsɛnt/',vi:'phần trăm',ex:'70 percent of Earth is water.',ielts:'IELTS Task 1: essential'},
+  {w:'period',sl:1,type:'n',pron:'/ˈpɪəriəd/',vi:'giai đoạn, thời kỳ',ex:'The period from 2000 to 2020 was significant.',ielts:'IELTS Task 1: describing time periods'},
+  {w:'policy',sl:1,type:'n',pron:'/ˈpɒlɪsi/',vi:'chính sách',ex:'The government changed its economic policy.',ielts:'Top IELTS governance topic'},
+  {w:'principle',sl:1,type:'n',pron:'/ˈprɪnsɪpəl/',vi:'nguyên tắc, nguyên lý',ex:'The principle of equality is fundamental.',ielts:'IELTS ethics & society topics'},
+  {w:'process',sl:1,type:'n/v',pron:'/ˈprəʊsɛs/',vi:'quá trình / xử lý',ex:'Learning is a gradual process.',ielts:'IELTS Task 1: describing processes'},
+  {w:'require',sl:1,type:'v',pron:'/rɪˈkwaɪər/',vi:'yêu cầu, đòi hỏi',ex:'This job requires good communication.',ielts:'IELTS Writing: formal language'},
+  {w:'research',sl:1,type:'n/v',pron:'/rɪˈsɜːrtʃ/',vi:'nghiên cứu',ex:'Recent research shows interesting results.',ielts:'Academic writing staple'},
+  {w:'respond',sl:1,type:'v',pron:'/rɪˈspɒnd/',vi:'phản hồi, trả lời',ex:'How did the government respond?',ielts:'IELTS Writing & Speaking'},
+  {w:'role',sl:1,type:'n',pron:'/roʊl/',vi:'vai trò',ex:'Education plays a key role in development.',ielts:'IELTS Task 2: "plays a crucial role"'},
+  {w:'section',sl:1,type:'n',pron:'/ˈsɛkʃən/',vi:'phần, mục',ex:'The reading has three sections.',ielts:'IELTS test structure word'},
+  {w:'significant',sl:1,type:'adj',pron:'/sɪɡˈnɪfɪkənt/',vi:'đáng kể, quan trọng',ex:'There has been a significant increase.',ielts:'IELTS Task 1 & 2: very common'},
+  {w:'similar',sl:1,type:'adj',pron:'/ˈsɪmɪlər/',vi:'tương tự, giống nhau',ex:'The results were similar across countries.',ielts:'IELTS Task 1: comparing data'},
+  {w:'source',sl:1,type:'n',pron:'/sɔːrs/',vi:'nguồn, xuất xứ',ex:'Renewable energy sources are growing.',ielts:'IELTS environment & energy topics'},
+  {w:'specific',sl:1,type:'adj',pron:'/spɪˈsɪfɪk/',vi:'cụ thể, đặc biệt',ex:'Give specific examples in your essay.',ielts:'IELTS Writing: "specific details"'},
+  {w:'structure',sl:1,type:'n/v',pron:'/ˈstrʌktʃər/',vi:'cấu trúc / cấu thành',ex:'A clear structure is vital for essays.',ielts:'IELTS Task 2: essay structure'},
+  {w:'theory',sl:1,type:'n',pron:'/ˈθɪəri/',vi:'lý thuyết',ex:'Darwin\'s theory changed science.',ielts:'IELTS academic topics'},
+  {w:'vary',sl:1,type:'v',pron:'/ˈvɛri/',vi:'thay đổi, biến thiên',ex:'Prices vary from country to country.',ielts:'IELTS Task 1: describing variation'},
+
+  // SUBLIST 2
+  {w:'achieve',sl:2,type:'v',pron:'/əˈtʃiːv/',vi:'đạt được, hoàn thành',ex:'Hard work helps you achieve your goals.',ielts:'IELTS Task 2: "achieve success"'},
+  {w:'acquire',sl:2,type:'v',pron:'/əˈkwaɪər/',vi:'tiếp thu, có được',ex:'Children acquire language naturally.',ielts:'IELTS language & education topics'},
+  {w:'administer',sl:2,type:'v',pron:'/ədˈmɪnɪstər/',vi:'quản lý, điều hành',ex:'The school is administered by the board.',ielts:'IELTS management topics'},
+  {w:'affect',sl:2,type:'v',pron:'/əˈfɛkt/',vi:'ảnh hưởng đến',ex:'Pollution affects public health.',ielts:'IELTS Task 2: cause & effect'},
+  {w:'appropriate',sl:2,type:'adj',pron:'/əˈproʊpriɪt/',vi:'phù hợp, thích hợp',ex:'Choose appropriate vocabulary.',ielts:'IELTS Writing: formal register'},
+  {w:'aspect',sl:2,type:'n',pron:'/ˈæspɛkt/',vi:'khía cạnh',ex:'Consider all aspects of the problem.',ielts:'IELTS Task 2: "various aspects"'},
+  {w:'assistance',sl:2,type:'n',pron:'/əˈsɪstəns/',vi:'sự trợ giúp, hỗ trợ',ex:'Financial assistance is available.',ielts:'Formal alternative to "help"'},
+  {w:'category',sl:2,type:'n',pron:'/ˈkætɪɡəri/',vi:'loại, hạng mục',ex:'Products fall into different categories.',ielts:'IELTS classification topics'},
+  {w:'chapter',sl:2,type:'n',pron:'/ˈtʃæptər/',vi:'chương (sách)',ex:'Read the first chapter carefully.',ielts:'Academic reading contexts'},
+  {w:'commission',sl:2,type:'n/v',pron:'/kəˈmɪʃən/',vi:'ủy ban / đặt hàng làm',ex:'The government commissioned a report.',ielts:'IELTS governance topics'},
+  {w:'community',sl:2,type:'n',pron:'/kəˈmjuːnɪti/',vi:'cộng đồng',ex:'The local community supported the project.',ielts:'Society topics in IELTS'},
+  {w:'complex',sl:2,type:'adj',pron:'/ˈkɒmplɛks/',vi:'phức tạp',ex:'Climate change is a complex issue.',ielts:'IELTS Task 2: formal adjective'},
+  {w:'compute',sl:2,type:'v',pron:'/kəmˈpjuːt/',vi:'tính toán',ex:'Computers compute data rapidly.',ielts:'Technology topics'},
+  {w:'conclude',sl:2,type:'v',pron:'/kənˈkluːd/',vi:'kết luận',ex:'We can conclude that education matters.',ielts:'IELTS Task 2: conclusion paragraph'},
+  {w:'conduct',sl:2,type:'v/n',pron:'/kənˈdʌkt/',vi:'tiến hành / hành vi',ex:'They conducted a survey last year.',ielts:'Research methodology'},
+  {w:'consequence',sl:2,type:'n',pron:'/ˈkɒnsɪkwəns/',vi:'hậu quả, kết quả',ex:'Pollution has serious consequences.',ielts:'IELTS Task 2: cause & effect'},
+  {w:'construct',sl:2,type:'v',pron:'/kənˈstrʌkt/',vi:'xây dựng, tạo dựng',ex:'They constructed a new bridge.',ielts:'IELTS architecture & urban topics'},
+  {w:'consume',sl:2,type:'v',pron:'/kənˈsjuːm/',vi:'tiêu thụ, tiêu dùng',ex:'We consume too much energy.',ielts:'IELTS environment topics'},
+  {w:'credit',sl:2,type:'n',pron:'/ˈkrɛdɪt/',vi:'tín dụng / sự công nhận',ex:'She got credit for her hard work.',ielts:'Finance & education topics'},
+  {w:'culture',sl:2,type:'n',pron:'/ˈkʌltʃər/',vi:'văn hóa',ex:'Every country has a unique culture.',ielts:'Top IELTS topic'},
+  {w:'design',sl:2,type:'n/v',pron:'/dɪˈzaɪn/',vi:'thiết kế',ex:'Good design improves user experience.',ielts:'Technology & arts topics'},
+  {w:'distinct',sl:2,type:'adj',pron:'/dɪˈstɪŋkt/',vi:'rõ ràng, khác biệt',ex:'Two distinct groups were identified.',ielts:'Academic: "distinct from"'},
+  {w:'element',sl:2,type:'n',pron:'/ˈɛlɪmənt/',vi:'yếu tố, thành phần',ex:'Trust is a key element of leadership.',ielts:'Academic writing staple'},
+  {w:'evaluate',sl:2,type:'v',pron:'/ɪˈvæljueɪt/',vi:'đánh giá (kỹ lưỡng)',ex:'Evaluate the advantages and disadvantages.',ielts:'IELTS Task 2 instruction word'},
+  {w:'feature',sl:2,type:'n/v',pron:'/ˈfiːtʃər/',vi:'đặc điểm / nổi bật',ex:'A key feature of this phone is its camera.',ielts:'IELTS product & technology topics'},
+  {w:'focus',sl:2,type:'n/v',pron:'/ˈfoʊkəs/',vi:'trọng tâm / tập trung',ex:'The essay focuses on environmental issues.',ielts:'IELTS Task 2: "focus on"'},
+  {w:'impact',sl:2,type:'n/v',pron:'/ˈɪmpækt/',vi:'tác động, ảnh hưởng',ex:'Technology has a huge impact on society.',ielts:'IELTS: "the impact of globalisation"'},
+  {w:'injure',sl:2,type:'v',pron:'/ˈɪndʒər/',vi:'làm tổn thương, gây thương tích',ex:'He was injured in the accident.',ielts:'Health & safety topics'},
+  {w:'institute',sl:2,type:'n',pron:'/ˈɪnstɪtjuːt/',vi:'viện, học viện',ex:'She studies at a research institute.',ielts:'Education topics'},
+  {w:'invest',sl:2,type:'v',pron:'/ɪnˈvɛst/',vi:'đầu tư',ex:'Companies invest in new technologies.',ielts:'Economics & business topics'},
+
+  // SUBLIST 3
+  {w:'alternative',sl:3,type:'n/adj',pron:'/ɔːlˈtɜːrnətɪv/',vi:'lựa chọn thay thế / thay thế',ex:'We need to find alternative energy sources.',ielts:'IELTS Task 2: proposing solutions'},
+  {w:'circumstance',sl:3,type:'n',pron:'/ˈsɜːrkəmstæns/',vi:'hoàn cảnh, tình huống',ex:'In some circumstances, rules can be broken.',ielts:'IELTS Task 2: formal discussion'},
+  {w:'comment',sl:3,type:'n/v',pron:'/ˈkɒmɛnt/',vi:'nhận xét / bình luận',ex:'The report comments on recent trends.',ielts:'IELTS Speaking: giving opinions'},
+  {w:'compensate',sl:3,type:'v',pron:'/ˈkɒmpənseɪt/',vi:'bù đắp, đền bù',ex:'Higher wages compensate for longer hours.',ielts:'IELTS economics topics'},
+  {w:'component',sl:3,type:'n',pron:'/kəmˈpoʊnənt/',vi:'thành phần, bộ phận',ex:'Trust is a component of good teamwork.',ielts:'IELTS Task 1: describing parts'},
+  {w:'consent',sl:3,type:'n/v',pron:'/kənˈsɛnt/',vi:'sự đồng ý / chấp thuận',ex:'You need parental consent.',ielts:'IELTS ethics & law topics'},
+  {w:'considerable',sl:3,type:'adj',pron:'/kənˈsɪdərəbəl/',vi:'đáng kể, đáng xem xét',ex:'There has been considerable progress.',ielts:'Formal alternative to "a lot of"'},
+  {w:'constant',sl:3,type:'adj',pron:'/ˈkɒnstənt/',vi:'liên tục, không đổi',ex:'Technology is in constant development.',ielts:'IELTS Task 2: describing change'},
+  {w:'contribute',sl:3,type:'v',pron:'/kənˈtrɪbjuːt/',vi:'đóng góp',ex:'Everyone can contribute to society.',ielts:'IELTS Task 2: "contributes to"'},
+  {w:'convene',sl:3,type:'v',pron:'/kənˈviːn/',vi:'triệu tập, tổ chức',ex:'The committee convened last Monday.',ielts:'Formal academic writing'},
+  {w:'coordinate',sl:3,type:'v',pron:'/koʊˈɔːrdɪneɪt/',vi:'phối hợp, điều phối',ex:'Teams must coordinate their efforts.',ielts:'Management & organisation topics'},
+  {w:'core',sl:3,type:'n/adj',pron:'/kɔːr/',vi:'cốt lõi / chủ yếu',ex:'Reading is a core skill for IELTS.',ielts:'Academic writing: "at its core"'},
+  {w:'corporate',sl:3,type:'adj',pron:'/ˈkɔːrpərɪt/',vi:'thuộc công ty, tập đoàn',ex:'Corporate responsibility is important.',ielts:'Business topics in IELTS'},
+  {w:'correspond',sl:3,type:'v',pron:'/ˌkɒrɪˈspɒnd/',vi:'tương ứng / liên lạc',ex:'The figures correspond to last year\'s data.',ielts:'IELTS Task 1: comparing data'},
+  {w:'criteria',sl:3,type:'n',pron:'/kraɪˈtɪəriə/',vi:'tiêu chí (số nhiều của criterion)',ex:'The selection criteria are clear.',ielts:'Academic: "meet the criteria"'},
+  {w:'deduce',sl:3,type:'v',pron:'/dɪˈdjuːs/',vi:'suy luận, rút ra kết luận',ex:'From the data, we can deduce the trend.',ielts:'IELTS Reading: inference questions'},
+  {w:'demonstrate',sl:3,type:'v',pron:'/ˈdɛmənstreɪt/',vi:'chứng minh, thể hiện',ex:'The results demonstrate the effectiveness.',ielts:'IELTS Task 2: formal alternative to "show"'},
+  {w:'document',sl:3,type:'n/v',pron:'/ˈdɒkjʊmənt/',vi:'tài liệu / ghi chép lại',ex:'All findings were documented.',ielts:'Academic writing & Reading'},
+  {w:'dominate',sl:3,type:'v',pron:'/ˈdɒmɪneɪt/',vi:'thống trị, chi phối',ex:'China dominates global manufacturing.',ielts:'IELTS economics & politics topics'},
+  {w:'emphasis',sl:3,type:'n',pron:'/ˈɛmfəsɪs/',vi:'sự nhấn mạnh',ex:'There is an emphasis on practical skills.',ielts:'IELTS Writing: "place emphasis on"'},
+
+  // SUBLIST 4
+  {w:'access',sl:4,type:'n/v',pron:'/ˈæksɛs/',vi:'quyền truy cập / tiếp cận',ex:'Everyone deserves access to education.',ielts:'IELTS technology & equality topics'},
+  {w:'adequate',sl:4,type:'adj',pron:'/ˈædɪkwɪt/',vi:'đầy đủ, thích hợp',ex:'An adequate diet is essential for health.',ielts:'Formal alternative to "enough"'},
+  {w:'annual',sl:4,type:'adj',pron:'/ˈænjuəl/',vi:'hằng năm, thường niên',ex:'The annual report shows growth.',ielts:'IELTS Task 1: time-based data'},
+  {w:'apparent',sl:4,type:'adj',pron:'/əˈpærənt/',vi:'rõ ràng, có vẻ như',ex:'It is apparent that changes are needed.',ielts:'Academic: "it is apparent that"'},
+  {w:'approximate',sl:4,type:'adj/v',pron:'/əˈprɒksɪmɪt/',vi:'gần đúng / ước tính',ex:'The approximate cost is $500.',ielts:'IELTS Task 1: hedging language'},
+  {w:'attitude',sl:4,type:'n',pron:'/ˈætɪtjuːd/',vi:'thái độ',ex:'A positive attitude helps you succeed.',ielts:'IELTS Task 2: society & behaviour'},
+  {w:'attribute',sl:4,type:'v/n',pron:'/əˈtrɪbjuːt/',vi:'quy cho / thuộc tính',ex:'Success is often attributed to hard work.',ielts:'IELTS Task 2: cause attribution'},
+  {w:'bond',sl:4,type:'n/v',pron:'/bɒnd/',vi:'mối liên kết / gắn bó',ex:'Strong family bonds are important.',ielts:'IELTS society & relationships'},
+  {w:'capable',sl:4,type:'adj',pron:'/ˈkeɪpəbəl/',vi:'có khả năng, có năng lực',ex:'Humans are capable of amazing things.',ielts:'IELTS Task 2: discussing potential'},
+  {w:'cite',sl:4,type:'v',pron:'/saɪt/',vi:'trích dẫn, viện dẫn',ex:'The report cites three main causes.',ielts:'Academic writing: citing evidence'},
+  {w:'cooperate',sl:4,type:'v',pron:'/koʊˈɒpəreɪt/',vi:'hợp tác',ex:'Countries must cooperate on climate.',ielts:'IELTS international topics'},
+  {w:'discrimination',sl:4,type:'n',pron:'/dɪˌskrɪmɪˈneɪʃən/',vi:'sự phân biệt đối xử',ex:'Gender discrimination must be stopped.',ielts:'IELTS equality & society topics'},
+  {w:'display',sl:4,type:'v/n',pron:'/dɪˈspleɪ/',vi:'trưng bày, hiển thị',ex:'The graph displays monthly figures.',ielts:'IELTS Task 1: "the chart displays"'},
+  {w:'diverse',sl:4,type:'adj',pron:'/daɪˈvɜːrs/',vi:'đa dạng',ex:'Cities are culturally diverse.',ielts:'IELTS multicultural topics'},
+  {w:'ensure',sl:4,type:'v',pron:'/ɪnˈʃʊər/',vi:'đảm bảo',ex:'Governments must ensure equal rights.',ielts:'IELTS Task 2: formal writing'},
+  {w:'exclude',sl:4,type:'v',pron:'/ɪkˈskluːd/',vi:'loại trừ, không bao gồm',ex:'Some groups are excluded from society.',ielts:'IELTS equality topics'},
+  {w:'framework',sl:4,type:'n',pron:'/ˈfreɪmwɜːrk/',vi:'khung, khuôn khổ',ex:'A legal framework is needed.',ielts:'IELTS policy & governance'},
+  {w:'fund',sl:4,type:'n/v',pron:'/fʌnd/',vi:'quỹ / tài trợ',ex:'The government funds public schools.',ielts:'IELTS education & economics'},
+  {w:'generate',sl:4,type:'v',pron:'/ˈdʒɛnəreɪt/',vi:'tạo ra, sản sinh',ex:'Solar panels generate clean energy.',ielts:'IELTS environment topics'},
+  {w:'globe',sl:4,type:'n',pron:'/ɡloʊb/',vi:'toàn cầu, địa cầu',ex:'Problems affect the entire globe.',ielts:'"Global" derived form is very frequent'},
+
+  // SUBLIST 5
+  {w:'academic',sl:5,type:'adj',pron:'/ˌækəˈdɛmɪk/',vi:'học thuật, thuộc học viện',ex:'Academic writing requires formal language.',ielts:'Core IELTS word'},
+  {w:'adjust',sl:5,type:'v',pron:'/əˈdʒʌst/',vi:'điều chỉnh, thích nghi',ex:'You need to adjust your approach.',ielts:'IELTS Task 2: adapting to change'},
+  {w:'alter',sl:5,type:'v',pron:'/ˈɔːltər/',vi:'thay đổi, biến đổi',ex:'Climate change alters weather patterns.',ielts:'Formal alternative to "change"'},
+  {w:'amend',sl:5,type:'v',pron:'/əˈmɛnd/',vi:'sửa đổi (luật, văn bản)',ex:'The law was amended last year.',ielts:'IELTS law & governance'},
+  {w:'aware',sl:5,type:'adj',pron:'/əˈwɛr/',vi:'nhận thức được, ý thức được',ex:'People must be aware of climate risks.',ielts:'IELTS Task 2: "raise awareness"'},
+  {w:'capacity',sl:5,type:'n',pron:'/kəˈpæsɪti/',vi:'năng lực, công suất',ex:'The factory operates at full capacity.',ielts:'IELTS industry topics'},
+  {w:'challenge',sl:5,type:'n/v',pron:'/ˈtʃælɪndʒ/',vi:'thách thức / đặt ra thách thức',ex:'Poverty is a major global challenge.',ielts:'IELTS Task 2: "face challenges"'},
+  {w:'clause',sl:5,type:'n',pron:'/klɔːz/',vi:'điều khoản / mệnh đề',ex:'Read each clause of the contract carefully.',ielts:'IELTS law & contract topics'},
+  {w:'convince',sl:5,type:'v',pron:'/kənˈvɪns/',vi:'thuyết phục',ex:'The data convinced the committee.',ielts:'IELTS Speaking & persuasive essays'},
+  {w:'decline',sl:5,type:'v/n',pron:'/dɪˈklaɪn/',vi:'suy giảm / từ chối',ex:'Birth rates are declining worldwide.',ielts:'IELTS Task 1: describing downward trends'},
+  {w:'deny',sl:5,type:'v',pron:'/dɪˈnaɪ/',vi:'phủ nhận, từ chối',ex:'The company denied any wrongdoing.',ielts:'IELTS news & law topics'},
+  {w:'devote',sl:5,type:'v',pron:'/dɪˈvoʊt/',vi:'cống hiến, dành cho',ex:'She devotes her time to charity work.',ielts:'IELTS personal development topics'},
+  {w:'differentiate',sl:5,type:'v',pron:'/ˌdɪfəˈrɛnʃieɪt/',vi:'phân biệt, làm khác nhau',ex:'Can you differentiate these two concepts?',ielts:'IELTS academic comparison'},
+  {w:'dispose',sl:5,type:'v',pron:'/dɪˈspoʊz/',vi:'thải bỏ, xử lý',ex:'We must properly dispose of waste.',ielts:'IELTS environment topics'},
+  {w:'dynamic',sl:5,type:'adj',pron:'/daɪˈnæmɪk/',vi:'năng động, biến đổi liên tục',ex:'The job market is highly dynamic.',ielts:'IELTS business & economics'},
+  {w:'emerge',sl:5,type:'v',pron:'/ɪˈmɜːrdʒ/',vi:'nổi lên, xuất hiện',ex:'New technologies emerge every year.',ielts:'IELTS innovation topics'},
+  {w:'enable',sl:5,type:'v',pron:'/ɪˈneɪbəl/',vi:'cho phép, tạo điều kiện',ex:'Technology enables remote working.',ielts:'IELTS Task 2: discussing technology'},
+  {w:'energy',sl:5,type:'n',pron:'/ˈɛnərdʒi/',vi:'năng lượng',ex:'Renewable energy is the future.',ielts:'Top IELTS environment topic'},
+  {w:'enforce',sl:5,type:'v',pron:'/ɪnˈfɔːrs/',vi:'thực thi, cưỡng chế',ex:'Laws need to be enforced strictly.',ielts:'IELTS law & governance'},
+  {w:'entity',sl:5,type:'n',pron:'/ˈɛntɪti/',vi:'thực thể, đơn vị',ex:'A company is a legal entity.',ielts:'IELTS business & law topics'},
+
+  // SUBLIST 6
+  {w:'abstract',sl:6,type:'adj/n',pron:'/ˈæbstrækt/',vi:'trừu tượng / tóm tắt',ex:'The concept is quite abstract.',ielts:'Academic writing: essay abstracts'},
+  {w:'accurate',sl:6,type:'adj',pron:'/ˈækjʊrɪt/',vi:'chính xác',ex:'Data must be accurate and reliable.',ielts:'IELTS Task 1: describing data'},
+  {w:'acknowledge',sl:6,type:'v',pron:'/əkˈnɒlɪdʒ/',vi:'thừa nhận, công nhận',ex:'We must acknowledge both sides.',ielts:'IELTS Task 2: concession language'},
+  {w:'aggregate',sl:6,type:'n/adj',pron:'/ˈæɡrɪɡɪt/',vi:'tổng hợp, toàn bộ',ex:'The aggregate data shows overall trends.',ielts:'IELTS statistics topics'},
+  {w:'allocate',sl:6,type:'v',pron:'/ˈæləkeɪt/',vi:'phân bổ, phân chia',ex:'Budgets are allocated to each department.',ielts:'IELTS economics & planning'},
+  {w:'assign',sl:6,type:'v',pron:'/əˈsaɪn/',vi:'giao, chỉ định',ex:'Teachers assign homework regularly.',ielts:'IELTS education topics'},
+  {w:'attach',sl:6,type:'v',pron:'/əˈtætʃ/',vi:'gắn vào, đính kèm',ex:'Please attach your CV to the application.',ielts:'IELTS formal writing contexts'},
+  {w:'author',sl:6,type:'n',pron:'/ˈɔːθər/',vi:'tác giả',ex:'The author argues that education is key.',ielts:'IELTS Reading: identifying views'},
+  {w:'bias',sl:6,type:'n',pron:'/ˈbaɪəs/',vi:'sự thiên vị, định kiến',ex:'Media can show political bias.',ielts:'IELTS media & critical thinking'},
+  {w:'clarify',sl:6,type:'v',pron:'/ˈklærɪfaɪ/',vi:'làm rõ, giải thích rõ',ex:'Please clarify your main argument.',ielts:'IELTS Speaking: asking for clarification'},
+  {w:'commodity',sl:6,type:'n',pron:'/kəˈmɒdɪti/',vi:'hàng hóa, mặt hàng',ex:'Oil is an important commodity.',ielts:'IELTS economics & trade'},
+  {w:'complement',sl:6,type:'v/n',pron:'/ˈkɒmplɪmɛnt/',vi:'bổ sung / sự bổ sung',ex:'Exercise complements a healthy diet.',ielts:'IELTS health & lifestyle topics'},
+  {w:'conform',sl:6,type:'v',pron:'/kənˈfɔːrm/',vi:'tuân theo, phù hợp với',ex:'All products must conform to safety standards.',ielts:'IELTS law & regulation topics'},
+  {w:'controversy',sl:6,type:'n',pron:'/ˈkɒntrəvɜːrsi/',vi:'tranh cãi, gây tranh luận',ex:'The policy caused much controversy.',ielts:'IELTS Task 2: discussing contentious issues'},
+  {w:'convince',sl:6,type:'v',pron:'/kənˈvɪns/',vi:'thuyết phục',ex:'Governments must convince citizens to act.',ielts:'Persuasive essay writing'},
+  {w:'currency',sl:6,type:'n',pron:'/ˈkʌrənsi/',vi:'tiền tệ',ex:'The currency fell against the dollar.',ielts:'IELTS economics topics'},
+  {w:'debate',sl:6,type:'n/v',pron:'/dɪˈbeɪt/',vi:'cuộc tranh luận / tranh luận',ex:'There is an ongoing debate about migration.',ielts:'IELTS Task 2: discussing issues'},
+  {w:'device',sl:6,type:'n',pron:'/dɪˈvaɪs/',vi:'thiết bị, dụng cụ',ex:'Smartphones are powerful devices.',ielts:'IELTS technology topics'},
+  {w:'displace',sl:6,type:'v',pron:'/dɪsˈpleɪs/',vi:'thay thế, di dời',ex:'Automation displaces many workers.',ielts:'IELTS technology & employment'},
+  {w:'domestic',sl:6,type:'adj',pron:'/dəˈmɛstɪk/',vi:'trong nước, nội địa',ex:'Domestic tourism is increasing.',ielts:'IELTS economics & society'},
+
+  // SUBLIST 7
+  {w:'adapt',sl:7,type:'v',pron:'/əˈdæpt/',vi:'thích nghi, điều chỉnh',ex:'Animals adapt to their environments.',ielts:'IELTS environment & change topics'},
+  {w:'adult',sl:7,type:'n/adj',pron:'/ˈædʌlt/',vi:'người lớn / trưởng thành',ex:'Adult education is growing worldwide.',ielts:'IELTS education & society'},
+  {w:'advocate',sl:7,type:'v/n',pron:'/ˈædvəkeɪt/',vi:'ủng hộ / người ủng hộ',ex:'Many scientists advocate for green energy.',ielts:'IELTS Task 2: proposing arguments'},
+  {w:'aid',sl:7,type:'n/v',pron:'/eɪd/',vi:'sự trợ giúp / giúp đỡ',ex:'Foreign aid supports developing nations.',ielts:'IELTS international development'},
+  {w:'channel',sl:7,type:'n/v',pron:'/ˈtʃænəl/',vi:'kênh / truyền dẫn',ex:'Social media is a powerful channel.',ielts:'IELTS media & communication'},
+  {w:'chemical',sl:7,type:'n/adj',pron:'/ˈkɛmɪkəl/',vi:'hóa chất / hóa học',ex:'Some chemicals are harmful to health.',ielts:'IELTS science & environment'},
+  {w:'classical',sl:7,type:'adj',pron:'/ˈklæsɪkəl/',vi:'cổ điển, truyền thống',ex:'Classical music requires years of training.',ielts:'IELTS arts & culture topics'},
+  {w:'comprehensive',sl:7,type:'adj',pron:'/ˌkɒmprɪˈhɛnsɪv/',vi:'toàn diện, đầy đủ',ex:'A comprehensive review was conducted.',ielts:'Formal: "comprehensive approach"'},
+  {w:'comprise',sl:7,type:'v',pron:'/kəmˈpraɪz/',vi:'bao gồm, cấu thành',ex:'The team comprises 20 specialists.',ielts:'Formal alternative to "consists of"'},
+  {w:'confirm',sl:7,type:'v',pron:'/kənˈfɜːrm/',vi:'xác nhận',ex:'Research confirms the link between diet and health.',ielts:'IELTS academic: evidence language'},
+  {w:'contrary',sl:7,type:'adj/n',pron:'/ˈkɒntrəri/',vi:'trái lại, ngược lại',ex:'On the contrary, pollution has risen.',ielts:'IELTS Task 2: counterarguments'},
+  {w:'convert',sl:7,type:'v',pron:'/kənˈvɜːrt/',vi:'chuyển đổi',ex:'Solar panels convert sunlight to electricity.',ielts:'IELTS energy & technology'},
+  {w:'decade',sl:7,type:'n',pron:'/ˈdɛkeɪd/',vi:'thập kỷ',ex:'Over the past decade, much has changed.',ielts:'IELTS Task 1: time references'},
+  {w:'definite',sl:7,type:'adj',pron:'/ˈdɛfɪnɪt/',vi:'chắc chắn, rõ ràng',ex:'There is a definite link between smoking and cancer.',ielts:'Academic writing: certainty language'},
+  {w:'deny',sl:7,type:'v',pron:'/dɪˈnaɪ/',vi:'phủ nhận',ex:'The government denied the allegations.',ielts:'IELTS news & media topics'},
+  {w:'detect',sl:7,type:'v',pron:'/dɪˈtɛkt/',vi:'phát hiện',ex:'Scientists detected signs of life.',ielts:'IELTS science topics'},
+  {w:'deviate',sl:7,type:'v',pron:'/ˈdiːvieɪt/',vi:'đi lệch, chệch khỏi',ex:'The results deviated from the expected norm.',ielts:'Academic statistics language'},
+  {w:'evolve',sl:7,type:'v',pron:'/ɪˈvɒlv/',vi:'tiến hóa, phát triển dần',ex:'Languages evolve over centuries.',ielts:'IELTS science & history topics'},
+  {w:'expand',sl:7,type:'v',pron:'/ɪkˈspænd/',vi:'mở rộng, phát triển',ex:'The company expanded into new markets.',ielts:'IELTS business topics'},
+  {w:'expert',sl:7,type:'n',pron:'/ˈɛkspɜːrt/',vi:'chuyên gia',ex:'Experts warn about climate risks.',ielts:'IELTS Task 2: citing authorities'},
+
+  // SUBLIST 8
+  {w:'abandon',sl:8,type:'v',pron:'/əˈbændən/',vi:'từ bỏ, bỏ rơi',ex:'Many people abandon rural areas for cities.',ielts:'IELTS urbanisation topics'},
+  {w:'accompany',sl:8,type:'v',pron:'/əˈkʌmpəni/',vi:'đi kèm, đi cùng',ex:'Charts accompany the written report.',ielts:'Academic writing presentation'},
+  {w:'accumulate',sl:8,type:'v',pron:'/əˈkjuːmjʊleɪt/',vi:'tích lũy, tập hợp',ex:'Wealth tends to accumulate at the top.',ielts:'IELTS economics & inequality'},
+  {w:'ambiguous',sl:8,type:'adj',pron:'/æmˈbɪɡjuəs/',vi:'mơ hồ, không rõ ràng',ex:'The law is ambiguous on this point.',ielts:'IELTS critical analysis'},
+  {w:'anticipate',sl:8,type:'v',pron:'/ænˈtɪsɪpeɪt/',vi:'dự đoán, lường trước',ex:'We anticipate growth next year.',ielts:'IELTS forecasting language'},
+  {w:'assemble',sl:8,type:'v',pron:'/əˈsɛmbəl/',vi:'tập hợp, lắp ráp',ex:'Workers assemble products in factories.',ielts:'IELTS manufacturing topics'},
+  {w:'collapse',sl:8,type:'v/n',pron:'/kəˈlæps/',vi:'sụp đổ',ex:'The economy nearly collapsed in 2008.',ielts:'IELTS economics & history'},
+  {w:'colleague',sl:8,type:'n',pron:'/ˈkɒliːɡ/',vi:'đồng nghiệp',ex:'My colleagues are very supportive.',ielts:'IELTS workplace topics'},
+  {w:'compile',sl:8,type:'v',pron:'/kəmˈpaɪl/',vi:'biên soạn, tổng hợp',ex:'The team compiled research data.',ielts:'Academic research methodology'},
+  {w:'complement',sl:8,type:'n/v',pron:'/ˈkɒmplɪmɛnt/',vi:'bổ sung / sự bổ sung',ex:'Reading complements listening practice.',ielts:'IELTS study strategy'},
+  {w:'contemporary',sl:8,type:'adj',pron:'/kənˈtɛmpərəri/',vi:'đương đại, hiện đại',ex:'Contemporary art is often controversial.',ielts:'IELTS arts & culture topics'},
+  {w:'contradict',sl:8,type:'v',pron:'/ˌkɒntrəˈdɪkt/',vi:'mâu thuẫn, phủ nhận',ex:'The new data contradicts earlier findings.',ielts:'IELTS critical thinking'},
+  {w:'crucial',sl:8,type:'adj',pron:'/ˈkruːʃəl/',vi:'thiết yếu, quan trọng nhất',ex:'Water is crucial for all life.',ielts:'Stronger alternative to "important"'},
+  {w:'debate',sl:8,type:'n',pron:'/dɪˈbeɪt/',vi:'cuộc tranh luận',ex:'The debate on immigration continues.',ielts:'IELTS Task 2 staple'},
+  {w:'diminish',sl:8,type:'v',pron:'/dɪˈmɪnɪʃ/',vi:'giảm bớt, làm suy giảm',ex:'Resources are diminishing rapidly.',ielts:'IELTS environment & scarcity'},
+  {w:'distort',sl:8,type:'v',pron:'/dɪˈstɔːrt/',vi:'bóp méo, bóp méo sự thật',ex:'Media can distort public opinion.',ielts:'IELTS media critical analysis'},
+  {w:'diverse',sl:8,type:'adj',pron:'/daɪˈvɜːrs/',vi:'đa dạng',ex:'Society is becoming more diverse.',ielts:'IELTS multiculturalism topics'},
+  {w:'domain',sl:8,type:'n',pron:'/doʊˈmeɪn/',vi:'lĩnh vực, phạm vi',ex:'Education falls within the public domain.',ielts:'Academic specialisation language'},
+  {w:'enormous',sl:8,type:'adj',pron:'/ɪˈnɔːrməs/',vi:'khổng lồ, to lớn',ex:'Technology has an enormous impact.',ielts:'IELTS Task 2: emphasis'},
+  {w:'ethical',sl:8,type:'adj',pron:'/ˈɛθɪkəl/',vi:'có đạo đức, đạo đức',ex:'Medical research must be ethical.',ielts:'IELTS ethics & science topics'},
+
+  // SUBLIST 9
+  {w:'accommodate',sl:9,type:'v',pron:'/əˈkɒmədeɪt/',vi:'cung cấp chỗ ở / thích nghi',ex:'Schools must accommodate diverse learners.',ielts:'IELTS education & society'},
+  {w:'analogy',sl:9,type:'n',pron:'/əˈnælədʒi/',vi:'sự tương tự, phép so sánh',ex:'An analogy helps explain complex ideas.',ielts:'IELTS academic argument techniques'},
+  {w:'constitute',sl:9,type:'v',pron:'/ˈkɒnstɪtjuːt/',vi:'cấu thành, tạo nên',ex:'Women constitute 50% of the workforce.',ielts:'Formal alternative to "make up"'},
+  {w:'converse',sl:9,type:'v/adj',pron:'/kənˈvɜːrs/',vi:'nói chuyện / ngược lại',ex:'The converse may also be true.',ielts:'Academic argumentation'},
+  {w:'device',sl:9,type:'n',pron:'/dɪˈvaɪs/',vi:'thiết bị, phương tiện',ex:'New devices are launched every year.',ielts:'IELTS technology topics'},
+  {w:'diminish',sl:9,type:'v',pron:'/dɪˈmɪnɪʃ/',vi:'giảm dần',ex:'The effect diminishes over time.',ielts:'IELTS Task 1: downward trend language'},
+  {w:'distort',sl:9,type:'v',pron:'/dɪˈstɔːrt/',vi:'làm méo mó',ex:'Statistics can be distorted.',ielts:'Critical thinking in IELTS'},
+  {w:'duration',sl:9,type:'n',pron:'/djʊˈreɪʃən/',vi:'thời gian, khoảng thời gian',ex:'The duration of the test is 3 hours.',ielts:'IELTS test information'},
+  {w:'erode',sl:9,type:'v',pron:'/ɪˈroʊd/',vi:'xói mòn, bào mòn',ex:'Cliffs erode due to wave action.',ielts:'IELTS geography & environment'},
+  {w:'exploit',sl:9,type:'v',pron:'/ɪkˈsplɔɪt/',vi:'khai thác, bóc lột',ex:'Corporations sometimes exploit workers.',ielts:'IELTS labour & ethics topics'},
+  {w:'fluctuate',sl:9,type:'v',pron:'/ˈflʌktʃueɪt/',vi:'dao động, biến động',ex:'Prices fluctuate with supply and demand.',ielts:'IELTS Task 1: describing variation'},
+  {w:'guidelines',sl:9,type:'n',pron:'/ˈɡaɪdlaɪnz/',vi:'hướng dẫn, chỉ dẫn',ex:'Follow the health guidelines carefully.',ielts:'IELTS public health topics'},
+  {w:'highlight',sl:9,type:'v',pron:'/ˈhaɪlaɪt/',vi:'nhấn mạnh, làm nổi bật',ex:'The report highlights key findings.',ielts:'IELTS Task 1: "The data highlights..."'},
+  {w:'implicit',sl:9,type:'adj',pron:'/ɪmˈplɪsɪt/',vi:'ngầm hiểu, không nói rõ',ex:'There is an implicit assumption here.',ielts:'IELTS inference-based reading'},
+  {w:'incentive',sl:9,type:'n',pron:'/ɪnˈsɛntɪv/',vi:'động cơ khuyến khích',ex:'Financial incentives motivate workers.',ielts:'IELTS economics & behaviour'},
+  {w:'incline',sl:9,type:'v',pron:'/ɪnˈklaɪn/',vi:'có xu hướng, nghiêng về',ex:'People incline towards familiar options.',ielts:'IELTS human behaviour topics'},
+  {w:'incorporate',sl:9,type:'v',pron:'/ɪnˈkɔːrpəreɪt/',vi:'kết hợp, đưa vào',ex:'Modern phones incorporate many features.',ielts:'IELTS technology topics'},
+  {w:'inhibit',sl:9,type:'v',pron:'/ɪnˈhɪbɪt/',vi:'ức chế, cản trở',ex:'Fear can inhibit learning.',ielts:'IELTS psychology & education'},
+  {w:'initiate',sl:9,type:'v',pron:'/ɪˈnɪʃieɪt/',vi:'khởi xướng, bắt đầu',ex:'The government initiated new reforms.',ielts:'IELTS policy & change topics'},
+  {w:'instance',sl:9,type:'n',pron:'/ˈɪnstəns/',vi:'ví dụ, trường hợp',ex:'For instance, Japan has an ageing population.',ielts:'IELTS: "for instance" as example marker'},
+
+  // SUBLIST 10
+  {w:'adjacent',sl:10,type:'adj',pron:'/əˈdʒeɪsənt/',vi:'liền kề, tiếp giáp',ex:'The school is adjacent to the park.',ielts:'IELTS maps & location descriptions'},
+  {w:'albeit',sl:10,type:'conj',pron:'/ɔːlˈbiːɪt/',vi:'mặc dù, dù',ex:'Progress was made, albeit slowly.',ielts:'Sophisticated IELTS concession language'},
+  {w:'coherent',sl:10,type:'adj',pron:'/koʊˈhɪərənt/',vi:'mạch lạc, nhất quán',ex:'A coherent argument is essential.',ielts:'IELTS Writing band 7+ criterion'},
+  {w:'commence',sl:10,type:'v',pron:'/kəˈmɛns/',vi:'bắt đầu (formal)',ex:'The project commences next month.',ielts:'Formal alternative to "start/begin"'},
+  {w:'concurrent',sl:10,type:'adj',pron:'/kənˈkɜːrənt/',vi:'đồng thời, song song',ex:'Concurrent studies show similar results.',ielts:'Academic writing: simultaneity'},
+  {w:'confine',sl:10,type:'v',pron:'/kənˈfaɪn/',vi:'giới hạn, hạn chế',ex:'The study confined itself to adults.',ielts:'Academic research scope language'},
+  {w:'correlate',sl:10,type:'v',pron:'/ˈkɒrəleɪt/',vi:'tương quan',ex:'Education correlates with higher income.',ielts:'IELTS data analysis language'},
+  {w:'hierarchy',sl:10,type:'n',pron:'/ˈhaɪərɑːrki/',vi:'hệ thống phân cấp',ex:'Corporate hierarchies can stifle creativity.',ielts:'IELTS business & organisations'},
+  {w:'ideology',sl:10,type:'n',pron:'/ˌaɪdiˈɒlədʒi/',vi:'hệ tư tưởng',ex:'Political ideology shapes policy.',ielts:'IELTS politics & society'},
+  {w:'inherent',sl:10,type:'adj',pron:'/ɪnˈhɪərənt/',vi:'vốn có, tự nhiên',ex:'There are inherent risks in any project.',ielts:'Academic: "inherent advantages"'},
+  {w:'innovative',sl:10,type:'adj',pron:'/ˈɪnəveɪtɪv/',vi:'sáng tạo, đổi mới',ex:'Innovative solutions are urgently needed.',ielts:'IELTS technology & business'},
+  {w:'integrity',sl:10,type:'n',pron:'/ɪnˈtɛɡrɪti/',vi:'tính chính trực, sự toàn vẹn',ex:'Academic integrity must be upheld.',ielts:'IELTS education & ethics'},
+  {w:'intuitive',sl:10,type:'adj',pron:'/ɪnˈtjuːɪtɪv/',vi:'trực quan, theo bản năng',ex:'The app has an intuitive design.',ielts:'IELTS technology & usability'},
+  {w:'manifest',sl:10,type:'v/adj',pron:'/ˈmænɪfɛst/',vi:'thể hiện rõ / hiển nhiên',ex:'Stress can manifest as physical symptoms.',ielts:'IELTS health & psychology'},
+  {w:'obsolete',sl:10,type:'adj',pron:'/ˈɒbsəliːt/',vi:'lỗi thời, lạc hậu',ex:'Some jobs will become obsolete due to AI.',ielts:'IELTS technology & employment'},
+  {w:'paradigm',sl:10,type:'n',pron:'/ˈpærədaɪm/',vi:'mô hình, phương thức tư duy',ex:'A paradigm shift in medicine occurred.',ielts:'Academic high-level vocabulary'},
+  {w:'predominant',sl:10,type:'adj',pron:'/prɪˈdɒmɪnənt/',vi:'chiếm ưu thế, phổ biến nhất',ex:'English is predominant in global business.',ielts:'IELTS globalisation topics'},
+  {w:'preliminary',sl:10,type:'adj',pron:'/prɪˈlɪmɪnəri/',vi:'sơ bộ, ban đầu',ex:'Preliminary findings suggest improvement.',ielts:'Academic research language'},
+  {w:'rational',sl:10,type:'adj',pron:'/ˈræʃənəl/',vi:'hợp lý, có lý trí',ex:'A rational approach leads to better outcomes.',ielts:'IELTS Task 2: argumentation'},
+  {w:'subsequent',sl:10,type:'adj',pron:'/ˈsʌbsɪkwənt/',vi:'tiếp theo, sau đó',ex:'Subsequent research confirmed the theory.',ielts:'Academic sequence language'},
+  {w:'sustain',sl:10,type:'v',pron:'/səˈsteɪn/',vi:'duy trì, bền vững',ex:'We must sustain economic growth responsibly.',ielts:'IELTS environment: "sustainable"'},
+  {w:'transition',sl:10,type:'n/v',pron:'/trænˈzɪʃən/',vi:'sự chuyển đổi / chuyển sang',ex:'The transition to renewable energy is vital.',ielts:'IELTS energy & social change'},
+  {w:'ultimate',sl:10,type:'adj',pron:'/ˈʌltɪmɪt/',vi:'cuối cùng, tột cùng',ex:'The ultimate goal is sustainable living.',ielts:'IELTS Task 2: "the ultimate solution"'},
+  {w:'uniform',sl:10,type:'adj/n',pron:'/ˈjuːnɪfɔːrm/',vi:'đồng đều / đồng phục',ex:'The results were not uniform across groups.',ielts:'IELTS statistics & research'},
+  {w:'thereby',sl:10,type:'adv',pron:'/ˌðɛrˈbaɪ/',vi:'do đó, bằng cách đó',ex:'They reduced costs, thereby increasing profit.',ielts:'IELTS: sophisticated connective'},
+  {w:'trigger',sl:10,type:'v/n',pron:'/ˈtrɪɡər/',vi:'kích hoạt, gây ra',ex:'Stress can trigger health problems.',ielts:'IELTS cause & effect language'},
+  {w:'underlying',sl:10,type:'adj',pron:'/ˌʌndərˈlaɪɪŋ/',vi:'ẩn chứa, cơ bản phía dưới',ex:'The underlying cause of poverty is complex.',ielts:'IELTS Task 2: root cause analysis'},
+  {w:'unprecedented',sl:10,type:'adj',pron:'/ʌnˈprɛsɪdɛntɪd/',vi:'chưa từng có',ex:'COVID-19 caused unprecedented disruption.',ielts:'IELTS: expressing extreme situations'},
+  {w:'utilize',sl:10,type:'v',pron:'/ˈjuːtɪlaɪz/',vi:'sử dụng, tận dụng',ex:'We should utilize renewable resources.',ielts:'Formal alternative to "use"'},
+  {w:'widespread',sl:10,type:'adj',pron:'/ˈwaɪdsprɛd/',vi:'phổ biến, lan rộng',ex:'Internet access has become widespread.',ielts:'IELTS technology & society topics'},
+
+  // === BATCH 2: Additional AWL words ===
+  // SUBLIST 1 extras
+  {w:'constitutional',sl:1,type:'adj',pron:'/ˌkɒnstɪˈtjuːʃənəl/',vi:'thuộc hiến pháp',ex:'Constitutional rights must be protected.',ielts:'IELTS law & governance'},
+  {w:'export',sl:1,type:'n/v',pron:'/ˈɛkspɔːrt/',vi:'xuất khẩu',ex:'Oil exports have increased.',ielts:'IELTS Task 1: trade data'},
+  {w:'sector',sl:1,type:'n',pron:'/ˈsɛktər/',vi:'lĩnh vực, khu vực',ex:'The private sector creates many jobs.',ielts:'IELTS economics topics'},
+  {w:'contract',sl:1,type:'n/v',pron:'/ˈkɒntrækt/',vi:'hợp đồng / co lại',ex:'They signed a new contract.',ielts:'IELTS business topics'},
+  {w:'response',sl:1,type:'n',pron:'/rɪˈspɒns/',vi:'phản hồi, sự đáp lại',ex:'The response was overwhelmingly positive.',ielts:'IELTS: "in response to"'},
+
+  // SUBLIST 2 extras
+  {w:'maintain',sl:2,type:'v',pron:'/meɪnˈteɪn/',vi:'duy trì, bảo trì',ex:'We must maintain high standards.',ielts:'IELTS Task 2: sustaining arguments'},
+  {w:'participate',sl:2,type:'v',pron:'/pɑːrˈtɪsɪpeɪt/',vi:'tham gia',ex:'Students participate in group discussions.',ielts:'IELTS education topics'},
+  {w:'positive',sl:2,type:'adj',pron:'/ˈpɒzɪtɪv/',vi:'tích cực, khẳng định',ex:'Exercise has positive effects on health.',ielts:'IELTS Task 2: advantages'},
+  {w:'potential',sl:2,type:'n/adj',pron:'/pəˈtɛnʃəl/',vi:'tiềm năng / tiềm tàng',ex:'Renewable energy has huge potential.',ielts:'IELTS: "potential benefits"'},
+  {w:'previous',sl:2,type:'adj',pron:'/ˈpriːviəs/',vi:'trước đó',ex:'Previous studies confirmed this finding.',ielts:'Academic: "previous research"'},
+  {w:'primary',sl:2,type:'adj',pron:'/ˈpraɪməri/',vi:'chủ yếu, ban đầu',ex:'The primary cause is pollution.',ielts:'IELTS Task 2: "the primary reason"'},
+  {w:'purchase',sl:2,type:'v/n',pron:'/ˈpɜːrtʃəs/',vi:'mua / sự mua',ex:'Consumers purchase goods online.',ielts:'Formal alternative to "buy"'},
+  {w:'range',sl:2,type:'n/v',pron:'/reɪndʒ/',vi:'phạm vi / dao động',ex:'Prices range from $10 to $100.',ielts:'IELTS Task 1: describing range'},
+  {w:'region',sl:2,type:'n',pron:'/ˈriːdʒən/',vi:'vùng, khu vực',ex:'The tropical region has rich biodiversity.',ielts:'IELTS geography topics'},
+  {w:'regulate',sl:2,type:'v',pron:'/ˈrɛɡjʊleɪt/',vi:'điều tiết, quản lý',ex:'Governments regulate the financial sector.',ielts:'IELTS governance topics'},
+  {w:'relevant',sl:2,type:'adj',pron:'/ˈrɛlɪvənt/',vi:'liên quan, phù hợp',ex:'Include only relevant information.',ielts:'IELTS Writing: coherence'},
+  {w:'reside',sl:2,type:'v',pron:'/rɪˈzaɪd/',vi:'cư trú, sinh sống',ex:'Many immigrants reside in urban areas.',ielts:'Formal alternative to "live"'},
+  {w:'resource',sl:2,type:'n',pron:'/rɪˈzɔːrs/',vi:'tài nguyên, nguồn lực',ex:'Natural resources are finite.',ielts:'IELTS environment topics'},
+  {w:'restrict',sl:2,type:'v',pron:'/rɪˈstrɪkt/',vi:'hạn chế, giới hạn',ex:'Some countries restrict internet access.',ielts:'IELTS freedom & governance'},
+  {w:'secure',sl:2,type:'adj/v',pron:'/sɪˈkjʊər/',vi:'an toàn / đảm bảo',ex:'Citizens need to feel secure.',ielts:'IELTS safety & society'},
+  {w:'seek',sl:2,type:'v',pron:'/siːk/',vi:'tìm kiếm',ex:'Many people seek better opportunities.',ielts:'Formal alternative to "look for"'},
+  {w:'select',sl:2,type:'v',pron:'/sɪˈlɛkt/',vi:'chọn lựa',ex:'Students select their own courses.',ielts:'IELTS education topics'},
+  {w:'site',sl:2,type:'n',pron:'/saɪt/',vi:'địa điểm, công trường',ex:'The construction site is near the river.',ielts:'IELTS maps & location'},
+  {w:'strategy',sl:2,type:'n',pron:'/ˈstrætɪdʒi/',vi:'chiến lược',ex:'A good strategy leads to success.',ielts:'IELTS business topics'},
+  {w:'survey',sl:2,type:'n/v',pron:'/ˈsɜːrveɪ/',vi:'khảo sát / điều tra',ex:'A survey of 1000 people was conducted.',ielts:'IELTS Task 1: survey data'},
+  {w:'text',sl:2,type:'n',pron:'/tɛkst/',vi:'văn bản, bài đọc',ex:'Read the text carefully before answering.',ielts:'IELTS Reading instruction'},
+  {w:'tradition',sl:2,type:'n',pron:'/trəˈdɪʃən/',vi:'truyền thống',ex:'Cultural traditions vary across regions.',ielts:'IELTS culture topics'},
+  {w:'transfer',sl:2,type:'v/n',pron:'/trænsˈfɜːr/',vi:'chuyển giao / sự chuyển nhượng',ex:'Technology transfer benefits developing nations.',ielts:'IELTS development topics'},
+  {w:'transport',sl:2,type:'n/v',pron:'/ˈtrænspɔːrt/',vi:'giao thông / vận chuyển',ex:'Public transport reduces emissions.',ielts:'Top IELTS topic'},
+
+  // SUBLIST 3 extras
+  {w:'constrain',sl:3,type:'v',pron:'/kənˈstreɪn/',vi:'ràng buộc, hạn chế',ex:'Budget constraints limit spending.',ielts:'IELTS economics: "financial constraints"'},
+  {w:'contrast',sl:3,type:'n/v',pron:'/ˈkɒntrɑːst/',vi:'tương phản / đối lập',ex:'In contrast, rural areas saw a decline.',ielts:'IELTS Task 1: comparing'},
+  {w:'deny',sl:3,type:'v',pron:'/dɪˈnaɪ/',vi:'phủ nhận, từ chối',ex:'He denied all the allegations.',ielts:'IELTS formal language'},
+  {w:'dimension',sl:3,type:'n',pron:'/daɪˈmɛnʃən/',vi:'chiều, khía cạnh',ex:'Consider the social dimensions of the problem.',ielts:'IELTS academic discussion'},
+  {w:'domestic',sl:3,type:'adj',pron:'/dəˈmɛstɪk/',vi:'trong nước, nội địa',ex:'Domestic policies affect citizens directly.',ielts:'IELTS governance'},
+  {w:'emerge',sl:3,type:'v',pron:'/ɪˈmɜːrdʒ/',vi:'xuất hiện, nổi lên',ex:'New challenges emerged during the pandemic.',ielts:'IELTS current affairs'},
+  {w:'ensure',sl:3,type:'v',pron:'/ɪnˈʃʊər/',vi:'đảm bảo',ex:'Regulations ensure public safety.',ielts:'IELTS Task 2: formal verbs'},
+  {w:'exclude',sl:3,type:'v',pron:'/ɪkˈskluːd/',vi:'loại trừ',ex:'The study excludes children under 5.',ielts:'IELTS research methodology'},
+  {w:'framework',sl:3,type:'n',pron:'/ˈfreɪmwɜːrk/',vi:'khung, cấu trúc',ex:'A theoretical framework guides research.',ielts:'Academic writing staple'},
+  {w:'fund',sl:3,type:'n/v',pron:'/fʌnd/',vi:'quỹ / tài trợ',ex:'The project was funded by the EU.',ielts:'IELTS finance topics'},
+  {w:'illustrate',sl:3,type:'v',pron:'/ˈɪləstreɪt/',vi:'minh họa, cho thấy',ex:'This example illustrates the point clearly.',ielts:'IELTS Writing: presenting examples'},
+  {w:'immigrate',sl:3,type:'v',pron:'/ˈɪmɪɡreɪt/',vi:'nhập cư',ex:'Millions immigrate seeking better lives.',ielts:'IELTS migration topics'},
+  {w:'imply',sl:3,type:'v',pron:'/ɪmˈplaɪ/',vi:'ngụ ý, ám chỉ',ex:'The data implies a strong connection.',ielts:'IELTS Reading inference'},
+  {w:'initial',sl:3,type:'adj',pron:'/ɪˈnɪʃəl/',vi:'ban đầu, khởi đầu',ex:'The initial results were promising.',ielts:'Academic: "initial findings"'},
+  {w:'instance',sl:3,type:'n',pron:'/ˈɪnstəns/',vi:'trường hợp, ví dụ',ex:'For instance, Japan has low birth rates.',ielts:'IELTS: "for instance" marker'},
+  {w:'interact',sl:3,type:'v',pron:'/ˌɪntərˈækt/',vi:'tương tác',ex:'Students interact with each other online.',ielts:'IELTS technology & education'},
+  {w:'justify',sl:3,type:'v',pron:'/ˈdʒʌstɪfaɪ/',vi:'biện minh, chứng minh',ex:'How can you justify this expense?',ielts:'IELTS Task 2: argumentation'},
+  {w:'layer',sl:3,type:'n',pron:'/ˈleɪər/',vi:'lớp, tầng',ex:'The atmosphere has multiple layers.',ielts:'IELTS science topics'},
+  {w:'link',sl:3,type:'n/v',pron:'/lɪŋk/',vi:'mối liên kết / liên kết',ex:'There is a link between diet and health.',ielts:'IELTS: "linked to"'},
+  {w:'locate',sl:3,type:'v',pron:'/loʊˈkeɪt/',vi:'đặt tại, xác định vị trí',ex:'The factory is located near the coast.',ielts:'IELTS maps & descriptions'},
+  {w:'maximize',sl:3,type:'v',pron:'/ˈmæksɪmaɪz/',vi:'tối đa hóa',ex:'Companies maximize profits through efficiency.',ielts:'IELTS business topics'},
+  {w:'minor',sl:3,type:'adj',pron:'/ˈmaɪnər/',vi:'nhỏ, không quan trọng',ex:'Only minor changes were needed.',ielts:'IELTS: contrast with "major"'},
+  {w:'negate',sl:3,type:'v',pron:'/nɪˈɡeɪt/',vi:'phủ nhận, vô hiệu hóa',ex:'Benefits were negated by rising costs.',ielts:'IELTS Task 2: counterarguments'},
+  {w:'outcome',sl:3,type:'n',pron:'/ˈaʊtkʌm/',vi:'kết quả',ex:'The outcome was better than expected.',ielts:'IELTS: "positive outcomes"'},
+  {w:'partner',sl:3,type:'n',pron:'/ˈpɑːrtnər/',vi:'đối tác',ex:'Business partners share responsibilities.',ielts:'IELTS business topics'},
+  {w:'philosophy',sl:3,type:'n',pron:'/fɪˈlɒsəfi/',vi:'triết học, triết lý',ex:'Eastern philosophy values harmony.',ielts:'IELTS culture & ideas'},
+  {w:'proportion',sl:3,type:'n',pron:'/prəˈpɔːrʃən/',vi:'tỷ lệ, phần',ex:'A large proportion of youth are unemployed.',ielts:'IELTS Task 1: describing data'},
+  {w:'publish',sl:3,type:'v',pron:'/ˈpʌblɪʃ/',vi:'xuất bản, công bố',ex:'The study was published last year.',ielts:'Academic research language'},
+  {w:'react',sl:3,type:'v',pron:'/riˈækt/',vi:'phản ứng',ex:'People reacted positively to the news.',ielts:'IELTS current events'},
+  {w:'register',sl:3,type:'v/n',pron:'/ˈrɛdʒɪstər/',vi:'đăng ký / sổ đăng ký',ex:'Students must register before the deadline.',ielts:'IELTS education & admin'},
+  {w:'rely',sl:3,type:'v',pron:'/rɪˈlaɪ/',vi:'dựa vào, tin cậy',ex:'Many countries rely on fossil fuels.',ielts:'IELTS energy & dependency'},
+  {w:'remove',sl:3,type:'v',pron:'/rɪˈmuːv/',vi:'loại bỏ, gỡ bỏ',ex:'The barriers were removed gradually.',ielts:'IELTS: "remove obstacles"'},
+  {w:'scheme',sl:3,type:'n',pron:'/skiːm/',vi:'kế hoạch, chương trình',ex:'A new recycling scheme was introduced.',ielts:'IELTS environment & policy'},
+  {w:'sequence',sl:3,type:'n',pron:'/ˈsiːkwəns/',vi:'trình tự, chuỗi',ex:'Events unfolded in a specific sequence.',ielts:'IELTS process descriptions'},
+  {w:'shift',sl:3,type:'n/v',pron:'/ʃɪft/',vi:'sự thay đổi / chuyển dịch',ex:'There has been a shift in public opinion.',ielts:'IELTS Task 2: describing change'},
+  {w:'specify',sl:3,type:'v',pron:'/ˈspɛsɪfaɪ/',vi:'chỉ rõ, xác định',ex:'Please specify your requirements.',ielts:'IELTS formal writing'},
+  {w:'sufficient',sl:3,type:'adj',pron:'/səˈfɪʃənt/',vi:'đủ, đầy đủ',ex:'There is sufficient evidence to conclude.',ielts:'Formal alternative to "enough"'},
+  {w:'task',sl:3,type:'n',pron:'/tæsk/',vi:'nhiệm vụ, bài',ex:'Complete the task within 40 minutes.',ielts:'IELTS test instruction'},
+  {w:'technical',sl:3,type:'adj',pron:'/ˈtɛknɪkəl/',vi:'kỹ thuật, chuyên môn',ex:'Technical skills are in high demand.',ielts:'IELTS technology & work'},
+  {w:'technique',sl:3,type:'n',pron:'/tɛkˈniːk/',vi:'kỹ thuật, phương pháp',ex:'New farming techniques increase yields.',ielts:'IELTS agriculture & science'},
+  {w:'technology',sl:3,type:'n',pron:'/tɛkˈnɒlədʒi/',vi:'công nghệ',ex:'Technology transforms education.',ielts:'Top IELTS topic'},
+  {w:'valid',sl:3,type:'adj',pron:'/ˈvælɪd/',vi:'hợp lệ, có giá trị',ex:'Your passport must be valid for 6 months.',ielts:'IELTS logic & argumentation'},
+  {w:'volume',sl:3,type:'n',pron:'/ˈvɒljuːm/',vi:'khối lượng, tập sách',ex:'The volume of trade has doubled.',ielts:'IELTS Task 1: quantities'},
+
+  // SUBLIST 4 extras
+  {w:'code',sl:4,type:'n',pron:'/koʊd/',vi:'mã, bộ luật',ex:'Building codes ensure safety.',ielts:'IELTS law & technology'},
+  {w:'commit',sl:4,type:'v',pron:'/kəˈmɪt/',vi:'cam kết, phạm tội',ex:'Governments commit to reducing emissions.',ielts:'IELTS: "commit to"'},
+  {w:'communicate',sl:4,type:'v',pron:'/kəˈmjuːnɪkeɪt/',vi:'giao tiếp, truyền đạt',ex:'Effective leaders communicate clearly.',ielts:'IELTS communication topics'},
+  {w:'concentrate',sl:4,type:'v',pron:'/ˈkɒnsəntreɪt/',vi:'tập trung',ex:'Students need to concentrate during exams.',ielts:'IELTS study skills'},
+  {w:'confer',sl:4,type:'v',pron:'/kənˈfɜːr/',vi:'trao đổi, trao tặng',ex:'A degree confers professional status.',ielts:'Academic formal language'},
+  {w:'contrast',sl:4,type:'n/v',pron:'/ˈkɒntrɑːst/',vi:'sự tương phản',ex:'By contrast, urban areas grew rapidly.',ielts:'IELTS comparing language'},
+  {w:'cycle',sl:4,type:'n',pron:'/ˈsaɪkəl/',vi:'chu kỳ, vòng',ex:'The economic cycle affects employment.',ielts:'IELTS economics topics'},
+  {w:'debate',sl:4,type:'n/v',pron:'/dɪˈbeɪt/',vi:'tranh luận',ex:'The debate continues on this topic.',ielts:'IELTS Task 2 staple'},
+  {w:'despite',sl:4,type:'prep',pron:'/dɪˈspaɪt/',vi:'mặc dù, bất chấp',ex:'Despite challenges, progress was made.',ielts:'IELTS: concession language'},
+  {w:'dimension',sl:4,type:'n',pron:'/daɪˈmɛnʃən/',vi:'chiều, phương diện',ex:'Consider the economic dimensions.',ielts:'Academic analysis'},
+  {w:'domestic',sl:4,type:'adj',pron:'/dəˈmɛstɪk/',vi:'nội địa, trong nước',ex:'Domestic demand remains strong.',ielts:'IELTS economics'},
+  {w:'emerge',sl:4,type:'v',pron:'/ɪˈmɜːrdʒ/',vi:'nổi lên, xuất hiện',ex:'New leaders emerged from the crisis.',ielts:'IELTS politics & change'},
+  {w:'error',sl:4,type:'n',pron:'/ˈɛrər/',vi:'lỗi, sai sót',ex:'Human error caused the accident.',ielts:'IELTS safety topics'},
+  {w:'ethnic',sl:4,type:'adj',pron:'/ˈɛθnɪk/',vi:'thuộc dân tộc',ex:'Ethnic diversity enriches society.',ielts:'IELTS culture & diversity'},
+  {w:'goal',sl:4,type:'n',pron:'/ɡoʊl/',vi:'mục tiêu',ex:'The goal is sustainable development.',ielts:'IELTS Task 2: objectives'},
+  {w:'grant',sl:4,type:'n/v',pron:'/ɡrænt/',vi:'trợ cấp / ban cho',ex:'Research grants fund scientific studies.',ielts:'IELTS education & finance'},
+  {w:'hence',sl:4,type:'adv',pron:'/hɛns/',vi:'do đó, vì vậy',ex:'Costs rose; hence, profits fell.',ielts:'IELTS: formal connector'},
+  {w:'hypothesis',sl:4,type:'n',pron:'/haɪˈpɒθəsɪs/',vi:'giả thuyết',ex:'We must test the hypothesis.',ielts:'IELTS academic research'},
+  {w:'implement',sl:4,type:'v',pron:'/ˈɪmplɪmɛnt/',vi:'thực hiện, triển khai',ex:'The government implemented new policies.',ielts:'IELTS governance topics'},
+  {w:'implicate',sl:4,type:'v',pron:'/ˈɪmplɪkeɪt/',vi:'liên lụy, gây ra',ex:'Poor diet is implicated in many diseases.',ielts:'IELTS health topics'},
+
+  // SUBLIST 5 extras
+  {w:'compound',sl:5,type:'n/adj',pron:'/ˈkɒmpaʊnd/',vi:'hợp chất / phức hợp',ex:'Chemical compounds can be dangerous.',ielts:'IELTS science topics'},
+  {w:'conflict',sl:5,type:'n',pron:'/ˈkɒnflɪkt/',vi:'xung đột, mâu thuẫn',ex:'Armed conflicts cause displacement.',ielts:'IELTS society & politics'},
+  {w:'consult',sl:5,type:'v',pron:'/kənˈsʌlt/',vi:'tham vấn, hỏi ý kiến',ex:'Consult a doctor before taking medicine.',ielts:'IELTS health topics'},
+  {w:'contact',sl:5,type:'n/v',pron:'/ˈkɒntækt/',vi:'liên lạc / tiếp xúc',ex:'Please contact us for more details.',ielts:'IELTS communication'},
+  {w:'draft',sl:5,type:'n/v',pron:'/drɑːft/',vi:'bản nháp / soạn thảo',ex:'Submit your first draft by Monday.',ielts:'IELTS Writing: drafting essays'},
+  {w:'expose',sl:5,type:'v',pron:'/ɪkˈspoʊz/',vi:'phơi bày, tiếp xúc',ex:'Children are exposed to media early.',ielts:'IELTS media & health'},
+  {w:'external',sl:5,type:'adj',pron:'/ɪkˈstɜːrnəl/',vi:'bên ngoài',ex:'External factors affect performance.',ielts:'IELTS: "external influences"'},
+  {w:'facilitate',sl:5,type:'v',pron:'/fəˈsɪlɪteɪt/',vi:'tạo điều kiện, hỗ trợ',ex:'Technology facilitates communication.',ielts:'IELTS: formal alternative to "help"'},
+  {w:'fundamental',sl:5,type:'adj',pron:'/ˌfʌndəˈmɛntəl/',vi:'cơ bản, nền tảng',ex:'Education is a fundamental right.',ielts:'IELTS human rights topics'},
+  {w:'generation',sl:5,type:'n',pron:'/ˌdʒɛnəˈreɪʃən/',vi:'thế hệ',ex:'Each generation faces unique challenges.',ielts:'IELTS society topics'},
+  {w:'image',sl:5,type:'n',pron:'/ˈɪmɪdʒ/',vi:'hình ảnh',ex:'The company improved its public image.',ielts:'IELTS media & branding'},
+  {w:'liberal',sl:5,type:'adj',pron:'/ˈlɪbərəl/',vi:'tự do, cởi mở',ex:'Liberal policies encourage innovation.',ielts:'IELTS politics & society'},
+  {w:'licence',sl:5,type:'n',pron:'/ˈlaɪsəns/',vi:'giấy phép',ex:'A driving licence is required.',ielts:'IELTS admin & law'},
+  {w:'logic',sl:5,type:'n',pron:'/ˈlɒdʒɪk/',vi:'logic, tính hợp lý',ex:'The logic behind this argument is flawed.',ielts:'IELTS critical thinking'},
+  {w:'margin',sl:5,type:'n',pron:'/ˈmɑːrdʒɪn/',vi:'biên lợi nhuận / lề',ex:'Profit margins are shrinking.',ielts:'IELTS business topics'},
+  {w:'medical',sl:5,type:'adj',pron:'/ˈmɛdɪkəl/',vi:'y tế, y khoa',ex:'Medical advances save lives.',ielts:'IELTS health topics'},
+  {w:'mental',sl:5,type:'adj',pron:'/ˈmɛntəl/',vi:'thuộc tinh thần',ex:'Mental health is equally important.',ielts:'IELTS health & psychology'},
+  {w:'modify',sl:5,type:'v',pron:'/ˈmɒdɪfaɪ/',vi:'sửa đổi, điều chỉnh',ex:'The plan was modified to reduce costs.',ielts:'IELTS: formal "change"'},
+  {w:'monitor',sl:5,type:'v/n',pron:'/ˈmɒnɪtər/',vi:'giám sát / màn hình',ex:'Doctors monitor patient health closely.',ielts:'IELTS health & technology'},
+  {w:'network',sl:5,type:'n',pron:'/ˈnɛtwɜːrk/',vi:'mạng lưới',ex:'Social networks connect people globally.',ielts:'IELTS technology topics'},
+  {w:'notion',sl:5,type:'n',pron:'/ˈnoʊʃən/',vi:'khái niệm, ý tưởng',ex:'The notion of freedom varies across cultures.',ielts:'IELTS philosophy & society'},
+  {w:'objective',sl:5,type:'n/adj',pron:'/əbˈdʒɛktɪv/',vi:'mục tiêu / khách quan',ex:'The main objective is to reduce poverty.',ielts:'IELTS: "the primary objective"'},
+  {w:'orient',sl:5,type:'v',pron:'/ˈɔːriɛnt/',vi:'định hướng',ex:'The programme orients new employees.',ielts:'IELTS workplace topics'},
+  {w:'perspective',sl:5,type:'n',pron:'/pərˈspɛktɪv/',vi:'quan điểm, góc nhìn',ex:'Consider different perspectives.',ielts:'IELTS Task 2: viewpoints'},
+  {w:'precise',sl:5,type:'adj',pron:'/prɪˈsaɪs/',vi:'chính xác, cụ thể',ex:'Give precise figures in Task 1.',ielts:'IELTS data description'},
+  {w:'prime',sl:5,type:'adj',pron:'/praɪm/',vi:'chính yếu, hàng đầu',ex:'Education is of prime importance.',ielts:'IELTS: "the prime concern"'},
+  {w:'psychology',sl:5,type:'n',pron:'/saɪˈkɒlədʒi/',vi:'tâm lý học',ex:'Psychology helps us understand behaviour.',ielts:'IELTS science topics'},
+  {w:'pursue',sl:5,type:'v',pron:'/pərˈsjuː/',vi:'theo đuổi',ex:'Students pursue higher education.',ielts:'IELTS education & career'},
+  {w:'ratio',sl:5,type:'n',pron:'/ˈreɪʃioʊ/',vi:'tỷ lệ, tỷ số',ex:'The student-teacher ratio is 20:1.',ielts:'IELTS Task 1: statistics'},
+  {w:'reject',sl:5,type:'v',pron:'/rɪˈdʒɛkt/',vi:'từ chối, bác bỏ',ex:'The proposal was rejected.',ielts:'IELTS governance topics'},
+  {w:'revenue',sl:5,type:'n',pron:'/ˈrɛvənjuː/',vi:'doanh thu, thu nhập',ex:'Tax revenue funds public services.',ielts:'IELTS economics topics'},
+  {w:'stable',sl:5,type:'adj',pron:'/ˈsteɪbəl/',vi:'ổn định',ex:'A stable economy attracts investment.',ielts:'IELTS Task 1: no change trends'},
+  {w:'style',sl:5,type:'n',pron:'/staɪl/',vi:'phong cách',ex:'Academic writing has a formal style.',ielts:'IELTS writing style'},
+  {w:'substitute',sl:5,type:'n/v',pron:'/ˈsʌbstɪtjuːt/',vi:'thay thế',ex:'There is no substitute for experience.',ielts:'IELTS discussion topics'},
+  {w:'sustain',sl:5,type:'v',pron:'/səˈsteɪn/',vi:'duy trì, chịu đựng',ex:'Sustained effort leads to results.',ielts:'IELTS: "sustainable development"'},
+  {w:'symbol',sl:5,type:'n',pron:'/ˈsɪmbəl/',vi:'biểu tượng, ký hiệu',ex:'The flag is a symbol of national identity.',ielts:'IELTS culture topics'},
+  {w:'target',sl:5,type:'n/v',pron:'/ˈtɑːrɡɪt/',vi:'mục tiêu / nhắm vào',ex:'The target is to reduce emissions by 50%.',ielts:'IELTS environment goals'},
+  {w:'transit',sl:5,type:'n',pron:'/ˈtrænsɪt/',vi:'quá cảnh, vận chuyển',ex:'Public transit reduces car dependency.',ielts:'IELTS transport topics'},
+  {w:'trend',sl:5,type:'n',pron:'/trɛnd/',vi:'xu hướng',ex:'The trend shows steady growth.',ielts:'IELTS Task 1 key word'},
+  {w:'version',sl:5,type:'n',pron:'/ˈvɜːrʒən/',vi:'phiên bản',ex:'The latest version includes new features.',ielts:'IELTS technology topics'},
+  {w:'welfare',sl:5,type:'n',pron:'/ˈwɛlfeər/',vi:'phúc lợi',ex:'Social welfare supports vulnerable groups.',ielts:'IELTS society & governance'},
+
+  // SUBLIST 6 extras
+  {w:'brief',sl:6,type:'adj',pron:'/briːf/',vi:'ngắn gọn, tóm tắt',ex:'A brief summary was provided.',ielts:'IELTS: "in brief"'},
+  {w:'capable',sl:6,type:'adj',pron:'/ˈkeɪpəbəl/',vi:'có khả năng',ex:'Students are capable of self-learning.',ielts:'IELTS education & potential'},
+  {w:'cease',sl:6,type:'v',pron:'/siːs/',vi:'ngừng, chấm dứt',ex:'Hostilities ceased after the agreement.',ielts:'Formal: "cease to exist"'},
+  {w:'cooperate',sl:6,type:'v',pron:'/koʊˈɒpəreɪt/',vi:'hợp tác',ex:'Nations must cooperate on climate.',ielts:'IELTS international topics'},
+  {w:'define',sl:6,type:'v',pron:'/dɪˈfaɪn/',vi:'định nghĩa',ex:'Clearly define your terms.',ielts:'IELTS academic writing'},
+  {w:'discriminate',sl:6,type:'v',pron:'/dɪˈskrɪmɪneɪt/',vi:'phân biệt đối xử',ex:'It is illegal to discriminate.',ielts:'IELTS equality topics'},
+  {w:'equip',sl:6,type:'v',pron:'/ɪˈkwɪp/',vi:'trang bị',ex:'Schools must equip students with skills.',ielts:'IELTS education topics'},
+  {w:'exceed',sl:6,type:'v',pron:'/ɪkˈsiːd/',vi:'vượt quá',ex:'Demand exceeded supply.',ielts:'IELTS economics topics'},
+  {w:'expert',sl:6,type:'n',pron:'/ˈɛkspɜːrt/',vi:'chuyên gia',ex:'Experts recommend regular exercise.',ielts:'IELTS citing authorities'},
+  {w:'explicit',sl:6,type:'adj',pron:'/ɪkˈsplɪsɪt/',vi:'rõ ràng, trực tiếp',ex:'The instructions were explicit.',ielts:'IELTS: contrast with "implicit"'},
+  {w:'federal',sl:6,type:'adj',pron:'/ˈfɛdərəl/',vi:'liên bang',ex:'Federal policies apply nationwide.',ielts:'IELTS governance topics'},
+  {w:'fee',sl:6,type:'n',pron:'/fiː/',vi:'lệ phí, học phí',ex:'University fees have risen sharply.',ielts:'IELTS education & finance'},
+  {w:'flexible',sl:6,type:'adj',pron:'/ˈflɛksɪbəl/',vi:'linh hoạt',ex:'Flexible working hours improve wellbeing.',ielts:'IELTS work-life topics'},
+  {w:'furthermore',sl:6,type:'adv',pron:'/ˈfɜːrðərmɔːr/',vi:'hơn nữa, ngoài ra',ex:'Furthermore, costs have decreased.',ielts:'IELTS: formal connector'},
+  {w:'gender',sl:6,type:'n',pron:'/ˈdʒɛndər/',vi:'giới tính',ex:'Gender equality is a global goal.',ielts:'IELTS equality topics'},
+  {w:'ignorance',sl:6,type:'n',pron:'/ˈɪɡnərəns/',vi:'sự thiếu hiểu biết',ex:'Ignorance leads to poor decisions.',ielts:'IELTS education & society'},
+  {w:'incentive',sl:6,type:'n',pron:'/ɪnˈsɛntɪv/',vi:'động lực, khuyến khích',ex:'Tax incentives attract businesses.',ielts:'IELTS economics & policy'},
+  {w:'incidence',sl:6,type:'n',pron:'/ˈɪnsɪdəns/',vi:'tỷ lệ mắc, tần suất',ex:'The incidence of diabetes is rising.',ielts:'IELTS health topics'},
+  {w:'integral',sl:6,type:'adj',pron:'/ˈɪntɪɡrəl/',vi:'không thể thiếu',ex:'Technology is integral to modern life.',ielts:'IELTS: "integral part of"'},
+  {w:'migrate',sl:6,type:'v',pron:'/maɪˈɡreɪt/',vi:'di cư',ex:'Workers migrate to cities for jobs.',ielts:'IELTS migration topics'},
+
+  // SUBLIST 7 extras
+  {w:'automatic',sl:7,type:'adj',pron:'/ˌɔːtəˈmætɪk/',vi:'tự động',ex:'Automatic systems reduce human error.',ielts:'IELTS technology topics'},
+  {w:'controversy',sl:7,type:'n',pron:'/ˈkɒntrəvɜːrsi/',vi:'tranh cãi',ex:'The policy sparked controversy.',ielts:'IELTS current affairs'},
+  {w:'couple',sl:7,type:'n',pron:'/ˈkʌpəl/',vi:'cặp, đôi',ex:'A couple of factors are important.',ielts:'IELTS: informal quantifier'},
+  {w:'differentiate',sl:7,type:'v',pron:'/ˌdɪfəˈrɛnʃieɪt/',vi:'phân biệt',ex:'Learn to differentiate fact from opinion.',ielts:'IELTS critical thinking'},
+  {w:'dispose',sl:7,type:'v',pron:'/dɪˈspoʊz/',vi:'xử lý, loại bỏ',ex:'Dispose of waste responsibly.',ielts:'IELTS environment topics'},
+  {w:'dynamic',sl:7,type:'adj',pron:'/daɪˈnæmɪk/',vi:'năng động',ex:'The workforce must be dynamic.',ielts:'IELTS business topics'},
+  {w:'eliminate',sl:7,type:'v',pron:'/ɪˈlɪmɪneɪt/',vi:'loại bỏ, triệt tiêu',ex:'We must eliminate poverty.',ielts:'IELTS Task 2: solutions'},
+  {w:'empirical',sl:7,type:'adj',pron:'/ɪmˈpɪrɪkəl/',vi:'thực nghiệm',ex:'Empirical evidence supports the theory.',ielts:'IELTS academic research'},
+  {w:'extract',sl:7,type:'v/n',pron:'/ɪkˈstrækt/',vi:'chiết xuất / đoạn trích',ex:'Extract key information from the text.',ielts:'IELTS Reading skills'},
+  {w:'file',sl:7,type:'n/v',pron:'/faɪl/',vi:'hồ sơ / nộp',ex:'File your tax return on time.',ielts:'IELTS admin & law'},
+  {w:'finite',sl:7,type:'adj',pron:'/ˈfaɪnaɪt/',vi:'hữu hạn',ex:'Natural resources are finite.',ielts:'IELTS environment topics'},
+  {w:'foundation',sl:7,type:'n',pron:'/faʊnˈdeɪʃən/',vi:'nền tảng, tổ chức',ex:'Education is the foundation of progress.',ielts:'IELTS education topics'},
+  {w:'globe',sl:7,type:'n',pron:'/ɡloʊb/',vi:'toàn cầu',ex:'Issues affect the entire globe.',ielts:'IELTS globalisation'},
+  {w:'grade',sl:7,type:'n/v',pron:'/ɡreɪd/',vi:'điểm số / xếp hạng',ex:'Students aim for high grades.',ielts:'IELTS education topics'},
+  {w:'guarantee',sl:7,type:'v/n',pron:'/ˌɡærənˈtiː/',vi:'đảm bảo / sự bảo đảm',ex:'Quality is guaranteed.',ielts:'IELTS consumer topics'},
+  {w:'intervene',sl:7,type:'v',pron:'/ˌɪntərˈviːn/',vi:'can thiệp',ex:'The government intervened in the crisis.',ielts:'IELTS politics & economy'},
+  {w:'isolate',sl:7,type:'v',pron:'/ˈaɪsəleɪt/',vi:'cô lập, tách biệt',ex:'The virus was isolated in the lab.',ielts:'IELTS science & health'},
+  {w:'media',sl:7,type:'n',pron:'/ˈmiːdiə/',vi:'phương tiện truyền thông',ex:'Media influences public opinion.',ielts:'IELTS media topics'},
+  {w:'mode',sl:7,type:'n',pron:'/moʊd/',vi:'phương thức, chế độ',ex:'Different modes of transport exist.',ielts:'IELTS transport topics'},
+  {w:'paradigm',sl:7,type:'n',pron:'/ˈpærədaɪm/',vi:'mô hình tư duy',ex:'A paradigm shift occurred.',ielts:'Academic high-level vocabulary'},
+
+  // SUBLIST 8 extras
+  {w:'automate',sl:8,type:'v',pron:'/ˈɔːtəmeɪt/',vi:'tự động hóa',ex:'Many factories automate production.',ielts:'IELTS technology & employment'},
+  {w:'bias',sl:8,type:'n',pron:'/ˈbaɪəs/',vi:'thiên vị, thành kiến',ex:'Avoid bias in academic writing.',ielts:'IELTS critical analysis'},
+  {w:'chart',sl:8,type:'n',pron:'/tʃɑːrt/',vi:'biểu đồ',ex:'The chart shows a sharp increase.',ielts:'IELTS Task 1 key word'},
+  {w:'clarify',sl:8,type:'v',pron:'/ˈklærɪfaɪ/',vi:'làm rõ',ex:'Please clarify your position.',ielts:'IELTS formal communication'},
+  {w:'commodity',sl:8,type:'n',pron:'/kəˈmɒdɪti/',vi:'hàng hóa',ex:'Coffee is a major commodity.',ielts:'IELTS trade topics'},
+  {w:'complement',sl:8,type:'v',pron:'/ˈkɒmplɪmɛnt/',vi:'bổ sung',ex:'Theory complements practice.',ielts:'IELTS: don not confuse with compliment'},
+  {w:'conform',sl:8,type:'v',pron:'/kənˈfɔːrm/',vi:'tuân theo',ex:'Products must conform to standards.',ielts:'IELTS regulation topics'},
+  {w:'contemporary',sl:8,type:'adj',pron:'/kənˈtɛmpərəri/',vi:'đương đại',ex:'Contemporary issues affect everyone.',ielts:'IELTS current affairs'},
+  {w:'denote',sl:8,type:'v',pron:'/dɪˈnoʊt/',vi:'biểu thị, chỉ ra',ex:'Red denotes danger in most cultures.',ielts:'IELTS semiotics & culture'},
+  {w:'detect',sl:8,type:'v',pron:'/dɪˈtɛkt/',vi:'phát hiện',ex:'Sensors detect changes in temperature.',ielts:'IELTS science & technology'},
+  {w:'deviate',sl:8,type:'v',pron:'/ˈdiːvieɪt/',vi:'lệch, chệch hướng',ex:'Results deviated from predictions.',ielts:'IELTS research methodology'},
+  {w:'displace',sl:8,type:'v',pron:'/dɪsˈpleɪs/',vi:'thay thế, di dời',ex:'War displaces millions of people.',ielts:'IELTS migration & conflict'},
+  {w:'drama',sl:8,type:'n',pron:'/ˈdrɑːmə/',vi:'kịch, tình huống gay cấn',ex:'Drama can teach social skills.',ielts:'IELTS arts & education'},
+  {w:'eventual',sl:8,type:'adj',pron:'/ɪˈvɛntʃuəl/',vi:'cuối cùng',ex:'The eventual outcome was positive.',ielts:'IELTS: not "eventuel" (false friend)'},
+  {w:'exhibit',sl:8,type:'v/n',pron:'/ɪɡˈzɪbɪt/',vi:'trưng bày / triển lãm',ex:'Museums exhibit cultural artifacts.',ielts:'IELTS arts & culture'},
+  {w:'exploit',sl:8,type:'v',pron:'/ɪkˈsplɔɪt/',vi:'khai thác, lợi dụng',ex:'Companies exploit natural resources.',ielts:'IELTS environment & ethics'},
+  {w:'fluctuate',sl:8,type:'v',pron:'/ˈflʌktʃueɪt/',vi:'biến động, dao động',ex:'Share prices fluctuate daily.',ielts:'IELTS Task 1: variation'},
+  {w:'guideline',sl:8,type:'n',pron:'/ˈɡaɪdlaɪn/',vi:'hướng dẫn, nguyên tắc',ex:'Follow the safety guidelines.',ielts:'IELTS regulation topics'},
+  {w:'highlight',sl:8,type:'v',pron:'/ˈhaɪlaɪt/',vi:'nhấn mạnh',ex:'The report highlights key issues.',ielts:'IELTS: "highlighted by"'},
+  {w:'implicit',sl:8,type:'adj',pron:'/ɪmˈplɪsɪt/',vi:'ngầm hiểu, ẩn ý',ex:'There is an implicit agreement.',ielts:'IELTS inference questions'},
+
+  // SUBLIST 9 extras
+  {w:'assurance',sl:9,type:'n',pron:'/əˈʃʊərəns/',vi:'sự bảo đảm',ex:'Quality assurance is vital.',ielts:'IELTS business topics'},
+  {w:'attain',sl:9,type:'v',pron:'/əˈteɪn/',vi:'đạt được',ex:'Students attain higher qualifications.',ielts:'Formal: "attain a goal"'},
+  {w:'cease',sl:9,type:'v',pron:'/siːs/',vi:'chấm dứt',ex:'Operations ceased during the lockdown.',ielts:'IELTS formal language'},
+  {w:'coherent',sl:9,type:'adj',pron:'/koʊˈhɪərənt/',vi:'mạch lạc',ex:'Present a coherent argument.',ielts:'IELTS Writing band 7+'},
+  {w:'coincide',sl:9,type:'v',pron:'/ˌkoʊɪnˈsaɪd/',vi:'trùng hợp',ex:'The events coincided with elections.',ielts:'IELTS: "coincide with"'},
+  {w:'commence',sl:9,type:'v',pron:'/kəˈmɛns/',vi:'bắt đầu (formal)',ex:'Classes commence in September.',ielts:'Formal: alternative to "begin"'},
+  {w:'compatible',sl:9,type:'adj',pron:'/kəmˈpætɪbəl/',vi:'tương thích',ex:'The devices are compatible.',ielts:'IELTS technology topics'},
+  {w:'concurrent',sl:9,type:'adj',pron:'/kənˈkɜːrənt/',vi:'đồng thời',ex:'Two concurrent processes were running.',ielts:'IELTS academic writing'},
+  {w:'confine',sl:9,type:'v',pron:'/kənˈfaɪn/',vi:'giới hạn, hạn chế',ex:'The study was confined to adults.',ielts:'IELTS research scope'},
+  {w:'controversy',sl:9,type:'n',pron:'/ˈkɒntrəvɜːrsi/',vi:'sự tranh cãi',ex:'This topic remains controversial.',ielts:'IELTS discussion topics'},
+  {w:'conversely',sl:9,type:'adv',pron:'/ˈkɒnvɜːrsli/',vi:'ngược lại',ex:'Conversely, some disagree.',ielts:'IELTS: formal connector'},
+  {w:'device',sl:9,type:'n',pron:'/dɪˈvaɪs/',vi:'thiết bị',ex:'Electronic devices are everywhere.',ielts:'IELTS technology topics'},
+  {w:'devote',sl:9,type:'v',pron:'/dɪˈvoʊt/',vi:'cống hiến',ex:'She devoted her life to research.',ielts:'IELTS dedication topics'},
+  {w:'diminish',sl:9,type:'v',pron:'/dɪˈmɪnɪʃ/',vi:'giảm dần',ex:'Returns diminish over time.',ielts:'IELTS economics: diminishing returns'},
+  {w:'distort',sl:9,type:'v',pron:'/dɪˈstɔːrt/',vi:'bóp méo',ex:'Media can distort reality.',ielts:'IELTS media analysis'},
+  {w:'enormous',sl:9,type:'adj',pron:'/ɪˈnɔːrməs/',vi:'khổng lồ',ex:'The project requires enormous investment.',ielts:'IELTS: emphasis adjective'},
+  {w:'found',sl:9,type:'v',pron:'/faʊnd/',vi:'thành lập (formal)',ex:'The university was founded in 1850.',ielts:'IELTS history & education'},
+  {w:'inherent',sl:9,type:'adj',pron:'/ɪnˈhɪərənt/',vi:'vốn có, cố hữu',ex:'There are inherent risks involved.',ielts:'IELTS: "inherent challenges"'},
+  {w:'insight',sl:9,type:'n',pron:'/ˈɪnsaɪt/',vi:'cái nhìn sâu sắc',ex:'Research provides new insights.',ielts:'IELTS: "gain insight into"'},
+  {w:'integrity',sl:9,type:'n',pron:'/ɪnˈtɛɡrɪti/',vi:'sự chính trực',ex:'Academic integrity must be upheld.',ielts:'IELTS ethics topics'},
+
+  // === FINAL BATCH: 57 words to reach 570 ===
+  {w:'invoke',sl:9,type:'v',pron:'/ɪnˈvoʊk/',vi:'viện dẫn, gọi ra',ex:'He invoked his constitutional rights.',ielts:'IELTS law & rights'},
+  {w:'levy',sl:9,type:'n/v',pron:'/ˈlɛvi/',vi:'thuế / đánh thuế',ex:'A levy on carbon emissions was proposed.',ielts:'IELTS economics & policy'},
+  {w:'likewise',sl:9,type:'adv',pron:'/ˈlaɪkwaɪz/',vi:'tương tự, cũng vậy',ex:'Likewise, other countries followed suit.',ielts:'IELTS: formal connector'},
+  {w:'mature',sl:9,type:'adj/v',pron:'/məˈtʃʊər/',vi:'trưởng thành / chín chắn',ex:'Students become more mature over time.',ielts:'IELTS human development'},
+  {w:'mediate',sl:9,type:'v',pron:'/ˈmiːdieɪt/',vi:'hòa giải, trung gian',ex:'The UN mediated between the two sides.',ielts:'IELTS international relations'},
+  {w:'military',sl:9,type:'adj/n',pron:'/ˈmɪlɪtəri/',vi:'quân sự',ex:'Military spending increased sharply.',ielts:'IELTS governance & security'},
+  {w:'minimal',sl:9,type:'adj',pron:'/ˈmɪnɪməl/',vi:'tối thiểu',ex:'The impact was minimal.',ielts:'IELTS: "minimal effect"'},
+  {w:'mutual',sl:9,type:'adj',pron:'/ˈmjuːtʃuəl/',vi:'chung, lẫn nhau',ex:'Mutual respect is essential.',ielts:'IELTS relationships & society'},
+  {w:'norm',sl:9,type:'n',pron:'/nɔːrm/',vi:'chuẩn mực, tiêu chuẩn',ex:'Social norms vary across cultures.',ielts:'IELTS culture & society'},
+  {w:'overlap',sl:9,type:'v/n',pron:'/ˌoʊvərˈlæp/',vi:'chồng chéo, trùng lặp',ex:'The two concepts overlap significantly.',ielts:'IELTS academic analysis'},
+  {w:'passive',sl:9,type:'adj',pron:'/ˈpæsɪv/',vi:'thụ động',ex:'Passive learning is less effective.',ielts:'IELTS education & grammar'},
+  {w:'portion',sl:9,type:'n',pron:'/ˈpɔːrʃən/',vi:'phần, khẩu phần',ex:'A large portion of the budget goes to education.',ielts:'IELTS Task 1: proportions'},
+  {w:'preliminary',sl:9,type:'adj',pron:'/prɪˈlɪmɪnəri/',vi:'sơ bộ, ban đầu',ex:'Preliminary data shows promise.',ielts:'IELTS academic research'},
+  {w:'protocol',sl:9,type:'n',pron:'/ˈproʊtəkɒl/',vi:'quy trình, nghi thức',ex:'Follow the safety protocol.',ielts:'IELTS science & workplace'},
+  {w:'qualitative',sl:9,type:'adj',pron:'/ˈkwɒlɪtətɪv/',vi:'định tính',ex:'Qualitative data provides deeper insight.',ielts:'IELTS research methodology'},
+  {w:'refine',sl:9,type:'v',pron:'/rɪˈfaɪn/',vi:'cải tiến, tinh chỉnh',ex:'The process was refined over decades.',ielts:'IELTS technology & innovation'},
+  {w:'relax',sl:9,type:'v',pron:'/rɪˈlæks/',vi:'thư giãn / nới lỏng',ex:'Regulations were relaxed during the crisis.',ielts:'IELTS governance topics'},
+  {w:'restrain',sl:9,type:'v',pron:'/rɪˈstreɪn/',vi:'kiềm chế, hạn chế',ex:'Governments restrain public spending.',ielts:'IELTS economics & policy'},
+  {w:'revolution',sl:9,type:'n',pron:'/ˌrɛvəˈluːʃən/',vi:'cuộc cách mạng',ex:'The industrial revolution changed society.',ielts:'IELTS history & technology'},
+  {w:'rigid',sl:9,type:'adj',pron:'/ˈrɪdʒɪd/',vi:'cứng nhắc, nghiêm ngặt',ex:'Rigid rules can hinder creativity.',ielts:'IELTS education & work'},
+
+  // More across sublists 5-8
+  {w:'phenomenon',sl:5,type:'n',pron:'/fɪˈnɒmɪnən/',vi:'hiện tượng',ex:'Climate change is a global phenomenon.',ielts:'IELTS science & environment'},
+  {w:'project',sl:5,type:'n/v',pron:'/ˈprɒdʒɛkt/',vi:'dự án / dự kiến',ex:'The project aims to reduce poverty.',ielts:'IELTS Task 2: discussing plans'},
+  {w:'promote',sl:5,type:'v',pron:'/prəˈmoʊt/',vi:'thúc đẩy, quảng bá',ex:'Schools promote healthy eating.',ielts:'IELTS health & education'},
+  {w:'prospect',sl:5,type:'n',pron:'/ˈprɒspɛkt/',vi:'triển vọng, khả năng',ex:'Job prospects improve with education.',ielts:'IELTS career & future'},
+  {w:'simulate',sl:5,type:'v',pron:'/ˈsɪmjʊleɪt/',vi:'mô phỏng',ex:'Computers simulate real-world scenarios.',ielts:'IELTS technology & science'},
+  {w:'sphere',sl:5,type:'n',pron:'/sfɪər/',vi:'lĩnh vực, phạm vi',ex:'Education falls within the public sphere.',ielts:'IELTS academic discussion'},
+  {w:'undergo',sl:5,type:'v',pron:'/ˌʌndərˈɡoʊ/',vi:'trải qua',ex:'The city underwent rapid development.',ielts:'IELTS Task 1: describing change'},
+  {w:'unify',sl:5,type:'v',pron:'/ˈjuːnɪfaɪ/',vi:'thống nhất, hợp nhất',ex:'They unified the education system.',ielts:'IELTS governance topics'},
+  {w:'input',sl:6,type:'n',pron:'/ˈɪnpʊt/',vi:'đầu vào, đóng góp',ex:'Student input is valued.',ielts:'IELTS education topics'},
+  {w:'instruct',sl:6,type:'v',pron:'/ɪnˈstrʌkt/',vi:'hướng dẫn, chỉ dạy',ex:'Teachers instruct students effectively.',ielts:'IELTS education topics'},
+  {w:'intelligence',sl:6,type:'n',pron:'/ɪnˈtɛlɪdʒəns/',vi:'trí tuệ, thông minh',ex:'Artificial intelligence is transforming work.',ielts:'IELTS technology topics'},
+  {w:'interval',sl:6,type:'n',pron:'/ˈɪntərvəl/',vi:'khoảng cách, khoảng thời gian',ex:'Data was collected at regular intervals.',ielts:'IELTS research methodology'},
+  {w:'lecture',sl:6,type:'n/v',pron:'/ˈlɛktʃər/',vi:'bài giảng / giảng bài',ex:'The lecture covered modern history.',ielts:'IELTS education topics'},
+  {w:'migrate',sl:6,type:'v',pron:'/maɪˈɡreɪt/',vi:'di cư',ex:'Birds migrate south in winter.',ielts:'IELTS nature & migration'},
+  {w:'minimum',sl:6,type:'n/adj',pron:'/ˈmɪnɪməm/',vi:'tối thiểu',ex:'The minimum wage was increased.',ielts:'IELTS economics & labour'},
+  {w:'ministry',sl:6,type:'n',pron:'/ˈmɪnɪstri/',vi:'bộ (chính phủ)',ex:'The Ministry of Education sets standards.',ielts:'IELTS governance topics'},
+  {w:'motive',sl:6,type:'n',pron:'/ˈmoʊtɪv/',vi:'động cơ, lý do',ex:'What was the motive for the change?',ielts:'IELTS critical analysis'},
+  {w:'neutral',sl:6,type:'adj',pron:'/ˈnjuːtrəl/',vi:'trung lập',ex:'Switzerland remained neutral.',ielts:'IELTS politics & history'},
+  {w:'nevertheless',sl:6,type:'adv',pron:'/ˌnɛvərðəˈlɛs/',vi:'tuy nhiên, dù vậy',ex:'Nevertheless, progress was made.',ielts:'IELTS: Band 7+ connector'},
+  {w:'overseas',sl:6,type:'adj/adv',pron:'/ˌoʊvərˈsiːz/',vi:'ở nước ngoài',ex:'Overseas students contribute to the economy.',ielts:'IELTS education & migration'},
+  {w:'precede',sl:6,type:'v',pron:'/prɪˈsiːd/',vi:'đi trước, có trước',ex:'Planning precedes implementation.',ielts:'IELTS sequence language'},
+  {w:'presume',sl:7,type:'v',pron:'/prɪˈzjuːm/',vi:'cho rằng, giả định',ex:'It is presumed that costs will rise.',ielts:'IELTS: formal assumption language'},
+  {w:'prohibit',sl:7,type:'v',pron:'/prəˈhɪbɪt/',vi:'cấm, ngăn cấm',ex:'Smoking is prohibited indoors.',ielts:'IELTS law & regulation'},
+  {w:'publication',sl:7,type:'n',pron:'/ˌpʌblɪˈkeɪʃən/',vi:'ấn phẩm, sự xuất bản',ex:'The publication received wide acclaim.',ielts:'IELTS academic research'},
+  {w:'quote',sl:7,type:'v/n',pron:'/kwoʊt/',vi:'trích dẫn / lời trích',ex:'He quoted a famous speech.',ielts:'IELTS academic writing'},
+  {w:'recover',sl:7,type:'v',pron:'/rɪˈkʌvər/',vi:'phục hồi, hồi phục',ex:'The economy is slowly recovering.',ielts:'IELTS economics & health'},
+  {w:'reveal',sl:7,type:'v',pron:'/rɪˈviːl/',vi:'tiết lộ, bộc lộ',ex:'The study revealed surprising results.',ielts:'IELTS: "the data reveals"'},
+  {w:'scope',sl:7,type:'n',pron:'/skoʊp/',vi:'phạm vi, quy mô',ex:'The scope of the project is broad.',ielts:'IELTS research methodology'},
+  {w:'subsidiary',sl:7,type:'n/adj',pron:'/səbˈsɪdiəri/',vi:'công ty con / phụ trợ',ex:'The subsidiary operates in Asia.',ielts:'IELTS business topics'},
+  {w:'supplement',sl:7,type:'n/v',pron:'/ˈsʌplɪmənt/',vi:'bổ sung / phụ trương',ex:'Vitamins supplement a balanced diet.',ielts:'IELTS health & nutrition'},
+  {w:'suspend',sl:8,type:'v',pron:'/səˈspɛnd/',vi:'đình chỉ, tạm ngưng',ex:'Classes were suspended during the storm.',ielts:'IELTS events & governance'},
+  {w:'team',sl:8,type:'n',pron:'/tiːm/',vi:'đội, nhóm',ex:'The research team published findings.',ielts:'IELTS collaboration topics'},
+  {w:'temporary',sl:8,type:'adj',pron:'/ˈtɛmpərəri/',vi:'tạm thời',ex:'The job is only temporary.',ielts:'IELTS employment topics'},
+  {w:'terminate',sl:8,type:'v',pron:'/ˈtɜːrmɪneɪt/',vi:'chấm dứt, kết thúc',ex:'The contract was terminated early.',ielts:'IELTS formal language'},
+  {w:'thesis',sl:8,type:'n',pron:'/ˈθiːsɪs/',vi:'luận văn, luận điểm',ex:'Her thesis explored renewable energy.',ielts:'IELTS academic writing'},
+  {w:'trace',sl:8,type:'v/n',pron:'/treɪs/',vi:'theo dõi / dấu vết',ex:'Scientists traced the origin of the virus.',ielts:'IELTS science & history'},
+  {w:'transform',sl:8,type:'v',pron:'/trænsˈfɔːrm/',vi:'biến đổi, chuyển hóa',ex:'Technology transforms daily life.',ielts:'IELTS: "transform society"'},
+];
+
+
+// STATE
+let learnedSet = new Set(JSON.parse(localStorage.getItem('ee_awl_learned')||'[]'));
+let currentSublist = 0;
+let currentType = 'all';
+let currentLearnedFilter = 'all';
+let activeMode = 'list';
+let fcQueue = [], fcIndex = 0, fcKnown = 0;
+let qzQueue = [], qzIndex = 0, qzScore = 0;
+let expandedRow = null;
+
+function getFiltered() {
+  let data = AWL;
+  if(currentSublist > 0) data = data.filter(w=>w.sl===currentSublist);
+  if(currentType !== 'all') data = data.filter(w=>w.type.includes(currentType));
+  if(currentLearnedFilter==='learned') data = data.filter(w=>learnedSet.has(w.w));
+  if(currentLearnedFilter==='notlearned') data = data.filter(w=>!learnedSet.has(w.w));
+  const q = document.getElementById('searchInput')?.value.toLowerCase().trim();
+  if(q) data = data.filter(w=>w.w.includes(q)||w.vi.includes(q)||w.ielts?.toLowerCase().includes(q));
+  const sort = document.getElementById('sortSelect')?.value;
+  if(sort==='alpha') data = [...data].sort((a,b)=>a.w.localeCompare(b.w));
+  else if(sort==='sublist') data = [...data].sort((a,b)=>a.sl-b.sl);
+  else if(sort==='learned') data = [...data].sort((a,b)=>learnedSet.has(a.w)?1:-1);
+  return data;
+}
+
+function updateStats() {
+  document.getElementById('stat-total').textContent = AWL.length;
+  document.getElementById('stat-learned').textContent = learnedSet.size;
+  document.getElementById('stat-pct').textContent = Math.round(learnedSet.size/AWL.length*100)+'%';
+  const sd = JSON.parse(localStorage.getItem('ee_streak')||'{"count":0}');
+  document.getElementById('stat-streak').textContent = sd.count||0;
+  const filt = getFiltered();
+  document.getElementById('stat-showing').textContent = filt.length;
+  var sbAll = document.getElementById('sb-all');
+  if(sbAll) sbAll.textContent = AWL.length;
+}
+
+function toggleLearn(word, el) {
+  event.stopPropagation();
+  if(learnedSet.has(word)) learnedSet.delete(word);
+  else learnedSet.add(word);
+  localStorage.setItem('ee_awl_learned', JSON.stringify([...learnedSet]));
+  el.textContent = learnedSet.has(word)?'•':'•';
+  el.closest('tr').classList.toggle('learned', learnedSet.has(word));
+  updateStats();
+}
+
+const TYPE_LABELS = {n:'Danh từ',v:'Động từ',adj:'Tính từ',adv:'Trạng từ','n/v':'N/V','v/n':'N/V','adj/n':'Adj/N','n/adj':'N/Adj','v/adj':'V/Adj','adj/v':'V/Adj'};
+const TYPE_CLASS = {n:'type-n',v:'type-v',adj:'type-adj',adv:'type-adv','n/v':'type-n','v/n':'type-n','adj/n':'type-adj','n/adj':'type-adj'};
+
+function renderList() {
+  const data = getFiltered();
+  updateStats();
+  const container = document.getElementById('listContainer');
+  if(!data.length){container.innerHTML='<div style="text-align:center;color:var(--text3);padding:32px;font-size:14px">Không tìm thấy từ nào. Thử thay đổi bộ lọc.</div>';return;}
+
+  // Group by sublist
+  const groups = {};
+  data.forEach(w=>{
+    if(!groups[w.sl]) groups[w.sl]=[];
+    groups[w.sl].push(w);
+  });
+
+  const slColors = {1:'var(--coral)',2:'var(--accent)',3:'var(--green)',4:'var(--accent3)',5:'var(--accent2)',6:'var(--pink)',7:'#a78bfa',8:'#60a5fa',9:'#34d399',10:'#f472b6'};
+  const slDesc = {1:'Cơ bản nhất — bắt đầu từ đây',2:'Rất phổ biến trong IELTS',3:'Quan trọng cho band 6.5+',4:'Cần thiết cho band 7+',5:'Nâng cao — band 7+',6:'Học thuật — band 7.5+',7:'Chuyên sâu',8:'Band 8+ vocabulary',9:'Rất học thuật',10:'Nâng cao nhất'};
+
+  container.innerHTML = Object.keys(groups).sort((a,b)=>a-b).map(sl=>`
+    <div class="sublist-header">
+      <span class="sl-badge" style="background:${slColors[sl]}22;color:${slColors[sl]};border:0.5px solid ${slColors[sl]}44">Sublist ${sl}</span>
+      <div>
+        <div class="sl-title">Sublist ${sl}</div>
+        <div class="sl-desc">${slDesc[sl]}</div>
+      </div>
+      <div class="sl-progress">${groups[sl].filter(w=>learnedSet.has(w.w)).length}/${groups[sl].length} đã học</div>
+    </div>
+    <table class="word-table">
+      <tr><th>Từ</th><th>Phiên âm</th><th>Từ loại</th><th>Nghĩa tiếng Việt</th><th>Ghi chú IELTS</th><th>•</th></tr>
+      ${groups[sl].map(w=>`
+        <tr class="${learnedSet.has(w.w)?'learned':''}" onclick="showWordDetail('${w.w}')">
+          <td class="td-word">${w.w}</td>
+          <td><span class="td-pron">${w.pron}</span></td>
+          <td><span class="td-type ${TYPE_CLASS[w.type]||'type-n'}">${w.type}</span></td>
+          <td class="td-vi">${w.vi}</td>
+          <td class="td-ielts">${w.ielts||''}</td>
+          <td class="td-check" onclick="toggleLearn('${w.w}',this)">${learnedSet.has(w.w)?'•':'•'}</td>
+        </tr>
+        <tr id="detail-${w.w}" style="display:none"><td colspan="6" style="padding:0">
+          <div class="word-detail show" style="border-radius:0;margin:0;border-left:3px solid ${slColors[sl]}">
+            <div class="wd-word">${w.w}</div>
+            <div class="wd-pron">${w.pron} · <span style="font-size:14px;color:var(--text3)">${TYPE_LABELS[w.type]||w.type}</span></div>
+            <div class="wd-meanings">
+              <div class="wd-meaning">
+                <div class="wd-m-type">Nghĩa tiếng Việt</div>
+                <div class="wd-m-vi">${w.vi}</div>
+                <div class="wd-m-ex" style="margin-top:6px;color:var(--text2)">"${w.ex}"</div>
+              </div>
+            </div>
+            <div style="font-size:12px;color:var(--accent);margin-top:8px;padding:8px 12px;background:rgba(167,139,250,0.08);border-radius:8px">• IELTS: ${w.ielts||'Từ học thuật quan trọng'}</div>
+          </div>
+        </td></tr>`).join('')}
+    </table>`).join('');
+}
+
+function showWordDetail(word) {
+  const row = document.getElementById('detail-'+word);
+  if(expandedRow && expandedRow !== row) expandedRow.style.display='none';
+  row.style.display = row.style.display==='none'?'table-row':'none';
+  expandedRow = row.style.display==='table-row'?row:null;
+}
+
+// FLASHCARD
+function initFC() {
+  const data = getFiltered();
+  const unlearned = data.filter(w=>!learnedSet.has(w.w));
+  fcQueue = shuffle(unlearned.length>0?unlearned:data).slice(0,20);
+  fcIndex = 0; fcKnown = 0;
+  renderFC();
+}
+
+function renderFC() {
+  if(fcIndex>=fcQueue.length){showFCDone();return;}
+  const w = fcQueue[fcIndex];
+  document.getElementById('fcInner').classList.remove('flipped');
+  document.getElementById('fcTag').textContent=`Sublist ${w.sl}`;
+  document.getElementById('fcWord').textContent=w.w;
+  document.getElementById('fcPron').textContent=w.pron;
+  document.getElementById('fcVi').textContent=w.vi;
+  document.getElementById('fcEx').textContent=`"${w.ex}"`;
+  document.getElementById('fcTypeBadge').textContent=TYPE_LABELS[w.type]||w.type;
+  document.getElementById('fcTypeBadge').className='fc-type-badge '+( TYPE_CLASS[w.type]||'type-n');
+  const pct=(fcIndex/fcQueue.length*100).toFixed(0);
+  document.getElementById('fcProgFill').style.width=pct+'%';
+  document.getElementById('fcProgText').textContent=`${fcIndex+1} / ${fcQueue.length}`;
+  document.getElementById('fcRemaining').textContent=`Nhớ rồi: ${fcKnown} · Chưa nhớ: ${fcIndex-fcKnown}`;
+}
+
+function flipFC(){ document.getElementById('fcInner').classList.toggle('flipped'); }
+
+function fcAnswer(knew) {
+  const w = fcQueue[fcIndex];
+  if(knew){ fcKnown++; learnedSet.add(w.w); localStorage.setItem('ee_awl_learned',JSON.stringify([...learnedSet])); updateStats(); }
+  else { fcQueue.push(w); }
+  fcIndex++;
+  setTimeout(renderFC,200);
+}
+
+function showFCDone() {
+  document.getElementById('fcInner').parentElement.innerHTML=`
+    <div style="background:var(--card2);border:0.5px solid var(--border);border-radius:18px;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+      <div style="font-size:40px">•</div>
+      <div style="font-family:'Fraunces',serif;font-size:24px;color:var(--accent)">${fcKnown}/${fcQueue.length-fcKnown+fcKnown} từ đã nhớ</div>
+      <div style="font-size:13px;color:var(--text2)">Xuất sắc! Tiếp tục luyện tập nhé.</div>
+      <button onclick="initFC()" style="padding:8px 20px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px">Học lại</button>
+    </div>`;
+}
+
+// QUIZ
+function startQuiz() {
+  const data = getFiltered();
+  qzQueue = shuffle(data).slice(0,15);
+  qzIndex = 0; qzScore = 0;
+  document.getElementById('qzCard').style.display='block';
+  document.getElementById('qzResult').classList.remove('show');
+  renderQZ();
+}
+
+function renderQZ() {
+  const w = qzQueue[qzIndex];
+  const pct=(qzIndex/qzQueue.length*100).toFixed(0);
+  document.getElementById('qzProgFill').style.width=pct+'%';
+  document.getElementById('qzCount').textContent=`Câu ${qzIndex+1}/${qzQueue.length}`;
+  document.getElementById('qzScore').textContent=`Điểm: ${qzScore}`;
+  document.getElementById('qzFb').className='qz-fb';
+  document.getElementById('qzNext').classList.remove('show');
+
+  // Random question type
+  const qType = Math.random()<0.5?'meaning':'word';
+  if(qType==='meaning') {
+    document.getElementById('qzQ').textContent=`"${w.w}" nghĩa là gì?`;
+    document.getElementById('qzHint').textContent=`• Phiên âm: ${w.pron} · Từ loại: ${w.type}`;
+    const wrongs = shuffle(AWL.filter(x=>x.w!==w.w)).slice(0,3).map(x=>x.vi);
+    const opts = shuffle([w.vi,...wrongs]);
+    document.getElementById('qzOpts').innerHTML=opts.map(o=>`
+      <button class="qz-opt" onclick="qzAnswer('${o.replace(/'/g,"\\'")}','${w.vi.replace(/'/g,"\\'")}','${w.w}','${w.ex.replace(/'/g,"\\'")}')">${o}</button>`).join('');
+  } else {
+    document.getElementById('qzQ').textContent=`Từ nào có nghĩa là: "${w.vi}"?`;
+    document.getElementById('qzHint').textContent=`• Gợi ý: Sublist ${w.sl} · ${w.type}`;
+    const wrongs = shuffle(AWL.filter(x=>x.w!==w.w)).slice(0,3).map(x=>x.w);
+    const opts = shuffle([w.w,...wrongs]);
+    document.getElementById('qzOpts').innerHTML=opts.map(o=>`
+      <button class="qz-opt" onclick="qzAnswer('${o}','${w.w}','${w.w}','${w.ex.replace(/'/g,"\\'")}')">${o}</button>`).join('');
+  }
+}
+
+function qzAnswer(chosen, correct, word, ex) {
+  document.querySelectorAll('.qz-opt').forEach(o=>o.disabled=true);
+  const isCorrect = chosen===correct;
+  document.querySelectorAll('.qz-opt').forEach(o=>{
+    if(o.textContent.trim()===correct) o.classList.add('correct');
+    else if(o.textContent.trim()===chosen && !isCorrect) o.classList.add('wrong');
+  });
+  const fb=document.getElementById('qzFb');
+  if(isCorrect){qzScore++;fb.className='qz-fb ok';fb.textContent=`• Đúng! Ví dụ: "${ex}"`;learnedSet.add(word);localStorage.setItem('ee_awl_learned',JSON.stringify([...learnedSet]));updateStats();}
+  else{fb.className='qz-fb no';fb.textContent=`• Sai. Đáp án: "${correct}". Ví dụ: "${ex}"`;}
+  document.getElementById('qzNext').classList.add('show');
+}
+
+function qzNext() {
+  qzIndex++;
+  if(qzIndex>=qzQueue.length){showQZResult();return;}
+  renderQZ();
+}
+
+function showQZResult() {
+  document.getElementById('qzCard').style.display='none';
+  const rb=document.getElementById('qzResult');
+  rb.classList.add('show');
+  const pct=Math.round(qzScore/qzQueue.length*100);
+  const emoji=pct>=80?'•':pct>=60?'•':pct>=40?'•':'•';
+  const msg=pct>=80?'Xuất sắc! Bạn nắm vững từ vựng học thuật.':pct>=60?'Tốt! Ôn lại các từ sai và thử lại.':'Cần luyện thêm. Dùng Flashcard để ghi nhớ trước.';
+  document.getElementById('resEmoji').textContent=emoji;
+  document.getElementById('resScore').textContent=`${qzScore}/${qzQueue.length}`;
+  document.getElementById('resLabel').textContent=`${pct}% đúng`;
+  document.getElementById('resMsg').textContent=msg;
+}
+
+// MODES
+function setMode(mode, sbEl=null, tabEl=null) {
+  activeMode = mode;
+  document.getElementById('listMode').style.display=mode==='list'?'block':'none';
+  document.getElementById('flashcardMode').style.display=mode==='flashcard'?'block':'none';
+  document.getElementById('quizMode').style.display=mode==='quiz'?'block':'none';
+  document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('active'));
+  if(tabEl) tabEl.classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  if(sbEl) sbEl.classList.add('active');
+  if(mode==='flashcard') initFC();
+  if(mode==='quiz') startQuiz();
+}
+
+function filterSublist(sl, el) {
+  currentSublist=sl;
+  document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  if(activeMode==='list') renderList();
+  if(activeMode==='flashcard') initFC();
+  if(activeMode==='quiz') startQuiz();
+}
+
+function filterType(type, el) {
+  currentType=type;
+  if(activeMode==='list') renderList();
+}
+
+function filterLearned(filter, el) {
+  currentLearnedFilter=filter;
+  if(activeMode==='list') renderList();
+}
+
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+
+// Flashcard sublist buttons
+function renderFCBtns(containerId, onClickFn) {
+  const el = document.getElementById(containerId);
+  el.innerHTML=[0,1,2,3,4,5,6,7,8,9,10].map(sl=>`
+    <button class="fc-sl-btn ${sl===0?'active':''}" onclick="${onClickFn}(${sl},this)">${sl===0?'Tất cả':'SL '+sl}</button>`).join('');
+}
+
+function fcSublistChange(sl, btn) {
+  currentSublist=sl;
+  document.querySelectorAll('#fcSublistBtns .fc-sl-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  initFC();
+}
+
+function qzSublistChange(sl, btn) {
+  currentSublist=sl;
+  document.querySelectorAll('#qzSublistBtns .fc-sl-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  startQuiz();
+}
+
+// Init
+renderFCBtns('fcSublistBtns','fcSublistChange');
+renderFCBtns('qzSublistBtns','qzSublistChange');
+renderList();
+updateStats();
+</script>
+<script>
+// Collapsible sidebar
+(function(){
+  var sidebar = document.querySelector('.sidebar');
+  if(!sidebar) return;
+  
+  // Wrap items between sidebar-titles into .sb-group divs
+  var titles = sidebar.querySelectorAll('.sidebar-title');
+  titles.forEach(function(title){
+    var items = [];
+    var next = title.nextElementSibling;
+    while(next && !next.classList.contains('sidebar-title')){
+      items.push(next);
+      next = next.nextElementSibling;
+    }
+    if(items.length > 0){
+      var group = document.createElement('div');
+      group.className = 'sb-group';
+      title.parentNode.insertBefore(group, items[0]);
+      items.forEach(function(item){ group.appendChild(item); });
+    }
+  });
+  
+  // Check which group has active item
+  var groups = sidebar.querySelectorAll('.sb-group');
+  groups.forEach(function(g){
+    var hasActive = g.querySelector('.sb-item.active');
+    if(!hasActive){
+      g.classList.add('hidden');
+      g.previousElementSibling.classList.add('collapsed');
+    }
+  });
+  
+  // Click to toggle
+  titles.forEach(function(title){
+    title.addEventListener('click', function(){
+      var group = this.nextElementSibling;
+      if(!group || !group.classList.contains('sb-group')) return;
+      var isHidden = group.classList.contains('hidden');
+      if(isHidden){
+        group.classList.remove('hidden');
+        this.classList.remove('collapsed');
+      } else {
+        group.classList.add('hidden');
+        this.classList.add('collapsed');
+      }
+    });
+  });
+})();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

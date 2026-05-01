@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn với giải thích chi tiết, ví dụ và quiz tương tác.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Từ hay nhầm — EasyEnglish">
+<meta property="og:description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn: affect/effect, advice/advise, borrow/lend...">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Từ hay nhầm — EasyEnglish">
+<meta name="twitter:description" content="50+ cặp từ tiếng Anh dễ nhầm lẫn: affect/effect, advice/advise, borrow/lend...">
+<title>Từ hay nhầm — Confusing Words — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.page-exit{animation:pageOut .2s ease-in forwards}
+@keyframes pageOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+</style>
+
+<meta name="theme-color" content="#64D8A5">
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+<link rel="canonical" href="https://easyenglish.vn/tu-de-nham.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Từ vựng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Từ hay nhầm</span></div>
+<div class="page-label">Confusing Words</div>
+<h1 class="page-title">50+ Từ hay nhầm lẫn</h1>
+<p class="page-desc">Những cặp từ tiếng Anh dễ nhầm nhất. Mỗi cặp có giải thích + ví dụ cụ thể.</p>
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm cặp từ..." oninput="filterWords()">
+<div id="wordList" style="display:grid;gap:12px"></div>
+<div style="margin-top:32px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">
+<div style="font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text)"><i data-lucide="zap" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:4px"></i> Quiz: Chọn từ đúng</div>
+<div id="quizArea" style="text-align:center">
+<div id="qSentence" style="font-size:20px;color:var(--text);margin:16px 0;line-height:1.6"></div>
+<div id="qOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+<div id="qFb" style="margin-top:12px;font-size:14px"></div>
+<div style="margin-top:12px"><button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif">Bắt đầu Quiz</button><span id="qScore" style="font-size:13px;color:var(--text3);padding:8px;margin-left:8px"></span></div>
+</div></div>
+</div>
+<script>
+const WORDS=[
+{a:"affect",b:"effect",a_vi:"(động từ) ảnh hưởng",b_vi:"(danh từ) tác động, kết quả",a_ex:"The rain affected our plans.",b_ex:"The effect of the rain was significant.",tip:"Affect = Action (cả hai bắt đầu bằng A). Effect = End result (kết quả)."},
+{a:"advice",b:"advise",a_vi:"(danh từ) lời khuyên",b_vi:"(động từ) khuyên",a_ex:"She gave me good advice.",b_ex:"I advise you to study harder.",tip:"Advice (danh từ, đọc /s/). Advise (động từ, đọc /z/)."},
+{a:"borrow",b:"lend",a_vi:"mượn (từ người khác)",b_vi:"cho mượn",a_ex:"Can I borrow your pen?",b_ex:"Can you lend me your pen?",tip:"Borrow = nhận về. Lend = đưa đi."},
+{a:"its",b:"it\u2019s",a_vi:"của nó (sở hữu)",b_vi:"it is / it has (viết tắt)",a_ex:"The dog wagged its tail.",b_ex:"It\u2019s raining outside.",tip:"Its = sở hữu (không có dấu phẩy). It\u2019s = it is."},
+{a:"their",b:"there",a_vi:"của họ",b_vi:"ở đó, ở kia",a_ex:"Their house is big.",b_ex:"The book is over there.",tip:"Their = sở hữu. There = nơi chốn."},
+{a:"then",b:"than",a_vi:"sau đó, rồi thì",b_vi:"hơn (so sánh)",a_ex:"I ate, then I left.",b_ex:"She is taller than me.",tip:"Then = thời gian. Than = so sánh."},
+{a:"lose",b:"loose",a_vi:"mất, thua",b_vi:"lỏng, rộng",a_ex:"Don\u2019t lose your keys!",b_ex:"These pants are too loose.",tip:"Lose (1 o) = mất. Loose (2 o) = lỏng."},
+{a:"accept",b:"except",a_vi:"chấp nhận",b_vi:"ngoại trừ",a_ex:"I accept your apology.",b_ex:"Everyone came except Tom.",tip:"Accept = đồng ý. Except = loại trừ."},
+{a:"principle",b:"principal",a_vi:"nguyên tắc",b_vi:"hiệu trưởng / chính",a_ex:"It\u2019s against my principles.",b_ex:"The principal announced the news.",tip:"PrinciPLE = quy tắc. PrinciPAL = người đứng đầu."},
+{a:"complement",b:"compliment",a_vi:"bổ sung, hoàn thiện",b_vi:"khen ngợi",a_ex:"Wine complements cheese well.",b_ex:"She gave me a nice compliment.",tip:"complEment = hoàn thiện. complIment = khen."},
+{a:"desert",b:"dessert",a_vi:"sa mạc / bỏ rơi",b_vi:"món tráng miệng",a_ex:"The Sahara is a huge desert.",b_ex:"I had cake for dessert.",tip:"Dessert (2 s) = sweet (ngọt). Desert (1 s) = sa mạc."},
+{a:"stationary",b:"stationery",a_vi:"đứng yên",b_vi:"văn phòng phẩm",a_ex:"The car was stationary.",b_ex:"I bought new stationery.",tip:"stationAry = stả yên. stationEry = bút, giấy (E=Envelope)."},
+{a:"beside",b:"besides",a_vi:"bên cạnh",b_vi:"ngoài ra",a_ex:"Sit beside me.",b_ex:"Besides English, I study French.",tip:"Beside = vị trí. Besides = thêm vào đó."},
+{a:"historic",b:"historical",a_vi:"lịch sử (quan trọng)",b_vi:"thuộc về lịch sử",a_ex:"A historic moment.",b_ex:"Historical documents.",tip:"Historic = đánh dấu. Historical = liên quan LS."},
+{a:"lie",b:"lay",a_vi:"nằm (tự mình)",b_vi:"đặt, để (vật)",a_ex:"I lie on the bed. (lie-lay-lain)",b_ex:"Lay the book on the table. (lay-laid-laid)",tip:"Lie = không cần tân ngữ. Lay = cần tân ngữ."},
+{a:"farther",b:"further",a_vi:"xa hơn (khoảng cách)",b_vi:"thêm, hơn nữa (trừu tượng)",a_ex:"The store is farther away.",b_ex:"We need further discussion.",tip:"Farther = far (vật lý). Further = more (trừu tượng)."},
+{a:"economic",b:"economical",a_vi:"thuộc kinh tế",b_vi:"tiết kiệm",a_ex:"Economic growth is strong.",b_ex:"This car is very economical.",tip:"Economic = nền KT. Economical = đỡ tốn kém."},
+{a:"raise",b:"rise",a_vi:"nâng lên (cần tân ngữ)",b_vi:"tăng lên (tự động)",a_ex:"Raise your hand.",b_ex:"The sun rises in the east.",tip:"Raise = cần object. Rise = tự nó."},
+{a:"rob",b:"steal",a_vi:"cướp (người/nơi)",b_vi:"ăn cắp (đồ vật)",a_ex:"They robbed the bank.",b_ex:"He stole my wallet.",tip:"Rob + người/nơi. Steal + đồ vật."},
+{a:"say",b:"tell",a_vi:"nói (không cần người nghe)",b_vi:"kể (cần người nghe)",a_ex:"She said she was tired.",b_ex:"She told me she was tired.",tip:"Say + (that). Tell + người."},
+{a:"fun",b:"funny",a_vi:"vui (thú vị)",b_vi:"buồn cười",a_ex:"The trip was really fun.",b_ex:"The joke was so funny.",tip:"Fun = enjoyable. Funny = hài hước."},
+{a:"hard",b:"hardly",a_vi:"chăm chỉ / cứng",b_vi:"hầu như không",a_ex:"She works hard.",b_ex:"I can hardly hear you.",tip:"Hard = nhiều. Hardly = gần như không (nghĩa ngược!)."},
+{a:"late",b:"lately",a_vi:"muộn, trễ",b_vi:"gần đây",a_ex:"He arrived late.",b_ex:"I haven\u2019t slept well lately.",tip:"Late = thời điểm. Lately = recently."},
+{a:"make",b:"do",a_vi:"tạo ra, làm (sản phẩm)",b_vi:"làm (hoạt động)",a_ex:"Make a cake / make a decision.",b_ex:"Do homework / do the dishes.",tip:"Make = tạo mới. Do = thực hiện."},
+{a:"see",b:"watch",a_vi:"nhìn thấy (tình cờ)",b_vi:"xem (chủ động)",a_ex:"I saw a bird outside.",b_ex:"Let\u2019s watch a movie.",tip:"See = vô tình. Watch = cố ý theo dõi."},
+{a:"hear",b:"listen",a_vi:"nghe thấy (tình cờ)",b_vi:"lắng nghe (chủ động)",a_ex:"I heard a strange noise.",b_ex:"Listen to the teacher.",tip:"Hear = vô tình. Listen = chủ động."},
+{a:"remember",b:"remind",a_vi:"nhớ (tự mình)",b_vi:"nhắc nhở (người khác)",a_ex:"I remember her name.",b_ex:"Remind me to call Mom.",tip:"Remember = tự nhớ. Remind = nhắc người khác."},
+{a:"travel",b:"trip",a_vi:"(động từ) du lịch",b_vi:"(danh từ) chuyến đi",a_ex:"I love to travel.",b_ex:"Have a nice trip!",tip:"Travel = động từ. Trip = danh từ."},
+{a:"quite",b:"quiet",a_vi:"khá, rất",b_vi:"yên lặng",a_ex:"It\u2019s quite cold today.",b_ex:"Please be quiet.",tip:"Quite = mức độ. Quiet = im lặng."},
+{a:"assure",b:"ensure",a_vi:"cam đoan với ai",b_vi:"đảm bảo điều gì",a_ex:"I assure you it\u2019s safe.",b_ex:"Please ensure all doors are locked.",tip:"Assure + người. Ensure + việc."}
+];
+let filteredWords=WORDS;
+function filterWords(){
+  var q=document.getElementById("searchBox").value.toLowerCase();
+  filteredWords=WORDS.filter(function(w){return !q||w.a.includes(q)||w.b.includes(q)||w.a_vi.includes(q)||w.b_vi.includes(q);});
+  renderWords();
+}
+function renderWords(){
+  document.getElementById("wordList").innerHTML=filteredWords.map(function(w,i){
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s" onmouseover="this.style.borderColor=\'rgba(100,216,165,0.3)\'" onmouseout="this.style.borderColor=\'\'">'+
+    '<div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap">'+
+    '<span style="font-size:20px;font-weight:600;color:var(--accent)">'+w.a+'</span>'+
+    '<span style="color:var(--text3);font-size:14px">vs</span>'+
+    '<span style="font-size:20px;font-weight:600;color:var(--accent2)">'+w.b+'</span></div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">'+
+    '<div style="padding:12px;background:rgba(100,216,165,0.05);border-radius:8px;border-left:3px solid var(--accent)">'+
+    '<div style="font-weight:500;color:var(--accent);font-size:14px">'+w.a+'</div>'+
+    '<div style="font-size:13px;color:var(--text2);margin:4px 0">'+w.a_vi+'</div>'+
+    '<div style="font-size:12px;color:var(--text3);font-style:italic">"'+w.a_ex+'"</div></div>'+
+    '<div style="padding:12px;background:rgba(167,139,250,0.05);border-radius:8px;border-left:3px solid var(--accent2)">'+
+    '<div style="font-weight:500;color:var(--accent2);font-size:14px">'+w.b+'</div>'+
+    '<div style="font-size:13px;color:var(--text2);margin:4px 0">'+w.b_vi+'</div>'+
+    '<div style="font-size:12px;color:var(--text3);font-style:italic">"'+w.b_ex+'"</div></div></div>'+
+    (w.tip?'<div style="margin-top:10px;padding:8px 12px;background:rgba(240,194,122,0.08);border-radius:8px;font-size:12px;color:var(--accent3)"><i data-lucide="lightbulb" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> '+w.tip+'</div>':'')+
+    '</div>';
+  }).join("");
+  if(typeof lucide!=="undefined")lucide.createIcons();
+}
+var qItems=[],qIdx=0,qOk=0,qTot=0;
+function startQuiz(){
+  qItems=WORDS.slice().sort(function(){return Math.random()-0.5}).slice(0,10);
+  qIdx=0;qOk=0;qTot=10;nextQ();
+}
+function nextQ(){
+  if(qIdx>=qTot){document.getElementById("qSentence").textContent=qOk+"/"+qTot+" dung!";document.getElementById("qOpts").innerHTML="";document.getElementById("qFb").textContent="Bam Bat dau Quiz de thu lai";return;}
+  var w=qItems[qIdx];var useA=Math.random()>0.5;
+  var sentence=useA?w.a_ex:w.b_ex;var correct=useA?w.a:w.b;var wrong=useA?w.b:w.a;
+  var blank=sentence.replace(new RegExp(correct,"gi"),"______");
+  document.getElementById("qSentence").innerHTML=blank;
+  document.getElementById("qFb").textContent="";
+  var opts=[correct,wrong].sort(function(){return Math.random()-0.5});
+  document.getElementById("qOpts").innerHTML=opts.map(function(o){
+    return '<button onclick="checkQ(this,\''+o+'\',\''+correct+'\')" style="padding:12px 24px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:16px;font-weight:500;font-family:DM Sans,sans-serif;min-width:120px;transition:all .15s">'+o+'</button>';
+  }).join("");
+  document.getElementById("qScore").textContent="Diem: "+qOk+"/"+qTot;
+}
+function checkQ(btn,ans,correct){
+  document.querySelectorAll("#qOpts button").forEach(function(b){b.disabled=true;});
+  if(ans===correct){btn.style.background="rgba(107,203,119,0.15)";btn.style.color="var(--green)";btn.style.borderColor="var(--green)";qOk++;document.getElementById("qFb").innerHTML='<span style="color:var(--green)">Dung!</span>';}
+  else{btn.style.background="rgba(255,138,128,0.15)";btn.style.color="var(--coral)";btn.style.borderColor="var(--coral)";document.getElementById("qFb").innerHTML='<span style="color:var(--coral)">Sai! Dap an: <strong>'+correct+'</strong></span>';}
+  qIdx++;setTimeout(nextQ,1200);
+}
+renderWords();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+
+<script id="page-transition-js">
+(function(){
+  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!a)return;var h=a.getAttribute('href');
+    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
+    e.preventDefault();var c=document.querySelector('.content');
+    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
+    else{window.location.href=h;}
+  });
+})();
+</script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Weak Points Tracker — theo doi loi yeu, diem yeu va tien trinh hoc theo module. Luu, phan tich va nhan de xuat on tap.">
+<title>Theo doi diem yeu — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:800px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.hero{background:rgba(123,110,246,0.07);border:0.5px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;margin-top:10px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{padding:5px 10px;border-radius:999px;border:0.5px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2)}
+.note{background:rgba(240,194,122,0.08);border-left:3px solid var(--accent3);padding:14px 16px;border-radius:0 12px 12px 0;margin-top:14px}
+.note strong{color:var(--accent3)}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.stat-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:28px;color:var(--accent2);line-height:1}
+.stat-label{font-size:11px;color:var(--text3);margin-top:4px}
+
+/* Category cards */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.cat-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px}
+.cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cat-name{font-size:14px;font-weight:500}
+.cat-count{font-size:12px;color:var(--accent2);background:rgba(123,110,246,0.12);padding:2px 8px;border-radius:6px}
+.cat-bar{height:6px;background:var(--bg3);border-radius:999px;overflow:hidden;margin-bottom:8px}
+.cat-fill{height:100%;border-radius:999px;transition:width .4s ease}
+.cat-fill.high{background:#ff8a80}
+.cat-fill.med{background:var(--accent3)}
+.cat-fill.low{background:var(--accent)}
+.cat-sub{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* Log form */
+.log-form{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;margin:16px 0}
+.log-form h3{font-family:'Fraunces',serif;font-weight:300;font-size:18px;margin-bottom:14px}
+.form-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.form-select{flex:1;min-width:120px;padding:10px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.form-input{flex:2;min-width:200px;padding:10px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.form-input:focus,.form-select:focus{border-color:rgba(123,110,246,0.4)}
+.log-btn{padding:10px 20px;border-radius:10px;border:0.5px solid rgba(123,110,246,0.3);background:rgba(123,110,246,0.12);color:var(--accent2);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.log-btn:hover{background:rgba(123,110,246,0.2)}
+.log-btn.danger{border-color:rgba(255,138,128,0.3);background:rgba(255,138,128,0.08);color:#ff8a80}
+
+/* Log list */
+.log-list{margin-top:14px}
+.log-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--border);font-size:13px}
+.log-item:last-child{border-bottom:none}
+.log-cat{padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500;flex-shrink:0}
+.log-cat.grammar{background:rgba(100,216,165,0.12);color:var(--accent)}
+.log-cat.reading{background:rgba(244,132,95,0.12);color:var(--accent3)}
+.log-cat.listening{background:rgba(123,110,246,0.12);color:var(--accent2)}
+.log-cat.writing{background:rgba(232,197,71,0.12);color:var(--accent3)}
+.log-cat.vocabulary{background:rgba(167,139,250,0.12);color:var(--accent2)}
+.log-cat.speaking{background:rgba(100,216,165,0.12);color:var(--accent)}
+.log-text{flex:1;color:var(--text2)}
+.log-date{font-size:11px;color:var(--text3);flex-shrink:0}
+.log-del{width:24px;height:24px;border-radius:6px;border:none;background:rgba(255,138,128,0.1);color:#ff8a80;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* Recommendations */
+.rec-box{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.2);border-radius:16px;padding:20px;margin:16px 0}
+.rec-box h3{font-family:'Fraunces',serif;font-weight:300;font-size:17px;color:var(--accent);margin-bottom:12px}
+.rec-item{display:flex;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--text2);line-height:1.6}
+.rec-item:last-child{border-bottom:none}
+.rec-icon{width:24px;height:24px;border-radius:6px;background:rgba(100,216,165,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+
+/* Tips */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.tip-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px}
+.tip-card h4{font-size:14px;font-weight:500;margin-bottom:6px}
+.tip-card p{font-size:13px;color:var(--text3);line-height:1.6}
+
+.link-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:10px;border:0.5px solid rgba(123,110,246,0.25);background:rgba(123,110,246,0.12);color:var(--accent2);font-size:13px;text-decoration:none;cursor:pointer}
+.btn.secondary{background:var(--card2);border-color:var(--border);color:var(--text2)}
+
+@media(max-width:900px){.content{padding:20px 14px 110px}.stats-row{grid-template-columns:1fr 1fr}.cat-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/theo-doi-diem-yeu.html">
+</head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+  <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><span>Tien ich</span><span class="bc-sep">›</span><span class="bc-current">Theo doi diem yeu</span></div>
+
+  <div class="hero">
+    <div class="kicker">Personalization</div>
+    <h1 class="page-title">Theo doi diem yeu de biet minh can hoc gi tiep theo</h1>
+    <div class="desc">Ghi lai loi ban gap, phan loai theo ky nang, va nhan de xuat on tap uu tien. Day la nen tang de hoc ca nhan hoa thuc su — hoc dung cho can thay vi hoc lan man.</div>
+    <div class="badges"><span class="badge">Weak points</span><span class="badge">Error log</span><span class="badge">Smart review</span><span class="badge">Personal plan</span></div>
+    <div class="note"><strong>Cach dung:</strong> Sau moi bai quiz, bai viet hoac luyen nghe — ghi lai loi ban gap. Khi 1 loi lap lai 3+ lan, no se duoc dua len dau danh sach on tap.</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num" id="stTotal">0</div><div class="stat-label">Tong loi ghi</div></div>
+    <div class="stat-card"><div class="stat-num" id="stWeek">0</div><div class="stat-label">Tuan nay</div></div>
+    <div class="stat-card"><div class="stat-num" id="stTop">--</div><div class="stat-label">Yeu nhat</div></div>
+    <div class="stat-card"><div class="stat-num" id="stFixed">0</div><div class="stat-label">Da sua</div></div>
+  </div>
+
+  <!-- Category breakdown -->
+  <div class="cat-grid" id="catGrid"></div>
+
+  <!-- Log form -->
+  <div class="log-form">
+    <h3>Ghi loi moi</h3>
+    <div class="form-row">
+      <select class="form-select" id="logCat">
+        <option value="grammar">Grammar</option>
+        <option value="reading">Reading</option>
+        <option value="listening">Listening</option>
+        <option value="writing">Writing</option>
+        <option value="vocabulary">Vocabulary</option>
+        <option value="speaking">Speaking</option>
+      </select>
+      <input class="form-input" id="logText" placeholder="Mo ta loi, vi du: sai thi o past perfect...">
+    </div>
+    <div class="form-row">
+      <button class="log-btn" onclick="addLog()">Luu loi</button>
+      <button class="log-btn danger" onclick="clearAll()">Xoa tat ca</button>
+    </div>
+  </div>
+
+  <!-- Log list -->
+  <div class="log-list" id="logList"></div>
+
+  <!-- Recommendations -->
+  <div class="rec-box">
+    <h3>De xuat on tap</h3>
+    <div id="recList">
+      <div class="rec-item"><span class="rec-icon">1</span><span>Ghi lai it nhat 3 loi de he thong phan tich va de xuat.</span></div>
+    </div>
+  </div>
+
+  <!-- Tips -->
+  <div class="tips-grid">
+    <div class="tip-card"><h4>Tai sao ghi loi lai quan trong?</h4><p>Nghien cuu cho thay viec viet ra loi giup nao bo nhan dien va tranh lap lai. 70% hoc sinh cai thien nhanh hon khi theo doi loi thuong xuyen.</p></div>
+    <div class="tip-card"><h4>Quy tac 3 lan</h4><p>Khi 1 loi xuat hien 3 lan tro len, day la tin hieu ban can on tap chu dong module do thay vi chi doc lai.</p></div>
+    <div class="tip-card"><h4>Ket hop voi spaced repetition</h4><p>Chuyen cac loi thuong gap thanh flashcard trong On tap lap lai. Nao bo se tu dong uu tien nhung the ban hay sai.</p></div>
+    <div class="tip-card"><h4>Danh gia lai moi 2 tuan</h4><p>Xem lai danh sach loi. Nhung loi khong xuat hien lai co the danh dau "Da sua". Tap trung vao nhung loi con lap lai.</p></div>
+  </div>
+
+  <div class="link-row">
+    <a class="btn" href="tien-do.html">Xem tien do</a>
+    <a class="btn secondary" href="on-tap-lap-lai.html">On tap lap lai</a>
+    <a class="btn secondary" href="so-tay.html">So tay tu vung</a>
+    <a class="btn secondary" href="bai-tap.html">Lam quiz</a>
+  </div>
+</div>
+
+<script>
+var STORAGE_KEY='ee_weak_points';
+var logs=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
+
+var catLabels={grammar:'Grammar',reading:'Reading',listening:'Listening',writing:'Writing',vocabulary:'Vocabulary',speaking:'Speaking'};
+var catLinks={grammar:'ngu-phap.html',reading:'ky-nang-doc.html',listening:'luyen-nghe.html',writing:'kiem-tra-bai-viet.html',vocabulary:'tu-vung.html',speaking:'luyen-noi.html'};
+
+function addLog(){
+  var cat=document.getElementById('logCat').value;
+  var text=document.getElementById('logText').value.trim();
+  if(!text){alert('Vui long mo ta loi!');return;}
+  logs.push({cat:cat,text:text,date:new Date().toISOString(),fixed:false});
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(logs));
+  document.getElementById('logText').value='';
+  render();
+}
+
+function deleteLog(i){
+  logs.splice(i,1);
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(logs));
+  render();
+}
+
+function toggleFixed(i){
+  logs[i].fixed=!logs[i].fixed;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(logs));
+  render();
+}
+
+function clearAll(){
+  if(!confirm('Xoa tat ca loi da ghi?'))return;
+  logs=[];
+  localStorage.setItem(STORAGE_KEY,'[]');
+  render();
+}
+
+function render(){
+  // Stats
+  var total=logs.length;
+  var fixed=logs.filter(function(l){return l.fixed}).length;
+  var weekAgo=new Date();weekAgo.setDate(weekAgo.getDate()-7);
+  var week=logs.filter(function(l){return new Date(l.date)>=weekAgo}).length;
+
+  // Count by cat
+  var catCount={};
+  logs.forEach(function(l){
+    if(!l.fixed){
+      catCount[l.cat]=(catCount[l.cat]||0)+1;
+    }
+  });
+
+  var topCat='--';var topNum=0;
+  for(var c in catCount){if(catCount[c]>topNum){topNum=catCount[c];topCat=catLabels[c]||c;}}
+
+  document.getElementById('stTotal').textContent=total;
+  document.getElementById('stWeek').textContent=week;
+  document.getElementById('stTop').textContent=topCat;
+  document.getElementById('stFixed').textContent=fixed;
+
+  // Category cards
+  var maxCount=Math.max.apply(null,Object.values(catCount).concat([1]));
+  var catHtml='';
+  for(var cat in catLabels){
+    var cnt=catCount[cat]||0;
+    var pct=Math.round(cnt/maxCount*100);
+    var cls=pct>66?'high':pct>33?'med':'low';
+    catHtml+='<div class="cat-card"><div class="cat-header"><span class="cat-name">'+catLabels[cat]+'</span><span class="cat-count">'+cnt+' loi</span></div>';
+    catHtml+='<div class="cat-bar"><div class="cat-fill '+cls+'" style="width:'+pct+'%"></div></div>';
+    catHtml+='<div class="cat-sub"><a href="'+catLinks[cat]+'" style="color:var(--accent2);text-decoration:none;font-size:12px">On tap '+catLabels[cat]+'</a></div></div>';
+  }
+  document.getElementById('catGrid').innerHTML=catHtml;
+
+  // Log list
+  var logHtml='';
+  var active=logs.filter(function(l){return !l.fixed}).reverse();
+  if(active.length===0) logHtml='<div style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Chua co loi nao. Bat dau ghi sau khi lam quiz hoac luyen tap!</div>';
+  active.forEach(function(l){
+    var idx=logs.indexOf(l);
+    var d=new Date(l.date);
+    var dateStr=d.getDate()+'/'+(d.getMonth()+1);
+    logHtml+='<div class="log-item"><span class="log-cat '+l.cat+'">'+catLabels[l.cat]+'</span><span class="log-text">'+l.text+'</span><span class="log-date">'+dateStr+'</span><button class="log-del" onclick="deleteLog('+idx+')" title="Xoa">x</button></div>';
+  });
+  document.getElementById('logList').innerHTML=logHtml;
+
+  // Recommendations
+  var recHtml='';
+  var sorted=Object.entries(catCount).sort(function(a,b){return b[1]-a[1]});
+  if(sorted.length===0){
+    recHtml='<div class="rec-item"><span class="rec-icon">-</span><span>Ghi lai it nhat 3 loi de nhan de xuat on tap.</span></div>';
+  } else {
+    sorted.forEach(function(entry,i){
+      var cat=entry[0];var cnt=entry[1];
+      var msg=catLabels[cat]+' ('+cnt+' loi) — ';
+      if(cnt>=5) msg+='Uu tien cao! Can on tap ngay.';
+      else if(cnt>=3) msg+='Dang lap lai. Nen tap trung on.';
+      else msg+='Moi xuat hien. Theo doi them.';
+      recHtml+='<div class="rec-item"><span class="rec-icon">'+(i+1)+'</span><span><a href="'+catLinks[cat]+'" style="color:var(--accent);text-decoration:none">'+msg+'</a></span></div>';
+    });
+  }
+  document.getElementById('recList').innerHTML=recHtml;
+}
+
+render();
+</script>
+<script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script>
+</body>
+</html>

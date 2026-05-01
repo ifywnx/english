@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiếng Anh phỏng vấn — EasyEnglish</title>
+<meta name="description" content="Luyện trả lời phỏng vấn bằng tiếng Anh: câu hỏi phổ biến, mẫu trả lời và từ vựng chuyên nghiệp.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.q-list{margin:24px 0}
+.q-item{background:var(--card);border:0.5px solid var(--border);border-radius:18px;margin-bottom:14px;overflow:hidden;transition:all .2s}
+.q-item:hover{border-color:rgba(100,216,165,0.3)}
+.q-header{padding:20px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.q-en{font-size:16px;font-weight:500;flex:1}
+.q-arrow{color:var(--text3);transition:transform .2s;font-size:18px}
+.q-item.open .q-arrow{transform:rotate(90deg)}
+.q-body{display:none;padding:0 22px 20px;border-top:0.5px solid var(--border)}
+.q-item.open .q-body{display:block;animation:fadeIn .3s}
+.q-vi{font-size:14px;color:var(--accent2);font-style:italic;margin-bottom:12px}
+.q-tip{font-size:13px;color:var(--text3);background:var(--bg3);padding:10px 14px;border-radius:10px;margin-bottom:12px}
+.q-tip strong{color:var(--accent)}
+.answer-box{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.15);border-radius:12px;padding:16px;margin-bottom:8px}
+.ans-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:6px}
+.ans-text{font-size:14px;line-height:1.7;color:var(--text)}
+.vocab-section{margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:14px}
+.vocab-item{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:12px}
+.v-en{font-weight:600;font-size:14px}
+.v-vi{font-size:13px;color:var(--text2);margin-top:2px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.filter-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.content{padding:20px 14px 110px}.vocab-grid{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><a href="ky-nang.html">Kỹ năng</a><span class="bc-sep">›</span><span class="bc-current">Phỏng vấn</span></div>
+
+<h1 class="page-title">Tiếng Anh phỏng vấn</h1>
+<p class="page-desc">15 câu hỏi phỏng vấn phổ biến nhất với mẫu trả lời và mẹo ấn tượng nhà tuyển dụng.</p>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterQ('all')">Tất cả</button>
+  <button class="filter-btn" onclick="filterQ('intro')">Giới thiệu</button>
+  <button class="filter-btn" onclick="filterQ('skill')">Kỹ năng</button>
+  <button class="filter-btn" onclick="filterQ('behavioral')">Hành vi</button>
+  <button class="filter-btn" onclick="filterQ('closing')">Kết thúc</button>
+</div>
+
+<div class="q-list" id="qList"></div>
+
+<div class="vocab-section">
+  <h2 style="font-family:'Fraunces',serif;font-weight:300">Từ vựng phỏng vấn</h2>
+  <div class="vocab-grid">
+    <div class="vocab-item"><div class="v-en">Resume / CV</div><div class="v-vi">Sơ yếu lý lịch</div></div>
+    <div class="vocab-item"><div class="v-en">Strengths & Weaknesses</div><div class="v-vi">Điểm mạnh & điểm yếu</div></div>
+    <div class="vocab-item"><div class="v-en">Team player</div><div class="v-vi">Người làm việc nhóm tốt</div></div>
+    <div class="vocab-item"><div class="v-en">Problem-solving</div><div class="v-vi">Giải quyết vấn đề</div></div>
+    <div class="vocab-item"><div class="v-en">Deadline</div><div class="v-vi">Hạn chót</div></div>
+    <div class="vocab-item"><div class="v-en">Salary expectation</div><div class="v-vi">Mong muốn lương</div></div>
+    <div class="vocab-item"><div class="v-en">Probation period</div><div class="v-vi">Thời gian thử việc</div></div>
+    <div class="vocab-item"><div class="v-en">Career growth</div><div class="v-vi">Phát triển sự nghiệp</div></div>
+    <div class="vocab-item"><div class="v-en">Work-life balance</div><div class="v-vi">Cân bằng công việc-cuộc sống</div></div>
+    <div class="vocab-item"><div class="v-en">Take initiative</div><div class="v-vi">Chủ động</div></div>
+    <div class="vocab-item"><div class="v-en">Meet expectations</div><div class="v-vi">Đáp ứng kỳ vọng</div></div>
+    <div class="vocab-item"><div class="v-en">Adaptable</div><div class="v-vi">Linh hoạt, thích nghi</div></div>
+  </div>
+</div>
+
+</div>
+<script>
+const QS=[
+  {cat:'intro',en:"Tell me about yourself.",vi:"Hãy giới thiệu về bản thân.",tip:"Dùng công thức: hiện tại → quá khứ → tương lai. Nói 60-90 giây.",
+   ans:"I am a marketing graduate with two years of experience in digital advertising. In my previous role, I managed social media campaigns that increased engagement by 40%. I am now looking for an opportunity to grow in a dynamic team like yours."},
+  {cat:'intro',en:"Why are you interested in this position?",vi:"Tại sao bạn quan tâm đến vị trí này?",tip:"Kết nối kỹ năng của bạn với yêu cầu công việc.",
+   ans:"This role combines my passion for data analysis with creative problem-solving. I have been following your company for a while and admire your innovative approach to customer engagement."},
+  {cat:'intro',en:"Why should we hire you?",vi:"Tại sao chúng tôi nên tuyển bạn?",tip:"Tập trung vào giá trị bạn mang lại, không phải bạn cần gì.",
+   ans:"I bring a unique combination of technical skills and creativity. My experience in managing cross-functional projects means I can hit the ground running and deliver results from day one."},
+  {cat:'skill',en:"What are your strengths?",vi:"Điểm mạnh của bạn là gì?",tip:"Chọn 2-3 điểm mạnh liên quan đến công việc + ví dụ cụ thể.",
+   ans:"My key strengths are attention to detail and the ability to work under pressure. For example, in my last project, I identified a data error that saved the company $10,000."},
+  {cat:'skill',en:"What is your greatest weakness?",vi:"Điểm yếu lớn nhất của bạn?",tip:"Chọn điểm yếu thật + cho thấy bạn đang cải thiện.",
+   ans:"I used to struggle with public speaking, but I have been taking a course and now regularly present at team meetings. It is still a work in progress, but I have improved significantly."},
+  {cat:'skill',en:"How do you handle stress and pressure?",vi:"Bạn xử lý áp lực như thế nào?",tip:"Đưa ra phương pháp cụ thể.",
+   ans:"I prioritize my tasks using a to-do list and break large projects into smaller, manageable steps. I also make sure to take short breaks to maintain focus and productivity."},
+  {cat:'behavioral',en:"Describe a time you faced a conflict at work.",vi:"Mô tả lần bạn gặp xung đột ở công việc.",tip:"Dùng phương pháp STAR: Situation-Task-Action-Result.",
+   ans:"In my previous job, two team members disagreed on a project approach. I organized a meeting where each person presented their ideas. We combined the best elements of both approaches, and the project was completed ahead of schedule."},
+  {cat:'behavioral',en:"Tell me about a time you failed.",vi:"Kể về lần bạn thất bại.",tip:"Thể hiện bạn học được gì từ thất bại.",
+   ans:"Early in my career, I underestimated the time needed for a client presentation. I missed the deadline and had to ask for an extension. Since then, I always add buffer time to my schedules and communicate proactively about timelines."},
+  {cat:'behavioral',en:"Give an example of a goal you achieved.",vi:"Cho ví dụ về mục tiêu bạn đã đạt được.",tip:"Chọn thành tích đo lường được.",
+   ans:"I set a goal to increase our social media followers by 25% in six months. Through consistent content creation and engagement strategies, we actually achieved a 35% increase."},
+  {cat:'behavioral',en:"How do you work in a team?",vi:"Bạn làm việc nhóm như thế nào?",tip:"Cho ví dụ cụ thể về vai trò trong nhóm.",
+   ans:"I believe in open communication and clearly defined roles. In my last team project, I volunteered to coordinate tasks and ensure everyone was aligned. We finished two days ahead of schedule."},
+  {cat:'closing',en:"Where do you see yourself in five years?",vi:"Bạn thấy mình ở đâu sau 5 năm?",tip:"Thể hiện tham vọng nhưng phù hợp với công ty.",
+   ans:"In five years, I hope to be in a senior role where I can mentor junior team members and contribute to strategic decisions. I want to grow within a company that values innovation."},
+  {cat:'closing',en:"What are your salary expectations?",vi:"Mong muốn lương của bạn là bao nhiêu?",tip:"Nghiên cứu mức lương thị trường trước. Đưa ra khoảng.",
+   ans:"Based on my research and experience, I am looking for a salary in the range of $50,000 to $60,000, but I am open to discussing this based on the overall compensation package."},
+  {cat:'closing',en:"Do you have any questions for us?",vi:"Bạn có câu hỏi nào không?",tip:"LUÔN hỏi ít nhất 1-2 câu. Thể hiện sự quan tâm.",
+   ans:"Yes, I would love to know more about the team culture. Also, what does success look like in this role during the first six months?"},
+  {cat:'closing',en:"When can you start?",vi:"Bạn có thể bắt đầu khi nào?",tip:"Trung thực. Nếu đang làm việc, nói rõ notice period.",
+   ans:"I need to give my current employer two weeks notice, so I could start on the first of next month. I am flexible if you need me sooner."},
+  {cat:'skill',en:"How do you stay updated in your field?",vi:"Bạn cập nhật kiến thức trong ngành như thế nào?",tip:"Cho thấy bạn là người chủ động học hỏi.",
+   ans:"I follow industry blogs, attend webinars, and take online courses. Recently, I completed a Google Analytics certification to stay current with digital marketing trends."}
+];
+
+let currentFilter='all';
+
+function filterQ(cat){
+  currentFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.textContent==={all:'Tất cả',intro:'Giới thiệu',skill:'Kỹ năng',behavioral:'Hành vi',closing:'Kết thúc'}[cat]));
+  renderQs();
+}
+
+function renderQs(){
+  const filtered=currentFilter==='all'?QS:QS.filter(q=>q.cat===currentFilter);
+  document.getElementById('qList').innerHTML=filtered.map((q,i)=>`
+    <div class="q-item" id="qi${i}">
+      <div class="q-header" onclick="toggleQ(${i})">
+        <div class="q-en">${q.en}</div>
+        <span class="q-arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-vi">💬 ${q.vi}</div>
+        <div class="q-tip"><strong>💡 Mẹo:</strong> ${q.tip}</div>
+        <div class="answer-box">
+          <div class="ans-label">Mẫu trả lời</div>
+          <div class="ans-text">${q.ans}</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function toggleQ(i){
+  const el=document.getElementById('qi'+i);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.q-item').forEach(q=>q.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+
+renderQs();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

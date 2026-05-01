@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta charset="UTF-8">
+<meta name="description" content="100+ Linking Words & Connectors - Từ nối tiếng Anh cho viết essay, IELTS Writing, Speaking.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Từ nối tiếng Anh — EasyEnglish">
+<meta property="og:description" content="Linking words cho IELTS Writing: however, moreover, in addition, nevertheless...">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Từ nối tiếng Anh — EasyEnglish">
+<meta name="twitter:description" content="Linking words cho IELTS Writing: however, moreover, in addition, nevertheless...">
+<title>Linking Words — Từ nối — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Page-specific styles */
+.idiom-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;cursor:pointer}
+.idiom-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
+.idiom-en{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px}
+.idiom-mean{font-size:14px;color:var(--accent);margin-bottom:6px}
+.idiom-ex{font-size:13px;color:var(--text3);font-style:italic}
+.idiom-vi{font-size:13px;color:var(--text2);margin-top:4px}
+</style>
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style id="skeleton-loader">
+.skeleton-loader{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg,#0B1A1E);z-index:99999;display:flex;flex-direction:column;padding:60px 20px 20px;transition:opacity .3s}
+.skeleton-loader.hide{opacity:0;pointer-events:none}
+.sk-bar{background:linear-gradient(90deg,rgba(100,216,165,0.05) 25%,rgba(100,216,165,0.1) 50%,rgba(100,216,165,0.05) 75%);background-size:200% 100%;animation:skShimmer 1.5s infinite;border-radius:6px}
+@keyframes skShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-nav{height:48px;margin-bottom:20px}
+.sk-title{height:32px;width:60%;margin-bottom:12px}
+.sk-desc{height:16px;width:80%;margin-bottom:24px}
+.sk-card{height:120px;margin-bottom:12px}
+</style>
+
+<link rel="canonical" href="https://easyenglish.vn/tu-noi.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head>
+<body>
+
+<div class="skeleton-loader" id="skeletonLoader">
+<div class="sk-bar sk-nav"></div>
+<div class="sk-bar sk-title"></div>
+<div class="sk-bar sk-desc"></div>
+<div class="sk-bar sk-card"></div>
+<div class="sk-bar sk-card"></div>
+</div>
+<script>window.addEventListener('load',function(){var s=document.getElementById('skeletonLoader');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},300);}});</script>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span>Kỹ năng</span><span class="bc-sep">&rsaquo;</span><span class="bc-current">Linking Words</span></div>
+<div class="page-label">Linking Words & Connectors</div>
+<h1 class="page-title">100+ Từ nối tiếng Anh</h1>
+<p class="page-desc">Từ nối (Linking Words) giúp bài viết mạch lạc, điểm IELTS Writing cao hơn. Phân loại theo chức năng.</p>
+<input type="text" class="search-box" id="searchBox" placeholder="Tìm từ nối..." oninput="filterLW()">
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px" id="tagBar"></div>
+<div id="lwList" style="display:grid;gap:16px"></div>
+</div>
+<script>
+const LW=[
+{cat:"Thêm ý (Addition)",items:[
+{en:"Moreover",vi:"Hơn nữa",ex:"The project is costly. Moreover, it will take years to complete.",level:"B2"},
+{en:"Furthermore",vi:"Hơn thế nữa",ex:"She is talented. Furthermore, she works extremely hard.",level:"B2"},
+{en:"In addition",vi:"Ngoài ra",ex:"In addition to English, she speaks French.",level:"B1"},
+{en:"Additionally",vi:"Thêm vào đó",ex:"The hotel has a pool. Additionally, there is a gym.",level:"B2"},
+{en:"Besides",vi:"Bên cạnh đó",ex:"Besides the salary, the job offers great benefits.",level:"B1"},
+{en:"Also",vi:"Cũng",ex:"He also plays the guitar.",level:"A2"},
+{en:"As well as",vi:"Cũng như",ex:"She speaks Spanish as well as Portuguese.",level:"B1"},
+{en:"Not only... but also",vi:"Không chỉ... mà còn",ex:"Not only is she smart, but she is also kind.",level:"B1"},
+{en:"What is more",vi:"Hơn nữa",ex:"The food was delicious. What is more, it was affordable.",level:"B2"},
+{en:"On top of that",vi:"Thêm vào đó",ex:"He lost his job. On top of that, his car broke down.",level:"B2"}
+]},
+{cat:"Tương phản (Contrast)",items:[
+{en:"However",vi:"Tuy nhiên",ex:"The test was hard. However, I managed to pass.",level:"B1"},
+{en:"Nevertheless",vi:"Tuy nhiên, dù vậy",ex:"It was raining. Nevertheless, we went hiking.",level:"B2"},
+{en:"On the other hand",vi:"Mặt khác",ex:"City life is exciting. On the other hand, it can be stressful.",level:"B1"},
+{en:"In contrast",vi:"Ngược lại",ex:"The north is cold. In contrast, the south is warm.",level:"B2"},
+{en:"Although / Even though",vi:"Mặc dù",ex:"Although it rained, we enjoyed the trip.",level:"B1"},
+{en:"Despite / In spite of",vi:"Bất chấp",ex:"Despite the rain, the match continued.",level:"B1"},
+{en:"While / Whereas",vi:"Trong khi",ex:"She likes coffee, while he prefers tea.",level:"B1"},
+{en:"Yet",vi:"Tuy vậy",ex:"He is rich, yet unhappy.",level:"B1"},
+{en:"Still",vi:"Vẫn",ex:"It was late. Still, she decided to go.",level:"B1"},
+{en:"Conversely",vi:"Ngược lại",ex:"Some students love math. Conversely, others hate it.",level:"C1"}
+]},
+{cat:"Nguyên nhân (Cause)",items:[
+{en:"Because / Since / As",vi:"Bởi vì",ex:"Since it was late, we decided to leave.",level:"A2"},
+{en:"Due to / Owing to",vi:"Do, vì",ex:"The flight was cancelled due to bad weather.",level:"B1"},
+{en:"Because of",vi:"Bởi vì",ex:"We stayed home because of the storm.",level:"A2"},
+{en:"Thanks to",vi:"Nhờ có",ex:"Thanks to her help, I passed the exam.",level:"B1"},
+{en:"As a result of",vi:"Do kết quả của",ex:"As a result of the pandemic, many lost their jobs.",level:"B2"},
+{en:"On account of",vi:"Vì lý do",ex:"The event was postponed on account of rain.",level:"C1"}
+]},
+{cat:"Kết quả (Result)",items:[
+{en:"Therefore",vi:"Vì vậy",ex:"She studied hard. Therefore, she passed.",level:"B1"},
+{en:"As a result",vi:"Kết quả là",ex:"He didn\'t study. As a result, he failed.",level:"B1"},
+{en:"Consequently",vi:"Hậu quả là",ex:"Pollution is increasing. Consequently, health problems rise.",level:"B2"},
+{en:"Thus",vi:"Do đó",ex:"The evidence was clear; thus, he was convicted.",level:"B2"},
+{en:"Hence",vi:"Vì thế",ex:"He was the eldest; hence, he inherited the estate.",level:"C1"},
+{en:"So",vi:"Nên, vì vậy",ex:"It was cold, so I wore a jacket.",level:"A2"},
+{en:"For this reason",vi:"Vì lý do này",ex:"For this reason, we need a new plan.",level:"B1"},
+{en:"Accordingly",vi:"Theo đó",ex:"The rules changed. Accordingly, we updated our policy.",level:"C1"}
+]},
+{cat:"Ví dụ (Example)",items:[
+{en:"For example / For instance",vi:"Ví dụ",ex:"Many countries, for example Japan, have aging populations.",level:"A2"},
+{en:"Such as",vi:"Chẳng hạn như",ex:"Sports such as football and basketball are popular.",level:"A2"},
+{en:"Namely",vi:"Cụ thể là",ex:"Two students passed, namely Tom and Mary.",level:"B2"},
+{en:"In particular",vi:"Đặc biệt",ex:"I love fruits, in particular mangoes.",level:"B1"},
+{en:"To illustrate",vi:"Để minh họa",ex:"To illustrate, let me give you an example.",level:"B2"},
+{en:"That is (i.e.)",vi:"Tức là",ex:"He is bilingual, that is, he speaks two languages.",level:"B1"}
+]},
+{cat:"Thứ tự (Sequence)",items:[
+{en:"Firstly / First of all",vi:"Đầu tiên",ex:"Firstly, let me introduce myself.",level:"A2"},
+{en:"Secondly / Thirdly",vi:"Thứ hai / Thứ ba",ex:"Secondly, we need more funding.",level:"A2"},
+{en:"Next / Then / After that",vi:"Tiếp theo / Sau đó",ex:"First mix the flour, then add the eggs.",level:"A2"},
+{en:"Finally / Lastly",vi:"Cuối cùng",ex:"Finally, I would like to thank everyone.",level:"A2"},
+{en:"Meanwhile",vi:"Trong khi đó",ex:"She cooked dinner. Meanwhile, he cleaned the house.",level:"B1"},
+{en:"Subsequently",vi:"Sau đó",ex:"He graduated and subsequently found a job.",level:"B2"},
+{en:"Previously",vi:"Trước đó",ex:"She had previously worked in marketing.",level:"B1"}
+]},
+{cat:"Kết luận (Conclusion)",items:[
+{en:"In conclusion",vi:"Tóm lại",ex:"In conclusion, education is vital for growth.",level:"B1"},
+{en:"To sum up",vi:"Tóm tắt lại",ex:"To sum up, the project was a success.",level:"B1"},
+{en:"In summary",vi:"Tóm lại",ex:"In summary, three key points were discussed.",level:"B1"},
+{en:"All in all",vi:"Nhìn chung",ex:"All in all, it was a great experience.",level:"B1"},
+{en:"Overall",vi:"Nhìn chung, tổng thể",ex:"Overall, the results were positive.",level:"B1"},
+{en:"To conclude",vi:"Để kết luận",ex:"To conclude, more research is needed.",level:"B2"},
+{en:"In short / In brief",vi:"Nói ngắn gọn",ex:"In short, we need to act now.",level:"B1"},
+{en:"On the whole",vi:"Xét trên tổng thể",ex:"On the whole, the event was successful.",level:"B2"}
+]},
+{cat:"Quan điểm (Opinion)",items:[
+{en:"In my opinion",vi:"Theo ý kiến tôi",ex:"In my opinion, education should be free.",level:"A2"},
+{en:"I believe that",vi:"Tôi tin rằng",ex:"I believe that technology improves our lives.",level:"A2"},
+{en:"From my point of view",vi:"Theo quan điểm tôi",ex:"From my point of view, the plan is feasible.",level:"B1"},
+{en:"It seems to me that",vi:"Theo tôi thấy",ex:"It seems to me that the problem is deeper.",level:"B1"},
+{en:"As far as I am concerned",vi:"Theo tôi thấy thì",ex:"As far as I am concerned, this is the best option.",level:"B2"},
+{en:"Personally",vi:"Cá nhân tôi",ex:"Personally, I prefer working from home.",level:"B1"}
+]},
+{cat:"Điều kiện (Condition)",items:[
+{en:"If",vi:"Nếu",ex:"If it rains, we will stay home.",level:"A1"},
+{en:"Unless",vi:"Trừ khi",ex:"Unless you hurry, you\'ll miss the bus.",level:"A2"},
+{en:"Provided that",vi:"Miễn là, với điều kiện",ex:"You can go, provided that you finish your work.",level:"B2"},
+{en:"As long as",vi:"Miễn là",ex:"As long as you study, you will pass.",level:"B1"},
+{en:"In case",vi:"Phòng khi",ex:"Take an umbrella in case it rains.",level:"B1"},
+{en:"Otherwise",vi:"Nếu không thì",ex:"Study hard. Otherwise, you\'ll fail.",level:"B1"}
+]}
+];
+const CATS=LW.map(function(g){return g.cat;});
+let activeCat="all";
+document.getElementById("tagBar").innerHTML='<button class="tag-btn active" onclick="setCat(\'all\',this)">Tất cả</button>'+CATS.map(function(c){return '<button class="tag-btn" onclick="setCat(\''+c.replace(/'/g,"\\'")+'\',this)">'+c.split(" (")[0]+' <span style="font-size:11px;color:var(--text3)">('+LW.find(function(g){return g.cat===c;}).items.length+')</span></button>';}).join("");
+function setCat(c,btn){activeCat=c;document.querySelectorAll(".tag-btn").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");renderLW();}
+function filterLW(){renderLW();}
+function renderLW(){
+  var q=document.getElementById("searchBox").value.toLowerCase();
+  var groups=LW.filter(function(g){return activeCat==="all"||g.cat===activeCat;});
+  document.getElementById("lwList").innerHTML=groups.map(function(g){
+    var items=g.items.filter(function(w){return !q||w.en.toLowerCase().includes(q)||w.vi.includes(q);});
+    if(items.length===0)return "";
+    return '<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:20px">'+
+    '<div style="font-size:18px;font-weight:600;color:var(--accent);margin-bottom:14px">'+g.cat+'</div>'+
+    '<div style="display:grid;gap:10px">'+items.map(function(w){
+      var lvlColor=w.level==="A1"||w.level==="A2"?"var(--green)":w.level==="B1"||w.level==="B2"?"var(--accent3)":"var(--accent2)";
+      return '<div style="padding:12px 14px;background:var(--bg3);border-radius:10px;border-left:3px solid '+lvlColor+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">'+
+      '<span style="font-weight:600;color:var(--text);font-size:16px">'+w.en+'</span>'+
+      '<span style="font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(100,216,165,0.08);color:'+lvlColor+'">'+w.level+'</span></div>'+
+      '<div style="font-size:14px;color:var(--accent);margin:3px 0">'+w.vi+'</div>'+
+      '<div style="font-size:12px;color:var(--text3);font-style:italic">"'+w.ex+'"</div></div>';
+    }).join("")+'</div></div>';
+  }).join("");
+}
+renderLW();
+</script>
+<style>
+.tag-btn{padding:6px 12px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.tag-btn:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
+.tag-btn.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
+</style>
+<style id="page-transition">
+.page-enter{animation:pageIn .3s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>
+

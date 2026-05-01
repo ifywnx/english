@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Writing Task 2 — học cách viết luận IELTS theo từng dạng bài, có dàn ý, lập luận và mini practice.">
+<meta property="og:title" content="Writing Task 2 — EasyEnglish">
+<meta property="og:description" content="Học cách viết luận IELTS theo từng dạng bài, có dàn ý, lập luận và mini practice.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EasyEnglish">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Writing Task 2 — EasyEnglish">
+<meta name="twitter:description" content="Học cách viết luận IELTS theo từng dạng bài, có dàn ý, lập luận và mini practice.">
+<title>Writing Task 2 — EasyEnglish</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:1100px;margin:0 auto;padding:40px 48px;position:relative;z-index:1}
+.hero{background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(100,216,165,0.06));border:0.5px solid var(--border);border-radius:24px;padding:28px;margin-bottom:18px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.desc{font-size:15px;color:var(--text3);line-height:1.7;max-width:820px;margin-top:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px}
+.card h2{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:10px;color:var(--text)}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.75}
+.card ul{margin:0;padding-left:18px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badge{padding:5px 10px;border-radius:999px;border:0.5px solid var(--border);background:var(--bg3);font-size:11px;color:var(--text2)}
+.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.step .n{width:26px;height:26px;border-radius:50%;background:rgba(167,139,250,0.14);color:var(--accent2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px}
+.step .t{font-size:13px;color:var(--text2);line-height:1.7}
+.sample{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.18);border-radius:14px;padding:16px}
+.sample .line{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.sample .num{width:24px;height:24px;border-radius:50%;background:rgba(100,216,165,0.14);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.sample .txt{font-size:13px;color:var(--text2);line-height:1.7}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.t-item{background:var(--bg3);border:0.5px solid var(--border);border-radius:14px;padding:14px}
+.t-item h3{font-size:14px;color:var(--text);margin-bottom:6px}
+.t-item p{font-size:12px;color:var(--text3);line-height:1.6}
+.tip{background:rgba(240,194,122,0.08);border-left:3px solid var(--accent3);border-radius:0 12px 12px 0;padding:14px 16px;margin-top:14px}
+.tip strong{color:var(--accent3)}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cta{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:rgba(100,216,165,0.12);border:0.5px solid rgba(100,216,165,0.25);color:var(--accent);text-decoration:none;font-size:13px}
+.cta.secondary{background:var(--card2);color:var(--text2)}
+.practice{background:rgba(167,139,250,0.06);border:0.5px solid rgba(167,139,250,0.16);border-radius:16px;padding:16px}
+.practice textarea{width:100%;min-height:110px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text);padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;resize:vertical;outline:none}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btn{padding:10px 14px;border-radius:10px;border:0.5px solid rgba(167,139,250,0.25);background:rgba(167,139,250,0.12);color:var(--accent2);font-size:13px;text-decoration:none;cursor:pointer}
+.btn.secondary{background:var(--card2);border-color:var(--border);color:var(--text2)}
+@media(max-width:900px){.content{padding:20px 14px 110px}.grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.timeline{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+<link rel="canonical" href="https://easyenglish.vn/ielts-viet-task2.html">
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+<div class="content page-enter">
+  <div class="breadcrumb">
+    <a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a>
+    <span class="bc-sep">›</span>
+    <span>IELTS</span>
+    <span class="bc-sep">›</span>
+    <span class="bc-current">Writing Task 2</span>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">IELTS Writing</div>
+    <h1 class="page-title">Viết bài luận Task 2 theo từng dạng đề để không bị lạc ý</h1>
+    <div class="desc">Task 2 không chỉ là viết đủ 250 từ. Quan trọng hơn là nhận diện dạng bài, chọn khung lập luận đúng, và phát triển từng body paragraph rõ ràng. Module này chia nhỏ theo format đề thật để bạn học dễ hơn.</div>
+    <div class="badges">
+      <span class="badge">Opinion</span>
+      <span class="badge">Discussion</span>
+      <span class="badge">Problem / Solution</span>
+      <span class="badge">Advantages / Disadvantages</span>
+    </div>
+    <div class="tip"><strong>How to learn:</strong> Xác định dạng đề trước, viết thesis ngắn, rồi dựng 2 body paragraph có topic sentence, explanation và example.</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>4 dạng đề phải nắm</h2>
+      <div class="step"><div class="n">1</div><div class="t"><strong>Opinion</strong> — nêu quan điểm rõ ràng, đồng ý hay không đồng ý.</div></div>
+      <div class="step"><div class="n">2</div><div class="t"><strong>Discussion</strong> — thảo luận hai phía rồi đưa quan điểm của bạn.</div></div>
+      <div class="step"><div class="n">3</div><div class="t"><strong>Problem / Solution</strong> — nêu vấn đề và cách giải quyết.</div></div>
+      <div class="step"><div class="n">4</div><div class="t"><strong>Advantages / Disadvantages</strong> — phân tích mặt lợi và mặt hại.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Khung viết nhanh</h2>
+      <div class="sample">
+        <div class="line"><div class="num">1</div><div class="txt"><strong>Introduction:</strong> paraphrase đề + thesis.</div></div>
+        <div class="line"><div class="num">2</div><div class="txt"><strong>Body 1:</strong> topic sentence + explanation + example.</div></div>
+        <div class="line"><div class="num">3</div><div class="txt"><strong>Body 2:</strong> ý thứ hai hoặc phản biện.</div></div>
+        <div class="line"><div class="num">4</div><div class="txt"><strong>Conclusion:</strong> tóm lại quan điểm, không thêm ý mới.</div></div>
+      </div>
+      <div class="practice" style="margin-top:12px">
+        <p><strong>Mini practice:</strong> Viết dàn ý 2 body cho đề về online learning vs classroom learning.</p>
+        <textarea placeholder="Ghi outline của bạn..."></textarea>
+        <div class="btn-row"><button class="btn" type="button">Kiểm tra</button><button class="btn secondary" type="button">Xem gợi ý</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top:14px">
+    <h2>Ngôn ngữ ăn điểm</h2>
+    <div class="timeline">
+      <div class="t-item"><h3>Introduce</h3><p>This essay will discuss..., The issue of... has become increasingly important.</p></div>
+      <div class="t-item"><h3>Explain</h3><p>One major reason is..., This happens because..., As a result...</p></div>
+      <div class="t-item"><h3>Example</h3><p>For instance, A clear example is..., This can be seen in...</p></div>
+      <div class="t-item"><h3>Conclude</h3><p>In conclusion, Overall, it is evident that..., To sum up...</p></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:14px">
+    <div class="card">
+      <h2>Lỗi hay gặp</h2>
+      <ul>
+        <li>Trả lời sai trọng tâm của đề.</li>
+        <li>Thesis mơ hồ hoặc đổi lập trường giữa bài.</li>
+        <li>Body paragraph không có topic sentence rõ.</li>
+        <li>Conclusion thêm ý mới.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Vì sao module này quan trọng</h2>
+      <ul>
+        <li>Task 2 chiếm trọng số lớn trong IELTS Writing.</li>
+        <li>Giúp người học tư duy lập luận có cấu trúc.</li>
+        <li>Là nền để nâng band từ 5.x lên 6.5+.</li>
+      </ul>
+      <div class="cta-row">
+        <a class="cta" href="ielts-viet-mau.html">Xem bài mẫu</a>
+        <a class="cta secondary" href="kiem-tra-bai-viet.html">Kiểm tra bài viết</a>
+        <a class="cta secondary" href="bai-tap.html">Làm quiz</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAMPLE ANSWER BAND 7+ -->
+  <div style="margin-top:18px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Sample Answer — Band 7+ (Opinion)</h2>
+  <div style="background:rgba(167,139,250,0.06);border:0.5px solid rgba(167,139,250,0.16);border-radius:14px;padding:16px;margin-bottom:14px">
+  <p style="font-size:13px;color:var(--accent2);margin-bottom:8px"><strong>Topic:</strong> Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true purpose of a university education is to give access to knowledge for its own sake. Discuss both views and give your opinion.</p>
+  </div>
+  <div style="font-size:13px;color:var(--text2);line-height:1.85">
+  <p><strong>Introduction:</strong> It is often debated whether higher education should primarily serve vocational purposes or focus on academic enrichment. While both perspectives have merit, I believe that <strong>a balanced approach</strong> combining practical skills with intellectual development is the most beneficial.</p>
+  <p style="margin-top:10px"><strong>Body 1:</strong> On the one hand, proponents of workplace-oriented education argue that graduates need practical competencies to secure employment. For instance, engineering or medical students require hands-on training that directly applies to their careers. Without such preparation, graduates may struggle to meet industry demands, leading to unemployment or underperformance.</p>
+  <p style="margin-top:10px"><strong>Body 2:</strong> On the other hand, universities have traditionally been centres of intellectual inquiry. Subjects such as philosophy, literature, and pure mathematics may not have immediate vocational applications, yet they develop critical thinking, creativity, and analytical skills. These transferable abilities are increasingly valued in a rapidly changing job market where specific technical skills can quickly become obsolete.</p>
+  <p style="margin-top:10px"><strong>Conclusion:</strong> In conclusion, while vocational training is undeniably important, I believe universities should also preserve their role as institutions of broader learning. A curriculum that integrates practical skills with academic exploration produces well-rounded graduates who can adapt to future challenges.</p>
+  </div>
+  <p style="font-size:12px;color:var(--accent2);margin-top:12px"><strong>Word count:</strong> ~210 | <strong>Band:</strong> 7+ | <strong>Type:</strong> Discuss + Opinion</p>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="grid" style="margin-top:14px">
+  <div class="card"><h2>Checklist truoc khi nop</h2><ul>
+  <li>Du 250 tu chua? (Tu 250-280 la ly tuong)</li>
+  <li>Introduction co paraphrase de + thesis ro rang?</li>
+  <li>Moi body paragraph co topic sentence?</li>
+  <li>Co explanation + example trong moi body?</li>
+  <li>Conclusion KHONG them y moi?</li>
+  <li>Su dung linking words tu nhien (However, Moreover, In addition)?</li>
+  <li>Kiem tra loi chinh ta va ngu phap?</li>
+  </ul></div>
+  <div class="card"><h2>Linking words hay dung</h2><ul>
+  <li><strong>Them y:</strong> Moreover, Furthermore, In addition, Besides</li>
+  <li><strong>Tuong phan:</strong> However, Nevertheless, On the other hand, In contrast</li>
+  <li><strong>Nguyen nhan:</strong> Because, Since, Due to, As a result</li>
+  <li><strong>Vi du:</strong> For instance, For example, Such as, A clear example is</li>
+  <li><strong>Ket luan:</strong> In conclusion, To sum up, Overall, All things considered</li>
+  </ul></div>
+  </div>
+</div>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiếng Anh du lịch — EasyEnglish</title>
+<meta name="description" content="Học tiếng Anh giao tiếp khi du lịch: sân bay, khách sạn, hỏi đường, gọi món, mua sắm.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:24px 0}
+.topic-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px;cursor:pointer;transition:all .2s}
+.topic-card:hover{transform:translateY(-2px);border-color:rgba(100,216,165,0.3)}
+.topic-card.active{border-color:var(--accent);background:rgba(100,216,165,0.06)}
+.tc-icon{font-size:28px;margin-bottom:8px}
+.tc-title{font-family:'Fraunces',serif;font-weight:300;font-size:17px;margin-bottom:4px}
+.tc-count{font-size:12px;color:var(--text3)}
+.phrase-section{display:none;margin-top:24px}
+.phrase-section.show{display:block}
+.phrase-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;transition:all .15s}
+.phrase-card:hover{border-color:rgba(100,216,165,0.3)}
+.ph-en{font-size:16px;font-weight:500;margin-bottom:4px;cursor:pointer}
+.ph-en:hover{color:var(--accent)}
+.ph-ipa{font-size:12px;color:var(--accent2);font-style:italic;margin-bottom:4px}
+.ph-vi{font-size:14px;color:var(--text2)}
+.ph-note{font-size:12px;color:var(--text3);margin-top:6px;padding:6px 10px;background:var(--bg3);border-radius:8px}
+.quiz-section{margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px}
+.quiz-q{font-size:16px;margin-bottom:14px}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quiz-opt{padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.quiz-opt:hover{border-color:rgba(100,216,165,0.4)}
+.quiz-opt.correct{background:rgba(100,216,165,0.2);border-color:var(--accent)}
+.quiz-opt.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral)}
+@media(max-width:768px){.content{padding:20px 14px 110px}.topic-grid{grid-template-columns:1fr}.quiz-opts{grid-template-columns:1fr}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QYG45MCK7N');</script>
+</head><body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<nav></nav><script src="nav.js?v=1"></script>
+<div class="content page-enter">
+<div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">›</span><a href="ky-nang.html">Kỹ năng</a><span class="bc-sep">›</span><span class="bc-current">Du lịch</span></div>
+<h1 class="page-title"><lord-icon src="https://cdn.lordicon.com/surcxhka.json" trigger="loop" delay="3000" colors="primary:#64d8a5,secondary:#a78bfa" style="width:42px;height:42px;vertical-align:-8px;margin-right:8px"></lord-icon>Tiếng Anh du lịch</h1>
+<p class="page-desc">Những câu giao tiếp thiết yếu khi đi du lịch nước ngoài. Nhấn vào câu tiếng Anh để nghe phát âm.</p>
+
+<div class="topic-grid" id="topicGrid"></div>
+<div class="phrase-section" id="phraseBox"></div>
+
+</div>
+<script>
+const TOPICS=[
+  {icon:'',title:'San bay',phrases:[
+    {en:"Where is the check-in counter?",vi:"Quay check-in o dau?",note:"Dung khi vua den san bay"},
+    {en:"I would like a window seat, please.",vi:"Toi muon ngoi canh cua so.",note:""},
+    {en:"How long is the layover?",vi:"Transit bao lau?",note:"layover = thoi gian cho chuyen tiep"},
+    {en:"Is this the boarding gate for flight VN123?",vi:"Day co phai cua len may bay chuyen VN123?",note:""},
+    {en:"My luggage is missing.",vi:"Hanh ly cua toi bi mat.",note:"Noi o quay lost baggage"},
+    {en:"Could I get a blanket and some water?",vi:"Cho toi xin chan va nuoc duoc khong?",note:"Tren may bay"}
+  ]},
+  {icon:'',title:'Khach san',phrases:[
+    {en:"I have a reservation under the name Nguyen.",vi:"Toi da dat phong duoi ten Nguyen.",note:""},
+    {en:"What time is checkout?",vi:"May gio tra phong?",note:""},
+    {en:"Could I have a late checkout?",vi:"Toi co the tra phong muon khong?",note:"Thuong them phi"},
+    {en:"The air conditioning is not working.",vi:"Dieu hoa khong hoat dong.",note:"Goi le tan"},
+    {en:"Is breakfast included?",vi:"Co bao gom bua sang khong?",note:""},
+    {en:"Could you call a taxi for me?",vi:"Ban co the goi taxi giup toi khong?",note:""}
+  ]},
+  {icon:'',title:'Hoi duong',phrases:[
+    {en:"Excuse me, how do I get to the train station?",vi:"Xin loi, lam sao toi den ga tau?",note:""},
+    {en:"Is it within walking distance?",vi:"Co the di bo toi khong?",note:""},
+    {en:"Can you show me on the map?",vi:"Ban co the chi tren ban do khong?",note:""},
+    {en:"How far is it from here?",vi:"Cach day bao xa?",note:""},
+    {en:"Turn left at the traffic light.",vi:"Re trai o den giao thong.",note:"Huong dan duong"},
+    {en:"Go straight for two blocks.",vi:"Di thang hai block.",note:"block = doan duong giua 2 nga tu"}
+  ]},
+  {icon:'',title:'Nha hang',phrases:[
+    {en:"A table for two, please.",vi:"Ban cho hai nguoi.",note:""},
+    {en:"Could I see the menu?",vi:"Cho toi xem menu duoc khong?",note:""},
+    {en:"What do you recommend?",vi:"Ban gioi thieu mon gi?",note:""},
+    {en:"I am allergic to peanuts.",vi:"Toi bi di ung dau phong.",note:"Rat quan trong!"},
+    {en:"Could I have the bill, please?",vi:"Cho toi hoa don.",note:"bill (UK) = check (US)"},
+    {en:"Is the service charge included?",vi:"Phi dich vu da bao gom chua?",note:""}
+  ]},
+  {icon:'',title:'Mua sam',phrases:[
+    {en:"How much does this cost?",vi:"Cai nay gia bao nhieu?",note:""},
+    {en:"Do you have this in a smaller size?",vi:"Co size nho hon khong?",note:""},
+    {en:"Can I try this on?",vi:"Toi mac thu duoc khong?",note:""},
+    {en:"Do you accept credit cards?",vi:"Co nhan the tin dung khong?",note:""},
+    {en:"Is there a discount?",vi:"Co giam gia khong?",note:""},
+    {en:"Can I get a refund?",vi:"Toi co the hoan tien khong?",note:""}
+  ]},
+  {icon:'',title:'Khan cap',phrases:[
+    {en:"I need help!",vi:"Toi can giup do!",note:""},
+    {en:"Please call an ambulance.",vi:"Xin goi xe cuu thuong.",note:""},
+    {en:"I lost my passport.",vi:"Toi bi mat ho chieu.",note:"Den dai su quan"},
+    {en:"Where is the nearest hospital?",vi:"Benh vien gan nhat o dau?",note:""},
+    {en:"I have been robbed.",vi:"Toi bi cuop.",note:"Goi canh sat"},
+    {en:"Can you help me contact my embassy?",vi:"Ban giup toi lien he dai su quan duoc khong?",note:""}
+  ]}
+];
+
+function speak(text){const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.85;speechSynthesis.speak(u);}
+
+function renderTopics(){
+  document.getElementById('topicGrid').innerHTML=TOPICS.map((t,i)=>`
+    <div class="topic-card" onclick="showTopic(${i})" id="tc${i}">
+      <div class="tc-title">${t.title}</div>
+      <div class="tc-count">${t.phrases.length} cau</div>
+    </div>`).join('');
+}
+
+function showTopic(idx){
+  document.querySelectorAll('.topic-card').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  const t=TOPICS[idx];
+  const box=document.getElementById('phraseBox');
+  box.classList.add('show');
+  box.innerHTML=`<h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">${t.title}</h2>`+
+    t.phrases.map(p=>`<div class="phrase-card">
+      <div class="ph-en" onclick="speak(this.textContent)">${p.en}</div>
+      <div class="ph-vi">${p.vi}</div>
+      ${p.note?`<div class="ph-note">${p.note}</div>`:''}
+    </div>`).join('')+
+    `<div class="quiz-section"><h3 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:12px">Mini Quiz</h3><div id="quizQ"></div></div>`;
+  startQuiz(idx);
+}
+
+function startQuiz(topicIdx){
+  const phrases=TOPICS[topicIdx].phrases;
+  const q=phrases[Math.floor(Math.random()*phrases.length)];
+  const wrongs=phrases.filter(p=>p!==q).sort(()=>Math.random()-.5).slice(0,3).map(p=>p.en);
+  const opts=[q.en,...wrongs].sort(()=>Math.random()-.5);
+  document.getElementById('quizQ').innerHTML=`
+    <div class="quiz-q">Cau nao nghia la: <strong>"${q.vi}"</strong>?</div>
+    <div class="quiz-opts">${opts.map(o=>`<div class="quiz-opt" onclick="checkOpt(this,'${q.en.replace(/'/g,"\\'")}','${o.replace(/'/g,"\\'")}')">${o}</div>`).join('')}</div>`;
+}
+
+function checkOpt(el,correct,chosen){
+  document.querySelectorAll('.quiz-opt').forEach(b=>{
+    b.style.pointerEvents='none';
+    if(b.textContent===correct)b.classList.add('correct');
+    if(b.textContent===chosen&&chosen!==correct)b.classList.add('wrong');
+  });
+}
+
+renderTopics();
+</script>
+
+<div style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px;margin:24px auto;max-width:900px">
+<h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Quiz Tieng Anh Du lich</h2>
+<div id="quizBox"></div>
+<div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div>
+</div>
+<script>
+var QZ=[
+{q:"'Layover' nghia la gi?",opts:["Chuyen bay thang","Thoi gian cho chuyen tiep","Ha canh khan cap","Ve khu hoi"],ans:1,exp:"Layover = thoi gian cho giua 2 chuyen bay (transit)"},
+{q:"'Could I have the bill?' — 'bill' o day la gi?",opts:["Tien giay","Hoa don (nha hang)","Du luat","Thong bao"],ans:1,exp:"Bill (UK) = check (US) = hoa don thanh toan tai nha hang"},
+{q:"Khi bi mat ho chieu, ban nen lien he dau?",opts:["Khach san","Dai su quan","San bay","Nha hang"],ans:1,exp:"Mat ho chieu o nuoc ngoai -> lien he dai su quan/lanh su quan cua Viet Nam"},
+{q:"'Is it within walking distance?' hoi ve?",opts:["Gia ve","Co the di bo toi duoc khong","Huong di","Thoi gian"],ans:1,exp:"Within walking distance = du gan de di bo toi"},
+{q:"'I am allergic to peanuts.' — khi nao can noi cau nay?",opts:["Khi check-in","Khi goi mon an","Khi hoi duong","Khi mua sam"],ans:1,exp:"Thong bao di ung thuc pham khi goi mon — rat quan trong de an toan"},
+{q:"'Do you accept credit cards?' dung khi nao?",opts:["Hoi duong","Thanh toan","Dat phong","Len may bay"],ans:1,exp:"Hoi xem cua hang/nha hang co nhan the tin dung khong"}
+];
+var qI=0,qS=0;
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Cau dung<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Lam lai</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Cau '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Diem: '+qS+'/'+qI;}
+function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
+renderQz();
+</script>
+<script defer src="gamification.js?v=3"></script>
+<script defer src="common.js?v=14"></script>
+</body></html>

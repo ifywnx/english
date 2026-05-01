@@ -14,6 +14,7 @@
 html{scroll-behavior:smooth;overscroll-behavior:none}
 body{font-family:'DM Sans',sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.85;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed}
 a,button{touch-action:manipulation}
+h1,h2,h3,h4,.section-title{font-family:'Fraunces',serif;font-weight:300}
 
 /* === AMBIENT ORBS === */
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;will-change:auto;contain:strict}
@@ -21,7 +22,7 @@ a,button{touch-action:manipulation}
 .orb2{width:400px;height:400px;background:rgba(167,139,250,0.08);bottom:0;left:-100px}
 
 /* === NAV === */
-nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;overflow:visible;transition:transform .3s cubic-bezier(.4,0,.2,1)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#0f0e17}
 .logo-name{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
@@ -43,7 +44,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
 .nav-drop>.nav-a::after{content:" ▾";font-size:10px}
 .nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(4px);min-width:200px;padding-top:6px;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s cubic-bezier(.4,0,.2,1);z-index:300}
 .nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.nav-drop-menu-inner{background:rgba(13,30,36,0.98);backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-drop-menu-inner{background:var(--drop-bg,var(--card));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:0.5px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .nav-drop-menu .nav-a{display:block;padding:9px 14px;border-radius:8px;font-size:13px;white-space:nowrap}
 
 /* === HAMBURGER === */
@@ -90,9 +91,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,26,30,0.92);backdrop-fi
 .tag-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
 .tag-btn:hover{color:var(--text)}
 .mode-tabs{display:flex;gap:8px;margin-bottom:24px}
-.mode-tab{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
-.mode-tab.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}
-.mode-tab:hover{color:var(--text)}
+.mode-tab{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}.mode-tab.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3);color:var(--accent)}.mode-tab:hover{color:var(--text)}
+.tc-tab,.biz-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}.tc-tab:hover,.biz-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}.tc-tab.active,.biz-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
 
 /* === EXERCISE / QUIZ COMPONENTS === */
 .exercise-box{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center}
@@ -138,9 +138,12 @@ table{width:100%;border-collapse:collapse}
 .mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center;height:72px;max-width:480px;margin:0 auto;padding:0 4px}
 .mob-bn-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:rgba(158,192,178,0.5);font-size:11px;font-weight:500;padding:10px 16px;border-radius:16px;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;min-width:56px;-webkit-tap-highlight-color:transparent;letter-spacing:.02em}
 .mob-bn-item svg{width:26px;height:26px;stroke-width:1.8;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.mob-bn-item lord-icon{display:inline-flex;width:26px!important;height:26px!important;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.bn-icon-wrap{width:26px;height:26px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
 .mob-bn-item span{transition:all .25s ease;font-size:11px}
 .mob-bn-item.active{color:var(--accent);background:rgba(100,216,165,0.08)}
 .mob-bn-item.active svg{stroke-width:2.2;transform:scale(1.08);filter:drop-shadow(0 0 6px rgba(100,216,165,0.3))}
+.mob-bn-item.active lord-icon{transform:scale(1.15);filter:drop-shadow(0 0 8px rgba(100,216,165,0.4))}
 .mob-bn-item:active{transform:scale(0.88)}
 button.mob-bn-item{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;-webkit-tap-highlight-color:transparent}
 
@@ -163,7 +166,7 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;font-family:'DM Sa
 /* === RESPONSIVE === */
 @media(max-width:900px){
   .nav-spacer{display:none}
-  body{padding-bottom:100px}
+  body{padding-bottom:118px}
   html,body{overflow-x:hidden!important;max-width:100vw!important}
   *{box-sizing:border-box!important;max-width:100vw}
   .content{padding:20px 14px!important;max-width:100vw!important;overflow-x:hidden}
