@@ -99,8 +99,8 @@
           <p><strong>Mini dictation:</strong> Viết lại câu đầu tiên theo trí nhớ.</p>
           <textarea placeholder="Gõ câu bạn nghe được..."></textarea>
           <div class="btn-row">
-            <button class="btn" type="button">Kiểm tra</button>
-            <button class="btn secondary" type="button">Xem transcript</button>
+            <button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh với transcript phía trên.')}">Kiểm tra</button>
+            <button class="btn secondary" type="button" onclick="alert(' Xem lại phần Transcript phía trên để đối chiếu.')">Xem transcript</button>
           </div>
         </div>
       </div>
@@ -129,9 +129,9 @@
       </div>
       <div class="section transcript"><p><strong>Transcript:</strong> Climate change is one of the most pressing issues of our time. Global temperatures have risen by approximately 1.1 degrees Celsius since the pre-industrial era. Renewable energy sources, such as solar and wind power, are being adopted at an unprecedented rate. However, experts argue that much more needs to be done to reduce carbon emissions and protect vulnerable ecosystems.</p></div>
       <div class="practice" style="margin-top:12px">
-        <p><strong>Mini dictation:</strong> Nghe lai va viet 2 cau cuoi cua transcript 3.</p>
-        <textarea placeholder="Go cau ban nghe duoc..."></textarea>
-        <div class="btn-row"><button class="btn" type="button">Kiem tra</button><button class="btn secondary" type="button">Xem transcript</button></div>
+        <p><strong>Mini dictation:</strong> Nghe lại và viết 2 câu cuối của transcript 3.</p>
+        <textarea placeholder="Gõ câu bạn nghe được..."></textarea>
+        <div class="btn-row"><button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh với transcript phía trên.')}">Kiểm tra</button><button class="btn secondary" type="button" onclick="alert(' Xem lại phần Transcript phía trên để đối chiếu.')">Xem transcript</button></div>
       </div>
     </div>
 

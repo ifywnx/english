@@ -14,13 +14,13 @@
       {href:'menh-de-quan-he.html', icon:'link', text:'Mệnh đề quan hệ'},
       {href:'tim-loi-sai.html', icon:'edit-3', text:'Tìm lỗi sai'},
       {href:'ghep-cau.html', icon:'layers-3', text:'Ghép câu'},
-      {href:'ving-hay-to-v.html', icon:'git-branch', text:'V-ing hay To V'},
+      {href:'ving-hay-to-v.html', icon:'split', text:'V-ing hay To V'},
       {href:'phat-am.html', icon:'mic', text:'Phát âm'},
       {href:'dong-tu-bat-quy-tac.html', icon:'list', text:'Động từ bất quy tắc'},
       {href:'gioi-tu.html', icon:'map-pin', text:'Giới từ & cụm giới từ'},
       {href:'12-thi.html', icon:'clock', text:'12 thì tiếng Anh'},
       {href:'so-sanh.html', icon:'arrow-left-right', text:'So sánh'},
-      {href:'cau-dieu-kien.html', icon:'git-branch', text:'Câu điều kiện'},
+      {href:'cau-dieu-kien.html', icon:'route', text:'Câu điều kiện'},
       {href:'cau-hoi-duoi.html', icon:'message-circle-question', text:'Câu hỏi đuôi'},
       {href:'cau-truc-cau.html', icon:'align-left', text:'Cấu trúc câu'},
       {href:'chu-dong-bi-dong.html', icon:'repeat-2', text:'Chủ động & bị động'},
@@ -117,7 +117,8 @@
     {href:'index.html', icon:'home', label:'Trang chủ'},
     {href:'ngu-phap.html', icon:'book-open', label:'Ngữ pháp'},
     {href:'tu-vung.html', icon:'pencil', label:'Từ vựng'},
-    {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'}
+    {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'},
+    {href:'lo-trinh-hoc.html', icon:'map', label:'Lộ trình'}
   ];
   window.EE_NAV_FLAT = (function(){
     var flat = [];
@@ -153,10 +154,12 @@
     var html = '';
     for(var group in NAV_ITEMS){
       var groupActive = (group === activeGroup) ? ' nav-group-active' : '';
+      var items = NAV_ITEMS[group];
+      var isMega = items.length > 10; // 2-column for large dropdowns
       html += '<div class="nav-drop">';
       html += '<span class="nav-a'+groupActive+'" onclick="toggleDrop(this)">'+group+'</span>';
-      html += '<div class="nav-drop-menu"><div class="nav-drop-menu-inner">';
-      NAV_ITEMS[group].forEach(function(item){
+      html += '<div class="nav-drop-menu"><div class="nav-drop-menu-inner'+(isMega?' nav-mega':'')+'">';
+      items.forEach(function(item){
         var cls = isActive(item.href) ? ' nav-item-active' : '';
         html += '<a href="'+item.href+'" class="nav-a'+cls+'">'+icon(item.icon)+' '+item.text+'</a>';
       });
@@ -199,23 +202,32 @@
       '<div class="nav-links">' + buildDesktopNav() + '</div>' +
       '<div class="nav-spacer"></div>' +
       '<div id="mobileMenu" class="mob-menu">' +
+      '<div class="mob-menu-header"><span class="mob-menu-title">Menu</span><button class="mob-close-btn" id="mobCloseBtn"><i data-lucide="x" style="width:20px;height:20px"></i></button></div>' +
       buildMobileMenu() +
       '</div>';
 
     // Hamburger toggle
+    function closeMobileMenu(){
+      var m = document.getElementById('mobileMenu');
+      var h = document.getElementById('navHamburger');
+      if(m) m.classList.remove('mob-open');
+      if(h) h.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function openMobileMenu(){
+      var m = document.getElementById('mobileMenu');
+      var h = document.getElementById('navHamburger');
+      if(m) m.classList.add('mob-open');
+      if(h) h.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
     document.getElementById('navHamburger').addEventListener('click', function(){
       var m = document.getElementById('mobileMenu');
-      var isOpen = m.classList.contains('mob-open');
-      if(isOpen){
-        m.classList.remove('mob-open');
-        this.classList.remove('open');
-        document.body.style.overflow = '';
-      } else {
-        m.classList.add('mob-open');
-        this.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+      if(m && m.classList.contains('mob-open')) closeMobileMenu();
+      else openMobileMenu();
     });
+    // X close button
+    document.getElementById('mobCloseBtn').addEventListener('click', closeMobileMenu);
   }
 
   // ===== MOBILE GROUP ACCORDION =====
@@ -232,6 +244,14 @@
       btn.classList.add('mob-group-open');
       items.style.maxHeight = items.scrollHeight + 'px';
     }
+  };
+
+  // ===== toggleDrop — DEFINED HERE (not in common.js) =====
+  window.toggleDrop = function(el){
+    var drop = el.closest('.nav-drop');
+    var wasOpen = drop.classList.contains('open');
+    document.querySelectorAll('.nav-drop.open').forEach(function(d){ d.classList.remove('open'); });
+    if(!wasOpen) drop.classList.add('open');
   };
 
   // ===== CLOSE DROPDOWN ON OUTSIDE CLICK =====

@@ -49,15 +49,15 @@
     <div class="card">
       <h2>Mini practice</h2>
       <p>Chuyển câu sau sang reported speech:</p>
-      <div class="practice"><p><strong>She said, “I am learning English.”</strong></p><textarea placeholder="Viết câu tường thuật..."></textarea><div class="btn-row"><button class="btn" type="button">Kiểm tra</button><button class="btn secondary" type="button">Xem gợi ý</button></div></div>
+      <div class="practice"><p><strong>She said, “I am learning English.”</strong></p><textarea placeholder="Viết câu tường thuật..."></textarea><div class="btn-row"><button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh đáp án của bạn với gợi ý mẫu bên dưới.')}">Kiểm tra</button><button class="btn secondary" type="button" onclick="alert(' Xem phần gợi ý mẫu ngay bên dưới bài tập.')">Xem gợi ý</button></div></div>
       <div class="practice"><p><strong>Đáp án mẫu:</strong> She said that she was learning English.</p></div>
     </div>
   </div>
   <!-- BANG LUI THI -->
   <div style="margin-top:18px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px;overflow-x:auto">
-    <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Bang lui thi (Tense shift)</h2>
+    <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Bảng lùi thì (Tense shift)</h2>
     <table style="width:100%;border-collapse:collapse;font-size:13px">
-    <thead><tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--accent)">Direct Speech</th><th style="text-align:left;padding:8px;color:var(--accent)">Reported Speech</th><th style="text-align:left;padding:8px;color:var(--accent)">Vi du</th></tr></thead>
+    <thead><tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--accent)">Direct Speech</th><th style="text-align:left;padding:8px;color:var(--accent)">Reported Speech</th><th style="text-align:left;padding:8px;color:var(--accent)">Ví dụ</th></tr></thead>
     <tbody>
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Present Simple (am/is/are)</td><td style="padding:8px;color:var(--text2)"><strong>Past Simple</strong> (was/were)</td><td style="padding:8px;color:var(--text2)">"I am happy" → was happy</td></tr>
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Present Continuous</td><td style="padding:8px;color:var(--text2)"><strong>Past Continuous</strong></td><td style="padding:8px;color:var(--text2)">"I am working" → was working</td></tr>
@@ -72,7 +72,7 @@
 
   <!-- DOI TU CHI THOI GIAN -->
   <div class="grid" style="margin-top:14px">
-    <div class="card"><h2>Doi tu chi thoi gian/noi chon</h2>
+    <div class="card"><h2>Đổi từ chỉ thời gian/nơi chốn</h2>
     <table style="width:100%;border-collapse:collapse;font-size:13px">
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:6px"><strong>today</strong></td><td style="padding:6px">→ that day</td></tr>
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:6px"><strong>tomorrow</strong></td><td style="padding:6px">→ the next day / the following day</td></tr>
@@ -85,7 +85,7 @@
     </table></div>
     <div class="card"><h2>Reported Questions/Commands</h2><ul>
     <li><strong>Yes/No question:</strong> asked if/whether<br><em>"Do you like it?" → He asked if I liked it.</em></li>
-    <li><strong>Wh-question:</strong> asked + wh + S + V (khong dao)<br><em>"Where do you live?" → She asked where I lived.</em></li>
+    <li><strong>Wh-question:</strong> asked + wh + S + V (không đảo)<br><em>"Where do you live?" → She asked where I lived.</em></li>
     <li><strong>Command:</strong> told + O + to V<br><em>"Sit down!" → She told me to sit down.</em></li>
     <li><strong>Request:</strong> asked + O + to V<br><em>"Please help me." → He asked me to help him.</em></li>
     <li><strong>Negative:</strong> told + O + not to V<br><em>"Don't run!" → She told them not to run.</em></li>
@@ -93,13 +93,13 @@
   </div>
 
   <div class="grid" style="margin-top:14px">
-    <div class="card"><h2>Loi hay gap</h2><ul><li>Quen lui thi.</li><li>Khong doi dai tu (I → he/she).</li><li>Quen doi trang tu thoi gian (today → that day).</li><li>Giu nguyen dau ngoac kep nhu cau truc tiep.</li><li>Dao ngu trong reported questions: Where did I live (SAI) → where I lived.</li></ul></div>
-    <div class="card"><h2>Vi sao quan trong</h2><ul><li>Rat quan trong cho reading comprehension va writing.</li><li>Giup ban ke lai thong tin mot cach tu nhien.</li><li>La nen cho cau gian tiep nang cao.</li><li>Hay gap trong IELTS Listening khi ke lai noi dung.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Lam quiz</a><a class="btn secondary" href="doc-hieu.html">Xem doc hieu</a></div></div>
+    <div class="card"><h2>Lỗi hay gặp</h2><ul><li>Quên lùi thì.</li><li>Không đổi đại từ (I → he/she).</li><li>Quên đổi trạng từ thời gian (today → that day).</li><li>Giữ nguyên dấu ngoặc kép như câu trực tiếp.</li><li>Đảo ngữ trong reported questions: Where did I live (SAI) → where I lived.</li></ul></div>
+    <div class="card"><h2>Vì sao module này quan trọng</h2><ul><li>Rất quan trọng cho reading comprehension và writing.</li><li>Giúp bạn kể lại thông tin một cách tự nhiên.</li><li>Là nền cho câu gián tiếp nâng cao.</li><li>Hay gặp trong IELTS Listening khi kể lại nội dung.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Làm quiz</a><a class="btn secondary" href="doc-hieu.html">Xem đọc hiểu</a></div></div>
   </div>
 
   <!-- SENTENCE TRANSFORM -->
   <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">✍️ Chuyển sang Reported Speech</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Chuyển sang Reported Speech</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Viết lại câu sang reported speech. Nhấn "Kiểm tra" để xem đáp án.</p>
   <div id="tfBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -111,7 +111,7 @@
 
   <!-- FILL-IN-BLANK TIME WORDS -->
   <div style="margin-top:18px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">🔄 Đổi từ chỉ thời gian</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Đổi từ chỉ thời gian</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Điền từ đúng khi chuyển sang reported speech.</p>
   <div id="twBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -120,7 +120,7 @@
   <div id="twScore" style="text-align:center;margin-top:12px;font-size:14px;color:var(--accent)"></div>
   </div>
 
-  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">📝 Quiz Tuong thuat</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
+  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz Tường thuật</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
 </div>
 <script>
 // SENTENCE TRANSFORM

@@ -153,7 +153,7 @@ function startQuiz(){
   qIdx=0;qOk=0;qTot=10;nextQ();
 }
 function nextQ(){
-  if(qIdx>=qTot){document.getElementById("qSentence").textContent=qOk+"/"+qTot+" dung!";document.getElementById("qOpts").innerHTML="";document.getElementById("qFb").textContent="Bam Bat dau Quiz de thu lai";return;}
+  if(qIdx>=qTot){document.getElementById("qSentence").textContent=qOk+"/"+qTot+" dung!";document.getElementById("qOpts").innerHTML="";document.getElementById("qFb").textContent="Bam Bắt đầu Quiz de thu lai";return;}
   var w=qItems[qIdx];var useA=Math.random()>0.5;
   var sentence=useA?w.a_ex:w.b_ex;var correct=useA?w.a:w.b;var wrong=useA?w.b:w.a;
   var blank=sentence.replace(new RegExp(correct,"gi"),"______");

@@ -130,6 +130,10 @@
 .td-when{color:var(--text3);font-style:italic;font-size:11px}
 .tense-link{color:var(--accent);text-decoration:none;font-size:11px}
 .tense-link:hover{text-decoration:underline}
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr}
+  .sidebar{display:none}
+}
 @media(max-width:500px){
   .content{padding:16px 12px}
 }
@@ -1280,39 +1284,37 @@ function setActive(el){
 }
 
 function checkQuiz(id, btn, type, msg) {
-  const container = btn.closest('.quiz-mini');
+  const container = btn.closest('.quiz-mini') || btn.closest('.quiz-box');
+  if(!container) return;
   const opts = container.querySelectorAll('.quiz-opt');
   opts.forEach(o => o.disabled = true);
   btn.classList.add(type);
-  const result = document.getElementById(id+'-result');
-  result.textContent = (type==='correct'?'• ':'• ') + msg;
-  result.className = 'quiz-result show ' + (type==='correct'?'ok':'no');
+  // Tìm result element: quiz-mini dùng id+'-result', quiz-box dùng id+'-fb'
+  const result = document.getElementById(id+'-result') || document.getElementById(id+'-fb');
+  if(result){
+    result.textContent = '• ' + msg;
+    result.className = (result.className.replace(/\bshow\b|\bok\b|\bno\b/g,'').trim()) + ' show ' + (type==='correct'?'ok':'no');
+  }
   const nextBtn = document.getElementById(id+'-next');
-  nextBtn.classList.add('show');
+  if(nextBtn) nextBtn.classList.add('show');
+  // Bug #4 fix: award XP khi quiz đúng
+  if(type === 'correct' && typeof addXP === 'function') addXP(5, 'Quiz ngữ pháp đúng');
 }
 
 function resetQuiz(id) {
   const container = document.getElementById(id);
+  if(!container) return;
   container.querySelectorAll('.quiz-opt').forEach(o=>{
     o.disabled=false;
     o.classList.remove('correct','wrong');
   });
-  document.getElementById(id+'-result').className='quiz-result';
-  document.getElementById(id+'-next').classList.remove('show');
+  var result = document.getElementById(id+'-result') || document.getElementById(id+'-fb');
+  if(result) result.className = result.className.replace(/\bshow\b|\bok\b|\bno\b/g,'').trim();
+  var nextBtn = document.getElementById(id+'-next');
+  if(nextBtn) nextBtn.classList.remove('show');
 }
 
-// Update streak
-const today = new Date().toDateString();
-let data = JSON.parse(localStorage.getItem('ee_streak')||'{"count":0,"lastVisit":"","days":[]}');
-if(data.lastVisit!==today){
-  const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
-  if(data.lastVisit===yesterday.toDateString()){data.count++}else{data.count=1}
-  data.lastVisit=today;
-  if(!data.days)data.days=[];
-  data.days.push(today);
-  if(data.days.length>7)data.days=data.days.slice(-7);
-  localStorage.setItem('ee_streak',JSON.stringify(data));
-}
+
 
 // Active sidebar on scroll
 const lessons = document.querySelectorAll('.lesson[id]');
@@ -1336,8 +1338,9 @@ function speakTTS(text) {
   speechSynthesis.speak(u);
 }
 
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
+// Bug #1 fix: streak logic đã có trong gamification.js — xóa bỏ duplicate ở đây
+// (gamification.js load sau sẽ tự cập nhật streak)
+
 </script>
 <script>
 // Collapsible sidebar
@@ -1392,19 +1395,9 @@ function speakTTS(text) {
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+
+<!-- page-transition-js removed: common.js handles this -->
+
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

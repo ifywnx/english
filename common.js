@@ -64,24 +64,37 @@
   });
 })();
 
-// Nav dropdown toggle
-function toggleDrop(el){
-  var drop=el.closest('.nav-drop');
-  var wasOpen=drop.classList.contains('open');
-  document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
-  if(!wasOpen) drop.classList.add('open');
+// Nav dropdown toggle — now defined in nav.js
+// Fallback in case nav.js hasn't loaded yet
+if(typeof window.toggleDrop === 'undefined'){
+  window.toggleDrop = function(el){
+    var drop=el.closest('.nav-drop');
+    var wasOpen=drop.classList.contains('open');
+    document.querySelectorAll('.nav-drop.open').forEach(function(d){d.classList.remove('open')});
+    if(!wasOpen) drop.classList.add('open');
+  };
 }
 
-// Back to top + reading progress (merged, rAF-throttled)
+// Back to top + reading progress + bottom nav hide (merged into single scroll listener)
 var _scrollTicking = false;
+var _lastScrollY = 0;
 window.addEventListener('scroll',function(){
   if(!_scrollTicking){
     requestAnimationFrame(function(){
       var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+      // Back to top button
       var btn=document.getElementById('backTop');
       if(btn){if(st>400)btn.classList.add('show');else btn.classList.remove('show');}
+      // Reading progress bar
       var bar=document.getElementById('readProgress');
       if(bar&&h>0)bar.style.width=Math.min(100,st/h*100)+'%';
+      // Bottom nav hide/show on scroll
+      var bnav=document.querySelector('.mob-bottom-nav');
+      if(bnav){
+        if(st>_lastScrollY&&st>100)bnav.classList.add('ee-hidden');
+        else bnav.classList.remove('ee-hidden');
+      }
+      _lastScrollY=st;
       _scrollTicking=false;
     });
     _scrollTicking=true;
@@ -112,33 +125,34 @@ window.addEventListener('scroll',function(){
 
   // --- Bottom Nav (mobile only) ---
   if (!document.querySelector('.mob-bottom-nav')) {
-    var shortNavOrder = ['index.html', 'ngu-phap.html', 'tu-vung.html', 'bai-tap.html'];
+    var shortNavItems = window.EE_SHORT_NAV_ITEMS || [
+      {href:'index.html', icon:'home', label:'Trang chủ'},
+      {href:'ngu-phap.html', icon:'book-open', label:'Ngữ pháp'},
+      {href:'tu-vung.html', icon:'pencil', label:'Từ vựng'},
+      {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'},
+      {href:'lo-trinh-hoc.html', icon:'map', label:'Lộ trình'}
+    ];
     var lordiconMap = {
       'home':'https://cdn.lordicon.com/wmwqvixz.json',
       'book-open':'https://cdn.lordicon.com/wxnxiano.json',
       'pencil':'https://cdn.lordicon.com/vdjwmfqs.json',
-      'help-circle':'https://cdn.lordicon.com/aycieyht.json'
+      'help-circle':'https://cdn.lordicon.com/aycieyht.json',
+      'map':'https://cdn.lordicon.com/ofwpzftr.json'
     };
-    var bnItems = [{href:'index.html', icon:'home', label:'Trang chủ'}];
-    if (window.EE_NAV_FLAT && window.EE_NAV_FLAT.length) {
-      shortNavOrder.forEach(function(href){
-        if (href === 'index.html') return;
-        for (var i = 0; i < window.EE_NAV_FLAT.length; i++) {
-          if (window.EE_NAV_FLAT[i].href === href) {
-            bnItems.push({href: href, icon: window.EE_NAV_FLAT[i].icon, label: window.EE_NAV_FLAT[i].text});
-            break;
+    var bnItems = [];
+    shortNavItems.forEach(function(item){
+      if(item.href === 'index.html'){
+        bnItems.push({href:item.href, icon:'home', label:item.label});
+      } else {
+        var found = null;
+        if(window.EE_NAV_FLAT){
+          for(var i=0;i<window.EE_NAV_FLAT.length;i++){
+            if(window.EE_NAV_FLAT[i].href===item.href){found=window.EE_NAV_FLAT[i];break;}
           }
         }
-      });
-    }
-    if (!bnItems.length) {
-      bnItems = [
-        {href:'index.html', icon:'home', label:'Trang chủ'},
-        {href:'ngu-phap.html', icon:'book-open', label:'Ngữ pháp'},
-        {href:'tu-vung.html', icon:'pencil', label:'Từ vựng'},
-        {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'}
-      ];
-    }
+        bnItems.push({href:item.href, icon:found?found.icon:item.icon, label:item.label});
+      }
+    });
     var shortLabels = {'Ngữ pháp nền tảng':'Ngữ pháp', 'Học từ vựng':'Học từ vựng', 'Bài tập trắc nghiệm':'Bài tập'};
     var bnHtml = '<div class="mob-bottom-nav"><div class="mob-bottom-nav-inner">';
     bnItems.forEach(function(item){
@@ -191,22 +205,7 @@ window.addEventListener('scroll',function(){
     document.body.appendChild(dDiv.firstElementChild);
   }
 
-  // --- Scroll: hide/show bottom nav ---
-  var nav = document.querySelector('.mob-bottom-nav');
-  if (!nav) return;
-  var lastY = 0, ticking = false;
-  window.addEventListener('scroll', function(){
-    if (!ticking) {
-      requestAnimationFrame(function(){
-        var y = window.scrollY;
-        if (y > lastY && y > 100) nav.classList.add('ee-hidden');
-        else nav.classList.remove('ee-hidden');
-        lastY = y;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, {passive: true});
+  // Scroll hide/show for bottom nav is now handled by the merged scroll listener above
 })();
 
 
@@ -577,9 +576,7 @@ window.addEventListener('scroll',function(){
       });
     });
   }
-  PAGES.push(
-    {title:'Động từ khuyết thiếu',desc:'Modal verbs: can, must, should...',url:'dong-tu-khuyet-thieu.html',tags:'modal verbs dong tu khuyet thieu'}
-  );
+  // Tiến độ and Sổ tay are not in EE_NAV_FLAT, add manually
   PAGES.push(
     {title:'Tiến độ',desc:'Theo dõi streak, XP, và tiến trình học',url:'tien-do.html',tags:'progress tien do streak xp'},
     {title:'Sổ tay từ vựng',desc:'Lưu các từ đã bôi đen để ôn lại',url:'so-tay.html',tags:'notebook so tay tu vung luu tu'}

@@ -136,11 +136,11 @@
   </div>
 
   <div class="section">
-    <h2>Thu thach hom nay</h2>
-    <div class="sub">Moi ngay 1 cau hoi moi — quay lai hang ngay de duy tri streak!</div>
+    <h2>Thử thách hôm nay</h2>
+    <div class="sub">Mỗi ngày 1 câu hỏi mới — quay lại hàng ngày để duy trì streak!</div>
     <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
-      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;font-size:14px">Streak: <strong id="streakNum" style="color:var(--accent);font-size:20px">0</strong> ngay</div>
-      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;font-size:14px">Ngay: <strong id="dayNum" style="color:var(--accent2)">1</strong>/30</div>
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;font-size:14px">Streak: <strong id="streakNum" style="color:var(--accent);font-size:20px">0</strong> ngày</div>
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:12px 18px;font-size:14px">Ngày: <strong id="dayNum" style="color:var(--accent2)">1</strong>/30</div>
     </div>
     <div id="challengeBox" style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px"></div>
   </div>
@@ -152,9 +152,9 @@
   </div>
 
   <div class="cta-row" style="margin-top:14px">
-    <a class="cta" href="bai-tap.html">Lam quiz tong hop</a>
-    <a class="cta secondary" href="on-tap-lap-lai.html">On tap lap lai</a>
-    <a class="cta secondary" href="tu-vung.html">On tu vung</a>
+    <a class="cta" href="bai-tap.html">Làm quiz tổng hợp</a>
+    <a class="cta secondary" href="on-tap-lap-lai.html">Ôn tập lặp lại</a>
+    <a class="cta secondary" href="tu-vung.html">Ôn từ vựng</a>
   </div>
 </div>
 <script>
@@ -175,7 +175,7 @@ var CH=[
 {type:'grammar',q:"'He denied ___ the window.' — dien gi?",opts:["break","to break","breaking","broke"],ans:2,exp:"deny + V-ing: denied breaking"},
 {type:'vocab',q:"'Inevitable' nghia la?",opts:["Co the tranh","Khong the tranh khoi","Bat ngo","Tam thoi"],ans:1,exp:"Inevitable = khong the tranh khoi"},
 {type:'grammar',q:"'___ the rain, we went out.' — chon gi?",opts:["Although","Despite","Because","So"],ans:1,exp:"Despite + N/V-ing: Despite the rain"},
-{type:'vocab',q:"'Elaborate' (verb) nghia la?",opts:["Rut gon","Giai thich chi tiet","Xoa bo","Dong y"],ans:1,exp:"Elaborate = trinh bay chi tiet hon"},
+{type:'vocab',q:"'Elaborate' (verb) nghia la?",opts:["Rut gon","Giải thích chi tiet","Xoa bo","Dong y"],ans:1,exp:"Elaborate = trinh bay chi tiet hon"},
 {type:'grammar',q:"'I'm used to ___ early.' — dien gi?",opts:["wake","waking","woke","woken"],ans:1,exp:"be used to + V-ing = quen voi viec gi"},
 {type:'vocab',q:"'Phenomenon' so nhieu la gi?",opts:["Phenomenons","Phenomenas","Phenomena","Phenomeni"],ans:2,exp:"Phenomenon -> phenomena (so nhieu bat quy tac tu goc Greek)"},
 {type:'grammar',q:"'She asked me ___ help her.' — dien gi?",opts:["to","for","that","if"],ans:0,exp:"ask someone to do something"},
@@ -183,7 +183,7 @@ var CH=[
 {type:'grammar',q:"'Not only ___ smart, but also hardworking.'",opts:["she is","is she","she was","does she"],ans:1,exp:"Not only + dao ngu: Not only is she..."},
 {type:'vocab',q:"'Ambiguous' nghia la?",opts:["Ro rang","Mo ho","Chinh xac","Tuyet voi"],ans:1,exp:"Ambiguous = mo ho, nhieu nghia"},
 {type:'grammar',q:"'Had I known, I ___ come.'",opts:["will","would","would have","had"],ans:2,exp:"Dao ngu If type 3: Had I known = If I had known -> would have V3"},
-{type:'vocab',q:"'Prioritize' nghia la?",opts:["Bo qua","Uu tien","Hoan thanh","Phan doi"],ans:1,exp:"Prioritize = uu tien, sap xep thu tu uu tien"},
+{type:'vocab',q:"'Prioritize' nghia la?",opts:["Bo qua","Uu tien","Hoàn thành","Phan doi"],ans:1,exp:"Prioritize = uu tien, sap xep thu tu uu tien"},
 {type:'grammar',q:"'It's high time we ___ .' — dien gi?",opts:["leave","left","leaving","to leave"],ans:1,exp:"It's high time + past simple = da den luc phai..."},
 {type:'vocab',q:"'Empirical' nghia la?",opts:["Ly thuyet","Dua tren thuc nghiem","Cam tinh","Ngau nhien"],ans:1,exp:"Empirical = dua tren thuc nghiem, quan sat thuc te"},
 {type:'grammar',q:"'She ___ be at home. Her car is there.'",opts:["can","must","should","might"],ans:1,exp:"Must = chac chan (suy luan logic)"},
@@ -203,7 +203,7 @@ document.getElementById('streakNum').textContent=streak;
 
 function renderChallenge(){
   var c=CH[todayIdx];
-  var typeLabel=c.type==='vocab'?'Tu vung':'Ngu phap';
+  var typeLabel=c.type==='vocab'?'Từ vựng':'Ngữ pháp';
   var h='<div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);margin-bottom:8px">'+typeLabel+'</div>';
   h+='<div style="font-size:18px;margin-bottom:16px;line-height:1.5">'+c.q+'</div>';
   h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">';
@@ -234,7 +234,7 @@ var QZ=[
 {q:"'Phenomenon' so nhieu la gi?",opts:["Phenomenons","Phenomena","Phenomenas","Phenomenies"],ans:1,exp:"Greek origin: phenomenon -> phenomena (giong criterion -> criteria)"}
 ];
 var qI=0,qS=0;
-function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Cau dung<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Lam lai</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Cau '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Diem: '+qS+'/'+qI;}
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
 function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
 renderQz();
 </script>

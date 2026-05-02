@@ -194,7 +194,7 @@
 
   <!-- SEARCH -->
   <div class="search-wrap">
-    <input class="search-big" id="searchInput" type="text" placeholder="Gõ từ rồi nhấn Enter để tra..." oninput="debounceLocal()" onkeydown="handleSearchKey(event)" autocomplete="off" autofocus>
+    <input class="search-big" id="searchInput" type="text" placeholder="Gõ từ rồi nhấn Enter để tra..." oninput="debounceLocal()" onkeydown="handleSearchKey(event)" autocomplete="off">
     <span class="search-icon"><i data-lucide="search" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i></span>
     <div id="suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;margin-top:4px;background:var(--card);border:1px solid var(--border);border-radius:12px;max-height:260px;overflow-y:auto;z-index:50;box-shadow:0 12px 40px rgba(0,0,0,0.4)"></div>
   </div>
@@ -247,7 +247,10 @@
   <!-- WORD OF THE DAY -->
   <div class="wod-card" id="wodCard">
     <div class="wod-label"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Từ của ngày hôm nay</div>
-    <div class="wod-word" id="wodWord" onclick="lookupFromWod()"></div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="wod-word" id="wodWord" onclick="lookupFromWod()"></div>
+      <button class="speak-btn" id="wodSpeakBtn" title="Nghe phát âm" style="flex-shrink:0">▶</button>
+    </div>
     <div class="wod-pron" id="wodPron"></div>
     <div class="wod-vi" id="wodVi"></div>
     <div class="wod-ex" id="wodEx"></div>
@@ -528,12 +531,28 @@ const WOD_LIST = [
 ];
 
 let searchHistory = JSON.parse(localStorage.getItem('ee_dict_history')||'[]');
-let savedWords = JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
+// FIX #6: Sync with ee_notebook — use ee_notebook as single source of truth
+let savedWords = (function(){
+  var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  var sw = JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
+  // Merge: notebook wins, add any from saved_words not in notebook
+  var merged = [...nb];
+  sw.forEach(function(s){
+    if(!merged.some(function(m){return m.word===s.word;})) merged.push(s);
+  });
+  // Save merged back to both keys
+  localStorage.setItem('ee_notebook', JSON.stringify(merged));
+  localStorage.setItem('ee_saved_words', JSON.stringify(merged));
+  return merged;
+})();
 let currentWord = '';
 
 // Quick search hints
-document.getElementById('searchHint').innerHTML += QUICK_WORDS.map(w=>`
-  <span class="hint-chip" onclick="lookupWord('${w}')">${w}</span>`).join('');
+document.getElementById('searchHint').innerHTML += QUICK_WORDS.map(function(w){
+  return '<span class="hint-chip" onclick="lookupWord(\'' + w.replace(/'/g,"\\'") + '\')">' + w + '</span>';
+}).join('');
+// FIX #2: Only autofocus on desktop
+if(window.innerWidth > 900) document.getElementById('searchInput').focus();
 
 // Word of the day
 const doy = Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
@@ -543,6 +562,8 @@ document.getElementById('wodPron').textContent = wod.pron;
 document.getElementById('wodVi').textContent = wod.vi;
 document.getElementById('wodEx').textContent = wod.ex;
 function lookupFromWod() { lookupWord(wod.word); }
+// WOD speak button
+document.getElementById('wodSpeakBtn').addEventListener('click', function(){ speakTTS(wod.word); });
 
 let _debounceTimer=null;
 let _abortCtrl=null;
@@ -559,7 +580,7 @@ function debounceLocal(){
     showSuggestions(q);
     if(DICT[q]){
       currentWord=q;addHistory(q);renderResult(q,DICT[q],false);
-      if(typeof addXP==='function'){var gs=getGameState();gs.wordsLearned=(gs.wordsLearned||0)+1;saveGameState(gs);addXP(5,'Tra từ: '+q);}
+      // Bug #1 fix: XP chỉ award trong lookupWord(), không award ở đây
     }
   },200);
 }
@@ -651,12 +672,12 @@ async function lookupWord(word) {
       addXP(5,'Tra từ: '+word);
     }
     
-    // Auto-translate meanings to VN
-    for(let i=0; i<Math.min(entry.meanings.length,3); i++){
-      const viText = await translateToVi(entry.meanings[i].enDef);
+    // Bug #2 fix: Chỉ dịch nghĩa đầu tiên để tiết kiệm API quota (MyMemory 1000 req/ngày)
+    if(entry.meanings.length > 0){
+      const viText = await translateToVi(entry.meanings[0].enDef);
       if(viText){
-        entry.meanings[i].vi = viText;
-        const viEl = document.querySelectorAll('.m-vi')[i];
+        entry.meanings[0].vi = viText;
+        const viEl = document.querySelectorAll('.m-vi')[0];
         if(viEl) viEl.textContent = viText;
       }
     }
@@ -669,7 +690,7 @@ async function lookupWord(word) {
     const nf = document.getElementById('notFound');
     nf.style.display='block';
     if(close.length) {
-      nf.innerHTML=`Không tìm thấy "<strong>${word}</strong>". Thử: ${close.slice(0,4).map(w=>`<span class="hist-item" onclick="lookupWord('${w}')" style="cursor:pointer">${w}</span>`).join(' ')}`;
+      nf.innerHTML='Không tìm thấy "<strong>'+word+'</strong>". Thử: '+close.slice(0,4).map(function(w){return '<span class="hist-item" onclick="lookupWord(\''+w.replace(/'/g,"\\\'")+'\')">'+w+'</span>';}).join(' ');
     } else {
       nf.innerHTML=`Không tìm thấy "<strong>${word}</strong>". Kiểm tra chính tả hoặc thử từ khác.`;
     }
@@ -689,15 +710,16 @@ function parseApiResponse(data) {
   const audioUrl = (phonetics.find(p=>p.audio && p.audio.includes('-us')))?.audio 
     || (phonetics.find(p=>p.audio && p.audio.length>0))?.audio || '';
   
-  const types = [...new Set(d.meanings.map(m=>({noun:'n',verb:'v',adjective:'adj',adverb:'adv'}[m.partOfSpeech]||m.partOfSpeech)))];
-  const meanings = d.meanings.flatMap(m=>m.definitions.slice(0,3).map(def=>({
+  const types = [...new Set((d.meanings || []).map(m=>({noun:'n',verb:'v',adjective:'adj',adverb:'adv'}[m.partOfSpeech]||m.partOfSpeech)))];
+  // Bug #4 fix: handle missing meanings/definitions
+  const meanings = (d.meanings || []).flatMap(m=>(m.definitions||[]).slice(0,3).map(def=>({
     tag: m.partOfSpeech,
-    vi: def.definition,
-    enDef: def.definition,
+    vi: def.definition || '',
+    enDef: def.definition || '',
     examples: def.example ? [{en:def.example, vi:''}] : []
   }))).slice(0,6);
-  const synonyms = d.meanings.flatMap(m=>m.synonyms||[]).slice(0,8);
-  const antonyms = d.meanings.flatMap(m=>m.antonyms||[]).slice(0,6);
+  const synonyms = (d.meanings || []).flatMap(m=>m.synonyms||[]).slice(0,8);
+  const antonyms = (d.meanings || []).flatMap(m=>m.antonyms||[]).slice(0,6);
   return { pron:phonetic, types, meanings, synonyms, antonyms, related:[], phrases:[], audioUrl };
 }
 
@@ -720,7 +742,9 @@ async function translateToVi(text) {
 }
 
 function buildBlackenMeta(word, entry) {
-  var meta = inferDictionaryMeta(word, entry);
+  // Bug #5 fix: cache inferDictionaryMeta vào entry.meta
+  if(!entry.meta) entry.meta = inferDictionaryMeta(word, entry);
+  var meta = entry.meta;
   var bestExample = (entry.meanings||[]).flatMap(function(m){ return m.examples || []; }).find(function(ex){ return ex && ex.en; }) || {en:'',vi:''};
   return {
     word: word,
@@ -763,14 +787,16 @@ function renderResult(word, e, fromApi=false) {
   const typeLabels = {n:'Danh từ (N)',v:'Động từ (V)',adj:'Tính từ (Adj)',adv:'Trạng từ (Adv)',phrase:'Cụm từ'};
   const chipClass = {n:'chip-n',v:'chip-v',adj:'chip-adj',adv:'chip-adv',phrase:'chip-phrase'};
   const audioUrl = e.audioUrl || '';
-  const meta = e.meta || inferDictionaryMeta(word, e);
+  // Bug #5 fix: cache và reuse inferDictionaryMeta
+  if(!e.meta) e.meta = inferDictionaryMeta(word, e);
+  const meta = e.meta;
   const bestExample = e.meanings.flatMap(function(m){ return m.examples || []; }).find(function(ex){ return ex && ex.en; });
 
   const rc = document.getElementById('resultCard');
   rc.innerHTML = `
     <div class="rc-header">
       <div style="display:flex;align-items:flex-start;gap:12px;flex:1">
-        <button class="speak-btn" onclick="speak('${word}','${audioUrl}')" title="Nghe phát âm">• </button>
+        <button class="speak-btn" id="speakMainBtn" data-word="${word}" data-audio="${(audioUrl||'')}" title="Nghe phát âm">▶</button>
         <div style="min-width:0;flex:1">
           <div class="rc-word">${word}</div>
           <div class="rc-pron">${e.pron}</div>
@@ -782,7 +808,7 @@ function renderResult(word, e, fromApi=false) {
         </div>
       </div>
       <div class="rc-actions">
-        <button class="save-btn ${isSaved?'saved':''}" id="saveBtn" onclick="toggleSave('${word}')">
+        <button class="save-btn ${isSaved?'saved':''}" id="saveBtn" onclick="toggleSave('${word.replace(/'/g,"\\'")}')">
           ${isSaved?'• Đã lưu':'+ Lưu từ'}
         </button>
       </div>
@@ -824,20 +850,27 @@ function renderResult(word, e, fromApi=false) {
     ${e.synonyms.length?`
     <div class="related-section">
       <div class="rs-title">Từ đồng nghĩa</div>
-      <div class="rs-words">${e.synonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w}')">${w}</span>`).join('')}</div>
+      <div class="rs-words">${e.synonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w.replace(/'/g,"\\\'")}')">${w}</span>`).join('')}</div>
     </div>`:''}
     ${e.antonyms.length?`
     <div class="related-section">
       <div class="rs-title">Từ trái nghĩa</div>
-      <div class="rs-words">${e.antonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w}')">${w}</span>`).join('')}</div>
+      <div class="rs-words">${e.antonyms.map(w=>`<span class="rs-chip" onclick="lookupWord('${w.replace(/'/g,"\\\'")}')">${w}</span>`).join('')}</div>
     </div>`:''}
     ${e.related&&e.related.length?`
     <div class="related-section">
       <div class="rs-title">Từ liên quan</div>
-      <div class="rs-words">${e.related.map(w=>`<span class="rs-chip" onclick="lookupWord('${w.split(' ')[0]}')">${w}</span>`).join('')}</div>
+      <div class="rs-words">${e.related.map(w=>`<span class="rs-chip" onclick="lookupWord('${w.split(' ')[0].replace(/'/g,"\\\'")}')">${w}</span>`).join('')}</div>
     </div>`:''}
   `;
   rc.classList.add('show');
+  // Bug #3 fix: bind speak button với addEventListener thay vì inline onclick
+  var speakMainBtn = document.getElementById('speakMainBtn');
+  if(speakMainBtn){
+    speakMainBtn.addEventListener('click', function(){
+      speak(this.dataset.word, this.dataset.audio);
+    });
+  }
   rc.scrollIntoView({behavior:'smooth',block:'nearest'});
   document.getElementById('wodCard').style.display='none';
 }
@@ -866,7 +899,9 @@ function toggleSave(word) {
       document.getElementById('saveBtn').classList.add('saved');
     }
   }
+  // FIX #6: Sync both keys
   localStorage.setItem('ee_saved_words', JSON.stringify(savedWords));
+  localStorage.setItem('ee_notebook', JSON.stringify(savedWords));
   renderSaved();
 }
 
@@ -881,24 +916,45 @@ function renderHistory() {
   const hr = document.getElementById('historyRow');
   if(!searchHistory.length) { hs.style.display='none'; return; }
   hs.style.display='block';
-  hr.innerHTML = searchHistory.map(h=>`<span class="hist-item" onclick="lookupWord('${h}')">${h}</span>`).join('');
+  hr.innerHTML = searchHistory.map(function(h){ return '<span class="hist-item" onclick="lookupWord(\''+h.replace(/'/g,"\\\'")+'\')">'+h+'</span>'; }).join('');
 }
 
 function renderSaved() {
   const grid = document.getElementById('savedGrid');
   document.getElementById('savedCount').textContent = savedWords.length;
   if(!savedWords.length) { grid.innerHTML='<div class="empty-msg">Chưa có từ nào được lưu. Tra từ và bấm "Lưu từ" để thêm vào đây.</div>'; return; }
-  grid.innerHTML = savedWords.map(s=>`
-    <div class="saved-item" onclick="lookupWord('${s.word}')">
-      <div class="si-en">${s.word}</div>
-      <div class="si-pron">${s.pron}</div>
-      <div class="si-vi">${s.vi}</div>
-      <div class="si-vi" style="margin-top:6px;font-size:11px;color:var(--text3)">${s.frequency || ''} · ${s.formality || ''}</div>
-    </div>`).join('');
+  grid.innerHTML = savedWords.map(function(s){
+    var w = (s.word||'').replace(/'/g,"\\'");
+    return '<div class="saved-item" onclick="lookupWord(\''+w+'\')">'+
+      '<div class="si-en">'+s.word+'</div>'+
+      '<div class="si-pron">'+(s.pron||s.ipa||'')+'</div>'+
+      '<div class="si-vi">'+(s.vi||'')+'</div>'+
+      '<div class="si-vi" style="margin-top:6px;font-size:11px;color:var(--text3)">'+(s.frequency||'')+' · '+(s.formality||'')+'</div>'+
+    '</div>';
+  }).join('');
 }
 
+// FIX #5: Replace confirm() with custom themed modal
 function clearSaved() {
-  if(confirm('Xóa tất cả từ đã lưu?')) { savedWords=[]; localStorage.removeItem('ee_saved_words'); renderSaved(); }
+  var overlay = document.createElement('div');
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);z-index:99999;display:flex;align-items:center;justify-content:center';
+  overlay.innerHTML='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:24px;max-width:340px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.4)">'+
+    '<div style="font-family:Fraunces,serif;font-size:18px;margin-bottom:8px;color:var(--text)">Xóa tất cả từ đã lưu?</div>'+
+    '<div style="font-size:13px;color:var(--text3);margin-bottom:20px">Hành động này không thể hoàn tác.</div>'+
+    '<div style="display:flex;gap:8px;justify-content:center">'+
+      '<button id="clearCancel" style="padding:8px 20px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:DM Sans,sans-serif;font-size:13px">Hủy</button>'+
+      '<button id="clearConfirm" style="padding:8px 20px;border-radius:8px;border:none;background:var(--coral);color:#fff;cursor:pointer;font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">Xóa</button>'+
+    '</div></div>';
+  document.body.appendChild(overlay);
+  overlay.querySelector('#clearCancel').addEventListener('click',function(){overlay.remove();});
+  overlay.querySelector('#clearConfirm').addEventListener('click',function(){
+    savedWords=[];
+    localStorage.removeItem('ee_saved_words');
+    localStorage.setItem('ee_notebook','[]');
+    renderSaved();
+    overlay.remove();
+  });
+  overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.remove();});
 }
 
 renderHistory();
@@ -927,38 +983,58 @@ function setLevel(lv,btn){
   btn.classList.add('active');
   renderBrowse();
 }
+// FIX #4: Show loading state when BROWSE data not available
 function renderBrowse(){
+  var grid = document.getElementById('browseGrid');
+  if(typeof BROWSE==='undefined'){
+    grid.innerHTML='<div class="empty-msg"><div class="loading-spinner" style="margin:0 auto 8px"></div>Đang tải danh sách từ...</div>';
+    // Retry after dict-data.js loads
+    setTimeout(renderBrowse, 500);
+    return;
+  }
+  let list=BROWSE;
+  if(curLetter!=='All') list=list.filter(w=>w[0].charAt(0).toUpperCase()===curLetter);
+  if(curLevel!=='All') list=list.filter(w=>w[3]===curLevel);
+  // FIX: Pagination — show max 60 items to prevent lag
+  var PAGE_SIZE = 60;
+  var showing = list.slice(0, PAGE_SIZE);
+  document.getElementById('browseCount').textContent='Hiển thị ' + showing.length + (list.length > PAGE_SIZE ? ' / ' + list.length : '') + ' từ';
+  grid.innerHTML=showing.map(function(w){
+    return '<div class="bw-card" onclick="lookupWord(\''+w[0].replace(/'/g,"\\\'")+'\')">'+
+      '<div class="bw-word">'+w[0]+'</div>'+
+      '<div class="bw-ipa">'+w[1]+'</div>'+
+      '<div class="bw-vi">'+w[2]+'</div>'+
+      '<div class="bw-meta"><span class="bw-lv lv-'+w[3]+'">'+w[3]+'</span><span class="bw-type">'+w[4]+'</span></div>'+
+    '</div>';
+  }).join('')||'<div class="empty-msg">Không có từ nào</div>';
+  // Show "load more" if truncated
+  if(list.length > PAGE_SIZE){
+    grid.innerHTML += '<button onclick="loadMoreBrowse()" style="grid-column:1/-1;padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--accent);cursor:pointer;font-family:DM Sans,sans-serif;font-size:13px;transition:all .15s">Xem thêm '+(list.length-PAGE_SIZE)+' từ</button>';
+  }
+}
+window._browseAll=false;
+function loadMoreBrowse(){ window._browseAll=true; renderBrowseFull(); }
+function renderBrowseFull(){
   if(typeof BROWSE==='undefined')return;
   let list=BROWSE;
   if(curLetter!=='All') list=list.filter(w=>w[0].charAt(0).toUpperCase()===curLetter);
   if(curLevel!=='All') list=list.filter(w=>w[3]===curLevel);
-  document.getElementById('browseCount').textContent=`Hiển thị ${list.length} từ`;
-  document.getElementById('browseGrid').innerHTML=list.map(w=>`
-    <div class="bw-card" onclick="lookupWord('${w[0]}')">
-      <div class="bw-word">${w[0]}</div>
-      <div class="bw-ipa">${w[1]}</div>
-      <div class="bw-vi">${w[2]}</div>
-      <div class="bw-meta"><span class="bw-lv lv-${w[3]}">${w[3]}</span><span class="bw-type">${w[4]}</span></div>
-    </div>`).join('')||'<div class="empty-msg">Không có từ nào</div>';
+  document.getElementById('browseCount').textContent='Hiển thị ' + list.length + ' từ';
+  document.getElementById('browseGrid').innerHTML=list.map(function(w){
+    return '<div class="bw-card" onclick="lookupWord(\''+w[0].replace(/'/g,"\\\'")+'\')">'+
+      '<div class="bw-word">'+w[0]+'</div>'+
+      '<div class="bw-ipa">'+w[1]+'</div>'+
+      '<div class="bw-vi">'+w[2]+'</div>'+
+      '<div class="bw-meta"><span class="bw-lv lv-'+w[3]+'">'+w[3]+'</span><span class="bw-type">'+w[4]+'</span></div>'+
+    '</div>';
+  }).join('')||'<div class="empty-msg">Không có từ nào</div>';
 }
 renderBrowse();
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- FIX #3: Removed duplicate page-transition-js — common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

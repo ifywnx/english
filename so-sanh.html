@@ -49,20 +49,20 @@
     <div class="card">
       <h2>Mini practice</h2>
       <p>Điền dạng đúng: <strong>She is ___ (happy) than her brother.</strong></p>
-      <div class="practice"><textarea placeholder="Viết đáp án của bạn..."></textarea><div class="btn-row"><button class="btn" type="button">Kiểm tra</button><button class="btn secondary" type="button">Xem gợi ý</button></div></div>
+      <div class="practice"><textarea placeholder="Viết đáp án của bạn..."></textarea><div class="btn-row"><button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh đáp án của bạn với gợi ý mẫu bên dưới.')}">Kiểm tra</button><button class="btn secondary" type="button" onclick="alert(' Xem phần gợi ý mẫu ngay bên dưới bài tập.')">Xem gợi ý</button></div></div>
       <div class="practice"><p><strong>Đáp án mẫu:</strong> happier</p><p><strong>Giải thích:</strong> happy kết thúc bằng y → chuyển thành happier.</p></div>
     </div>
   </div>
   <!-- BANG CONG THUC -->
   <div style="margin-top:18px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px;overflow-x:auto">
-    <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Bang cong thuc so sanh</h2>
+    <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Bảng công thức so sánh</h2>
     <table style="width:100%;border-collapse:collapse;font-size:13px">
-    <thead><tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--accent3)">Loai</th><th style="text-align:left;padding:8px;color:var(--accent3)">Cong thuc</th><th style="text-align:left;padding:8px;color:var(--accent3)">Vi du</th></tr></thead>
+    <thead><tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px;color:var(--accent3)">Loại</th><th style="text-align:left;padding:8px;color:var(--accent3)">Công thức</th><th style="text-align:left;padding:8px;color:var(--accent3)">Ví dụ</th></tr></thead>
     <tbody>
-    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Comparative (ngan)</td><td style="padding:8px;color:var(--text2)">adj + <strong>-er</strong> + than</td><td style="padding:8px;color:var(--text2)">She is <strong>taller than</strong> her sister.</td></tr>
-    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Comparative (dai)</td><td style="padding:8px;color:var(--text2)"><strong>more</strong> + adj + than</td><td style="padding:8px;color:var(--text2)">This is <strong>more expensive than</strong> that.</td></tr>
-    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Superlative (ngan)</td><td style="padding:8px;color:var(--text2)"><strong>the</strong> + adj + <strong>-est</strong></td><td style="padding:8px;color:var(--text2)">He is <strong>the tallest</strong> in class.</td></tr>
-    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Superlative (dai)</td><td style="padding:8px;color:var(--text2)"><strong>the most</strong> + adj</td><td style="padding:8px;color:var(--text2)">It was <strong>the most beautiful</strong> sunset.</td></tr>
+    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Comparative (ngắn)</td><td style="padding:8px;color:var(--text2)">adj + <strong>-er</strong> + than</td><td style="padding:8px;color:var(--text2)">She is <strong>taller than</strong> her sister.</td></tr>
+    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Comparative (dài)</td><td style="padding:8px;color:var(--text2)"><strong>more</strong> + adj + than</td><td style="padding:8px;color:var(--text2)">This is <strong>more expensive than</strong> that.</td></tr>
+    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Superlative (ngắn)</td><td style="padding:8px;color:var(--text2)"><strong>the</strong> + adj + <strong>-est</strong></td><td style="padding:8px;color:var(--text2)">He is <strong>the tallest</strong> in class.</td></tr>
+    <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Superlative (dài)</td><td style="padding:8px;color:var(--text2)"><strong>the most</strong> + adj</td><td style="padding:8px;color:var(--text2)">It was <strong>the most beautiful</strong> sunset.</td></tr>
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Equal</td><td style="padding:8px;color:var(--text2)"><strong>as</strong> + adj + <strong>as</strong></td><td style="padding:8px;color:var(--text2)">She is <strong>as tall as</strong> her brother.</td></tr>
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Not equal</td><td style="padding:8px;color:var(--text2)"><strong>not as</strong> + adj + <strong>as</strong></td><td style="padding:8px;color:var(--text2)">He is <strong>not as fast as</strong> she is.</td></tr>
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:8px;color:var(--text2)">Double comparative</td><td style="padding:8px;color:var(--text2)"><strong>The more... the more...</strong></td><td style="padding:8px;color:var(--text2)"><strong>The harder</strong> you work, <strong>the better</strong> you get.</td></tr>
@@ -81,24 +81,24 @@
     <tr style="border-bottom:0.5px solid var(--border)"><td style="padding:6px"><strong>many/much</strong></td><td style="padding:6px">more</td><td style="padding:6px">the most</td></tr>
     <tr><td style="padding:6px"><strong>old</strong></td><td style="padding:6px">older/elder</td><td style="padding:6px">the oldest/eldest</td></tr>
     </table></div>
-    <div class="card"><h2>Quy tac -er/-est</h2><ul>
-    <li>1 am tiet: tall → taller → tallest</li>
-    <li>Ket bang -e: nice → nicer → nicest</li>
-    <li>Ket bang phu am + nguyen am + phu am: big → bigger → biggest</li>
-    <li>Ket bang -y: happy → happier → happiest</li>
-    <li>2+ am tiet: beautiful → more beautiful → most beautiful</li>
-    <li>Ngoai le: fun → more fun (khong dung funner)</li>
+    <div class="card"><h2>Quy tắc -er/-est</h2><ul>
+    <li>1 âm tiết: tall → taller → tallest</li>
+    <li>Kết bằng -e: nice → nicer → nicest</li>
+    <li>Kết bằng phụ âm + nguyên âm + phụ âm: big → bigger → biggest</li>
+    <li>Kết bằng -y: happy → happier → happiest</li>
+    <li>2+ âm tiết: beautiful → more beautiful → most beautiful</li>
+    <li>Ngoại lệ: fun → more fun (không dùng funner)</li>
     </ul></div>
   </div>
 
   <div class="grid" style="margin-top:14px">
-    <div class="card"><h2>Loi hay gap</h2><ul><li>Dung more + adjective ngan: more tall (SAI) → taller.</li><li>Quen the truoc superlative: She is tallest (SAI) → the tallest.</li><li>Double marking: more better (SAI) → better.</li><li>Nham less va fewer: less people (SAI) → fewer people.</li><li>Quen than sau comparative: She is taller me (SAI) → taller than me.</li></ul></div>
-    <div class="card"><h2>Vi sao quan trong</h2><ul><li>Rat hay gap trong writing va speaking.</li><li>Giup dien dat muc do ro rang hon.</li><li>La nen cho cac cau truc nang cao va academic writing.</li><li>IELTS Task 1 can so sanh so lieu rat nhieu.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Lam quiz</a><a class="btn secondary" href="kiem-tra-bai-viet.html">Kiem tra bai viet</a></div></div>
+    <div class="card"><h2>Lỗi hay gặp</h2><ul><li>Dùng more + adjective ngắn: more tall (SAI) → taller.</li><li>Quên the trước superlative: She is tallest (SAI) → the tallest.</li><li>Double marking: more better (SAI) → better.</li><li>Nhầm less và fewer: less people (SAI) → fewer people.</li><li>Quên than sau comparative: She is taller me (SAI) → taller than me.</li></ul></div>
+    <div class="card"><h2>Vì sao module này quan trọng</h2><ul><li>Rất hay gặp trong writing và speaking.</li><li>Giúp diễn đạt mức độ rõ ràng hơn.</li><li>Là nền cho các cấu trúc nâng cao và academic writing.</li><li>IELTS Task 1 cần so sánh số liệu rất nhiều.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Làm quiz</a><a class="btn secondary" href="kiem-tra-bai-viet.html">Kiểm tra bài viết</a></div></div>
   </div>
 
   <!-- FILL-IN-BLANK EXERCISE -->
   <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">✍️ Bài tập: Điền dạng so sánh đúng</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Bài tập: Điền dạng so sánh đúng</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Gõ dạng so sánh đúng của từ trong ngoặc. Nhấn "Kiểm tra" để xem kết quả.</p>
   <div id="fillBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -119,7 +119,7 @@
   <div id="errScore" style="text-align:center;margin-top:12px;font-size:14px;color:var(--accent)"></div>
   </div>
 
-  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">📝 Quiz So sanh</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
+  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz So sanh</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
 </div>
 <script>
 // FILL-IN-BLANK

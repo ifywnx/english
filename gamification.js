@@ -39,16 +39,13 @@ function getNextLevel(xp){
 }
 
 // ==================== ADD XP ====================
+// FIX #1: Streak logic ONLY in DOMContentLoaded init — removed from here
 function addXP(amount, reason){
   const s=getGameState();
   const today=new Date().toDateString();
   
-  // Reset daily XP if new day
+  // Reset daily XP if new day (streak handled in init only)
   if(s.lastDate!==today){
-    // Check streak
-    const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
-    if(s.lastDate===yesterday.toDateString()){s.streak++;}
-    else if(s.lastDate!==today){s.streak=1;}
     s.todayXP=0;
     s.todayChallengeDone=false;
     s.lastDate=today;
@@ -94,20 +91,29 @@ function checkBadges(s){
 }
 
 // ==================== SOUNDS ====================
+// FIX #6: Cache AudioContext — create once, reuse
+let _audioCtx = null;
 const SOUNDS={};
 function initSounds(){
-  // Generate sounds using AudioContext (no external files needed)
-  const ctx=new(window.AudioContext||window.webkitAudioContext)();
+  if(_audioCtx) return; // already initialized
+  try{
+    _audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  }catch(e){return;}
+  const ctx=_audioCtx;
   SOUNDS.correct=()=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.setValueAtTime(523,ctx.currentTime);o.frequency.setValueAtTime(659,ctx.currentTime+0.1);g.gain.setValueAtTime(0.3,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3);o.start(ctx.currentTime);o.stop(ctx.currentTime+0.3);};
   SOUNDS.wrong=()=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='square';o.connect(g);g.connect(ctx.destination);o.frequency.setValueAtTime(200,ctx.currentTime);o.frequency.setValueAtTime(150,ctx.currentTime+0.15);g.gain.setValueAtTime(0.2,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3);o.start(ctx.currentTime);o.stop(ctx.currentTime+0.3);};
   SOUNDS.levelup=()=>{const notes=[523,659,784,1047];notes.forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.setValueAtTime(f,ctx.currentTime+i*0.12);g.gain.setValueAtTime(0.25,ctx.currentTime+i*0.12);g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.12+0.3);o.start(ctx.currentTime+i*0.12);o.stop(ctx.currentTime+i*0.12+0.3);});};
   SOUNDS.badge=()=>{const notes=[784,988,1175];notes.forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.connect(g);g.connect(ctx.destination);o.frequency.setValueAtTime(f,ctx.currentTime+i*0.15);g.gain.setValueAtTime(0.3,ctx.currentTime+i*0.15);g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.15+0.4);o.start(ctx.currentTime+i*0.15);o.stop(ctx.currentTime+i*0.15+0.4);});};
 }
 function playSound(name){
-  try{if(!SOUNDS[name])initSounds();SOUNDS[name]();}catch(e){}
+  try{
+    if(!SOUNDS[name])initSounds();
+    if(SOUNDS[name])SOUNDS[name]();
+  }catch(e){}
 }
 
 // ==================== TOAST ====================
+// FIX #4: Use CSS variables instead of hardcoded dark colors
 function showToast(title,sub,color){
   let c=document.getElementById('ee-toast-container');
   if(!c){
@@ -116,13 +122,14 @@ function showToast(title,sub,color){
     document.body.appendChild(c);
   }
   const t=document.createElement('div');
-  t.style.cssText='background:rgba(11,26,30,0.95);backdrop-filter:blur(20px);border:1px solid '+(color||'var(--accent)')+';border-radius:12px;padding:12px 18px;min-width:200px;animation:toastIn .3s ease-out;box-shadow:0 8px 32px rgba(0,0,0,0.4)';
+  t.style.cssText='background:var(--card,#12282e);backdrop-filter:blur(20px);border:1px solid '+(color||'var(--accent)')+';border-radius:12px;padding:12px 18px;min-width:200px;animation:toastIn .3s ease-out;box-shadow:0 8px 32px rgba(0,0,0,0.4)';
   t.innerHTML='<div style="font-size:14px;font-weight:500;color:'+(color||'var(--accent)')+'">'+title+'</div>'+(sub?'<div style="font-size:12px;color:var(--text3);margin-top:2px">'+sub+'</div>':'');
   c.appendChild(t);
   setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(100px)';t.style.transition='all .3s';setTimeout(()=>t.remove(),300);},2500);
 }
 
 // ==================== CONFETTI ====================
+// FIX #7: Spawn from top, fall down naturally
 function showConfetti(){
   const canvas=document.createElement('canvas');
   canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99998';
@@ -130,13 +137,29 @@ function showConfetti(){
   const ctx=canvas.getContext('2d');
   canvas.width=window.innerWidth;canvas.height=window.innerHeight;
   const pieces=[];const colors=['#64d8a5','#a78bfa','#f0c27a','#f4845f','#6bcb77','#ff8a80'];
-  for(let i=0;i<80;i++){pieces.push({x:canvas.width/2+Math.random()*200-100,y:canvas.height/2,vx:(Math.random()-0.5)*15,vy:Math.random()*-18-5,size:Math.random()*8+4,color:colors[Math.floor(Math.random()*colors.length)],rot:Math.random()*360,rotV:(Math.random()-0.5)*10});}
+  for(let i=0;i<80;i++){
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: -10 - Math.random() * 40,
+      vx: (Math.random()-0.5) * 6,
+      vy: Math.random() * 3 + 2,
+      size: Math.random()*8+4,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      rot: Math.random()*360,
+      rotV: (Math.random()-0.5)*10
+    });
+  }
   let frame=0;
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    pieces.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=0.4;p.rot+=p.rotV;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.globalAlpha=Math.max(0,1-frame/60);ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);ctx.restore();});
+    pieces.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=0.12;p.rot+=p.rotV;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color;ctx.globalAlpha=Math.max(0,1-frame/80);
+      ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);ctx.restore();
+    });
     frame++;
-    if(frame<80)requestAnimationFrame(animate);else canvas.remove();
+    if(frame<100)requestAnimationFrame(animate);else canvas.remove();
   }
   animate();
 }
@@ -198,6 +221,7 @@ function updateXPBar(){
 
 
 // ==================== DAILY CHALLENGE ====================
+// FIX #5: Expanded from 30 → 60 words to avoid repeating after 1 month
 const DAILY_WORDS=[
   {en:'accomplish',vi:'hoàn thành',ex:'She accomplished all her goals.'},
   {en:'abundant',vi:'dồi dào',ex:'The region has abundant natural resources.'},
@@ -229,6 +253,37 @@ const DAILY_WORDS=[
   {en:'fluctuate',vi:'dao động',ex:'Prices fluctuate throughout the year.'},
   {en:'gratitude',vi:'lòng biết ơn',ex:'Express your gratitude sincerely.'},
   {en:'hypothesis',vi:'giả thuyết',ex:'We need to test this hypothesis.'},
+  // 30 new words added to reach 60
+  {en:'allocate',vi:'phân bổ',ex:'We need to allocate resources wisely.'},
+  {en:'benchmark',vi:'tiêu chuẩn',ex:'This serves as a benchmark for quality.'},
+  {en:'collaborate',vi:'hợp tác',ex:'The teams collaborate on projects.'},
+  {en:'diminish',vi:'giảm bớt',ex:'His influence began to diminish.'},
+  {en:'elaborate',vi:'chi tiết, phức tạp',ex:'She gave an elaborate explanation.'},
+  {en:'facilitate',vi:'tạo điều kiện',ex:'The teacher facilitates learning.'},
+  {en:'generate',vi:'tạo ra',ex:'The project generates significant revenue.'},
+  {en:'implement',vi:'thực hiện',ex:'We will implement the new policy.'},
+  {en:'jeopardize',vi:'gây nguy hiểm',ex:'Don\'t jeopardize your career.'},
+  {en:'knowledgeable',vi:'hiểu biết',ex:'She is very knowledgeable about history.'},
+  {en:'leverage',vi:'tận dụng',ex:'Leverage your strengths effectively.'},
+  {en:'mitigate',vi:'giảm thiểu',ex:'Steps to mitigate the risk were taken.'},
+  {en:'notion',vi:'khái niệm',ex:'The notion of equality is fundamental.'},
+  {en:'optimize',vi:'tối ưu hóa',ex:'We need to optimize our workflow.'},
+  {en:'predominant',vi:'chiếm ưu thế',ex:'English is the predominant language.'},
+  {en:'quantify',vi:'định lượng',ex:'It is hard to quantify happiness.'},
+  {en:'resilient',vi:'kiên cường',ex:'She is incredibly resilient.'},
+  {en:'scrutinize',vi:'xem xét kỹ',ex:'The report was scrutinized carefully.'},
+  {en:'transparent',vi:'minh bạch',ex:'The process should be transparent.'},
+  {en:'undermine',vi:'làm suy yếu',ex:'Rumors can undermine trust.'},
+  {en:'validate',vi:'xác nhận',ex:'We need to validate the results.'},
+  {en:'withstand',vi:'chịu đựng',ex:'The building can withstand earthquakes.'},
+  {en:'yield',vi:'mang lại, nhường',ex:'The investment yields good returns.'},
+  {en:'advocate',vi:'ủng hộ, vận động',ex:'She advocates for children\'s rights.'},
+  {en:'breakthrough',vi:'bước đột phá',ex:'Scientists made a breakthrough discovery.'},
+  {en:'consensus',vi:'sự đồng thuận',ex:'We reached a consensus quickly.'},
+  {en:'deplete',vi:'cạn kiệt',ex:'Natural resources are being depleted.'},
+  {en:'endeavor',vi:'nỗ lực',ex:'It is a worthwhile endeavor.'},
+  {en:'foster',vi:'nuôi dưỡng, thúc đẩy',ex:'We foster creativity in the workplace.'},
+  {en:'groundbreaking',vi:'đột phá',ex:'A groundbreaking research paper.'},
 ];
 
 function getDailyChallenge(){
@@ -247,6 +302,7 @@ function getDailyChallenge(){
 document.addEventListener('DOMContentLoaded',function(){
   const s=getGameState();
   const today=new Date().toDateString();
+  // FIX #1: Streak logic ONLY here — not in addXP()
   if(s.lastDate!==today){
     const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
     if(s.lastDate===yesterday.toDateString()){s.streak++;}
@@ -261,40 +317,64 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   // ==================== AUTO XP FOR INLINE QUIZZES ====================
-  // Watch for quiz score display changes (works with all renderQz quizzes)
+  // FIX #2: Replace setInterval with event-based approach using MutationObserver
   var _lastQuizScore='';
-  setInterval(function(){
-    var scoreEl=document.getElementById('quizScore');
-    if(!scoreEl)return;
-    var txt=scoreEl.textContent||'';
-    if(txt&&txt!==_lastQuizScore&&txt.indexOf('/')>-1){
-      _lastQuizScore=txt;
-      // Extract score from "Điểm: X/Y"
-      var m=txt.match(/(\d+)\/(\d+)/);
-      if(m){
-        var got=parseInt(m[1]),total=parseInt(m[2]);
-        if(got>0&&typeof addXP==='function'){
-          // Only award once per correct answer
-          addXP(5,'Trả lời đúng quiz');
+  var _quizDone=false;
+
+  // Listen for custom events (fired by quiz code)
+  document.addEventListener('ee:quiz-complete', function(e){
+    var detail = e.detail || {};
+    var got = detail.score || 0;
+    var total = detail.total || 0;
+    if(got > 0 && typeof addXP === 'function'){
+      // FIX #3: XP proportional to correct answers
+      addXP(got * 5, 'Trả lời đúng ' + got + '/' + total + ' câu');
+    }
+    var s2 = getGameState();
+    s2.quizCompleted = (s2.quizCompleted || 0) + 1;
+    s2.lessonsCompleted = (s2.lessonsCompleted || 0) + 1;
+    saveGameState(s2);
+    checkBadges(s2);
+  });
+
+  // Fallback: MutationObserver for quizzes that don't fire custom events
+  var quizObserverTarget = document.getElementById('quizScore') || document.getElementById('quizBox');
+  if(quizObserverTarget){
+    var observer = new MutationObserver(function(){
+      // Check quizScore for score display
+      var scoreEl = document.getElementById('quizScore');
+      if(scoreEl){
+        var txt = scoreEl.textContent || '';
+        if(txt && txt !== _lastQuizScore && txt.indexOf('/') > -1){
+          _lastQuizScore = txt;
+          var m = txt.match(/(\d+)\/(\d+)/);
+          if(m){
+            var got = parseInt(m[1]), total = parseInt(m[2]);
+            if(got > 0 && typeof addXP === 'function'){
+              // FIX #3: XP proportional to correct answers
+              addXP(got * 5, 'Trả lời đúng ' + got + '/' + total + ' câu');
+            }
+          }
         }
       }
-    }
-  },600);
-
-  // Also detect quiz completion (score display in quizBox)
-  var _quizDone=false;
-  setInterval(function(){
-    var qb=document.getElementById('quizBox');
-    if(!qb)return;
-    var btn=qb.querySelector('button[onclick*="renderQz"]');
-    if(btn&&!_quizDone){
-      _quizDone=true;
-      var s2=getGameState();
-      s2.quizCompleted=(s2.quizCompleted||0)+1;
-      s2.lessonsCompleted=(s2.lessonsCompleted||0)+1;
-      saveGameState(s2);
-      checkBadges(s2);
-    }
-    if(!btn)_quizDone=false;
-  },800);
+      // Check for quiz completion (Làm lại button)
+      var qb = document.getElementById('quizBox');
+      if(qb){
+        var btn = qb.querySelector('button[onclick*="renderQz"]');
+        if(btn && !_quizDone){
+          _quizDone = true;
+          var s2 = getGameState();
+          s2.quizCompleted = (s2.quizCompleted || 0) + 1;
+          s2.lessonsCompleted = (s2.lessonsCompleted || 0) + 1;
+          saveGameState(s2);
+          checkBadges(s2);
+        }
+        if(!btn) _quizDone = false;
+      }
+    });
+    // Observe both elements if they exist
+    var observeConfig = {childList:true, subtree:true, characterData:true};
+    if(document.getElementById('quizScore')) observer.observe(document.getElementById('quizScore'), observeConfig);
+    if(document.getElementById('quizBox')) observer.observe(document.getElementById('quizBox'), observeConfig);
+  }
 });

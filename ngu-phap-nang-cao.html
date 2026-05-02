@@ -204,6 +204,8 @@
   <a href="#usedto" class="sb-item">Used to / Be used to <span class="sb-band band-6">6.5</span></a>
   <a href="#indefinite" class="sb-item">Đại từ bất định <span class="sb-band band-6">6.0</span></a>
   <a href="#adverbial" class="sb-item">Mệnh đề trạng ngữ <span class="sb-band band-7">7.0</span></a>
+  <a href="#causative" class="sb-item">Causative <span class="sb-band band-7">7.0</span></a>
+  <a href="#sva" class="sb-item">S-V Agreement <span class="sb-band band-6">6.5</span></a>
 
   <div class="sidebar-title">Ngữ pháp IELTS</div>
   <a href="#hedging" class="sb-item">Hedging — Ngôn ngữ dè dặt <span class="sb-band band-7">7.0</span></a>
@@ -1024,6 +1026,104 @@
       </div>
       <div class="qb-fb" id="q-adv-fb"></div>
       <button class="qb-next" id="q-adv-next" onclick="resetQ('q-adv')">Thử lại →</button>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- CAUSATIVE -->
+  <div class="lesson anchor" id="causative">
+    <div class="lesson-header">
+      <div class="lesson-num ln-gold">26</div>
+      <div><div class="lesson-title">Causative — Have / Get something done</div><div class="lesson-sub">Nhờ ai làm gì · Bị làm gì</div></div>
+    </div>
+    <div class="lesson-divider"></div>
+    <div class="band-tag bt-7"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> <i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Band 7.0+</div>
+    <div class="theory">
+      <p><strong>Causative</strong> dùng khi bạn <strong>nhờ/thuê ai làm việc gì cho mình</strong>, hoặc <strong>bị ai làm gì</strong> (không mong muốn). Rất phổ biến trong IELTS Speaking & Writing.</p>
+    </div>
+    <div class="formula">
+      <div class="formula-label">Các cấu trúc Causative</div>
+      <div class="f-row"><span class="f-type">have + O + V3</span><span class="f-eq">I had my car repaired.</span><span class="f-note">Nhờ/thuê ai sửa xe</span></div>
+      <div class="f-row"><span class="f-type">get + O + V3</span><span class="f-eq">I got my hair cut.</span><span class="f-note">= have, nhưng informal hơn</span></div>
+      <div class="f-row"><span class="f-type">have + O + V</span><span class="f-eq">I had him fix it.</span><span class="f-note">Sai/bảo ai làm (active)</span></div>
+      <div class="f-row"><span class="f-type">get + O + to V</span><span class="f-eq">I got him to fix it.</span><span class="f-note">Thuyết phục ai làm</span></div>
+      <div class="f-row"><span class="f-type">make + O + V</span><span class="f-eq">She made me cry.</span><span class="f-note">Ép buộc ai làm</span></div>
+      <div class="f-row"><span class="f-type">let + O + V</span><span class="f-eq">Let me go.</span><span class="f-note">Cho phép ai làm</span></div>
+    </div>
+    <div class="ex-list">
+      <div class="ex-item">
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('I had my laptop repaired yesterday.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> I <span class="hi">had my laptop repaired</span> yesterday.</div>
+        <div class="ex-vi">Tôi đã mang laptop đi sửa hôm qua. (nhờ ai sửa, không tự sửa)</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('She got her nails done before the party.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> She <span class="hi2">got her nails done</span> before the party.</div>
+        <div class="ex-vi">Cô ấy đi làm móng trước bữa tiệc.</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span style="cursor:pointer;font-size:13px" onclick="speakTTS('The teacher made the students rewrite the essay.')"><i data-lucide="volume-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> </span> The teacher <span class="hi3">made the students rewrite</span> the essay.</div>
+        <div class="ex-vi">Giáo viên bắt học sinh viết lại bài luận.</div>
+        <div class="ex-note">→ make + O + V (bare infinitive) = ép buộc</div>
+      </div>
+    </div>
+    <div class="note-box"><strong>Lưu ý quan trọng:</strong><br>• <strong>have/make/let + O + V</strong> (bare infinitive, KHÔNG "to")<br>• <strong>get + O + to V</strong> (CÓ "to")<br>• Bị động: make → be made <strong>to V</strong>: "I was made <strong>to rewrite</strong> the essay."</div>
+    <div class="quiz-box" id="q-caus">
+      <div class="qb-label">Kiểm tra nhanh</div>
+      <div class="qb-q">"I ___ my hair ___ at the salon." — Chọn đúng.</div>
+      <div class="qb-opts">
+        <button class="qb-opt" onclick="checkQ('q-caus',this,'wrong','Sai! have + O + V3 (passive causative), không dùng V nguyên thể.')">had... cut (bare V)</button>
+        <button class="qb-opt" onclick="checkQ('q-caus',this,'correct','Đúng! have + O + V3: I had my hair cut (= nhờ người cắt).')">had... cut (V3)</button>
+        <button class="qb-opt" onclick="checkQ('q-caus',this,'wrong','Sai! get + O + V3 cũng đúng, nhưng với &quot;have&quot; thì dùng V3.')">had... to cut</button>
+      </div>
+      <div class="qb-fb" id="q-caus-fb"></div>
+      <button class="qb-next" id="q-caus-next" onclick="resetQ('q-caus')">Thử lại →</button>
+    </div>
+  </div>
+
+  <div class="s-divider"></div>
+
+  <!-- SUBJECT-VERB AGREEMENT -->
+  <div class="lesson anchor" id="sva">
+    <div class="lesson-header">
+      <div class="lesson-num ln-purple">27</div>
+      <div><div class="lesson-title">Subject-Verb Agreement nâng cao</div><div class="lesson-sub">Chủ ngữ đặc biệt · each/every · neither/either · collective nouns</div></div>
+    </div>
+    <div class="lesson-divider"></div>
+    <div class="band-tag bt-6"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Band 6.5+</div>
+    <div class="theory">
+      <p>Lỗi <strong>chia động từ sai</strong> là lỗi phổ biến nhất trong IELTS Writing. Nhiều chủ ngữ có <strong>quy tắc đặc biệt</strong> không phải ai cũng biết.</p>
+    </div>
+    <table class="inv-table">
+      <tr><th>Chủ ngữ</th><th>Động từ</th><th>Ví dụ</th></tr>
+      <tr><td class="td-trigger">Each / Every + N</td><td>Số ít</td><td class="td-inverted">Each student <strong>has</strong> a book.</td></tr>
+      <tr><td class="td-trigger">Neither / Either + of</td><td>Số ít</td><td class="td-inverted">Neither of them <strong>is</strong> correct.</td></tr>
+      <tr><td class="td-trigger">The number of + N</td><td>Số ít</td><td class="td-inverted">The number of students <strong>is</strong> increasing.</td></tr>
+      <tr><td class="td-trigger">A number of + N</td><td>Số nhiều</td><td class="td-inverted">A number of students <strong>are</strong> absent.</td></tr>
+      <tr><td class="td-trigger">News / Mathematics / Physics</td><td>Số ít</td><td class="td-inverted">The news <strong>is</strong> shocking.</td></tr>
+      <tr><td class="td-trigger">People / Police / Children</td><td>Số nhiều</td><td class="td-inverted">The police <strong>are</strong> investigating.</td></tr>
+      <tr><td class="td-trigger">S + along with / as well as</td><td>Theo S chính</td><td class="td-inverted">The teacher, along with students, <strong>was</strong> present.</td></tr>
+      <tr><td class="td-trigger">Not only...but also</td><td>Theo S gần nhất</td><td class="td-inverted">Not only he but also they <strong>are</strong> coming.</td></tr>
+    </table>
+    <div class="compare-grid">
+      <div class="cmp-card cmp-wrong">
+        <div class="cmp-label"><i data-lucide="x" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Lỗi thường gặp</div>
+        <div class="cmp-text">❌ The number of accidents <strong>have</strong> increased.<br>❌ Everyone <strong>have</strong> their own opinion.<br>❌ The news <strong>are</strong> very bad today.</div>
+      </div>
+      <div class="cmp-card cmp-right">
+        <div class="cmp-label"><i data-lucide="check" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Đúng</div>
+        <div class="cmp-text">✅ The number of accidents <strong>has</strong> increased.<br>✅ Everyone <strong>has</strong> their own opinion.<br>✅ The news <strong>is</strong> very bad today.</div>
+      </div>
+    </div>
+    <div class="quiz-box" id="q-sva">
+      <div class="qb-label">Kiểm tra nhanh</div>
+      <div class="qb-q">"A number of students ___ absent today." — Chọn đúng.</div>
+      <div class="qb-opts">
+        <button class="qb-opt" onclick="checkQ('q-sva',this,'wrong','Sai! &quot;A number of&quot; = nhiều → động từ số nhiều.')">is</button>
+        <button class="qb-opt" onclick="checkQ('q-sva',this,'correct','Đúng! A number of + N → số nhiều → are. (Khác THE number of → số ít)')">are</button>
+        <button class="qb-opt" onclick="checkQ('q-sva',this,'wrong','Sai! has là số ít. A number of = nhiều → cần số nhiều.')">has been</button>
+      </div>
+      <div class="qb-fb" id="q-sva-fb"></div>
+      <button class="qb-next" id="q-sva-next" onclick="resetQ('q-sva')">Thử lại →</button>
     </div>
   </div>
 

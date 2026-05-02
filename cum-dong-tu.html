@@ -80,7 +80,11 @@
 <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px" id="tagBar"></div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
 <span style="font-size:13px;color:var(--text3)" id="countLabel"></span>
+<div style="display:flex;gap:8px">
 <button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif"><i data-lucide="zap" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Quiz</button>
+<button onclick="startFill()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif"><i data-lucide="pencil-line" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>Điền từ</button>
+<button onclick="startMatch()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(240,194,122,0.1);color:var(--accent3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif"><i data-lucide="link" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i>Nối cặp</button>
+</div>
 </div>
 <div id="pvList" style="display:grid;gap:10px"></div>
 <div id="quizArea" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin-top:20px">
@@ -89,6 +93,8 @@
 <div id="qOpts" style="display:grid;gap:8px;max-width:500px;margin:0 auto"></div>
 <div id="qFb" style="margin-top:14px;padding:12px;border-radius:10px;font-size:14px;display:none"></div>
 </div>
+<div id="fillArea" style="display:none;margin-top:20px"></div>
+<div id="matchArea" style="display:none;margin-top:20px"></div>
 </div>
 <script>
 const PV=[
@@ -230,7 +236,35 @@ function showQuizQ(){
 function checkQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;if(ans===correct){btn.style.background="rgba(107,203,119,0.15)";btn.style.borderColor="var(--green)";btn.style.color="var(--green)";quizScore++;}else{btn.style.background="rgba(255,138,128,0.15)";btn.style.borderColor="var(--coral)";btn.style.color="var(--coral)";document.querySelectorAll("#qOpts button").forEach(function(b){if(b.dataset.a===correct){b.style.background="rgba(107,203,119,0.15)";b.style.borderColor="var(--green)";b.style.color="var(--green)";}});}setTimeout(function(){quizIdx++;showQuizQ();},1200);}
 renderPV();
 
+function startFill(){
+  document.getElementById('pvList').style.display='none';
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('matchArea').style.display='none';
+  document.getElementById('fillArea').style.display='block';
+  var pool = getFiltered();
+  var data = pool.sort(function(){return Math.random()-0.5;}).slice(0,15).map(function(p){
+    // Replace the phrasal verb in the example sentence with blanks
+    var sentence = p.ex.replace(new RegExp(p.en.split(' ').map(function(w){return w.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&');}).join('\\s+'),'i'), '____');
+    if(sentence === p.ex) sentence = '"'+p.ex+'" → Phrasal verb nào?';
+    return {sentence: sentence, blank: p.en, hint: '→ ' + p.vi, vi: p.vi};
+  });
+  EE.fillBlank('fillArea', data, {count:15});
+}
+
+function startMatch(){
+  document.getElementById('pvList').style.display='none';
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('fillArea').style.display='none';
+  document.getElementById('matchArea').style.display='block';
+  var pool = getFiltered();
+  var data = pool.sort(function(){return Math.random()-0.5;}).slice(0,8).map(function(p){
+    return {en: p.en, vi: p.vi};
+  });
+  EE.matchPairs('matchArea', data, {count:8});
+}
+
 </script>
+<script src="interactive.js"></script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 

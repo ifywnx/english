@@ -49,7 +49,7 @@
     <div class="card">
       <h2>Mini practice</h2>
       <p>Viết tag question cho câu sau: <strong>You can swim.</strong></p>
-      <div class="practice"><textarea placeholder="Viết tag của bạn..."></textarea><div class="btn-row"><button class="btn" type="button">Kiểm tra</button><button class="btn secondary" type="button">Xem gợi ý</button></div></div>
+      <div class="practice"><textarea placeholder="Viết tag của bạn..."></textarea><div class="btn-row"><button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh đáp án của bạn với gợi ý mẫu bên dưới.')}">Kiểm tra</button><button class="btn secondary" type="button" onclick="alert(' Xem phần gợi ý mẫu ngay bên dưới bài tập.')">Xem gợi ý</button></div></div>
       <div class="practice"><p><strong>Đáp án mẫu:</strong> You can swim, can’t you?</p><p><strong>Giải thích:</strong> Câu khẳng định đi với tag phủ định.</p></div>
     </div>
   </div>
@@ -86,12 +86,12 @@
   </div>
 
   <div class="grid" style="margin-top:14px">
-    <div class="card"><h2>Loi hay gap</h2><ul><li>Dung sai tro dong tu trong tag.</li><li>Khong khop voi thi cua cau chinh.</li><li>Quen dao phu dinh / khang dinh.</li><li>Dung tag question qua guong trong van viet.</li><li>Nham chu ngu: Everyone/Nobody dung they.</li></ul></div>
-    <div class="card"><h2>Vi sao quan trong</h2><ul><li>Rat hay gap trong speaking tu nhien.</li><li>Giup cau noi mem hon va co tinh tuong tac.</li><li>La phan nho nhung de ghi diem vi dung dung ngu canh.</li><li>Thuong gap trong IELTS Listening.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Lam quiz</a><a class="btn secondary" href="giao-tiep.html">Xem giao tiep</a></div></div>
+    <div class="card"><h2>Lỗi hay gặp</h2><ul><li>Dung sai tro dong tu trong tag.</li><li>Khong khop voi thi cua cau chinh.</li><li>Quen dao phu dinh / khang dinh.</li><li>Dung tag question qua guong trong van viet.</li><li>Nham chu ngu: Everyone/Nobody dung they.</li></ul></div>
+    <div class="card"><h2>Vì sao module này quan trọng</h2><ul><li>Rat hay gap trong speaking tu nhien.</li><li>Giup cau noi mem hon va co tinh tuong tac.</li><li>La phan nho nhung de ghi diem vi dung dung ngu canh.</li><li>Thuong gap trong IELTS Listening.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Làm quiz</a><a class="btn secondary" href="giao-tiep.html">Xem giao tiep</a></div></div>
   </div>
   <!-- FILL TAG EXERCISE -->
   <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">✍️ Điền tag question đúng</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Điền tag question đúng</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Gõ tag question phù hợp (vd: isn't it, don't you...).</p>
   <div id="tagBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -101,7 +101,7 @@
   <div id="tagScore" style="text-align:center;margin-top:12px;font-size:14px;color:var(--accent)"></div>
   </div>
 
-  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">📝 Quiz Tag Questions</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
+  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz Tag Questions</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
 </div>
 <script>
 const TAGS=[

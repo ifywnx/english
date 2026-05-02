@@ -105,8 +105,8 @@
         <p style="margin-top:8px">She wants ___ water and ___ apple. ___ apple is on the table.</p>
         <textarea placeholder="Viết đáp án của bạn..."></textarea>
         <div class="btn-row">
-          <button class="btn" type="button">Kiểm tra</button>
-          <button class="btn secondary" type="button">Gợi ý</button>
+          <button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea').value.trim().toLowerCase();var ans='some, an, the';if(!t){alert('Hãy điền đáp án trước!');}else if(t.includes('some')&&t.includes('an')&&t.includes('the')){this.closest('.practice').querySelector('textarea').style.borderColor='var(--accent)';alert('✅ Đúng! some water, an apple, The apple');}else{this.closest('.practice').querySelector('textarea').style.borderColor='var(--coral)';alert('❌ Chưa đúng. Đáp án: some water — an apple — The apple');}">Kiểm tra</button>
+          <button class="btn secondary" type="button" onclick="alert(' Gợi ý:\n• water = không đếm được → dùng some\n• apple = đếm được, chưa xác định → dùng an\n• apple thứ 2 đã được nhắc đến → dùng The')">Gợi ý</button>
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
     </div>
   </div>
   <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">✍️ Điền a / an / the / some / any / much / many / (–)</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Điền a / an / the / some / any / much / many / (–)</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Điền mạo từ hoặc lượng từ đúng. Gõ "–" nếu không cần mạo từ.</p>
   <div id="artBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -147,7 +147,7 @@
   <div id="artScore" style="text-align:center;margin-top:12px;font-size:14px;color:var(--accent)"></div>
   </div>
 
-  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">📝 Quiz Mạo từ</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
+  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz Mạo từ</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
 </div>
 <script>
 const ART=[

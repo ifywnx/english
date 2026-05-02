@@ -89,7 +89,7 @@
     <h1 class="page-title">Nghe chep chinh ta de bat tung am va tung tu</h1>
     <div class="desc">Dictation buoc ban nghe ky tung chi tiet cua cau: am cuoi, noi am, khoang dung. Day la cach hieu qua nhat de cai thien listening chinh xac va spelling trong thoi gian ngan.</div>
     <div class="badges"><span class="badge">Listening</span><span class="badge">Spelling</span><span class="badge">Final sounds</span><span class="badge">Chunks</span><span class="badge">10 bai</span></div>
-    <div class="note"><strong>Cach hoc:</strong> Nhan "Nghe" de phat am cau. Viet lai. Nhan "Kiem tra" de so dap an. Lam lai cho den khi dung 100%.</div>
+    <div class="note"><strong>Cach hoc:</strong> Nhan "Nghe" de phat am cau. Viet lai. Nhan "Kiểm tra" de so dap an. Làm lại cho den khi dung 100%.</div>
   </div>
 
   <!-- Process -->
@@ -121,7 +121,7 @@
   <!-- Common mistakes -->
   <div class="tips-grid">
     <div class="tip-card">
-      <h4>Loi hay gap khi dictation</h4>
+      <h4>Lỗi hay gặp khi dictation</h4>
       <p>1. Nghe nhanh nhung khong chia cum.<br>2. Bo am cuoi (walked nghe thanh walk).<br>3. Nham noi am (an apple nghe thanh a napple).<br>4. Viet theo suy doan, khong bam am thanh.<br>5. Khong so transcript sau khi lam.</p>
     </div>
     <div class="tip-card">
@@ -133,7 +133,7 @@
   <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
     <a class="btn" href="nghe-transcript.html">Xem transcript</a>
     <a class="btn secondary" href="luyen-phat-am-theo.html">Luyen shadowing</a>
-    <a class="btn secondary" href="luyen-nghe.html">Luyen nghe</a>
+    <a class="btn secondary" href="luyen-nghe.html">Luyện nghe</a>
   </div>
 </div>
 
@@ -162,7 +162,7 @@ function renderCards(){
     html+='<div class="dict-header"><span class="dict-num">Bai '+(i+1)+'/'+sentences.length+'</span><span class="dict-level">'+s.level+'</span></div>';
     html+='<button class="play-btn" onclick="speakSentence('+i+')"><i data-lucide="volume-2" style="width:18px;height:18px"></i> Nghe cau</button>';
     html+='<textarea class="dict-textarea" id="input'+s.id+'" placeholder="Nghe va viet lai cau..."></textarea>';
-    html+='<div class="btn-row"><button class="btn" onclick="checkDict('+i+')">Kiem tra</button><button class="btn secondary" onclick="showAnswer('+i+')">Xem dap an</button><button class="btn secondary" onclick="speakSentence('+i+')">Nghe lai</button></div>';
+    html+='<div class="btn-row"><button class="btn" onclick="checkDict('+i+')">Kiểm tra</button><button class="btn secondary" onclick="showAnswer('+i+')">Xem dap an</button><button class="btn secondary" onclick="speakSentence('+i+')">Nghe lai</button></div>';
     html+='<div class="result-box" id="result'+s.id+'"></div>';
     html+='</div>';
   });

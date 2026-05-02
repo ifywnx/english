@@ -73,18 +73,23 @@
 <p class="page-desc">100 từ cơ bản nhất cho người mới bắt đầu. Học qua flashcard, quiz hoặc duyệt danh sách.</p>
 
 <div class="mode-bar">
-  <button class="mode-btn active" onclick="setMode('flash')">📇 Flashcard</button>
-  <button class="mode-btn" onclick="setMode('quiz')">📝 Quiz</button>
-  <button class="mode-btn" onclick="setMode('browse')">📖 Danh sách</button>
+  <button class="mode-btn active" onclick="setMode('flash')"><i data-lucide="layers" style="width:15px;height:15px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Flashcard</button>
+  <button class="mode-btn" onclick="setMode('quiz')"><i data-lucide="circle-help" style="width:15px;height:15px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Quiz</button>
+  <button class="mode-btn" onclick="setMode('fill')"><i data-lucide="pencil-line" style="width:15px;height:15px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Điền từ</button>
+  <button class="mode-btn" onclick="setMode('match')"><i data-lucide="link" style="width:15px;height:15px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Nối cặp</button>
+  <button class="mode-btn" onclick="setMode('browse')"><i data-lucide="book-open" style="width:15px;height:15px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Danh sách</button>
 </div>
 
 <div id="flashArea" class="fc-area"></div>
 <div id="quizArea" class="quiz-area" style="display:none"></div>
+<div id="fillArea" style="display:none"></div>
+<div id="matchArea" style="display:none"></div>
 <div id="browseArea" style="display:none"></div>
 
 </div>
 
 <script src="dict-data.js"></script>
+<script src="interactive.js"></script>
 <script>
 // ===== DATA =====
 const LEVEL = 'A1';
@@ -100,15 +105,36 @@ function speak(word) {
 let currentMode = 'flash';
 function setMode(m) {
   currentMode = m;
-  document.querySelectorAll('.mode-btn').forEach((b,i) => {
-    b.classList.toggle('active', ['flash','quiz','browse'][i] === m);
+  var modes = ['flash','quiz','fill','match','browse'];
+  document.querySelectorAll('.mode-btn').forEach(function(b,i) {
+    b.classList.toggle('active', modes[i] === m);
   });
   document.getElementById('flashArea').style.display = m === 'flash' ? '' : 'none';
   document.getElementById('quizArea').style.display = m === 'quiz' ? '' : 'none';
+  document.getElementById('fillArea').style.display = m === 'fill' ? '' : 'none';
+  document.getElementById('matchArea').style.display = m === 'match' ? '' : 'none';
   document.getElementById('browseArea').style.display = m === 'browse' ? '' : 'none';
   if (m === 'flash') initFlash();
   if (m === 'quiz') initQuiz();
+  if (m === 'fill') initFill();
+  if (m === 'match') initMatch();
   if (m === 'browse') renderBrowse();
+}
+
+function initFill(){
+  var data = shuffle([...WORDS]).slice(0,15).map(function(w){
+    // Create fill-in-blank sentences from examples or definitions
+    var sentence = 'Từ này có nghĩa là: ' + w[2];
+    return {sentence: sentence, blank: w[0], hint: w[1], vi: w[2]};
+  });
+  EE.fillBlank('fillArea', data, {count:15});
+}
+
+function initMatch(){
+  var data = shuffle([...WORDS]).slice(0,8).map(function(w){
+    return {en: w[0], vi: w[2]};
+  });
+  EE.matchPairs('matchArea', data, {count:8});
 }
 
 // ===== FLASHCARD =====
@@ -128,7 +154,7 @@ function renderFlash() {
         <b>${fcKnow}/${fcDeck.length}</b>
         Từ đã biết
         <div style="margin-top:16px">
-          <button class="fc-btn" onclick="initFlash()">🔄 Học lại</button>
+          <button class="fc-btn" onclick="initFlash()">↻ Học lại</button>
         </div>
       </div>`;
     return;
@@ -140,7 +166,7 @@ function renderFlash() {
         <div class="fc-word">${w[0]}</div>
         <div class="fc-ipa">${w[1]}</div>
         <div class="fc-type">${w[4]}</div>
-        <button class="fc-speak" onclick="event.stopPropagation();speak('${w[0]}')" title="Nghe">🔊</button>
+        <button class="fc-speak" onclick="event.stopPropagation();speak('${w[0]}')" title="Nghe">♪</button>
         <div class="fc-hint">Nhấn để lật</div>
       </div>
       <div class="fc-face fc-back">
@@ -150,8 +176,8 @@ function renderFlash() {
       </div>
     </div>
     <div class="fc-nav">
-      <button class="fc-btn dont" onclick="fcNext(false)">❌ Chưa biết</button>
-      <button class="fc-btn know" onclick="fcNext(true)">✅ Đã biết</button>
+      <button class="fc-btn dont" onclick="fcNext(false)">✗ Chưa biết</button>
+      <button class="fc-btn know" onclick="fcNext(true)">✓ Đã biết</button>
     </div>
     <div class="fc-progress">${fcIdx + 1} / ${fcDeck.length}</div>`;
 }
@@ -177,7 +203,7 @@ function renderQuiz() {
         <b>${qScore}/${qList.length}</b>
         Câu đúng
         <div style="margin-top:16px">
-          <button class="fc-btn" onclick="initQuiz()">🔄 Làm lại</button>
+          <button class="fc-btn" onclick="initQuiz()">↻ Làm lại</button>
         </div>
       </div>`;
     return;

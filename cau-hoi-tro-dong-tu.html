@@ -76,7 +76,7 @@
     <div class="card">
       <h2>Mini practice</h2>
       <p>Biến câu sau thành câu hỏi: <strong>She likes music.</strong></p>
-      <div class="practice" style="margin-top:10px"><textarea placeholder="Viết câu hỏi của bạn..."></textarea><div class="btn-row"><button class="btn" type="button">Kiểm tra</button><button class="btn secondary" type="button">Xem gợi ý</button></div></div>
+      <div class="practice" style="margin-top:10px"><textarea placeholder="Viết câu hỏi của bạn..."></textarea><div class="btn-row"><button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh đáp án của bạn với gợi ý mẫu bên dưới.')}">Kiểm tra</button><button class="btn secondary" type="button" onclick="alert(' Xem phần gợi ý mẫu ngay bên dưới bài tập.')">Xem gợi ý</button></div></div>
       <div class="practice" style="margin-top:12px"><p><strong>Đáp án mẫu:</strong> Does she like music?</p><p><strong>Giải thích:</strong> dùng does vì chủ ngữ là she.</p></div>
     </div>
   </div>
@@ -113,13 +113,13 @@
   </div>
 
   <div class="grid" style="margin-top:14px">
-    <div class="card"><h2>Loi hay gap</h2><ul><li>Quen dao tro dong tu len dau cau.</li><li>Dung sai do/does/did theo thi va chu ngu.</li><li>Giu nguyen trat tu cau khang dinh trong cau hoi.</li><li>Them qua nhieu tu hoi cung luc.</li><li>Dao ngu trong indirect question (SAI).</li></ul></div>
-    <div class="card"><h2>Vi sao quan trong</h2><ul><li>La nen cho speaking va listening.</li><li>Giup user tu tin dat cau hoi trong giao tiep.</li><li>La diem loi pho bien trong bai kiem tra va writing.</li><li>Subject questions la bay trong IELTS.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Lam quiz</a><a class="btn secondary" href="kiem-tra-bai-viet.html">Kiem tra bai viet</a></div></div>
+    <div class="card"><h2>Lỗi hay gặp</h2><ul><li>Quen dao tro dong tu len dau cau.</li><li>Dung sai do/does/did theo thi va chu ngu.</li><li>Giu nguyen trat tu cau khang dinh trong cau hoi.</li><li>Them qua nhieu tu hoi cung luc.</li><li>Dao ngu trong indirect question (SAI).</li></ul></div>
+    <div class="card"><h2>Vì sao module này quan trọng</h2><ul><li>La nen cho speaking va listening.</li><li>Giup user tu tin dat cau hoi trong giao tiep.</li><li>La diem loi pho bien trong bai kiem tra va writing.</li><li>Subject questions la bay trong IELTS.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Làm quiz</a><a class="btn secondary" href="kiem-tra-bai-viet.html">Kiểm tra bài viết</a></div></div>
   </div>
 
   <!-- SENTENCE TRANSFORM -->
   <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">✍️ Chuyển thành câu hỏi</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Chuyển thành câu hỏi</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Viết lại câu khẳng định thành câu hỏi Yes/No hoặc Wh-question.</p>
   <div id="aqBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -129,7 +129,7 @@
   <div id="aqScore" style="text-align:center;margin-top:12px;font-size:14px;color:var(--accent)"></div>
   </div>
 
-  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">📝 Quiz Trợ động từ & Câu hỏi</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
+  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz Trợ động từ & Câu hỏi</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
 </div>
 <script>
 const AQ=[

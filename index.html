@@ -261,7 +261,7 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   <div class="stat-item"><div class="num" data-count="80">80+</div><div class="label">Bài học</div></div>
   <div class="stat-item"><div class="num" data-count="5000">5000+</div><div class="label">Từ vựng</div></div>
   <div class="stat-item"><div class="num" data-count="500">500+</div><div class="label">Bài tập</div></div>
-  <div class="stat-item"><div class="num">✓</div><div class="label">Miễn phí</div></div>
+  <div class="stat-item"><div class="num">A1→C2</div><div class="label">Coverage</div></div>
 </div>
 
 <!-- ===== LEARNER DASHBOARD ===== -->
@@ -272,13 +272,13 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
     <div class="sec-desc">Theo dõi streak, bài đã học, bài nên học tiếp và mục tiêu ngắn hạn.</div>
   </div>
   <!-- WELCOME STATE (first-time user) -->
-  <div id="welcomeState" style="display:none">
+  <div id="welcomeState">
     <div style="background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(167,139,250,0.06));border:1px solid rgba(100,216,165,0.15);border-radius:18px;padding:28px;text-align:center">
-      <div style="font-size:40px;margin-bottom:12px">🚀</div>
+      <div style="font-size:40px;margin-bottom:12px"></div>
       <div style="font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:8px">Chào mừng bạn đến EasyEnglish!</div>
       <div style="font-size:14px;color:var(--text3);line-height:1.7;max-width:480px;margin:0 auto 18px">80+ bài học từ A1 đến C2 đang chờ bạn. Bắt đầu với 1 bài học bất kỳ — tiến độ sẽ được tự động theo dõi.</div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a href="phat-am.html" style="padding:12px 24px;border-radius:12px;background:var(--accent);color:#0b1a1e;text-decoration:none;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s">🎯 Bắt đầu học ngay</a>
+        <a href="phat-am.html" style="padding:12px 24px;border-radius:12px;background:var(--accent);color:#0b1a1e;text-decoration:none;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s"> Bắt đầu học ngay</a>
         <a href="lo-trinh-hoc.html" style="padding:12px 24px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text2);text-decoration:none;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s">📋 Xem lộ trình</a>
       </div>
     </div>
@@ -817,8 +817,8 @@ function initStreak(){
 }
 var doy=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/86400000);
 document.getElementById('dailyTip').textContent=TIPS[doy%TIPS.length];
+renderDashboard(); // PHẢI chạy trước initStreak() để detect new user
 initStreak();
-renderDashboard();
 function renderDashboard(){
   var safeJSON=function(key,fallback){ try{return JSON.parse(localStorage.getItem(key)||fallback);}catch(e){return JSON.parse(fallback);} };
   var notebook=safeJSON('ee_notebook','[]');

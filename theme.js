@@ -9,7 +9,7 @@ const THEMES = {
     name: 'Aura', icon: 'leaf', type: 'dark',
     colors: ['#1a3338','#64d8a5','#a78bfa','#f0c27a'],
     vars: {
-      '--bg':'#0b1a1e','--bg2':'#12282e','--bg3':'#1a3338','--nav-bg':'rgba(11,26,30,0.92)','--drop-bg':'rgba(13,30,36,0.98)',
+      '--bg':'#0b1a1e','--bg2':'#12282e','--bg3':'#1a3338',
       '--accent':'#64d8a5','--accent2':'#a78bfa','--accent3':'#f0c27a',
       '--coral':'#ff8a80','--green':'#6bcb77','--pink':'#dba4c7',
       '--text':'#f5faf7','--text2':'#c2d9ce','--text3':'#84a99a',
@@ -54,7 +54,7 @@ const THEMES = {
       '--bg':'#1a1410','--bg2':'#241c14','--bg3':'#2e241c',
       '--accent':'#f0c27a','--accent2':'#ff8a80','--accent3':'#a78bfa',
       '--coral':'#ff8a80','--green':'#6bcb77','--pink':'#e879a0',
-      '--text':'#faf5ef','--text2':'#d4c4ac','--text3':'#a09080',
+      '--text':'#faf5ef','--text2':'#d4c4ac','--text3':'#b8a898',
       '--border':'rgba(240,194,122,0.08)','--card':'#241c14','--card2':'#2e241c',
       '--nav-bg':'rgba(26,20,16,0.92)','--drop-bg':'rgba(30,22,18,0.98)',
       '--orb1':'rgba(240,194,122,0.12)','--orb2':'rgba(255,138,128,0.08)',
@@ -80,9 +80,9 @@ const THEMES = {
     colors: ['#1a0a2e','#ff2d95','#00f0ff','#c0c0c0'],
     vars: {
       '--bg':'#0a0618','--bg2':'#140e28','--bg3':'#1a0a2e',
-      '--accent':'#ff2d95','--accent2':'#00f0ff','--accent3':'#c0c0c0',
-      '--coral':'#ff2d95','--green':'#00ff88','--pink':'#ff6ec7',
-      '--text':'#f0e8ff','--text2':'#c8b8e8','--text3':'#8a78b0',
+      '--accent':'#e8458a','--accent2':'#40d8e0','--accent3':'#c8c8d0',
+      '--coral':'#e8458a','--green':'#40d890','--pink':'#e880b8',
+      '--text':'#f0e8ff','--text2':'#c8b8e8','--text3':'#9888c0',
       '--border':'rgba(255,45,149,0.1)','--card':'#140e28','--card2':'#1e1438',
       '--nav-bg':'rgba(10,6,24,0.94)','--drop-bg':'rgba(14,10,32,0.98)',
       '--orb1':'rgba(255,45,149,0.12)','--orb2':'rgba(0,240,255,0.08)',
@@ -110,7 +110,7 @@ const THEMES = {
     colors: ['#fce4ec','#e91e63','#9c27b0','#ff9800'],
     vars: {
       '--bg':'#fef2f4','--bg2':'#fce4ec','--bg3':'#f8d4dc',
-      '--accent':'#e91e63','--accent2':'#9c27b0','--accent3':'#ff9800',
+      '--accent':'#c2185b','--accent2':'#8e24aa','--accent3':'#e65100',
       '--coral':'#f44336','--green':'#4caf50','--pink':'#e91e63',
       '--text':'#2a1a1e','--text2':'#6a4a52','--text3':'#9a7a82',
       '--border':'rgba(233,30,99,0.1)','--card':'#fce4ec','--card2':'#f8d4dc',
@@ -124,7 +124,7 @@ const THEMES = {
     colors: ['#e8e0f0','#7c4dff','#e040fb','#ff6e40'],
     vars: {
       '--bg':'#f5f0fa','--bg2':'#ece4f4','--bg3':'#e0d6ec',
-      '--accent':'#7c4dff','--accent2':'#e040fb','--accent3':'#ff6e40',
+      '--accent':'#6539cc','--accent2':'#c030d8','--accent3':'#e05830',
       '--coral':'#ff5252','--green':'#69f0ae','--pink':'#e040fb',
       '--text':'#1a1428','--text2':'#5a4a6a','--text3':'#8a7a9a',
       '--border':'rgba(124,77,255,0.1)','--card':'#ece4f4','--card2':'#e0d6ec',
@@ -285,7 +285,7 @@ function createThemePicker() {
   btn.title = 'Đổi giao diện';
   var isMobile = window.innerWidth <= 900;
   var btnBottom = isMobile ? '100px' : '24px';
-  btn.style.cssText = 'position:fixed;bottom:' + btnBottom + ';right:' + (isMobile ? '16px' : '24px') + ';z-index:10000;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:' + (isMobile ? 'none' : 'flex') + ';align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-tap-highlight-color:transparent';
+  btn.style.cssText = 'position:fixed;bottom:' + btnBottom + ';right:' + (isMobile ? '16px' : '24px') + ';z-index:10000;width:48px;height:48px;border-radius:50%;border:0.5px solid var(--border);font-size:22px;cursor:pointer;background:var(--card2);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:all .2s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-tap-highlight-color:transparent';
   if (!isMobile) {
     btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.1)');
     btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
@@ -304,7 +304,10 @@ function createThemePicker() {
   /* ── Render a single theme button ──────── */
   function renderThemeBtn(id, t, activeTheme) {
     var isActive = id === activeTheme;
-    var s = '<button class="tp-option' + (isActive ? ' active' : '') + '" data-theme="' + id + '" style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;border:1.5px solid ' + (isActive ? 'var(--accent)' : 'var(--border)') + ';background:' + (isActive ? 'rgba(100,216,165,0.08)' : 'var(--card2)') + ';cursor:pointer;transition:all .15s;font-family:\'DM Sans\',sans-serif;color:var(--text);font-size:12px;text-align:left;position:relative">';
+    var activeBorderColor = isActive && t.vars ? (t.vars['--accent'] || 'var(--accent)') : 'var(--border)';
+    var activeBg = isActive && t.vars ? t.vars['--accent'].replace(')', ',0.12)').replace('rgb', 'rgba').replace('##', '#') : 'var(--card2)';
+    if(isActive) activeBg = 'rgba(100,216,165,0.08)'; // safe fallback
+    var s = '<button class="tp-option' + (isActive ? ' active' : '') + '" data-theme="' + id + '" style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;border:1.5px solid ' + activeBorderColor + ';background:' + (isActive ? activeBg : 'var(--card2)') + ';cursor:pointer;transition:all .15s;font-family:\'DM Sans\',sans-serif;color:var(--text);font-size:12px;text-align:left;position:relative">';
     // Color dots
     s += '<div style="display:flex;gap:2px;flex-shrink:0">';
     t.colors.forEach(function(c) {

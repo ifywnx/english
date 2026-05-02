@@ -76,7 +76,7 @@
     <div class="card">
       <h2>Mini practice</h2>
       <p>Nối 2 câu sau bằng mệnh đề quan hệ:</p>
-      <div class="practice" style="margin-top:10px"><p><strong>1.</strong> I met a girl. She speaks three languages.</p><p><strong>2.</strong> He bought a house. The house has a big garden.</p><textarea placeholder="Viết câu đã nối..."></textarea><div class="btn-row"><button class="btn" type="button">Kiểm tra</button><button class="btn secondary" type="button">Xem gợi ý</button></div></div>
+      <div class="practice" style="margin-top:10px"><p><strong>1.</strong> I met a girl. She speaks three languages.</p><p><strong>2.</strong> He bought a house. The house has a big garden.</p><textarea placeholder="Viết câu đã nối..."></textarea><div class="btn-row"><button class="btn" type="button" onclick="var t=this.closest('.practice').querySelector('textarea');if(!t||!t.value.trim()){alert('Hãy viết đáp án trước!')}else{alert('✅ So sánh đáp án của bạn với gợi ý mẫu bên dưới.')}">Kiểm tra</button><button class="btn secondary" type="button" onclick="alert(' Xem phần gợi ý mẫu ngay bên dưới bài tập.')">Xem gợi ý</button></div></div>
       <div class="practice" style="margin-top:12px"><p><strong>Đáp án mẫu:</strong> I met a girl who speaks three languages. / He bought a house which has a big garden.</p></div>
     </div>
   </div>
@@ -114,12 +114,12 @@
   </div>
 
   <div class="grid" style="margin-top:14px">
-    <div class="card"><h2>Loi hay gap</h2><ul><li>Chon sai tu quan he cho nguoi hoac vat.</li><li>Thieu chu ngu trong menh de sau khi noi.</li><li>Dung dau phay sai giua defining va non-defining.</li><li>Nhoi qua nhieu thong tin trong mot cau.</li><li>Dung that trong non-defining clause (SAI).</li></ul></div>
-    <div class="card"><h2>Vi sao quan trong</h2><ul><li>Giup cau viet tu nhien va gon hon.</li><li>Xuat hien rat nhieu trong IELTS Reading va Writing.</li><li>La nen de hoc reduced relative clauses sau nay.</li><li>Tang diem writing nho cau phuc tap hon.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Lam quiz</a><a class="btn secondary" href="kiem-tra-bai-viet.html">Kiem tra bai viet</a></div></div>
+    <div class="card"><h2>Lỗi hay gặp</h2><ul><li>Chon sai tu quan he cho nguoi hoac vat.</li><li>Thieu chu ngu trong menh de sau khi noi.</li><li>Dung dau phay sai giua defining va non-defining.</li><li>Nhoi qua nhieu thong tin trong mot cau.</li><li>Dung that trong non-defining clause (SAI).</li></ul></div>
+    <div class="card"><h2>Vì sao module này quan trọng</h2><ul><li>Giup cau viet tu nhien va gon hon.</li><li>Xuat hien rat nhieu trong IELTS Reading va Writing.</li><li>La nen de hoc reduced relative clauses sau nay.</li><li>Tang diem writing nho cau phuc tap hon.</li></ul><div class="btn-row"><a class="btn" href="bai-tap.html">Làm quiz</a><a class="btn secondary" href="kiem-tra-bai-viet.html">Kiểm tra bài viết</a></div></div>
   </div>
   <!-- FILL RELATIVE PRONOUNS -->
   <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px">✍️ Điền who/which/whose/where/when/that</h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:6px"> Điền who/which/whose/where/when/that</h2>
   <p style="font-size:13px;color:var(--text3);margin-bottom:16px">Chọn đại từ quan hệ phù hợp cho mỗi câu.</p>
   <div id="rpBox"></div>
   <div style="text-align:center;margin-top:14px">
@@ -140,7 +140,7 @@
   <div id="scScore" style="text-align:center;margin-top:12px;font-size:14px;color:var(--accent)"></div>
   </div>
 
-  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">📝 Quiz Mệnh đề quan hệ</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
+  <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px"><h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz Mệnh đề quan hệ</h2><div id="quizBox"></div><div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div></div>
 </div>
 <script>
 // FILL RELATIVE PRONOUNS
