@@ -20,7 +20,109 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Page-specific styles */
-.nav-sub:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
+.sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
+.sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
+.sidebar-title:first-child{margin-top:0}
+/* Collapsible sidebar */
+.sidebar-title{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between}
+.sidebar-title::after{content:'▾';font-size:9px;opacity:0.5;transition:transform .2s}
+.sidebar-title.collapsed::after{transform:rotate(-90deg)}
+.sb-group{overflow:hidden;max-height:1000px;transition:max-height .3s ease,opacity .2s;opacity:1}
+.sb-group.hidden{max-height:0;opacity:0;margin:0;padding:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.sb-item.active{color:var(--accent3);background:rgba(240,194,122,0.08)}
+.content{padding:32px 44px;max-width:1000px}
+/* NAV FILES */
+.nav-files{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.nf-btn{padding:7px 14px;border-radius:20px;font-size:12px;text-decoration:none;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);transition:all .2s}
+.nf-btn:hover{color:var(--text)}
+.nf-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(240,194,122,0.4);color:var(--accent3)}
+/* SEARCH & FILTER BAR */
+.filter-bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.search-input{flex:1;min-width:0;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input:focus{border-color:rgba(100,216,165,0.4)}
+.search-input::placeholder{color:var(--text3)}
+.filter-select{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text2);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer}
+.filter-btn{padding:9px 16px;border-radius:10px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
+.filter-btn:hover{color:var(--text)}
+.filter-btn.on{border-color:rgba(78,205,196,0.5);color:var(--accent3);background:rgba(240,194,122,0.08)}
+/* LEGEND */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:14px 18px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2)}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+/* STATS */
+.stats-row{display:flex;gap:10px;margin-bottom:24px}
+.stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;text-align:center;flex:1}
+.stat-num{font-family:'Fraunces',serif;font-size:22px;color:var(--accent3)}
+.stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+/* WORD CARDS GRID */
+.words-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+/* WORD CARD */
+.word-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.word-card:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-2px)}
+.word-card.expanded{border-color:rgba(100,216,165,0.4);background:rgba(78,205,196,0.04)}
+.word-card.saved{border-color:rgba(100,216,165,0.3)}
+.wc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+.wc-word{font-family:'Fraunces',serif;font-size:20px;color:var(--text)}
+.wc-save{font-size:16px;cursor:pointer;opacity:0.5;transition:opacity .2s;background:none;border:none;color:var(--accent);padding:2px}
+.wc-save:hover{opacity:1}
+.wc-save.saved{opacity:1}
+.wc-meta{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.wc-pron{font-size:11px;color:var(--accent);font-style:italic}
+/* TAGS */
+.tag{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;display:inline-block}
+.tag-a1{background:rgba(107,203,119,0.15);color:var(--green)}
+.tag-a2{background:rgba(100,216,165,0.15);color:var(--accent3)}
+.tag-b1{background:rgba(100,216,165,0.15);color:var(--accent)}
+.tag-b2{background:rgba(244,132,95,0.15);color:var(--coral)}
+.tag-c1{background:rgba(232,121,160,0.15);color:var(--pink)}
+.tag-daily{background:rgba(107,203,119,0.12);color:var(--green);border:0.5px solid rgba(107,203,119,0.3)}
+.tag-formal{background:rgba(100,216,165,0.12);color:var(--accent2);border:0.5px solid rgba(123,110,246,0.3)}
+.tag-slang{background:rgba(232,121,160,0.12);color:var(--pink);border:0.5px solid rgba(232,121,160,0.3)}
+.tag-business{background:rgba(100,216,165,0.12);color:var(--accent);border:0.5px solid rgba(100,216,165,0.3)}
+.tag-n{background:rgba(100,216,165,0.1);color:var(--accent)}
+.tag-v{background:rgba(100,216,165,0.1);color:var(--accent2)}
+.tag-adj{background:rgba(244,132,95,0.1);color:var(--coral)}
+.tag-adv{background:rgba(107,203,119,0.1);color:var(--green)}
+.wc-vi{font-size:13px;color:var(--text2);margin-bottom:6px}
+.wc-ex{font-size:14px;color:var(--text3);font-style:italic;line-height:1.5}
+/* EXPANDED DETAIL */
+.wc-detail{margin-top:12px;border-top:0.5px solid var(--border);padding-top:12px;display:none}
+.word-card.expanded .wc-detail{display:block}
+.detail-section{margin-bottom:10px}
+.ds-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.ds-content{font-size:14px;color:var(--text2);line-height:1.7}
+.ds-examples{display:flex;flex-direction:column;gap:5px}
+.ds-ex{background:var(--card2);border-radius:7px;padding:8px 10px}
+.ds-ex-en{font-size:12px;color:var(--text);font-style:italic;margin-bottom:2px}
+.ds-ex-vi{font-size:11px;color:var(--text3)}
+.ds-chips{display:flex;flex-wrap:wrap;gap:4px}
+.ds-chip{padding:3px 10px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px;font-size:11px;color:var(--text2)}
+/* USAGE METER */
+.usage-meter{display:flex;align-items:center;gap:8px;margin-top:6px}
+.um-label{font-size:10px;color:var(--text3)}
+.um-dots{display:flex;gap:3px}
+.um-dot{width:8px;height:8px;border-radius:50%;background:var(--bg3)}
+.um-dot.on{background:var(--green)}
+.um-dot.on.medium{background:var(--accent)}
+.um-dot.on.low{background:var(--coral)}
+/* SECTION HEADER */
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:16px;margin-top:32px;padding-bottom:10px;border-bottom:0.5px solid var(--border)}
+.sh-icon{font-size:24px}
+.sh-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300}
+.sh-count{font-size:14px;color:var(--text3);margin-left:auto}
+.anchor{scroll-margin-top:80px}
+.no-results{text-align:center;color:var(--text3);padding:40px;font-size:14px;grid-column:1/-1}
+/* SAVED PANEL */
+.saved-panel{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:14px;padding:16px;margin-bottom:24px;display:none}
+.saved-panel.show{display:block}
+.sp-title{font-size:13px;font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between}
+.sp-words{display:flex;flex-wrap:wrap;gap:6px}
+.sp-word{padding:4px 12px;background:var(--card2);border:0.5px solid rgba(100,216,165,0.3);border-radius:20px;font-size:12px;color:var(--accent);cursor:pointer}
+.sp-word:hover{background:rgba(100,216,165,0.1)}
+.sp-clear{font-size:11px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
 .nav-cta:hover{background:#f0d060;transform:translateY(-1px)}
 
 </style>
@@ -75,15 +177,15 @@
   <button class="sb-item active" onclick="filterTopic('all',this)"><i data-lucide="grid" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tất cả</button>
   <button class="sb-item" onclick="filterTopic('describe',this)"><i data-lucide="palette" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Mô tả & Tính từ</button>
   <button class="sb-item" onclick="filterTopic('think',this)"><i data-lucide="brain" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Suy nghĩ & Ý kiến</button>
-  <button class="sb-item" onclick="filterTopic('change',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Thay đổi & Phát triển</button>
-  <button class="sb-item" onclick="filterTopic('problem',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Vấn đề & Giải quyết</button>
-  <button class="sb-item" onclick="filterTopic('relate',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Quan hệ & Giao tiếp</button>
+  <button class="sb-item" onclick="filterTopic('change',this)"><i data-lucide="trending-up" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Thay đổi & Phát triển</button>
+  <button class="sb-item" onclick="filterTopic('problem',this)"><i data-lucide="alert-triangle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Vấn đề & Giải quyết</button>
+  <button class="sb-item" onclick="filterTopic('relate',this)"><i data-lucide="users" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Quan hệ & Giao tiếp</button>
   <button class="sb-item" onclick="filterTopic('quantity',this)"><i data-lucide="hash" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Số lượng & Mức độ</button>
   <button class="sb-item" onclick="filterTopic('move',this)"><i data-lucide="map-pin" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Di chuyển & Vị trí</button>
-  <button class="sb-item" onclick="filterTopic('cause',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Nguyên nhân & Kết quả</button>
+  <button class="sb-item" onclick="filterTopic('cause',this)"><i data-lucide="git-branch" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Nguyên nhân & Kết quả</button>
   <button class="sb-item" onclick="filterTopic('daily2',this)"><i data-lucide="home" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Sinh hoạt & Thói quen</button>
-  <button class="sb-item" onclick="filterTopic('opinion',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Diễn đạt ý kiến</button>
-  <button class="sb-item" onclick="filterTopic('academic2',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Học thuật nhẹ</button>
+  <button class="sb-item" onclick="filterTopic('opinion',this)"><i data-lucide="message-square" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Diễn đạt ý kiến</button>
+  <button class="sb-item" onclick="filterTopic('academic2',this)"><i data-lucide="graduation-cap" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Học thuật nhẹ</button>
   <button class="sb-item" onclick="filterTopic('personality',this)"><i data-lucide="smile" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tính cách & Thái độ</button>
   <button class="sb-item" onclick="filterTopic('modern',this)"><i data-lucide="sparkles" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Cuộc sống hiện đại</button>
 
@@ -247,7 +349,21 @@ const WORDS2 = [
   {w:'disruption',p:'/dɪsˈrʌpʃən/',type:'n',band:'B2',usage:'formal',topic:'modern',vi:'sự gián đoạn, phá vỡ',meanings:[{vi:'sự thay đổi đột ngột gây gián đoạn',en:'a disturbance that interrupts an event or process',ex:[{en:'Technology causes disruption in many industries.',vi:'Công nghệ gây ra sự gián đoạn trong nhiều ngành công nghiệp.'},{en:'The pandemic caused widespread disruption.',vi:'Đại dịch gây ra sự gián đoạn trên diện rộng.'}]}],synonyms:['disturbance','interruption','upheaval','disorder'],antonyms:['stability','continuity','order'],collocations:['cause disruption','digital disruption','economic disruption','creative disruption'],tip:'"Disruptive technology" = công nghệ thay đổi hoàn toàn ngành. "Creative disruption" = phá vỡ để đổi mới.'},
 ];
 
-let savedWords = new Set(JSON.parse(localStorage.getItem('ev2_saved')||'[]'));
+// Unified notebook storage — migrate ev2_saved into ee_notebook
+var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+var _ev2Old = JSON.parse(localStorage.getItem('ev2_saved')||'[]');
+if(_ev2Old.length){
+  var _existing = {};
+  _nbRaw.forEach(function(item){ _existing[(item.word||'').toLowerCase()] = true; });
+  _ev2Old.forEach(function(w){
+    if(!_existing[w.toLowerCase()]){
+      _nbRaw.push({word:w, vi:'', ipa:'', types:[], sourcePage:'tu-dien-doi-thuong-2.html', sourceTitle:'Từ điển ĐT 2', savedAt:new Date().toISOString()});
+    }
+  });
+  localStorage.setItem('ee_notebook', JSON.stringify(_nbRaw));
+  localStorage.removeItem('ev2_saved');
+}
+let savedWords = new Set(_nbRaw.map(function(item){return item.word||''}).filter(Boolean));
 let currentTopic='all', currentBand='all';
 let expandedWord=null;
 
@@ -336,86 +452,49 @@ function toggleExp(word){
 function toggleSave(word){
   if(savedWords.has(word)) savedWords.delete(word);
   else savedWords.add(word);
-  localStorage.setItem('ev2_saved',JSON.stringify([...savedWords]));
+  // Sync to ee_notebook
+  var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(savedWords.has(word)){
+    // Add if not already in notebook
+    if(!nb.some(function(item){return item.word===word;})){
+      var wData = WORDS2.find(function(w){return w.w===word;});
+      nb.push({word:word, vi:wData?wData.vi:'', ipa:wData?wData.p:'', types:wData?[wData.type]:[], sourcePage:'tu-dien-doi-thuong-2.html', sourceTitle:'Từ điển ĐT 2', savedAt:new Date().toISOString()});
+    }
+  } else {
+    nb = nb.filter(function(item){return item.word!==word;});
+  }
+  localStorage.setItem('ee_notebook', JSON.stringify(nb));
   document.getElementById('statSaved').textContent=savedWords.size;
   const card=document.getElementById('wc2-'+word);
   if(card){card.classList.toggle('saved',savedWords.has(word));const btn=card.querySelector('.wc-save');if(btn){btn.textContent=savedWords.has(word)?'•':'•';btn.classList.toggle('saved',savedWords.has(word));}}
 }
 
 function filterTopic(topic,el){currentTopic=topic;document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');renderWords();}
-function filterBand(band,el){currentBand=band;renderWords();}
+function filterBand(band,el){
+  currentBand=band;
+  // Highlight active band button
+  var bandSection = el.closest('.sidebar') || document;
+  var bandTitle = bandSection.querySelectorAll('.sidebar-title');
+  var bandGroup = null;
+  bandTitle.forEach(function(t){ if(t.textContent.indexOf('Band')>-1){ bandGroup = t.nextElementSibling; } });
+  if(bandGroup){
+    bandGroup.querySelectorAll('.sb-item').forEach(function(b){ b.classList.remove('active'); });
+  }
+  el.classList.add('active');
+  renderWords();
+}
 
 renderWords();
 
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
 </script>
 <script>
-// Collapsible sidebar
-(function(){
-  var sidebar = document.querySelector('.sidebar');
-  if(!sidebar) return;
-  
-  // Wrap items between sidebar-titles into .sb-group divs
-  var titles = sidebar.querySelectorAll('.sidebar-title');
-  titles.forEach(function(title){
-    var items = [];
-    var next = title.nextElementSibling;
-    while(next && !next.classList.contains('sidebar-title')){
-      items.push(next);
-      next = next.nextElementSibling;
-    }
-    if(items.length > 0){
-      var group = document.createElement('div');
-      group.className = 'sb-group';
-      title.parentNode.insertBefore(group, items[0]);
-      items.forEach(function(item){ group.appendChild(item); });
-    }
-  });
-  
-  // Check which group has active item
-  var groups = sidebar.querySelectorAll('.sb-group');
-  groups.forEach(function(g){
-    var hasActive = g.querySelector('.sb-item.active');
-    if(!hasActive){
-      g.classList.add('hidden');
-      g.previousElementSibling.classList.add('collapsed');
-    }
-  });
-  
-  // Click to toggle
-  titles.forEach(function(title){
-    title.addEventListener('click', function(){
-      var group = this.nextElementSibling;
-      if(!group || !group.classList.contains('sb-group')) return;
-      var isHidden = group.classList.contains('hidden');
-      if(isHidden){
-        group.classList.remove('hidden');
-        this.classList.remove('collapsed');
-      } else {
-        group.classList.add('hidden');
-        this.classList.add('collapsed');
-      }
-    });
-  });
-})();
+// Collapsible sidebar — now handled by common.js
+
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- page-transition-js removed: common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

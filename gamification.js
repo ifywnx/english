@@ -44,11 +44,12 @@ function addXP(amount, reason){
   const s=getGameState();
   const today=new Date().toDateString();
   
-  // Reset daily XP if new day (streak handled in init only)
+  // Reset daily XP if new day — but do NOT set lastDate here
+  // lastDate is ONLY set in DOMContentLoaded to avoid streak race condition
   if(s.lastDate!==today){
     s.todayXP=0;
     s.todayChallengeDone=false;
-    s.lastDate=today;
+    // s.lastDate intentionally NOT set here — DOMContentLoaded handles it
   }
   
   const oldLevel=getLevel(s.totalXP);

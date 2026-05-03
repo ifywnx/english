@@ -654,76 +654,17 @@ window.addEventListener('scroll',()=>{
   if(cur){document.querySelectorAll('.sb-item').forEach(i=>i.classList.toggle('active',i.getAttribute('href')==='#'+cur))}
 });
 
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
 </script>
 </main>
 </div>
 <script>
-// Collapsible sidebar (sb-label version)
-(function(){
-  var sidebar = document.querySelector('.sidebar');
-  if(!sidebar) return;
-  
-  var titles = sidebar.querySelectorAll('.sb-label');
-  if(titles.length < 2) return;
-  
-  titles.forEach(function(title){
-    var items = [];
-    var next = title.nextElementSibling;
-    while(next && !next.classList.contains('sb-label')){
-      items.push(next);
-      next = next.nextElementSibling;
-    }
-    if(items.length > 0){
-      var group = document.createElement('div');
-      group.className = 'sb-group';
-      title.parentNode.insertBefore(group, items[0]);
-      items.forEach(function(item){ group.appendChild(item); });
-    }
-  });
-  
-  var groups = sidebar.querySelectorAll('.sb-group');
-  groups.forEach(function(g){
-    var hasActive = g.querySelector('.sb-item.active');
-    if(!hasActive){
-      g.classList.add('hidden');
-      g.previousElementSibling.classList.add('collapsed');
-    }
-  });
-  
-  titles.forEach(function(title){
-    title.addEventListener('click', function(){
-      var group = this.nextElementSibling;
-      if(!group || !group.classList.contains('sb-group')) return;
-      var isHidden = group.classList.contains('hidden');
-      if(isHidden){
-        group.classList.remove('hidden');
-        this.classList.remove('collapsed');
-      } else {
-        group.classList.add('hidden');
-        this.classList.add('collapsed');
-      }
-    });
-  });
-})();
+// Collapsible sidebar — now handled by common.js
+
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- page-transition-js removed: common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

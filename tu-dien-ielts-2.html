@@ -20,13 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Page-specific styles */
-:root{
-  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
-  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
-  --coral:#ff8a80;--green:#6bcb77;--pink:#e879a0;
-  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
-  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
-}
+/* Theme variables now handled by theme.js */
 .nav-cta:hover{background:#7de8b5;transform:translateY(-1px)}
 .page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);position:relative;z-index:1}
 .sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:18px 12px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
@@ -156,10 +150,10 @@
   <button class="sb-item" onclick="setTopic('tech2',this)"><i data-lucide="cpu" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Công nghệ & AI</button>
   <button class="sb-item" onclick="setTopic('edu2',this)"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Giáo dục & Kỹ năng</button>
   <button class="sb-item" onclick="setTopic('health2',this)"><i data-lucide="heart-pulse" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Sức khỏe & Xã hội</button>
-  <button class="sb-item" onclick="setTopic('econ2',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Kinh tế & Lao động</button>
+  <button class="sb-item" onclick="setTopic('econ2',this)"><i data-lucide="trending-up" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Kinh tế & Lao động</button>
   <button class="sb-item" onclick="setTopic('social2',this)"><i data-lucide="users" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xã hội & Bình đẳng</button>
   <button class="sb-item" onclick="setTopic('gov2',this)"><i data-lucide="landmark" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chính sách & Luật pháp</button>
-  <button class="sb-item" onclick="setTopic('global2',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Toàn cầu hóa & Di cư</button>
+  <button class="sb-item" onclick="setTopic('global2',this)"><i data-lucide="globe" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Toàn cầu hóa & Di cư</button>
   <button class="sb-item" onclick="setTopic('media2',this)"><i data-lucide="tv" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Truyền thông & Mạng XH</button>
   <button class="sb-item" onclick="setTopic('urban2',this)"><i data-lucide="building-2" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Đô thị & Giao thông</button>
   <button class="sb-item" onclick="setTopic('science',this)"><i data-lucide="flask-conical" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Khoa học & Nghiên cứu</button>
@@ -173,8 +167,8 @@
   <button class="sb-item" onclick="setBand('8.0',this)"><span style="color:var(--pink)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i></span> Band 8.0+</button>
 
   <div class="sidebar-title">Từ đã lưu</div>
-  <button class="sb-item" onclick="toggleSavedPanel()"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xem từ đã lưu</button>
-  <button class="sb-item" onclick="toggleSavedOnly()"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chỉ từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedPanel()"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xem từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedOnly()"><i data-lucide="filter" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chỉ từ đã lưu</button>
 </aside>
 
 <main class="content">
@@ -346,7 +340,21 @@ const IW2=[
   {w:'elicit',p:'/ɪˈlɪsɪt/',t:'v',band:'7.5',topic:'writing',skill:'writing',vi:'gợi ra, thu thập (phản ứng)',ex:'The policy elicited strong public reaction.',exvi:'Chính sách này gợi ra phản ứng mạnh mẽ của công chúng.',syn:['evoke','provoke','draw out','bring about'],ielts:'"Elicit a response/reaction" — formal alternative to "cause/get".',col:['elicit a response','elicit information','elicit feedback','elicit concern']},
 ];
 
-let saved=new Set(JSON.parse(localStorage.getItem('il2_saved')||'[]'));
+// Unified notebook storage — migrate il2_saved into ee_notebook
+var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+var _il2Old = JSON.parse(localStorage.getItem('il2_saved')||'[]');
+if(_il2Old.length){
+  var _existing = {};
+  _nbRaw.forEach(function(item){ _existing[(item.word||'').toLowerCase()] = true; });
+  _il2Old.forEach(function(w){
+    if(!_existing[w.toLowerCase()]){
+      _nbRaw.push({word:w, vi:'', ipa:'', types:[], sourcePage:'tu-dien-ielts-2.html', sourceTitle:'Từ điển IELTS 2', savedAt:new Date().toISOString()});
+    }
+  });
+  localStorage.setItem('ee_notebook', JSON.stringify(_nbRaw));
+  localStorage.removeItem('il2_saved');
+}
+let saved=new Set(_nbRaw.map(function(item){return item.word||''}).filter(Boolean));
 let topic='all',band='all',savedOnly=false,expandedWord=null;
 
 function getFiltered(){
@@ -430,7 +438,17 @@ function toggleExp(id){
 function toggleSave(word){
   if(saved.has(word)) saved.delete(word);
   else saved.add(word);
-  localStorage.setItem('il2_saved',JSON.stringify([...saved]));
+  // Sync to ee_notebook
+  var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(saved.has(word)){
+    if(!nb.some(function(item){return item.word===word;})){
+      var wData = IW2.find(function(w){return w.w===word;});
+      nb.push({word:word, vi:wData?wData.vi:'', ipa:wData?wData.p:'', types:wData?[wData.t]:[], sourcePage:'tu-dien-ielts-2.html', sourceTitle:'Từ điển IELTS 2', savedAt:new Date().toISOString()});
+    }
+  } else {
+    nb = nb.filter(function(item){return item.word!==word;});
+  }
+  localStorage.setItem('ee_notebook', JSON.stringify(nb));
   render();
   renderSavedPanel();
 }
@@ -447,80 +465,28 @@ function renderSavedPanel(){
   sp.innerHTML=[...saved].map(w=>`<span class="sp-w">${w}</span>`).join('');
 }
 
-function clearSaved(){if(confirm('Xóa tất cả?')){saved.clear();localStorage.removeItem('il2_saved');render();renderSavedPanel();}}
+function clearSaved(){
+  if(confirm('Xóa tất cả?')){
+    var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+    nb = nb.filter(function(item){return !saved.has(item.word);});
+    localStorage.setItem('ee_notebook', JSON.stringify(nb));
+    saved.clear();
+    render();renderSavedPanel();
+  }
+}
 
 render();
 renderSavedPanel();
 
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
 </script>
 <script>
-// Collapsible sidebar
-(function(){
-  var sidebar = document.querySelector('.sidebar');
-  if(!sidebar) return;
-  
-  // Wrap items between sidebar-titles into .sb-group divs
-  var titles = sidebar.querySelectorAll('.sidebar-title');
-  titles.forEach(function(title){
-    var items = [];
-    var next = title.nextElementSibling;
-    while(next && !next.classList.contains('sidebar-title')){
-      items.push(next);
-      next = next.nextElementSibling;
-    }
-    if(items.length > 0){
-      var group = document.createElement('div');
-      group.className = 'sb-group';
-      title.parentNode.insertBefore(group, items[0]);
-      items.forEach(function(item){ group.appendChild(item); });
-    }
-  });
-  
-  // Check which group has active item
-  var groups = sidebar.querySelectorAll('.sb-group');
-  groups.forEach(function(g){
-    var hasActive = g.querySelector('.sb-item.active');
-    if(!hasActive){
-      g.classList.add('hidden');
-      g.previousElementSibling.classList.add('collapsed');
-    }
-  });
-  
-  // Click to toggle
-  titles.forEach(function(title){
-    title.addEventListener('click', function(){
-      var group = this.nextElementSibling;
-      if(!group || !group.classList.contains('sb-group')) return;
-      var isHidden = group.classList.contains('hidden');
-      if(isHidden){
-        group.classList.remove('hidden');
-        this.classList.remove('collapsed');
-      } else {
-        group.classList.add('hidden');
-        this.classList.add('collapsed');
-      }
-    });
-  });
-})();
+// Collapsible sidebar — now handled by common.js
+
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- page-transition-js removed: common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

@@ -208,6 +208,59 @@ window.addEventListener('scroll',function(){
   // Scroll hide/show for bottom nav is now handled by the merged scroll listener above
 })();
 
+/* === COLLAPSIBLE SIDEBAR (universal) === */
+/* Handles both .sidebar-title and .sb-label heading classes */
+(function(){
+  var sidebar = document.querySelector('.sidebar');
+  if(!sidebar) return;
+
+  // Detect which heading class is used
+  var titles = sidebar.querySelectorAll('.sidebar-title');
+  if(!titles.length) titles = sidebar.querySelectorAll('.sb-label');
+  if(!titles.length) return;
+
+  // Wrap items between headings into .sb-group divs
+  titles.forEach(function(title){
+    var items = [];
+    var next = title.nextElementSibling;
+    while(next && !next.classList.contains('sidebar-title') && !next.classList.contains('sb-label')){
+      items.push(next);
+      next = next.nextElementSibling;
+    }
+    if(items.length > 0){
+      var group = document.createElement('div');
+      group.className = 'sb-group';
+      title.parentNode.insertBefore(group, items[0]);
+      items.forEach(function(item){ group.appendChild(item); });
+    }
+  });
+
+  // Collapse groups without an active item
+  var groups = sidebar.querySelectorAll('.sb-group');
+  groups.forEach(function(g){
+    var hasActive = g.querySelector('.sb-item.active');
+    if(!hasActive){
+      g.classList.add('hidden');
+      if(g.previousElementSibling) g.previousElementSibling.classList.add('collapsed');
+    }
+  });
+
+  // Click to toggle
+  titles.forEach(function(title){
+    title.addEventListener('click', function(){
+      var group = this.nextElementSibling;
+      if(!group || !group.classList.contains('sb-group')) return;
+      var isHidden = group.classList.contains('hidden');
+      if(isHidden){
+        group.classList.remove('hidden');
+        this.classList.remove('collapsed');
+      } else {
+        group.classList.add('hidden');
+        this.classList.add('collapsed');
+      }
+    });
+  });
+})();
 
 // Robust Lucide icon initialization with retry
 (function initLucideIcons(){
@@ -230,6 +283,9 @@ window.addEventListener('scroll',function(){
 
 // ==================== SELECT TO TRANSLATE ====================
 (function(){
+  // HTML escape helper to prevent XSS from user-selected text
+  function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
   var popup = document.createElement('div');
   popup.id = 'ee-translate-popup';
   popup.style.cssText = 'position:fixed;z-index:99999;display:none;background:rgba(11,26,30,0.97);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:14px;padding:0;max-width:420px;min-width:200px;box-shadow:0 16px 48px rgba(0,0,0,0.5);font-family:"DM Sans",sans-serif;animation:eePopIn .2s ease-out;overflow:hidden;max-height:70vh;overflow-y:auto';
@@ -451,7 +507,7 @@ window.addEventListener('scroll',function(){
 
       // If still no translation at all, show error
       if(!viWord && !ipa){
-        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không tìm thấy nghĩa cho "<b style="color:var(--text)">' + word + '</b>"</div></div>';
+        popup.innerHTML = '<div class="ee-tp-body"><button class="ee-tp-close" onclick="document.getElementById(\'ee-translate-popup\').style.display=\'none\'">&times;</button><div style="color:#9ec0b2;font-size:13px">Không tìm thấy nghĩa cho "<b style="color:var(--text)">' + escHtml(word) + '</b>"</div></div>';
         isTranslating = false;
         return;
       }

@@ -153,9 +153,9 @@
   <button class="sb-item" onclick="setTopic('education',this)"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Giáo dục</button>
   <button class="sb-item" onclick="setTopic('health',this)"><i data-lucide="heart-pulse" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Sức khỏe</button>
   <button class="sb-item" onclick="setTopic('society',this)"><i data-lucide="users" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xã hội</button>
-  <button class="sb-item" onclick="setTopic('economy',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Kinh tế</button>
+  <button class="sb-item" onclick="setTopic('economy',this)"><i data-lucide="trending-up" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Kinh tế</button>
   <button class="sb-item" onclick="setTopic('government',this)"><i data-lucide="landmark" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chính phủ</button>
-  <button class="sb-item" onclick="setTopic('globalisation',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Toàn cầu hóa</button>
+  <button class="sb-item" onclick="setTopic('globalisation',this)"><i data-lucide="globe" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Toàn cầu hóa</button>
   <button class="sb-item" onclick="setTopic('media',this)"><i data-lucide="tv" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Truyền thông</button>
   <button class="sb-item" onclick="setTopic('culture',this)"><i data-lucide="palette" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Văn hóa</button>
   <button class="sb-item" onclick="setTopic('crime',this)"><i data-lucide="shield" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tội phạm & Luật</button>
@@ -171,13 +171,13 @@
 
   <div class="sidebar-title">Kỹ năng IELTS</div>
   <button class="sb-item" onclick="setSkill('writing',this)"><i data-lucide="pen-tool" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Writing</button>
-  <button class="sb-item" onclick="setSkill('speaking',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Speaking</button>
-  <button class="sb-item" onclick="setSkill('reading',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Reading</button>
+  <button class="sb-item" onclick="setSkill('speaking',this)"><i data-lucide="mic" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Speaking</button>
+  <button class="sb-item" onclick="setSkill('reading',this)"><i data-lucide="book-open" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Reading</button>
   <button class="sb-item" onclick="setSkill('all',this)"><i data-lucide="grid" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tất cả kỹ năng</button>
 
   <div class="sidebar-title">Từ đã lưu</div>
-  <button class="sb-item" onclick="toggleSavedPanel()"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xem từ đã lưu</button>
-  <button class="sb-item" onclick="toggleSavedOnly()"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chỉ từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedPanel()"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xem từ đã lưu</button>
+  <button class="sb-item" onclick="toggleSavedOnly()"><i data-lucide="filter" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Chỉ từ đã lưu</button>
 </aside>
 
 <main class="content">
@@ -324,7 +324,21 @@ const IW=[
   {w:'gentrification',p:'/ˌdʒɛntrɪfɪˈkeɪʃən/',t:'n',band:'8.0',topic:'urban',skill:'writing',vi:'quý tộc hóa khu phố',ex:'Gentrification displaces long-term residents.',exvi:'Quý tộc hóa khu phố khiến cư dân lâu năm phải rời đi.',syn:['urban renewal','neighbourhood transformation','upscaling'],ielts:'Band 8 — urban inequality topic.',col:['urban gentrification','fight gentrification','result of gentrification','rapid gentrification']},
 ];
 
-let saved=new Set(JSON.parse(localStorage.getItem('il_saved')||'[]'));
+// Unified notebook storage — migrate il_saved into ee_notebook
+var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+var _ilOld = JSON.parse(localStorage.getItem('il_saved')||'[]');
+if(_ilOld.length){
+  var _existing = {};
+  _nbRaw.forEach(function(item){ _existing[(item.word||'').toLowerCase()] = true; });
+  _ilOld.forEach(function(w){
+    if(!_existing[w.toLowerCase()]){
+      _nbRaw.push({word:w, vi:'', ipa:'', types:[], sourcePage:'tu-dien-ielts.html', sourceTitle:'Từ điển IELTS', savedAt:new Date().toISOString()});
+    }
+  });
+  localStorage.setItem('ee_notebook', JSON.stringify(_nbRaw));
+  localStorage.removeItem('il_saved');
+}
+let saved=new Set(_nbRaw.map(function(item){return item.word||''}).filter(Boolean));
 let topic='all',band='all',skill='all',savedOnly=false,expandedWord=null;
 
 function getFiltered(){
@@ -419,7 +433,17 @@ function toggleExp(word){
 function toggleSave(word){
   if(saved.has(word)) saved.delete(word);
   else saved.add(word);
-  localStorage.setItem('il_saved',JSON.stringify([...saved]));
+  // Sync to ee_notebook
+  var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(saved.has(word)){
+    if(!nb.some(function(item){return item.word===word;})){
+      var wData = IW.find(function(w){return w.w===word;});
+      nb.push({word:word, vi:wData?wData.vi:'', ipa:wData?wData.p:'', types:wData?[wData.t]:[], sourcePage:'tu-dien-ielts.html', sourceTitle:'Từ điển IELTS', savedAt:new Date().toISOString()});
+    }
+  } else {
+    nb = nb.filter(function(item){return item.word!==word;});
+  }
+  localStorage.setItem('ee_notebook', JSON.stringify(nb));
   render();
   renderSavedPanel();
 }
@@ -437,80 +461,28 @@ function renderSavedPanel(){
   sp.innerHTML=[...saved].map(w=>`<span class="sp-w">${w}</span>`).join('');
 }
 
-function clearSaved(){if(confirm('Xóa tất cả?')){saved.clear();localStorage.removeItem('il_saved');render();renderSavedPanel();}}
+function clearSaved(){
+  if(confirm('Xóa tất cả?')){
+    var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+    nb = nb.filter(function(item){return !saved.has(item.word);});
+    localStorage.setItem('ee_notebook', JSON.stringify(nb));
+    saved.clear();
+    render();renderSavedPanel();
+  }
+}
 
 render();
 renderSavedPanel();
 
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
 </script>
 <script>
-// Collapsible sidebar
-(function(){
-  var sidebar = document.querySelector('.sidebar');
-  if(!sidebar) return;
-  
-  // Wrap items between sidebar-titles into .sb-group divs
-  var titles = sidebar.querySelectorAll('.sidebar-title');
-  titles.forEach(function(title){
-    var items = [];
-    var next = title.nextElementSibling;
-    while(next && !next.classList.contains('sidebar-title')){
-      items.push(next);
-      next = next.nextElementSibling;
-    }
-    if(items.length > 0){
-      var group = document.createElement('div');
-      group.className = 'sb-group';
-      title.parentNode.insertBefore(group, items[0]);
-      items.forEach(function(item){ group.appendChild(item); });
-    }
-  });
-  
-  // Check which group has active item
-  var groups = sidebar.querySelectorAll('.sb-group');
-  groups.forEach(function(g){
-    var hasActive = g.querySelector('.sb-item.active');
-    if(!hasActive){
-      g.classList.add('hidden');
-      g.previousElementSibling.classList.add('collapsed');
-    }
-  });
-  
-  // Click to toggle
-  titles.forEach(function(title){
-    title.addEventListener('click', function(){
-      var group = this.nextElementSibling;
-      if(!group || !group.classList.contains('sb-group')) return;
-      var isHidden = group.classList.contains('hidden');
-      if(isHidden){
-        group.classList.remove('hidden');
-        this.classList.remove('collapsed');
-      } else {
-        group.classList.add('hidden');
-        this.classList.add('collapsed');
-      }
-    });
-  });
-})();
+// Collapsible sidebar — now handled by common.js
+
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- page-transition-js removed: common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

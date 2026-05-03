@@ -22,13 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 <style>
-:root{
-  --bg:#0b1a1e;--bg2:#12282e;--bg3:#1a3338;
-  --accent:#64d8a5;--accent2:#a78bfa;--accent3:#f0c27a;
-  --coral:#f4845f;--green:#6bcb77;
-  --text:#f5faf7;--text2:#d8ede3;--text3:#9ec0b2;
-  --border:rgba(100,216,165,0.08);--card:#12282e;--card2:#1a3338;
-}
+/* Uses theme variables from theme.js — no :root override */
 .content{padding:40px 48px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0 28px}
 .stat-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:18px}
@@ -142,7 +136,7 @@
     <div class="review-top">
       <div>
         <div class="review-title">Ôn nhanh</div>
-        <div class="section-sub">Bấm vào thẻ để lật mặt. Mỗi lần bấm "Từ khác" sẽ lấy ngẫu nhiên từ trong sổ tay.</div>
+        <div class="section-sub">Bấm vào thẻ để lật mặt. Phím tắt: <kbd>Space</kbd> lật, <kbd>←</kbd><kbd>→</kbd> chuyển từ, <kbd>S</kbd> nghe.</div>
       </div>
       <button class="nb-btn" onclick="nextCard()">Từ khác</button>
     </div>
@@ -160,8 +154,10 @@
       </div>
     </div>
     <div class="fc-controls">
+      <button class="nb-btn" onclick="prevCard()">← Trước</button>
       <button class="nb-btn primary" onclick="flipCard()">Lật thẻ</button>
-      <button class="nb-btn" onclick="speakCurrent()">Nghe phát âm</button>
+      <button class="nb-btn" onclick="speakCurrent()">🔊 Nghe</button>
+      <button class="nb-btn" onclick="nextCard()">Sau →</button>
     </div>
   </div>
 
@@ -174,6 +170,12 @@
 
   <div class="nb-actions">
     <input class="search-box" id="searchInput" type="text" placeholder="Tìm theo từ, nghĩa, IPA, page..." oninput="renderNotebook()">
+    <select id="sortSelect" onchange="renderNotebook()" style="padding:10px 12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer">
+      <option value="newest">Mới nhất</option>
+      <option value="oldest">Cũ nhất</option>
+      <option value="az">A → Z</option>
+      <option value="za">Z → A</option>
+    </select>
     <button class="nb-btn" onclick="exportNotebook()">Export JSON</button>
     <button class="nb-btn warn" onclick="clearNotebook()">Xóa tất cả</button>
   </div>
@@ -187,6 +189,29 @@
 var NOTEBOOK_KEY = 'ee_notebook';
 var notebook = [];
 var currentCardIndex = 0;
+var cardHistory = []; // for prevCard
+
+// Auto-migrate ee_saved_words from tu-dien.html into ee_notebook
+(function migrateOldSavedWords(){
+  var old = JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
+  if(!old.length) return;
+  var nb = JSON.parse(localStorage.getItem(NOTEBOOK_KEY)||'[]');
+  var existing = {};
+  nb.forEach(function(item){ existing[(item.word||'').toLowerCase()] = true; });
+  var added = 0;
+  old.forEach(function(item){
+    var w = (item.word || item.en || '').toLowerCase();
+    if(w && !existing[w]){
+      nb.push({word: item.word || item.en, vi: item.vi || '', ipa: item.ipa || '', types: item.types || [], sourcePage: item.sourcePage || 'tu-dien.html', sourceTitle: item.sourceTitle || 'Từ điển', savedAt: item.savedAt || new Date().toISOString()});
+      added++;
+    }
+  });
+  if(added > 0){
+    localStorage.setItem(NOTEBOOK_KEY, JSON.stringify(nb));
+    console.log('[Notebook] Migrated ' + added + ' words from ee_saved_words');
+  }
+  localStorage.removeItem('ee_saved_words');
+})();
 var LOCAL_VI = {
   fluctuate:'dao động',
   vocabulary:'từ vựng',
@@ -318,7 +343,12 @@ function repairNotebookData(){
   var pending = notebook.filter(needsRepair);
   if(!pending.length) return Promise.resolve(false);
 
-  return Promise.all(pending.map(function(item){
+  // Batch repair: 5 words at a time, 500ms delay between batches
+  // Prevents MyMemory API rate limiting
+  var batchSize = 5;
+  var i = 0;
+
+  function repairItem(item){
     return fetchNotebookMetadata(item.word).then(function(meta){
       if(meta){
         if(!item.vi && meta.vi) item.vi = meta.vi;
@@ -329,13 +359,29 @@ function repairNotebookData(){
       if(!item.sourceTitle) item.sourceTitle = item.sourcePage === 'unknown' ? 'Unknown source' : item.sourceTitle;
       if(!item.savedAt) item.savedAt = new Date().toISOString();
     });
-  })).then(function(){
-    setNotebook(notebook);
-    updateStats();
-    renderNotebook();
-    renderCard();
-    return true;
-  });
+  }
+
+  function processBatch(){
+    var batch = pending.slice(i, i + batchSize);
+    if(!batch.length){
+      setNotebook(notebook);
+      updateStats();
+      renderNotebook();
+      renderCard();
+      return Promise.resolve(true);
+    }
+    return Promise.all(batch.map(repairItem)).then(function(){
+      i += batchSize;
+      // Save progress after each batch
+      setNotebook(notebook);
+      updateStats();
+      renderNotebook();
+      // Delay before next batch to avoid rate limiting
+      return new Promise(function(resolve){ setTimeout(resolve, 500); }).then(processBatch);
+    });
+  }
+
+  return processBatch();
 }
 
 function renderCard(){
@@ -361,7 +407,15 @@ function renderCard(){
 
 function nextCard(){
   if(!notebook.length){ renderCard(); return; }
+  cardHistory.push(currentCardIndex);
+  if(cardHistory.length > 50) cardHistory.shift(); // limit history
   currentCardIndex = Math.floor(Math.random() * notebook.length);
+  renderCard();
+}
+
+function prevCard(){
+  if(!cardHistory.length) return;
+  currentCardIndex = cardHistory.pop();
   renderCard();
 }
 
@@ -409,9 +463,17 @@ function exportNotebook(){
 
 function renderNotebook(){
   var q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+  var sortVal = (document.getElementById('sortSelect') || {}).value || 'newest';
   var items = notebook.filter(function(item){
     var text = [item.word, item.vi, item.ipa, item.sourcePage, item.sourceTitle, (item.types || []).join(' ')].join(' ').toLowerCase();
     return !q || text.indexOf(q) > -1;
+  });
+  // Sort
+  items.sort(function(a, b){
+    if(sortVal === 'az') return (a.word||'').localeCompare(b.word||'');
+    if(sortVal === 'za') return (b.word||'').localeCompare(a.word||'');
+    if(sortVal === 'oldest') return new Date(a.savedAt||0) - new Date(b.savedAt||0);
+    return new Date(b.savedAt||0) - new Date(a.savedAt||0); // newest
   });
   var el = document.getElementById('notebookList');
   if(!items.length){
@@ -455,6 +517,16 @@ renderNotebook();
 renderCard();
 if(typeof lucide !== 'undefined') lucide.createIcons();
 repairNotebookData();
+
+// Keyboard shortcuts for flashcard
+document.addEventListener('keydown', function(e){
+  // Don't trigger when typing in search box
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if(e.code === 'Space'){ e.preventDefault(); flipCard(); }
+  if(e.code === 'ArrowRight') nextCard();
+  if(e.code === 'ArrowLeft') prevCard();
+  if(e.code === 'KeyS') speakCurrent();
+});
 </script>
 <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>

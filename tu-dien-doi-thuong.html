@@ -172,13 +172,13 @@
 
   <button class="sb-item active" onclick="filterTopic('all',this)"><i data-lucide="grid" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tất cả từ</button>
   <button class="sb-item" onclick="filterTopic('feelings',this)"><i data-lucide="smile" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Cảm xúc & Tính cách</button>
-  <button class="sb-item" onclick="filterTopic('actions',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Hành động thường ngày</button>
+  <button class="sb-item" onclick="filterTopic('actions',this)"><i data-lucide="activity" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Hành động thường ngày</button>
   <button class="sb-item" onclick="filterTopic('social',this)"><i data-lucide="message-circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Giao tiếp xã hội</button>
   <button class="sb-item" onclick="filterTopic('work',this)"><i data-lucide="briefcase" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Công việc & Học tập</button>
   <button class="sb-item" onclick="filterTopic('health',this)"><i data-lucide="heart-pulse" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Sức khỏe & Cơ thể</button>
   <button class="sb-item" onclick="filterTopic('food',this)"><i data-lucide="utensils" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Ăn uống & Nấu ăn</button>
   <button class="sb-item" onclick="filterTopic('travel',this)"><i data-lucide="plane" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Du lịch & Đi lại</button>
-  <button class="sb-item" onclick="filterTopic('home',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Nhà ở & Cuộc sống</button>
+  <button class="sb-item" onclick="filterTopic('home',this)"><i data-lucide="home" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Nhà ở & Cuộc sống</button>
   <button class="sb-item" onclick="filterTopic('money',this)"><i data-lucide="wallet" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Tiền bạc & Mua sắm</button>
   <button class="sb-item" onclick="filterTopic('tech',this)"><i data-lucide="cpu" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Công nghệ & Mạng XH</button>
   <button class="sb-item" onclick="filterTopic('nature',this)"><i data-lucide="cloud-sun" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Thiên nhiên & Thời tiết</button>
@@ -194,11 +194,11 @@
   <div class="sidebar-title">Mức dùng hàng ngày</div>
   <button class="sb-item" onclick="filterUsage('daily',this)"><i data-lucide="flame" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Rất thường dùng</button>
   <button class="sb-item" onclick="filterUsage('medium',this)"><i data-lucide="bookmark" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Thường dùng</button>
-  <button class="sb-item" onclick="filterUsage('formal',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Trang trọng</button>
-  <button class="sb-item" onclick="filterUsage('slang',this)"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Thông tục/Slang</button>
+  <button class="sb-item" onclick="filterUsage('formal',this)"><i data-lucide="award" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Trang trọng</button>
+  <button class="sb-item" onclick="filterUsage('slang',this)"><i data-lucide="zap" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Thông tục/Slang</button>
 
   <div class="sidebar-title">Từ đã lưu</div>
-  <button class="sb-item" onclick="showSaved()"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xem từ đã lưu</button>
+  <button class="sb-item" onclick="showSaved()"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Xem từ đã lưu</button>
 </aside>
 
 <main class="content">
@@ -344,8 +344,21 @@ const WORDS = [
   {w:'ongoing',p:'/ˈɒnɡoʊɪŋ/',type:'adj',band:'B1',usage:'daily',topic:'time',vi:'đang diễn ra, liên tục',meanings:[{vi:'đang tiếp tục, chưa kết thúc',en:'continuing to happen or exist',ex:[{en:'There is an ongoing investigation.',vi:'Cuộc điều tra vẫn đang tiếp tục.'},{en:'This is an ongoing problem.',vi:'Đây là vấn đề đang tiếp diễn.'}]}],synonyms:['continuing','current','in progress','persistent'],antonyms:['finished','concluded','over'],collocations:['ongoing process','ongoing debate','ongoing conflict','ongoing support'],tip:'Thường đứng trước danh từ: "an ongoing situation", "ongoing discussions".'},
 ];
 
-// STATE
-let savedWords = new Set(JSON.parse(localStorage.getItem('ev_saved')||'[]'));
+// Unified notebook storage — migrate ev_saved into ee_notebook
+var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+var _evOld = JSON.parse(localStorage.getItem('ev_saved')||'[]');
+if(_evOld.length){
+  var _existing = {};
+  _nbRaw.forEach(function(item){ _existing[(item.word||'').toLowerCase()] = true; });
+  _evOld.forEach(function(w){
+    if(!_existing[w.toLowerCase()]){
+      _nbRaw.push({word:w, vi:'', ipa:'', types:[], sourcePage:'tu-dien-doi-thuong.html', sourceTitle:'Từ điển ĐT 1', savedAt:new Date().toISOString()});
+    }
+  });
+  localStorage.setItem('ee_notebook', JSON.stringify(_nbRaw));
+  localStorage.removeItem('ev_saved');
+}
+let savedWords = new Set(_nbRaw.map(function(item){return item.word||''}).filter(Boolean));
 let currentTopic='all', currentBand='all', currentUsage='all', showSavedOnly=false;
 let expandedWord=null;
 
@@ -449,7 +462,17 @@ function toggleExpand(word){
 function toggleSave(word){
   if(savedWords.has(word)) savedWords.delete(word);
   else savedWords.add(word);
-  localStorage.setItem('ev_saved',JSON.stringify([...savedWords]));
+  // Sync to ee_notebook
+  var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(savedWords.has(word)){
+    if(!nb.some(function(item){return item.word===word;})){
+      var wData = WORDS.find(function(w){return w.w===word;});
+      nb.push({word:word, vi:wData?wData.vi:'', ipa:wData?wData.p:'', types:wData?[wData.type]:[], sourcePage:'tu-dien-doi-thuong.html', sourceTitle:'Từ điển ĐT 1', savedAt:new Date().toISOString()});
+    }
+  } else {
+    nb = nb.filter(function(item){return item.word!==word;});
+  }
+  localStorage.setItem('ee_notebook', JSON.stringify(nb));
   document.getElementById('statSaved').textContent=savedWords.size;
   const card=document.getElementById('wcard-'+word);
   if(card){
@@ -490,7 +513,14 @@ function filterSavedWord(word){
 }
 
 function clearAllSaved(){
-  if(confirm('Xóa tất cả từ đã lưu?')){savedWords.clear();localStorage.removeItem('ev_saved');renderSavedPanel();renderWords();}
+  if(confirm('Xóa tất cả từ đã lưu?')){
+    // Remove this page's words from ee_notebook
+    var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+    nb = nb.filter(function(item){return !savedWords.has(item.word);});
+    localStorage.setItem('ee_notebook', JSON.stringify(nb));
+    savedWords.clear();
+    renderSavedPanel();renderWords();
+  }
 }
 
 // Init
@@ -501,71 +531,13 @@ document.getElementById('statLearned').textContent=awlLearned.length;
 
 </script>
 <script>
-// Collapsible sidebar
-(function(){
-  var sidebar = document.querySelector('.sidebar');
-  if(!sidebar) return;
-  
-  // Wrap items between sidebar-titles into .sb-group divs
-  var titles = sidebar.querySelectorAll('.sidebar-title');
-  titles.forEach(function(title){
-    var items = [];
-    var next = title.nextElementSibling;
-    while(next && !next.classList.contains('sidebar-title')){
-      items.push(next);
-      next = next.nextElementSibling;
-    }
-    if(items.length > 0){
-      var group = document.createElement('div');
-      group.className = 'sb-group';
-      title.parentNode.insertBefore(group, items[0]);
-      items.forEach(function(item){ group.appendChild(item); });
-    }
-  });
-  
-  // Check which group has active item
-  var groups = sidebar.querySelectorAll('.sb-group');
-  groups.forEach(function(g){
-    var hasActive = g.querySelector('.sb-item.active');
-    if(!hasActive){
-      g.classList.add('hidden');
-      g.previousElementSibling.classList.add('collapsed');
-    }
-  });
-  
-  // Click to toggle
-  titles.forEach(function(title){
-    title.addEventListener('click', function(){
-      var group = this.nextElementSibling;
-      if(!group || !group.classList.contains('sb-group')) return;
-      var isHidden = group.classList.contains('hidden');
-      if(isHidden){
-        group.classList.remove('hidden');
-        this.classList.remove('collapsed');
-      } else {
-        group.classList.add('hidden');
-        this.classList.add('collapsed');
-      }
-    });
-  });
-})();
+// Collapsible sidebar — now handled by common.js
+
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- page-transition-js removed: common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>

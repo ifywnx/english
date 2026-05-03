@@ -173,32 +173,150 @@ function renderTenses(){
         +'<div class="t-box" style="margin-bottom:10px"><div class="t-box-label">(?) Nghi vấn</div><div class="t-box-content">'+t.question+'</div></div>'
         +'<div class="t-box"><div class="t-box-label">Cách dùng</div><div class="t-box-content">'+t.use+'</div></div>'
         +'<div class="t-signal">';
-      t.signals.forEach(function(s){html+='<span class="t-chip">'+s+'</span>';});
-      html+='</div><div class="t-ex">'+t.ex+'</div></div>';
+      t.signals.forEach(function(s){ html+='<span class="t-chip">'+s+'</span>'; });
+      html+='</div>';
+
+      // Example with TTS button
+      var exPlain = t.ex.replace(/<[^>]+>/g, '');
+      html+='<div class="t-ex">'
+        +'<button onclick="speakTTS(\''+exPlain.replace(/'/g,"\\'")+'\')" style="float:right;background:none;border:none;cursor:pointer;color:var(--accent);padding:2px 6px;font-size:16px" title="Phát âm">🔊</button>'
+        +t.ex+'</div></div>';
     });
     html+='</div>';
   });
   document.getElementById('tenseContainer').innerHTML=html;
-  if(typeof lucide!=="undefined")lucide.createIcons();
+  if(typeof lucide!=="undefined") lucide.createIcons();
 }
+
+function speakTTS(text){
+  speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.85;
+  speechSynthesis.speak(u);
+}
+
 renderTenses();
 
-// QUIZ
-var QZ=[
-{q:"'She ___ to school every day.' — Thì nào?",opts:["Present Simple","Present Continuous","Past Simple","Future Simple"],ans:0,exp:"Every day = thói quen → Present Simple: goes"},
-{q:"'I have lived here since 2015.' — Thì nào?",opts:["Past Simple","Present Perfect","Present Continuous","Past Perfect"],ans:1,exp:"since 2015 + kéo dài đến nay → Present Perfect"},
-{q:"'They were sleeping when the alarm rang.' — 'were sleeping' là thì gì?",opts:["Past Simple","Past Perfect","Past Continuous","Present Continuous"],ans:2,exp:"was/were + V-ing = Past Continuous"},
-{q:"Dấu hiệu nhận biết 'by the time' thường đi với thì nào?",opts:["Present Simple","Past Perfect","Present Continuous","Future Simple"],ans:1,exp:"by the time + Past Perfect: 'By the time he came, I had left'"},
-{q:"'I will be working at 9 PM tonight.' — Thì nào?",opts:["Future Simple","Future Perfect","Future Continuous","Present Continuous"],ans:2,exp:"will be + V-ing = Future Continuous — hành động đang diễn ra ở tương lai"},
-{q:"'She has been studying for 3 hours.' — Thì nào?",opts:["Present Perfect","Present Continuous","Present Perfect Continuous","Past Perfect Continuous"],ans:2,exp:"has been + V-ing = Present Perfect Continuous — nhấn mạnh kéo dài"},
-{q:"Signal word 'yesterday' đi với thì nào?",opts:["Present Simple","Past Simple","Present Perfect","Future Simple"],ans:1,exp:"yesterday = quá khứ cụ thể → Past Simple"},
-{q:"'By 2030, I will have graduated.' — Thì nào?",opts:["Future Simple","Future Continuous","Future Perfect","Future Perfect Continuous"],ans:2,exp:"will have + V3 = Future Perfect — hoàn thành trước mốc tương lai"},
-{q:"Câu nào dùng Present Perfect đúng?",opts:["I have went to Paris.","I have gone to Paris.","I has gone to Paris.","I going to Paris."],ans:1,exp:"have + V3 (gone, not went). Has dùng cho he/she/it"},
-{q:"'While I was cooking, he was watching TV.' — Hai hành động này diễn tả?",opts:["Nối tiếp nhau","Song song trong quá khứ","Một trước một sau","Tương lai"],ans:1,exp:"while + Past Continuous + Past Continuous = 2 hành động song song"}
+// ==================== TENSE TIMELINE ====================
+(function(){
+  var tl = document.createElement('div');
+  tl.style.cssText = 'margin:0 0 28px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px;overflow-x:auto';
+  tl.innerHTML = '<div style="font-family:Fraunces,serif;font-weight:300;font-size:18px;margin-bottom:16px"><i data-lucide="git-branch" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i> Timeline các thì</div>'
+    +'<svg viewBox="0 0 800 120" style="width:100%;max-width:800px;margin:0 auto;display:block" xmlns="http://www.w3.org/2000/svg">'
+    // Main axis
+    +'<line x1="40" y1="60" x2="760" y2="60" stroke="rgba(100,216,165,0.3)" stroke-width="2"/>'
+    // Now marker
+    +'<line x1="400" y1="30" x2="400" y2="90" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4"/>'
+    +'<text x="400" y="22" fill="var(--accent)" text-anchor="middle" font-size="12" font-family="DM Sans,sans-serif" font-weight="600">NOW</text>'
+    // Past zone
+    +'<rect x="60" y="45" width="200" height="30" rx="8" fill="rgba(244,132,95,0.12)" stroke="rgba(244,132,95,0.3)" stroke-width="0.5"/>'
+    +'<text x="160" y="65" fill="var(--coral)" text-anchor="middle" font-size="12" font-family="DM Sans,sans-serif">Past (Quá khứ)</text>'
+    // Past Perfect zone
+    +'<circle cx="100" cy="100" r="4" fill="var(--coral)"/>'
+    +'<text x="105" y="104" fill="var(--text3)" font-size="9" font-family="DM Sans,sans-serif">Past Perfect</text>'
+    +'<circle cx="220" cy="100" r="4" fill="var(--coral)"/>'
+    +'<text x="225" y="104" fill="var(--text3)" font-size="9" font-family="DM Sans,sans-serif">Past Simple</text>'
+    // Present zone
+    +'<rect x="300" y="45" width="200" height="30" rx="8" fill="rgba(100,216,165,0.12)" stroke="rgba(100,216,165,0.3)" stroke-width="0.5"/>'
+    +'<text x="400" y="65" fill="var(--accent)" text-anchor="middle" font-size="12" font-family="DM Sans,sans-serif">Present (Hiện tại)</text>'
+    // Present tenses
+    +'<circle cx="340" cy="100" r="4" fill="var(--accent)"/>'
+    +'<text x="345" y="104" fill="var(--text3)" font-size="9" font-family="DM Sans,sans-serif">P. Perfect</text>'
+    +'<circle cx="430" cy="100" r="4" fill="var(--accent)"/>'
+    +'<text x="435" y="104" fill="var(--text3)" font-size="9" font-family="DM Sans,sans-serif">P. Simple</text>'
+    // Future zone
+    +'<rect x="540" y="45" width="200" height="30" rx="8" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" stroke-width="0.5"/>'
+    +'<text x="640" y="65" fill="var(--accent2)" text-anchor="middle" font-size="12" font-family="DM Sans,sans-serif">Future (Tương lai)</text>'
+    // Future tenses
+    +'<circle cx="580" cy="100" r="4" fill="var(--accent2)"/>'
+    +'<text x="585" y="104" fill="var(--text3)" font-size="9" font-family="DM Sans,sans-serif">F. Simple</text>'
+    +'<circle cx="700" cy="100" r="4" fill="var(--accent2)"/>'
+    +'<text x="705" y="104" fill="var(--text3)" font-size="9" font-family="DM Sans,sans-serif">F. Perfect</text>'
+    // Arrows
+    +'<polygon points="755,60 765,55 765,65" fill="rgba(100,216,165,0.5)"/>'
+    +'<polygon points="45,60 35,55 35,65" fill="rgba(100,216,165,0.5)"/>'
+    +'</svg>';
+  var container = document.getElementById('tenseContainer');
+  container.parentNode.insertBefore(tl, container);
+  if(typeof lucide!=="undefined") lucide.createIcons();
+})();
+
+// ==================== QUIZ ====================
+var QZ = [
+  {q:"'She ___ to school every day.' — Thì nào?", opts:["Present Simple","Present Continuous","Past Simple","Future Simple"], ans:0, exp:"Every day = thói quen → Present Simple: goes"},
+  {q:"'I have lived here since 2015.' — Thì nào?", opts:["Past Simple","Present Perfect","Present Continuous","Past Perfect"], ans:1, exp:"since 2015 + kéo dài đến nay → Present Perfect"},
+  {q:"'They were sleeping when the alarm rang.' — 'were sleeping' là thì gì?", opts:["Past Simple","Past Perfect","Past Continuous","Present Continuous"], ans:2, exp:"was/were + V-ing = Past Continuous"},
+  {q:"Dấu hiệu nhận biết 'by the time' thường đi với thì nào?", opts:["Present Simple","Past Perfect","Present Continuous","Future Simple"], ans:1, exp:"by the time + Past Perfect: 'By the time he came, I had left'"},
+  {q:"'I will be working at 9 PM tonight.' — Thì nào?", opts:["Future Simple","Future Perfect","Future Continuous","Present Continuous"], ans:2, exp:"will be + V-ing = Future Continuous — hành động đang diễn ra ở tương lai"},
+  {q:"'She has been studying for 3 hours.' — Thì nào?", opts:["Present Perfect","Present Continuous","Present Perfect Continuous","Past Perfect Continuous"], ans:2, exp:"has been + V-ing = Present Perfect Continuous — nhấn mạnh kéo dài"},
+  {q:"Signal word 'yesterday' đi với thì nào?", opts:["Present Simple","Past Simple","Present Perfect","Future Simple"], ans:1, exp:"yesterday = quá khứ cụ thể → Past Simple"},
+  {q:"'By 2030, I will have graduated.' — Thì nào?", opts:["Future Simple","Future Continuous","Future Perfect","Future Perfect Continuous"], ans:2, exp:"will have + V3 = Future Perfect — hoàn thành trước mốc tương lai"},
+  {q:"Câu nào dùng Present Perfect đúng?", opts:["I have went to Paris.","I have gone to Paris.","I has gone to Paris.","I going to Paris."], ans:1, exp:"have + V3 (gone, not went). Has dùng cho he/she/it"},
+  {q:"'While I was cooking, he was watching TV.' — Hai hành động này diễn tả?", opts:["Nối tiếp nhau","Song song trong quá khứ","Một trước một sau","Tương lai"], ans:1, exp:"while + Past Continuous + Past Continuous = 2 hành động song song"}
 ];
-var qI=0,qS=0;
-function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
-function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=''+QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
+
+var qI = 0, qS = 0;
+
+function renderQz(){
+  if(qI >= QZ.length){
+    // Quiz complete — show score and award XP
+    var pct = Math.round(qS / QZ.length * 100);
+    document.getElementById('quizBox').innerHTML =
+      '<div style="text-align:center;padding:20px">'
+      +'<b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b>'
+      +'<br>Câu đúng ('+pct+'%)'
+      +'<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Làm lại</button>'
+      +'</div>';
+
+    // Award XP based on score
+    if(typeof addXP === 'function' && qS > 0){
+      addXP(qS * 3, 'Quiz 12 thì: '+qS+'/'+QZ.length+' đúng');
+    }
+    return;
+  }
+
+  var q = QZ[qI];
+  var gridCols = window.innerWidth < 600 ? '1fr' : '1fr 1fr';
+
+  document.getElementById('quizBox').innerHTML =
+    '<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div>'
+    +'<div style="font-size:16px;margin-bottom:14px">'+q.q+'</div>'
+    +'<div style="display:grid;grid-template-columns:'+gridCols+';gap:8px">'
+    + q.opts.map(function(o, i){
+        return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';
+      }).join('')
+    +'</div>'
+    +'<div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';
+
+  document.getElementById('quizScore').textContent = 'Điểm: '+qS+'/'+qI;
+}
+
+function chkQ(el, correct, chosen){
+  var opts = el.parentElement.children;
+  for(var i = 0; i < opts.length; i++){
+    opts[i].style.pointerEvents = 'none';
+    if(i === correct){
+      opts[i].style.background = 'rgba(100,216,165,0.2)';
+      opts[i].style.borderColor = 'var(--accent)';
+    }
+    if(i === chosen && chosen !== correct){
+      opts[i].style.background = 'rgba(244,132,95,0.2)';
+      opts[i].style.borderColor = 'var(--coral)';
+    }
+  }
+
+  if(chosen === correct){
+    qS++;
+    // Award XP per correct answer
+    if(typeof addXP === 'function') addXP(5, 'Quiz 12 thì đúng');
+  }
+
+  document.getElementById('qExp').textContent = '💡 ' + QZ[qI].exp;
+  document.getElementById('qExp').style.display = 'block';
+
+  setTimeout(function(){ qI++; renderQz(); }, 1500);
+}
+
 renderQz();
 </script>
 <script defer src="gamification.js?v=3"></script><script defer src="common.js?v=14"></script></body></html>

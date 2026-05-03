@@ -531,20 +531,8 @@ const WOD_LIST = [
 ];
 
 let searchHistory = JSON.parse(localStorage.getItem('ee_dict_history')||'[]');
-// FIX #6: Sync with ee_notebook — use ee_notebook as single source of truth
-let savedWords = (function(){
-  var nb = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
-  var sw = JSON.parse(localStorage.getItem('ee_saved_words')||'[]');
-  // Merge: notebook wins, add any from saved_words not in notebook
-  var merged = [...nb];
-  sw.forEach(function(s){
-    if(!merged.some(function(m){return m.word===s.word;})) merged.push(s);
-  });
-  // Save merged back to both keys
-  localStorage.setItem('ee_notebook', JSON.stringify(merged));
-  localStorage.setItem('ee_saved_words', JSON.stringify(merged));
-  return merged;
-})();
+// Uses ee_notebook as single source of truth (shared with so-tay.html)
+let savedWords = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
 let currentWord = '';
 
 // Quick search hints
@@ -899,8 +887,6 @@ function toggleSave(word) {
       document.getElementById('saveBtn').classList.add('saved');
     }
   }
-  // FIX #6: Sync both keys
-  localStorage.setItem('ee_saved_words', JSON.stringify(savedWords));
   localStorage.setItem('ee_notebook', JSON.stringify(savedWords));
   renderSaved();
 }
@@ -949,7 +935,6 @@ function clearSaved() {
   overlay.querySelector('#clearCancel').addEventListener('click',function(){overlay.remove();});
   overlay.querySelector('#clearConfirm').addEventListener('click',function(){
     savedWords=[];
-    localStorage.removeItem('ee_saved_words');
     localStorage.setItem('ee_notebook','[]');
     renderSaved();
     overlay.remove();
@@ -959,10 +944,6 @@ function clearSaved() {
 
 renderHistory();
 renderSaved();
-
-document.addEventListener('click', function(e) {
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
 
 // ===== BROWSE =====
 let curLetter='All',curLevel='All';

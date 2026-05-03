@@ -354,11 +354,12 @@
 <script>
 // ===== DATA LOADING =====
 function loadData() {
+  var nb = JSON.parse(localStorage.getItem('ee_notebook') || '[]');
   return {
     streak: JSON.parse(localStorage.getItem('ee_streak') || '{"count":0,"lastVisit":"","days":[]}'),
     awlLearned: JSON.parse(localStorage.getItem('ee_awl_learned') || '[]'),
-    evSaved: JSON.parse(localStorage.getItem('ev_saved') || '[]'),
-    ilSaved: JSON.parse(localStorage.getItem('il_saved') || '[]'),
+    notebook: nb,
+    notebookCount: nb.length,
     vocabLearned: JSON.parse(localStorage.getItem('ee_learned') || '[]'),
     quizDone: parseInt(localStorage.getItem('ee_total_done') || '0'),
     quizCorrect: parseInt(localStorage.getItem('ee_total_correct') || '0'),
@@ -389,7 +390,7 @@ function getLevel(xp) {
 function calcXP(data) {
   let xp = 0;
   xp += data.awlLearned.length * 3;
-  xp += (data.evSaved.length + data.ilSaved.length + data.vocabLearned.length) * 2;
+  xp += (data.notebookCount + data.vocabLearned.length) * 2;
   xp += data.quizCorrect * 5;
   xp += data.streak.count * 10;
   xp += data.notes.length * 3;
@@ -402,8 +403,8 @@ const ACHIEVEMENTS = [
   {icon:'', name:'3 ngày streak', desc:'Học 3 ngày liên tiếp', check: d => d.streak.count >= 3},
   {icon:'•', name:'7 ngày streak', desc:'Học 7 ngày liên tiếp', check: d => d.streak.count >= 7},
   {icon:'•', name:'30 ngày streak', desc:'Học 30 ngày liên tiếp', check: d => d.streak.count >= 30},
-  {icon:'•', name:'Từ vựng đầu tiên', desc:'Lưu từ vựng đầu tiên', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 1},
-  {icon:'•', name:'50 từ vựng', desc:'Học 50 từ vựng', check: d => (d.evSaved.length + d.ilSaved.length + d.vocabLearned.length) >= 50},
+  {icon:'•', name:'Từ vựng đầu tiên', desc:'Lưu từ vựng đầu tiên', check: d => (d.notebookCount + d.vocabLearned.length) >= 1},
+  {icon:'•', name:'50 từ vựng', desc:'Học 50 từ vựng', check: d => (d.notebookCount + d.vocabLearned.length) >= 50},
   {icon:'•', name:'Quiz đầu tiên', desc:'Làm đúng câu quiz đầu tiên', check: d => d.quizCorrect >= 1},
   {icon:'•', name:'100 câu đúng', desc:'Trả lời đúng 100 câu quiz', check: d => d.quizCorrect >= 100},
   {icon:'•', name:'AWL 50 từ', desc:'Học 50 từ Academic Word List', check: d => d.awlLearned.length >= 50},
@@ -425,7 +426,7 @@ const MODULES = [
   {icon:'•', name:'AWL — 570 từ', link:'tu-hoc-thuat.html', key:'awl', max:570, getVal: d => d.awlLearned.length},
   {icon:'•', name:'IELTS Writing/Reading', link:'ielts.html', key:'ielts', max:100, getVal: d => Math.min(d.quizCorrect * 3, 100)},
   {icon:'•', name:'Collocations', link:'cum-tu-di-cung.html', key:'coll', max:100, getVal: d => Math.min(d.streak.count * 4, 100)},
-  {icon:'•', name:'Từ điển IELTS', link:'tu-dien-ielts.html', key:'dict', max:100, getVal: d => Math.min(d.ilSaved.length * 2, 100)},
+  {icon:'•', name:'Từ điển IELTS', link:'tu-dien-ielts.html', key:'dict', max:100, getVal: d => Math.min(d.notebook.filter(w=>w.sourcePage&&w.sourcePage.indexOf('ielts')>-1).length * 2, 100)},
   {icon:'•', name:'Bài tập Quiz', link:'bai-tap.html', key:'quiz', max:100, getVal: d => Math.min((d.quizCorrect / Math.max(d.quizDone,1)) * 100, 100)},
 ];
 
@@ -434,7 +435,7 @@ const MODULE_COLORS = ['var(--accent)','var(--pink)','var(--accent3)','var(--gre
 // ===== RENDER FUNCTIONS =====
 function renderHeroStats(data) {
   const xp = calcXP(data);
-  const totalSaved = data.evSaved.length + data.ilSaved.length + data.vocabLearned.length;
+  const totalSaved = data.notebookCount + data.vocabLearned.length;
   const acc = data.quizDone > 0 ? Math.round(data.quizCorrect / data.quizDone * 100) : 0;
 
   document.getElementById('hs-streak').textContent = data.streak.count;
@@ -689,7 +690,7 @@ function deleteNote(idx) {
 function resetData() {
   if(confirm('Xóa toàn bộ dữ liệu học tập? Thao tác này KHÔNG thể hoàn tác!')) {
     if(confirm('Bạn chắc chắn? Tất cả streak, AWL, từ vựng đã học sẽ bị xóa!')) {
-      const keys = ['ee_streak','ee_awl_learned','ev_saved','il_saved','ee_learned','ee_total_done','ee_total_correct','pg_goals','pg_notes','pg_ielts','pg_xp','pg_activity'];
+      const keys = ['ee_streak','ee_awl_learned','ee_notebook','ee_learned','ee_total_done','ee_total_correct','pg_goals','pg_notes','pg_ielts','pg_xp','pg_activity'];
       keys.forEach(k => localStorage.removeItem(k));
       location.reload();
     }
@@ -733,25 +734,11 @@ setTimeout(() => {
   });
 }, 100);
 
-  if(!e.target.closest('.nav-drop')) document.querySelectorAll('.nav-drop.open').forEach(d=>d.classList.remove('open'));
-});
 </script>
 <script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
-<script id="page-transition-js">
-(function(){
-  document.querySelector('.content')&&document.querySelector('.content').classList.add('page-enter');
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('a[href]');
-    if(!a)return;var h=a.getAttribute('href');
-    if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('javascript'))return;
-    e.preventDefault();var c=document.querySelector('.content');
-    if(c){c.classList.remove('page-enter');c.classList.add('page-exit');setTimeout(function(){window.location.href=h},200);}
-    else{window.location.href=h;}
-  });
-})();
-</script>
+<!-- page-transition-js removed: common.js handles transitions -->
 <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>
