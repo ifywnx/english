@@ -212,7 +212,7 @@
   <div class="nav-files">
     <a href="tu-dien-doi-thuong.html" class="nf-btn"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Phần 1 — 60 từ đầu</a>
     <a href="tu-dien-doi-thuong-2.html" class="nf-btn active"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Phần 2 — 150 từ tiếp theo</a>
-    <a href="tu-dien-doi-thuong-3.html" class="nf-btn"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Phần 3 — Chuyên đề</a>
+    <a href="tu-dien-doi-thuong-3.html" class="nf-btn"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Chủ đề IELTS</a>
     <a href="tu-dien-ielts.html" class="nf-btn"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Từ điển IELTS</a>
     <a href="tu-hoc-thuat.html" class="nf-btn"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> 570 từ học thuật</a>
   </div>
@@ -250,6 +250,7 @@
 </main>
 </div>
 
+<script src="dt2-extra.js"></script>
 <script>
 const WORDS2 = [
   // DESCRIBE
@@ -349,6 +350,7 @@ const WORDS2 = [
   {w:'digitalise',p:'/ˈdɪdʒɪtəlaɪz/',type:'v',band:'B2',usage:'formal',topic:'modern',vi:'số hóa',meanings:[{vi:'chuyển đổi sang dạng kỹ thuật số',en:'to convert something to digital form',ex:[{en:'Many businesses have digitalised their records.',vi:'Nhiều doanh nghiệp đã số hóa hồ sơ của họ.'},{en:'Governments are digitalising public services.',vi:'Các chính phủ đang số hóa dịch vụ công.'}]}],synonyms:['digitize','automate','computerise','modernise'],antonyms:['analog','physical'],collocations:['digitalise services','digital transformation','digitalisation of industry'],tip:'"Digital transformation" is the business buzzword. "Digitalise" = make digital. Growing IELTS topic.'},
   {w:'disruption',p:'/dɪsˈrʌpʃən/',type:'n',band:'B2',usage:'formal',topic:'modern',vi:'sự gián đoạn, phá vỡ',meanings:[{vi:'sự thay đổi đột ngột gây gián đoạn',en:'a disturbance that interrupts an event or process',ex:[{en:'Technology causes disruption in many industries.',vi:'Công nghệ gây ra sự gián đoạn trong nhiều ngành công nghiệp.'},{en:'The pandemic caused widespread disruption.',vi:'Đại dịch gây ra sự gián đoạn trên diện rộng.'}]}],synonyms:['disturbance','interruption','upheaval','disorder'],antonyms:['stability','continuity','order'],collocations:['cause disruption','digital disruption','economic disruption','creative disruption'],tip:'"Disruptive technology" = công nghệ thay đổi hoàn toàn ngành. "Creative disruption" = phá vỡ để đổi mới.'},
 ];
+if(typeof DT2_EXTRA!=='undefined') WORDS2.push(...DT2_EXTRA);
 
 // Unified notebook storage — migrate ev2_saved into ee_notebook
 var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');
@@ -416,7 +418,7 @@ function cardHTML(w){
   return `<div class="word-card${saved?' saved':''}" id="wc2-${w.w}" onclick="toggleExp('${w.w}')">
     <div class="wc-top">
       <div class="wc-word">${w.w}</div>
-      <button class="wc-save${saved?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${saved?'•':'•'}</button>
+      <button class="wc-save${saved?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${saved?'★':'☆'}</button>
     </div>
     <div class="wc-meta">
       <span class="wc-pron">${w.p}</span>
@@ -467,7 +469,7 @@ function toggleSave(word){
   localStorage.setItem('ee_notebook', JSON.stringify(nb));
   document.getElementById('statSaved').textContent=savedWords.size;
   const card=document.getElementById('wc2-'+word);
-  if(card){card.classList.toggle('saved',savedWords.has(word));const btn=card.querySelector('.wc-save');if(btn){btn.textContent=savedWords.has(word)?'•':'•';btn.classList.toggle('saved',savedWords.has(word));}}
+  if(card){card.classList.toggle('saved',savedWords.has(word));const btn=card.querySelector('.wc-save');if(btn){btn.textContent=savedWords.has(word)?'★':'☆';btn.classList.toggle('saved',savedWords.has(word));}}
 }
 
 function filterTopic(topic,el){currentTopic=topic;document.querySelectorAll('.sidebar .sb-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');renderWords();}

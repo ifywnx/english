@@ -93,7 +93,7 @@
       {href:'tu-dien.html', icon:'book', text:'Từ điển Anh - Việt'},
       {href:'tu-dien-doi-thuong.html', icon:'message-circle', text:'Từ điển đời thường'},
       {href:'tu-dien-doi-thuong-2.html', icon:'messages-square', text:'Từ điển đời thường 2'},
-      {href:'tu-dien-doi-thuong-3.html', icon:'library', text:'Từ điển đời thường 3'},
+      {href:'tu-dien-doi-thuong-3.html', icon:'library', text:'Từ điển chủ đề'},
       {href:'tu-dien-ielts.html', icon:'target', text:'Từ điển IELTS'},
       {href:'tu-dien-ielts-2.html', icon:'target', text:'Từ điển IELTS 2'}
     ],

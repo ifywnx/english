@@ -45,33 +45,37 @@
 .stat-label{font-size:10px;color:var(--text3);margin-top:2px}
 .legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;padding:12px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:12px}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
-/* WORD TABLE VIEW */
-.word-table{width:100%;border-collapse:collapse;margin-bottom:8px}
-.word-table th{padding:9px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);font-weight:400;text-align:left}
-.word-table td{padding:10px 14px;border:0.5px solid var(--border);font-size:13px;vertical-align:top;cursor:pointer}
-.word-table tr:hover td{background:rgba(255,255,255,0.02)}
-.word-table tr.expanded td{background:rgba(123,110,246,0.04)}
-.td-word{color:var(--text);font-weight:500;font-size:14px}
-.td-pron{font-size:11px;color:var(--accent);font-style:italic;display:block;margin-top:2px}
-.td-type{font-size:10px;padding:2px 7px;border-radius:8px;display:inline-block}
+/* WORD CARD VIEW */
+.words-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.wc{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px 18px;cursor:pointer;transition:all .2s}
+.wc:hover{border-color:rgba(123,110,246,0.3);transform:translateY(-1px)}
+.wc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
+.wc-word{font-size:17px;font-weight:600;color:var(--text)}
+.wc-save{font-size:16px;cursor:pointer;background:none;border:none;color:var(--accent3);opacity:.5;transition:opacity .2s;padding:2px}
+.wc-save:hover,.wc-save.saved{opacity:1}
+.wc-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.wc-pron{font-size:12px;color:var(--accent);font-style:italic}
+.wc-type{font-size:10px;padding:2px 7px;border-radius:8px;display:inline-block}
 .tn{background:rgba(100,216,165,0.12);color:var(--accent)}
 .tv{background:rgba(100,216,165,0.12);color:var(--accent2)}
 .tadj{background:rgba(244,132,95,0.12);color:var(--coral)}
 .tadv{background:rgba(107,203,119,0.12);color:var(--green)}
-.td-vi{color:var(--text2);font-size:13px}
-.td-ex{color:var(--text3);font-size:11px;font-style:italic;margin-top:3px}
-.td-ielts{font-size:11px;color:var(--text3)}
-/* BAND TAGS */
 .btag{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:500;display:inline-block}
 .b60{background:rgba(107,203,119,0.15);color:var(--green)}
 .b65{background:rgba(100,216,165,0.15);color:var(--accent3)}
 .b70{background:rgba(100,216,165,0.15);color:var(--accent)}
 .b75{background:rgba(244,132,95,0.15);color:var(--coral)}
 .b80{background:rgba(232,121,160,0.15);color:var(--pink)}
-/* EXPANDED ROW */
-.expanded-row td{padding:0;border:none}
-.exp-content{background:rgba(123,110,246,0.05);border:0.5px solid rgba(123,110,246,0.2);border-radius:0 0 12px 12px;padding:16px 20px;margin-bottom:2px}
+.wc-skill{font-size:10px;color:var(--text3);padding:2px 7px;border-radius:8px;background:rgba(255,255,255,0.04)}
+.wc-vi{font-size:14px;color:var(--text2);margin-bottom:4px}
+.wc-ex{font-size:12px;color:var(--text3);font-style:italic}
+.wc-freq{margin-top:8px;font-size:11px;color:var(--text3)}
+/* EXPANDED CARD */
+.wc-detail{display:none;margin-top:12px;padding-top:12px;border-top:0.5px solid var(--border)}
+.wc.expanded .wc-detail{display:block}
+.wc.expanded{border-color:rgba(123,110,246,0.3);background:rgba(123,110,246,0.03)}
 .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.exp-grid{grid-template-columns:1fr}}
 .exp-section{margin-bottom:8px}
 .exp-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
 .exp-examples{display:flex;flex-direction:column;gap:5px}
@@ -80,16 +84,17 @@
 .exp-vi{font-size:11px;color:var(--text3)}
 .exp-chips{display:flex;flex-wrap:wrap;gap:4px}
 .exp-chip{padding:3px 10px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;font-size:11px;color:var(--text2)}
-.exp-ielts{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--text2);line-height:1.7}
-.exp-ielts strong{color:var(--accent)}
-.save-row-btn{font-size:14px;cursor:pointer;background:none;border:none;opacity:.5;transition:opacity .2s;padding:2px}
-.save-row-btn:hover,.save-row-btn.saved{opacity:1}
+.exp-ielts{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text2);line-height:1.7}
 /* SECTION HEADER */
 .topic-header{display:flex;align-items:center;gap:12px;margin:28px 0 12px;padding-bottom:10px;border-bottom:0.5px solid var(--border)}
 .th-icon{font-size:22px}
 .th-title{font-family:'Fraunces',serif;font-size:20px;font-weight:300}
 .th-count{font-size:14px;color:var(--text3);margin-left:auto}
 .no-res{text-align:center;color:var(--text3);padding:40px;font-size:14px}
+.nav-files{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.nf-btn{padding:7px 14px;border-radius:20px;font-size:12px;text-decoration:none;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);transition:all .2s}
+.nf-btn:hover{color:var(--text)}
+.nf-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.4);color:var(--accent2)}
 /* SAVED */
 .saved-panel{background:rgba(123,110,246,0.06);border:0.5px solid rgba(123,110,246,0.2);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:none}
 .saved-panel.show{display:block}
@@ -191,6 +196,14 @@
   <div class="page-label">Từ điển 2/2 — IELTS Band 6.0 → 8.0</div>
   <h1 class="page-title">Từ điển IELTS<br><em style="color:var(--accent2)">Band 6.0 → 8.0+</em></h1>
   <p class="page-desc">200+ từ học thuật chọn lọc cho IELTS — được đánh dấu Band cần thiết, kỹ năng áp dụng, ví dụ câu thực tế trong bài thi và mẹo dùng để tăng điểm. Bấm vào từ để xem chi tiết đầy đủ.</p>
+
+  <div class="nav-files">
+    <a href="tu-dien-ielts.html" class="nf-btn active"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> IELTS Phần 1</a>
+    <a href="tu-dien-ielts-2.html" class="nf-btn"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> IELTS Phần 2</a>
+    <a href="tu-dien-doi-thuong.html" class="nf-btn"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Đời thường</a>
+    <a href="tu-dien-doi-thuong-3.html" class="nf-btn"><i data-lucide="notebook" style="width:16px;height:16px;display:inline-block;vertical-align:-3px"></i> Chủ đề IELTS</a>
+    <a href="tu-hoc-thuat.html" class="nf-btn"><i data-lucide="star" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> 570 từ học thuật</a>
+  </div>
 
   <div class="stats-row">
     <div class="stat-box"><div class="stat-num" id="sTotal">200+</div><div class="stat-label">Tổng từ IELTS</div></div>
@@ -379,54 +392,58 @@ function render(){
         <span class="th-title">${TOPIC_LABELS[t]||t}</span>
         <span class="th-count">${groups[t].length} từ</span>
       </div>
-      ${tableHTML(groups[t])}`).join('');
+      ${cardHTML(groups[t])}`).join('');
   } else {
-    container.innerHTML=tableHTML(data);
+    container.innerHTML=cardHTML(data);
   }
 }
 
-function tableHTML(words){
-  return `<table class="word-table">
-    <tr><th>Từ / Phiên âm</th><th>Loại</th><th>Band</th><th>Kỹ năng</th><th>Nghĩa & Ví dụ</th><th>Ghi chú IELTS</th><th>•</th></tr>
-    ${words.map(w=>`
-      <tr onclick="toggleExp('${w.w}')">
-        <td><span class="td-word">${w.w}</span><span class="td-pron">${w.p}</span></td>
-        <td><span class="td-type ${TYPE_CLS[w.t]||'tn'}">${w.t}</span></td>
-        <td><span class="btag ${BAND_CLS[w.band]}">${w.band}</span></td>
-        <td>${SKILL_ICONS[w.skill]||'•'}</td>
-        <td><div class="td-vi">${w.vi}</div><div class="td-ex">"${w.ex}"</div></td>
-        <td class="td-ielts">${w.ielts||''}</td>
-        <td><button class="save-row-btn${saved.has(w.w)?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${saved.has(w.w)?'•':'•'}</button></td>
-      </tr>
-      <tr id="exp-${w.w}" style="display:none"><td colspan="7" style="padding:0;border:none">
-        <div class="exp-content">
-          <div class="exp-grid">
-            <div>
-              <div class="exp-section"><div class="exp-label">Ví dụ câu</div>
-                <div class="exp-examples">
-                  <div class="exp-ex"><div class="exp-en">"${w.ex}"</div><div class="exp-vi">${w.exvi}</div></div>
-                </div>
+function cardHTML(words){
+  return `<div class="words-grid">${words.map(w=>`
+    <div class="wc" id="wc-${w.w.replace(/\s/g,'-')}" onclick="toggleExp('${w.w}')">
+      <div class="wc-top">
+        <span class="wc-word">${w.w}</span>
+        <button class="wc-save${saved.has(w.w)?' saved':''}" onclick="event.stopPropagation();toggleSave('${w.w}')">${saved.has(w.w)?'★':'☆'}</button>
+      </div>
+      <div class="wc-meta">
+        <span class="wc-pron">${w.p}</span>
+        <span class="wc-type ${TYPE_CLS[w.t]||'tn'}">${w.t}</span>
+        <span class="btag ${BAND_CLS[w.band]}">${w.band}</span>
+        <span class="wc-skill">${w.skill}</span>
+      </div>
+      <div class="wc-vi">${w.vi}</div>
+      <div class="wc-ex">"${w.ex}"</div>
+      <div class="wc-detail">
+        <div class="exp-grid">
+          <div>
+            <div class="exp-section"><div class="exp-label">Ví dụ câu</div>
+              <div class="exp-examples">
+                <div class="exp-ex"><div class="exp-en">"${w.ex}"</div><div class="exp-vi">${w.exvi}</div></div>
               </div>
-              ${w.syn?.length?`<div class="exp-section"><div class="exp-label">Từ đồng nghĩa</div><div class="exp-chips">${w.syn.map(s=>`<span class="exp-chip">${s}</span>`).join('')}</div></div>`:''}
-              ${w.col?.length?`<div class="exp-section"><div class="exp-label">Collocations</div><div class="exp-chips">${w.col.map(s=>`<span class="exp-chip">${s}</span>`).join('')}</div></div>`:''}
             </div>
-            <div>
-              <div class="exp-section"><div class="exp-label">IELTS Band ${w.band} Usage</div>
-                <div class="exp-ielts">${w.ielts||'Từ học thuật quan trọng trong IELTS.'}</div>
-              </div>
-              <div style="margin-top:8px;font-size:11px;color:var(--text3)">Chủ đề: ${TOPIC_LABELS[w.topic]||w.topic} · Kỹ năng: ${SKILL_ICONS[w.skill]} ${w.skill}</div>
+            ${w.syn?.length?`<div class="exp-section"><div class="exp-label">Từ đồng nghĩa</div><div class="exp-chips">${w.syn.map(s=>`<span class="exp-chip">${s}</span>`).join('')}</div></div>`:''}
+            ${w.col?.length?`<div class="exp-section"><div class="exp-label">Collocations</div><div class="exp-chips">${w.col.map(s=>`<span class="exp-chip">${s}</span>`).join('')}</div></div>`:''}
+          </div>
+          <div>
+            <div class="exp-section"><div class="exp-label">IELTS Band ${w.band}</div>
+              <div class="exp-ielts">${w.ielts||'Từ học thuật quan trọng trong IELTS.'}</div>
             </div>
+            <div style="margin-top:8px;font-size:11px;color:var(--text3)">Chủ đề: ${TOPIC_LABELS[w.topic]||w.topic} · Kỹ năng: ${w.skill}</div>
           </div>
         </div>
-      </td></tr>`).join('')}
-  </table>`;
+      </div>
+    </div>`).join('')}</div>`;
 }
 
 function toggleExp(word){
-  const row=document.getElementById('exp-'+word);
-  const isOpen=row.style.display!=='none';
-  if(expandedWord) document.getElementById('exp-'+expandedWord).style.display='none';
-  row.style.display=isOpen?'none':'table-row';
+  const card=document.getElementById('wc-'+word.replace(/\s/g,'-'));
+  if(!card) return;
+  const isOpen=card.classList.contains('expanded');
+  if(expandedWord&&expandedWord!==word){
+    const prev=document.getElementById('wc-'+expandedWord.replace(/\s/g,'-'));
+    if(prev) prev.classList.remove('expanded');
+  }
+  card.classList.toggle('expanded',!isOpen);
   expandedWord=isOpen?null:word;
 }
 
