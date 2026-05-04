@@ -172,37 +172,65 @@ window.addEventListener('scroll',function(){
     document.body.appendChild(bnDiv.firstElementChild);
   }
 
-  // --- More Drawer ---
+  // --- More Drawer (grouped accordion) ---
   if (!document.getElementById('moreDrawer')) {
-    var drawerItems = [];
     var sharedNavItems = window.EE_NAV_ITEMS;
+    var groupIcons = {'Ngữ pháp':'book-open','Từ vựng':'pencil','4 kỹ năng':'layers','IELTS & TOEIC':'trophy','Từ điển':'book','Chuyên ngành':'briefcase','Tiện ích':'settings'};
+
+    var dHtml = '<div class="more-drawer" id="moreDrawer">';
+    dHtml += '<div class="more-drawer-overlay" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"></div>';
+    dHtml += '<div class="more-drawer-sheet">';
+    dHtml += '<div class="more-drawer-handle" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"><span></span></div>';
+
+    // Quick Actions
+    dHtml += '<div class="md-quick">';
+    dHtml += '<a href="tien-do.html" class="md-quick-btn"><i data-lucide="bar-chart-3" style="width:18px;height:18px"></i><span>Tiến độ</span></a>';
+    dHtml += '<a href="so-tay.html" class="md-quick-btn"><i data-lucide="bookmark" style="width:18px;height:18px"></i><span>Sổ tay</span></a>';
+    dHtml += '<button class="md-quick-btn" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\');var p=document.getElementById(\'themePanel\');if(p){p.style.display=\'block\';p.style.bottom=\'100px\';p.style.right=\'16px\';p.style.left=\'16px\';p.style.width=\'auto\';setTimeout(function(){p.style.opacity=\'1\';p.style.transform=\'translateY(0)\'},10)}"><i data-lucide="palette" style="width:18px;height:18px"></i><span>Giao diện</span></button>';
+    dHtml += '<a href="dat-muc-tieu.html" class="md-quick-btn"><i data-lucide="target" style="width:18px;height:18px"></i><span>Mục tiêu</span></a>';
+    dHtml += '</div>';
+
+    // Grouped accordion
+    dHtml += '<div class="md-groups">';
     if (sharedNavItems) {
       for (var group in sharedNavItems) {
         if (!sharedNavItems.hasOwnProperty(group)) continue;
-        for (var i = 0; i < sharedNavItems[group].length; i++) {
-          drawerItems.push({
-            href: sharedNavItems[group][i].href,
-            icon: sharedNavItems[group][i].icon,
-            label: sharedNavItems[group][i].text
-          });
-        }
+        var items = sharedNavItems[group];
+        var gIcon = groupIcons[group] || 'folder';
+        var count = items.length;
+        dHtml += '<div class="md-group">';
+        dHtml += '<button class="md-group-btn" onclick="toggleDrawerGroup(this)"><span class="md-group-left"><i data-lucide="' + gIcon + '" style="width:18px;height:18px"></i> ' + group + '</span><span class="md-group-right"><span class="md-count">' + count + '</span><i data-lucide="chevron-down" style="width:14px;height:14px;transition:transform .2s"></i></span></button>';
+        dHtml += '<div class="md-group-items">';
+        items.forEach(function(item){
+          var isAct = path === item.href ? ' md-active' : '';
+          dHtml += '<a href="' + item.href + '" class="md-link' + isAct + '"><i data-lucide="' + item.icon + '" style="width:16px;height:16px"></i><span>' + item.text + '</span></a>';
+        });
+        dHtml += '</div></div>';
       }
-      drawerItems.push({ href: 'tien-do.html', icon: 'bar-chart-3', label: 'Tiến độ học' });
     }
-    var dHtml = '<div class="more-drawer" id="moreDrawer">';
-    dHtml += '<div class="more-drawer-overlay" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"></div>';
-    dHtml += '<div class="more-drawer-sheet"><div class="more-drawer-handle" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\')"><span></span></div>';
-    dHtml += '<div class="more-drawer-grid">';
-    drawerItems.forEach(function(item){
-      dHtml += '<a href="' + item.href + '" class="md-item"><i data-lucide="' + item.icon + '" style="width:22px;height:22px"></i><span>' + item.label + '</span></a>';
-    });
-    // Theme button in drawer
-    dHtml += '<button class="md-item" id="mdThemeBtn" onclick="document.getElementById(\'moreDrawer\').classList.remove(\'open\');var p=document.getElementById(\'themePanel\');if(p){p.style.display=\'block\';p.style.bottom=\'100px\';p.style.right=\'16px\';p.style.left=\'16px\';p.style.width=\'auto\';setTimeout(function(){p.style.opacity=\'1\';p.style.transform=\'translateY(0)\'},10)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><span>Đổi giao diện</span></button>';
-    dHtml += '</div></div></div>';
+    dHtml += '</div>';
+
+    dHtml += '</div></div>';
 
     var dDiv = document.createElement('div');
     dDiv.innerHTML = dHtml;
     document.body.appendChild(dDiv.firstElementChild);
+
+    // Accordion toggle
+    window.toggleDrawerGroup = function(btn){
+      var items = btn.nextElementSibling;
+      var isOpen = btn.classList.contains('md-group-open');
+      // Close all
+      document.querySelectorAll('.md-group-btn.md-group-open').forEach(function(b){
+        b.classList.remove('md-group-open');
+        b.nextElementSibling.style.maxHeight = '0';
+      });
+      // Toggle clicked
+      if(!isOpen){
+        btn.classList.add('md-group-open');
+        items.style.maxHeight = items.scrollHeight + 'px';
+      }
+    };
   }
 
   // Scroll hide/show for bottom nav is now handled by the merged scroll listener above

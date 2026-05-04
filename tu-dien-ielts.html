@@ -241,6 +241,7 @@
 </main>
 </div>
 
+<script src="ielts1-extra.js?v=1"></script>
 <script>
 const IW=[
   // ENVIRONMENT
@@ -336,6 +337,9 @@ const IW=[
   {w:'infrastructure',p:'/ˈɪnfrəstrʌktʃər/',t:'n',band:'6.5',topic:'urban',skill:'writing',vi:'cơ sở hạ tầng',ex:'Developing countries need to invest in infrastructure.',exvi:'Các nước đang phát triển cần đầu tư vào cơ sở hạ tầng.',syn:['facilities','services','systems','framework'],ielts:'Development and economics core word.',col:['public infrastructure','transport infrastructure','develop infrastructure','crumbling infrastructure']},
   {w:'gentrification',p:'/ˌdʒɛntrɪfɪˈkeɪʃən/',t:'n',band:'8.0',topic:'urban',skill:'writing',vi:'quý tộc hóa khu phố',ex:'Gentrification displaces long-term residents.',exvi:'Quý tộc hóa khu phố khiến cư dân lâu năm phải rời đi.',syn:['urban renewal','neighbourhood transformation','upscaling'],ielts:'Band 8 — urban inequality topic.',col:['urban gentrification','fight gentrification','result of gentrification','rapid gentrification']},
 ];
+
+// Merge extra IELTS words (skip duplicates)
+if(typeof IELTS1_EXTRA!=='undefined'){const existing=new Set(IW.map(w=>w.w));IELTS1_EXTRA.forEach(w=>{if(!existing.has(w.w))IW.push(w);});}
 
 // Unified notebook storage — migrate il_saved into ee_notebook
 var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');

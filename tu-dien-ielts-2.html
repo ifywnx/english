@@ -228,6 +228,7 @@
 </main>
 </div>
 
+<script src="ielts2-extra.js?v=1"></script>
 <script>
 const IW2=[
   // ENVIRONMENT 2
@@ -342,6 +343,9 @@ const IW2=[
   {w:'cogent',p:'/ˈkoʊdʒənt/',t:'adj',band:'8.0',topic:'writing',skill:'writing',vi:'thuyết phục, chặt chẽ',ex:'She made a cogent argument for reform.',exvi:'Cô ấy đưa ra một lập luận thuyết phục cho cải cách.',syn:['convincing','compelling','persuasive','logical'],ielts:'Band 8. "A cogent argument" — impressive adjective for persuasive writing.',col:['cogent argument','cogent reasoning','cogent explanation']},
   {w:'elicit',p:'/ɪˈlɪsɪt/',t:'v',band:'7.5',topic:'writing',skill:'writing',vi:'gợi ra, thu thập (phản ứng)',ex:'The policy elicited strong public reaction.',exvi:'Chính sách này gợi ra phản ứng mạnh mẽ của công chúng.',syn:['evoke','provoke','draw out','bring about'],ielts:'"Elicit a response/reaction" — formal alternative to "cause/get".',col:['elicit a response','elicit information','elicit feedback','elicit concern']},
 ];
+
+// Merge extra IELTS2 words (skip duplicates)
+if(typeof IELTS2_EXTRA!=='undefined'){const existing=new Set(IW2.map(w=>w.w));IELTS2_EXTRA.forEach(w=>{if(!existing.has(w.w))IW2.push(w);});}
 
 // Unified notebook storage — migrate il2_saved into ee_notebook
 var _nbRaw = JSON.parse(localStorage.getItem('ee_notebook')||'[]');

@@ -170,9 +170,26 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;font-family:'DM Sa
 .md-item:hover,.md-item:active{background:rgba(255,255,255,0.05);color:var(--accent)}
 .md-item svg{stroke:var(--text3);transition:stroke .15s}
 .md-item:hover svg,.md-item:active svg{stroke:var(--accent)}
+/* Quick Actions row */
+.md-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;padding-bottom:14px;border-bottom:0.5px solid var(--border)}
+.md-quick-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:12px;text-decoration:none;color:var(--text2);font-size:11px;border:none;background:rgba(100,216,165,0.05);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.md-quick-btn:hover,.md-quick-btn:active{background:rgba(100,216,165,0.12);color:var(--accent)}
+/* Group accordion */
+.md-groups{display:flex;flex-direction:column;gap:2px}
+.md-group-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 10px;border:none;background:none;color:var(--text);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border-radius:10px;transition:background .15s}
+.md-group-btn:hover,.md-group-btn:active{background:rgba(255,255,255,0.04)}
+.md-group-left{display:flex;align-items:center;gap:8px}
+.md-group-right{display:flex;align-items:center;gap:6px}
+.md-count{font-size:11px;color:var(--text3);background:rgba(255,255,255,0.05);padding:2px 7px;border-radius:10px}
+.md-group-btn.md-group-open .md-group-right i{transform:rotate(180deg)}
+.md-group-items{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.md-link{display:flex;align-items:center;gap:10px;padding:10px 12px 10px 36px;text-decoration:none;color:var(--text2);font-size:13px;border-radius:8px;transition:all .12s}
+.md-link:hover,.md-link:active{background:rgba(100,216,165,0.06);color:var(--text)}
+.md-link.md-active{color:var(--accent);background:rgba(100,216,165,0.08);font-weight:500}
 
 /* === RESPONSIVE === */
 @media(max-width:900px){
+  #themeToggleBtn{display:none!important}
   .nav-spacer{display:none}
   body{overflow-x:hidden;max-width:100vw}
   html{overflow-x:hidden!important}
