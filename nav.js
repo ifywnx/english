@@ -108,7 +108,9 @@
       {href:'so-tay.html', icon:'bookmark', text:'Sổ tay từ vựng'},
       {href:'lo-trinh-hoc.html', icon:'map', text:'Lộ trình học'},
       {href:'dat-muc-tieu.html', icon:'target', text:'Đặt mục tiêu'},
-      {href:'theo-doi-diem-yeu.html', icon:'alert-triangle', text:'Theo dõi điểm yếu'}
+      {href:'theo-doi-diem-yeu.html', icon:'alert-triangle', text:'Theo dõi điểm yếu'},
+      {href:'achievements.html', icon:'trophy', text:'Thành tựu'},
+      {href:'tien-do.html', icon:'bar-chart-3', text:'Tiến độ & XP'}
     ]
   };
 
@@ -117,8 +119,8 @@
   window.EE_SHORT_NAV_ITEMS = [
     {href:'index.html', icon:'home', label:'Trang chủ'},
     {href:'ngu-phap.html', icon:'book-open', label:'Ngữ pháp'},
-    {href:'tu-vung.html', icon:'pencil', label:'Từ vựng'},
-    {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'},
+    {href:'tu-vung.html', icon:'languages', label:'Từ vựng'},
+    {href:'bai-tap.html', icon:'edit-3', label:'Bài tập'},
     {href:'lo-trinh-hoc.html', icon:'map', label:'Lộ trình'}
   ];
   window.EE_NAV_FLAT = (function(){

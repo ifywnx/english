@@ -143,16 +143,16 @@ table{width:100%;border-collapse:collapse}
 /* === MOBILE BOTTOM NAV (Gen Z Glassmorphism) === */
 .mob-bottom-nav{display:none;position:fixed;bottom:12px;left:14px;right:14px;border-radius:22px;background:var(--nav-bg,rgba(11,26,30,0.92));backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(100,216,165,0.12);padding:0;padding-bottom:env(safe-area-inset-bottom,0);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(100,216,165,0.06),inset 0 1px 0 rgba(255,255,255,0.04);transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s ease;will-change:transform}
 .mob-bottom-nav.ee-hidden{transform:translateY(calc(100% + 20px));opacity:0}
-.mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center;height:72px;max-width:480px;margin:0 auto;padding:0 4px}
-.mob-bn-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:rgba(158,192,178,0.5);font-size:11px;font-weight:500;padding:10px 16px;border-radius:16px;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;min-width:56px;-webkit-tap-highlight-color:transparent;letter-spacing:.02em}
-.mob-bn-item svg{width:26px;height:26px;stroke-width:1.8;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.mob-bn-item lord-icon{display:inline-flex;width:26px!important;height:26px!important;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.bn-icon-wrap{width:26px;height:26px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-.mob-bn-item span{transition:all .25s ease;font-size:11px}
+.mob-bottom-nav-inner{display:flex;justify-content:space-around;align-items:center;height:64px;max-width:480px;margin:0 auto;padding:0 4px}
+.mob-bn-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:rgba(158,192,178,0.5);font-size:10px;font-weight:500;padding:8px 14px;border-radius:14px;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;min-width:52px;-webkit-tap-highlight-color:transparent;letter-spacing:.02em}
+.mob-bn-item svg,.mob-bn-item .bn-icon-wrap{width:22px;height:22px;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.mob-bn-item svg{stroke-width:1.8}
+.bn-icon-wrap{display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.mob-bn-item span{transition:all .25s ease;font-size:10px;opacity:0.8}
 .mob-bn-item.active{color:var(--accent);background:rgba(100,216,165,0.08)}
-.mob-bn-item.active svg{stroke-width:2.2;transform:scale(1.08);filter:drop-shadow(0 0 6px rgba(100,216,165,0.3))}
-.mob-bn-item.active lord-icon{transform:scale(1.15);filter:drop-shadow(0 0 8px rgba(100,216,165,0.4))}
-.mob-bn-item:active{transform:scale(0.88)}
+.mob-bn-item.active svg{stroke-width:2;transform:scale(1.05);filter:drop-shadow(0 0 6px rgba(100,216,165,0.3))}
+.mob-bn-item.active span{opacity:1;font-weight:600}
+.mob-bn-item:active{transform:scale(0.88);transition:transform .1s}
 button.mob-bn-item{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;-webkit-tap-highlight-color:transparent}
 
 /* === MORE DRAWER === */
@@ -226,3 +226,35 @@ button.mob-bn-item{background:none;border:none;cursor:pointer;font-family:'DM Sa
   .back-top{bottom:160px;right:16px}
   .content{padding-bottom:110px!important}
 }
+
+/* === MICRO-ANIMATIONS === */
+
+/* Card hover — subtle lift + glow */
+.module-card,.streak-card,.tip-card,.quest-card,.ach-card{
+  transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s ease,border-color .2s ease
+}
+.module-card:hover,.streak-card:hover,.tip-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.18),0 0 0 1px rgba(100,216,165,0.08)
+}
+.module-card:active,.quest-card:active{
+  transform:scale(0.97);
+  transition:transform .1s
+}
+
+/* Smooth link hover underline */
+a.nav-a{position:relative}
+a.nav-a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:1.5px;background:var(--accent);transition:width .25s ease,left .25s ease}
+a.nav-a:hover::after{width:100%;left:0}
+
+/* Reveal on scroll — fade up */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Button press feedback */
+.path-step,.md-quick-btn,.goal-opt{transition:all .2s ease}
+.path-step:active,.md-quick-btn:active,.goal-opt:active{transform:scale(0.93);transition:transform .08s}
+
+/* Skeleton loading shimmer */
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.skeleton{background:linear-gradient(90deg,rgba(255,255,255,0.03) 25%,rgba(255,255,255,0.06) 50%,rgba(255,255,255,0.03) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}

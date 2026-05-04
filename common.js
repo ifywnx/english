@@ -64,6 +64,33 @@
   });
 })();
 
+/* === SCROLL REVEAL ANIMATIONS === */
+(function(){
+  if(!('IntersectionObserver' in window)) {
+    // Fallback: show all immediately
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  
+  // Observe on DOMContentLoaded & also now for already-loaded elements
+  function observeAll(){
+    document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){ observer.observe(el); });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observeAll);
+  else observeAll();
+  // Re-observe after dynamic content loads
+  setTimeout(observeAll, 500);
+  setTimeout(observeAll, 1500);
+})();
+
 // Nav dropdown toggle — now defined in nav.js
 // Fallback in case nav.js hasn't loaded yet
 if(typeof window.toggleDrop === 'undefined'){
@@ -132,39 +159,19 @@ window.addEventListener('scroll',function(){
       {href:'bai-tap.html', icon:'help-circle', label:'Bài tập'},
       {href:'lo-trinh-hoc.html', icon:'map', label:'Lộ trình'}
     ];
-    var lordiconMap = {
-      'home':'https://cdn.lordicon.com/wmwqvixz.json',
-      'book-open':'https://cdn.lordicon.com/wxnxiano.json',
-      'pencil':'https://cdn.lordicon.com/vdjwmfqs.json',
-      'help-circle':'https://cdn.lordicon.com/aycieyht.json',
-      'map':'https://cdn.lordicon.com/ofwpzftr.json'
-    };
     var bnItems = [];
     shortNavItems.forEach(function(item){
-      if(item.href === 'index.html'){
-        bnItems.push({href:item.href, icon:'home', label:item.label});
-      } else {
-        var found = null;
-        if(window.EE_NAV_FLAT){
-          for(var i=0;i<window.EE_NAV_FLAT.length;i++){
-            if(window.EE_NAV_FLAT[i].href===item.href){found=window.EE_NAV_FLAT[i];break;}
-          }
-        }
-        bnItems.push({href:item.href, icon:found?found.icon:item.icon, label:item.label});
-      }
+      bnItems.push({href:item.href, icon:item.icon, label:item.label});
     });
     var shortLabels = {'Ngữ pháp nền tảng':'Ngữ pháp', 'Học từ vựng':'Học từ vựng', 'Bài tập trắc nghiệm':'Bài tập'};
     var bnHtml = '<div class="mob-bottom-nav"><div class="mob-bottom-nav-inner">';
     bnItems.forEach(function(item){
       var isActive = path === item.href ? ' active' : '';
-      var iconSrc = lordiconMap[item.icon] || lordiconMap['home'];
-      var trig = isActive ? 'loop' : 'hover';
-      var accentColor = isActive ? '#64d8a5' : '#9ec0b2';
       var lbl = shortLabels[item.label] || item.label;
-      bnHtml += '<a href="' + item.href + '" class="mob-bn-item' + isActive + '"><div class="bn-icon-wrap"><lord-icon src="' + iconSrc + '" trigger="' + trig + '" delay="2000" colors="primary:' + accentColor + '" style="width:26px;height:26px"></lord-icon></div><span>' + lbl + '</span></a>';
+      bnHtml += '<a href="' + item.href + '" class="mob-bn-item' + isActive + '"><div class="bn-icon-wrap"><i data-lucide="' + item.icon + '"></i></div><span>' + lbl + '</span></a>';
     });
     // More button
-    bnHtml += '<button class="mob-bn-item" id="moreNavBtn" onclick="document.getElementById(\'moreDrawer\').classList.toggle(\'open\')"><div class="bn-icon-wrap"><lord-icon src="https://cdn.lordicon.com/ofwpzftr.json" trigger="hover" colors="primary:#9ec0b2" style="width:26px;height:26px"></lord-icon></div><span>Thêm</span></button>';
+    bnHtml += '<button class="mob-bn-item" id="moreNavBtn" onclick="document.getElementById(\'moreDrawer\').classList.toggle(\'open\')"><div class="bn-icon-wrap"><i data-lucide="layout-grid"></i></div><span>Thêm</span></button>';
     bnHtml += '</div></div>';
 
     var bnDiv = document.createElement('div');

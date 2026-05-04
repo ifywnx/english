@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thành tựu — EasyEnglish</title>
+<meta name="description" content="Xem tất cả huy chương, thành tựu và tiến trình học tập của bạn trên EasyEnglish.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script src="gamification.js?v=4"></script>
+<style>
+.ach-hero{text-align:center;padding:32px 20px 20px;max-width:700px;margin:0 auto}
+.ach-hero h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,42px);font-weight:300;margin-bottom:8px}
+.ach-hero p{font-size:14px;color:var(--text3);line-height:1.6}
+
+.ach-summary{display:flex;gap:12px;justify-content:center;margin:16px auto 24px;max-width:500px;flex-wrap:wrap}
+.ach-stat{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px 20px;text-align:center;flex:1;min-width:100px}
+.ach-stat .as-num{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);line-height:1}
+.ach-stat .as-label{font-size:11px;color:var(--text3);margin-top:4px}
+
+.ach-section{max-width:700px;margin:0 auto;padding:0 20px 24px}
+.ach-section-title{font-size:13px;font-weight:600;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ach-section-title::after{content:'';flex:1;height:0.5px;background:var(--border)}
+
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:24px}
+
+.ach-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.ach-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.ach-card.unlocked{border-color:rgba(100,216,165,0.3)}
+.ach-card.unlocked::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.ach-card.locked{opacity:0.45;filter:grayscale(0.5)}
+
+.ach-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:20px}
+.ach-card.unlocked .ach-icon{background:rgba(100,216,165,0.12);color:var(--accent)}
+.ach-card.locked .ach-icon{background:rgba(255,255,255,0.04);color:var(--text3)}
+
+.ach-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.ach-desc{font-size:11px;color:var(--text3);line-height:1.4}
+.ach-check{position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#0b1a1e;display:flex;align-items:center;justify-content:center;font-size:10px}
+
+/* Celebration pulse for unlocked */
+.ach-card.unlocked .ach-icon{animation:achPulse 2s ease-in-out infinite}
+@keyframes achPulse{0%,100%{box-shadow:0 0 0 0 rgba(100,216,165,0.2)}50%{box-shadow:0 0 0 8px rgba(100,216,165,0)}}
+
+/* Level card */
+.level-card{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(167,139,250,0.06));border:1px solid rgba(100,216,165,0.2);border-radius:18px;padding:24px;text-align:center;max-width:400px;margin:0 auto 24px}
+.level-icon{margin-bottom:8px;display:flex;justify-content:center;color:var(--accent)}
+.level-name{font-family:'Fraunces',serif;font-size:24px;color:var(--text);margin-bottom:4px}
+.level-xp{font-size:13px;color:var(--text3)}
+.level-bar{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;margin:12px 0 6px;overflow:hidden}
+.level-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .6s}
+.level-next{font-size:12px;color:var(--text3)}
+
+@media(max-width:500px){
+  .ach-grid{grid-template-columns:1fr 1fr}
+  .ach-summary{gap:8px}
+}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+
+<div class="ach-hero">
+  <h1><i data-lucide="trophy" style="width:32px;height:32px;display:inline-block;vertical-align:middle;margin-right:8px;color:var(--accent)"></i> Thành tựu</h1>
+  <p>Sưu tập huy chương, theo dõi cột mốc và chinh phục mục tiêu học tập.</p>
+</div>
+
+<div class="ach-summary" id="achSummary"></div>
+
+<div class="level-card" id="levelCard"></div>
+
+<div id="achSections"></div>
+
+<script>
+(function(){
+  var s = typeof getGameState === 'function' ? getGameState() : {totalXP:0,streak:0,badges:[],wordsLearned:0,quizCompleted:0,lessonsCompleted:0,maxCombo:0,pagesVisited:[]};
+  var badges = typeof BADGES !== 'undefined' ? BADGES : [];
+  var unlocked = s.badges || [];
+  
+  // Summary
+  var sum = document.getElementById('achSummary');
+  sum.innerHTML = 
+    '<div class="ach-stat"><div class="as-num">'+unlocked.length+'</div><div class="as-label">Đã mở / '+badges.length+'</div></div>'+
+    '<div class="ach-stat"><div class="as-num">'+s.totalXP+'</div><div class="as-label">Tổng XP</div></div>'+
+    '<div class="ach-stat"><div class="as-num">'+s.streak+'</div><div class="as-label">Streak</div></div>'+
+    '<div class="ach-stat"><div class="as-num">'+(s.maxCombo||0)+'</div><div class="as-label">Max Combo</div></div>';
+
+  // Level card
+  var lv = typeof getLevel === 'function' ? getLevel(s.totalXP) : {name:'Người mới',icon:'sprout',minXP:0};
+  var nxt = typeof getNextLevel === 'function' ? getNextLevel(s.totalXP) : null;
+  var pct = nxt ? Math.min(100, Math.round((s.totalXP - lv.minXP) / (nxt.minXP - lv.minXP) * 100)) : 100;
+  document.getElementById('levelCard').innerHTML = 
+    '<div class="level-icon"><i data-lucide="'+lv.icon+'" style="width:40px;height:40px"></i></div>'+
+    '<div class="level-name">'+lv.name+'</div>'+
+    '<div class="level-xp">'+s.totalXP+' XP tổng cộng</div>'+
+    '<div class="level-bar"><div class="level-bar-fill" style="width:'+pct+'%"></div></div>'+
+    (nxt ? '<div class="level-next">Còn '+(nxt.minXP - s.totalXP)+' XP để lên '+nxt.name+'</div>' : '<div class="level-next">Level tối đa!</div>');
+
+  // Group badges by category
+  var CAT_LABELS = {start:'Khởi đầu',streak:'Streak',vocab:'Từ vựng',quiz:'Quiz',xp:'Điểm XP',combo:'Combo',explore:'Khám phá',special:'Đặc biệt'};
+  var CAT_ORDER = ['start','streak','vocab','quiz','xp','combo','explore','special'];
+  var groups = {};
+  badges.forEach(function(b){
+    var cat = b.cat || 'other';
+    if(!groups[cat]) groups[cat] = [];
+    groups[cat].push(b);
+  });
+
+  var sectionsHTML = '';
+  CAT_ORDER.forEach(function(cat){
+    if(!groups[cat]) return;
+    sectionsHTML += '<div class="ach-section">';
+    sectionsHTML += '<div class="ach-section-title">'+(CAT_LABELS[cat]||cat)+'</div>';
+    sectionsHTML += '<div class="ach-grid">';
+    groups[cat].forEach(function(b){
+      var isUnlocked = unlocked.indexOf(b.id) !== -1;
+      var cls = isUnlocked ? 'ach-card unlocked' : 'ach-card locked';
+      sectionsHTML += '<div class="'+cls+'">';
+      if(isUnlocked) sectionsHTML += '<div class="ach-check"><i data-lucide="check" style="width:10px;height:10px"></i></div>';
+      sectionsHTML += '<div class="ach-icon"><i data-lucide="'+b.icon+'"></i></div>';
+      sectionsHTML += '<div class="ach-name">'+b.name+'</div>';
+      sectionsHTML += '<div class="ach-desc">'+b.desc+'</div>';
+      sectionsHTML += '</div>';
+    });
+    sectionsHTML += '</div></div>';
+  });
+
+  document.getElementById('achSections').innerHTML = sectionsHTML;
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+})();
+</script>
+
+<script defer src="common.js?v=14"></script>
+</body>
+</html>

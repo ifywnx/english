@@ -1,7 +1,81 @@
 /* ═══════════════════════════════════════════
    EasyEnglish Theme System
-   12 themes · localStorage · auto-apply
+   16 themes · 6 fonts · localStorage · auto-apply
    ═══════════════════════════════════════════ */
+
+/* ── FONT PRESETS ──────────────────────────── */
+const FONTS = {
+  default: {
+    name: 'Mặc định', preview: 'DM Sans',
+    body: "'DM Sans',sans-serif",
+    heading: "'Fraunces',serif",
+    google: 'family=DM+Sans:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400'
+  },
+  inter: {
+    name: 'Inter', preview: 'Inter',
+    body: "'Inter',sans-serif",
+    heading: "'Inter',sans-serif",
+    google: 'family=Inter:wght@300;400;500;600;700'
+  },
+  outfit: {
+    name: 'Outfit', preview: 'Outfit',
+    body: "'Outfit',sans-serif",
+    heading: "'Outfit',sans-serif",
+    google: 'family=Outfit:wght@300;400;500;600;700'
+  },
+  nunito: {
+    name: 'Nunito', preview: 'Nunito',
+    body: "'Nunito',sans-serif",
+    heading: "'Nunito',sans-serif",
+    google: 'family=Nunito:wght@300;400;500;600;700'
+  },
+  poppins: {
+    name: 'Poppins', preview: 'Poppins',
+    body: "'Poppins',sans-serif",
+    heading: "'Poppins',sans-serif",
+    google: 'family=Poppins:wght@300;400;500;600;700'
+  },
+  lora: {
+    name: 'Lora', preview: 'Lora',
+    body: "'Lora',serif",
+    heading: "'Lora',serif",
+    google: 'family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400'
+  },
+  lexend: {
+    name: 'Lexend', preview: 'Lexend',
+    body: "'Lexend',sans-serif",
+    heading: "'Lexend',sans-serif",
+    google: 'family=Lexend:wght@300;400;500;600;700'
+  }
+};
+
+/* ── Load Google Font ──────────────────────── */
+var _loadedFonts = {};
+function loadFont(fontId) {
+  var f = FONTS[fontId];
+  if (!f || _loadedFonts[fontId]) return;
+  _loadedFonts[fontId] = true;
+  if (fontId === 'default') return; // already in HTML
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?' + f.google + '&display=swap';
+  document.head.appendChild(link);
+}
+
+/* ── Apply Font ──────────────────────────── */
+function applyFont(fontId) {
+  var f = FONTS[fontId];
+  if (!f) return;
+  loadFont(fontId);
+  document.documentElement.style.setProperty('--font-body', f.body);
+  document.documentElement.style.setProperty('--font-heading', f.heading);
+  localStorage.setItem('ee_font', fontId);
+  // Update font picker active
+  document.querySelectorAll('.fp-option').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.font === fontId);
+  });
+}
+window.applyFont = applyFont;
 
 const THEMES = {
   /* ── DARK THEMES ─────────────────────────── */
@@ -352,6 +426,19 @@ function createThemePicker() {
     });
     html += '</div>';
 
+    // Font section
+    html += '<div style="margin-top:14px;padding-top:14px;border-top:0.5px solid var(--border)">';
+    html += '<div style="' + labelStyle + '">Font chữ</div>';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:6px">';
+    var activeFont = localStorage.getItem('ee_font') || 'default';
+    Object.entries(FONTS).forEach(function(entry) {
+      var fid = entry[0], f = entry[1];
+      var isActiveF = fid === activeFont;
+      html += '<button class="fp-option' + (isActiveF ? ' active' : '') + '" data-font="' + fid + '" style="padding:6px 12px;border-radius:8px;border:1.5px solid ' + (isActiveF ? 'var(--accent)' : 'var(--border)') + ';background:' + (isActiveF ? 'rgba(100,216,165,0.08)' : 'var(--card2)') + ';cursor:pointer;font-family:' + f.body + ';font-size:12px;color:var(--text);transition:all .15s;white-space:nowrap">' + f.name + '</button>';
+    });
+    html += '</div>';
+    html += '</div>';
+
     panel.innerHTML = html;
 
     // Re-bind close button
@@ -366,6 +453,14 @@ function createThemePicker() {
           panel.style.background = getComputedStyle(document.documentElement).getPropertyValue('--card');
           panel.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border');
         }, 50);
+      });
+    });
+
+    // Re-bind font selection
+    panel.querySelectorAll('.fp-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        applyFont(opt.dataset.font);
+        renderPanel();
       });
     });
   }
@@ -405,12 +500,19 @@ function createThemePicker() {
   });
 }
 
-/* ── Init ────────────────────────────────── */
+/* ── Init ─────────────────────────────────── */
 (function initTheme() {
   const saved = localStorage.getItem('ee_theme');
   if (saved && THEMES[saved]) {
     applyTheme(saved);
   }
+  // Apply saved font
+  const savedFont = localStorage.getItem('ee_font');
+  if (savedFont && FONTS[savedFont]) {
+    applyFont(savedFont);
+  }
+  // Preload all font options so picker preview is accurate
+  Object.keys(FONTS).forEach(function(fid) { loadFont(fid); });
   // Create picker when DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', createThemePicker);

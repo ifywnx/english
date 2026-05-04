@@ -68,6 +68,46 @@
 .stat-item .num{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,32px);color:var(--text);line-height:1}
 .stat-item .label{font-size:11px;color:var(--text3);margin-top:2px}
 
+/* === QUEST BOARD === */
+.quest-section{max-width:600px;margin:0 auto 0;padding:0 16px}
+.quest-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.quest-header-left{display:flex;align-items:center;gap:8px}
+.quest-header-left .qh-icon{width:28px;height:28px;border-radius:8px;background:rgba(167,139,250,0.1);display:flex;align-items:center;justify-content:center;font-size:14px}
+.quest-header-left span{font-size:12px;font-weight:600;color:var(--accent2);text-transform:uppercase;letter-spacing:1px}
+.quest-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;margin-bottom:8px;transition:all .2s}
+.quest-card:hover{border-color:rgba(167,139,250,0.3)}
+.quest-done{opacity:0.7;background:rgba(100,216,165,0.04)}
+.quest-done .quest-bar-fill{background:var(--accent)!important}
+.quest-icon{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);border-radius:10px;flex-shrink:0}
+.quest-info{flex:1;min-width:0}
+.quest-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.quest-desc{font-size:11px;color:var(--text3);margin-bottom:6px}
+.quest-bar{height:4px;border-radius:2px;background:rgba(255,255,255,0.06);overflow:hidden}
+.quest-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .5s ease}
+.quest-reward{text-align:center;font-size:14px;font-weight:700;color:var(--accent2);min-width:44px;flex-shrink:0}
+.quest-reward small{display:block;font-size:9px;font-weight:400;color:var(--text3)}
+
+/* === PROGRESS RING === */
+.progress-ring-wrap{display:flex;align-items:center;justify-content:center;gap:24px;padding:12px 24px;max-width:700px;margin:0 auto}
+.ring-container{position:relative;width:128px;height:128px;flex-shrink:0}
+.ring-container svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:8}
+.ring-fill{fill:none;stroke:url(#ringGrad);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .8s ease}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-value{font-family:'Fraunces',serif;font-size:28px;color:var(--text);line-height:1}
+.ring-label{font-size:11px;color:var(--text3);margin-top:2px}
+.ring-stats{display:flex;flex-direction:column;gap:10px;flex:1}
+.ring-stat{display:flex;align-items:center;gap:10px}
+.ring-stat-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ring-stat-info .rs-num{font-size:16px;font-weight:600;color:var(--text)}
+.ring-stat-info .rs-label{font-size:11px;color:var(--text3)}
+
+/* === GOAL SELECTOR === */
+.goal-selector{display:flex;gap:6px;justify-content:center;margin:12px auto 0;max-width:500px;flex-wrap:wrap}
+.goal-opt{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text3);font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px}
+.goal-opt:hover{border-color:rgba(100,216,165,0.3);color:var(--text2)}
+.goal-opt.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.4);color:var(--accent);font-weight:500}
+
 /* === DASHBOARD === */
 .dashboard-wrap{max-width:900px;margin:18px auto 0;padding:0 24px;position:relative;z-index:1}
 .dashboard-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:stretch}
@@ -239,6 +279,7 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
 
 <nav></nav>
 <script src="nav.js?v=1"></script>
+<script src="gamification.js?v=4"></script>
 
 <!-- ===== HERO ===== -->
 <canvas id="particles-canvas"></canvas>
@@ -256,13 +297,43 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   </div>
 </div>
 
-<!-- ===== STATS ===== -->
-<div class="stats-row reveal">
-  <div class="stat-item"><div class="num" data-count="80">80+</div><div class="label">Bài học</div></div>
-  <div class="stat-item"><div class="num" data-count="5000">5000+</div><div class="label">Từ vựng</div></div>
-  <div class="stat-item"><div class="num" data-count="500">500+</div><div class="label">Bài tập</div></div>
-  <div class="stat-item"><div class="num">A1→C2</div><div class="label">Coverage</div></div>
+<!-- ===== PROGRESS RING + STATS ===== -->
+<div class="progress-ring-wrap reveal">
+  <div class="ring-container">
+    <svg width="128" height="128" viewBox="0 0 128 128">
+      <defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="var(--accent)"/>
+        <stop offset="100%" stop-color="var(--accent2)"/>
+      </linearGradient></defs>
+      <circle class="ring-bg" cx="64" cy="64" r="54"/>
+      <circle class="ring-fill" id="progressRingFill" cx="64" cy="64" r="54"/>
+    </svg>
+    <div class="ring-center">
+      <div class="ring-value" id="progressRingLabel">0</div>
+      <div class="ring-label" id="progressRingPct">/ 30 XP</div>
+    </div>
+  </div>
+  <div class="ring-stats">
+    <div class="ring-stat"><div class="ring-stat-icon" style="background:rgba(100,216,165,0.1)"><i data-lucide="zap" style="width:16px;height:16px"></i></div><div class="ring-stat-info"><div class="rs-num" data-count="80">80+</div><div class="rs-label">Bài học</div></div></div>
+    <div class="ring-stat"><div class="ring-stat-icon" style="background:rgba(167,139,250,0.1)"><i data-lucide="book-open" style="width:16px;height:16px"></i></div><div class="ring-stat-info"><div class="rs-num" data-count="5000">5000+</div><div class="rs-label">Từ vựng</div></div></div>
+    <div class="ring-stat"><div class="ring-stat-icon" style="background:rgba(240,194,122,0.1)"><i data-lucide="pen-tool" style="width:16px;height:16px"></i></div><div class="ring-stat-info"><div class="rs-num" data-count="500">500+</div><div class="rs-label">Bài tập</div></div></div>
+  </div>
 </div>
+<div class="goal-selector reveal" id="goalSelector"></div>
+<script>
+(function(){
+  var gs = document.getElementById('goalSelector');
+  if(!gs || typeof GOAL_LEVELS === 'undefined') return;
+  var current = 'regular';
+  try { current = JSON.parse(localStorage.getItem('ee_game')||'{}').dailyGoalLevel || 'regular'; } catch(e){}
+  var html = '';
+  GOAL_LEVELS.forEach(function(lv){
+    html += '<button class="goal-opt'+(lv.id===current?' active':'')+'" data-goal="'+lv.id+'" onclick="setDailyGoal(\''+lv.id+'\')">'+'<i data-lucide="'+lv.lucide+'" style="width:14px;height:14px"></i> '+lv.label+' <small style="color:var(--text3);margin-left:2px">('+lv.xp+')</small></button>';
+  });
+  gs.innerHTML = html;
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+})();
+</script>
 
 <!-- ===== LEARNER DASHBOARD ===== -->
 <div class="home-section reveal" style="padding-top:18px" id="dashboardSection">
@@ -317,6 +388,40 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   </div>
   </div><!-- /returningState -->
 </div>
+
+<!-- ===== DAILY QUESTS ===== -->
+<div class="quest-section reveal">
+  <div class="quest-header">
+    <div class="quest-header-left">
+      <div class="qh-icon"><i data-lucide="target" style="width:14px;height:14px"></i></div>
+      <span>Nhiệm vụ hôm nay</span>
+    </div>
+    <span style="font-size:11px;color:var(--text3)" id="questTimer"></span>
+  </div>
+  <div id="questBoard"></div>
+</div>
+<script>
+// Quest timer countdown + initial render
+(function(){
+  var timer = document.getElementById('questTimer');
+  if(timer){
+    function updateTimer(){
+      var now = new Date();
+      var tomorrow = new Date(now);
+      tomorrow.setHours(24,0,0,0);
+      var diff = tomorrow - now;
+      var h = Math.floor(diff/3600000);
+      var m = Math.floor((diff%3600000)/60000);
+      timer.textContent = 'Còn ' + h + 'h ' + m + 'm';
+    }
+    updateTimer();
+    setInterval(updateTimer, 60000);
+  }
+  // Render quest cards now that DOM is ready
+  if(typeof renderQuestBoard === 'function') renderQuestBoard();
+  if(typeof updateProgressRing === 'function') updateProgressRing();
+})();
+</script>
 
 <!-- ===== REVIEW PLAN ===== -->
 <div class="home-section reveal">
@@ -872,7 +977,6 @@ function renderDashboard(){
 
 </script>
 
-<script defer src="gamification.js?v=3"></script>
 <script defer src="common.js?v=14"></script>
 
 <!-- page-transition-js removed: common.js handles transitions -->
