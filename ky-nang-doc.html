@@ -14,7 +14,7 @@
 .skill-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:22px;transition:all .2s}
 .skill-card:hover{transform:translateY(-2px);border-color:rgba(100,216,165,0.3)}
 .sk-icon{font-size:28px;margin-bottom:8px}
-.sk-title{font-family:'Fraunces',serif;font-weight:300;font-size:18px;margin-bottom:8px}
+.sk-title{font-family:var(--font-heading);font-weight:300;font-size:18px;margin-bottom:8px}
 .sk-desc{font-size:13px;color:var(--text2);line-height:1.6}
 .sk-tip{font-size:12px;color:var(--accent);margin-top:10px;padding:8px;background:rgba(100,216,165,0.06);border-radius:8px}
 .practice-box{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px;margin-top:24px}
@@ -23,7 +23,7 @@
 .q-item:last-child{border-bottom:none}
 .q-text{font-size:14px;margin-bottom:10px}
 .q-opts{display:flex;flex-wrap:wrap;gap:8px}
-.q-opt{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;transition:all .15s;font-family:'DM Sans',sans-serif}
+.q-opt{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;transition:all .15s;font-family:var(--font-body)}
 .q-opt:hover{border-color:rgba(100,216,165,0.4)}
 .q-opt.correct{background:rgba(100,216,165,0.2);border-color:var(--accent)}
 .q-opt.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral)}
@@ -77,7 +77,7 @@
 </div>
 
 <div class="practice-box">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:14px">Luyện tập: Đọc đoạn văn và trả lời</h2>
+  <h2 style="font-family:var(--font-heading);font-weight:300;margin-bottom:14px">Luyện tập: Đọc đoạn văn và trả lời</h2>
   <div class="passage">
     <p>The city of Melbourne, Australia, has been consistently ranked as one of the world's most liveable cities. Its diverse population of over five million residents enjoys excellent public transport, world-class healthcare, and a thriving cultural scene. The city is home to numerous parks and gardens, and its coffee culture is considered among the best globally. However, housing affordability remains a significant challenge, with property prices rising steadily over the past decade.</p>
   </div>
@@ -111,7 +111,7 @@
 </div>
 
 <div style="background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px;margin-top:24px">
-<h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px">Quiz Kỹ năng đọc</h2>
+<h2 style="font-family:var(--font-heading);font-weight:300;margin-bottom:16px">Quiz Kỹ năng đọc</h2>
 <div id="quizBox"></div>
 <div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div>
 </div>
@@ -138,7 +138,7 @@ var QZ=[
 {q:"'The author's tone is critical' nghĩa là?",opts:["Tác giả ủng hộ","Tác giả phê phán","Tác giả trung lập","Tác giả vui vẻ"],ans:1,exp:"Critical = phê phán, chỉ trích. Khác với neutral (trung lập)"}
 ];
 var qI=0,qS=0;
-function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif">Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:var(--font-body)">Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:var(--font-body)" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
 function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
 renderQz();
 </script>

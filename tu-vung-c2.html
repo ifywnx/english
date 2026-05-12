@@ -11,7 +11,7 @@
 <style>
 .content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
 .mode-bar{display:flex;gap:8px;margin:20px 0;flex-wrap:wrap}
-.mode-btn{padding:10px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.mode-btn{padding:10px 20px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:14px;font-family:var(--font-body);transition:all .2s}
 .mode-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
 .fc-area{perspective:1000px;margin:24px auto;max-width:500px}
 .fc-card{width:100%;min-height:280px;position:relative;transform-style:preserve-3d;transition:transform .5s;cursor:pointer;border-radius:20px}
@@ -19,13 +19,13 @@
 .fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;border:0.5px solid var(--border)}
 .fc-front{background:linear-gradient(135deg,var(--card),var(--card2))}
 .fc-back{background:linear-gradient(135deg,rgba(100,216,165,0.08),var(--card));transform:rotateY(180deg)}
-.fc-word{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,48px);font-weight:300;margin-bottom:8px}
+.fc-word{font-family:var(--font-heading);font-size:clamp(32px,5vw,48px);font-weight:300;margin-bottom:8px}
 .fc-ipa{color:var(--accent2);font-style:italic;font-size:16px;margin-bottom:12px}
 .fc-type{font-size:12px;color:var(--text3);background:var(--bg3);padding:4px 12px;border-radius:20px;margin-bottom:16px}
 .fc-vi{font-size:clamp(20px,3vw,28px);color:var(--accent);margin-bottom:8px}
 .fc-hint{font-size:13px;color:var(--text3);margin-top:auto}
 .fc-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
-.fc-btn{padding:12px 24px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.fc-btn{padding:12px 24px;border-radius:12px;border:0.5px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:14px;font-family:var(--font-body);transition:all .15s}
 .fc-btn:hover{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.3)}
 .fc-btn.know{background:rgba(100,216,165,0.15);color:var(--accent)}
 .fc-btn.dont{background:rgba(244,132,95,0.15);color:var(--coral)}
@@ -34,9 +34,9 @@
 .quiz-area{max-width:600px;margin:24px auto}
 .q-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:16px}
 .q-label{font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.q-word{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,36px);font-weight:300;margin-bottom:16px}
+.q-word{font-family:var(--font-heading);font-size:clamp(24px,4vw,36px);font-weight:300;margin-bottom:16px}
 .q-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.q-opt{padding:14px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .15s;text-align:center}
+.q-opt{padding:14px;border-radius:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:var(--font-body);transition:all .15s;text-align:center}
 .q-opt:hover{border-color:rgba(100,216,165,0.4)}
 .q-opt.correct{background:rgba(100,216,165,0.2);border-color:var(--accent);color:var(--accent)}
 .q-opt.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral);color:var(--coral)}

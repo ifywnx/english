@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline — EasyEnglish</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0B1A1E;color:#e0f0ea;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+.offline-wrap{max-width:400px}
+.offline-icon{width:80px;height:80px;border-radius:50%;background:rgba(100,216,165,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px}
+h1{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:12px}
+p{font-size:15px;color:rgba(158,192,178,0.6);line-height:1.7;margin-bottom:24px}
+.retry-btn{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#64D8A5,#7B6EF6);color:#0b1a1e;font-size:14px;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:transform .2s}
+.retry-btn:hover{transform:scale(1.03)}
+.tips{margin-top:32px;padding:20px;background:rgba(255,255,255,0.03);border-radius:14px;border:0.5px solid rgba(100,216,165,0.1);text-align:left}
+.tips h3{font-size:13px;color:#64D8A5;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.tips li{font-size:13px;color:rgba(158,192,178,0.5);padding:4px 0;list-style:none}
+.tips li::before{content:'→ ';color:#64D8A5}
+</style>
+</head>
+<body>
+<div class="offline-wrap">
+  <div class="offline-icon">📡</div>
+  <h1>Không có kết nối</h1>
+  <p>Bạn đang offline. Kiểm tra kết nối internet và thử lại nhé!</p>
+  <button class="retry-btn" onclick="location.reload()">Thử lại</button>
+  <div class="tips">
+    <h3>Mẹo học offline</h3>
+    <ul>
+      <li>Mở các trang đã truy cập trước đó — chúng được lưu cache</li>
+      <li>Flashcard và từ vựng đã lưu vẫn hoạt động offline</li>
+      <li>Ghi chú từ mới vào sổ tay giấy trong lúc chờ</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

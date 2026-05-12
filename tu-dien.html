@@ -25,7 +25,7 @@
 .content{padding:40px 48px;max-width:900px;margin:0 auto;position:relative;z-index:1}
 /* SEARCH BAR */
 .search-wrap{position:relative;margin-bottom:24px}
-.search-big{width:100%;padding:16px 60px 16px 20px;background:var(--card2);border:1px solid rgba(100,216,165,0.3);border-radius:14px;color:var(--text);font-size:16px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
+.search-big{width:100%;padding:16px 60px 16px 20px;background:var(--card2);border:1px solid rgba(100,216,165,0.3);border-radius:14px;color:var(--text);font-size:16px;font-family:var(--font-body);outline:none;transition:border .2s}
 .search-big:focus{border-color:rgba(78,205,196,0.6)}
 .search-big::placeholder{color:var(--text3)}
 .search-icon{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text3)}
@@ -36,7 +36,7 @@
 .result-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:20px;display:none}
 .result-card.show{display:block}
 .rc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
-.rc-word{font-family:'Fraunces',serif;font-size:40px;color:var(--text);margin-bottom:4px}
+.rc-word{font-family:var(--font-heading);font-size:40px;color:var(--text);margin-bottom:4px}
 .rc-pron{font-size:15px;color:var(--accent);font-style:italic;margin-bottom:8px}
 .rc-type-row{display:flex;gap:6px;flex-wrap:wrap}
 .type-chip{padding:3px 12px;border-radius:20px;font-size:11px;font-weight:500}
@@ -46,7 +46,7 @@
 .chip-adv{background:rgba(107,203,119,0.15);color:var(--green)}
 .chip-phrase{background:rgba(100,216,165,0.15);color:var(--accent3)}
 .rc-actions{display:flex;gap:8px}
-.save-btn{padding:8px 16px;background:rgba(100,216,165,0.1);border:0.5px solid rgba(100,216,165,0.3);border-radius:8px;font-size:12px;color:var(--accent);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.save-btn{padding:8px 16px;background:rgba(100,216,165,0.1);border:0.5px solid rgba(100,216,165,0.3);border-radius:8px;font-size:12px;color:var(--accent);cursor:pointer;font-family:var(--font-body);transition:all .2s}
 .save-btn:hover{background:rgba(232,197,71,0.2)}
 .save-btn.saved{background:rgba(240,194,122,0.1);border-color:rgba(100,216,165,0.3);color:var(--accent3)}
 /* SPEAK BUTTON */
@@ -78,7 +78,7 @@
 /* WORD OF DAY */
 .wod-card{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:18px;padding:24px;margin-bottom:24px}
 .wod-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
-.wod-word{font-family:'Fraunces',serif;font-size:32px;color:var(--text);margin-bottom:4px;cursor:pointer}
+.wod-word{font-family:var(--font-heading);font-size:32px;color:var(--text);margin-bottom:4px;cursor:pointer}
 .wod-word:hover{color:var(--accent)}
 .wod-pron{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:6px}
 .wod-vi{font-size:16px;color:var(--text2);margin-bottom:8px}
@@ -86,7 +86,7 @@
 /* SAVED WORDS */
 .saved-section{margin-top:32px}
 .saved-title{font-size:16px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
-.clear-btn{font-size:12px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+.clear-btn{font-size:12px;color:var(--coral);cursor:pointer;background:none;border:none;font-family:var(--font-body)}
 .saved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .saved-item{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;transition:all .2s}
 .saved-item:hover{border-color:rgba(100,216,165,0.3);transform:translateY(-1px)}
@@ -101,11 +101,11 @@
 .empty-msg{text-align:center;color:var(--text3);font-size:14px;padding:24px}
 /* BROWSE */
 .alpha-bar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
-.alpha-btn{width:34px;height:34px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.alpha-btn{width:34px;height:34px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .15s;display:flex;align-items:center;justify-content:center}
 .alpha-btn:hover{color:var(--text);border-color:rgba(100,216,165,0.3)}
 .alpha-btn.active{background:rgba(100,216,165,0.15);color:var(--accent);border-color:rgba(100,216,165,0.4)}
 .level-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
-.lv-btn{padding:6px 14px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.lv-btn{padding:6px 14px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all .15s}
 .lv-btn:hover{color:var(--text)}
 .lv-btn.active{color:var(--text);border-color:rgba(100,216,165,0.3)}
 .lv-btn.active[data-lv='A1']{background:rgba(107,203,119,0.15);color:var(--green)}
@@ -204,32 +204,32 @@
 
   <!-- DICTIONARY COLLECTIONS -->
   <div style="margin-bottom:28px">
-    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+    <div style="font-family:var(--font-heading);font-size:20px;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px">
       <i data-lucide="library" style="width:20px;height:20px;display:inline-block;vertical-align:-3px"></i> Bộ sưu tập từ điển
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px">
       <a href="tu-dien-doi-thuong.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;transition:all .2s;display:block">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--text);margin-bottom:4px">Đời thường 1</div>
+        <div style="font-family:var(--font-heading);font-size:18px;color:var(--text);margin-bottom:4px">Đời thường 1</div>
         <div style="font-size:12px;color:var(--accent);margin-bottom:8px">~110 từ · A1–B2</div>
         <div style="font-size:12px;color:var(--text3);line-height:1.5">Cảm xúc, hành động, giao tiếp, công việc, sức khỏe, ăn uống, du lịch, thời gian</div>
       </a>
       <a href="tu-dien-doi-thuong-2.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;transition:all .2s;display:block">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--text);margin-bottom:4px">Đời thường 2</div>
+        <div style="font-family:var(--font-heading);font-size:18px;color:var(--text);margin-bottom:4px">Đời thường 2</div>
         <div style="font-size:12px;color:var(--accent);margin-bottom:8px">~137 từ · B1–B2</div>
         <div style="font-size:12px;color:var(--text3);line-height:1.5">Nguyên nhân, kết quả, xu hướng, đời sống, giáo dục, xã hội</div>
       </a>
       <a href="tu-dien-doi-thuong-3.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;transition:all .2s;display:block">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--text);margin-bottom:4px">Đời thường 3</div>
+        <div style="font-family:var(--font-heading);font-size:18px;color:var(--text);margin-bottom:4px">Đời thường 3</div>
         <div style="font-size:12px;color:var(--accent);margin-bottom:8px">~124 từ · B1–C1</div>
         <div style="font-size:12px;color:var(--text3);line-height:1.5">Tâm lý, nhà ở, nghệ thuật, gia đình, môi trường, tài chính</div>
       </a>
       <a href="tu-dien-ielts.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;transition:all .2s;display:block">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--text);margin-bottom:4px">IELTS 1</div>
+        <div style="font-family:var(--font-heading);font-size:18px;color:var(--text);margin-bottom:4px">IELTS 1</div>
         <div style="font-size:12px;color:var(--coral);margin-bottom:8px">~70 từ · B2–C1</div>
         <div style="font-size:12px;color:var(--text3);line-height:1.5">Từ vựng học thuật IELTS: Writing Task 2, Speaking Part 3</div>
       </a>
       <a href="tu-dien-ielts-2.html" style="text-decoration:none;background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;transition:all .2s;display:block">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--text);margin-bottom:4px">IELTS 2</div>
+        <div style="font-family:var(--font-heading);font-size:18px;color:var(--text);margin-bottom:4px">IELTS 2</div>
         <div style="font-size:12px;color:var(--coral);margin-bottom:8px">~89 từ · B2–C1</div>
         <div style="font-size:12px;color:var(--text3);line-height:1.5">Nâng cao: công nghệ, môi trường, xã hội, giáo dục</div>
       </a>
@@ -256,7 +256,7 @@
 
   <!-- DICTIONARY GUIDE (collapsible) -->
   <details class="dict-guide-details" style="margin:24px 0">
-    <summary style="cursor:pointer;font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,24px);font-weight:300;color:var(--accent);padding:12px 0;list-style:none;display:flex;align-items:center;gap:8px">
+    <summary style="cursor:pointer;font-family:var(--font-heading);font-size:clamp(18px,2.5vw,24px);font-weight:300;color:var(--accent);padding:12px 0;list-style:none;display:flex;align-items:center;gap:8px">
       <span style="transition:transform .2s;display:inline-block">▶</span> Hướng dẫn tra từ hiệu quả
     </summary>
     <div style="padding:8px 0 16px">
@@ -306,7 +306,7 @@
 
   <!-- BROWSE -->
   <div id="browseSection">
-    <div style="font-size:20px;font-family:'Fraunces',serif;margin-bottom:12px"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Danh sách từ A–Z</div>
+    <div style="font-size:20px;font-family:var(--font-heading);margin-bottom:12px"><i data-lucide="book" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:2px"></i> Danh sách từ A–Z</div>
     <div class="alpha-bar" id="alphaBar"></div>
     <div class="level-tabs" id="levelTabs">
       <button class="lv-btn active" data-lv="All" onclick="setLevel('All',this)">Tất cả</button>
@@ -322,6 +322,17 @@
 </div>
 
 <script src="dict-data.js"></script>
+<script src="dict-specialized.js"></script>
+<script src="dict-specialized-2.js"></script>
+<script src="dict-specialized-3.js"></script>
+<script src="dict-specialized-4.js"></script>
+<script src="dict-specialized-5.js"></script>
+<script src="dict-specialized-6.js"></script>
+<script src="dict-specialized-7.js"></script>
+<script src="dict-specialized-8.js"></script>
+<script src="dict-specialized-9.js"></script>
+<script src="dict-specialized-10.js"></script>
+<script src="dict-specialized-11.js"></script>
 <script>
 // ===== DICTIONARY DATA =====
 const DICT = {
@@ -840,7 +851,7 @@ function renderResult(word, e, fromApi=false) {
     </div>
 
     <div class="info-card" style="margin-bottom:16px;background:var(--card2)">
-      <h3 style="margin-bottom:6px;font-family:'Fraunces',serif;font-weight:300">Ngữ cảnh dùng</h3>
+      <h3 style="margin-bottom:6px;font-family:var(--font-heading);font-weight:300">Ngữ cảnh dùng</h3>
       <p>${meta.context}</p>
       <div class="word-list" style="margin-top:10px">
         <span class="word-pill"><strong>Phổ biến:</strong> ${meta.frequency}</span>
@@ -965,8 +976,8 @@ function clearSaved() {
     '<div style="font-family:Fraunces,serif;font-size:18px;margin-bottom:8px;color:var(--text)">Xóa tất cả từ đã lưu?</div>'+
     '<div style="font-size:13px;color:var(--text3);margin-bottom:20px">Hành động này không thể hoàn tác.</div>'+
     '<div style="display:flex;gap:8px;justify-content:center">'+
-      '<button id="clearCancel" style="padding:8px 20px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:DM Sans,sans-serif;font-size:13px">Hủy</button>'+
-      '<button id="clearConfirm" style="padding:8px 20px;border-radius:8px;border:none;background:var(--coral);color:#fff;cursor:pointer;font-family:DM Sans,sans-serif;font-size:13px;font-weight:500">Xóa</button>'+
+      '<button id="clearCancel" style="padding:8px 20px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:var(--font-body);font-size:13px">Hủy</button>'+
+      '<button id="clearConfirm" style="padding:8px 20px;border-radius:8px;border:none;background:var(--coral);color:#fff;cursor:pointer;font-family:var(--font-body);font-size:13px;font-weight:500">Xóa</button>'+
     '</div></div>';
   document.body.appendChild(overlay);
   overlay.querySelector('#clearCancel').addEventListener('click',function(){overlay.remove();});
@@ -1027,7 +1038,7 @@ function renderBrowse(){
   }).join('')||'<div class="empty-msg">Không có từ nào</div>';
   // Show "load more" if truncated
   if(list.length > PAGE_SIZE){
-    grid.innerHTML += '<button onclick="loadMoreBrowse()" style="grid-column:1/-1;padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--accent);cursor:pointer;font-family:DM Sans,sans-serif;font-size:13px;transition:all .15s">Xem thêm '+(list.length-PAGE_SIZE)+' từ</button>';
+    grid.innerHTML += '<button onclick="loadMoreBrowse()" style="grid-column:1/-1;padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--accent);cursor:pointer;font-family:var(--font-body);font-size:13px;transition:all .15s">Xem thêm '+(list.length-PAGE_SIZE)+' từ</button>';
   }
 }
 window._browseAll=false;

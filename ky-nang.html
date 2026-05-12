@@ -33,14 +33,14 @@
 .sidebar{background:var(--card);border-right:0.5px solid var(--border);padding:20px 14px;position:sticky;top:65px;height:calc(100vh - 65px);overflow-y:auto}
 .sidebar-title{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:8px;margin-top:14px}
 .sidebar-title:first-child{margin-top:0}
-.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif}
+.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:var(--font-body)}
 .sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .sb-item.active{color:var(--pink);background:rgba(232,121,160,0.08)}
 .sb-emoji{font-size:14px;width:20px;text-align:center}
 .content{padding:40px 48px;max-width:860px}
 .s-divider{height:0.5px;background:var(--border);margin:40px 0}
 .section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:8px}
+.section-title{font-family:var(--font-heading);font-size:28px;font-weight:300;margin-bottom:8px}
 .section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
 .lesson-anchor{scroll-margin-top:80px}
 /* SKILL HEADER CARDS */
@@ -58,7 +58,7 @@
 /* STRATEGY BOX */
 .strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
 .strategy-item{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px}
-.si-num{font-family:'Fraunces',serif;font-size:24px;color:var(--accent);margin-bottom:8px}
+.si-num{font-family:var(--font-heading);font-size:24px;color:var(--accent);margin-bottom:8px}
 .si-title{font-size:13px;font-weight:500;margin-bottom:6px}
 .si-desc{font-size:14px;color:var(--text2);line-height:1.6}
 /* READING PASSAGE */
@@ -69,7 +69,7 @@
 .lv-med{background:rgba(100,216,165,0.15);color:var(--accent)}
 .lv-hard{background:rgba(232,121,160,0.15);color:var(--pink)}
 .p-topic{font-size:11px;color:var(--text3)}
-.passage-title{font-family:'Fraunces',serif;font-size:18px;margin-bottom:12px}
+.passage-title{font-family:var(--font-heading);font-size:18px;margin-bottom:12px}
 .passage-text{font-size:14px;color:var(--text2);line-height:1.9}
 .passage-text strong{color:var(--text)}
 .vocab-highlight{color:var(--accent);cursor:pointer;border-bottom:1px dashed rgba(232,197,71,0.4)}
@@ -80,7 +80,7 @@
 .rq-item{margin-bottom:12px}
 .rq-q{font-size:15px;color:var(--text);margin-bottom:8px}
 .rq-opts{display:flex;flex-direction:column;gap:5px}
-.rq-opt{padding:8px 12px;border-radius:7px;border:0.5px solid var(--border);background:var(--bg3);font-size:14px;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:left}
+.rq-opt{padding:8px 12px;border-radius:7px;border:0.5px solid var(--border);background:var(--bg3);font-size:14px;color:var(--text2);cursor:pointer;font-family:var(--font-body);transition:all .2s;text-align:left}
 .rq-opt:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
 .rq-opt.correct{border-color:var(--accent3);background:rgba(240,194,122,0.1);color:var(--accent3)}
 .rq-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
@@ -142,12 +142,12 @@
 .writing-prompt{background:rgba(167,139,250,0.08);border:0.5px solid rgba(232,197,71,0.2);border-radius:12px;padding:16px;margin-bottom:14px}
 .wp-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
 .wp-text{font-size:14px;color:var(--text);line-height:1.7}
-.writing-area{width:100%;min-height:120px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical;outline:none;line-height:1.7}
+.writing-area{width:100%;min-height:120px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-size:14px;font-family:var(--font-body);resize:vertical;outline:none;line-height:1.7}
 .writing-area:focus{border-color:rgba(232,197,71,0.4)}
 .writing-area::placeholder{color:var(--text3)}
-.check-btn{margin-top:10px;padding:9px 20px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500}
+.check-btn{margin-top:10px;padding:9px 20px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:13px;font-family:var(--font-body);cursor:pointer;font-weight:500}
 .word-count{font-size:11px;color:var(--text3);margin-top:6px}
-.prompt-btn{padding:7px 16px;border-radius:8px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:10px}
+.prompt-btn{padding:7px 16px;border-radius:8px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:var(--font-body);transition:all .2s;margin-top:10px}
 .prompt-btn:hover{background:var(--card);color:var(--text);border-color:rgba(232,197,71,0.4)}
 @media(max-width:500px){
   .skill-cards{grid-template-columns:1fr}
@@ -223,7 +223,7 @@
 <a href="#paragraph" class="sb-item"><i data-lucide="circle" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px"></i>Cấu trúc đoạn văn</a>
 </aside>
 <main class="content">
-<h1 style="font-family:'Fraunces',serif;font-size:clamp(24px,3.5vw,38px);font-weight:300;margin-bottom:24px">4 Kỹ năng tiếng Anh — Đọc, Nghe, Nói, Viết</h1>
+<h1 style="font-family:var(--font-heading);font-size:clamp(24px,3.5vw,38px);font-weight:300;margin-bottom:24px">4 Kỹ năng tiếng Anh — Đọc, Nghe, Nói, Viết</h1>
 <div class="lesson-anchor" id="read-passage2">
     <div class="section-label" style="color:var(--accent3)">Bài đọc 2</div>
     <div class="section-title" style="font-size:20px">Bài đọc trung cấp — Trình độ B1/B2</div>

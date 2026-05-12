@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bảng giá — EasyEnglish</title>
+<meta name="description" content="Nâng cấp EasyEnglish Pro để mở khóa toàn bộ nội dung học tiếng Anh premium.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.pricing-hero{position:relative;z-index:1;text-align:center;padding:48px 24px 32px;max-width:800px;margin:0 auto}
+.pricing-hero h1{font-family:var(--font-heading);font-size:clamp(28px,5vw,44px);font-weight:300;margin-bottom:10px;line-height:1.15}
+.pricing-hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pricing-hero p{color:var(--text2);font-size:clamp(14px,1.5vw,17px);line-height:1.7;max-width:540px;margin:0 auto}
+
+.pricing-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin:28px 0 8px}
+.pricing-toggle span{font-size:14px;color:var(--text3)}
+.pricing-toggle span.active{color:var(--accent);font-weight:600}
+.toggle-switch{width:48px;height:26px;border-radius:13px;background:var(--border);cursor:pointer;position:relative;transition:background .3s}
+.toggle-switch.on{background:var(--accent)}
+.toggle-switch::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .3s}
+.toggle-switch.on::after{transform:translateX(22px)}
+.save-badge{font-size:11px;background:rgba(100,216,165,0.15);color:var(--accent);padding:3px 10px;border-radius:12px;font-weight:600}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto;padding:0 20px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px;position:relative;transition:all .3s;display:flex;flex-direction:column}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.2)}
+.price-card.popular{border-color:rgba(100,216,165,0.4);background:linear-gradient(135deg,rgba(100,216,165,0.06),rgba(167,139,250,0.04))}
+.popular-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1a1e;font-size:11px;font-weight:700;padding:4px 16px;border-radius:12px;white-space:nowrap;letter-spacing:.5px}
+.price-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px}
+.price-name{font-family:var(--font-heading);font-size:20px;font-weight:400;margin-bottom:4px}
+.price-desc{font-size:13px;color:var(--text3);margin-bottom:20px;line-height:1.5}
+.price-amount{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.price-amount .currency{font-size:16px;color:var(--text2);font-weight:500}
+.price-amount .number{font-family:var(--font-heading);font-size:36px;color:var(--text);line-height:1}
+.price-amount .period{font-size:13px;color:var(--text3)}
+.price-original{font-size:12px;color:var(--text3);text-decoration:line-through;margin-bottom:16px;min-height:18px}
+.price-cta{width:100%;padding:14px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;border:none;font-family:var(--font-body);transition:all .2s;margin-bottom:20px}
+.price-cta.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1a1e}
+.price-cta.primary:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(100,216,165,0.3)}
+.price-cta.secondary{background:var(--card2);color:var(--text);border:1px solid var(--border)}
+.price-cta.secondary:hover{border-color:rgba(100,216,165,0.3);background:rgba(100,216,165,0.06)}
+.price-features{list-style:none;padding:0;margin:0;flex:1}
+.price-features li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text2);padding:7px 0;line-height:1.5}
+.price-features li i{flex-shrink:0;margin-top:2px}
+.feat-check{color:var(--accent)}
+.feat-x{color:var(--text3);opacity:0.4}
+.feat-x + span{color:var(--text3);opacity:0.5}
+
+.faq-section{max-width:700px;margin:48px auto 0;padding:0 20px}
+.faq-title{font-family:var(--font-heading);font-size:24px;font-weight:300;text-align:center;margin-bottom:24px}
+.faq-item{border:0.5px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .15s}
+.faq-q:hover{background:rgba(255,255,255,0.03)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px}
+.faq-a-inner{padding:0 0 16px;font-size:13px;color:var(--text2);line-height:1.7}
+.faq-item.open .faq-a{max-height:200px}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+
+.guarantee{text-align:center;padding:32px 24px;max-width:600px;margin:0 auto}
+.guarantee-icon{font-size:32px;margin-bottom:12px}
+.guarantee h3{font-family:var(--font-heading);font-size:18px;font-weight:400;margin-bottom:8px}
+.guarantee p{font-size:13px;color:var(--text3);line-height:1.7}
+
+@media(max-width:768px){
+  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .price-card.popular{order:-1}
+}
+</style>
+<meta name="theme-color" content="#64D8A5">
+</head>
+<body>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<nav></nav>
+<script src="nav.js?v=1"></script>
+
+<div class="pricing-hero">
+  <div class="page-label">Bảng giá</div>
+  <h1>Đầu tư cho <em>tương lai</em> của bạn</h1>
+  <p>Mở khóa toàn bộ nội dung premium, công cụ AI, và lộ trình cá nhân hóa. Học nhanh hơn, hiệu quả hơn.</p>
+
+  <div class="pricing-toggle">
+    <span class="active" id="monthLabel">Hàng tháng</span>
+    <div class="toggle-switch" id="billingToggle" onclick="toggleBilling()"></div>
+    <span id="yearLabel">Hàng năm</span>
+    <span class="save-badge">-40%</span>
+  </div>
+</div>
+
+<div class="pricing-grid" id="pricingGrid">
+  <!-- Cards injected by JS -->
+</div>
+
+<div class="guarantee">
+  <div class="guarantee-icon"><i data-lucide="shield-check" style="width:36px;height:36px;color:var(--accent)"></i></div>
+  <h3>Hoàn tiền 100% trong 7 ngày</h3>
+  <p>Nếu bạn không hài lòng, chúng tôi hoàn tiền đầy đủ — không hỏi lý do. Bạn không có gì để mất.</p>
+</div>
+
+<div class="faq-section">
+  <div class="faq-title">Câu hỏi thường gặp</div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Tôi có thể dùng thử miễn phí không? <i data-lucide="chevron-down" style="width:16px;height:16px;transition:transform .2s"></i></div>
+    <div class="faq-a"><div class="faq-a-inner">Có! Gói Free hoàn toàn miễn phí và không giới hạn thời gian. Bạn có thể dùng thử các tính năng cơ bản trước khi nâng cấp.</div></div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Thanh toán bằng gì? <i data-lucide="chevron-down" style="width:16px;height:16px;transition:transform .2s"></i></div>
+    <div class="faq-a"><div class="faq-a-inner">Chúng tôi hỗ trợ thanh toán qua Momo, ZaloPay, chuyển khoản ngân hàng, và thẻ Visa/Mastercard quốc tế.</div></div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Có thể hủy bất cứ lúc nào không? <i data-lucide="chevron-down" style="width:16px;height:16px;transition:transform .2s"></i></div>
+    <div class="faq-a"><div class="faq-a-inner">Hoàn toàn! Bạn có thể hủy gói bất kỳ lúc nào. Tài khoản sẽ tiếp tục hoạt động đến hết chu kỳ đã thanh toán.</div></div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Pro và Premium khác nhau chỗ nào? <i data-lucide="chevron-down" style="width:16px;height:16px;transition:transform .2s"></i></div>
+    <div class="faq-a"><div class="faq-a-inner">Pro mở khóa toàn bộ bài học và bài tập. Premium thêm AI Writing checker, AI pronunciation coach, lộ trình cá nhân hóa, và hỗ trợ 1-1 từ mentor.</div></div>
+  </div>
+</div>
+
+<div style="height:80px"></div>
+<footer><p>&copy; 2025 EasyEnglish</p></footer>
+<button class="back-top" id="backTop" onclick="scrollTo({top:0,behavior:'smooth'})"><i data-lucide="chevron-up" style="width:18px;height:18px"></i></button>
+
+<script src="gamification.js?v=3"></script>
+<script src="common.js?v=2"></script>
+<script>
+var isYearly = false;
+var PLANS = [
+  {
+    id:'free', name:'Free', icon:'sprout', iconBg:'rgba(100,216,165,0.1)', iconColor:'var(--accent)',
+    desc:'Bắt đầu học miễn phí',
+    monthly:0, yearly:0, ctaClass:'secondary', ctaText:'Đang dùng',
+    features:[
+      {text:'Ngữ pháp cơ bản (12 thì)', has:true},
+      {text:'200 từ vựng cơ bản', has:true},
+      {text:'Flashcard & quiz cơ bản', has:true},
+      {text:'Phát âm IPA cơ bản', has:true},
+      {text:'Theo dõi streak', has:true},
+      {text:'Ngữ pháp nâng cao', has:false},
+      {text:'IELTS modules', has:false},
+      {text:'AI Writing checker', has:false},
+      {text:'Lộ trình cá nhân hóa', has:false},
+    ]
+  },
+  {
+    id:'pro', name:'Pro', icon:'zap', iconBg:'rgba(167,139,250,0.15)', iconColor:'var(--accent2)',
+    desc:'Mở khóa toàn bộ nội dung', popular:true,
+    monthly:99000, yearly:59000, ctaClass:'primary', ctaText:'Nâng cấp Pro',
+    features:[
+      {text:'Tất cả nội dung Free', has:true},
+      {text:'80+ bài học không giới hạn', has:true},
+      {text:'5000+ từ vựng theo level', has:true},
+      {text:'IELTS Guide đầy đủ', has:true},
+      {text:'AWL 570, Collocations, Idioms', has:true},
+      {text:'500+ bài tập & quiz', has:true},
+      {text:'Spaced repetition nâng cao', has:true},
+      {text:'Không quảng cáo', has:true},
+      {text:'AI Writing checker', has:false},
+    ]
+  },
+  {
+    id:'premium', name:'Premium', icon:'crown', iconBg:'rgba(240,194,122,0.15)', iconColor:'var(--accent3)',
+    desc:'Trải nghiệm học tối ưu nhất',
+    monthly:199000, yearly:119000, ctaClass:'primary', ctaText:'Nâng cấp Premium',
+    features:[
+      {text:'Tất cả tính năng Pro', has:true},
+      {text:'AI Writing checker', has:true},
+      {text:'AI Pronunciation coach', has:true},
+      {text:'Lộ trình cá nhân hóa', has:true},
+      {text:'Mock test IELTS', has:true},
+      {text:'Phân tích điểm yếu AI', has:true},
+      {text:'Hỗ trợ mentor 1-1', has:true},
+      {text:'Ưu tiên tính năng mới', has:true},
+      {text:'Certificate hoàn thành', has:true},
+    ]
+  }
+];
+
+function formatPrice(n){ return n === 0 ? 'Miễn phí' : n.toLocaleString('vi-VN'); }
+
+function renderPricing(){
+  var grid = document.getElementById('pricingGrid');
+  var html = '';
+  PLANS.forEach(function(p){
+    var price = isYearly ? p.yearly : p.monthly;
+    var period = price === 0 ? '' : (isYearly ? '/tháng' : '/tháng');
+    var original = isYearly && p.monthly > 0 ? '<span>'+formatPrice(p.monthly)+'đ</span>' : '';
+    html += '<div class="price-card'+(p.popular?' popular':'')+'">';
+    if(p.popular) html += '<div class="popular-tag">Phổ biến nhất</div>';
+    html += '<div class="price-icon" style="background:'+p.iconBg+'"><i data-lucide="'+p.icon+'" style="width:24px;height:24px;color:'+p.iconColor+'"></i></div>';
+    html += '<div class="price-name">'+p.name+'</div>';
+    html += '<div class="price-desc">'+p.desc+'</div>';
+    html += '<div class="price-amount">';
+    if(price === 0) html += '<span class="number" style="font-size:28px">Miễn phí</span>';
+    else html += '<span class="number">'+formatPrice(price)+'</span><span class="currency">đ</span><span class="period">'+period+'</span>';
+    html += '</div>';
+    html += '<div class="price-original">'+original+'</div>';
+    html += '<button class="price-cta '+p.ctaClass+'" onclick="selectPlan(\''+p.id+'\')">'+p.ctaText+'</button>';
+    html += '<ul class="price-features">';
+    p.features.forEach(function(f){
+      html += '<li><i data-lucide="'+(f.has?'check':'x')+'" style="width:14px;height:14px" class="'+(f.has?'feat-check':'feat-x')+'"></i><span>'+f.text+'</span></li>';
+    });
+    html += '</ul></div>';
+  });
+  grid.innerHTML = html;
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function toggleBilling(){
+  isYearly = !isYearly;
+  document.getElementById('billingToggle').classList.toggle('on', isYearly);
+  document.getElementById('monthLabel').classList.toggle('active', !isYearly);
+  document.getElementById('yearLabel').classList.toggle('active', isYearly);
+  renderPricing();
+}
+
+function selectPlan(id){
+  if(id === 'free') return;
+  // Store selected plan
+  localStorage.setItem('ee_selected_plan', id);
+  localStorage.setItem('ee_billing', isYearly ? 'yearly' : 'monthly');
+  // Show confirmation toast
+  var plan = PLANS.find(function(p){return p.id===id;});
+  if(plan && typeof showToast === 'function'){
+    showToast('Gói '+plan.name+' đã chọn!', 'Tính năng thanh toán sẽ sớm được cập nhật.', 'var(--accent)');
+  }
+}
+
+renderPricing();
+</script>
+<script>if(typeof lucide!=='undefined')lucide.createIcons();</script>
+</body>
+</html>

@@ -210,7 +210,7 @@ function renderToeic(){
     html='<div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:24px">'+
       '<div style="font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px"><i data-lucide="file-text" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px"></i>Part 5: Incomplete Sentences</div>'+
       '<div style="font-size:13px;color:var(--text3);margin-bottom:16px">Chọn từ đúng để hoàn thành câu — giống thật trong đề TOEIC.</div>'+
-      '<div id="p5Box" style="text-align:center"><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu (15 câu)</button></div></div>';
+      '<div id="p5Box" style="text-align:center"><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:var(--font-body)">Bắt đầu (15 câu)</button></div></div>';
   } else if(curTTab==='part6'){
     html=renderPart6();
   } else {
@@ -223,9 +223,9 @@ function renderToeic(){
 var p5Idx=0,p5Ok=0,p5Items=[];
 function startP5(){p5Items=PART5.slice().sort(function(){return Math.random()-0.5;});p5Idx=0;p5Ok=0;nextP5();}
 function nextP5(){
-  if(p5Idx>=p5Items.length){var pct=Math.round(p5Ok/p5Items.length*100);var msg=pct>=80?'Xuất sắc! Sẵn sàng cho TOEIC!':pct>=60?'Khá tốt! Ôn thêm nhé!':'Cần luyện thêm nhiều!';document.getElementById('p5Box').innerHTML='<div style="font-size:28px;font-weight:600;margin:20px 0;color:var(--accent)">'+p5Ok+'/'+p5Items.length+' ('+pct+'%)</div><div style="color:var(--text3);margin-bottom:16px">'+msg+'</div><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Làm lại</button>';return;}
+  if(p5Idx>=p5Items.length){var pct=Math.round(p5Ok/p5Items.length*100);var msg=pct>=80?'Xuất sắc! Sẵn sàng cho TOEIC!':pct>=60?'Khá tốt! Ôn thêm nhé!':'Cần luyện thêm nhiều!';document.getElementById('p5Box').innerHTML='<div style="font-size:28px;font-weight:600;margin:20px 0;color:var(--accent)">'+p5Ok+'/'+p5Items.length+' ('+pct+'%)</div><div style="color:var(--text3);margin-bottom:16px">'+msg+'</div><button onclick="startP5()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:var(--font-body)">Làm lại</button>';return;}
   var q=p5Items[p5Idx];
-  document.getElementById('p5Box').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(p5Idx+1)+'/'+p5Items.length+'</div><div style="font-size:18px;color:var(--text);margin:16px 0;font-weight:500;line-height:1.6">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:400px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="checkP5('+i+')" style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif;transition:all .15s" id="p5o-'+i+'">'+o+'</button>';}).join('')+'</div><div id="p5Fb" style="margin-top:10px;font-size:13px"></div>';
+  document.getElementById('p5Box').innerHTML='<div style="font-size:13px;color:var(--text3);margin-bottom:8px">'+(p5Idx+1)+'/'+p5Items.length+'</div><div style="font-size:18px;color:var(--text);margin:16px 0;font-weight:500;line-height:1.6">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:400px;margin:0 auto">'+q.opts.map(function(o,i){return '<button onclick="checkP5('+i+')" style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:var(--font-body);transition:all .15s" id="p5o-'+i+'">'+o+'</button>';}).join('')+'</div><div id="p5Fb" style="margin-top:10px;font-size:13px"></div>';
 }
 function checkP5(i){
   var q=p5Items[p5Idx];
@@ -251,7 +251,7 @@ function renderPart6(){
       return '<div id="'+gid+'r" style="padding:12px;background:var(--bg3);border-radius:10px;border:0.5px solid var(--border)">'+
         '<div style="font-size:13px;color:var(--text3);margin-bottom:6px">Question ('+g.n+')</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'+g.opts.map(function(o,oi){
-          return '<button onclick="chkP6('+pi+','+gi+','+oi+')" id="'+gid+'_'+oi+'" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s">'+o+'</button>';
+          return '<button onclick="chkP6('+pi+','+gi+','+oi+')" id="'+gid+'_'+oi+'" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:var(--font-body);transition:all .15s">'+o+'</button>';
         }).join('')+'</div></div>';
     }).join('')+'</div></div>';
   }).join('');
@@ -288,7 +288,7 @@ function renderPart7(){
       return '<div id="'+qid+'r" style="padding:14px;background:var(--bg3);border-radius:10px;border:0.5px solid var(--border)">'+
         '<div style="font-size:14px;color:var(--text);margin-bottom:8px;font-weight:500">'+(qi+1)+'. '+q.q+'</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'+q.opts.map(function(o,oi){
-          return '<button onclick="chkP7('+pi+','+qi+','+oi+')" id="'+qid+'_'+oi+'" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s;text-align:left">'+String.fromCharCode(65+oi)+'. '+o+'</button>';
+          return '<button onclick="chkP7('+pi+','+qi+','+oi+')" id="'+qid+'_'+oi+'" style="padding:10px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:var(--font-body);transition:all .15s;text-align:left">'+String.fromCharCode(65+oi)+'. '+o+'</button>';
         }).join('')+'</div></div>';
     }).join('')+'</div></div>';
   }).join('');
@@ -303,7 +303,7 @@ function chkP7(pi,qi,oi){
 renderToeic();
 </script>
 <style>
-.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:DM Sans,sans-serif;transition:all .15s}
+.tc-tab{padding:8px 16px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:13px;font-family:var(--font-body);transition:all .15s}
 .tc-tab:hover{border-color:rgba(100,216,165,0.3);color:var(--text)}
 .tc-tab.active{background:rgba(100,216,165,0.1);color:var(--accent);border-color:rgba(100,216,165,0.3)}
 </style>

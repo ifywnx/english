@@ -31,7 +31,7 @@
 .v-en{font-weight:600;font-size:14px}
 .v-vi{font-size:13px;color:var(--text2);margin-top:2px}
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.filter-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.filter-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:var(--font-body);transition:all .15s}
 .filter-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){.content{padding:20px 14px 110px}.vocab-grid{grid-template-columns:1fr}}
@@ -58,7 +58,7 @@
 <div class="q-list" id="qList"></div>
 
 <div class="vocab-section">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300">Từ vựng phỏng vấn</h2>
+  <h2 style="font-family:var(--font-heading);font-weight:300">Từ vựng phỏng vấn</h2>
   <div class="vocab-grid">
     <div class="vocab-item"><div class="v-en">Resume / CV</div><div class="v-vi">Sơ yếu lý lịch</div></div>
     <div class="vocab-item"><div class="v-en">Strengths & Weaknesses</div><div class="v-vi">Điểm mạnh & điểm yếu</div></div>

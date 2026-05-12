@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ vựng chuyên ngành — EasyEnglish</title>
+<meta name="description" content="Học từ vựng tiếng Anh theo chuyên ngành đại học: Y tế, IT, Pháp lý, Kinh doanh, Cơ khí, Kiến trúc và hơn 30 ngành khác.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+.hub-content{padding:36px 48px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hub-hero{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(123,110,246,0.05));border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:28px}
+.hub-hero h1{font-family:var(--font-heading);font-size:clamp(28px,4vw,44px);font-weight:300;margin-bottom:10px}
+.hub-hero p{font-size:15px;color:var(--text2);line-height:1.8;max-width:700px}
+.hub-search{width:100%;padding:14px 18px;background:var(--card2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:var(--font-body);outline:none;margin-bottom:24px;transition:border .2s}
+.hub-search:focus{border-color:rgba(100,216,165,0.5)}
+.field-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:32px}
+.field-card{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:18px;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+.field-card:hover{border-color:rgba(100,216,165,0.4);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.field-card.active{border-color:rgba(100,216,165,0.6);background:rgba(100,216,165,0.04)}
+.fc-icon{margin-bottom:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:rgba(100,216,165,0.08);color:var(--accent)}
+.fc-name{font-family:var(--font-heading);font-size:17px;color:var(--text);margin-bottom:4px}
+.fc-count{font-size:12px;color:var(--accent)}
+.fc-desc{font-size:12px;color:var(--text3);line-height:1.5;margin-top:6px}
+.vocab-panel{display:none;background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:24px;margin-bottom:28px}
+.vocab-panel.show{display:block;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.vp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.vp-title{font-family:var(--font-heading);font-size:24px;font-weight:300}
+.vp-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:20px;padding:4px 8px}
+.vp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.vw-card{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px;transition:all .15s}
+.vw-card:hover{border-color:rgba(100,216,165,0.3)}
+.vw-word{font-size:16px;font-weight:500;color:var(--text)}
+.vw-ipa{font-size:11px;color:var(--accent);font-style:italic}
+.vw-vi{font-size:13px;color:var(--text3);margin-top:2px}
+.vw-meta{display:flex;gap:4px;margin-top:4px}
+.vw-lv{font-size:9px;padding:2px 6px;border-radius:4px;font-weight:500}
+.lv-A1,.lv-A2{background:rgba(107,203,119,0.15);color:var(--green)}
+.lv-B1{background:rgba(240,194,122,0.15);color:var(--accent3)}
+.lv-B2{background:rgba(167,139,250,0.15);color:var(--accent2)}
+.lv-C1{background:rgba(244,132,95,0.15);color:var(--coral)}
+.lv-C2{background:rgba(255,100,100,0.15);color:#f66}
+.vw-pos{font-size:9px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.05);color:var(--text3)}
+.existing-link{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;background:rgba(100,216,165,0.1);border:0.5px solid rgba(100,216,165,0.3);border-radius:8px;font-size:12px;color:var(--accent);text-decoration:none;transition:all .2s}
+.existing-link:hover{background:rgba(100,216,165,0.2)}
+@media(max-width:600px){.hub-content{padding:20px 16px}.field-grid{grid-template-columns:1fr 1fr}.vp-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav></nav>
+<div class="hub-content">
+  <div class="breadcrumb"><a href="index.html"><i data-lucide="home" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i></a><span class="bc-sep">&rsaquo;</span><span class="bc-current">Chuyên ngành</span></div>
+
+  <div class="hub-hero">
+    <h1><i data-lucide="graduation-cap" style="width:36px;height:36px;display:inline-block;vertical-align:-6px;margin-right:8px"></i> Từ vựng chuyên ngành</h1>
+    <p>Hơn 35 ngành nghề tại đại học Việt Nam. Chọn ngành của bạn để xem danh sách từ vựng chuyên sâu — có phiên âm IPA, nghĩa tiếng Việt và cấp độ CEFR.</p>
+  </div>
+
+  <input class="hub-search" type="text" placeholder="🔍 Tìm ngành... (ví dụ: y tế, cơ khí, IT)" oninput="filterFields(this.value)" id="fieldSearch">
+
+  <div class="vocab-panel" id="vocabPanel">
+    <div class="vp-header">
+      <div><span class="vp-title" id="vpTitle"></span> <span id="vpLink"></span></div>
+      <button class="vp-close" onclick="closePanel()">✕</button>
+    </div>
+    <div class="vp-grid" id="vpGrid"></div>
+  </div>
+
+  <div class="field-grid" id="fieldGrid"></div>
+</div>
+
+<script src="nav.js?v=1"></script>
+<script src="common.js?v=14"></script>
+<script src="dict-fields.js"></script>
+<script>
+var FIELDS = [
+  {id:'medical',icon:'heart-pulse',name:'Y tế',desc:'Chẩn đoán, phẫu thuật, dịch bệnh, khoa chuyên sâu',keys:['Medical','Y TẾ'],link:'tieng-anh-y-te.html'},
+  {id:'legal',icon:'scale',name:'Pháp lý',desc:'Kiện tụng, án lệ, hợp đồng, luật quốc tế',keys:['Legal','PHÁP LÝ'],link:'tieng-anh-phap-ly.html'},
+  {id:'business',icon:'briefcase',name:'Kinh doanh & Tài chính',desc:'Doanh thu, cổ phiếu, đầu tư, sáp nhập',keys:['Business','TÀI CHÍNH','KINH DOANH'],link:'tieng-anh-thuong-mai.html'},
+  {id:'it',icon:'code-2',name:'Công nghệ IT',desc:'Lập trình, DevOps, AI, bảo mật, cloud',keys:['IT','CÔNG NGHỆ'],link:'tieng-anh-it.html'},
+  {id:'science',icon:'flask-conical',name:'Khoa học',desc:'Phân tử, hệ sinh thái, biến đổi khí hậu',keys:['Science','KHOA HỌC']},
+  {id:'education',icon:'graduation-cap',name:'Giáo dục',desc:'Chương trình học, học bổng, sư phạm',keys:['Education','GIÁO DỤC']},
+  {id:'psychology',icon:'brain',name:'Tâm lý học',desc:'Nhận thức, lo âu, trầm cảm, chánh niệm',keys:['Psychology','TÂM LÝ']},
+  {id:'architecture',icon:'building-2',name:'Kiến trúc & Xây dựng',desc:'Bản vẽ, bê tông, giàn giáo, quy hoạch',keys:['Architecture','KIẾN TRÚC','XÂY DỰNG']},
+  {id:'journalism',icon:'newspaper',name:'Báo chí & Truyền thông',desc:'Phóng viên, kiểm duyệt, podcast, viral',keys:['Journalism','BÁO CHÍ','TRUYỀN THÔNG']},
+  {id:'aviation',icon:'plane',name:'Hàng không',desc:'Buồng lái, đường băng, nhiễu loạn, quá cảnh',keys:['Aviation','HÀNG KHÔNG']},
+  {id:'hospitality',icon:'hotel',name:'Khách sạn & Du lịch',desc:'Lễ tân, lịch trình, ẩm thực, di sản',keys:['Hospitality','DU LỊCH','KHÁCH SẠN']},
+  {id:'agriculture',icon:'sprout',name:'Nông nghiệp',desc:'Tưới tiêu, phân bón, gia súc, thủy canh',keys:['Agriculture','NÔNG NGHIỆP']},
+  {id:'marketing',icon:'megaphone',name:'Quảng cáo & Marketing',desc:'Thương hiệu, SEO, KPI, influencer',keys:['Marketing','QUẢNG CÁO']},
+  {id:'logistics',icon:'truck',name:'Vận tải & Logistics',desc:'Kho hàng, thuế quan, vận đơn, container',keys:['Logistics','VẬN TẢI']},
+  {id:'environment',icon:'leaf',name:'Môi trường',desc:'Ô nhiễm, tái chế, năng lượng tái tạo',keys:['Environment','MÔI TRƯỜNG']},
+  {id:'accounting',icon:'calculator',name:'Kế toán',desc:'Sổ cái, bảng cân đối, dòng tiền, thuế',keys:['Accounting','KẾ TOÁN']},
+  {id:'banking',icon:'landmark',name:'Ngân hàng',desc:'Thế chấp, tín dụng, thanh khoản, tỷ giá',keys:['Banking','NGÂN HÀNG']},
+  {id:'hr',icon:'users',name:'Quản trị nhân sự',desc:'Tuyển dụng, bảng lương, đãi ngộ, thử việc',keys:['Human Resources','NHÂN SỰ']},
+  {id:'ir',icon:'globe',name:'Quan hệ quốc tế',desc:'Ngoại giao, chủ quyền, hiệp ước, cấm vận',keys:['International Relations','QUAN HỆ QUỐC TẾ']},
+  {id:'sociology',icon:'users-round',name:'Xã hội học',desc:'Phân tầng, đô thị hóa, bất bình đẳng',keys:['Sociology','XÃ HỘI']},
+  {id:'mechanical',icon:'cog',name:'Cơ khí',desc:'Ma sát, thủy lực, tuabin, hàn, CNC',keys:['Mechanical','CƠ KHÍ']},
+  {id:'electrical',icon:'zap',name:'Điện - Điện tử',desc:'Mạch điện, bán dẫn, vi điều khiển, PLC',keys:['Electrical','ĐIỆN']},
+  {id:'chemistry',icon:'test-tubes',name:'Hóa học',desc:'Hợp chất, phản ứng, axit, chưng cất',keys:['Chemistry','HÓA HỌC']},
+  {id:'biology',icon:'dna',name:'Sinh học',desc:'Tế bào, di truyền, tiến hóa, cộng sinh',keys:['Biology','SINH HỌC']},
+  {id:'math',icon:'sigma',name:'Toán học',desc:'Phương trình, tích phân, xác suất, ma trận',keys:['Mathematics','TOÁN HỌC']},
+  {id:'pharmacy',icon:'pill',name:'Dược học',desc:'Dược phẩm, liều dùng, thử nghiệm lâm sàng',keys:['Pharmacy','DƯỢC']},
+  {id:'dentistry',icon:'smile',name:'Nha khoa',desc:'Sâu răng, chỉnh nha, trám, cấy ghép',keys:['Dentistry','NHA KHOA']},
+  {id:'veterinary',icon:'paw-print',name:'Thú y',desc:'Tiêm phòng, ký sinh, cách ly, bệnh dại',keys:['Veterinary','THÚ Y']},
+  {id:'food',icon:'utensils',name:'Công nghệ thực phẩm',desc:'Tiệt trùng, lên men, bảo quản, dinh dưỡng',keys:['Food','THỰC PHẨM']},
+  {id:'textile',icon:'scissors',name:'Dệt may',desc:'Vải, dệt, nhuộm, thêu, may đo',keys:['Textile','DỆT MAY']},
+  {id:'realestate',icon:'home',name:'Bất động sản',desc:'Thuê, định giá, quy hoạch, sở hữu',keys:['Real Estate','BẤT ĐỘNG SẢN']},
+  {id:'art',icon:'palette',name:'Mỹ thuật & Thiết kế',desc:'Bố cục, phối cảnh, điêu khắc, typography',keys:['Art','MỸ THUẬT','THIẾT KẾ']},
+  {id:'linguistics',icon:'languages',name:'Ngôn ngữ học',desc:'Ngữ âm, cú pháp, ngữ nghĩa, phương ngữ',keys:['Linguistics','NGÔN NGỮ']},
+  {id:'philosophy',icon:'lightbulb',name:'Triết học',desc:'Nhận thức luận, đạo đức, hiện sinh, logic',keys:['Philosophy','TRIẾT HỌC']},
+  {id:'sports',icon:'dumbbell',name:'Thể dục thể thao',desc:'Sức bền, sinh lý, vận động học, doping',keys:['Sports','THỂ THAO']},
+  {id:'geology',icon:'mountain',name:'Địa chất',desc:'Khoáng vật, kiến tạo, hóa thạch, quặng',keys:['Geology','ĐỊA CHẤT']},
+  {id:'water',icon:'droplets',name:'Thủy lợi',desc:'Đập, hồ chứa, kênh, nước ngầm, đê',keys:['Water','THỦY LỢI']},
+  {id:'music',icon:'music',name:'Âm nhạc',desc:'Giai điệu, hòa âm, hợp âm, giao hưởng',keys:['Music','ÂM NHẠC']},
+  {id:'ecommerce',icon:'shopping-cart',name:'Thương mại điện tử',desc:'Giỏ hàng, cổng thanh toán, dropshipping',keys:['E-commerce','THƯƠNG MẠI ĐIỆN TỬ']},
+  {id:'publicadmin',icon:'building',name:'Quản lý công',desc:'Hành chính, minh bạch, trợ cấp, phân cấp',keys:['Public Administration','QUẢN LÝ CÔNG']},
+  {id:'physics',icon:'atom',name:'Vật lý',desc:'Động lượng, gia tốc, lượng tử, quang học',keys:['Physics','VẬT LÝ']},
+  {id:'interview',icon:'user-check',name:'Phỏng vấn',desc:'Phỏng vấn xin việc, trả lời chuyên nghiệp',keys:['PHỎNG VẤN'],link:'tieng-anh-phong-van.html'}
+];
+
+// FIELD_VOCAB loaded from dict-fields.js (pre-built)
+// Match all sub-groups that contain any of the field's keywords
+function getVocabForField(field) {
+  var words = [];
+  var seen = {};
+  if(typeof FIELD_VOCAB==='undefined') return words;
+  var allKeys = Object.keys(FIELD_VOCAB);
+  field.keys.forEach(function(k) {
+    var kUp = k.toUpperCase();
+    allKeys.forEach(function(groupName) {
+      var gUp = groupName.toUpperCase();
+      if(gUp.indexOf(kUp) !== -1) {
+        FIELD_VOCAB[groupName].forEach(function(w) {
+          if(!seen[w[0]]) {
+            seen[w[0]]=1;
+            words.push({word:w[0],ipa:w[1],vi:w[2],lv:w[3],pos:w[4]});
+          }
+        });
+      }
+    });
+  });
+  return words;
+}
+
+renderCards();
+
+function renderCards(){
+  var grid=document.getElementById('fieldGrid');
+  var html='';
+  FIELDS.forEach(function(f){
+    var words=getVocabForField(f);
+    var count=words.length;
+    html+='<div class="field-card" data-id="'+f.id+'" data-name="'+f.name+'" onclick="showField(\''+f.id+'\')">';
+    html+='<div class="fc-icon"><i data-lucide="'+f.icon+'" style="width:20px;height:20px"></i></div>';
+    html+='<div class="fc-name">'+f.name+'</div>';
+    html+='<div class="fc-count">'+(count||'10+')+' từ</div>';
+    html+='<div class="fc-desc">'+f.desc+'</div>';
+    html+='</div>';
+  });
+  grid.innerHTML=html;
+  if(window.lucide) lucide.createIcons();
+}
+
+function showField(id){
+  var field=FIELDS.find(function(f){return f.id===id});
+  if(!field) return;
+  // Collect words
+  var words=getVocabForField(field);
+
+  var panel=document.getElementById('vocabPanel');
+  document.getElementById('vpTitle').innerHTML='<i data-lucide="'+field.icon+'" style="width:20px;height:20px;display:inline-block;vertical-align:-4px;margin-right:6px"></i> '+field.name+' ('+words.length+' từ)';
+
+  var linkHtml='';
+  if(field.link) linkHtml='<a href="'+field.link+'" class="existing-link"><i data-lucide="book-open" style="width:14px;height:14px"></i> Xem bài học chi tiết</a>';
+  document.getElementById('vpLink').innerHTML=linkHtml;
+
+  var html='';
+  words.forEach(function(w){
+    html+='<div class="vw-card">';
+    html+='<div class="vw-word">'+w.word+'</div>';
+    html+='<div class="vw-ipa">'+w.ipa+'</div>';
+    html+='<div class="vw-vi">'+w.vi+'</div>';
+    html+='<div class="vw-meta"><span class="vw-lv lv-'+w.lv+'">'+w.lv+'</span><span class="vw-pos">'+w.pos+'</span></div>';
+    html+='</div>';
+  });
+  if(!words.length) html='<div style="color:var(--text3);padding:20px">Đang cập nhật từ vựng cho ngành này...</div>';
+  document.getElementById('vpGrid').innerHTML=html;
+  panel.classList.add('show');
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+
+  // Highlight active card
+  document.querySelectorAll('.field-card').forEach(function(c){c.classList.remove('active')});
+  var card=document.querySelector('[data-id="'+id+'"]');
+  if(card) card.classList.add('active');
+  if(window.lucide) lucide.createIcons();
+}
+
+function closePanel(){
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.querySelectorAll('.field-card').forEach(function(c){c.classList.remove('active')});
+}
+
+function filterFields(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.field-card').forEach(function(c){
+    var name=c.getAttribute('data-name').toLowerCase();
+    c.style.display=(!q||name.indexOf(q)!==-1)?'':'none';
+  });
+}
+
+if(window.lucide) lucide.createIcons();
+</script>
+</body>
+</html>

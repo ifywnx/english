@@ -30,24 +30,24 @@
 .sidebar-title.collapsed::after{transform:rotate(-90deg)}
 .sb-group{overflow:hidden;max-height:1000px;transition:max-height .3s ease,opacity .2s;opacity:1}
 .sb-group.hidden{max-height:0;opacity:0;margin:0;padding:0}
-.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:var(--font-body);cursor:pointer;border:none;background:transparent;text-align:left}
 .sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .sb-item.active{color:var(--green);background:rgba(107,203,119,0.08)}
 .content{padding:36px 48px;max-width:900px}
 .s-divider{height:0.5px;background:var(--border);margin:36px 0}
 .anchor{scroll-margin-top:80px}
 .section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
-.section-title{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:8px}
+.section-title{font-family:var(--font-heading);font-size:26px;font-weight:300;margin-bottom:8px}
 .section-desc{font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.7}
 /* SEARCH */
 .search-bar{display:flex;gap:10px;margin-bottom:24px}
-.search-input{flex:1;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none}
+.search-input{flex:1;padding:10px 16px;background:var(--card2);border:0.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:var(--font-body);outline:none}
 .search-input:focus{border-color:rgba(107,203,119,0.4)}
 .search-input::placeholder{color:var(--text3)}
 /* STATS */
 .stats-row{display:flex;gap:10px;margin-bottom:24px}
 .stat-box{background:var(--card2);border:0.5px solid var(--border);border-radius:10px;padding:12px 16px;flex:1;text-align:center}
-.stat-num{font-family:'Fraunces',serif;font-size:22px;color:var(--green)}
+.stat-num{font-family:var(--font-heading);font-size:22px;color:var(--green)}
 .stat-label{font-size:10px;color:var(--text3);margin-top:2px}
 /* COLLOCATION CARDS */
 .coll-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:20px}
@@ -101,14 +101,14 @@
 .qb-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:12px}
 .qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
 .qb-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:0}
-.qb-opt{padding:10px 14px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif}
+.qb-opt{padding:10px 14px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:var(--font-body)}
 .qb-opt:hover:not(:disabled){border-color:rgba(107,203,119,0.4);color:var(--text)}
 .qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
 .qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
 .qb-fb{margin-top:10px;padding:10px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
 .qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
 .qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
-.qb-next{margin-top:8px;padding:7px 16px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next{margin-top:8px;padding:7px 16px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font-body);display:none}
 .qb-next.show{display:inline-block}
 .no-results{text-align:center;color:var(--text3);padding:32px;font-size:14px}
 

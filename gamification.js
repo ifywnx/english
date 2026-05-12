@@ -31,12 +31,6 @@ const BADGES = [
   {id:'quiz_25',name:'25 quiz',desc:'Hoàn thành 25 quiz',icon:'check-circle-2',cat:'quiz',condition:s=>s.quizCompleted>=25},
   {id:'quiz_50',name:'50 quiz',desc:'Hoàn thành 50 quiz',icon:'award',cat:'quiz',condition:s=>s.quizCompleted>=50},
   {id:'quiz_100',name:'100 quiz',desc:'Hoàn thành 100 quiz — quiz master!',icon:'medal',cat:'quiz',condition:s=>s.quizCompleted>=100},
-  // === XP ===
-  {id:'xp_1000',name:'1000 XP',desc:'Đạt 1000 điểm XP',icon:'target',cat:'xp',condition:s=>s.totalXP>=1000},
-  {id:'xp_2000',name:'2000 XP',desc:'Đạt 2000 điểm XP',icon:'crosshair',cat:'xp',condition:s=>s.totalXP>=2000},
-  {id:'xp_5000',name:'5000 XP',desc:'Đạt 5000 điểm XP',icon:'crown',cat:'xp',condition:s=>s.totalXP>=5000},
-  {id:'xp_10000',name:'10K XP',desc:'Đạt 10,000 điểm XP!',icon:'gem',cat:'xp',condition:s=>s.totalXP>=10000},
-  {id:'xp_25000',name:'25K XP',desc:'Đạt 25,000 XP — legend!',icon:'diamond',cat:'xp',condition:s=>s.totalXP>=25000},
   // === COMBO ===
   {id:'combo_5',name:'Combo 5',desc:'5 câu đúng liên tiếp',icon:'flame',cat:'combo',condition:s=>(s.maxCombo||0)>=5},
   {id:'combo_10',name:'Combo 10',desc:'10 câu đúng liên tiếp!',icon:'zap',cat:'combo',condition:s=>(s.maxCombo||0)>=10},
@@ -45,9 +39,8 @@ const BADGES = [
   {id:'explorer_20',name:'Thợ lặn sâu',desc:'Ghé thăm 20 trang khác nhau',icon:'globe',cat:'explore',condition:s=>(s.pagesVisited||[]).length>=20},
   {id:'explorer_50',name:'Bách khoa toàn thư',desc:'Ghé thăm 50 trang!',icon:'map',cat:'explore',condition:s=>(s.pagesVisited||[]).length>=50},
   // === SPECIAL ===
-  {id:'night_owl',name:'Cú đêm',desc:'Học sau 11 giờ tối',icon:'moon',cat:'special',condition:s=>new Date().getHours()>=23&&s.todayXP>0},
-  {id:'early_bird',name:'Chim sớm',desc:'Học trước 6 giờ sáng',icon:'sunrise',cat:'special',condition:s=>new Date().getHours()<6&&s.todayXP>0},
-  {id:'daily_goal_done',name:'Mục tiêu hoàn thành',desc:'Đạt daily goal XP',icon:'check-square',cat:'special',condition:s=>s.todayXP>=s.dailyGoal&&s.dailyGoal>0},
+  {id:'night_owl',name:'Cú đêm',desc:'Học sau 11 giờ tối',icon:'moon',cat:'special',condition:s=>new Date().getHours()>=23&&s.streak>0},
+  {id:'early_bird',name:'Chim sớm',desc:'Học trước 6 giờ sáng',icon:'sunrise',cat:'special',condition:s=>new Date().getHours()<6&&s.streak>0},
 ];
 
 function getGameState(){
@@ -65,59 +58,10 @@ function getNextLevel(xp){
   return cur.index<LEVELS.length-1?LEVELS[cur.index+1]:null;
 }
 
-// ==================== ADD XP ====================
-// FIX #1: Streak logic ONLY in DOMContentLoaded init — removed from here
+// ==================== ADD XP (DISABLED) ====================
+// XP system removed — paid model replaces gamification
 function addXP(amount, reason){
-  const s=getGameState();
-  const today=new Date().toDateString();
-  
-  // Reset daily XP if new day
-  if(s.lastDate!==today){
-    s.todayXP=0;
-    s.todayChallengeDone=false;
-    s.combo=0;
-  }
-  
-  // Apply combo multiplier
-  var comboMultiplier = 1;
-  if(s.combo >= 10) comboMultiplier = 4;
-  else if(s.combo >= 5) comboMultiplier = 3;
-  else if(s.combo >= 3) comboMultiplier = 2;
-  var finalAmount = Math.round(amount * comboMultiplier);
-  
-  const oldLevel=getLevel(s.totalXP);
-  s.totalXP+=finalAmount;
-  s.todayXP+=finalAmount;
-  const newLevel=getLevel(s.totalXP);
-  
-  // Track quest progress
-  trackQuestProgress(s, 'earn_xp', finalAmount);
-  
-  saveGameState(s);
-  
-  // Level up!
-  if(newLevel.index>oldLevel.index){
-    playSound('levelup');
-    showToast('Level Up!','Bạn đã lên '+newLevel.name+' !','var(--accent2)');
-    showConfetti();
-  } else {
-    var comboText = comboMultiplier > 1 ? ' ('+comboMultiplier+'x combo!)' : '';
-    playSound('correct');
-    showToast('+'+finalAmount+' XP',(reason||'')+comboText,'var(--accent)');
-  }
-  
-  // Check daily goal reached
-  if(s.todayXP >= s.dailyGoal && (s.todayXP - finalAmount) < s.dailyGoal){
-    setTimeout(function(){
-      playSound('badge');
-      showToast('Mục tiêu hoàn thành!','Bạn đã đạt '+s.dailyGoal+' XP hôm nay!','var(--accent3)');
-      showConfetti();
-    }, 800);
-  }
-  
-  checkBadges(s);
-  updateXPBar();
-  updateProgressRing();
+  // no-op: XP system disabled
 }
 
 // ==================== COMBO SYSTEM ====================
@@ -231,59 +175,9 @@ function showConfetti(){
   animate();
 }
 
-// ==================== XP BAR (integrated into nav) ====================
+// ==================== XP BAR (DISABLED) ====================
 function updateXPBar(){
-  const s=getGameState();
-  const lv=getLevel(s.totalXP);
-  const next=getNextLevel(s.totalXP);
-  const pct=next?Math.min(100,((s.totalXP-lv.minXP)/(next.minXP-lv.minXP))*100):100;
-  
-  let bar=document.getElementById('ee-xp-bar');
-  if(!bar){
-    bar=document.createElement('a');bar.id='ee-xp-bar';
-    bar.href='tien-do.html';
-    bar.style.cssText='display:inline-flex;align-items:center;gap:6px;padding:4px 12px;font-size:11px;color:var(--text2);font-family:"DM Sans",sans-serif;white-space:nowrap;cursor:pointer;text-decoration:none;background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.15);border-radius:20px;transition:all .2s;margin-left:auto';
-
-    // Try to inject into nav, fallback to floating pill
-    function injectBar(){
-      var nav=document.querySelector('nav');
-      var navInner=nav?nav.querySelector('.nav-inner, .nav-content, nav > div'):null;
-      // Fallback: find the nav's first-level flex container
-      if(!navInner && nav){
-        var children=nav.children;
-        for(var i=0;i<children.length;i++){
-          var cs=getComputedStyle(children[i]);
-          if(cs.display==='flex'||cs.display==='inline-flex'){navInner=children[i];break;}
-        }
-      }
-      if(navInner){
-        // Desktop: put inside nav
-        navInner.appendChild(bar);
-        bar.style.position='';bar.style.top='';bar.style.right='';
-      } else {
-        // Fallback: floating pill top-right
-        bar.style.position='fixed';
-        bar.style.top='12px';
-        bar.style.right='16px';
-        bar.style.zIndex='198';
-        document.body.appendChild(bar);
-      }
-    }
-    injectBar();
-
-    // Hover effect
-    bar.addEventListener('mouseenter',function(){bar.style.background='rgba(100,216,165,0.12)';bar.style.borderColor='rgba(100,216,165,0.3)';});
-    bar.addEventListener('mouseleave',function(){bar.style.background='rgba(100,216,165,0.06)';bar.style.borderColor='rgba(100,216,165,0.15)';});
-  }
-
-  var streakIcon=s.streak>=3?'🔥':'';
-  bar.innerHTML=
-    '<span style="font-weight:600;color:var(--accent)">' + s.totalXP + '</span>' +
-    '<span style="color:var(--text3)">XP</span>' +
-    '<div style="width:40px;height:3px;background:var(--border);border-radius:2px">' +
-      '<div style="width:' + pct + '%;height:100%;background:var(--accent);border-radius:2px;transition:width .5s"></div>' +
-    '</div>' +
-    (s.streak>0?'<span style="font-size:10px;color:var(--text3)">' + streakIcon + s.streak + 'd</span>':'');
+  // XP bar disabled — no longer injected into nav
 }
 
 
@@ -440,20 +334,22 @@ function renderQuestBoard(){
 }
 window.renderQuestBoard = renderQuestBoard;
 
-// ==================== PROGRESS RING ====================
+// ==================== PROGRESS RING (Streak-based) ====================
 function updateProgressRing(){
   var ring = document.getElementById('progressRingFill');
   var label = document.getElementById('progressRingLabel');
   var sublabel = document.getElementById('progressRingPct');
   if(!ring) return;
   var s = getGameState();
-  var pct = Math.min(100, Math.round(s.todayXP / s.dailyGoal * 100));
-  var circumference = 2 * Math.PI * 54; // r=54
+  // Show streak in ring instead of XP
+  var maxStreak = 30; // full ring at 30 days
+  var pct = Math.min(100, Math.round(s.streak / maxStreak * 100));
+  var circumference = 2 * Math.PI * 54;
   var offset = circumference - (pct / 100) * circumference;
   ring.style.strokeDasharray = circumference;
   ring.style.strokeDashoffset = offset;
-  if(label) label.textContent = s.todayXP;
-  if(sublabel) sublabel.textContent = pct >= 100 ? 'Done!' : '/ ' + s.dailyGoal + ' XP';
+  if(label) label.textContent = s.streak;
+  if(sublabel) sublabel.textContent = 'ngày streak';
 }
 window.updateProgressRing = updateProgressRing;
 
@@ -518,10 +414,10 @@ document.addEventListener('DOMContentLoaded',function(){
   // Init quests for today
   getDailyQuests();
   
-  // Show XP bar on all pages except index
-  if(!location.pathname.endsWith('index.html')&&location.pathname!=='/'){
-    setTimeout(updateXPBar,500);
-  }
+  // Show XP bar on all pages except index — DISABLED
+  // if(!location.pathname.endsWith('index.html')&&location.pathname!=='/'){
+  //   setTimeout(updateXPBar,500);
+  // }
   // Progress ring on index
   setTimeout(function(){ updateProgressRing(); renderQuestBoard(); }, 600);
 

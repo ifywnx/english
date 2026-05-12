@@ -11,12 +11,12 @@
 <style>
 .content{max-width:900px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
 .cat-bar{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
-.cat-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.cat-btn{padding:8px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-size:13px;font-family:var(--font-body);transition:all .15s}
 .cat-btn.active{background:rgba(100,216,165,0.15);border-color:rgba(100,216,165,0.4);color:var(--accent)}
 .slang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:20px}
 .slang-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:18px;transition:all .2s}
 .slang-card:hover{transform:translateY(-2px);border-color:rgba(100,216,165,0.3)}
-.sl-word{font-family:'Fraunces',serif;font-weight:300;font-size:20px;color:var(--accent);margin-bottom:4px}
+.sl-word{font-family:var(--font-heading);font-weight:300;font-size:20px;color:var(--accent);margin-bottom:4px}
 .sl-type{font-size:11px;padding:3px 8px;border-radius:8px;background:var(--bg3);color:var(--text3);display:inline-block;margin-bottom:8px}
 .sl-mean{font-size:14px;margin-bottom:8px;line-height:1.6}
 .sl-ex{font-size:13px;color:var(--text2);font-style:italic;background:var(--bg3);padding:8px 12px;border-radius:8px;line-height:1.5}
@@ -24,12 +24,12 @@
 .quiz-box{margin-top:32px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px}
 .quiz-q{font-size:16px;margin-bottom:14px}
 .quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.quiz-opt{padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.quiz-opt{padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:var(--font-body)}
 .quiz-opt:hover{border-color:rgba(100,216,165,0.4)}
 .quiz-opt.correct{background:rgba(100,216,165,0.2);border-color:var(--accent)}
 .quiz-opt.wrong{background:rgba(244,132,95,0.2);border-color:var(--coral)}
 .quiz-nav{display:flex;gap:8px;justify-content:center;margin-top:14px}
-.quiz-btn{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif}
+.quiz-btn{padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:13px;font-family:var(--font-body)}
 @media(max-width:768px){.content{padding:20px 14px 110px}.slang-grid{grid-template-columns:1fr}.quiz-opts{grid-template-columns:1fr}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYG45MCK7N"></script>
@@ -46,7 +46,7 @@
 <div class="cat-bar" id="catBar"></div>
 <div class="slang-grid" id="slangGrid"></div>
 <div class="quiz-box">
-  <h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:14px">🧠 Quiz: Bạn hiểu bao nhiêu tiếng lóng?</h2>
+  <h2 style="font-family:var(--font-heading);font-weight:300;margin-bottom:14px">🧠 Quiz: Bạn hiểu bao nhiêu tiếng lóng?</h2>
   <div id="quizBox"></div>
 </div>
 

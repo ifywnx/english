@@ -6,10 +6,10 @@
 /* ── FONT PRESETS ──────────────────────────── */
 const FONTS = {
   default: {
-    name: 'Mặc định', preview: 'DM Sans',
-    body: "'DM Sans',sans-serif",
+    name: 'Mặc định', preview: 'Plus Jakarta Sans',
+    body: "'Plus Jakarta Sans','DM Sans',sans-serif",
     heading: "'Fraunces',serif",
-    google: 'family=DM+Sans:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400'
+    google: 'family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400'
   },
   inter: {
     name: 'Inter', preview: 'Inter',
@@ -46,6 +46,24 @@ const FONTS = {
     body: "'Lexend',sans-serif",
     heading: "'Lexend',sans-serif",
     google: 'family=Lexend:wght@300;400;500;600;700'
+  },
+  baloo: {
+    name: 'Baloo 2', preview: 'Baloo 2',
+    body: "'Baloo 2',cursive",
+    heading: "'Baloo 2',cursive",
+    google: 'family=Baloo+2:wght@400;500;600;700;800'
+  },
+  quicksand: {
+    name: 'Quicksand', preview: 'Quicksand',
+    body: "'Quicksand',sans-serif",
+    heading: "'Quicksand',sans-serif",
+    google: 'family=Quicksand:wght@300;400;500;600;700'
+  },
+  fredoka: {
+    name: 'Fredoka', preview: 'Fredoka',
+    body: "'Fredoka',sans-serif",
+    heading: "'Fredoka',sans-serif",
+    google: 'family=Fredoka:wght@300;400;500;600;700'
   }
 };
 
@@ -249,6 +267,37 @@ const THEMES = {
       '--logo-text':'#f5f8ef'
     }
   },
+  /* ── MONOCHROME THEMES ──────────────────── */
+  noir: {
+    name: 'Noir', icon: 'moon', type: 'dark',
+    colors: ['#111111','#ffffff','#a0a0a0','#666666'],
+    vars: {
+      '--bg':'#000000','--bg2':'#0a0a0a','--bg3':'#161616',
+      '--accent':'#ffffff','--accent2':'#a0a0a0','--accent3':'#d0d0d0',
+      '--coral':'#cccccc','--green':'#ffffff','--pink':'#b0b0b0',
+      '--text':'#ffffff','--text2':'#b0b0b0','--text3':'#666666',
+      '--border':'rgba(255,255,255,0.08)','--card':'#0a0a0a','--card2':'#161616',
+      '--card-hover':'rgba(22,22,22,0.9)',
+      '--nav-bg':'rgba(0,0,0,0.94)','--drop-bg':'rgba(10,10,10,0.98)',
+      '--orb1':'rgba(255,255,255,0.04)','--orb2':'rgba(255,255,255,0.03)',
+      '--logo-text':'#000000'
+    }
+  },
+  blanc: {
+    name: 'Blanc', icon: 'sun', type: 'light',
+    colors: ['#f5f5f5','#000000','#666666','#333333'],
+    vars: {
+      '--bg':'#ffffff','--bg2':'#f5f5f5','--bg3':'#ebebeb',
+      '--accent':'#000000','--accent2':'#555555','--accent3':'#333333',
+      '--coral':'#444444','--green':'#000000','--pink':'#666666',
+      '--text':'#000000','--text2':'#3a3a3a','--text3':'#8a8a8a',
+      '--border':'rgba(0,0,0,0.08)','--card':'#f5f5f5','--card2':'#ebebeb',
+      '--card-hover':'rgba(230,230,230,0.9)',
+      '--nav-bg':'rgba(255,255,255,0.96)','--drop-bg':'rgba(245,245,245,0.98)',
+      '--orb1':'rgba(0,0,0,0.03)','--orb2':'rgba(0,0,0,0.02)',
+      '--logo-text':'#ffffff'
+    }
+  },
   /* ── NEW THEMES ─────────────────────────── */
   ocean: {
     name: 'Ocean Deep', icon: 'waves', type: 'dark',
@@ -406,7 +455,7 @@ function createThemePicker() {
 
     // Header
     var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">';
-    html += '<span style="font-family:\'Fraunces\',serif;font-size:16px;color:var(--text)">Giao diện</span>';
+    html += '<span style="font-family:var(--font-heading);font-size:16px;color:var(--text)">Giao diện</span>';
     html += '<button id="tpClose" style="background:none;border:none;cursor:pointer;color:var(--text3);padding:4px;display:flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
     html += '</div>';
 

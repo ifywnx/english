@@ -109,7 +109,7 @@
 
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
     <span style="font-size:13px;color:var(--text3)" id="countLabel">200 idioms</span>
-    <button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif"><i data-lucide="zap" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Quiz Idioms</button>
+    <button onclick="startQuiz()" style="padding:8px 18px;border-radius:8px;border:0.5px solid var(--border);background:rgba(167,139,250,0.1);color:var(--accent2);cursor:pointer;font-size:13px;font-family:var(--font-body)"><i data-lucide="zap" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px"></i> Quiz Idioms</button>
   </div>
 
   <div id="idiomList" style="display:grid;gap:10px"></div>
@@ -126,7 +126,7 @@
 
   <div id="quizArea" style="display:none;background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin-top:20px">
     <div style="font-size:12px;color:var(--text3);margin-bottom:8px">Câu <span id="qCur">1</span>/<span id="qTot">10</span></div>
-    <div id="qIdiom" style="font-family:'Fraunces',serif;font-size:28px;color:var(--text);margin-bottom:20px"></div>
+    <div id="qIdiom" style="font-family:var(--font-heading);font-size:28px;color:var(--text);margin-bottom:20px"></div>
     <div id="qOpts" style="display:grid;gap:8px;max-width:500px;margin:0 auto"></div>
     <div id="qFb" style="margin-top:14px;padding:12px;border-radius:10px;font-size:14px;display:none"></div>
   </div>
@@ -192,7 +192,7 @@ function showQuizQ(){
     document.getElementById('quizArea').innerHTML =
       '<div style="font-family:Fraunces,serif;font-size:48px;color:var(--accent)">'+Math.round(quizScore/quizItems.length*100)+'%</div>'+
       '<div style="color:var(--text2);font-size:14px;margin:8px 0 16px">Đúng '+quizScore+'/'+quizItems.length+'</div>'+
-      '<button onclick="document.getElementById(\'quizArea\').style.display=\'none\';document.getElementById(\'idiomList\').style.display=\'grid\'" style="padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:DM Sans,sans-serif">Đóng</button>';
+      '<button onclick="document.getElementById(\'quizArea\').style.display=\'none\';document.getElementById(\'idiomList\').style.display=\'grid\'" style="padding:10px 24px;border-radius:8px;border:none;background:var(--accent);color:#0b1a1e;cursor:pointer;font-size:13px;font-weight:500;font-family:var(--font-body)">Đóng</button>';
     return;
   }
   const q = quizItems[quizIdx];
@@ -205,7 +205,7 @@ function showQuizQ(){
   document.getElementById('qFb').style.display='none';
   document.getElementById('qOpts').innerHTML = allMeans.map(m =>
     '<button onclick="checkQuiz(this,\''+m.replace(/'/g,"\\'")+'\',\''+q.mean.replace(/'/g,"\\'")+'\')'+
-    '" style="padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif;text-align:left">' + m + '</button>'
+    '" style="padding:14px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:14px;font-family:var(--font-body);text-align:left">' + m + '</button>'
   ).join('');
 }
 

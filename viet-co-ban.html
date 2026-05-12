@@ -11,11 +11,11 @@
 <style>
 .content{max-width:860px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
 .lesson{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:28px;margin-bottom:24px}
-.lesson-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;font-family:'Fraunces',serif;font-size:16px;margin-right:12px;flex-shrink:0}
+.lesson-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;font-family:var(--font-heading);font-size:16px;margin-right:12px;flex-shrink:0}
 .ln-g{background:rgba(100,216,165,0.15);color:var(--accent)}
 .ln-p{background:rgba(232,121,160,0.15);color:var(--pink)}
 .ln-b{background:rgba(123,110,246,0.15);color:var(--accent2)}
-.lesson-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;display:inline}
+.lesson-title{font-family:var(--font-heading);font-size:22px;font-weight:300;display:inline}
 .theory{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:18px;margin:16px 0;font-size:14px;color:var(--text2);line-height:1.8}
 .theory strong{color:var(--text)}
 .diagram{background:rgba(123,110,246,0.06);border:1px dashed rgba(123,110,246,0.3);border-radius:14px;padding:24px;margin:16px 0;text-align:center}
@@ -38,7 +38,7 @@
 .dont-card strong{color:var(--coral)}
 .practice{background:rgba(100,216,165,0.06);border:0.5px solid rgba(100,216,165,0.2);border-radius:14px;padding:20px;margin:16px 0}
 .practice-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.practice textarea{width:100%;min-height:120px;background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);resize:vertical;line-height:1.7}
+.practice textarea{width:100%;min-height:120px;background:var(--card);border:0.5px solid var(--border);border-radius:10px;padding:14px;font-family:var(--font-body);font-size:14px;color:var(--text);resize:vertical;line-height:1.7}
 .practice textarea:focus{outline:none;border-color:var(--accent)}
 .practice-hint{font-size:12px;color:var(--text3);margin-top:8px}
 @media(max-width:768px){.content{padding:20px 14px 110px}.do-dont{grid-template-columns:1fr}}
@@ -192,17 +192,17 @@
     <p>Hãy viết 1 đoạn văn (5-7 câu) theo cấu trúc đã học. Chọn 1 trong các chủ đề sau:</p>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0">
-    <button onclick="setPractice('Learning English is important for career development.')" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;color:var(--text2);font-family:'DM Sans',sans-serif">💼 Career & English</button>
-    <button onclick="setPractice('Technology has changed the way we learn.')" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;color:var(--text2);font-family:'DM Sans',sans-serif">💻 Technology & Learning</button>
-    <button onclick="setPractice('Living in a city has both advantages and disadvantages.')" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;color:var(--text2);font-family:'DM Sans',sans-serif">🏙️ City Life</button>
+    <button onclick="setPractice('Learning English is important for career development.')" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;color:var(--text2);font-family:var(--font-body)">💼 Career & English</button>
+    <button onclick="setPractice('Technology has changed the way we learn.')" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;color:var(--text2);font-family:var(--font-body)">💻 Technology & Learning</button>
+    <button onclick="setPractice('Living in a city has both advantages and disadvantages.')" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:13px;color:var(--text2);font-family:var(--font-body)">🏙️ City Life</button>
   </div>
   <div class="practice" id="practiceArea">
     <div class="practice-label"> Viết đoạn văn của bạn</div>
     <textarea id="practiceText" placeholder="Bắt đầu bằng Topic Sentence...&#10;&#10;Ví dụ: Learning English is important for career development. Firstly, ..."></textarea>
     <div class="practice-hint"> Checklist: ✅ Topic sentence | ✅ 2-3 supporting ideas | ✅ Ví dụ | ✅ Từ nối | ✅ Concluding sentence</div>
     <div style="margin-top:12px;display:flex;gap:8px">
-      <button onclick="checkPractice()" style="padding:10px 20px;border-radius:10px;border:none;background:var(--accent);color:#0b1a1e;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px"> Phân tích bài viết</button>
-      <button onclick="document.getElementById('practiceText').value='';document.getElementById('feedback').innerHTML=''" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px">🗑️ Xóa</button>
+      <button onclick="checkPractice()" style="padding:10px 20px;border-radius:10px;border:none;background:var(--accent);color:#0b1a1e;font-weight:600;cursor:pointer;font-family:var(--font-body);font-size:13px"> Phân tích bài viết</button>
+      <button onclick="document.getElementById('practiceText').value='';document.getElementById('feedback').innerHTML=''" style="padding:10px 16px;border-radius:10px;border:0.5px solid var(--border);background:var(--card);color:var(--text2);cursor:pointer;font-family:var(--font-body);font-size:13px">🗑️ Xóa</button>
     </div>
     <div id="feedback" style="margin-top:14px"></div>
   </div>

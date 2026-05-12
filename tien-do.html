@@ -9,12 +9,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:title" content="Tiến độ học — EasyEnglish">
-<meta property="og:description" content="Theo dõi tiến độ học tiếng Anh, streak, XP và thành tựu.">
+<meta property="og:description" content="Theo dõi tiến độ học tiếng Anh, streak và thành tựu.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EasyEnglish">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tiến độ học — EasyEnglish">
-<meta name="twitter:description" content="Theo dõi tiến độ học tiếng Anh, streak, XP và thành tựu.">
+<meta name="twitter:description" content="Theo dõi tiến độ học tiếng Anh, streak và thành tựu.">
 <title>Tiến độ học tập — EasyEnglish</title>
 <meta name="description" content="Theo dõi tiến độ học tiếng Anh: streak hàng ngày, từ vựng đã học, điểm quiz, mục tiêu IELTS và thành tích.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
 .hs-quiz::before{background:var(--coral)}
 .hs-days::before{background:var(--green)}
 .hs-icon{font-size:28px;margin-bottom:10px}
-.hs-num{font-family:'Fraunces',serif;font-size:36px;color:var(--text);line-height:1;margin-bottom:4px}
+.hs-num{font-family:var(--font-heading);font-size:36px;color:var(--text);line-height:1;margin-bottom:4px}
 .hs-label{font-size:11px;color:var(--text3)}
 .hs-change{font-size:11px;margin-top:4px}
 .hs-up{color:var(--green)}
@@ -59,7 +59,7 @@
 .mp-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .mp-icon{font-size:22px}
 .mp-name{font-size:16px;font-weight:500}
-.mp-pct{margin-left:auto;font-size:13px;color:var(--accent);font-family:'Fraunces',serif}
+.mp-pct{margin-left:auto;font-size:13px;color:var(--accent);font-family:var(--font-heading)}
 .mp-bar{height:6px;background:var(--bg3);border-radius:3px;margin-bottom:10px;overflow:hidden}
 .mp-fill{height:100%;border-radius:3px;transition:width 1s cubic-bezier(.4,0,.2,1)}
 .mp-detail{font-size:14px;color:var(--text3);line-height:1.6}
@@ -100,7 +100,7 @@
 .skill-track{flex:1;height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;position:relative}
 .skill-fill{height:100%;border-radius:4px;transition:width 1s}
 .skill-target{position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.3)}
-.skill-score{font-size:12px;color:var(--accent);min-width:30px;text-align:right;font-family:'Fraunces',serif}
+.skill-score{font-size:12px;color:var(--accent);min-width:30px;text-align:right;font-family:var(--font-heading)}
 .skill-target-score{font-size:10px;color:var(--text3)}
 /* GOALS */
 .goal-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--border)}
@@ -111,14 +111,14 @@
 .goal-text.done{text-decoration:line-through;color:var(--text3)}
 .goal-xp{font-size:11px;color:var(--accent)}
 .add-goal{display:flex;gap:8px;margin-top:12px}
-.goal-input{flex:1;padding:8px 12px;background:var(--card2);border:0.5px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.goal-input{flex:1;padding:8px 12px;background:var(--card2);border:0.5px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:var(--font-body);outline:none}
 .goal-input:focus{border-color:rgba(232,197,71,0.4)}
 .goal-input::placeholder{color:var(--text3)}
-.add-btn{padding:8px 14px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500}
+.add-btn{padding:8px 14px;background:var(--accent);color:#0f0e17;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font-body);font-weight:500}
 /* XP & LEVEL */
 .xp-section{background:linear-gradient(135deg,rgba(100,216,165,0.12),rgba(167,139,250,0.08));border:0.5px solid rgba(123,110,246,0.2);border-radius:16px;padding:24px;margin-bottom:20px;display:flex;align-items:center;gap:24px}
 .xp-level{width:80px;height:80px;border-radius:50%;background:rgba(123,110,246,0.2);border:2px solid var(--accent2);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
-.xp-lv-num{font-family:'Fraunces',serif;font-size:28px;color:var(--accent2);line-height:1}
+.xp-lv-num{font-family:var(--font-heading);font-size:28px;color:var(--accent2);line-height:1}
 .xp-lv-label{font-size:9px;color:var(--text3);text-transform:uppercase}
 .xp-info{flex:1}
 .xp-title{font-size:16px;font-weight:500;margin-bottom:4px}
@@ -138,12 +138,12 @@
 .note-del{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;opacity:0}
 .note-card:hover .note-del{opacity:1}
 .note-add{background:var(--card2);border:0.5px dashed var(--border);border-radius:10px;padding:12px;min-height:80px;display:flex;flex-direction:column;gap:6px}
-.note-textarea{width:100%;background:transparent;border:none;color:var(--text);font-size:12px;font-family:'DM Sans',sans-serif;resize:none;outline:none;flex:1;min-height:40px}
+.note-textarea{width:100%;background:transparent;border:none;color:var(--text);font-size:12px;font-family:var(--font-body);resize:none;outline:none;flex:1;min-height:40px}
 .note-textarea::placeholder{color:var(--text3)}
-.note-save{padding:5px 12px;background:var(--accent);color:#0f0e17;border:none;border-radius:6px;font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif;align-self:flex-end}
+.note-save{padding:5px 12px;background:var(--accent);color:#0f0e17;border:none;border-radius:6px;font-size:11px;cursor:pointer;font-family:var(--font-body);align-self:flex-end}
 /* RESET */
 .reset-section{text-align:center;padding:20px}
-.reset-btn{padding:10px 24px;background:rgba(244,132,95,0.1);border:0.5px solid rgba(244,132,95,0.3);color:var(--coral);border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.reset-btn{padding:10px 24px;background:rgba(244,132,95,0.1);border:0.5px solid rgba(244,132,95,0.3);color:var(--coral);border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body);transition:all .2s}
 .reset-btn:hover{background:rgba(244,132,95,0.2)}
 @media(max-width:600px){
   .content{padding:16px 12px}
@@ -219,7 +219,7 @@
     </div>
     <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
       <div style="font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">How to read it</div>
-      <div style="font-size:14px;color:var(--text2);line-height:1.7">Nhìn vào XP level để biết tổng đà học, nhìn module progress để biết đang yếu ở đâu.</div>
+      <div style="font-size:14px;color:var(--text2);line-height:1.7">Nhìn vào streak để biết độ đều đặn, nhìn module progress để biết đang yếu ở đâu.</div>
     </div>
     <div style="background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px">
       <div style="font-size:12px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Next action</div>
@@ -261,18 +261,18 @@
     </div>
   </div>
 
-  <!-- XP LEVEL -->
+  <!-- STREAK OVERVIEW -->
   <div class="xp-section">
     <div class="xp-level">
-      <div class="xp-lv-num" id="xpLevel">1</div>
-      <div class="xp-lv-label">Level</div>
+      <div class="xp-lv-num" id="xpLevel">0</div>
+      <div class="xp-lv-label">Streak</div>
     </div>
     <div class="xp-info">
-      <div class="xp-title" id="xpTitle">Người mới bắt đầu</div>
-      <div class="xp-sub" id="xpSub">Học thêm để lên cấp tiếp theo!</div>
+      <div class="xp-title" id="xpTitle">Bắt đầu chuỗi học</div>
+      <div class="xp-sub" id="xpSub">Học mỗi ngày để giữ streak!</div>
       <div class="xp-bar-wrap">
         <div class="xp-bar"><div class="xp-fill" id="xpBar" style="width:0%"></div></div>
-        <div class="xp-text" id="xpText">0 / 100 XP</div>
+        <div class="xp-text" id="xpText">0 / 30 ngày</div>
       </div>
     </div>
     <div class="xp-badges" id="xpBadges"></div>
@@ -412,9 +412,9 @@ const ACHIEVEMENTS = [
   {icon:'•', name:'AWL 300 từ', desc:'Học 300 từ AWL — Band 7 level!', check: d => d.awlLearned.length >= 300},
   {icon:'•', name:'AWL hoàn thành', desc:'Học hết 570 từ AWL!', check: d => d.awlLearned.length >= 570},
   {icon:'•', name:'Ghi chú đầu tiên', desc:'Viết ghi chú học tập', check: d => d.notes.length >= 1},
-  {icon:'•', name:'Level 5', desc:'Đạt Level 5 — Chiến binh IELTS', check: d => calcXP(d) >= 1000},
-  {icon:'•', name:'Level 7', desc:'Đạt Level 7 — Band 7 Hunter!', check: d => calcXP(d) >= 4000},
-  {icon:'•', name:'Master', desc:'Đạt Level 8 — Master English!', check: d => calcXP(d) >= 8000},
+  {icon:'•', name:'14 ngày streak', desc:'Duy trì streak 14 ngày', check: d => d.streak.count >= 14},
+  {icon:'•', name:'30 ngày streak', desc:'Duy trì streak 30 ngày!', check: d => d.streak.count >= 30},
+  {icon:'•', name:'100 từ vựng', desc:'Lưu 100 từ vựng', check: d => (d.notebookCount + d.vocabLearned.length) >= 100},
 ];
 
 // ===== MODULES =====
@@ -451,24 +451,30 @@ function renderHeroStats(data) {
   if(totalSaved > 0) document.getElementById('vocab-msg').textContent = `+${totalSaved} từ trong túi`;
 }
 
-function renderXP(data) {
-  const xp = calcXP(data);
-  const lv = getLevel(xp);
-  const nextLv = XP_LEVELS.find(l => l.level === lv.level + 1) || lv;
-  const progress = lv.level >= 8 ? 100 : Math.round((xp - lv.min) / (lv.max - lv.min + 1) * 100);
+function renderStreakOverview(data) {
+  const streak = data.streak.count;
+  const maxStreak = 30;
+  const progress = Math.min(100, Math.round(streak / maxStreak * 100));
+  var title = 'Bắt đầu chuỗi học';
+  var sub = 'Học mỗi ngày để giữ streak!';
+  if(streak >= 30) { title = 'Tháng kiên trì'; sub = 'Tuyệt vời! Bạn đã duy trì 30+ ngày!'; }
+  else if(streak >= 14) { title = '2 tuần bền bỉ'; sub = 'Chỉ còn ' + (30 - streak) + ' ngày nữa!'; }
+  else if(streak >= 7) { title = 'Tuần lễ vàng'; sub = 'Giữ vững nhịp học!'; }
+  else if(streak >= 3) { title = 'Đang khởi động'; sub = 'Tiếp tục hàng ngày nhé!'; }
+  else if(streak >= 1) { title = 'Ngày đầu tiên'; sub = 'Học mỗi ngày để tăng streak!'; }
 
-  document.getElementById('xpLevel').textContent = lv.level;
-  document.getElementById('xpTitle').textContent = lv.title;
-  document.getElementById('xpSub').textContent = lv.level >= 8 ? 'Bạn đã đạt cấp độ cao nhất! •' : `Cần ${nextLv.min - xp} XP nữa để lên Level ${nextLv.level}`;
+  document.getElementById('xpLevel').textContent = streak;
+  document.getElementById('xpTitle').textContent = title;
+  document.getElementById('xpSub').textContent = sub;
   document.getElementById('xpBar').style.width = progress + '%';
-  document.getElementById('xpText').textContent = `${xp} / ${lv.level >= 8 ? '∞' : nextLv.min} XP`;
+  document.getElementById('xpText').textContent = streak + ' / ' + maxStreak + ' ngày';
 
   const badgesEl = document.getElementById('xpBadges');
   const badges = [];
-  if(data.streak.count >= 7) badges.push({text:' Week Warrior', bg:'rgba(232,197,71,0.2)', color:'var(--accent)'});
-  if(data.awlLearned.length >= 100) badges.push({text:'• AWL 100', bg:'rgba(123,110,246,0.2)', color:'var(--accent2)'});
-  if(data.quizCorrect >= 50) badges.push({text:'• Quiz Pro', bg:'rgba(244,132,95,0.2)', color:'var(--coral)'});
-  if(data.awlLearned.length >= 300) badges.push({text:'• AWL 300', bg:'rgba(232,121,160,0.2)', color:'var(--pink)'});
+  if(streak >= 7) badges.push({text:'Week Warrior', bg:'rgba(232,197,71,0.2)', color:'var(--accent)'});
+  if(data.awlLearned.length >= 100) badges.push({text:'AWL 100', bg:'rgba(123,110,246,0.2)', color:'var(--accent2)'});
+  if(data.quizCorrect >= 50) badges.push({text:'Quiz Pro', bg:'rgba(244,132,95,0.2)', color:'var(--coral)'});
+  if(data.awlLearned.length >= 300) badges.push({text:'AWL 300', bg:'rgba(232,121,160,0.2)', color:'var(--pink)'});
   badgesEl.innerHTML = badges.map(b => `<span class="xp-badge" style="background:${b.bg};color:${b.color}">${b.text}</span>`).join('');
 }
 
@@ -566,7 +572,7 @@ function renderGoals(data) {
       <div class="goal-check ${g.done ? 'done' : ''}" onclick="toggleGoal(${i})">${g.done ? '•' : ''}</div>
       <div class="goal-text ${g.done ? 'done' : ''}">${g.text}</div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="goal-xp">+${g.done ? '10' : '10'} XP</div>
+        <div class="goal-xp">${g.done ? '✓' : ''}</div>
         <button onclick="deleteGoal(${i})" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px">•</button>
       </div>
     </div>`).join('') || '<div style="font-size:14px;color:var(--text3);padding:10px 0">Chưa có mục tiêu. Thêm mục tiêu để theo dõi tiến độ!</div>';
@@ -586,15 +592,10 @@ function addGoal() {
 function toggleGoal(idx) {
   const data = loadData();
   data.goals[idx].done = !data.goals[idx].done;
-  if(data.goals[idx].done) {
-    let xp = parseInt(localStorage.getItem('pg_xp')||'0');
-    xp += 10;
-    localStorage.setItem('pg_xp', xp);
-  }
   localStorage.setItem('pg_goals', JSON.stringify(data.goals));
   const freshData = loadData();
   renderGoals(freshData);
-  renderXP(freshData);
+  renderStreakOverview(freshData);
 }
 
 function deleteGoal(idx) {
@@ -718,7 +719,7 @@ function updateStreak() {
 updateStreak();
 const DATA = loadData();
 renderHeroStats(DATA);
-renderXP(DATA);
+renderStreakOverview(DATA);
 renderCalendar(DATA);
 renderModules(DATA);
 renderSkillBars(DATA);

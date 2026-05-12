@@ -107,7 +107,7 @@ It is important <strong>to study</strong> hard. <span style="color:var(--text3)"
 <div id="qSentence" style="font-size:18px;color:var(--text);margin:16px 0;line-height:1.6"></div>
 <div id="qOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
 <div id="qFb" style="margin-top:12px;font-size:14px"></div>
-<div style="margin-top:12px"><button onclick="startQuiz()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:DM Sans,sans-serif">Bắt đầu Quiz</button><span id="qScore" style="font-size:13px;color:var(--text3);padding:8px;margin-left:8px"></span></div>
+<div style="margin-top:12px"><button onclick="startQuiz()" style="padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:rgba(100,216,165,0.1);color:var(--accent);cursor:pointer;font-size:14px;font-family:var(--font-body)">Bắt đầu Quiz</button><span id="qScore" style="font-size:13px;color:var(--text3);padding:8px;margin-left:8px"></span></div>
 </div></div>
 
 </div>
@@ -213,7 +213,7 @@ var q=qItems[qIdx];
 document.getElementById("qSentence").innerHTML=q.s;
 document.getElementById("qFb").textContent="";
 var opts=[q.a,q.b];
-document.getElementById("qOpts").innerHTML=opts.map(function(o){return '<button onclick="checkQ(this,\''+o+'\',\''+q.correct+'\')" style="padding:12px 24px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:15px;font-weight:500;font-family:DM Sans,sans-serif;min-width:140px;transition:all .15s">'+o+'</button>';}).join("");
+document.getElementById("qOpts").innerHTML=opts.map(function(o){return '<button onclick="checkQ(this,\''+o+'\',\''+q.correct+'\')" style="padding:12px 24px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer;font-size:15px;font-weight:500;font-family:var(--font-body);min-width:140px;transition:all .15s">'+o+'</button>';}).join("");
 document.getElementById("qScore").textContent=(qIdx+1)+"/"+qTot;}
 function checkQ(btn,ans,correct){
 document.querySelectorAll("#qOpts button").forEach(function(b){b.disabled=true;});

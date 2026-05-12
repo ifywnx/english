@@ -312,7 +312,7 @@ function showComplete(){
   const total=getData().length;const pct=Math.round((correct/total)*100);
   document.getElementById('optionsArea').innerHTML=`
     <div style="padding:20px;text-align:center">
-      <div style="font-family:'Fraunces',serif;font-size:48px;color:var(--accent);margin-bottom:8px">${pct}%</div>
+      <div style="font-family:var(--font-heading);font-size:48px;color:var(--accent);margin-bottom:8px">${pct}%</div>
       <div style="font-size:14px;color:var(--text2);margin-bottom:16px">Đúng ${correct}/${total} câu</div>
       <button class="opt-btn" style="max-width:200px;margin:0 auto;background:var(--accent);color:#0b1a1e;font-weight:500" onclick="current=0;correct=0;wrong=0;updateUI()">• Làm lại</button>
     </div>`;

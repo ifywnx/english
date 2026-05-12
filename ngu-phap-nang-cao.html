@@ -30,7 +30,7 @@
 .sidebar-title.collapsed::after{transform:rotate(-90deg)}
 .sb-group{overflow:hidden;max-height:1000px;transition:max-height .3s ease,opacity .2s;opacity:1}
 .sb-group.hidden{max-height:0;opacity:0;margin:0;padding:0}
-.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:var(--font-body);cursor:pointer;border:none;background:transparent;text-align:left}
 .sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .sb-item.active{color:var(--pink);background:rgba(232,121,160,0.08)}
 .sb-band{margin-left:auto;padding:2px 7px;border-radius:8px;font-size:9px;font-weight:500}
@@ -48,11 +48,11 @@
 /* LESSON */
 .lesson{margin-bottom:52px}
 .lesson-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}
-.lesson-num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;flex-shrink:0}
+.lesson-num{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:18px;flex-shrink:0}
 .ln-pink{background:rgba(232,121,160,0.15);color:var(--pink);border:0.5px solid rgba(232,121,160,0.3)}
 .ln-gold{background:rgba(100,216,165,0.15);color:var(--accent);border:0.5px solid rgba(100,216,165,0.3)}
 .ln-purple{background:rgba(123,110,246,0.15);color:var(--accent2);border:0.5px solid rgba(123,110,246,0.3)}
-.lesson-title{font-family:'Fraunces',serif;font-size:26px;font-weight:300;margin-bottom:4px}
+.lesson-title{font-family:var(--font-heading);font-size:26px;font-weight:300;margin-bottom:4px}
 .lesson-sub{font-size:13px;color:var(--text3)}
 .lesson-divider{height:0.5px;background:var(--border);margin-bottom:22px}
 /* THEORY */
@@ -117,14 +117,14 @@
 .qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
 .qb-hint{font-size:14px;color:var(--text3);margin-bottom:16px;font-style:italic}
 .qb-opts{display:flex;flex-direction:column;gap:8px}
-.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
+.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:var(--font-body);line-height:1.5}
 .qb-opt:hover:not(:disabled){border-color:rgba(123,110,246,0.4);color:var(--text)}
 .qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
 .qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
 .qb-fb{margin-top:12px;padding:11px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
 .qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
 .qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
-.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font-body);display:none}
 .qb-next.show{display:inline-block}
 /* INVERSION TABLE */
 .inv-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}

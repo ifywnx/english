@@ -98,6 +98,7 @@
       {href:'tu-dien-ielts-2.html', icon:'target', text:'Từ điển IELTS 2'}
     ],
     'Chuyên ngành': [
+      {href:'chuyen-nganh.html', icon:'graduation-cap', text:'Tất cả chuyên ngành'},
       {href:'tieng-anh-thuong-mai.html', icon:'briefcase', text:'Tiếng Anh thương mại'},
       {href:'tieng-anh-it.html', icon:'code-2', text:'Tiếng Anh IT'},
       {href:'tieng-anh-y-te.html', icon:'heart-pulse', text:'Tiếng Anh y tế'},
@@ -110,7 +111,8 @@
       {href:'dat-muc-tieu.html', icon:'target', text:'Đặt mục tiêu'},
       {href:'theo-doi-diem-yeu.html', icon:'alert-triangle', text:'Theo dõi điểm yếu'},
       {href:'achievements.html', icon:'trophy', text:'Thành tựu'},
-      {href:'tien-do.html', icon:'bar-chart-3', text:'Tiến độ & XP'}
+      {href:'tien-do.html', icon:'bar-chart-3', text:'Tiến độ học tập'},
+      {href:'pricing.html', icon:'crown', text:'Nâng cấp Pro'}
     ]
   };
 

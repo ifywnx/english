@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="EasyEnglish — Tự học tiếng Anh từ A-Z">
 <meta name="twitter:description" content="Nền tảng tự học tiếng Anh miễn phí, toàn diện từ cơ bản đến nâng cao. Ngữ pháp, từ vựng, phát âm, IELTS, đọc hiểu và hơn thế nữa.">
 <title>EasyEnglish — Tự học tiếng Anh từ A-Z</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* === AMBIENT ORBS + ANIMATION === */
 .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
@@ -48,78 +48,54 @@
 #particles-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.4}
 
 /* === HERO === */
-.hero-section{position:relative;z-index:1;padding:48px 24px 32px;max-width:800px;margin:0 auto;text-align:center;animation:heroIn .8s ease-out}
+.hero-section{position:relative;z-index:1;padding:28px 24px 16px;max-width:800px;margin:0 auto;text-align:center;animation:heroIn .8s ease-out}
 @keyframes heroIn{from{opacity:0;transform:translateY(24px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .hero-greeting{font-size:15px;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:6px}
-.hero-greeting .streak-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:rgba(232,197,71,0.12);border:1px solid rgba(232,197,71,0.25);border-radius:20px;font-size:12px;color:var(--accent3)}
-.hero-title{font-family:'Fraunces',serif;font-size:clamp(30px,6vw,52px);font-weight:300;line-height:1.2;margin-bottom:12px}
+.hero-greeting .streak-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;background:rgba(232,197,71,0.14);border:1px solid rgba(232,197,71,0.3);border-radius:20px;font-size:13px;color:var(--accent3);font-weight:600}
+.hero-title{font-family:var(--font-heading);font-size:clamp(26px,5vw,44px);font-weight:300;line-height:1.2;margin-bottom:8px}
 .hero-title em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:gradShift 4s ease-in-out infinite;position:relative}
 @keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.hero-sub{font-size:clamp(14px,2vw,16px);color:var(--text3);margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
-.hero-search{position:relative;max-width:560px;margin:0 auto 20px}
-.hero-search input{width:100%;padding:16px 20px 16px 48px;border-radius:16px;border:1.5px solid var(--border);background:var(--card);color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:all .3s}
+.hero-sub{font-size:clamp(13px,1.8vw,15px);color:var(--text3);margin-bottom:18px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.5}
+.hero-search{position:relative;max-width:560px;margin:0 auto 12px}
+.hero-search input{width:100%;padding:16px 20px 16px 48px;border-radius:16px;border:1.5px solid rgba(100,216,165,0.15);background:var(--card);color:var(--text);font-size:15px;font-family:var(--font-body);outline:none;transition:all .3s}
 .hero-search input:focus{border-color:rgba(100,216,165,0.5);box-shadow:0 0 0 4px rgba(100,216,165,0.08),0 0 30px rgba(100,216,165,0.06)}
 .hero-search .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--text3)}
 #homeResults{display:none;position:absolute;top:100%;left:0;right:0;margin-top:6px;background:var(--card);border:1px solid var(--border);border-radius:12px;max-height:300px;overflow-y:auto;z-index:10;box-shadow:0 12px 40px rgba(0,0,0,0.4)}
 
-/* === STATS ROW === */
-.stats-row{display:flex;justify-content:center;gap:clamp(16px,4vw,40px);padding:0 24px 8px;max-width:700px;margin:0 auto;flex-wrap:wrap}
-.stat-item{text-align:center}
-.stat-item .num{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,32px);color:var(--text);line-height:1}
-.stat-item .label{font-size:11px;color:var(--text3);margin-top:2px}
-
-/* === QUEST BOARD === */
-.quest-section{max-width:600px;margin:0 auto 0;padding:0 16px}
-.quest-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.quest-header-left{display:flex;align-items:center;gap:8px}
-.quest-header-left .qh-icon{width:28px;height:28px;border-radius:8px;background:rgba(167,139,250,0.1);display:flex;align-items:center;justify-content:center;font-size:14px}
-.quest-header-left span{font-size:12px;font-weight:600;color:var(--accent2);text-transform:uppercase;letter-spacing:1px}
-.quest-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border:0.5px solid var(--border);border-radius:14px;margin-bottom:8px;transition:all .2s}
-.quest-card:hover{border-color:rgba(167,139,250,0.3)}
-.quest-done{opacity:0.7;background:rgba(100,216,165,0.04)}
-.quest-done .quest-bar-fill{background:var(--accent)!important}
-.quest-icon{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);border-radius:10px;flex-shrink:0}
-.quest-info{flex:1;min-width:0}
-.quest-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
-.quest-desc{font-size:11px;color:var(--text3);margin-bottom:6px}
-.quest-bar{height:4px;border-radius:2px;background:rgba(255,255,255,0.06);overflow:hidden}
-.quest-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .5s ease}
-.quest-reward{text-align:center;font-size:14px;font-weight:700;color:var(--accent2);min-width:44px;flex-shrink:0}
-.quest-reward small{display:block;font-size:9px;font-weight:400;color:var(--text3)}
-
-/* === PROGRESS RING === */
-.progress-ring-wrap{display:flex;align-items:center;justify-content:center;gap:24px;padding:12px 24px;max-width:700px;margin:0 auto}
-.ring-container{position:relative;width:128px;height:128px;flex-shrink:0}
+/* === HERO STATS CARD (combined ring + stats) === */
+.hero-stats-card{max-width:900px;margin:0 auto;padding:0 24px}
+.hero-stats-inner{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 8px 32px rgba(0,0,0,0.15);display:flex;align-items:center;gap:24px;transition:transform .3s ease,box-shadow .3s ease}
+.hero-stats-inner:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+.ring-container{position:relative;width:96px;height:96px;flex-shrink:0}
 .ring-container svg{transform:rotate(-90deg)}
-.ring-bg{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:8}
-.ring-fill{fill:none;stroke:url(#ringGrad);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .8s ease}
+.ring-bg{fill:none;stroke:var(--bg3);stroke-width:7}
+.ring-fill{fill:none;stroke:url(#ringGrad);stroke-width:7;stroke-linecap:round;transition:stroke-dashoffset .8s ease;filter:drop-shadow(0 0 6px rgba(100,216,165,0.4))}
 .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.ring-value{font-family:'Fraunces',serif;font-size:28px;color:var(--text);line-height:1}
-.ring-label{font-size:11px;color:var(--text3);margin-top:2px}
-.ring-stats{display:flex;flex-direction:column;gap:10px;flex:1}
-.ring-stat{display:flex;align-items:center;gap:10px}
-.ring-stat-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.ring-stat-info .rs-num{font-size:16px;font-weight:600;color:var(--text)}
-.ring-stat-info .rs-label{font-size:11px;color:var(--text3)}
-
-/* === GOAL SELECTOR === */
-.goal-selector{display:flex;gap:6px;justify-content:center;margin:12px auto 0;max-width:500px;flex-wrap:wrap}
-.goal-opt{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text3);font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px}
-.goal-opt:hover{border-color:rgba(100,216,165,0.3);color:var(--text2)}
-.goal-opt.active{background:rgba(100,216,165,0.12);border-color:rgba(100,216,165,0.4);color:var(--accent);font-weight:500}
+.ring-value{font-family:var(--font-heading);font-size:26px;color:var(--text);line-height:1}
+.ring-label{font-size:10px;color:var(--accent);margin-top:2px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.hero-stats-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hs-item{display:flex;flex-direction:column;gap:2px}
+.hs-item .hs-num{font-family:var(--font-heading);font-size:22px;color:var(--text);line-height:1}
+.hs-item .hs-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.hero-stats-bar{grid-column:span 2;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-top:4px}
+.hero-stats-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .8s ease}
+@media(max-width:480px){
+  .hero-stats-inner{flex-direction:column;text-align:center;gap:16px}
+  .hero-stats-grid{width:100%}
+}
 
 /* === DASHBOARD === */
 .dashboard-wrap{max-width:900px;margin:18px auto 0;padding:0 24px;position:relative;z-index:1}
-.dashboard-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:stretch}
-.dash-card{background:var(--card);border:0.5px solid var(--border);border-radius:18px;padding:20px}
+.dashboard-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch}
+.dash-card{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:22px;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
 .dash-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
 .dash-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-.dash-title{font-family:'Fraunces',serif;font-size:24px;font-weight:300;line-height:1.2;color:var(--text)}
+.dash-title{font-family:var(--font-heading);font-size:24px;font-weight:300;line-height:1.2;color:var(--text)}
 .dash-sub{font-size:13px;color:var(--text3);line-height:1.6;margin-top:6px;max-width:520px}
 .dash-progress{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin:16px 0 10px}
-.dash-bar{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;border:0.5px solid var(--border)}
+.dash-bar{height:10px;background:var(--bg3,rgba(255,255,255,0.06));border-radius:999px;overflow:hidden;border:0.5px solid var(--border)}
 .dash-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .6s ease}
-.dash-percent{font-family:'Fraunces',serif;font-size:22px;color:var(--text)}
+.dash-percent{font-family:var(--font-heading);font-size:22px;color:var(--text)}
 .dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 .dash-metric{background:var(--bg3);border:0.5px solid var(--border);border-radius:14px;padding:12px}
 .dash-metric .k{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
@@ -133,17 +109,17 @@
 .dash-next-cta:hover{transform:translateY(-1px);background:rgba(100,216,165,0.16)}
 .dash-checklist{display:flex;flex-direction:column;gap:8px;margin-top:2px}
 .dash-check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--bg3);border:0.5px solid var(--border);border-radius:12px}
-.dash-check .dot{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:rgba(255,255,255,0.02)}
+.dash-check .dot{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:var(--card2,rgba(255,255,255,0.02))}
 .dash-check.done .dot{background:rgba(100,216,165,0.16);border-color:rgba(100,216,165,0.35);color:var(--accent)}
 .dash-check .txt{font-size:13px;color:var(--text2);line-height:1.5}
 
 /* === SECTIONS === */
-.home-section{position:relative;z-index:1;padding:32px 24px;max-width:900px;margin:0 auto}
-.sec-header{margin-bottom:18px}
+.home-section{position:relative;z-index:1;padding:40px 24px;max-width:900px;margin:0 auto}
+.sec-header{margin-bottom:20px}
 .sec-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-.sec-title{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:300}
-.sec-desc{font-size:13px;color:var(--text3);margin-top:4px}
-.divider{height:0.5px;background:var(--border);max-width:900px;margin:0 auto}
+.sec-title{font-family:var(--font-heading);font-size:clamp(22px,3vw,30px);font-weight:300;line-height:1.15}
+.sec-desc{font-size:13px;color:var(--text3);margin-top:6px}
+.divider{height:0.5px;background:var(--border);max-width:900px;margin:8px auto}
 
 /* === LEARNING PATHS === */
 .paths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
@@ -159,8 +135,8 @@
 .path-card h3{font-size:16px;font-weight:500;color:var(--text);margin-bottom:6px}
 .path-card p{font-size:12px;color:var(--text3);line-height:1.5;margin-bottom:12px}
 .path-steps{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
-.path-step{font-size:11px;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,0.04);color:var(--text2);border:0.5px solid var(--border)}
-.path-progress{height:4px;border-radius:2px;background:rgba(255,255,255,0.06);overflow:hidden}
+.path-step{font-size:11px;padding:3px 9px;border-radius:6px;background:var(--card2,rgba(255,255,255,0.04));color:var(--text2);border:0.5px solid var(--border)}
+.path-progress{height:4px;border-radius:2px;background:var(--bg3,rgba(255,255,255,0.06));overflow:hidden}
 .path-progress-fill{height:100%;border-radius:2px;transition:width .6s ease}
 .beginner .path-progress-fill{background:var(--accent)}
 .intermediate .path-progress-fill{background:var(--accent3)}
@@ -168,12 +144,12 @@
 
 /* === MODULE GRID === */
 .filter-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.filter-tab{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.filter-tab{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-family:var(--font-body);transition:all .2s}
 .filter-tab:hover{border-color:rgba(255,255,255,0.15);color:var(--text2)}
 .filter-tab.active{background:var(--accent);color:#0b1a1e;border-color:var(--accent)}
 .modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:10px}
-.mod-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);text-decoration:none;display:flex;align-items:flex-start;gap:12px;position:relative}
-.mod-card:hover{border-color:rgba(100,216,165,0.3);background:var(--card2);transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.15),0 0 0 1px rgba(100,216,165,0.1)}
+.mod-card{background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:18px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);text-decoration:none;display:flex;align-items:flex-start;gap:12px;position:relative;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.mod-card:hover{border-color:rgba(100,216,165,0.25);background:var(--card2);transform:translateY(-4px) scale(1.01);box-shadow:0 16px 40px rgba(0,0,0,0.12),0 0 0 1px rgba(100,216,165,0.1)}
 .mod-card.hidden{display:none}
 .mod-icon{flex-shrink:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:11px}
 .mod-icon svg{width:20px;height:20px;stroke-width:1.8}
@@ -195,7 +171,7 @@
 .bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .streak-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;align-items:center;gap:16px}
 .sc-circle{width:64px;height:64px;min-width:64px;border-radius:50%;border:2.5px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;text-align:center;padding-top:2px}
-.sc-num{font-family:'Fraunces',serif;font-size:20px;color:var(--accent);line-height:1}
+.sc-num{font-family:var(--font-heading);font-size:20px;color:var(--accent);line-height:1}
 .sc-txt{font-size:9px;color:var(--text3);text-transform:uppercase}
 .streak-info h4{font-size:14px;margin-bottom:4px}
 .streak-info p{font-size:13px;color:var(--text3)}
@@ -235,7 +211,7 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
 }
 </style>
 <script src="theme.js?v=3"></script>
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 
 <style id="page-transition">
@@ -297,42 +273,114 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   </div>
 </div>
 
-<!-- ===== PROGRESS RING + STATS ===== -->
-<div class="progress-ring-wrap reveal">
-  <div class="ring-container">
-    <svg width="128" height="128" viewBox="0 0 128 128">
-      <defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="var(--accent)"/>
-        <stop offset="100%" stop-color="var(--accent2)"/>
-      </linearGradient></defs>
-      <circle class="ring-bg" cx="64" cy="64" r="54"/>
-      <circle class="ring-fill" id="progressRingFill" cx="64" cy="64" r="54"/>
-    </svg>
-    <div class="ring-center">
-      <div class="ring-value" id="progressRingLabel">0</div>
-      <div class="ring-label" id="progressRingPct">/ 30 XP</div>
+<!-- ===== HERO STATS CARD ===== -->
+<div class="hero-stats-card reveal">
+  <div class="hero-stats-inner">
+    <div class="ring-container">
+      <svg width="96" height="96" viewBox="0 0 96 96">
+        <defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--accent)"/>
+          <stop offset="100%" stop-color="var(--accent2)"/>
+        </linearGradient></defs>
+        <circle class="ring-bg" cx="48" cy="48" r="40"/>
+        <circle class="ring-fill" id="progressRingFill" cx="48" cy="48" r="40"/>
+      </svg>
+      <div class="ring-center">
+        <div class="ring-value" id="progressRingLabel">0</div>
+        <div class="ring-label">Streak</div>
+      </div>
     </div>
-  </div>
-  <div class="ring-stats">
-    <div class="ring-stat"><div class="ring-stat-icon" style="background:rgba(100,216,165,0.1)"><i data-lucide="zap" style="width:16px;height:16px"></i></div><div class="ring-stat-info"><div class="rs-num" data-count="80">80+</div><div class="rs-label">Bài học</div></div></div>
-    <div class="ring-stat"><div class="ring-stat-icon" style="background:rgba(167,139,250,0.1)"><i data-lucide="book-open" style="width:16px;height:16px"></i></div><div class="ring-stat-info"><div class="rs-num" data-count="5000">5000+</div><div class="rs-label">Từ vựng</div></div></div>
-    <div class="ring-stat"><div class="ring-stat-icon" style="background:rgba(240,194,122,0.1)"><i data-lucide="pen-tool" style="width:16px;height:16px"></i></div><div class="ring-stat-info"><div class="rs-num" data-count="500">500+</div><div class="rs-label">Bài tập</div></div></div>
+    <div class="hero-stats-grid">
+      <div class="hs-item"><div class="hs-num">80+</div><div class="hs-label">Bài học</div></div>
+      <div class="hs-item"><div class="hs-num" id="heroVocabCount">5,000+</div><div class="hs-label">Từ vựng</div></div>
+      <div class="hero-stats-bar"><div class="hero-stats-bar-fill" id="heroBarFill" style="width:0%"></div></div>
   </div>
 </div>
-<div class="goal-selector reveal" id="goalSelector"></div>
+
+<!-- ===== WORD OF THE DAY ===== -->
+<div class="hero-stats-card reveal" style="margin-top:14px">
+  <div class="hero-stats-inner" style="flex-direction:column;align-items:stretch;gap:12px">
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="width:28px;height:28px;border-radius:8px;background:rgba(167,139,250,0.12);display:flex;align-items:center;justify-content:center">
+        <i data-lucide="sparkles" style="width:14px;height:14px;color:var(--accent2)"></i>
+      </div>
+      <span style="font-size:12px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:.06em">Từ của ngày</span>
+      <span style="font-size:11px;color:var(--text3);margin-left:auto" id="wotdDate"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-size:26px;font-weight:600;color:var(--text);font-family:var(--font-heading);line-height:1" id="wotdWord">loading...</span>
+      <span style="font-size:13px;color:var(--accent2);font-style:italic" id="wotdIpa"></span>
+      <span style="font-size:12px;color:var(--text3);padding:2px 8px;border-radius:6px;background:var(--bg3)" id="wotdPos"></span>
+      <button onclick="speakWOTD()" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:rgba(100,216,165,0.08);cursor:pointer;display:flex;align-items:center;justify-content:center;margin-left:auto" title="Phát âm"><i data-lucide="volume-2" style="width:14px;height:14px;color:var(--accent)"></i></button>
+    </div>
+    <div style="font-size:15px;color:var(--text2);line-height:1.6" id="wotdMeaning"></div>
+    <div style="font-size:13px;color:var(--text3);font-style:italic;padding:10px 14px;background:var(--bg3);border-radius:10px;border-left:3px solid var(--accent)" id="wotdExample"></div>
+    <div style="display:flex;gap:8px">
+      <button onclick="saveWOTD()" id="wotdSaveBtn" style="padding:7px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--text3);font-size:12px;font-family:var(--font-body);cursor:pointer;display:flex;align-items:center;gap:5px;font-weight:500"><i data-lucide="bookmark" style="width:13px;height:13px"></i> Lưu từ</button>
+      <a href="tu-vung.html" style="padding:7px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--text3);font-size:12px;font-family:var(--font-body);text-decoration:none;display:flex;align-items:center;gap:5px;font-weight:500"><i data-lucide="book-open" style="width:13px;height:13px"></i> Học thêm</a>
+    </div>
+  </div>
+</div>
 <script>
+var WOTD_POOL=[
+{w:"resilient",ipa:"/rɪˈzɪl.i.ənt/",pos:"adj",vi:"kiên cường, bền bỉ",ex:"She remained resilient despite all the challenges."},
+{w:"eloquent",ipa:"/ˈel.ə.kwənt/",pos:"adj",vi:"hùng biện, lưu loát",ex:"He gave an eloquent speech at the ceremony."},
+{w:"pragmatic",ipa:"/præɡˈmæt.ɪk/",pos:"adj",vi:"thực dụng",ex:"We need a pragmatic approach to solve this problem."},
+{w:"ubiquitous",ipa:"/juːˈbɪk.wɪ.təs/",pos:"adj",vi:"có mặt khắp nơi",ex:"Smartphones have become ubiquitous in modern life."},
+{w:"meticulous",ipa:"/məˈtɪk.jə.ləs/",pos:"adj",vi:"tỉ mỉ, kỹ lưỡng",ex:"She is meticulous about every detail in her work."},
+{w:"ambiguous",ipa:"/æmˈbɪɡ.ju.əs/",pos:"adj",vi:"mơ hồ, không rõ ràng",ex:"The instructions were ambiguous and confusing."},
+{w:"benevolent",ipa:"/bəˈnev.əl.ənt/",pos:"adj",vi:"nhân từ, rộng lượng",ex:"The benevolent leader helped many families."},
+{w:"contemplate",ipa:"/ˈkɒn.tem.pleɪt/",pos:"v",vi:"suy ngẫm, chiêm nghiệm",ex:"I need time to contemplate this decision."},
+{w:"diligent",ipa:"/ˈdɪl.ɪ.dʒənt/",pos:"adj",vi:"cần cù, siêng năng",ex:"Diligent students always achieve their goals."},
+{w:"ephemeral",ipa:"/ɪˈfem.ər.əl/",pos:"adj",vi:"ngắn ngủi, phù du",ex:"Fame is often ephemeral in the entertainment industry."},
+{w:"fluctuate",ipa:"/ˈflʌk.tʃu.eɪt/",pos:"v",vi:"dao động, biến đổi",ex:"Stock prices fluctuate throughout the day."},
+{w:"gregarious",ipa:"/ɡrɪˈɡeə.ri.əs/",pos:"adj",vi:"hòa đồng, thích giao tiếp",ex:"He is a gregarious person who loves parties."},
+{w:"hypothetical",ipa:"/ˌhaɪ.pəˈθet.ɪ.kəl/",pos:"adj",vi:"giả định, giả thuyết",ex:"Let's consider a hypothetical scenario."},
+{w:"inevitable",ipa:"/ɪˈnev.ɪ.tə.bəl/",pos:"adj",vi:"không thể tránh khỏi",ex:"Change is inevitable in any organization."},
+{w:"juxtapose",ipa:"/ˌdʒʌk.stə.ˈpəʊz/",pos:"v",vi:"đặt cạnh nhau để so sánh",ex:"The artist juxtaposed light and dark in the painting."},
+{w:"keen",ipa:"/kiːn/",pos:"adj",vi:"nhiệt tình, sắc bén",ex:"She has a keen eye for design details."},
+{w:"lucrative",ipa:"/ˈluː.krə.tɪv/",pos:"adj",vi:"có lợi nhuận cao",ex:"The tech industry offers lucrative career opportunities."},
+{w:"mundane",ipa:"/mʌnˈdeɪn/",pos:"adj",vi:"tầm thường, nhàm chán",ex:"She wanted to escape the mundane routine of daily life."},
+{w:"nuance",ipa:"/ˈnjuː.ɑːns/",pos:"n",vi:"sắc thái, nét tinh tế",ex:"There are many nuances in the English language."},
+{w:"obsolete",ipa:"/ˈɒb.sə.liːt/",pos:"adj",vi:"lỗi thời, không dùng nữa",ex:"VHS tapes are now completely obsolete."},
+{w:"persevere",ipa:"/ˌpɜː.sɪˈvɪər/",pos:"v",vi:"kiên trì, bền chí",ex:"You must persevere through difficult times."},
+{w:"quintessential",ipa:"/ˌkwɪn.tɪˈsen.ʃəl/",pos:"adj",vi:"tinh túy nhất, điển hình",ex:"She is the quintessential modern leader."},
+{w:"reciprocal",ipa:"/rɪˈsɪp.rə.kəl/",pos:"adj",vi:"có qua có lại",ex:"Their relationship was based on reciprocal respect."},
+{w:"scrutinize",ipa:"/ˈskruː.tɪ.naɪz/",pos:"v",vi:"xem xét kỹ lưỡng",ex:"The auditors will scrutinize every transaction."},
+{w:"tangible",ipa:"/ˈtæn.dʒɪ.bəl/",pos:"adj",vi:"hữu hình, cụ thể",ex:"We need tangible evidence to support the claim."},
+{w:"unprecedented",ipa:"/ʌnˈpres.ɪ.den.tɪd/",pos:"adj",vi:"chưa từng có tiền lệ",ex:"The pandemic caused unprecedented disruption worldwide."},
+{w:"versatile",ipa:"/ˈvɜː.sə.taɪl/",pos:"adj",vi:"đa năng, linh hoạt",ex:"She is a versatile actress who can play any role."},
+{w:"whimsical",ipa:"/ˈwɪm.zɪ.kəl/",pos:"adj",vi:"kỳ quặc, dí dỏm",ex:"The garden had a whimsical charm with fairy lights."},
+{w:"yield",ipa:"/jiːld/",pos:"v",vi:"mang lại, nhường",ex:"This investment will yield high returns."},
+{w:"zealous",ipa:"/ˈzel.əs/",pos:"adj",vi:"nhiệt tình, hăng hái",ex:"She is a zealous advocate for education reform."}
+];
 (function(){
-  var gs = document.getElementById('goalSelector');
-  if(!gs || typeof GOAL_LEVELS === 'undefined') return;
-  var current = 'regular';
-  try { current = JSON.parse(localStorage.getItem('ee_game')||'{}').dailyGoalLevel || 'regular'; } catch(e){}
-  var html = '';
-  GOAL_LEVELS.forEach(function(lv){
-    html += '<button class="goal-opt'+(lv.id===current?' active':'')+'" data-goal="'+lv.id+'" onclick="setDailyGoal(\''+lv.id+'\')">'+'<i data-lucide="'+lv.lucide+'" style="width:14px;height:14px"></i> '+lv.label+' <small style="color:var(--text3);margin-left:2px">('+lv.xp+')</small></button>';
-  });
-  gs.innerHTML = html;
-  if(typeof lucide !== 'undefined') lucide.createIcons();
+  var d=new Date();var idx=Math.floor((d.getFullYear()*1000+d.getMonth()*31+d.getDate()))%WOTD_POOL.length;
+  var w=WOTD_POOL[idx];
+  document.getElementById('wotdWord').textContent=w.w;
+  document.getElementById('wotdIpa').textContent=w.ipa;
+  document.getElementById('wotdPos').textContent=w.pos==='adj'?'adjective':w.pos==='v'?'verb':w.pos==='n'?'noun':w.pos;
+  document.getElementById('wotdMeaning').textContent=w.vi;
+  document.getElementById('wotdExample').textContent='"'+w.ex+'"';
+  document.getElementById('wotdDate').textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+  var nb=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(nb.some(function(e){return e.word===w.w;})){
+    document.getElementById('wotdSaveBtn').innerHTML='<i data-lucide="bookmark-check" style="width:12px;height:12px"></i> Đã lưu';
+    document.getElementById('wotdSaveBtn').style.color='var(--accent)';
+  }
 })();
+function speakWOTD(){var u=new SpeechSynthesisUtterance(document.getElementById('wotdWord').textContent);u.lang='en-US';u.rate=0.8;speechSynthesis.speak(u);}
+function saveWOTD(){
+  var d=new Date();var idx=Math.floor((d.getFullYear()*1000+d.getMonth()*31+d.getDate()))%WOTD_POOL.length;
+  var w=WOTD_POOL[idx];var nb=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
+  if(!nb.some(function(e){return e.word===w.w;})){
+    nb.push({word:w.w,meaning:w.vi,example:w.ex,date:new Date().toISOString()});
+    localStorage.setItem('ee_notebook',JSON.stringify(nb));
+    document.getElementById('wotdSaveBtn').innerHTML='<i data-lucide="bookmark-check" style="width:12px;height:12px"></i> Đã lưu';
+    document.getElementById('wotdSaveBtn').style.color='var(--accent)';
+    if(typeof lucide!=='undefined')lucide.createIcons();
+  }
+}
 </script>
 
 <!-- ===== LEARNER DASHBOARD ===== -->
@@ -346,11 +394,11 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   <div id="welcomeState">
     <div style="background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(167,139,250,0.06));border:1px solid rgba(100,216,165,0.15);border-radius:18px;padding:28px;text-align:center">
       <div style="font-size:40px;margin-bottom:12px"></div>
-      <div style="font-family:'Fraunces',serif;font-size:24px;font-weight:300;margin-bottom:8px">Chào mừng bạn đến EasyEnglish!</div>
+      <div style="font-family:var(--font-heading);font-size:24px;font-weight:300;margin-bottom:8px">Chào mừng bạn đến EasyEnglish!</div>
       <div style="font-size:14px;color:var(--text3);line-height:1.7;max-width:480px;margin:0 auto 18px">80+ bài học từ A1 đến C2 đang chờ bạn. Bắt đầu với 1 bài học bất kỳ — tiến độ sẽ được tự động theo dõi.</div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a href="phat-am.html" style="padding:12px 24px;border-radius:12px;background:var(--accent);color:#0b1a1e;text-decoration:none;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s"> Bắt đầu học ngay</a>
-        <a href="lo-trinh-hoc.html" style="padding:12px 24px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text2);text-decoration:none;font-size:14px;font-family:'DM Sans',sans-serif;transition:all .2s">📋 Xem lộ trình</a>
+        <a href="phat-am.html" style="padding:12px 24px;border-radius:12px;background:var(--accent);color:#0b1a1e;text-decoration:none;font-weight:600;font-size:14px;font-family:var(--font-body);transition:all .2s"> Bắt đầu học ngay</a>
+        <a href="lo-trinh-hoc.html" style="padding:12px 24px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text2);text-decoration:none;font-size:14px;font-family:var(--font-body);transition:all .2s">📋 Xem lộ trình</a>
       </div>
     </div>
   </div>
@@ -389,39 +437,7 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
   </div><!-- /returningState -->
 </div>
 
-<!-- ===== DAILY QUESTS ===== -->
-<div class="quest-section reveal">
-  <div class="quest-header">
-    <div class="quest-header-left">
-      <div class="qh-icon"><i data-lucide="target" style="width:14px;height:14px"></i></div>
-      <span>Nhiệm vụ hôm nay</span>
-    </div>
-    <span style="font-size:11px;color:var(--text3)" id="questTimer"></span>
-  </div>
-  <div id="questBoard"></div>
-</div>
-<script>
-// Quest timer countdown + initial render
-(function(){
-  var timer = document.getElementById('questTimer');
-  if(timer){
-    function updateTimer(){
-      var now = new Date();
-      var tomorrow = new Date(now);
-      tomorrow.setHours(24,0,0,0);
-      var diff = tomorrow - now;
-      var h = Math.floor(diff/3600000);
-      var m = Math.floor((diff%3600000)/60000);
-      timer.textContent = 'Còn ' + h + 'h ' + m + 'm';
-    }
-    updateTimer();
-    setInterval(updateTimer, 60000);
-  }
-  // Render quest cards now that DOM is ready
-  if(typeof renderQuestBoard === 'function') renderQuestBoard();
-  if(typeof updateProgressRing === 'function') updateProgressRing();
-})();
-</script>
+
 
 <!-- ===== REVIEW PLAN ===== -->
 <div class="home-section reveal">
@@ -464,94 +480,6 @@ footer p{font-size:13px;color:var(--text3);margin-bottom:12px}
     </a>
   </div>
 </div>
-
-<!-- ===== WORD OF THE DAY ===== -->
-<div id="wotdSection" style="max-width:600px;margin:20px auto;padding:0 16px">
-  <div style="background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden">
-    <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(100,216,165,0.06)"></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-      <div style="width:28px;height:28px;border-radius:8px;background:rgba(100,216,165,0.1);display:flex;align-items:center;justify-content:center">
-        <i data-lucide="sparkles" style="width:14px;height:14px;color:var(--accent)"></i>
-      </div>
-      <span style="font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px">Từ của ngày</span>
-      <span style="font-size:11px;color:var(--text3);margin-left:auto" id="wotdDate"></span>
-    </div>
-    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-      <span style="font-size:28px;font-weight:600;color:var(--text);font-family:'Fraunces',serif" id="wotdWord"></span>
-      <span style="font-size:13px;color:var(--accent2);font-style:italic" id="wotdIpa"></span>
-      <button onclick="speakWOTD()" style="width:28px;height:28px;border-radius:50%;border:0.5px solid var(--border);background:rgba(100,216,165,0.08);cursor:pointer;display:flex;align-items:center;justify-content:center" title="Phát âm"><i data-lucide="volume-2" style="width:13px;height:13px;color:var(--accent)"></i></button>
-    </div>
-    <div style="font-size:13px;color:var(--text3);margin:4px 0 8px" id="wotdPos"></div>
-    <div style="font-size:15px;color:var(--text);margin-bottom:6px" id="wotdMeaning"></div>
-    <div style="font-size:13px;color:var(--text3);font-style:italic;padding:8px 12px;background:rgba(100,216,165,0.03);border-radius:8px;border-left:3px solid var(--accent)" id="wotdExample"></div>
-    <div style="display:flex;gap:8px;margin-top:12px">
-      <button onclick="saveWOTD()" id="wotdSaveBtn" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;cursor:pointer;display:flex;align-items:center;gap:4px"><i data-lucide="bookmark" style="width:12px;height:12px"></i> Lưu từ</button>
-      <a href="tu-vung.html" style="padding:6px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);font-size:12px;font-family:DM Sans,sans-serif;text-decoration:none;display:flex;align-items:center;gap:4px"><i data-lucide="book-open" style="width:12px;height:12px"></i> Học thêm</a>
-    </div>
-  </div>
-</div>
-<script>
-var WOTD_POOL=[
-{w:"resilient",ipa:"/rɪˈzɪl.i.ənt/",pos:"adj",vi:"kiên cường, bền bỉ",ex:"She remained resilient despite all the challenges."},
-{w:"eloquent",ipa:"/ˈel.ə.kwənt/",pos:"adj",vi:"hùng biện, lưu loát",ex:"He gave an eloquent speech at the ceremony."},
-{w:"pragmatic",ipa:"/præɡˈmæt.ɪk/",pos:"adj",vi:"thực dụng",ex:"We need a pragmatic approach to solve this problem."},
-{w:"ubiquitous",ipa:"/juːˈbɪk.wɪ.təs/",pos:"adj",vi:"có mặt khắp nơi",ex:"Smartphones have become ubiquitous in modern life."},
-{w:"meticulous",ipa:"/məˈtɪk.jə.ləs/",pos:"adj",vi:"tỉ mỉ, kỹ lưỡng",ex:"She is meticulous about every detail in her work."},
-{w:"ambiguous",ipa:"/æmˈbɪɡ.ju.əs/",pos:"adj",vi:"mơ hồ, không rõ ràng",ex:"The instructions were ambiguous and confusing."},
-{w:"benevolent",ipa:"/bəˈnev.əl.ənt/",pos:"adj",vi:"nhân từ, rộng lượng",ex:"The benevolent leader helped many families."},
-{w:"contemplate",ipa:"/ˈkɒn.tem.pleɪt/",pos:"v",vi:"suy ngẫm, chiêm nghiệm",ex:"I need time to contemplate this decision."},
-{w:"diligent",ipa:"/ˈdɪl.ɪ.dʒənt/",pos:"adj",vi:"cần cù, siêng năng",ex:"Diligent students always achieve their goals."},
-{w:"ephemeral",ipa:"/ɪˈfem.ər.əl/",pos:"adj",vi:"ngắn ngủi, phù du",ex:"Fame is often ephemeral in the entertainment industry."},
-{w:"fluctuate",ipa:"/ˈflʌk.tʃu.eɪt/",pos:"v",vi:"dao động, biến đổi",ex:"Stock prices fluctuate throughout the day."},
-{w:"gregarious",ipa:"/ɡrɪˈɡeə.ri.əs/",pos:"adj",vi:"hòa đồng, thích giao tiếp",ex:"He is a gregarious person who loves parties."},
-{w:"hypothetical",ipa:"/ˌhaɪ.pəˈθet.ɪ.kəl/",pos:"adj",vi:"giả định, giả thuyết",ex:"Let's consider a hypothetical scenario."},
-{w:"inevitable",ipa:"/ɪˈnev.ɪ.tə.bəl/",pos:"adj",vi:"không thể tránh khỏi",ex:"Change is inevitable in any organization."},
-{w:"juxtapose",ipa:"/ˌdʒʌk.stə.ˈpəʊz/",pos:"v",vi:"đặt cạnh nhau để so sánh",ex:"The artist juxtaposed light and dark in the painting."},
-{w:"keen",ipa:"/kiːn/",pos:"adj",vi:"nhiệt tình, sắc bén",ex:"She has a keen eye for design details."},
-{w:"lucrative",ipa:"/ˈluː.krə.tɪv/",pos:"adj",vi:"có lợi nhuận cao",ex:"The tech industry offers lucrative career opportunities."},
-{w:"mundane",ipa:"/mʌnˈdeɪn/",pos:"adj",vi:"tầm thường, nhàm chán",ex:"She wanted to escape the mundane routine of daily life."},
-{w:"nuance",ipa:"/ˈnjuː.ɑːns/",pos:"n",vi:"sắc thái, nét tinh tế",ex:"There are many nuances in the English language."},
-{w:"obsolete",ipa:"/ˈɒb.sə.liːt/",pos:"adj",vi:"lỗi thời, không dùng nữa",ex:"VHS tapes are now completely obsolete."},
-{w:"persevere",ipa:"/ˌpɜː.sɪˈvɪər/",pos:"v",vi:"kiên trì, bền chí",ex:"You must persevere through difficult times."},
-{w:"quintessential",ipa:"/ˌkwɪn.tɪˈsen.ʃəl/",pos:"adj",vi:"tinh túy nhất, điển hình",ex:"She is the quintessential modern leader."},
-{w:"reciprocal",ipa:"/rɪˈsɪp.rə.kəl/",pos:"adj",vi:"có qua có lại",ex:"Their relationship was based on reciprocal respect."},
-{w:"scrutinize",ipa:"/ˈskruː.tɪ.naɪz/",pos:"v",vi:"xem xét kỹ lưỡng",ex:"The auditors will scrutinize every transaction."},
-{w:"tangible",ipa:"/ˈtæn.dʒɪ.bəl/",pos:"adj",vi:"hữu hình, cụ thể",ex:"We need tangible evidence to support the claim."},
-{w:"unprecedented",ipa:"/ʌnˈpres.ɪ.den.tɪd/",pos:"adj",vi:"chưa từng có tiền lệ",ex:"The pandemic caused unprecedented disruption worldwide."},
-{w:"versatile",ipa:"/ˈvɜː.sə.taɪl/",pos:"adj",vi:"đa năng, linh hoạt",ex:"She is a versatile actress who can play any role."},
-{w:"whimsical",ipa:"/ˈwɪm.zɪ.kəl/",pos:"adj",vi:"kỳ quặc, dí dỏm",ex:"The garden had a whimsical charm with fairy lights."},
-{w:"yield",ipa:"/jiːld/",pos:"v",vi:"mang lại, nhường",ex:"This investment will yield high returns."},
-{w:"zealous",ipa:"/ˈzel.əs/",pos:"adj",vi:"nhiệt tình, hăng hái",ex:"She is a zealous advocate for education reform."}
-];
-
-(function(){
-  var d=new Date();var idx=Math.floor((d.getFullYear()*1000+d.getMonth()*31+d.getDate()))%WOTD_POOL.length;
-  var w=WOTD_POOL[idx];
-  document.getElementById('wotdWord').textContent=w.w;
-  document.getElementById('wotdIpa').textContent=w.ipa;
-  document.getElementById('wotdPos').textContent=w.pos==='adj'?'adjective':w.pos==='v'?'verb':w.pos==='n'?'noun':w.pos;
-  document.getElementById('wotdMeaning').textContent=w.vi;
-  document.getElementById('wotdExample').textContent='"'+w.ex+'"';
-  document.getElementById('wotdDate').textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
-  var nb=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
-  if(nb.some(function(e){return e.word===w.w;})){
-    document.getElementById('wotdSaveBtn').innerHTML='<i data-lucide="bookmark-check" style="width:12px;height:12px"></i> Đã lưu';
-    document.getElementById('wotdSaveBtn').style.color='var(--accent)';
-  }
-})();
-function speakWOTD(){var u=new SpeechSynthesisUtterance(document.getElementById('wotdWord').textContent);u.lang='en-US';u.rate=0.8;speechSynthesis.speak(u);}
-function saveWOTD(){
-  var d=new Date();var idx=Math.floor((d.getFullYear()*1000+d.getMonth()*31+d.getDate()))%WOTD_POOL.length;
-  var w=WOTD_POOL[idx];var nb=JSON.parse(localStorage.getItem('ee_notebook')||'[]');
-  if(!nb.some(function(e){return e.word===w.w;})){
-    nb.push({word:w.w,meaning:w.vi,example:w.ex,date:new Date().toISOString()});
-    localStorage.setItem('ee_notebook',JSON.stringify(nb));
-    document.getElementById('wotdSaveBtn').innerHTML='<i data-lucide="bookmark-check" style="width:12px;height:12px"></i> Đã lưu';
-    document.getElementById('wotdSaveBtn').style.color='var(--accent)';
-    if(typeof lucide!=='undefined')lucide.createIcons();
-  }
-}
-</script>
 
 <div class="divider"></div>
 
@@ -837,7 +765,7 @@ var MODULES=[
   {t:'Từ điển IELTS 2',d:'Từ IELTS nâng cao',u:'tu-dien-ielts-2.html',cat:'dict',ic:'crosshair',badge:''},
   {t:'Quiz & Bài tập',d:'Multiple choice, fill-in, chấm điểm',u:'bai-tap.html',cat:'practice',ic:'help-circle',badge:'hot'},
   {t:'Ôn tập lặp lại',d:'Spaced repetition flashcard',u:'on-tap-lap-lai.html',cat:'practice',ic:'rotate-cw',badge:''},
-  {t:'Tiến độ học tập',d:'Streak, XP, badges, thống kê',u:'tien-do.html',cat:'practice',ic:'bar-chart-3',badge:''},
+  {t:'Tiến độ học tập',d:'Streak, badges, thống kê',u:'tien-do.html',cat:'practice',ic:'bar-chart-3',badge:''},
 ];
 
 /* === RENDER MODULES === */
@@ -901,8 +829,21 @@ function initStreak(){
     localStorage.setItem('ee_streak',JSON.stringify(data));
   }
   document.getElementById('streakNum').textContent=data.count;
-  document.getElementById('heroStreak').textContent=' '+data.count+' ngày';
-  var ns=document.getElementById('navStreak');if(ns)ns.textContent=' '+data.count+' ngày';
+  document.getElementById('heroStreak').textContent='🔥 '+data.count+' ngày';
+  var ns=document.getElementById('navStreak');if(ns)ns.textContent='🔥 '+data.count+' ngày';
+  // Update progress ring
+  var ring=document.getElementById('progressRingFill');
+  if(ring){
+    var maxStreak=30;
+    var pct=Math.min(100,Math.round(data.count/maxStreak*100));
+    var circumference=2*Math.PI*40;
+    ring.style.strokeDasharray=circumference;
+    ring.style.strokeDashoffset=circumference-(pct/100)*circumference;
+    document.getElementById('progressRingLabel').textContent=data.count;
+    // Update bar fill too
+    var barFill=document.getElementById('heroBarFill');
+    if(barFill)barFill.style.width=pct+'%';
+  }
   if(data.count>=7){document.getElementById('streakMsg').textContent=' '+data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Tuyệt vời! Tiếp tục duy trì nhé!';}
   else if(data.count>1){document.getElementById('streakMsg').textContent=data.count+' ngày liên tiếp!';document.getElementById('streakSub').textContent='Học thêm '+(7-data.count)+' ngày để đạt chuỗi 7 ngày!';}
   var dayNames=['T2','T3','T4','T5','T6','T7','CN'];
@@ -974,6 +915,7 @@ function renderDashboard(){
     }
   }
 }
+
 
 </script>
 

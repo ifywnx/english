@@ -13,7 +13,7 @@
 <style>
 .content{max-width:1100px;margin:0 auto;padding:40px 48px;position:relative;z-index:1}
 .topic-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.t-tab{padding:7px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.t-tab{padding:7px 16px;border-radius:20px;border:0.5px solid var(--border);background:var(--card2);color:var(--text3);cursor:pointer;font-size:12px;font-family:var(--font-body);transition:all .15s}
 .t-tab:hover{color:var(--text);border-color:rgba(100,216,165,0.3)}
 .t-tab.active{background:rgba(100,216,165,0.12);color:var(--accent);border-color:rgba(100,216,165,0.4)}
 .word-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:14px}
@@ -41,7 +41,7 @@
 <div class="topic-tabs" id="topicTabs"></div>
 <div id="wordContainer"></div>
 <div style="margin-top:24px;padding:24px;background:var(--card);border:0.5px solid var(--border);border-radius:18px">
-<h2 style="font-family:'Fraunces',serif;font-weight:300;margin-bottom:16px"> Quiz từ vựng</h2>
+<h2 style="font-family:var(--font-heading);font-weight:300;margin-bottom:16px"> Quiz từ vựng</h2>
 <div id="quizBox"></div>
 <div id="quizScore" style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3)"></div>
 </div>
@@ -248,7 +248,7 @@ var QZ=[
 {q:"'Referee' là ai trong thể thao?",opts:["Cầu thủ","Huấn luyện viên","Trọng tài","Khán giả"],ans:2,exp:"Referee = trọng tài điều khiển trận đấu"}
 ];
 var qI=0,qS=0;
-function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:DM Sans,sans-serif"> Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:DM Sans,sans-serif" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
+function renderQz(){if(qI>=QZ.length){document.getElementById('quizBox').innerHTML='<div style="text-align:center;padding:20px"><b style="font-size:32px;color:var(--accent)">'+qS+'/'+QZ.length+'</b><br>Câu đúng<br><button onclick="qI=0;qS=0;renderQz()" style="margin-top:12px;padding:10px 20px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-family:var(--font-body)"> Làm lại</button></div>';return;}var q=QZ[qI];document.getElementById('quizBox').innerHTML='<div style="margin-bottom:8px;font-size:12px;color:var(--accent2)">Câu '+(qI+1)+'/'+QZ.length+'</div><div style="font-size:16px;margin-bottom:14px">'+q.q+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+q.opts.map(function(o,i){return '<div style="padding:12px;border-radius:10px;border:0.5px solid var(--border);background:var(--card2);cursor:pointer;font-size:14px;text-align:center;transition:all .15s;font-family:var(--font-body)" onclick="chkQ(this,'+q.ans+','+i+')">'+o+'</div>';}).join('')+'</div><div id="qExp" style="font-size:13px;color:var(--accent);margin-top:8px;display:none"></div>';document.getElementById('quizScore').textContent='Điểm: '+qS+'/'+qI;}
 function chkQ(el,c,ch){var os=el.parentElement.children;for(var i=0;i<os.length;i++){os[i].style.pointerEvents='none';if(i===c){os[i].style.background='rgba(100,216,165,0.2)';os[i].style.borderColor='var(--accent)';}if(i===ch&&ch!==c){os[i].style.background='rgba(244,132,95,0.2)';os[i].style.borderColor='var(--coral)';}}if(ch===c)qS++;document.getElementById('qExp').textContent=' '+QZ[qI].exp;document.getElementById('qExp').style.display='block';setTimeout(function(){qI++;renderQz();},1500);}
 renderQz();
 </script>

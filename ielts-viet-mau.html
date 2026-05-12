@@ -31,14 +31,14 @@
 .sidebar-title.collapsed::after{transform:rotate(-90deg)}
 .sb-group{overflow:hidden;max-height:1000px;transition:max-height .3s ease,opacity .2s;opacity:1}
 .sb-group.hidden{max-height:0;opacity:0;margin:0;padding:0}
-.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;text-align:left}
+.sb-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--text2);transition:all .15s;text-decoration:none;width:100%;font-family:var(--font-body);cursor:pointer;border:none;background:transparent;text-align:left}
 .sb-item:hover{color:var(--text);background:rgba(255,255,255,0.05)}
 .sb-item.active{color:var(--accent);background:rgba(167,139,250,0.08)}
 .content{padding:36px 48px;max-width:900px}
 .s-divider{height:0.5px;background:var(--border);margin:36px 0}
 .anchor{scroll-margin-top:80px}
 .section-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;margin-bottom:10px}
+.section-title{font-family:var(--font-heading);font-size:28px;font-weight:300;margin-bottom:10px}
 .section-desc{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.7}
 /* OVERVIEW CARDS */
 .overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
@@ -57,7 +57,7 @@
 .band-table th{padding:10px 14px;background:var(--card2);border:0.5px solid var(--border);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);font-weight:400;text-align:left}
 .band-table td{padding:10px 14px;border:0.5px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.6}
 .band-table tr:hover td{background:rgba(255,255,255,0.02)}
-.td-band{font-family:'Fraunces',serif;font-size:20px;font-weight:300}
+.td-band{font-family:var(--font-heading);font-size:20px;font-weight:300}
 .b9{color:#ffd700}.b8{color:var(--coral)}.b7{color:var(--accent)}.b6{color:var(--green)}.b5{color:var(--accent3)}
 /* TASK BOX */
 .task-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
@@ -110,7 +110,7 @@
 /* CRITERIA GRID */
 .criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
 .crit-card{background:var(--card2);border:0.5px solid var(--border);border-radius:12px;padding:16px}
-.crit-pct{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);margin-bottom:4px}
+.crit-pct{font-family:var(--font-heading);font-size:28px;color:var(--accent);margin-bottom:4px}
 .crit-name{font-size:13px;font-weight:500;margin-bottom:6px}
 .crit-desc{font-size:14px;color:var(--text2);line-height:1.6}
 /* READING TYPES */
@@ -145,14 +145,14 @@
 .qb-q{font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.5}
 .qb-hint{font-size:14px;color:var(--text3);margin-bottom:16px;font-style:italic}
 .qb-opts{display:flex;flex-direction:column;gap:8px}
-.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Sans',sans-serif;line-height:1.5}
+.qb-opt{padding:11px 16px;border-radius:9px;border:0.5px solid var(--border);background:var(--bg3);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s;text-align:left;font-family:var(--font-body);line-height:1.5}
 .qb-opt:hover:not(:disabled){border-color:rgba(123,110,246,0.4);color:var(--text)}
 .qb-opt.correct{border-color:var(--green);background:rgba(107,203,119,0.1);color:var(--green)}
 .qb-opt.wrong{border-color:var(--coral);background:rgba(244,132,95,0.08);color:var(--coral)}
 .qb-fb{margin-top:12px;padding:11px 14px;border-radius:9px;font-size:13px;display:none;line-height:1.6}
 .qb-fb.ok{background:rgba(107,203,119,0.1);color:var(--green);display:block}
 .qb-fb.no{background:rgba(244,132,95,0.1);color:var(--coral);display:block}
-.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;display:none}
+.qb-next{margin-top:8px;padding:8px 18px;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font-body);display:none}
 .qb-next.show{display:inline-block}
 /* SCORE CALCULATOR */
 .calc-box{background:var(--card2);border:0.5px solid var(--border);border-radius:14px;padding:22px;margin-bottom:20px}
@@ -163,11 +163,11 @@
 .calc-val{font-size:14px;color:var(--accent);min-width:30px;text-align:right;font-weight:500}
 .calc-result{background:rgba(167,139,250,0.08);border:0.5px solid rgba(100,216,165,0.3);border-radius:10px;padding:14px;text-align:center;margin-top:8px}
 .cr-label{font-size:14px;color:var(--text3);margin-bottom:4px}
-.cr-score{font-family:'Fraunces',serif;font-size:40px;color:var(--accent)}
+.cr-score{font-family:var(--font-heading);font-size:40px;color:var(--accent)}
 .cr-note{font-size:14px;color:var(--text3);margin-top:4px}
 /* TASK 1 CHART PHRASES */
 .chart-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.ct-btn{padding:7px 16px;border-radius:20px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.ct-btn{padding:7px 16px;border-radius:20px;font-size:12px;border:0.5px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-family:var(--font-body);transition:all .2s}
 .ct-btn.active{background:rgba(100,216,165,0.12);border-color:rgba(232,197,71,0.4);color:var(--accent)}
 .chart-content{display:none}
 .chart-content.show{display:block}
@@ -275,7 +275,7 @@
 </div>
 
 <div id="t1-sample1" class="anchor"></div>
-<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 1: Line Graph — Band 9</h3>
+<h3 style="font-family:var(--font-heading);font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 1: Line Graph — Band 9</h3>
 <div class="essay-box">
 <div class="essay-label">ĐỀ BÀI</div>
 <div class="essay-question">The graph below shows the proportion of the population aged 65 and over between 1940 and 2040 in three different countries.</div>
@@ -289,7 +289,7 @@
 </div>
 
 <div id="t1-sample2" class="anchor"></div>
-<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 2: Bar Chart — Band 8.5</h3>
+<h3 style="font-family:var(--font-heading);font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 2: Bar Chart — Band 8.5</h3>
 <div class="essay-box">
 <div class="essay-label">ĐỀ BÀI</div>
 <div class="essay-question">The chart below shows the number of men and women in further education in Britain in three periods.</div>
@@ -303,7 +303,7 @@
 </div>
 
 <div id="t1-sample3" class="anchor"></div>
-<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 3: Process — Band 8.5</h3>
+<h3 style="font-family:var(--font-heading);font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 3: Process — Band 8.5</h3>
 <div class="essay-box">
 <div class="essay-label">ĐỀ BÀI</div>
 <div class="essay-question">The diagram below shows how chocolate is produced.</div>
@@ -336,7 +336,7 @@
 </div>
 
 <div id="t2-agree" class="anchor"></div>
-<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 4: Agree/Disagree — Band 9</h3>
+<h3 style="font-family:var(--font-heading);font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 4: Agree/Disagree — Band 9</h3>
 <div class="essay-box">
 <div class="essay-label">ĐỀ BÀI</div>
 <div class="essay-question">Some people believe that universities should focus on providing academic skills rather than practical training for future careers. To what extent do you agree or disagree?</div>
@@ -350,7 +350,7 @@
 </div>
 
 <div id="t2-discuss" class="anchor"></div>
-<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 5: Discuss Both Views — Band 8.5</h3>
+<h3 style="font-family:var(--font-heading);font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 5: Discuss Both Views — Band 8.5</h3>
 <div class="essay-box">
 <div class="essay-label">ĐỀ BÀI</div>
 <div class="essay-question">Some people think that the best way to reduce crime is to give longer prison sentences. Others believe there are better alternative ways of reducing crime. Discuss both views and give your opinion.</div>
@@ -364,7 +364,7 @@
 </div>
 
 <div id="t2-problem" class="anchor"></div>
-<h3 style="font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 6: Problem/Solution — Band 8.5</h3>
+<h3 style="font-family:var(--font-heading);font-size:22px;font-weight:300;margin:28px 0 14px"> Mẫu 6: Problem/Solution — Band 8.5</h3>
 <div class="essay-box">
 <div class="essay-label">ĐỀ BÀI</div>
 <div class="essay-question">In many cities, the increasing number of cars is causing serious problems. What are the problems? What solutions can you suggest?</div>

@@ -26,7 +26,7 @@
     /* === MOBILE OVERRIDES (only essentials) === */
     '@media(max-width:900px){' +
       '.content{padding-bottom:100px}' +
-      '.back-top{bottom:160px;right:16px}' +
+      '.back-top{bottom:90px;right:14px}' +
       'nav{position:sticky;top:0;z-index:200}' +
     '}';
   document.head.appendChild(ts);
@@ -745,4 +745,47 @@ window.addEventListener('scroll',function(){
 
   // Expose for nav search button
   window.openGlobalSearch=openSearch;
+})();
+
+/* === PWA: Service Worker + Install Prompt === */
+(function(){
+  // Register SW
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  }
+
+  // Install prompt
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredPrompt = e;
+    // Show install banner after 10s if user hasn't dismissed before
+    if(localStorage.getItem('ee_install_dismissed')) return;
+    setTimeout(showInstallBanner, 10000);
+  });
+
+  function showInstallBanner(){
+    if(!deferredPrompt) return;
+    var banner = document.createElement('div');
+    banner.id = 'ee-install-banner';
+    banner.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--card,#12282e);backdrop-filter:blur(20px);border:1px solid rgba(100,216,165,0.2);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 12px 40px rgba(0,0,0,0.4);max-width:380px;width:calc(100% - 32px);animation:toastIn .3s ease-out';
+    banner.innerHTML =
+      '<div style="flex:1;min-width:0">'+
+        '<div style="font-size:14px;font-weight:600;color:var(--text,#e0f0ea);margin-bottom:3px">Cài EasyEnglish</div>'+
+        '<div style="font-size:12px;color:var(--text3,#6a8a7e)">Thêm vào màn hình để học nhanh hơn</div>'+
+      '</div>'+
+      '<button id="ee-install-yes" style="padding:10px 18px;border-radius:10px;background:linear-gradient(135deg,var(--accent,#64d8a5),var(--accent2,#7b6ef6));color:#0b1a1e;font-size:13px;font-weight:600;border:none;cursor:pointer;white-space:nowrap">Cài đặt</button>'+
+      '<button id="ee-install-no" style="background:none;border:none;color:var(--text3,#6a8a7e);font-size:18px;cursor:pointer;padding:4px">×</button>';
+    document.body.appendChild(banner);
+
+    document.getElementById('ee-install-yes').onclick = function(){
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function(){ deferredPrompt = null; });
+      banner.remove();
+    };
+    document.getElementById('ee-install-no').onclick = function(){
+      banner.remove();
+      localStorage.setItem('ee_install_dismissed', '1');
+    };
+  }
 })();

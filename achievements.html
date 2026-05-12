@@ -13,12 +13,12 @@
 <script src="gamification.js?v=4"></script>
 <style>
 .ach-hero{text-align:center;padding:32px 20px 20px;max-width:700px;margin:0 auto}
-.ach-hero h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,42px);font-weight:300;margin-bottom:8px}
+.ach-hero h1{font-family:var(--font-heading);font-size:clamp(28px,5vw,42px);font-weight:300;margin-bottom:8px}
 .ach-hero p{font-size:14px;color:var(--text3);line-height:1.6}
 
 .ach-summary{display:flex;gap:12px;justify-content:center;margin:16px auto 24px;max-width:500px;flex-wrap:wrap}
 .ach-stat{background:var(--card);border:0.5px solid var(--border);border-radius:14px;padding:16px 20px;text-align:center;flex:1;min-width:100px}
-.ach-stat .as-num{font-family:'Fraunces',serif;font-size:28px;color:var(--accent);line-height:1}
+.ach-stat .as-num{font-family:var(--font-heading);font-size:28px;color:var(--accent);line-height:1}
 .ach-stat .as-label{font-size:11px;color:var(--text3);margin-top:4px}
 
 .ach-section{max-width:700px;margin:0 auto;padding:0 20px 24px}
@@ -48,7 +48,7 @@
 /* Level card */
 .level-card{background:linear-gradient(135deg,rgba(100,216,165,0.08),rgba(167,139,250,0.06));border:1px solid rgba(100,216,165,0.2);border-radius:18px;padding:24px;text-align:center;max-width:400px;margin:0 auto 24px}
 .level-icon{margin-bottom:8px;display:flex;justify-content:center;color:var(--accent)}
-.level-name{font-family:'Fraunces',serif;font-size:24px;color:var(--text);margin-bottom:4px}
+.level-name{font-family:var(--font-heading);font-size:24px;color:var(--text);margin-bottom:4px}
 .level-xp{font-size:13px;color:var(--text3)}
 .level-bar{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;margin:12px 0 6px;overflow:hidden}
 .level-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .6s}
@@ -85,8 +85,8 @@
   var sum = document.getElementById('achSummary');
   sum.innerHTML = 
     '<div class="ach-stat"><div class="as-num">'+unlocked.length+'</div><div class="as-label">Đã mở / '+badges.length+'</div></div>'+
-    '<div class="ach-stat"><div class="as-num">'+s.totalXP+'</div><div class="as-label">Tổng XP</div></div>'+
     '<div class="ach-stat"><div class="as-num">'+s.streak+'</div><div class="as-label">Streak</div></div>'+
+    '<div class="ach-stat"><div class="as-num">'+(s.wordsLearned||0)+'</div><div class="as-label">Từ đã học</div></div>'+
     '<div class="ach-stat"><div class="as-num">'+(s.maxCombo||0)+'</div><div class="as-label">Max Combo</div></div>';
 
   // Level card
@@ -96,13 +96,13 @@
   document.getElementById('levelCard').innerHTML = 
     '<div class="level-icon"><i data-lucide="'+lv.icon+'" style="width:40px;height:40px"></i></div>'+
     '<div class="level-name">'+lv.name+'</div>'+
-    '<div class="level-xp">'+s.totalXP+' XP tổng cộng</div>'+
+    '<div class="level-xp">Streak: '+s.streak+' ngày</div>'+
     '<div class="level-bar"><div class="level-bar-fill" style="width:'+pct+'%"></div></div>'+
-    (nxt ? '<div class="level-next">Còn '+(nxt.minXP - s.totalXP)+' XP để lên '+nxt.name+'</div>' : '<div class="level-next">Level tối đa!</div>');
+    '<div class="level-next">Hãy tiếp tục duy trì streak!</div>';
 
   // Group badges by category
-  var CAT_LABELS = {start:'Khởi đầu',streak:'Streak',vocab:'Từ vựng',quiz:'Quiz',xp:'Điểm XP',combo:'Combo',explore:'Khám phá',special:'Đặc biệt'};
-  var CAT_ORDER = ['start','streak','vocab','quiz','xp','combo','explore','special'];
+  var CAT_LABELS = {start:'Khởi đầu',streak:'Streak',vocab:'Từ vựng',quiz:'Quiz',combo:'Combo',explore:'Khám phá',special:'Đặc biệt'};
+  var CAT_ORDER = ['start','streak','vocab','quiz','combo','explore','special'];
   var groups = {};
   badges.forEach(function(b){
     var cat = b.cat || 'other';
