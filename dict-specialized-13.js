@@ -1,7 +1,5 @@
 // dict-specialized-13.js — Ngành thiếu phần 2
 if(typeof BROWSE!=='undefined') BROWSE.push(
-// ═══════════ THIẾT KẾ ĐỒ HỌA (Graphic Design) ═══════════
-['typography','/taɪˈpɒɡrəfi/','nghệ thuật chữ','B2','n'],
 ['kerning','/ˈkɜːrnɪŋ/','khoảng cách giữa ký tự','C1','n'],
 ['vector graphic','/ˈvektər ˈɡræfɪk/','đồ họa vector','B2','n'],
 ['raster image','/ˈræstər ˈɪmɪdʒ/','ảnh điểm ảnh','C1','n'],
@@ -9,11 +7,9 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['CMYK','/ˌsiːemwaɪˈkeɪ/','hệ màu in ấn','B2','n'],
 ['RGB','/ˌɑːrdʒiːˈbiː/','hệ màu hiển thị','B2','n'],
 ['resolution','/ˌrezəˈluːʃn/','độ phân giải','B2','n'],
-['mockup','/ˈmɒkʌp/','bản mô phỏng thiết kế','B2','n'],
 ['brand identity','/brænd aɪˈdentəti/','nhận diện thương hiệu','B2','n'],
 ['logo design','/ˈloʊɡoʊ dɪˈzaɪn/','thiết kế logo','B2','n'],
 ['layout','/ˈleɪaʊt/','bố cục','B2','n'],
-// ═══════════ NHIẾP ẢNH (Photography) ═══════════
 ['aperture','/ˈæpərtʃər/','khẩu độ','B2','n'],
 ['shutter speed','/ˈʃʌtər spiːd/','tốc độ màn trập','B2','n'],
 ['ISO sensitivity','/ˌaɪesˈoʊ ˌsensəˈtɪvəti/','độ nhạy ISO','B2','n'],
@@ -24,9 +20,7 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['bokeh','/ˈboʊkeɪ/','hiệu ứng mờ nền','B2','n'],
 ['RAW format','/rɔː ˈfɔːrmæt/','định dạng ảnh thô','B2','n'],
 ['post-processing','/poʊst ˈprɒsesɪŋ/','hậu kỳ ảnh','B2','n'],
-['composition','/ˌkɒmpəˈzɪʃn/','bố cục ảnh','B2','n'],
 ['golden ratio','/ˈɡoʊldən ˈreɪʃioʊ/','tỷ lệ vàng','B2','n'],
-// ═══════════ LÀM PHIM / ANIMATION (Film & Animation) ═══════════
 ['screenplay','/ˈskriːnpleɪ/','kịch bản phim','B2','n'],
 ['storyboard','/ˈstɔːribɔːrd/','bảng phân cảnh','B2','n'],
 ['cinematography','/ˌsɪnəməˈtɒɡrəfi/','quay phim','C1','n'],
@@ -39,10 +33,7 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['sound design','/saʊnd dɪˈzaɪn/','thiết kế âm thanh','B2','n'],
 ['continuity','/ˌkɒntɪˈnjuːəti/','tính liên tục cảnh quay','C1','n'],
 ['3D modeling','/θriː diː ˈmɒdlɪŋ/','dựng hình 3D','B2','n'],
-// ═══════════ XÉT NGHIỆM Y HỌC (Medical Lab) ═══════════
-['hematology','/ˌhiːməˈtɒlədʒi/','huyết học','C1','n'],
 ['urinalysis','/ˌjʊrɪˈnæləsɪs/','xét nghiệm nước tiểu','C1','n'],
-['biopsy','/ˈbaɪɒpsi/','sinh thiết','C1','n'],
 ['culture test','/ˈkʌltʃər test/','cấy vi khuẩn','C1','n'],
 ['blood type','/blʌd taɪp/','nhóm máu','B2','n'],
 ['hemoglobin','/ˈhiːməɡloʊbɪn/','huyết sắc tố','C1','n'],
@@ -52,7 +43,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['glucose level','/ˈɡluːkoʊs ˈlevl/','đường huyết','B2','n'],
 ['cholesterol test','/kəˈlestərɒl test/','xét nghiệm cholesterol','B2','n'],
 ['liver function test','/ˈlɪvər ˈfʌŋkʃn test/','xét nghiệm chức năng gan','B2','n'],
-// ═══════════ Y HỌC CỔ TRUYỀN (Traditional Medicine) ═══════════
 ['acupuncture','/ˈækjupʌŋktʃər/','châm cứu','B2','n'],
 ['herbal medicine','/ˈhɜːrbl ˈmedɪsn/','thuốc thảo dược','B2','n'],
 ['moxibustion','/ˌmɒksɪˈbʌstʃən/','cứu ngải','C1','n'],
@@ -65,7 +55,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['decoction','/dɪˈkɒkʃn/','thuốc sắc','C1','n'],
 ['holistic medicine','/hoʊˈlɪstɪk ˈmedɪsn/','y học toàn diện','B2','n'],
 ['naturopathy','/ˌnætʃəˈrɒpəθi/','liệu pháp tự nhiên','C1','n'],
-// ═══════════ DINH DƯỠNG (Nutrition) ═══════════
 ['macronutrient','/ˈmækroʊˈnjuːtriənt/','chất dinh dưỡng đa lượng','B2','n'],
 ['micronutrient','/ˈmaɪkroʊˈnjuːtriənt/','vi chất dinh dưỡng','B2','n'],
 ['calorie deficit','/ˈkæləri ˈdefɪsɪt/','thâm hụt calo','B2','n'],
@@ -75,10 +64,8 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['essential amino acid','/ɪˈsenʃl əˈmiːnoʊ ˈæsɪd/','axit amin thiết yếu','C1','n'],
 ['food pyramid','/fuːd ˈpɪrəmɪd/','tháp dinh dưỡng','B2','n'],
 ['malnutrition','/ˌmælnjuˈtrɪʃn/','suy dinh dưỡng','B2','n'],
-['antioxidant','/ˌæntiˈɒksɪdənt/','chất chống oxy hóa','B2','n'],
 ['saturated fat','/ˈsætʃəreɪtɪd fæt/','chất béo bão hòa','B2','n'],
 ['trans fat','/trænz fæt/','chất béo chuyển hóa','B2','n'],
-// ═══════════ GIÁO DỤC MẦM NON (Early Childhood) ═══════════
 ['Montessori method','/ˌmɒntɪˈsɔːri ˈmeθəd/','phương pháp Montessori','B2','n'],
 ['play-based learning','/pleɪ beɪst ˈlɜːrnɪŋ/','học qua chơi','B2','n'],
 ['fine motor skills','/faɪn ˈmoʊtər skɪlz/','kỹ năng vận động tinh','B2','n'],
@@ -87,11 +74,9 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['nursery rhyme','/ˈnɜːrsəri raɪm/','bài hát thiếu nhi','B1','n'],
 ['cognitive development','/ˈkɒɡnɪtɪv dɪˈveləpmənt/','phát triển nhận thức','B2','n'],
 ['social-emotional learning','/ˈsoʊʃl ɪˈmoʊʃənl ˈlɜːrnɪŋ/','học tập cảm xúc xã hội','B2','n'],
-['scaffolding','/ˈskæfəldɪŋ/','hỗ trợ học tập theo bậc','C1','n'],
 ['sensory play','/ˈsensəri pleɪ/','chơi giác quan','B2','n'],
 ['storytelling','/ˈstɔːritelɪŋ/','kể chuyện','B1','n'],
 ['parent-teacher conference','/ˈperənt ˈtiːtʃər ˈkɒnfərəns/','họp phụ huynh','B2','n'],
-// ═══════════ LỊCH SỬ (History) ═══════════
 ['historiography','/hɪˌstɔːriˈɒɡrəfi/','sử học','C1','n'],
 ['archaeology','/ˌɑːrkiˈɒlədʒi/','khảo cổ học','B2','n'],
 ['artifact','/ˈɑːrtɪfækt/','hiện vật','B2','n'],
@@ -104,7 +89,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['chronicle','/ˈkrɒnɪkl/','biên niên sử','C1','n'],
 ['antiquity','/ænˈtɪkwəti/','thời cổ đại','C1','n'],
 ['medieval','/ˌmediˈiːvl/','thời trung cổ','B2','adj'],
-// ═══════════ VĂN HỌC (Literature) ═══════════
 ['prose','/proʊz/','văn xuôi','B2','n'],
 ['poetry','/ˈpoʊɪtri/','thơ ca','B2','n'],
 ['novel','/ˈnɒvl/','tiểu thuyết','B1','n'],
@@ -117,20 +101,17 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['genre','/ˈʒɒnrə/','thể loại','B2','n'],
 ['plot','/plɒt/','cốt truyện','B2','n'],
 ['symbolism','/ˈsɪmbəlɪzəm/','chủ nghĩa tượng trưng','C1','n'],
-// ═══════════ HÀNG HẢI (Maritime) ═══════════
 ['port authority','/pɔːrt əˈθɒrəti/','cảng vụ','B2','n'],
 ['cargo ship','/ˈkɑːrɡoʊ ʃɪp/','tàu chở hàng','B2','n'],
 ['container terminal','/kənˈteɪnər ˈtɜːrmɪnl/','bến container','B2','n'],
 ['maritime law','/ˈmærɪtaɪm lɔː/','luật hàng hải','B2','n'],
 ['nautical mile','/ˈnɔːtɪkl maɪl/','hải lý','B2','n'],
-['anchor','/ˈæŋkər/','neo','B2','n'],
 ['lighthouse','/ˈlaɪthaʊs/','hải đăng','B2','n'],
 ['tonnage','/ˈtʌnɪdʒ/','tải trọng','B2','n'],
 ['port of call','/pɔːrt əv kɔːl/','cảng ghé','C1','n'],
 ['docking','/ˈdɒkɪŋ/','cập cảng','B2','n'],
 ['salvage','/ˈsælvɪdʒ/','cứu hộ hàng hải','C1','n'],
 ['flagship','/ˈflæɡʃɪp/','soái hạm','C1','n'],
-// ═══════════ THỦY SẢN (Fisheries/Aquaculture Extended) ═══════════
 ['shrimp farming','/ʃrɪmp ˈfɑːrmɪŋ/','nuôi tôm','B2','n'],
 ['fish pond','/fɪʃ pɒnd/','ao nuôi cá','B1','n'],
 ['hatchery management','/ˈhætʃəri ˈmænɪdʒmənt/','quản lý trại giống','C1','n'],

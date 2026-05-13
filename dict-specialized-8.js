@@ -1,17 +1,13 @@
 // dict-specialized-8.js — Mở rộng từ vựng chuyên ngành (batch 8)
 if(typeof BROWSE!=='undefined') BROWSE.push(
-// ═══════════ Y TẾ - CẤP CỨU (Emergency Medicine) ═══════════
 ['CPR','/ˌsiːpiːˈɑːr/','hồi sinh tim phổi','B2','n'],
 ['AED','/ˌeɪiːˈdiː/','máy sốc điện tự động','C1','n'],
 ['anaphylaxis','/ˌænəfɪˈlæksɪs/','sốc phản vệ','C1','n'],
-['concussion','/kənˈkʌʃn/','chấn thương sọ não','B2','n'],
-['fracture','/ˈfræktʃər/','gãy xương','B2','n'],
 ['laceration','/ˌlæsəˈreɪʃn/','vết rách','C1','n'],
 ['splint','/splɪnt/','nẹp cố định','B2','n'],
 ['epinephrine','/ˌepɪˈnefrɪn/','adrenaline','C1','n'],
 ['shock','/ʃɒk/','sốc','B2','n'],
 ['trauma center','/ˈtrɔːmə ˈsentər/','trung tâm chấn thương','B2','n'],
-// ═══════════ IT - UX/UI DESIGN (Thiết kế trải nghiệm) ═══════════
 ['usability testing','/ˌjuːzəˈbɪləti ˈtestɪŋ/','kiểm tra tính khả dụng','B2','n'],
 ['heuristic evaluation','/hjʊˈrɪstɪk ɪˌvæljuˈeɪʃn/','đánh giá theo kinh nghiệm','C1','n'],
 ['information architecture','/ˌɪnfərˈmeɪʃn ˈɑːrkɪtektʃər/','kiến trúc thông tin','B2','n'],
@@ -22,8 +18,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['design thinking','/dɪˈzaɪn ˈθɪŋkɪŋ/','tư duy thiết kế','B2','n'],
 ['affordance','/əˈfɔːrdəns/','tính gợi ý hành động','C1','n'],
 ['heatmap','/ˈhiːtmæp/','bản đồ nhiệt','B2','n'],
-// ═══════════ KINH DOANH - CHUỖI CUNG ỨNG (Supply Chain) ═══════════
-['procurement','/prəˈkjʊrmənt/','mua sắm','B2','n'],
 ['vendor management','/ˈvendər ˈmænɪdʒmənt/','quản lý nhà cung cấp','B2','n'],
 ['demand forecasting','/dɪˈmænd ˈfɔːrkæstɪŋ/','dự báo nhu cầu','B2','n'],
 ['inventory turnover','/ˈɪnvəntɔːri ˈtɜːrnoʊvər/','vòng quay hàng tồn kho','C1','n'],
@@ -32,8 +26,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['bullwhip effect','/ˈbʊlwɪp ɪˈfekt/','hiệu ứng roi da','C1','n'],
 ['value chain','/ˈvæljuː tʃeɪn/','chuỗi giá trị','B2','n'],
 ['total cost of ownership','/ˈtoʊtl kɒst əv ˈoʊnərʃɪp/','tổng chi phí sở hữu','C1','n'],
-['outsourcing','/ˈaʊtsɔːrsɪŋ/','thuê ngoài','B2','n'],
-// ═══════════ ĐIỆN - ROBOT VÀ TỰ ĐỘNG HÓA (Robotics) ═══════════
 ['degrees of freedom','/dɪˈɡriːz əv ˈfriːdəm/','bậc tự do','C1','n'],
 ['end effector','/end ɪˈfektər/','đầu tác động','C1','n'],
 ['inverse kinematics','/ɪnˈvɜːrs ˌkɪnɪˈmætɪks/','động học nghịch','C2','n'],
@@ -44,7 +36,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['cobot','/ˈkoʊbɒt/','robot cộng tác','B2','n'],
 ['machine vision','/məˈʃiːn ˈvɪʒn/','thị giác máy','B2','n'],
 ['path planning','/pæθ ˈplænɪŋ/','lập kế hoạch đường đi','C1','n'],
-// ═══════════ SINH HỌC - CÔNG NGHỆ SINH HỌC (Biotechnology) ═══════════
 ['gene therapy','/dʒiːn ˈθerəpi/','liệu pháp gen','C1','n'],
 ['recombinant DNA','/rɪˈkɒmbɪnənt ˌdiːenˈeɪ/','ADN tái tổ hợp','C1','n'],
 ['monoclonal antibody','/ˌmɒnəˈkloʊnl ˈæntɪbɒdi/','kháng thể đơn dòng','C1','n'],
@@ -55,7 +46,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['metabolomics','/ˌmetəˈbɒlɒmɪks/','chuyển hóa học','C2','n'],
 ['biosensor','/ˈbaɪoʊˌsensər/','cảm biến sinh học','C1','n'],
 ['tissue engineering','/ˈtɪʃuː ˌendʒɪˈnɪrɪŋ/','kỹ thuật mô','C1','n'],
-// ═══════════ HÓA HỌC - HÓA DƯỢC (Medicinal Chemistry) ═══════════
 ['drug design','/drʌɡ dɪˈzaɪn/','thiết kế thuốc','C1','n'],
 ['molecular docking','/məˈlekjələr ˈdɒkɪŋ/','gắn kết phân tử','C2','n'],
 ['structure-activity relationship','/ˈstrʌktʃər ækˈtɪvəti rɪˈleɪʃnʃɪp/','quan hệ cấu trúc hoạt tính','C1','n'],
@@ -66,7 +56,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['high-throughput screening','/haɪ ˈθruːpʊt ˈskriːnɪŋ/','sàng lọc thông lượng cao','C1','n'],
 ['bioassay','/ˈbaɪoʊəseɪ/','thử nghiệm sinh học','C1','n'],
 ['pharmacophore','/ˈfɑːrməkəfɔːr/','dược trị phân tử','C2','n'],
-// ═══════════ GIÁO DỤC - ĐÁNH GIÁ (Educational Assessment) ═══════════
 ['criterion-referenced','/kraɪˈtɪriən ˈrefərənst/','đánh giá theo tiêu chí','C1','adj'],
 ['norm-referenced','/nɔːrm ˈrefərənst/','đánh giá theo chuẩn','C1','adj'],
 ['item analysis','/ˈaɪtəm əˈnæləsɪs/','phân tích câu hỏi','C1','n'],
@@ -77,7 +66,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['self-assessment','/self əˈsesmənt/','tự đánh giá','B2','n'],
 ['peer assessment','/pɪr əˈsesmənt/','đánh giá đồng đẳng','B2','n'],
 ['authentic assessment','/ɔːˈθentɪk əˈsesmənt/','đánh giá thực tiễn','C1','n'],
-// ═══════════ BÁO CHÍ - TRUYỀN THÔNG SỐ (Digital Media) ═══════════
 ['clickbait','/ˈklɪkbeɪt/','câu view','B2','n'],
 ['misinformation','/ˌmɪsɪnfərˈmeɪʃn/','thông tin sai lệch','B2','n'],
 ['disinformation','/ˌdɪsɪnfərˈmeɪʃn/','thông tin giả cố ý','B2','n'],
@@ -85,7 +73,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['algorithmic bias','/ˌælɡəˈrɪðmɪk ˈbaɪəs/','thiên kiến thuật toán','C1','n'],
 ['citizen journalism','/ˈsɪtɪzn ˈdʒɜːrnəlɪzəm/','báo chí công dân','B2','n'],
 ['data journalism','/ˈdeɪtə ˈdʒɜːrnəlɪzəm/','báo chí dữ liệu','B2','n'],
-['podcast','/ˈpɒdkæst/','phát thanh trực tuyến','B1','n'],
 ['streaming','/ˈstriːmɪŋ/','phát trực tuyến','B1','n'],
 ['deepfake','/ˈdiːpfeɪk/','giả mạo bằng AI','B2','n']
 );

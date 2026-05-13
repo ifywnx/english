@@ -1,17 +1,13 @@
 // dict-specialized-4.js — Mở rộng từ vựng chuyên ngành (batch 4)
 if(typeof BROWSE!=='undefined') BROWSE.push(
-// ═══════════ LOGISTICS MỞ RỘNG 2 (Logistics Extended) ═══════════
-['customs clearance','/ˈkʌstəmz ˈklɪrəns/','thông quan','B2','n'],
 ['demurrage','/dɪˈmɜːrɪdʒ/','phí lưu container','C1','n'],
 ['palletization','/ˌpælɪtaɪˈzeɪʃn/','xếp pallet','C1','n'],
 ['pick and pack','/pɪk ænd pæk/','lấy hàng và đóng gói','B2','n'],
 ['third-party logistics','/θɜːrd ˈpɑːrti ləˈdʒɪstɪks/','logistics bên thứ ba','B2','n'],
 ['cold storage','/koʊld ˈstɔːrɪdʒ/','kho lạnh','B2','n'],
 ['manifest','/ˈmænɪfest/','bảng kê hàng hóa','C1','n'],
-['consignment','/kənˈsaɪnmənt/','lô hàng ký gửi','B2','n'],
 ['intermodal transport','/ˌɪntərˈmoʊdl ˈtrænspɔːrt/','vận tải đa phương thức','C1','n'],
 ['just-in-time','/dʒʌst ɪn taɪm/','đúng lúc','B2','adj'],
-// ═══════════ MARKETING MỞ RỘNG 2 (Marketing Extended) ═══════════
 ['guerrilla marketing','/ɡəˈrɪlə ˈmɑːrkɪtɪŋ/','tiếp thị du kích','C1','n'],
 ['neuromarketing','/ˌnjʊroʊˈmɑːrkɪtɪŋ/','tiếp thị thần kinh','C1','n'],
 ['omnichannel marketing','/ˈɒmnɪˌtʃænl ˈmɑːrkɪtɪŋ/','tiếp thị đa kênh','B2','n'],
@@ -22,7 +18,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['cost per acquisition','/kɒst pər ˌækwɪˈzɪʃn/','chi phí mỗi chuyển đổi','B2','n'],
 ['brand equity','/brænd ˈekwəti/','giá trị thương hiệu','B2','n'],
 ['positioning','/pəˈzɪʃnɪŋ/','định vị thương hiệu','B2','n'],
-// ═══════════ NGÂN HÀNG MỞ RỘNG 2 (Banking Extended) ═══════════
 ['treasury','/ˈtreʒəri/','kho bạc','B2','n'],
 ['interbank rate','/ˌɪntərˈbæŋk reɪt/','lãi suất liên ngân hàng','C1','n'],
 ['repo rate','/ˈriːpoʊ reɪt/','lãi suất tái chiết khấu','C1','n'],
@@ -33,18 +28,15 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['anti-money laundering','/ˌænti ˈmʌni ˈlɔːndərɪŋ/','chống rửa tiền','B2','n'],
 ['compliance','/kəmˈplaɪəns/','tuân thủ','B2','n'],
 ['credit union','/ˈkredɪt ˈjuːniən/','quỹ tín dụng','B2','n'],
-// ═══════════ NHÂN SỰ MỞ RỘNG 2 (HR Extended) ═══════════
 ['succession planning','/səkˈseʃn ˈplænɪŋ/','quy hoạch kế nhiệm','C1','n'],
 ['competency framework','/ˈkɒmpɪtənsi ˈfreɪmwɜːrk/','khung năng lực','B2','n'],
 ['360-degree feedback','/θriː ˈsɪksti dɪˈɡriː ˈfiːdbæk/','đánh giá 360 độ','B2','n'],
 ['workforce planning','/ˈwɜːrkfɔːrs ˈplænɪŋ/','hoạch định nguồn nhân lực','B2','n'],
-['burnout','/ˈbɜːrnaʊt/','kiệt sức','B2','n'],
 ['remote work','/rɪˈmoʊt wɜːrk/','làm việc từ xa','B1','n'],
 ['hybrid work','/ˈhaɪbrɪd wɜːrk/','làm việc kết hợp','B2','n'],
 ['employer branding','/ɪmˈplɔɪər ˈbrændɪŋ/','thương hiệu nhà tuyển dụng','B2','n'],
 ['toxic workplace','/ˈtɒksɪk ˈwɜːrkpleɪs/','môi trường làm việc độc hại','B2','n'],
 ['labor union','/ˈleɪbər ˈjuːniən/','công đoàn','B2','n'],
-// ═══════════ KẾ TOÁN MỞ RỘNG 2 (Accounting Extended) ═══════════
 ['forensic accounting','/fəˈrensɪk əˈkaʊntɪŋ/','kế toán điều tra','C1','n'],
 ['internal audit','/ɪnˈtɜːrnl ˈɔːdɪt/','kiểm toán nội bộ','B2','n'],
 ['external audit','/ɪkˈstɜːrnl ˈɔːdɪt/','kiểm toán độc lập','B2','n'],
@@ -55,7 +47,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['tangible asset','/ˈtændʒəbl ˈæset/','tài sản hữu hình','B2','n'],
 ['revenue recognition','/ˈrevənjuː ˌrekəɡˈnɪʃn/','ghi nhận doanh thu','C1','n'],
 ['chart of accounts','/tʃɑːrt əv əˈkaʊnts/','hệ thống tài khoản','B2','n'],
-// ═══════════ QHQT MỞ RỘNG 2 (IR Extended) ═══════════
 ['soft power','/sɒft ˈpaʊər/','quyền lực mềm','B2','n'],
 ['hard power','/hɑːrd ˈpaʊər/','quyền lực cứng','B2','n'],
 ['proxy war','/ˈprɒksi wɔːr/','chiến tranh ủy nhiệm','C1','n'],
@@ -66,18 +57,12 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['territorial dispute','/ˌterɪˈtɔːriəl dɪˈspjuːt/','tranh chấp lãnh thổ','B2','n'],
 ['war crimes','/wɔːr kraɪmz/','tội ác chiến tranh','B2','n'],
 ['refugee','/ˌrefjuˈdʒiː/','người tị nạn','B2','n'],
-// ═══════════ TMĐT MỞ RỘNG 2 (E-commerce Extended) ═══════════
-['user experience','/ˈjuːzər ɪkˈspɪriəns/','trải nghiệm người dùng','B2','n'],
 ['user interface','/ˈjuːzər ˈɪntərfeɪs/','giao diện người dùng','B2','n'],
 ['shopping cart abandonment','/ˈʃɒpɪŋ kɑːrt əˈbændənmənt/','bỏ giỏ hàng','B2','n'],
 ['flash sale','/flæʃ seɪl/','bán chớp nhoáng','B2','n'],
 ['subscription model','/səbˈskrɪpʃn ˈmɒdl/','mô hình đăng ký','B2','n'],
-['marketplace','/ˈmɑːrkɪtpleɪs/','sàn thương mại','B2','n'],
 ['product listing','/ˈprɒdʌkt ˈlɪstɪŋ/','đăng sản phẩm','B2','n'],
-['customer retention','/ˈkʌstəmər rɪˈtenʃn/','giữ chân khách hàng','B2','n'],
-['payment gateway','/ˈpeɪmənt ˈɡeɪtweɪ/','cổng thanh toán','B2','n'],
 ['return policy','/rɪˈtɜːrn ˈpɒləsi/','chính sách đổi trả','B1','n'],
-// ═══════════ QUẢN LÝ CÔNG MỞ RỘNG 2 (Public Admin Extended) ═══════════
 ['e-government','/iː ˈɡʌvərnmənt/','chính phủ điện tử','B2','n'],
 ['administrative reform','/ədˌmɪnɪˈstreɪtɪv rɪˈfɔːrm/','cải cách hành chính','B2','n'],
 ['public hearing','/ˈpʌblɪk ˈhɪrɪŋ/','phiên điều trần','B2','n'],
@@ -88,7 +73,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['welfare state','/ˈwelfer steɪt/','nhà nước phúc lợi','B2','n'],
 ['public debt','/ˈpʌblɪk det/','nợ công','B2','n'],
 ['anti-corruption','/ˌænti kəˈrʌpʃn/','chống tham nhũng','B2','n'],
-// ═══════════ XÃ HỘI HỌC MỞ RỘNG 2 (Sociology Extended) ═══════════
 ['cultural capital','/ˈkʌltʃərəl ˈkæpɪtl/','vốn văn hóa','C1','n'],
 ['anomie','/ˈænəmi/','vô chuẩn','C2','n'],
 ['stigma','/ˈstɪɡmə/','kỳ thị','B2','n'],
@@ -99,7 +83,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['class consciousness','/klæs ˈkɒnʃəsnəs/','ý thức giai cấp','C1','n'],
 ['collectivism','/kəˈlektɪvɪzəm/','chủ nghĩa tập thể','C1','n'],
 ['individualism','/ˌɪndɪˈvɪdʒuəlɪzəm/','chủ nghĩa cá nhân','B2','n'],
-// ═══════════ VẬT LÝ MỞ RỘNG 2 (Physics Extended) ═══════════
 ['Schrödinger equation','/ˈʃrøːdɪŋər ɪˈkweɪʒn/','phương trình Schrödinger','C2','n'],
 ['Heisenberg principle','/ˈhaɪzənbɜːrɡ ˈprɪnsəpl/','nguyên lý bất định','C1','n'],
 ['wave-particle duality','/weɪv ˈpɑːrtɪkl djuˈæləti/','lưỡng tính sóng hạt','C1','n'],
@@ -110,26 +93,19 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['dark energy','/dɑːrk ˈenərdʒi/','năng lượng tối','B2','n'],
 ['black hole','/blæk hoʊl/','hố đen','B2','n'],
 ['quantum entanglement','/ˈkwɒntəm ɪnˈtæŋɡlmənt/','vướng víu lượng tử','C1','n'],
-// ═══════════ TOÁN HỌC MỞ RỘNG 2 (Math Extended) ═══════════
 ['Fourier transform','/ˈfʊrieɪ trænzˈfɔːrm/','biến đổi Fourier','C1','n'],
 ['Laplace transform','/ləˈplɑːs trænzˈfɔːrm/','biến đổi Laplace','C1','n'],
 ['partial differential equation','/ˈpɑːrʃl ˌdɪfəˈrenʃl ɪˈkweɪʒn/','phương trình đạo hàm riêng','C1','n'],
 ['vector space','/ˈvektər speɪs/','không gian vectơ','C1','n'],
 ['Euclidean geometry','/juːˈklɪdiən dʒiˈɒmɪtri/','hình học Euclid','C1','n'],
-['logarithm','/ˈlɒɡərɪðəm/','logarit','B2','n'],
 ['asymptote','/ˈæsɪmptoʊt/','đường tiệm cận','C1','n'],
-['derivative','/dɪˈrɪvətɪv/','đạo hàm','C1','n'],
-['integral','/ˈɪntɪɡrəl/','tích phân','C1','n'],
 ['binomial theorem','/baɪˈnoʊmiəl ˈθɪərəm/','định lý nhị thức','C1','n'],
-// ═══════════ THỦY LỢI MỞ RỘNG 2 (Water Extended) ═══════════
 ['hydraulic engineering','/haɪˈdrɒlɪk ˌendʒɪˈnɪrɪŋ/','kỹ thuật thủy lực','C1','n'],
-['embankment','/ɪmˈbæŋkmənt/','đê đắp','B2','n'],
 ['sluice gate','/sluːs ɡeɪt/','cống điều tiết','C1','n'],
 ['catchment area','/ˈkætʃmənt ˈeriə/','lưu vực thu nước','C1','n'],
 ['flood plain','/flʌd pleɪn/','vùng ngập lũ','B2','n'],
 ['hydroelectric dam','/ˌhaɪdroʊɪˈlektrɪk dæm/','đập thủy điện','B2','n'],
 ['water scarcity','/ˈwɔːtər ˈskersəti/','khan hiếm nước','B2','n'],
 ['groundwater recharge','/ˈɡraʊndwɔːtər rɪˈtʃɑːrdʒ/','bổ cập nước ngầm','C1','n'],
-['levee','/ˈlevi/','đê sông','B2','n'],
 ['canal lock','/kəˈnæl lɒk/','âu thuyền','C1','n']
 );

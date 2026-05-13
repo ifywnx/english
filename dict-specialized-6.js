@@ -1,6 +1,5 @@
 // dict-specialized-6.js — Mở rộng từ vựng chuyên ngành (batch 6)
 if(typeof BROWSE!=='undefined') BROWSE.push(
-// ═══════════ Y TẾ - SẢN PHỤ KHOA (Obstetrics) ═══════════
 ['prenatal care','/priːˈneɪtl ker/','chăm sóc tiền sản','B2','n'],
 ['cesarean section','/sɪˈzeriən ˈsekʃn/','mổ lấy thai','B2','n'],
 ['amniocentesis','/ˌæmnioʊsenˈtiːsɪs/','chọc ối','C1','n'],
@@ -11,18 +10,12 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['preeclampsia','/ˌpriːɪˈklæmpsiə/','tiền sản giật','C1','n'],
 ['midwife','/ˈmɪdwaɪf/','nữ hộ sinh','B2','n'],
 ['postpartum','/poʊstˈpɑːrtəm/','sau sinh','B2','adj'],
-// ═══════════ PHÁP LÝ - LUẬT DÂN SỰ (Civil Law) ═══════════
-['liability','/ˌlaɪəˈbɪləti/','trách nhiệm pháp lý','B2','n'],
-['negligence','/ˈneɡlɪdʒəns/','sơ suất','B2','n'],
 ['damages','/ˈdæmɪdʒɪz/','bồi thường thiệt hại','B2','n'],
 ['custody','/ˈkʌstədi/','quyền nuôi con','B2','n'],
 ['alimony','/ˈælɪmoʊni/','tiền cấp dưỡng','C1','n'],
 ['prenuptial agreement','/priːˈnʌpʃl əˈɡriːmənt/','thỏa thuận tiền hôn nhân','C1','n'],
 ['estate planning','/ɪˈsteɪt ˈplænɪŋ/','lập kế hoạch thừa kế','B2','n'],
 ['trusteeship','/trʌˈstiːʃɪp/','quyền giám hộ','C1','n'],
-['statute','/ˈstætʃuːt/','đạo luật','B2','n'],
-['jurisdiction','/ˌdʒʊrɪsˈdɪkʃn/','thẩm quyền','B2','n'],
-// ═══════════ IT - CLOUD COMPUTING (Điện toán đám mây) ═══════════
 ['IaaS','/aɪæs/','hạ tầng dạng dịch vụ','C1','n'],
 ['PaaS','/pæs/','nền tảng dạng dịch vụ','C1','n'],
 ['hybrid cloud','/ˈhaɪbrɪd klaʊd/','đám mây lai','B2','n'],
@@ -33,7 +26,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['CDN','/ˌsiːdiːˈen/','mạng phân phối nội dung','B2','n'],
 ['API gateway','/ˌeɪpiːˈaɪ ˈɡeɪtweɪ/','cổng API','B2','n'],
 ['edge computing','/edʒ kəmˈpjuːtɪŋ/','điện toán biên','C1','n'],
-// ═══════════ KINH DOANH - QUẢN TRỊ (Management) ═══════════
 ['corporate governance','/ˈkɔːrpərət ˈɡʌvərnəns/','quản trị doanh nghiệp','B2','n'],
 ['supply chain disruption','/səˈplaɪ tʃeɪn dɪsˈrʌpʃn/','gián đoạn chuỗi cung ứng','B2','n'],
 ['lean management','/liːn ˈmænɪdʒmənt/','quản lý tinh gọn','B2','n'],
@@ -44,18 +36,13 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['project management','/ˈprɒdʒekt ˈmænɪdʒmənt/','quản lý dự án','B2','n'],
 ['crisis management','/ˈkraɪsɪs ˈmænɪdʒmənt/','quản lý khủng hoảng','B2','n'],
 ['organizational behavior','/ˌɔːrɡənəˈzeɪʃənl bɪˈheɪvjər/','hành vi tổ chức','C1','n'],
-// ═══════════ ĐIỆN - VIỄN THÔNG (Telecommunications) ═══════════
-['bandwidth','/ˈbændwɪdθ/','băng thông','B2','n'],
 ['fiber optic','/ˈfaɪbər ˈɒptɪk/','cáp quang','B2','n'],
 ['5G','/faɪv dʒiː/','mạng 5G','B2','n'],
 ['multiplexing','/ˈmʌltɪpleksɪŋ/','ghép kênh','C1','n'],
 ['modulation','/ˌmɒdjuˈleɪʃn/','điều chế','C1','n'],
 ['base station','/beɪs ˈsteɪʃn/','trạm phát sóng','B2','n'],
-['spectrum','/ˈspektrəm/','phổ tần số','B2','n'],
 ['handover','/ˈhændoʊvər/','chuyển giao cuộc gọi','C1','n'],
-['latency','/ˈleɪtnsi/','độ trễ mạng','B2','n'],
 ['satellite communication','/ˈsætəlaɪt kəˌmjuːnɪˈkeɪʃn/','thông tin vệ tinh','B2','n'],
-// ═══════════ HÓA HỌC - MÔI TRƯỜNG (Environmental Chemistry) ═══════════
 ['heavy metal','/ˈhevi ˈmetl/','kim loại nặng','B2','n'],
 ['BOD','/ˌbiːoʊˈdiː/','nhu cầu oxy sinh hóa','C1','n'],
 ['COD','/ˌsiːoʊˈdiː/','nhu cầu oxy hóa học','C1','n'],
@@ -66,7 +53,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['acid rain','/ˈæsɪd reɪn/','mưa axit','B2','n'],
 ['ozone depletion','/ˈoʊzoʊn dɪˈpliːʃn/','suy giảm tầng ozone','B2','n'],
 ['pollutant','/pəˈluːtənt/','chất gây ô nhiễm','B2','n'],
-// ═══════════ SINH HỌC - SINH THÁI (Ecology) ═══════════
 ['food chain','/fuːd tʃeɪn/','chuỗi thức ăn','B1','n'],
 ['food web','/fuːd web/','lưới thức ăn','B2','n'],
 ['trophic level','/ˈtrɒfɪk ˈlevl/','bậc dinh dưỡng','C1','n'],
@@ -77,7 +63,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['habitat fragmentation','/ˈhæbɪtæt ˌfræɡmenˈteɪʃn/','phân mảnh môi trường sống','C1','n'],
 ['carrying capacity','/ˈkæriɪŋ kəˈpæsəti/','sức chứa sinh thái','C1','n'],
 ['succession','/səkˈseʃn/','diễn thế sinh thái','C1','n'],
-// ═══════════ TOÁN HỌC - THỐNG KÊ (Statistics) ═══════════
 ['standard deviation','/ˈstændərd ˌdiːviˈeɪʃn/','độ lệch chuẩn','B2','n'],
 ['variance','/ˈveriəns/','phương sai','C1','n'],
 ['correlation coefficient','/ˌkɒrəˈleɪʃn ˌkoʊɪˈfɪʃnt/','hệ số tương quan','C1','n'],

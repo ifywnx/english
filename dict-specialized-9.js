@@ -1,6 +1,5 @@
 // dict-specialized-9.js — Batch cuối cùng
 if(typeof BROWSE!=='undefined') BROWSE.push(
-// ═══════════ Y TẾ - PHỤC HỒI CHỨC NĂNG (Rehabilitation) ═══════════
 ['physiotherapy','/ˌfɪzioʊˈθerəpi/','vật lý trị liệu','B2','n'],
 ['occupational therapy','/ˌɒkjuˈpeɪʃənl ˈθerəpi/','hoạt động trị liệu','C1','n'],
 ['speech therapy','/spiːtʃ ˈθerəpi/','âm ngữ trị liệu','B2','n'],
@@ -11,7 +10,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['electrotherapy','/ɪˌlektroʊˈθerəpi/','điện trị liệu','C1','n'],
 ['gait analysis','/ɡeɪt əˈnæləsɪs/','phân tích dáng đi','C1','n'],
 ['wheelchair','/ˈwiːltʃer/','xe lăn','B1','n'],
-// ═══════════ PHÁP LÝ - LUẬT LAO ĐỘNG (Labor Law) ═══════════
 ['minimum wage','/ˈmɪnɪməm weɪdʒ/','lương tối thiểu','B2','n'],
 ['overtime','/ˈoʊvərtaɪm/','làm thêm giờ','B1','n'],
 ['wrongful dismissal','/ˈrɒŋfl dɪˈsmɪsl/','sa thải trái phép','C1','n'],
@@ -22,7 +20,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['industrial dispute','/ɪnˈdʌstriəl dɪˈspjuːt/','tranh chấp lao động','B2','n'],
 ['employment contract','/ɪmˈplɔɪmənt ˈkɒntrækt/','hợp đồng lao động','B2','n'],
 ['social insurance','/ˈsoʊʃl ɪnˈʃʊrəns/','bảo hiểm xã hội','B2','n'],
-// ═══════════ IT - BLOCKCHAIN (Chuỗi khối) ═══════════
 ['decentralized','/diːˈsentrəlaɪzd/','phi tập trung','B2','adj'],
 ['consensus mechanism','/kənˈsensəs ˈmekənɪzəm/','cơ chế đồng thuận','C1','n'],
 ['proof of work','/pruːf əv wɜːrk/','bằng chứng công việc','C1','n'],
@@ -33,10 +30,8 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['mining','/ˈmaɪnɪŋ/','đào coin','B2','n'],
 ['gas fee','/ɡæs fiː/','phí gas','B2','n'],
 ['DAO','/daʊ/','tổ chức tự trị phi tập trung','C1','n'],
-// ═══════════ KINH DOANH - BẢO HIỂM (Insurance) ═══════════
 ['premium','/ˈpriːmiəm/','phí bảo hiểm','B2','n'],
 ['deductible','/dɪˈdʌktəbl/','mức khấu trừ','B2','n'],
-['claim','/kleɪm/','yêu cầu bồi thường','B2','n'],
 ['underwriter','/ˈʌndərˌraɪtər/','người thẩm định bảo hiểm','C1','n'],
 ['actuarial','/ˌæktʃuˈeriəl/','tính toán bảo hiểm','C1','adj'],
 ['reinsurance','/ˌriːɪnˈʃʊrəns/','tái bảo hiểm','C1','n'],
@@ -44,8 +39,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['indemnity','/ɪnˈdemnəti/','bồi thường','C1','n'],
 ['policyholder','/ˈpɒləsiˌhoʊldər/','người mua bảo hiểm','B2','n'],
 ['coverage','/ˈkʌvərɪdʒ/','phạm vi bảo hiểm','B2','n'],
-// ═══════════ NÔNG NGHIỆP - LÂM NGHIỆP (Forestry) ═══════════
-['reforestation','/ˌriːˌfɒrɪˈsteɪʃn/','trồng lại rừng','B2','n'],
 ['afforestation','/əˌfɒrɪˈsteɪʃn/','trồng rừng mới','C1','n'],
 ['canopy','/ˈkænəpi/','tán rừng','B2','n'],
 ['timber','/ˈtɪmbər/','gỗ xẻ','B2','n'],
@@ -53,9 +46,7 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['biodiversity hotspot','/ˌbaɪoʊdaɪˈvɜːrsəti ˈhɒtspɒt/','điểm nóng đa dạng sinh học','C1','n'],
 ['old-growth forest','/oʊld ɡroʊθ ˈfɒrɪst/','rừng nguyên sinh','C1','n'],
 ['sustainable forestry','/səˈsteɪnəbl ˈfɒrɪstri/','lâm nghiệp bền vững','B2','n'],
-['watershed','/ˈwɔːtərʃed/','đầu nguồn','B2','n'],
 ['carbon sink','/ˈkɑːrbən sɪŋk/','bể hấp thụ carbon','C1','n'],
-// ═══════════ KHOA HỌC - THIÊN VĂN (Astronomy) ═══════════
 ['exoplanet','/ˈeksoʊˌplænɪt/','hành tinh ngoại','C1','n'],
 ['nebula','/ˈnebjələ/','tinh vân','C1','n'],
 ['supernova','/ˌsuːpərˈnoʊvə/','siêu tân tinh','C1','n'],
@@ -66,7 +57,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['comet','/ˈkɒmɪt/','sao chổi','B2','n'],
 ['constellation','/ˌkɒnstəˈleɪʃn/','chòm sao','B2','n'],
 ['observatory','/əbˈzɜːrvətɔːri/','đài thiên văn','B2','n'],
-// ═══════════ KHOA HỌC - ĐỊA LÝ (Geography) ═══════════
 ['latitude','/ˈlætɪtjuːd/','vĩ độ','B2','n'],
 ['longitude','/ˈlɒndʒɪtjuːd/','kinh độ','B2','n'],
 ['topography','/təˈpɒɡrəfi/','địa hình','C1','n'],
@@ -75,9 +65,7 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['remote sensing','/rɪˈmoʊt ˈsensɪŋ/','viễn thám','C1','n'],
 ['demographic shift','/ˌdeməˈɡræfɪk ʃɪft/','thay đổi nhân khẩu','B2','n'],
 ['migration pattern','/maɪˈɡreɪʃn ˈpætərn/','mô hình di cư','B2','n'],
-['urbanization','/ˌɜːrbənəˈzeɪʃn/','đô thị hóa','B2','n'],
 ['biome','/ˈbaɪoʊm/','quần xã sinh vật','C1','n'],
-// ═══════════ PHỎNG VẤN - NGHỀ NGHIỆP (Career) ═══════════
 ['cover letter','/ˈkʌvər ˈletər/','thư xin việc','B2','n'],
 ['résumé','/ˈrezjumeɪ/','sơ yếu lý lịch','B2','n'],
 ['networking','/ˈnetwɜːrkɪŋ/','kết nối nghề nghiệp','B2','n'],

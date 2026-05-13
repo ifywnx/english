@@ -333,6 +333,9 @@
 <script src="dict-specialized-9.js"></script>
 <script src="dict-specialized-10.js"></script>
 <script src="dict-specialized-11.js"></script>
+<script src="dict-specialized-12.js"></script>
+<script src="dict-specialized-13.js"></script>
+<script src="dict-unified.js"></script>
 <script>
 // ===== DICTIONARY DATA =====
 const DICT = {
@@ -542,6 +545,65 @@ const DICT_META = {
   time:{context:'Từ cực cơ bản nhưng nhiều nghĩa: thời gian, lần/lượt, thời điểm, giờ giấc.',frequency:'Rất phổ biến',formality:'Trung tính',mistake:'Hay nhầm time và times, hoặc bỏ qua collocations như on time / in time.',example:'Time flies when you are having fun.',collocations:['on time','in time','take your time']}
 };
 
+const UNIFIED_INDEX = (function() {
+  var index = {};
+  (window.EE_UNIFIED_DICT || []).forEach(function(record) {
+    index[String(record.word || '').toLowerCase()] = record;
+  });
+  return index;
+})();
+
+const UNIFIED_BROWSE = (window.EE_UNIFIED_DICT || []).map(function(record) {
+  return [
+    record.display || record.word || '',
+    record.ipa || '',
+    (record.vietnamese && record.vietnamese[0]) || '',
+    (record.levels && record.levels[0]) || '',
+    (record.pos && record.pos[0]) || ''
+  ];
+});
+
+function normalizeWordKey(word) {
+  return String(word || '').toLowerCase().trim();
+}
+
+function buildUnifiedEntry(record) {
+  var meanings = (record.vietnamese || []).map(function(vi, idx) {
+    return {
+      tag: (record.pos && record.pos[idx]) || (record.pos && record.pos[0]) || '',
+      vi: vi,
+      enDef: '',
+      examples: []
+    };
+  });
+  if (!meanings.length) meanings = [{ tag:'', vi:'', enDef:'', examples:[] }];
+  return {
+    pron: record.ipa || '',
+    types: record.pos || [],
+    meanings: meanings,
+    synonyms: [],
+    antonyms: [],
+    related: [],
+    phrases: [],
+    meta: null
+  };
+}
+
+function getLocalEntry(word) {
+  var key = normalizeWordKey(word);
+  if (!key) return null;
+  if (DICT[key]) return DICT[key];
+  if (UNIFIED_INDEX[key]) {
+    DICT[key] = buildUnifiedEntry(UNIFIED_INDEX[key]);
+    return DICT[key];
+  }
+  return null;
+}
+
+function getAllSearchableWords() {
+  return [...new Set([].concat(Object.keys(UNIFIED_INDEX), Object.keys(DICT), SUGGEST_WORDS))];
+}
+
 function inferDictionaryMeta(word, entry) {
   var normalized = String(word || '').toLowerCase();
   if (DICT_META[normalized]) return DICT_META[normalized];
@@ -614,8 +676,9 @@ function debounceLocal(){
   if(!q){hideResult();document.getElementById('notFound').style.display='none';hideSuggestions();return;}
   _debounceTimer=setTimeout(function(){
     showSuggestions(q);
-    if(DICT[q]){
-      currentWord=q;addHistory(q);renderResult(q,DICT[q],false);
+    var localEntry = getLocalEntry(q);
+    if(localEntry){
+      currentWord=q;addHistory(q);renderResult(q,localEntry,false);
       // Bug #1 fix: XP chỉ award trong lookupWord(), không award ở đây
     }
   },200);
@@ -630,12 +693,15 @@ async function lookupFromSearch(){
 function showSuggestions(q){
   const box=document.getElementById('suggestions');
   if(!q||q.length<1){box.style.display='none';return;}
-  // Match from DICT keys + SUGGEST_WORDS
-  const allWords=[...new Set([...Object.keys(DICT),...SUGGEST_WORDS])];
+  const allWords=getAllSearchableWords();
   const matches=allWords.filter(w=>w.startsWith(q)).slice(0,8);
   if(!matches.length){box.style.display='none';return;}
   _sugIdx=-1;
-  box.innerHTML=matches.map((w,i)=>'<div class="sug-item" data-idx="'+i+'" onmousedown="pickSuggestion(\''+w+'\')" style="padding:10px 16px;cursor:pointer;font-size:14px;color:var(--text2);border-bottom:1px solid var(--border);transition:background .1s">'+(DICT[w]?'<span style="color:var(--text)">'+w+'</span> <span style="color:var(--text3);font-size:12px">'+DICT[w].pron+'</span>':'<span style="color:var(--text)">'+w+'</span>')+'</div>').join('');
+  box.innerHTML=matches.map(function(w,i){
+    var localEntry = getLocalEntry(w);
+    var pron = localEntry && localEntry.pron ? '<span style="color:var(--text3);font-size:12px">'+localEntry.pron+'</span>' : '';
+    return '<div class="sug-item" data-idx="'+i+'" data-word="'+w.replace(/"/g,'&quot;')+'" onmousedown="pickSuggestion(\''+w+'\')" style="padding:10px 16px;cursor:pointer;font-size:14px;color:var(--text2);border-bottom:1px solid var(--border);transition:background .1s"><span style="color:var(--text)">'+w+'</span> '+pron+'</div>';
+  }).join('');
   box.style.display='block';
 }
 function hideSuggestions(){document.getElementById('suggestions').style.display='none';_sugIdx=-1;}
@@ -649,7 +715,7 @@ function handleSearchKey(e){
   else if(e.key==='Enter'){
     e.preventDefault();
     const q=document.getElementById('searchInput').value.trim().toLowerCase();
-    if(_sugIdx>=0&&items[_sugIdx]){pickSuggestion(items[_sugIdx].textContent.split(' ')[0].trim());}
+    if(_sugIdx>=0&&items[_sugIdx]){pickSuggestion(items[_sugIdx].dataset.word || items[_sugIdx].textContent.trim());}
     else if(q){ lookupWord(q); }
   }
   else if(e.key==='Escape'){hideSuggestions();}
@@ -674,11 +740,12 @@ async function lookupWord(word) {
   if(_abortCtrl) _abortCtrl.abort();
   _abortCtrl = new AbortController();
 
-  // 1. Thử local DICT trước
-  if(DICT[word]) {
+  // 1. Thử local dictionary trước
+  var localEntry = getLocalEntry(word);
+  if(localEntry) {
     currentWord = word;
     addHistory(word);
-    renderResult(word, DICT[word], false);
+    renderResult(word, localEntry, false);
     // Gamification: +5 XP for looking up a word
     if(typeof addXP==='function'){
       var gs=getGameState();gs.wordsLearned=(gs.wordsLearned||0)+1;saveGameState(gs);
@@ -722,7 +789,7 @@ async function lookupWord(word) {
     if(e.name==='AbortError') return;
     // 3. Không tìm thấy ở cả 2
     hideResult();
-    const close = Object.keys(DICT).filter(k=>k.startsWith(word[0])||k.includes(word.slice(0,3)));
+    const close = getAllSearchableWords().filter(k=>k.startsWith(word[0])||k.includes(word.slice(0,3)));
     const nf = document.getElementById('notFound');
     nf.style.display='block';
     if(close.length) {
@@ -912,7 +979,7 @@ function renderResult(word, e, fromApi=false) {
 }
 
 function toggleSave(word) {
-  const entry = DICT[word];
+  const entry = getLocalEntry(word);
   const idx = savedWords.findIndex(s=>s.word===word);
   if(idx>-1) {
     savedWords.splice(idx,1);
@@ -1015,13 +1082,13 @@ function setLevel(lv,btn){
 // FIX #4: Show loading state when BROWSE data not available
 function renderBrowse(){
   var grid = document.getElementById('browseGrid');
-  if(typeof BROWSE==='undefined'){
+  if(!UNIFIED_BROWSE.length && typeof BROWSE==='undefined'){
     grid.innerHTML='<div class="empty-msg"><div class="loading-spinner" style="margin:0 auto 8px"></div>Đang tải danh sách từ...</div>';
     // Retry after dict-data.js loads
     setTimeout(renderBrowse, 500);
     return;
   }
-  let list=BROWSE;
+  let list=UNIFIED_BROWSE.length ? UNIFIED_BROWSE : BROWSE;
   if(curLetter!=='All') list=list.filter(w=>w[0].charAt(0).toUpperCase()===curLetter);
   if(curLevel!=='All') list=list.filter(w=>w[3]===curLevel);
   // FIX: Pagination — show max 60 items to prevent lag
@@ -1044,8 +1111,8 @@ function renderBrowse(){
 window._browseAll=false;
 function loadMoreBrowse(){ window._browseAll=true; renderBrowseFull(); }
 function renderBrowseFull(){
-  if(typeof BROWSE==='undefined')return;
-  let list=BROWSE;
+  if(!UNIFIED_BROWSE.length && typeof BROWSE==='undefined')return;
+  let list=UNIFIED_BROWSE.length ? UNIFIED_BROWSE : BROWSE;
   if(curLetter!=='All') list=list.filter(w=>w[0].charAt(0).toUpperCase()===curLetter);
   if(curLevel!=='All') list=list.filter(w=>w[3]===curLevel);
   document.getElementById('browseCount').textContent='Hiển thị ' + list.length + ' từ';

@@ -1,6 +1,5 @@
 // dict-specialized-7.js — Mở rộng từ vựng chuyên ngành (batch 7)
 if(typeof BROWSE!=='undefined') BROWSE.push(
-// ═══════════ Y TẾ - CHẨN ĐOÁN HÌNH ẢNH (Radiology Extended) ═══════════
 ['contrast agent','/ˈkɒntræst ˈeɪdʒənt/','chất cản quang','C1','n'],
 ['fluoroscopy','/flʊˈrɒskəpi/','chiếu huỳnh quang','C1','n'],
 ['mammography','/mæˈmɒɡrəfi/','chụp nhũ ảnh','C1','n'],
@@ -11,18 +10,14 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['nuclear medicine','/ˈnjuːkliər ˈmedɪsn/','y học hạt nhân','C1','n'],
 ['sonographer','/sɒˈnɒɡrəfər/','kỹ thuật viên siêu âm','C1','n'],
 ['interventional radiology','/ˌɪntərˈvenʃənl ˌreɪdiˈɒlədʒi/','can thiệp X-quang','C2','n'],
-// ═══════════ PHÁP LÝ - LUẬT THƯƠNG MẠI (Commercial Law) ═══════════
 ['shareholder agreement','/ˈʃerhoʊldər əˈɡriːmənt/','thỏa thuận cổ đông','B2','n'],
 ['memorandum of understanding','/ˌmeməˈrændəm əv ˌʌndərˈstændɪŋ/','biên bản ghi nhớ','B2','n'],
 ['articles of incorporation','/ˈɑːrtɪklz əv ɪnˌkɔːrpəˈreɪʃn/','điều lệ công ty','C1','n'],
 ['limited liability company','/ˈlɪmɪtɪd ˌlaɪəˈbɪləti ˈkʌmpəni/','công ty TNHH','B2','n'],
 ['joint venture','/dʒɔɪnt ˈventʃər/','liên doanh','B2','n'],
 ['antitrust law','/ˌæntiˈtrʌst lɔː/','luật chống độc quyền','C1','n'],
-['bankruptcy','/ˈbæŋkrʌptsi/','phá sản','B2','n'],
 ['receivership','/rɪˈsiːvərʃɪp/','quản lý tài sản phá sản','C1','n'],
 ['liquidation','/ˌlɪkwɪˈdeɪʃn/','thanh lý','B2','n'],
-['merger','/ˈmɜːrdʒər/','sáp nhập','B2','n'],
-// ═══════════ IT - CƠ SỞ DỮ LIỆU (Database) ═══════════
 ['relational database','/rɪˈleɪʃənl ˈdeɪtəbeɪs/','cơ sở dữ liệu quan hệ','B2','n'],
 ['NoSQL','/noʊ ˈsiːkwəl/','cơ sở dữ liệu phi quan hệ','B2','n'],
 ['primary key','/ˈpraɪməri kiː/','khóa chính','B2','n'],
@@ -30,11 +25,8 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['normalization','/ˌnɔːrməlaɪˈzeɪʃn/','chuẩn hóa dữ liệu','C1','n'],
 ['indexing','/ˈɪndeksɪŋ/','lập chỉ mục','B2','n'],
 ['stored procedure','/stɔːrd prəˈsiːdʒər/','thủ tục lưu trữ','C1','n'],
-['transaction','/trænˈzækʃn/','giao dịch','B2','n'],
 ['replication','/ˌreplɪˈkeɪʃn/','sao chép dữ liệu','C1','n'],
 ['sharding','/ˈʃɑːrdɪŋ/','phân mảnh dữ liệu','C1','n'],
-// ═══════════ CƠ KHÍ - THIẾT KẾ MÁY (Machine Design) ═══════════
-['bearing','/ˈberɪŋ/','ổ bi','B2','n'],
 ['coupling','/ˈkʌplɪŋ/','khớp nối','B2','n'],
 ['flywheel','/ˈflaɪwiːl/','bánh đà','C1','n'],
 ['cam mechanism','/kæm ˈmekənɪzəm/','cơ cấu cam','C1','n'],
@@ -44,7 +36,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['vibration analysis','/vaɪˈbreɪʃn əˈnæləsɪs/','phân tích rung động','C1','n'],
 ['surface roughness','/ˈsɜːrfɪs ˈrʌfnəs/','độ nhám bề mặt','C1','n'],
 ['fatigue life','/fəˈtiːɡ laɪf/','tuổi thọ mỏi','C1','n'],
-// ═══════════ NÔNG NGHIỆP - BỆNH CÂY TRỒNG (Plant Pathology) ═══════════
 ['blight','/blaɪt/','bệnh cháy lá','C1','n'],
 ['rust disease','/rʌst dɪˈziːz/','bệnh gỉ sắt','C1','n'],
 ['wilt','/wɪlt/','bệnh héo','B2','n'],
@@ -53,9 +44,7 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['nematode','/ˈnemətəʊd/','tuyến trùng','C1','n'],
 ['biological control','/ˌbaɪəˈlɒdʒɪkl kənˈtroʊl/','kiểm soát sinh học','B2','n'],
 ['integrated pest management','/ˈɪntɪɡreɪtɪd pest ˈmænɪdʒmənt/','quản lý dịch hại tổng hợp','C1','n'],
-['quarantine','/ˈkwɒrəntiːn/','kiểm dịch thực vật','B2','n'],
 ['phytosanitary','/ˌfaɪtoʊˈsænɪtəri/','kiểm dịch thực vật','C1','adj'],
-// ═══════════ KIẾN TRÚC - QUY HOẠCH (Urban Planning) ═══════════
 ['master plan','/ˈmæstər plæn/','quy hoạch tổng thể','B2','n'],
 ['urban sprawl','/ˈɜːrbən sprɔːl/','đô thị hóa lan tỏa','C1','n'],
 ['green building','/ɡriːn ˈbɪldɪŋ/','công trình xanh','B2','n'],
@@ -66,7 +55,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['floor area ratio','/flɔːr ˈeriə ˈreɪʃioʊ/','hệ số sử dụng đất','C1','n'],
 ['land use planning','/lænd juːs ˈplænɪŋ/','quy hoạch sử dụng đất','B2','n'],
 ['smart city','/smɑːrt ˈsɪti/','thành phố thông minh','B2','n'],
-// ═══════════ MÔI TRƯỜNG - BIẾN ĐỔI KHÍ HẬU (Climate Change) ═══════════
 ['Paris Agreement','/ˈpærɪs əˈɡriːmənt/','Thỏa thuận Paris','B2','n'],
 ['net zero','/net ˈzɪroʊ/','phát thải ròng bằng không','B2','n'],
 ['climate adaptation','/ˈklaɪmɪt ˌædæpˈteɪʃn/','thích ứng biến đổi khí hậu','B2','n'],
@@ -77,7 +65,6 @@ if(typeof BROWSE!=='undefined') BROWSE.push(
 ['renewable energy target','/rɪˈnjuːəbl ˈenərdʒi ˈtɑːrɡɪt/','mục tiêu năng lượng tái tạo','B2','n'],
 ['green bond','/ɡriːn bɒnd/','trái phiếu xanh','C1','n'],
 ['climate refugee','/ˈklaɪmɪt ˌrefjuˈdʒiː/','người tị nạn khí hậu','B2','n'],
-// ═══════════ TÂM LÝ - TÂM LÝ TỔ CHỨC (Organizational Psychology) ═══════════
 ['motivation theory','/ˌmoʊtɪˈveɪʃn ˈθɪəri/','thuyết động lực','B2','n'],
 ['job satisfaction','/dʒɒb ˌsætɪsˈfækʃn/','sự hài lòng công việc','B2','n'],
 ['groupthink','/ˈɡruːpθɪŋk/','tư duy tập thể','C1','n'],

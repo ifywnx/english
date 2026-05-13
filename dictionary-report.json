@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-05-13T05:54:57.970Z",
+  "totals": {
+    "uniqueWords": 2896,
+    "missingIpa": 0,
+    "missingVietnamese": 0,
+    "multiSourceWords": 0,
+    "duplicateEvents": 0,
+    "duplicateWords": 0
+  },
+  "sourceFiles": {
+    "browseFiles": [
+      "dict-data.js",
+      "dict-specialized.js",
+      "dict-specialized-2.js",
+      "dict-specialized-3.js",
+      "dict-specialized-4.js",
+      "dict-specialized-5.js",
+      "dict-specialized-6.js",
+      "dict-specialized-7.js",
+      "dict-specialized-8.js",
+      "dict-specialized-9.js",
+      "dict-specialized-10.js",
+      "dict-specialized-11.js",
+      "dict-specialized-12.js",
+      "dict-specialized-13.js"
+    ],
+    "objectSources": [
+      "dt1-extra.js",
+      "dt2-extra.js",
+      "dt3-data.js",
+      "ielts1-extra.js",
+      "ielts2-extra.js"
+    ]
+  },
+  "sampleMissingIpa": [],
+  "sampleMissingVietnamese": [],
+  "duplicateDetails": [],
+  "duplicatePairs": [],
+  "sourceReviewLists": [],
+  "internalDuplicateWords": []
+}
